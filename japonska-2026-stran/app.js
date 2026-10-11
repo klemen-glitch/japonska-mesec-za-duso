@@ -91,14 +91,17 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
   var els = document.querySelectorAll(".area-map[data-lat]");
   if (!els.length || typeof L === "undefined") return;
+  /* Vsi zemljevidi kažejo celotno Japonsko z označbo kraja —
+     da se vidi, kje v državi je. Za podrobnosti je gumb Google Zemljevid. */
+  var JAPAN_VIEW = [37.9, 137.6];
+  var JAPAN_ZOOM = 5;
   els.forEach(function (el) {
     var lat = parseFloat(el.getAttribute("data-lat"));
     var lon = parseFloat(el.getAttribute("data-lon"));
-    var z = parseInt(el.getAttribute("data-zoom") || "13", 10);
     if (isNaN(lat) || isNaN(lon)) return;
     try {
       var map = L.map(el, {
-        center: [lat, lon], zoom: z,
+        center: JAPAN_VIEW, zoom: JAPAN_ZOOM,
         dragging: false, scrollWheelZoom: false, doubleClickZoom: false,
         boxZoom: false, keyboard: false, touchZoom: false,
         zoomControl: false, attributionControl: true

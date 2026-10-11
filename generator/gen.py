@@ -14,6 +14,10 @@ import art
 OUT = "/Users/klemenlorber/Library/Mobile Documents/com~apple~CloudDocs/Japonska/japonska-2026-stran"
 HERE = os.path.dirname(os.path.abspath(__file__))
 
+# Verzija gradnje — doda se v naslov CSS/JS (?v=BUILD), da brskalnik vedno
+# naloži svežo različico. Ob vsaki spremembi povečaj.
+BUILD = "12"
+
 # ----------------------------------------------------------------------------
 # VSEBINA
 # ----------------------------------------------------------------------------
@@ -402,7 +406,7 @@ def head(title, desc, with_map=False):
   <title>{esc(title)}</title>
   <meta name="description" content="{esc(desc)}">
   <meta name="theme-color" content="#7b2230">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v={BUILD}">
 {leaflet}  <link rel="manifest" href="manifest.json">
   <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
@@ -462,11 +466,11 @@ def nav(current_key):
 '''
 
 
-FOOTER = """<footer>
+FOOTER = f"""<footer>
   <p>🍁 Japonska — Mesec za dušo · 3. november – 2. december 2026 · Tokio → Osaka</p>
   <p>Z ljubeznijo pripravljeno za Magdo in prijateljice</p>
 </footer>
-<script src="app.js"></script>
+<script src="app.js?v={BUILD}"></script>
 </body>
 </html>
 """
