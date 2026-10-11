@@ -7,6 +7,8 @@
   <meta name="description" content="Minobusan: znamenitosti, hrana in nasveti — vodnik Japonska 2026.">
   <meta name="theme-color" content="#7b2230">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
@@ -93,7 +95,7 @@
 </section>
 <section class="card-section map-section" aria-labelledby="zemljevid">
   <h2 id="zemljevid">🗺️ Zemljevid kraja</h2>
-  <iframe class="area-map" src="https://www.openstreetmap.org/export/embed.html?bbox=138.4064,35.3820,138.4676,35.4260&amp;layer=mapnik&amp;marker=35.4040,138.4370" loading="lazy" title="Zemljevid — Kuonji Temple, Minobu, Yamanashi"></iframe>
+  <div class="area-map" data-lat="35.404" data-lon="138.437" data-zoom="14" role="img" aria-label="Zemljevid — Kuonji Temple, Minobu, Yamanashi"></div>
   <a class="pin-btn map-open" href="https://www.google.com/maps/search/?api=1&query=Kuonji%20Temple%2C%20Minobu%2C%20Yamanashi" target="_blank" rel="noopener">📍 Odpri na Google Zemljevidu</a>
 </section>
 <section class="card-section" aria-labelledby="dan">

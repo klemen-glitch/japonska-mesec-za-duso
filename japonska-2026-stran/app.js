@@ -59,6 +59,36 @@ document.addEventListener("DOMContentLoaded", function () {
   update();
 });
 
+/* Zemljevidi (Leaflet): statični predogled s pravo povečavo za vsak kraj.
+   Za raziskovanje je tu gumb »Odpri na Google Zemljevidu«. */
+document.addEventListener("DOMContentLoaded", function () {
+  var els = document.querySelectorAll(".area-map[data-lat]");
+  if (!els.length || typeof L === "undefined") return;
+  els.forEach(function (el) {
+    var lat = parseFloat(el.getAttribute("data-lat"));
+    var lon = parseFloat(el.getAttribute("data-lon"));
+    var z = parseInt(el.getAttribute("data-zoom") || "13", 10);
+    if (isNaN(lat) || isNaN(lon)) return;
+    try {
+      var map = L.map(el, {
+        center: [lat, lon], zoom: z,
+        dragging: false, scrollWheelZoom: false, doubleClickZoom: false,
+        boxZoom: false, keyboard: false, touchZoom: false,
+        zoomControl: false, attributionControl: true
+      });
+      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19, attribution: "© OpenStreetMap"
+      }).addTo(map);
+      L.circleMarker([lat, lon], {
+        radius: 10, color: "#5e1a25", weight: 3,
+        fillColor: "#c96a2a", fillOpacity: 0.95
+      }).addTo(map);
+      // osveži velikost, ko je kontejner dokončno postavljen
+      setTimeout(function () { map.invalidateSize(); }, 200);
+    } catch (e) { /* brez interneta zemljevid pač ostane prazen */ }
+  });
+});
+
 /* Offline podpora (PWA): stran si telefon zapomni,
    da osnovne informacije delujejo tudi brez interneta. */
 if ("serviceWorker" in navigator) {

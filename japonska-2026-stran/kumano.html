@@ -7,6 +7,8 @@
   <meta name="description" content="Kumano Kodo: znamenitosti, hrana in nasveti — vodnik Japonska 2026.">
   <meta name="theme-color" content="#7b2230">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
@@ -120,7 +122,7 @@
 </section>
 <section class="card-section map-section" aria-labelledby="zemljevid">
   <h2 id="zemljevid">🗺️ Zemljevid kraja</h2>
-  <iframe class="area-map" src="https://www.openstreetmap.org/export/embed.html?bbox=135.8136,33.6130,135.9664,33.7230&amp;layer=mapnik&amp;marker=33.6680,135.8900" loading="lazy" title="Zemljevid — Kumano Nachi Taisha, Wakayama"></iframe>
+  <div class="area-map" data-lat="33.668" data-lon="135.89" data-zoom="12" role="img" aria-label="Zemljevid — Kumano Nachi Taisha, Wakayama"></div>
   <a class="pin-btn map-open" href="https://www.google.com/maps/search/?api=1&query=Kumano%20Nachi%20Taisha%2C%20Wakayama" target="_blank" rel="noopener">📍 Odpri na Google Zemljevidu</a>
 </section>
 <section class="card-section" aria-labelledby="dan">

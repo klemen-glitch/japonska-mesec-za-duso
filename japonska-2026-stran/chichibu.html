@@ -7,6 +7,8 @@
   <meta name="description" content="Chichibu: znamenitosti, hrana in nasveti — vodnik Japonska 2026.">
   <meta name="theme-color" content="#7b2230">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
@@ -120,7 +122,7 @@
 </section>
 <section class="card-section map-section" aria-labelledby="zemljevid">
   <h2 id="zemljevid">🗺️ Zemljevid kraja</h2>
-  <iframe class="area-map" src="https://www.openstreetmap.org/export/embed.html?bbox=139.0225,35.9450,139.1475,36.0350&amp;layer=mapnik&amp;marker=35.9900,139.0850" loading="lazy" title="Zemljevid — Chichibu, Saitama"></iframe>
+  <div class="area-map" data-lat="35.991" data-lon="139.085" data-zoom="13" role="img" aria-label="Zemljevid — Chichibu, Saitama"></div>
   <a class="pin-btn map-open" href="https://www.google.com/maps/search/?api=1&query=Chichibu%2C%20Saitama" target="_blank" rel="noopener">📍 Odpri na Google Zemljevidu</a>
 </section>
 <section class="card-section" aria-labelledby="dan">

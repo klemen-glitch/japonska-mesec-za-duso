@@ -829,7 +829,11 @@ main {
   border-radius: 12px;
   display: block;
   margin: 0 0 0.7rem;
-  background: var(--paper);
+  background: #dfeae0;
+  z-index: 0;
+}
+.map-section .area-map .leaflet-control-attribution {
+  font-size: 0.7rem;
 }
 .map-open { display: inline-block; }
 

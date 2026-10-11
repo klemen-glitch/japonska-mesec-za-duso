@@ -7,6 +7,8 @@
   <meta name="description" content="Hiroshima: znamenitosti, hrana in nasveti — vodnik Japonska 2026.">
   <meta name="theme-color" content="#7b2230">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
@@ -102,7 +104,7 @@
 </section>
 <section class="card-section map-section" aria-labelledby="zemljevid">
   <h2 id="zemljevid">🗺️ Zemljevid kraja</h2>
-  <iframe class="area-map" src="https://www.openstreetmap.org/export/embed.html?bbox=132.3786,34.3400,132.5314,34.4500&amp;layer=mapnik&amp;marker=34.3950,132.4550" loading="lazy" title="Zemljevid — Hiroshima Peace Memorial Park"></iframe>
+  <div class="area-map" data-lat="34.393" data-lon="132.459" data-zoom="12" role="img" aria-label="Zemljevid — Hiroshima Peace Memorial Park"></div>
   <a class="pin-btn map-open" href="https://www.google.com/maps/search/?api=1&query=Hiroshima%20Peace%20Memorial%20Park" target="_blank" rel="noopener">📍 Odpri na Google Zemljevidu</a>
 </section>
 <section class="card-section" aria-labelledby="dan">

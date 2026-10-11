@@ -330,21 +330,22 @@ DOZIVETJA = _load_json("dozivetja.json", {})
 # Dodatki po lokacijah (extras.json = {key: {prespati, dez}})
 EXTRAS = _load_json("extras.json", {})
 
-# Zemljevidi: središče (lat, lon), polovica razpona v stopinjah, in iskalni niz za Google Maps.
+# Zemljevidi: središče (lat, lon), stopnja povečave (zoom) in iskalni niz za Google Maps.
+# Zoom: ~11–12 = regija/večje mesto, 13 = mesto/kraj, 14 = ožji kraj/vas.
 MAPS = {
-    "tokio":       (35.715, 139.775, 0.030, "Ueno, Taito, Tokyo"),
-    "chichibu":    (35.990, 139.085, 0.045, "Chichibu, Saitama"),
-    "kawaguchiko": (35.517, 138.764, 0.045, "Lake Kawaguchi, Fujikawaguchiko"),
-    "minobusan":   (35.404, 138.437, 0.022, "Kuonji Temple, Minobu, Yamanashi"),
-    "izu":         (34.973, 138.925, 0.035, "Shuzenji, Izu, Shizuoka"),
-    "kumano":      (33.668, 135.890, 0.055, "Kumano Nachi Taisha, Wakayama"),
-    "koyasan":     (34.213, 135.584, 0.022, "Koyasan, Koya, Wakayama"),
-    "iya":         (33.900, 133.840, 0.065, "Iya Valley, Miyoshi, Tokushima"),
-    "ine":         (35.682, 135.287, 0.022, "Ine no Funaya, Kyoto"),
-    "nara":        (34.685, 135.843, 0.025, "Nara Park, Nara"),
-    "kyoto":       (35.005, 135.770, 0.055, "Kyoto, Japan"),
-    "osaka":       (34.669, 135.501, 0.028, "Dotonbori, Osaka"),
-    "hiroshima":   (34.395, 132.455, 0.055, "Hiroshima Peace Memorial Park"),
+    "tokio":       (35.712, 139.775, 12, "Ueno, Taito, Tokyo"),
+    "chichibu":    (35.991, 139.085, 13, "Chichibu, Saitama"),
+    "kawaguchiko": (35.517, 138.764, 13, "Lake Kawaguchi, Fujikawaguchiko"),
+    "minobusan":   (35.404, 138.437, 14, "Kuonji Temple, Minobu, Yamanashi"),
+    "izu":         (34.973, 138.925, 13, "Shuzenji, Izu, Shizuoka"),
+    "kumano":      (33.668, 135.890, 12, "Kumano Nachi Taisha, Wakayama"),
+    "koyasan":     (34.213, 135.584, 14, "Koyasan, Koya, Wakayama"),
+    "iya":         (33.900, 133.840, 12, "Iya Valley, Miyoshi, Tokushima"),
+    "ine":         (35.682, 135.287, 14, "Ine no Funaya, Kyoto"),
+    "nara":        (34.685, 135.843, 14, "Nara Park, Nara"),
+    "kyoto":       (35.011, 135.768, 12, "Kyoto, Japan"),
+    "osaka":       (34.669, 135.501, 13, "Dotonbori, Osaka"),
+    "hiroshima":   (34.393, 132.459, 12, "Hiroshima Peace Memorial Park"),
 }
 
 # Fotografije (neobvezno): če obstaja japonska-2026-stran/images/<key>.(jpg|jpeg|png|webp),
@@ -377,7 +378,13 @@ def esc(s):
     return html.escape(str(s), quote=True)
 
 
-def head(title, desc):
+def head(title, desc, with_map=False):
+    leaflet = ""
+    if with_map:
+        leaflet = (
+            '  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">\n'
+            '  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>\n'
+        )
     return f"""<!DOCTYPE html>
 <html lang="sl">
 <head>
@@ -387,7 +394,7 @@ def head(title, desc):
   <meta name="description" content="{esc(desc)}">
   <meta name="theme-color" content="#7b2230">
   <link rel="stylesheet" href="style.css">
-  <link rel="manifest" href="manifest.json">
+{leaflet}  <link rel="manifest" href="manifest.json">
   <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 </head>
@@ -568,15 +575,11 @@ def map_section(key):
     m = MAPS.get(key)
     if not m:
         return ""
-    lat, lon, span, q = m
-    spanx = span / 0.72  # rahlo širši razpon zaradi geografske širine
-    bbox = f"{lon - spanx:.4f},{lat - span:.4f},{lon + spanx:.4f},{lat + span:.4f}"
-    osm = (f"https://www.openstreetmap.org/export/embed.html?bbox={bbox}"
-           f"&layer=mapnik&marker={lat:.4f},{lon:.4f}")
+    lat, lon, zoom, q = m
     return (f'<section class="card-section map-section" aria-labelledby="zemljevid">\n'
             f'  <h2 id="zemljevid">🗺️ Zemljevid kraja</h2>\n'
-            f'  <iframe class="area-map" src="{esc(osm)}" loading="lazy" '
-            f'title="Zemljevid — {esc(q)}"></iframe>\n'
+            f'  <div class="area-map" data-lat="{lat}" data-lon="{lon}" data-zoom="{zoom}" '
+            f'role="img" aria-label="Zemljevid — {esc(q)}"></div>\n'
             f'  <a class="pin-btn map-open" href="{maps_url(q)}" target="_blank" rel="noopener">'
             f'📍 Odpri na Google Zemljevidu</a>\n</section>\n')
 
@@ -668,7 +671,9 @@ def location_page(i, loc):
     if lbl:
         kicker += f" · {lbl}"
 
-    out = head(f"{loc['name']} · Japonska 2026", f"{loc['name']}: znamenitosti, hrana in nasveti — vodnik Japonska 2026.")
+    out = head(f"{loc['name']} · Japonska 2026",
+               f"{loc['name']}: znamenitosti, hrana in nasveti — vodnik Japonska 2026.",
+               with_map=True)
     out += nav(loc["key"])
     out += "<main>\n"
 
