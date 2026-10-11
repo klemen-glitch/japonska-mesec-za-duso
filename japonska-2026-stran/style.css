@@ -288,13 +288,18 @@ main {
 .scene-banner {
   margin: 0.2rem 0 1rem;
 }
-.scene-banner svg {
+.scene-banner svg,
+.scene-banner img.photo-banner {
   display: block;
   width: 100%;
   height: auto;
   border-radius: 16px;
   border: 3px solid var(--gold);
   box-shadow: var(--shadow);
+}
+.scene-banner img.photo-banner {
+  max-height: 380px;
+  object-fit: cover;
 }
 .home-banner { max-width: 46rem; margin: 0.2rem auto 1.2rem; }
 

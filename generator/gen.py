@@ -347,6 +347,28 @@ MAPS = {
     "hiroshima":   (34.395, 132.455, 0.055, "Hiroshima Peace Memorial Park"),
 }
 
+# Fotografije (neobvezno): če obstaja japonska-2026-stran/images/<key>.(jpg|jpeg|png|webp),
+# se uporabi kot naslovna slika; sicer ostane risana SVG ilustracija.
+_PHOTO_EXTS = ("jpg", "jpeg", "png", "webp")
+
+
+def photo_for(key):
+    for ext in _PHOTO_EXTS:
+        rel = f"images/{key}.{ext}"
+        if os.path.exists(os.path.join(OUT, rel)):
+            return rel
+    return None
+
+
+def banner_html(key, svg, alt, extra_cls=""):
+    """Naslovni pas: fotografija, če obstaja, sicer risana ilustracija."""
+    cls = "scene-banner" + (f" {extra_cls}" if extra_cls else "")
+    photo = photo_for(key)
+    if photo:
+        return (f'<div class="{cls}"><img class="photo-banner" src="{esc(photo)}" '
+                f'alt="{esc(alt)}" loading="eager"></div>')
+    return f'<div class="{cls}">{svg}</div>'
+
 # ----------------------------------------------------------------------------
 # PREDLOGE
 # ----------------------------------------------------------------------------
@@ -651,7 +673,7 @@ def location_page(i, loc):
     out += "<main>\n"
 
     out += f"""<section class="loc-hero">
-  <div class="scene-banner">{art.location_scene(loc['key'])}</div>
+  {banner_html(loc['key'], art.location_scene(loc['key']), loc['name'])}
   <p class="kicker">{loc['emoji']} {kicker}</p>
   <h1>{esc(loc['name'])}</h1>
   <p class="loc-sub">{esc(loc['sub'])}</p>
@@ -778,9 +800,12 @@ def nasveti_page():
     return out
 
 
-def _page_hero(emoji, kicker, title, subtitle):
+def _page_hero(emoji, kicker, title, subtitle, photo_key=None):
+    banner = ""
+    if photo_key and photo_for(photo_key):
+        banner = "  " + banner_html(photo_key, "", title) + "\n"
     return f"""<section class="loc-hero">
-  <div class="loc-emoji" aria-hidden="true">{emoji}</div>
+{banner}  <div class="loc-emoji" aria-hidden="true">{emoji}</div>
   <p class="kicker">{esc(kicker)}</p>
   <h1>{esc(title)}</h1>
   <p class="loc-sub">{esc(subtitle)}</p>
@@ -811,7 +836,7 @@ def nacrt_page():
     out += nav("nacrt")
     out += "<main>\n"
     out += _page_hero("🗺️", "Hrbtenica potovanja", "Načrt poti — 30 dni",
-                      "Dan za dnem, od Tokia do Osake")
+                      "Dan za dnem, od Tokia do Osake", "nacrt")
     if it.get("intro"):
         out += f'<p class="intro-note">{esc(it["intro"])}</p>\n'
 
@@ -922,7 +947,7 @@ def priprave_page():
     out += nav("priprave")
     out += "<main>\n"
     out += _page_hero("🎒", "Da bo vse gladko", "Priprave",
-                      "Pred odhodom · denar · vlaki · stroški · seznam")
+                      "Pred odhodom · denar · vlaki · stroški · seznam", "priprave")
     # hitri skok
     order = ["pred-odhodom", "denar", "prevoz", "stroski"]
     out += '<nav class="chip-row" aria-label="Vsebina">\n'
@@ -952,7 +977,7 @@ def dozivetja_page():
     out += nav("dozivetja")
     out += "<main>\n"
     out += _page_hero("🎨", "Za dušo in roke", "Doživetja za dušo",
-                      "Kuhanje · čaj · zen vrtovi · ustvarjanje")
+                      "Kuhanje · čaj · zen vrtovi · ustvarjanje", "dozivetja")
     if dz.get("intro"):
         out += f'<p class="intro-note">{esc(dz["intro"])}</p>\n'
     for c in dz.get("categories", []):
@@ -985,7 +1010,7 @@ def index_page():
     out += nav("index")
     out += "<main>\n"
     out += f"""<section class="hero">
-  <div class="scene-banner home-banner">{art.home_scene()}</div>
+  {banner_html("hero", art.home_scene(), "Japonska — Mesec za dušo", "home-banner")}
   <p class="leaves" aria-hidden="true">🍁 🍂 🍁</p>
   <h1>Japonska<br><span class="h1-sub">Mesec za dušo</span></h1>
   <p class="dates">3. november – 2. december 2026 · Tokio → Osaka</p>
