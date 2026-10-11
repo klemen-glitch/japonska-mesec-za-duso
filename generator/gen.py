@@ -367,8 +367,17 @@ def banner_html(key, svg, alt, extra_cls=""):
     photo = photo_for(key)
     if photo:
         return (f'<div class="{cls}"><img class="photo-banner" src="{esc(photo)}" '
-                f'alt="{esc(alt)}" loading="eager"></div>')
+                f'alt="{esc(alt)}" loading="eager" decoding="async"></div>')
     return f'<div class="{cls}">{svg}</div>'
+
+
+def card_media(key, svg):
+    """Sličica na kartici: optimizirana foto sličica, če obstaja, sicer SVG."""
+    thumb = os.path.join(OUT, "images", "thumbs", f"{key}.jpg")
+    if os.path.exists(thumb):
+        return (f'<img class="card-photo" src="images/thumbs/{key}.jpg" '
+                f'alt="" loading="lazy" decoding="async">')
+    return svg
 
 # ----------------------------------------------------------------------------
 # PREDLOGE
@@ -1051,7 +1060,7 @@ def index_page():
             stop += f" · {lbl}"
         out += f"""  <li>
     <a href="{loc['key']}.html">
-      <span class="card-scene">{art.location_scene(loc['key'])}</span>
+      <span class="card-scene">{card_media(loc['key'], art.location_scene(loc['key']))}</span>
       <span class="card-body">
         <span class="stop-num">{stop}</span>
         <span class="card-title">{loc['emoji']} {esc(loc['name'])}</span>
