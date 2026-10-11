@@ -1,0 +1,54 @@
+{
+ "tokio": {
+  "prespati": "V Tokiu je pomembnejša dobra prometna povezava kot razkošje. Za bližino Yanake, tržnice in ladjice je prijetno okoli postaje Ueno ali Asakusa; za povezave in nakup pa Shinjuku ali Tokio. Za pet oseb pogosto pride prav apartma ali dve sosednji sobi.",
+  "dez": "Ob dežju: pokrite nakupovalne arkade, muzeji in galerije, podzemne trgovske ulice ter čajnica Nakajima pod streho. Meiji Jingu je pod dežnikom celo lepši — gozd zadiši, ljudi je manj."
+ },
+ "chichibu": {
+  "prespati": "Prenočišče v mestu Chichibu ali blizu postaje Seibu-Chichibu; nekaj hiš ima tudi onsen. V času jesenskih barv in nočnega festivala (začetek decembra) rezervirajte zgodaj.",
+  "dez": "Ob dežju: muzej Gyokudo ob soteski, topli onsen Matsuri no Yu ob postaji in pokrite trgovinice. Svetišče Chichibu je lepo tudi v dežju."
+ },
+ "izu": {
+  "prespati": "Vrhunec Izuja je nočitev v onsen ryokanu z zasebno kopeljo in razgledom na morje (Shuzenji ali obala Izukogen). To ni le prenočišče, ampak doživetje — ob rezervaciji izberite večerjo kaiseki.",
+  "dez": "Ob dežju je onsen najlepši prav takrat; dodajte čajnice v Shuzenjiju in kakšen muzej. Deževen dan v Izuju je kot naročen za počasen kopalni dan."
+ },
+ "kumano": {
+  "prespati": "Prespite v onsen kraju ob poti — Yunomine ali Kawayu z rečnimi kopelmi, ali Katsuura ob morju. Tradicionalni minshuku in ryokani so preprosti, a topli; mnogi pripravijo bento za na pot.",
+  "dez": "Ob dežju je gozd Kumano skrivnosten in lep pod dežnikom, zlasti kamnita pot Daimonzaka med cedrami. Za pogrevanje sta tu rečni kopeli Kawayu in Yunomine."
+ },
+ "koyasan": {
+  "prespati": "Nočitev pri menihih (šukubo) je žal zasedena — prespimo v preprostem gostišču ali hotelu na gori (ob glavni ulici). Dovolj je ena noč; zjutraj se splača zgodaj v Okunoin.",
+  "dez": "Ob dežju je Okunoin med cedrami še bolj mističen. Pod streho sta muzej Reihokan in prepisovanje suter v Daishi Kyokai."
+ },
+ "iya": {
+  "prespati": "Ponudba je majhna, a posebna: hotel Iya Onsen z rečno kopeljo ali tradicionalna slamnata hiša (kominka) v gorah. Rezervirajte zgodaj; za premike računajte na avto ali redke lokalne avtobuse.",
+  "dez": "Ob dežju megla naredi dolino čarobno. Pod streho so kopel hotela Iya Onsen, hišica yokaijev Lapis Oboke in topla kopel za noge."
+ },
+ "ine": {
+  "prespati": "Nepozabno je prespati kar v funayi — nekaj hiš nad vodo oddaja sobe in zjutraj se zbudite nad zalivom. Ponudba je majhna, zato rezervirajte čim prej.",
+  "dez": "Ob dežju je zaliv tih in meglen, a lep. Pod streho delujejo INE CAFE, pivovarna sakeja Mukai Shuzo in pokrita ladjica po zalivu."
+ },
+ "kyoto": {
+  "prespati": "Za pravo vzdušje razmislite o tradicionalni mestni hiši (machiya) ali ryokanu; sicer hotel blizu postaje Kyoto ali ob Kawaramachiju za dobre povezave. November je najbolj obiskan mesec — rezervirajte zelo zgodaj.",
+  "dez": "Ob dežju: templji z lesenimi verandami, muzeji, pokrita tržnica Nishiki in čajnice. Moker mah in javorji so čudovito fotogenični — dež je v Kjotu skoraj dar."
+ },
+ "osaka": {
+  "prespati": "Osaka je odlična baza z dobrimi povezavami — okoli postaj Namba ali Umeda za hrano, nakup in bližino letališča Kansai. Za skupino petih pride prav prostoren apartma.",
+  "dez": "Ob dežju: pokrite nakupovalne ulice (Shinsaibashi), tržnica Kuromon, akvarij Kaiyukan in muzej bivanja. Dotonbori živi tudi v dežju — luči se še lepše zrcalijo v mokrem."
+ },
+ "kawaguchiko": {
+  "prespati": "Prespimo ob jezeru Kawaguchi — ryokan ali hotel z razgledom na Fuji in onsenom. Za jutranji pogled izberite sobo, obrnjeno proti gori, in rezervirajte zgodaj.",
+  "dez": "Ob oblakih ali dežju je Fuji skrit — izberite muzej Itchiku Kubota, onsen z razgledom ali kavarno ob jezeru. Gora se pogosto pokaže naslednje jutro."
+ },
+ "minobusan": {
+  "prespati": "Prespimo pri menihih v šukuboju Kakurinbo (že rezervirano) — tatami sobe, vegetarijanska večerja in jutranja molitev. Umirjeno in pristno.",
+  "dez": "Ob dežju je gora skrivnostna in tiha; ostanite v miru tempeljskih dvoran (vzpenjača takrat odpade)."
+ },
+ "nara": {
+  "prespati": "Nara je enodnevni izlet — prespimo v Kjotu ali Osaki. Kdor želi več miru (jutranji park brez gneče), lahko doda eno noč blizu parka.",
+  "dez": "Ob dežju so Todai-ji, Kofuku-ji in muzeji pod streho; jeleni so zunaj v vsakem vremenu."
+ },
+ "hiroshima": {
+  "prespati": "Hiroshima je enodnevni izlet z bazo v Osaki. Kdor želi več Miyajime in mirnejši večer, lahko prespi kar na otoku.",
+  "dez": "Muzej miru je pod streho; na Miyajimi so svetišče in pokrite arkade zavetje pred dežjem."
+ }
+}

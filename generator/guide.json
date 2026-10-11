@@ -1,0 +1,2349 @@
+[
+ {
+  "key": "tokio",
+  "sights": [
+   {
+    "name": "Vrt Rikugien",
+    "desc": "Eden najlepših japonskih sprehajalnih vrtov v Tokiu, urejen okoli leta 1700 za šoguna. Okoli osrednjega ribnika vodijo ravne, lepo vzdrževane poti, vmes pa čajna hišica, kjer si privoščite matcho s sladico. Novembra se javorji obarvajo v škrlatno rdeče — to je eden najboljših jesenskih vrtov v mestu in razlog, da ste izbrale ta letni čas.",
+    "tip": "Konec novembra (tradicionalno pribl. 22. 11.–začetek decembra) je vrt zvečer posebej odprt za jesensko osvetlitev — vstopnico okoli 1.000 jenov kupite vnaprej prek spleta; za dnevni obisk računajte 1,5–2 uri.",
+    "maps": "Rikugien Garden, Bunkyo, Tokyo",
+    "yt": "Rikugien Garden autumn illumination Tokyo"
+   },
+   {
+    "name": "Svetišče Meiji Jingu",
+    "desc": "Najpomembnejše šintoistično svetišče Tokia stoji sredi gozda s 100.000 drevesi, ki so jih pred sto leti podarili ljudje z vse Japonske. Široka gramozna pot vas skozi ogromne lesene torije pripelje do svetišča — mesto izgine, ostane le šumenje dreves. Ob koncih tedna boste morda videle tudi tradicionalno poroko.",
+    "tip": "Pridite dopoldne, ko je najmirneje; vstop je brezplačen, svetišče pa se zapre ob sončnem zahodu (novembra okoli 16.00–16.30), zato ga ne puščajte za konec dneva.",
+    "maps": "Meiji Jingu, Shibuya, Tokyo",
+    "yt": "Meiji Jingu Shrine Tokyo walking tour"
+   },
+   {
+    "name": "Stara četrt Yanaka in ulica Yanaka Ginza",
+    "desc": "Yanaka je preživela potrese in vojno, zato je tu Tokio še tak, kot je bil pred desetletji: nizke lesene hiše, majhni templji, mačke na soncu. Nakupovalna ulica Yanaka Ginza ima okoli 60 družinskih trgovinic — sladki krompir iz peči, riževi piškoti, ročne izdelke. Vse je ravno, počasno in prijazno do kolen.",
+    "tip": "Najlepše je popoldne med tednom; s stopnic Yuyake Dandan na vrhu ulice se ob sončnem zahodu odpre najbolj znan pogled na četrt.",
+    "maps": "Yanaka Ginza Shopping Street, Taito, Tokyo",
+    "yt": "Yanaka Ginza Tokyo old town walk"
+   },
+   {
+    "name": "Zunanja tržnica Tsukiji",
+    "desc": "Nekdanja slavna ribja tržnica je svoje dražbe sicer preselila, a zunanji del z več kot 400 stojnicami živi naprej. Tu boste poskusile najboljši tamagoyaki (sladko omleto), sveže suši zajtrke, morske jajčke na žaru in zeleni čaj pri trgovcih, ki so tu že generacije. Hodi se malo, poskusi pa veliko.",
+    "tip": "Pridite med 9. in 11. uro dopoldne; ob nedeljah in sredah je večina stojnic zaprtih, ob sobotah pa so vrste najdaljše.",
+    "maps": "Tsukiji Outer Market, Chuo, Tokyo",
+    "yt": "Tsukiji Outer Market food tour"
+   },
+   {
+    "name": "Ladjica po reki Sumidi",
+    "desc": "Vodni avtobus Tokyo Cruise pelje med Asakuso in vrtom Hamarikyu — 35 do 40 minut udobne vožnje pod trinajstimi mostovi, vsak drugačne barve in oblike. Sedite, pijete kavo in gledate, kako mimo polzi mesto s stolpom Skytree v ozadju. Najlepši način, da vidite Tokio brez enega samega koraka.",
+    "tip": "Ladjice vozijo približno vsake pol ure; karto (okoli 1.000–1.200 jenov) lahko kupite vnaprej prek spleta, pristanišče v Asakusi je minuto od postaje ob mostu Azumabashi.",
+    "maps": "TOKYO CRUISE Asakusa Pier, Taito, Tokyo",
+    "yt": "Sumida River cruise Asakusa Hamarikyu Tokyo"
+   },
+   {
+    "name": "Vrt Hamarikyu in čajnica Nakajima",
+    "desc": "Nekdanji šogunov vrt ob Tokijskem zalivu z ribnikom, ki ga polni morska voda. Sredi ribnika, do katere vodijo leseni mostički, stoji čajnica Nakajima-no-ochaya — sezujete se, sedete na tatami in ob sveže stepeni matchi s sladico gledate vodo. Konec novembra se javorji in ginki v vrtu lepo obarvajo.",
+    "tip": "Vstopnina je le 300 jenov, pristanišče ladjice je kar v samem vrtu — obisk se naravno poveže z vožnjo po Sumidi; rezervirajte si vsaj uro in pol.",
+    "maps": "Hamarikyu Gardens, Chuo, Tokyo",
+    "yt": "Hamarikyu Gardens Nakajima teahouse matcha"
+   },
+   {
+    "name": "Drevored ginkov Meiji Jingu Gaien",
+    "desc": "Tristo metrov dolg drevored s 146 ginki, ki se novembra spremenijo v zlat predor — najbolj slavna jesenska slika Tokia. Ravna, široka avenija je kot ustvarjena za počasen sprehod, ob njej pa kavarne, kjer se pogrejete. Med festivalom stojnice ponujajo dobrote z vse Japonske.",
+    "tip": "Festival ginkov poteka tradicionalno od sredine novembra do začetka decembra (vrh barv okoli 25. 11.), zadnji teden so drevesa zvečer tudi osvetljena — pridite med tednom, ob koncih tedna je gneča.",
+    "maps": "Icho Namiki Avenue, Meiji Jingu Gaien, Minato, Tokyo",
+    "yt": "Jingu Gaien Ginkgo Avenue Festival Tokyo autumn"
+   },
+   {
+    "name": "Svetišče Nezu",
+    "desc": "Skriti biser tik ob Yanaki in eno najstarejših svetišč Tokia — sedanje stavbe stojijo od leta 1705 in so preživele vse, kar je mesto doletelo. Po pobočju se vije predor rdečih torijev v malem, kot v Kyotu, a skoraj brez ljudi. Miren postanek, ki ga večina turistov spregleda.",
+    "tip": "Vstop je brezplačen, obisk traja dobre pol ure in se lepo poveže s sprehodom po Yanaki; predor torijev ima nekaj nizkih prehodov, a pot je kratka in lahka.",
+    "maps": "Nezu Shrine, Bunkyo, Tokyo",
+    "yt": "Nezu Shrine Tokyo torii gates"
+   }
+  ],
+  "practical": [
+   "Že na letališču si omislite kartico Suica ali Pasmo (obstaja tudi v iPhonovi Denarnici) — z njo plačujete vlake, metro, avtobuse in celo v trgovinicah. Potujte med 9.30 in 16.00, ko so vlaki prazni in se udobno sedi.",
+   "Imejte vedno nekaj gotovine (jenov): male trgovine v Yanaki, stojnice na Tsukijiju in vstopnine v vrtove pogosto sprejemajo samo gotovino. Najzanesljiveje dvigujete na bankomatih v trgovinah 7-Eleven, ki sprejemajo tuje kartice.",
+   "Vnaprej rezervirajte: vstopnice za večerno osvetlitev Rikugiena (prek spleta, cenejše kot na blagajni), sedeže na ladjici Tokyo Cruise in mize v restavracijah — za skupino petih je rezervacija na Japonskem skoraj obvezna.",
+   "November v Tokiu je eden najlepših mesecev: večinoma suho in sončno, čez dan 12–17 °C, zjutraj in zvečer okoli 8–10 °C. Vzemite plasti in eno toplejšo jakno za večerne osvetlitve; sonce zaide že okoli 16.30, zato vrtove obiščite dopoldne, osvetlitve pa po temi.",
+   "Za pet oseb sta pogosto najudobnejši dve taksi vozili (japonski taksisti so izjemno zanesljivi, vrata se odpirajo sama) — za krajše razdalje se splača bolj, kot bi mislile. In držite se pravila počasnega tempa: ena glavna znamenitost dopoldne, ena popoldne, vmes kava ali čaj."
+  ],
+  "day_plan": [
+   {
+    "time": "Zjutraj",
+    "what": "Okoli 9. ure zajtrk na tržnici Tsukiji: sveži suši, sladka omleta tamagoyaki in skodelica zelenega čaja. Počasi se sprehodite med stojnicami in kaj sladkega vzemite še za pot."
+   },
+   {
+    "time": "Dopoldne",
+    "what": "Deset minut peš do vrta Hamarikyu. Sprehod ob ribniku in postanek v čajnici Nakajima — matcha s sladico na tatamiju, z nogami v toplem in pogledom na vodo."
+   },
+   {
+    "time": "Popoldne",
+    "what": "Iz pristanišča kar v vrtu se vkrcate na ladjico po reki Sumidi do Asakuse. Tam kratek pogled na tempelj Senso-ji in počitek ob kavi v kateri od starih kavarn."
+   },
+   {
+    "time": "Zvečer",
+    "what": "Z metrojem do postaje Komagome in v Rikugien na večerno jesensko osvetlitev — javorji v soju luči nad ribnikom so vrhunec vašega novembra. Nato lahkotna večerja blizu hotela."
+   }
+  ],
+  "food_categories": [
+   {
+    "name": "Sushi in sveže ribe na Tsukijiju",
+    "emoji": "🍣",
+    "intro": "Tsukiji je še vedno kuhinja Tokia — pridite dopoldne, ko so stojnice sveže založene, in si privoščite najboljši ribji zajtrk v mestu.",
+    "places": [
+     {
+      "name": "Tsukiji Sushisay Honten",
+      "desc": "Družinska sušarna z letnico 1889, kjer trije mojstri za pultom pripravljajo odličen sushi po poštenih cenah. Naročite dopoldanski set nigirijev in ne boste stale v vrsti kot pri bolj oglaševanih sosedih; ob sredah je zaprto.",
+      "price": "€€",
+      "maps": "Tsukiji Sushisay Honten, Tsukiji, Tokyo"
+     },
+     {
+      "name": "Sushizanmai Honten",
+      "desc": "Velika, živahna hiša, znana po tuni — naročite krožnik maguro v treh rezih (akami, chutoro, otoro). Odprto je vse dni in ima dovolj miz za vas pet, tudi če pridete brez rezervacije.",
+      "price": "€€",
+      "maps": "Sushizanmai Honten, Tsukiji, Tokyo"
+     },
+     {
+      "name": "Tsukiji Yamacho",
+      "desc": "Stojnica s tamagoyakijem — toplo, puhasto omleto na palčki za približno 200 jenov, ki jo zvijajo pred vašimi očmi. Vrsta je videti dolga, a se premika hitro; plačilo v gotovini.",
+      "price": "€",
+      "maps": "Tsukiji Yamacho, Tsukiji Outer Market, Tokyo"
+     }
+    ]
+   },
+   {
+    "name": "Rezanci v starih hišah",
+    "emoji": "🍜",
+    "intro": "Soba in udon sta jedi počasnega Tokia — v teh dveh hišah ju boste jedle med stoletnimi zidovi, čisto blizu vaših sprehajalnih poti.",
+    "places": [
+     {
+      "name": "Nezu Kamachiku",
+      "desc": "Udon v sto let starem kamnitem skladišču z razgledom na japonski vrtiček, deset minut hoda od Yanake. Naročite kamaage udon (rezance iz vročega lonca) in kakšno malo prilogo; za mizo se splača rezervirati vnaprej prek spleta, ker je pogosto polno.",
+      "price": "€€",
+      "maps": "Nezu Kamachiku, Nezu, Tokyo"
+     },
+     {
+      "name": "Namiki Yabusoba",
+      "desc": "Legendarna soba hiša iz leta 1913 blizu vrat Kaminarimon, idealna po sprehodu ob reki Sumida. Privoščite si hladno zaru sobo z močno omako ali toplo tempura sobo; samo gotovina, ob četrtkih zaprto, po 14. uri ni gneče.",
+      "price": "€",
+      "maps": "Namiki Yabusoba, Asakusa, Tokyo"
+     }
+    ]
+   },
+   {
+    "name": "Večerja za vas pet",
+    "emoji": "🍢",
+    "intro": "Za skupne večerje izberite hiše z rezervacijo in udobnimi sedeži — tu so tri, kjer bo mizo za pet dam lepo pripraviti vnaprej.",
+    "places": [
+     {
+      "name": "Hantei Nezu Honten",
+      "desc": "Kushiage (ocvrti nabodalčki iz sezonskih sestavin) v čudoviti sto let stari leseni hiši, ki je zaščitena kot kulturni spomenik. Meni je en sam — nabodalčki prihajajo v krogih, dokler ne rečete dovolj; rezervirajte vnaprej, kosilo je občutno cenejše od večerje.",
+      "price": "€€€",
+      "maps": "Hantei Nezu Honten, Nezu, Tokyo"
+     },
+     {
+      "name": "Asakusa Imahan Kokusai Dori Honten",
+      "desc": "Sukiyaki in shabu-shabu iz vrhunske govedine wagyu, ki se pripravlja kar na vaši mizi — praznično in družabno, od leta 1895. Rezervacija je skoraj obvezna; če vam je večerja predraga, so opoldanski seti bistveno ugodnejši.",
+      "price": "€€€",
+      "maps": "Asakusa Imahan Kokusai Dori Honten, Asakusa, Tokyo"
+     },
+     {
+      "name": "Tonkatsu Maisen Aoyama Honten",
+      "desc": "Slavni tonkatsu (hrustljavo ocvrti svinjski kotlet) v nekdanjem javnem kopališču iz predvojnih časov, deset minut od Meiji Jinguja. Naročite kotlet iz svinjine kurobuta; hiša je velika, zato se vrsta hitro premika, del miz pa se da tudi rezervirati.",
+      "price": "€€",
+      "maps": "Tonkatsu Maisen Aoyama Honten, Omotesando, Tokyo"
+     }
+    ]
+   },
+   {
+    "name": "Sladice, čaj in kavarne",
+    "emoji": "🍵",
+    "intro": "November je čas momijija — matcha ob ribniku pod rdečimi javorji je doživetje, ki si ga boste zapomnile bolj kot marsikatero večerjo.",
+    "places": [
+     {
+      "name": "Rikugien Fukiage Chaya",
+      "desc": "Čajnica ob ribniku sredi vrta Rikugien, kjer k skodelici matche postrežejo wagashi sladico v obliki javorjevega lista. Konec novembra vrt zvečer posebej osvetlijo (jesenska iluminacija, običajno od ~22. novembra do začetka decembra) — vstopnice kupite vnaprej prek spleta, ker je večerni obisk omejen.",
+      "price": "€",
+      "maps": "Fukiage Chaya, Rikugien Gardens, Komagome, Tokyo"
+     },
+     {
+      "name": "Kayaba Coffee",
+      "desc": "Kavarna iz leta 1938 na robu Yanake, ki je ohranila ves stari čar. Privoščite si njihov mehki tamago sando (sendvič z omleto) in kavo — popoln počitek med sprehodom po četrti.",
+      "price": "€",
+      "maps": "Kayaba Coffee, Yanaka, Tokyo"
+     },
+     {
+      "name": "Dandelion Chocolate Factory & Cafe Kuramae",
+      "desc": "Čokoladnica v mirni obrtniški četrti Kuramae, korak od reke Sumida — čokolado delajo iz zrn kar v hiši. Naročite vročo čokolado z lokalnim pridihom hojicha čaja in kakšen brownie za deliti.",
+      "price": "€€",
+      "maps": "Dandelion Chocolate Factory & Cafe Kuramae, Tokyo"
+     },
+     {
+      "name": "CAFE Mori no Terrace",
+      "desc": "Svetla lesena kavarna tik ob vhodu v svetišče Meiji Jingu, z mizami iz padlih dreves svetiščnega gozda. Idealna za predah po sprehodu skozi park — dober matcha latte, sendviči in sladice po zmernih cenah.",
+      "price": "€",
+      "maps": "Cafe Mori no Terrace, Meiji Jingu, Tokyo"
+     }
+    ]
+   },
+   {
+    "name": "Male dobrote za med sprehodi",
+    "emoji": "🍙",
+    "intro": "Počasen Tokio se najlepše okuša kar med hojo — tu so tri postaje, kjer za drobiž dobite nekaj zares dobrega.",
+    "places": [
+     {
+      "name": "Niku no Suzuki",
+      "desc": "Institucija stare ulice Yanaka Ginza, že 80 let znana po menchi katsu — sočni ocvrti polpeti za dober evro, ki jih pojeste kar iz papirja. Vrsta je del doživetja in se hitro premika; samo gotovina.",
+      "price": "€",
+      "maps": "Niku no Suzuki, Yanaka Ginza, Tokyo"
+     },
+     {
+      "name": "Onigiri Asakusa Yadoroku",
+      "desc": "Najstarejša onigiri hiša v Tokiu (1954) z Michelinovim priznanjem Bib Gourmand — riževe kroglice oblikujejo sproti, nadevi so razstavljeni kot pri sušiju. Samo 16 sedežev, zato pridite dopoldne; odlično se poveže s sprehodom ob reki Sumida.",
+      "price": "€",
+      "maps": "Onigiri Asakusa Yadoroku, Asakusa, Tokyo"
+     },
+     {
+      "name": "Yanaka Shippoya",
+      "desc": "Drobna stojnica na začetku Yanaka Ginze s krofki v obliki mačjih repkov — poklon mačkam, ki so simbol te četrti. Za približno en evro izberite med kakšnimi desetimi okusi; simpatično sladko presenečenje za na pot.",
+      "price": "€",
+      "maps": "Yanaka Shippoya, Yanaka Ginza, Tokyo"
+     }
+    ]
+   }
+  ],
+  "extra_videos": [
+   {
+    "id": "mluUb-Y0U80",
+    "title": "Tokyo Autumn Illuminations | Rikugien Gardens | Japan 4K",
+    "channel": "urbanitAwalker",
+    "sight": "Vrt Rikugien — jesenska večerna osvetlitev"
+   },
+   {
+    "id": "9U7lkSrH0zM",
+    "title": "Yanaka Ginza Shopping Street Walking Tour - Tokyo Japan [4K/HDR/Binaural]",
+    "channel": "Video Street View Japan",
+    "sight": "Stara tržna ulica Yanaka Ginza"
+   },
+   {
+    "id": "k6qIJ6FeVjY",
+    "title": "[4K]Water Bus Tokyo river cruise -Tokyo",
+    "channel": "Tokyo Up & Down Walks",
+    "sight": "Vožnja z ladjico po reki Sumida"
+   }
+  ]
+ },
+ {
+  "key": "chichibu",
+  "sights": [
+   {
+    "name": "Gora Mitake in svetišče Musashi-Mitake",
+    "desc": "Sveta gora, na katero vas namesto naporne hoje odpelje najbolj strma gondolska vzpenjača v regiji Kanto — vožnja traja le šest minut. Na vrhu vas čaka več kot 2000 let staro svetišče Musashi-Mitake, majhna gorska vasica s prenočišči romarjev in razgledi čez gozdove narodnega parka. Novembra je gora odeta v rdeče in zlate barve, na poti od postaje do svetišča pa boste našle tudi prijetne čajnice.",
+    "tip": "Vsako jesen (do konca novembra) tu poteka festival Tenku Momiji Matsuri z večerno osvetlitvijo do 21h; do svetišča je od vzpenjače 20-30 minut počasne hoje, zadnji del po stopnicah — vzemite si čas.",
+    "maps": "Musashi Mitake Shrine, Ome, Tokyo",
+    "yt": "Mount Mitake Musashi Mitake Shrine autumn cable car"
+   },
+   {
+    "name": "Soteska Mitake z muzejem Gyokudo in vrtom pivovarne Sawanoi",
+    "desc": "Raven, lahek sprehod ob smaragdni reki Tama pod pisanim jesenskim gozdom — brez vzponov, s klopcami ob poti. Ob reki stoji muzej slikarja Gyokuda Kawaija z zen vrtom iz kamna in peska ter slavnim 30-metrskim ginkom, ki v novembru zažari rumeno. Slab kilometer naprej vas v vrtu sake pivovarne Sawanoi (Ozawa, stara več kot 300 let) čakajo degustacija, tofu restavracija in terasa nad reko.",
+    "tip": "Ginko pred muzejem je najlepši v prvi polovici novembra, jeseni je ob soteski tudi festival z večerno osvetlitvijo; za sprehod z vsemi postanki računajte pol dneva.",
+    "maps": "Gyokudo Art Museum, Mitake, Ome, Tokyo",
+    "yt": "Mitake gorge autumn foliage Sawanoi sake brewery Ome"
+   },
+   {
+    "name": "Vožnja s čolnom po reki v Nagatoru (Line Kudari)",
+    "desc": "Že več kot sto let čolnarji z dolgimi drogovi vozijo lesene čolne skozi sotesko Nagatoro, mimo znamenitih ploščatih skal Iwadatami. Večina vožnje je mirna, le tu in tam kakšen živahen brzici podoben odsek, da malo zaploskate. Novembra se skalnate stene soteske obarvajo v rdeče in oranžno — najlepši čas v letu za to vožnjo.",
+    "tip": "Vožnja traja okoli 20 minut na progo, karte kupite pri postaji Nagatoro; ob dežju ali visoki vodi čoln ne vozi, zato imejte rezervni načrt.",
+    "maps": "Nagatoro Line Kudari, Nagatoro, Saitama",
+    "yt": "Nagatoro line kudari river boat autumn"
+   },
+   {
+    "name": "Park Tsukinoishi Momiji z večerno osvetlitvijo",
+    "desc": "Majhen park javorjev ob reki v Nagatoru, ponos mesteca. Sredi novembra, ko so javorji najbolj rdeči, jih zvečer osvetlijo — drevesa se zrcalijo v temi kot v pravljici. To je osrednji dogodek festivala jesenskega listja v Nagatoru, ki traja ves november.",
+    "tip": "Osvetlitev poteka tradicionalno od okoli 8. do 24. novembra zvečer (vstopnina okoli 300 jenov); oblecite se toplo, večeri so mrzli.",
+    "maps": "Tsukinoishi Momiji Park, Nagatoro, Saitama",
+    "yt": "Tsukinoishi Momiji Park Nagatoro autumn illumination"
+   },
+   {
+    "name": "Svetišče Hodosan in gondola na goro Hodo",
+    "desc": "Eno najlepših svetišč v regiji: fasada je prekrita z živopisnimi rezbarijami zmajev in mitoloških živali, ki so jih ob obnovi vrnili v prvotne barve. Svetišče obdaja gozd, ki novembra žari v rdečih in zlatih odtenkih. Od tam vas stara nihalka v petih minutah dvigne skoraj na vrh gore Hodo, od koder se odpre razgled na dolino Nagatoro in gore Chichibu.",
+    "tip": "Svetišče je 15-20 minut zmerne hoje od postaje Nagatoro (ali kratka vožnja s taksijem); jeseni je okolica svetišča med najlepšimi momiji točkami v dolini.",
+    "maps": "Hodosan Shrine, Nagatoro, Saitama",
+    "yt": "Hodosan Shrine Nagatoro autumn ropeway"
+   },
+   {
+    "name": "Svetišče Chichibu in nočni festival Chichibu Yomatsuri",
+    "desc": "Glavno svetišče mesta Chichibu slovi po sijajnih lesenih rezbarijah — tigrica z mladiči in modra sova sta delo slavnega mojstra Hidarija Jingoroja. In zdaj glavna sreča vašega termina: 2. decembra, na vaš zadnji dan, se začne Chichibu Yomatsuri, eden treh največjih japonskih festivalov okrašenih vozov in Unescova nesnovna dediščina. Ogromni vozovi, osvetljeni s stotinami lampijonov, se peljejo skozi mesto, zvečer pa nebo razsvetli ognjemet.",
+    "tip": "2. 12. 2026 vozovi krožijo po mestu čez dan, ognjemet je od 19h do 20h — pridite popoldne, oblecite se zelo toplo in rezervirajte prenočišče več mesecev vnaprej.",
+    "maps": "Chichibu Shrine, Chichibu, Saitama",
+    "yt": "Chichibu Night Festival Yomatsuri floats fireworks"
+   },
+   {
+    "name": "Gozdna terapija shinrin-yoku v Okutami",
+    "desc": "Okutama je bila prva lokacija v Tokiu z uradno potrjenimi potmi za gozdno terapijo. Pot Toke Trail je dolga le 1,3 km, skoraj povsem ravna in posuta z mehkimi lesnimi sekanci, ob njej pa so klopi in počivališča. Certificiran vodnik vas nauči počasnega, zavestnega vpijanja gozda — dihanje, tišina, vonj cedre. Prav to, kar si pet prijateljic zasluži.",
+    "tip": "Voden obisk rezervirajte vnaprej (npr. prek Okutama Forest Therapy ali Rakuten Travel Experiences); računajte 2-3 ure v počasnem tempu, novembra so gozdovi še pisano obarvani.",
+    "maps": "Okutama Visitor Center, Okutama, Tokyo",
+    "yt": "Okutama forest therapy shinrin-yoku Tokyo"
+   },
+   {
+    "name": "Onsen Matsuri no Yu ob postaji Seibu-Chichibu",
+    "desc": "Termalni kompleks tik ob izstopu s postaje Seibu-Chichibu, urejen v duhu slavnih festivalov Chichibuja. Štiri zunanje kopeli z razgledom na gore, šest notranjih in gazirana kopel, ki poživi krvni obtok. Zraven sta tržnica z lokalnimi dobrotami in food court s specialitetami Chichibuja — popoln zaključek dneva, preden sedete na vlak.",
+    "tip": "Privoščite si ga pozno popoldne po ogledih; brisače si lahko izposodite na mestu, tetovaže v japonskih onsenih praviloma niso dovoljene.",
+    "maps": "Seibu Chichibu Ekimae Onsen Matsuri no Yu, Chichibu, Saitama",
+    "yt": "Matsuri no Yu Seibu Chichibu onsen"
+   }
+  ],
+  "practical": [
+   "Prevoz v Chichibu in Nagatoro: iz Tokia (postaja Ikebukuro) vozi udoben ekspresni vlak Laview družbe Seibu do postaje Seibu-Chichibu (okoli 80 minut). Sedeži so rezervirani — karte kupite vnaprej na postaji ali prek spleta. Do Nagatora naprej pelje lokalna železnica Chichibu Railway.",
+   "Prevoz na goro Mitake in v Okutamo: z JR linijo Chuo/Ome iz Shinjukuja do postaje Mitake (okoli 95 minut), nato avtobus do spodnje postaje vzpenjače. Kartici Suica ali Pasmo delujeta na vlakih in avtobusih, na vzpenjači karto kupite posebej.",
+   "Gotovina: v Nagatoru, na gori Mitake in na festivalskih stojnicah marsikje sprejemajo samo gotovino. Imejte vsaj 10.000-15.000 jenov na osebo v žepu; bankomati, ki sprejemajo tuje kartice, so v trgovinah 7-Eleven in na poštah.",
+   "Rezervacije: prenočišče za noč 1.-2. decembra (nočni festival Chichibu) rezervirajte takoj, ker je vse razprodano več mesecev prej. Vnaprej rezervirajte tudi vodeno gozdno terapijo v Okutami in po želji degustacijo v pivovarni Sawanoi.",
+   "Vreme in obleka: november je večinoma sončen in suh, a v gorah hladen — čez dan 8-15 °C, zvečer blizu ničle. Vzemite tople plasti, kapo in dobre nedrseče čevlje; večerne osvetlitve in ognjemet gledate na mrazu. Vožnja s čolnom v Nagatoru ob dežju odpade."
+  ],
+  "day_plan": [
+   {
+    "time": "Zjutraj",
+    "what": "Z vlakom Laview iz Ikebukura do Seibu-Chichibuja, nato z lokalnim vlakom do Nagatora. Ob prihodu kava in prvi pogled na skale Iwadatami ob reki."
+   },
+   {
+    "time": "Dopoldne",
+    "what": "Vožnja s čolnom Line Kudari skozi jesensko obarvano sotesko, nato počasen sprehod do svetišča Hodosan in ogled njegovih pisanih rezbarij. Po želji še vožnja z gondolo na goro Hodo po razgled."
+   },
+   {
+    "time": "Popoldne",
+    "what": "Kosilo v Nagatoru — privoščite si lokalno specialiteto, ledeno sladico kakigori ali soba rezance. Nato vlak do Chichibuja, ogled svetišča Chichibu in sproščanje v onsenu Matsuri no Yu ob postaji."
+   },
+   {
+    "time": "Zvečer",
+    "what": "Vrnitev v Nagatoro na večerno osvetlitev javorjev v parku Tsukinoishi Momiji — drevesa v žarečih barvah so čaroben zaključek dneva. Nato zadnji vlak nazaj v Tokio."
+   }
+  ],
+  "food_categories": [
+   {
+    "name": "Waraji katsu in svinjina v misu",
+    "emoji": "🍖",
+    "intro": "Chichibu je dežela svinjine — waraji katsudon, ogromen ploščat zrezek v sladkasti omaki, se je rodil prav tu in ga preprosto morate poskusiti.",
+    "places": [
+     {
+      "name": "Yasudaya (安田屋 日野田店)",
+      "desc": "Tu se je waraji katsudon rodil: hrustljav zrezek, pomočen v skrivnostno sladko-slano omako, ki visi čez rob sklede. Če niste zelo lačne, naročite različico z enim zrezkom; plačilo samo z gotovino, 10 minut hoje od postaje Chichibu.",
+      "price": "€",
+      "maps": "Yasudaya Hinoda Chichibu waraji katsudon"
+     },
+     {
+      "name": "Butamisodon Honpo Nosaka (野さか)",
+      "desc": "Najbolje ocenjena gostilna v mestu: buta miso don — svinjina, marinirana v misu in popečena na oglju, na vročem rižu. Odprto samo za kosilo in pogosto razprodano že zgodaj popoldne, zato pridite pred poldnevom; 3 minute od postaje Seibu-Chichibu.",
+      "price": "€",
+      "maps": "Butamisodon Nosaka Chichibu"
+     },
+     {
+      "name": "Kikuya Shokudo (喜久家食堂)",
+      "desc": "Družinska gostilna iz leta 1933 na glavni ulici proti skalam Iwadatami v Nagatoru. Waraji katsudon in miso katsudon sta izdatna, postrežba domača, za eno mizo pa je prostora dovolj tudi za vas pet.",
+      "price": "€",
+      "maps": "Kikuya Shokudo Nagatoro"
+     }
+    ]
+   },
+   {
+    "name": "Soba in udon z orehovo omako",
+    "emoji": "🍜",
+    "intro": "Posebnost te regije je kurumi soba — ajdovi rezanci, ki jih pomakate v kremasto, rahlo sladko orehovo omako.",
+    "places": [
+     {
+      "name": "Waheisoba (わへいそば)",
+      "desc": "Ročno delana soba in najbolj slavna orehova omaka v Chichibuju — gosta, dišeča, popolna za pomakanje. Domačini hitro napolnijo mize, zato pridite ob odprtju; 12 minut hoje od postaje Chichibu.",
+      "price": "€",
+      "maps": "Waheisoba Chichibu"
+     },
+     {
+      "name": "Momijiya (紅葉屋)",
+      "desc": "Od leta 1929 na romarski poti k svetišču Musashi-Mitake; naročite kurumi sobo ali udon in sedite k oknu z razgledom na dolino. Novembra boste videle okoliške javorje v polnem ognju — že ime lokala pomeni 'hiša jesenskega listja'.",
+      "price": "€",
+      "maps": "Momijiya Mitakesan Ome"
+     },
+     {
+      "name": "Wakamatsu (そば処 若松)",
+      "desc": "Tik ob postaji Nagatoro, s prisrčnim vzdušjem iz obdobja Showa. Set miso katsudon + mori soba pokrije obe lokalni specialiteti naenkrat — praktično, ko se vam po vožnji z vlakom ne da izbirati.",
+      "price": "€",
+      "maps": "Wakamatsu soba Nagatoro"
+     }
+    ]
+   },
+   {
+    "name": "Ob reki Tama: tofu, sake in razgledi",
+    "emoji": "🍶",
+    "intro": "Sprehod ob smaragdni reki v dolini Mitake je shinrin-yoku v najlepši obliki — in pripelje vas naravnost do 300 let stare sakarne Ozawa v vasici Sawai.",
+    "places": [
+     {
+      "name": "Mamagotoya (ままごと屋)",
+      "desc": "Elegantno večhodno kosilo iz tofuja in yube v skoraj sto let stari hiši tik nad reko, v lasti sakarne Ozawa. Rezervirajte vnaprej — za skupino petih je to najlepše in najmirnejše kosilo v vsej dolini.",
+      "price": "€€€",
+      "maps": "Mamagotoya tofu restaurant Sawai Ome"
+     },
+     {
+      "name": "Seiryu Garden Sawanoi-en",
+      "desc": "Vrtna terasa sakarne tik nad turkizno reko Tama: degustacijske skodelice sakeja Sawanoi, prigrizki in sladki riževi cmoki pod drevesi. Brez rezervacij, čisto sproščeno; ob ponedeljkih zaprto.",
+      "price": "€",
+      "maps": "Seiryu Garden Sawanoi-en Sawai Ome"
+     },
+     {
+      "name": "Komadori Baiten (駒鳥売店)",
+      "desc": "Preprosta koča s teraso visoko na Mitakeju, ob poti od žičnice do svetišča: kava, skuhana z gorsko izvirsko vodo, in presenetljivo dober katsudon, pod vami pa vsa dolina. Samo gotovina, odprto čez dan.",
+      "price": "€",
+      "maps": "Komadori Baiten Mitakesan Ome"
+     }
+    ]
+   },
+   {
+    "name": "Kavarne in sladice med jesenskimi barvami",
+    "emoji": "🍁",
+    "intro": "Sredi novembra v Nagatoru zvečer osvetlijo javorje v parku Tsukinoishi Momiji — sprehod med svetlečimi krošnjami si privoščite skupaj s postankom za sladico.",
+    "places": [
+     {
+      "name": "Asami Reizo Kanasaki Honten (阿左美冷蔵)",
+      "desc": "130 let stara hiša naravnega ledu; njihov kakigori je puhast kot svež sneg in z domačimi sirupi teknejo tudi v hladnem novembru, ob njem pa dobite topel čaj. Le nekaj korakov od osvetljenega parka Tsukinoishi Momiji; samo gotovina, ob koncih tedna računajte na vrsto.",
+      "price": "€€",
+      "maps": "Asami Reizo Kanasaki Honten Nagatoro"
+     },
+     {
+      "name": "MAPLE BASE",
+      "desc": "Prva japonska 'sugar house' v parku Chichibu Muse Park: palačinke z javorjevim sirupom iz chichibuških gozdov in celo sladoled z viskijem Ichiro's Malt. Jeseni je park okoli kavarne ena sama zlata aleja — kosilo in sprehod v enem.",
+      "price": "€",
+      "maps": "MAPLE BASE Chichibu Muse Park"
+     },
+     {
+      "name": "JURIN's GEO",
+      "desc": "Domača pražarna kave sredi gozda ob jami Hashidate, z oceno 4,5. Odlična ročno prelita kava, sloviti puding in sladoledni sendviči — miren postanek, kjer boste slišale samo reko in ptice.",
+      "price": "€",
+      "maps": "JURIN's GEO Chichibu"
+     }
+    ]
+   },
+   {
+    "name": "Večerja za skupino",
+    "emoji": "🍻",
+    "intro": "Zvečer se Chichibu prijetno umiri — rezervirajte mizo in nazdravite z lokalnim sakejem ali slavnim viskijem Ichiro's Malt, ki ga delajo prav tu.",
+    "places": [
+     {
+      "name": "Takasago Horumon (高砂ホルモン)",
+      "desc": "Chichibuška institucija: na mizi imate žar in same pečete koščke marinirane svinjine, zraven pa mrzlo pivo. Živahno, poceni in zelo lokalno — za pet oseb obvezno rezervirajte, ker se po 18. uri napolni.",
+      "price": "€€",
+      "maps": "Takasago Horumon Chichibu"
+     },
+     {
+      "name": "Garden House Yurin (有隣)",
+      "desc": "Prostorna hiša s tatami sobami in mizami blizu svetišča Hodosan v Nagatoru: seti z waraji katsujem, sobo in svinjino v misu ter lokalni sake. Sprejemajo skupine in rezervacije — idealna za skupno pojedino po večernem ogledu osvetljenih javorjev.",
+      "price": "€€",
+      "maps": "Garden House Yurin Nagatoro"
+     },
+     {
+      "name": "Chichibu Warajikatsutei (秩父わらじかつ亭)",
+      "desc": "Preprosta restavracija v kompleksu term Matsuri no Yu tik ob postaji Seibu-Chichibu: waraji katsudon, rezanci in Ichiro's Malt highball brez rezervacije in brez čakanja. Po večerji si lahko v onsenu odpočijete noge — popolen zaključek dneva.",
+      "price": "€",
+      "maps": "Chichibu Warajikatsutei Matsuri no Yu"
+     }
+    ]
+   }
+  ],
+  "extra_videos": [
+   {
+    "id": "WICOqjlY9Qc",
+    "title": "長瀞ラインくだり Japan Nagatoro River Boat Ride 4K",
+    "channel": "Aethersong",
+    "sight": "Vožnja s tradicionalnim čolnom po reki Arakawa v Nagatoru (Nagatoro Line Kudari)"
+   },
+   {
+    "id": "jcAje7sAZV4",
+    "title": "Walking around Mount Mitake in Tokyo | Japan Walk 4K",
+    "channel": "Tokyo Trip",
+    "sight": "Gora Mitake in svetišče Musashi-Mitake"
+   },
+   {
+    "id": "p-Qy4TNaknA",
+    "title": "🏯 Chichibu, Japan Walking Tour | Exploring Old Town Charms & Ancient Shrines [4K 60fps]",
+    "channel": "4K Walking Travel",
+    "sight": "Staro mestno jedro Chichibuja s svetišči"
+   }
+  ]
+ },
+ {
+  "key": "izu",
+  "sights": [
+   {
+    "name": "Onsen mestece Shuzenji",
+    "desc": "Najstarejše termalno mestece polotoka Izu, ki mu pravijo tudi mali Kyoto. Ob rečici Katsura si boste ogledale tempelj Shuzenji, rdeči most Katsura in kratko bambusovo pot Chikurin no Komichi s krožno klopjo, kjer se lepo posedi. Novembra se javorji ob reki obarvajo v rdeče in vse skupaj je kot slika.",
+    "tip": "Pridite dopoldne, ko je mirno; za sprehod z vmesnimi postanki računajte 2-3 ure, vstopa ni, bambusova pot je zvečer osvetljena.",
+    "maps": "Chikurin no Komichi, Shuzenji, Izu, Shizuoka",
+    "yt": "Shuzenji onsen town bamboo path autumn"
+   },
+   {
+    "name": "Niji no Sato — osvetlitev javorjev",
+    "desc": "Velik park tik ob Shuzenjiju s približno tisoč japonskimi javorji. Vsako jesen jih zvečer osvetlijo in gozd rdečih listov zažari kot v pravljici. To je glavni jesenski dogodek tega konca Izuja in ravno v času vašega potovanja.",
+    "tip": "Osvetlitev poteka tradicionalno od sredine novembra do sredine decembra od 17h do 21h (v sezoni 2025 od 15.11.), ob izbranih večerih je tudi ognjemet — preverite točne datume za 2026 in vzemite toplo jakno.",
+    "maps": "Shuzenji Niji no Sato, Izu, Shizuoka",
+    "yt": "Shuzenji Niji no Sato momiji light up"
+   },
+   {
+    "name": "Obala Jogasaki",
+    "desc": "Dramatična obala iz črne vulkanske skale južno od Ita. Čez morsko sotesko vodi 48 metrov visok viseči most Kadowaki, zraven pa stoji svetilnik z razgledno ploščadjo. Ob lepem vremenu boste videle vse do otoka Oshima.",
+    "tip": "Držite se kratke, lahke poti Picnical Course od parkirišča do mosta in svetilnika (30-60 minut z udobnimi čevlji), vstop je prost.",
+    "maps": "Kadowaki Suspension Bridge, Ito, Shizuoka",
+    "yt": "Jogasaki Coast Kadowaki suspension bridge Izu"
+   },
+   {
+    "name": "Sedem slapov Kawazu in wasabi kosilo",
+    "desc": "Ob rečici Kawazu se vrsti sedem slapov, povezanih z urejenimi lesenimi potmi. Ni treba prehoditi vsega — že spodnji del s slapom Shokei-daru in kipom plesalke je čudovit. Čisto blizu je stoletna wasabi kmetija Kadoya, kjer si boste same naribale svež wasabi na sloviti skledi riža wasabi-don.",
+    "tip": "Z avtobusom s postaje Kawazu se peljite do postajališča Mizutare in se sprehodite navzdol po dolini; pri Kadoyi pridite pred poldnevom, ker vrsta hitro zraste, plačilo v gotovini.",
+    "maps": "Kawazu Nanadaru Waterfalls, Kawazu, Shizuoka",
+    "yt": "Kawazu Seven Waterfalls wasabi don Kadoya"
+   },
+   {
+    "name": "Izu Panorama Park (terasa Ao)",
+    "desc": "Nihalka vas v sedmih minutah brez truda dvigne na goro Katsuragi. Na vrhu je elegantna terasa Ao z zofami, kavo in enim najlepših pogledov na goro Fuji nad zalivom Suruga. Tam je tudi brezplačna kopel za noge z razgledom — kot ustvarjeno za vas.",
+    "tip": "Pridite zjutraj, ko je Fuji najpogosteje viden in zrak novembra še posebej čist; na vrhu so poti položne, rezervacija ni potrebna.",
+    "maps": "Izu Panorama Park, Izunokuni, Shizuoka",
+    "yt": "Izu Panorama Park ropeway Mount Fuji view"
+   },
+   {
+    "name": "Gora Omuro",
+    "desc": "Nenavaden vulkanski stožec v obliki obrnjene sklede riža nad Izu Kogenom. Na vrh vas pripelje dvosedežnica, zgoraj pa vas čaka položna krožna pot po robu kraterja s 360-stopinjskim razgledom na morje, otoke in Fuji.",
+    "tip": "Krog po robu traja 20-30 minut po asfaltirani poti; izberite miren, jasen dan, ker ob močnem vetru sedežnica ne obratuje.",
+    "maps": "Mount Omuro, Ito, Shizuoka",
+    "yt": "Mount Omuro chairlift crater walk Izu"
+   },
+   {
+    "name": "Kapibare v onsenu — Izu Shaboten Zoo",
+    "desc": "V tem živalskem parku pri Itu so leta 1982 prvi na svetu kapibaram pripravili toplo kopel in prizor blaženih živali v topli vodi je danes zimska klasika. Park je položen, poln kaktusov in sproščenih živali — za popoldne čistega veselja.",
+    "tip": "Kopeli kapibar se začnejo konec novembra (v sezoni 2025 22.11.), zato obisk načrtujte v zadnjem tednu potovanja in preverite urnik kopanja na uradni strani.",
+    "maps": "Izu Shaboten Zoo, Ito, Shizuoka",
+    "yt": "Izu Shaboten Zoo capybara onsen bath"
+   },
+   {
+    "name": "Ladjica med jamami Dogashime",
+    "desc": "Manj znan biser na zahodni obali: 20-minutna vožnja z ladjico med belimi skalnimi otočki do morske jame Tensodo, kjer skozi okroglo odprtino v stropu pada snop svetlobe na smaragdno vodo. Brez hoje, samo sedite in gledate.",
+    "tip": "Ladjice vozijo vsakih 10-15 minut do 16.30 (odrasli okoli 1.300 jenov), ob razburkanem morju ne obratujejo — pokličite ali preverite zjutraj in združite z zahodno obalo ob sončnem zahodu.",
+    "maps": "Dogashima Cave Excursion Boat, Nishiizu, Shizuoka",
+    "yt": "Dogashima Tensodo cave boat cruise Izu"
+   }
+  ],
+  "practical": [
+   "Iz Tokia se do vzhodne obale (Ito, Kawazu) peljite z direktnim vlakom Odoriko ali razkošnim Saphir Odoriko s postaje Tokyo (100-160 minut) — sedeže rezervirajte vnaprej; za Shuzenji je najhitreje shinkansen do Mishime in nato lokalni vlak Izuhakone (okoli 30 minut).",
+   "Po polotoku vozijo avtobusi Tokai z železniških postaj in sprejemajo kartice Suica/Pasmo — naložite si jih dovolj; povezave čez polotok (vzhod-zahod) so redke, zato za izlet v Dogashimo raje vzemite taksi ali si za en dan omislite prevoz z voznikom.",
+   "Imejte vedno nekaj gotovine (jenov): manjše gostilne, wasabi kmetije, templji in podeželski avtobusi kartic pogosto ne sprejemajo; dvig je najlažji na bankomatih v trgovinah 7-Eleven.",
+   "Obmorske ryokane rezervirajte čim prej — november je vrh jesenske sezone; večerja kaiseki je običajno vključena v ceno, zato morebitne prehranske omejitve sporočite že ob rezervaciji.",
+   "November na Izuju je večinoma sončen in suh, čez dan prijetnih 15-17 stopinj, zvečer pa se ohladi — oblecite se v plasteh in za večerne osvetlitve vzemite toplo jakno; Fuji je najzanesljiveje viden zgodaj dopoldne."
+  ],
+  "day_plan": [
+   {
+    "time": "Zjutraj",
+    "what": "Počasen japonski zajtrk v ryokanu in jutranja kopel v onsenu, dokler je še mirno. Brez hitenja — dan se šele začenja."
+   },
+   {
+    "time": "Dopoldne",
+    "what": "Nihalka na Izu Panorama Park: kava na terasi Ao s pogledom na Fuji in brezplačna kopel za noge z razgledom."
+   },
+   {
+    "time": "Popoldne",
+    "what": "Sprehod po Shuzenjiju — bambusova pot, tempelj, rdeči most Katsura in postanek za čaj ter sladico iz sladkega fižola."
+   },
+   {
+    "time": "Zvečer",
+    "what": "Osvetljeni javorji v parku Niji no Sato, nato nazaj v ryokan na večerjo kaiseki in še eno kopel pred spanjem."
+   }
+  ],
+  "food_categories": [
+   {
+    "name": "Kinmedai in sveže ribe ob obali",
+    "emoji": "🐟",
+    "intro": "Pristanišče v Itu je znano po kinmedaiju (zlatooki ostriž), najbolj cenjeni ribi polotoka Izu — tu jo boste jedle sveže z ladje, po cenah, o katerih Tokio lahko samo sanja.",
+    "places": [
+     {
+      "name": "Fujiichi (ふじいち)",
+      "desc": "Ribarnica ob pristanišču v Itu, ki že 70 let v prvem nadstropju prodaja jutranji ulov, v drugem pa ga skuhajo za vas — s pogledom na pristanišče. Naročite kinmedai no nitsuke (ribo, počasi kuhano v sladki sojini omaki) ali si na mizici popecite sušene ribe. Odprto samo čez kosilo, do okoli 16h.",
+      "price": "€€",
+      "maps": "Fujiichi seafood restaurant Ito Shizuoka",
+      "sources": ""
+     },
+     {
+      "name": "Rakumiya Marugen (楽味家まるげん)",
+      "desc": "Prijetna gostilna blizu postaje Ito, ki jo vodijo posredniki z ribje tržnice — kinmedai tu pripravijo na vse načine: surovega, kuhanega, na žaru. Odprta je tudi zvečer in sprejema rezervacije, zato je odlična izbira za skupno večerjo vseh petih.",
+      "price": "€€",
+      "maps": "Rakumiya Marugen Ito"
+     },
+     {
+      "name": "Amimoto Ryori Tokuzomaru Honten (網元料理 徳造丸 本店)",
+      "desc": "Glavna restavracija stare ribiške hiše v Inatoriju, čisto blizu Kawazuja — njihov kuhan kinmedai v sladko-slani omaki je lokalna legenda. Prostorna je, sprejema rezervacije in ima pogled na morje, zato je kot nalašč za skupino.",
+      "price": "€€",
+      "maps": "Tokuzomaru Honten Izu Inatori"
+     }
+    ]
+   },
+   {
+    "name": "Soba in tofu v Shuzenju",
+    "emoji": "🍜",
+    "intro": "Shuzenji je novembra v vrhuncu jesenskih barv — po kosilu se počasi sprehodite skozi bambusov gaj, od sredine novembra do sredine decembra pa si v bližnjem parku Niji no Sato privoščite še večerno osvetlitev okoli tisoč javorjev (od 17. do 21. ure).",
+    "places": [
+     {
+      "name": "Zenpuutei Nana Ban (禅風亭なゝ番)",
+      "desc": "Domača gostilna ob templju Shuzenji, znana po zendera sobi — ajdovih rezancih, h katerim dobite celo svežo korenino wasabija in jo naribate same. Preprosto, pošteno in zelo shuzensko.",
+      "price": "€€",
+      "maps": "Zenpuutei Nanaban Shuzenji"
+     },
+     {
+      "name": "Koko (胡々)",
+      "desc": "Majhna, mirna sobarna tik ob bambusovi poti: ajdo meljejo v lastnem kamnitem mlinu, k rezancem pa ponudijo yubo (nežno kožico tofuja) iz vode z vznožja gore Daruma. Pridite malo pred poldnevom, ker miz ni veliko.",
+      "price": "€€",
+      "maps": "Soba Koko Shuzenji"
+     },
+     {
+      "name": "Baird Brewery Gardens Shuzenji",
+      "desc": "Pivovarna z okusnim obrtniškim pivom in taproomom nad reko Kano, le nekaj minut vožnje iz Shuzenjija — privoščite si pokušino več vrst piva na leseni terasi. Hrane je malo (prigrizki), zato pridite po kosilu.",
+      "price": "€",
+      "maps": "Baird Brewery Gardens Shuzenji"
+     }
+    ]
+   },
+   {
+    "name": "Wasabi z gore Amagi",
+    "emoji": "🌿",
+    "intro": "Doline pod goro Amagi so med najpomembnejšimi pridelovalkami wasabija na Japonskem — kamnite terase, po katerih teče izvirska voda, so celo del svetovne kmetijske dediščine, in nikjer drugje wasabi ne diši tako sveže.",
+    "places": [
+     {
+      "name": "Wasabi Garden Kadoya (わさび園かどや)",
+      "desc": "Družinska wasabi kmetija pri slapovih Kawazu Nanadaru, slavna po wasabi donburiju: skledi riža z bonito kosmiči, na katero same naribate svežo korenino. Odprto samo čez kosilo in samo za gotovino — pridite dopoldne, preden zmanjka.",
+      "price": "€",
+      "maps": "Wasabi Garden Kadoya Kawazu"
+     },
+     {
+      "name": "Amagi Wasabi no Sato (天城わさびの里)",
+      "desc": "Trgovina pridelovalcev na počivališču Michi-no-Eki Amagi-goe, kjer si privoščite njihov znameniti sladoled s sveže naribanim wasabijem po vrhu — sliši se čudno, a je odlično. Če vas zamika, se lahko prijavite tudi na kratko delavnico vlaganja wasabija.",
+      "price": "€",
+      "maps": "Michi no Eki Amagigoe Izu wasabi"
+     }
+    ]
+   },
+   {
+    "name": "Kavarne, čaj in sladice",
+    "emoji": "🍵",
+    "intro": "Za počasne popoldneve, kakršne si zaslužite: mleko z Izuja, tradicionalne sladice in skodelica čaja v stari leseni hiši.",
+    "places": [
+     {
+      "name": "Kenny's House Cafe Izu Kogen (main store)",
+      "desc": "Sproščena kavarna deset minut hoje od postaje Izu-Kogen, idealna po sprehodu ob obali Jogasaki — njihov sladoled iz svežega izujskega mleka je tako gost, da mu pravijo 'mleko, ki se jé'. Dobri so tudi vaflji in goveža obara za toplejše kosilo.",
+      "price": "€",
+      "maps": "Kenny's House Cafe Izu Kogen"
+     },
+     {
+      "name": "Isseki-An (一石庵)",
+      "desc": "Čajnica ob bambusovi poti v Shuzenju s tradicionalnimi sladicami: anmitsu, riževe kroglice shiratama s sladkim fižolom, za pogumne pa domača shuzenska limonada z wasabijem. Prijeten postanek med jesenskim sprehodom.",
+      "price": "€",
+      "maps": "Isseki-an Shuzenji"
+     },
+     {
+      "name": "Tokaikan (東海館)",
+      "desc": "Nekdanji lesen ryokan iz leta 1928 ob reki v Itu, danes odprt za oglede — v čajnici v pritličju si ob pogledu na reko privoščite matcho s sladico. Vstopnina je simbolična, rezbarije v sobah pa vas bodo očarale.",
+      "price": "€",
+      "maps": "Tokaikan Ito Shizuoka"
+     }
+    ]
+   }
+  ],
+  "extra_videos": [
+   {
+    "id": "TkE4G6EfZ58",
+    "title": "✨ [4K HDR] Discover Ito, A Gorgeous Onsen Town In Izu Peninsula, Japan",
+    "channel": "Sugoii Japan",
+    "sight": "Onsen mesto Ito"
+   },
+   {
+    "id": "y-QCj5PmP2E",
+    "title": "SHIZUOKA | Flavours of Izu: Rooted in Water, Rich in Wasabi",
+    "channel": "Another Side of Japan",
+    "sight": "Kmetije vasabija pod goro Amagi"
+   },
+   {
+    "id": "J2VU0G6brAo",
+    "title": "Kawazu Seven Falls: Izu Peninsula's Stunning Waterfall Escape!",
+    "channel": "travelformortals",
+    "sight": "Sedem slapov Kawazu (Kawazu Nanadaru)"
+   }
+  ]
+ },
+ {
+  "key": "kumano",
+  "sights": [
+   {
+    "name": "Svetišče Kumano Nachi Taisha in pagoda Seiganto-ji",
+    "desc": "Rdeče svetišče visoko nad dolino je srce romarske poti Kumano. Tik ob njem stoji tristopenjska pagoda, ki skupaj s slapom Nachi v ozadju ustvari najlepši prizor Japonske. Konec novembra se okoli svetišča obarvajo javorji — rdeče na rdečem, res boste ostrmele.",
+    "tip": "Do vrha pripelje avtobus, tako da hoje skoraj ni; vstop v pagodo z dvigalom stane 300 jenov (odprto 8.30-16.00), javorji so na vrhuncu konec novembra.",
+    "maps": "Kumano Nachi Taisha, Nachikatsuura, Wakayama",
+    "yt": "Kumano Nachi Taisha Seigantoji pagoda autumn"
+   },
+   {
+    "name": "Slap Nachi (Nachi no Otaki)",
+    "desc": "Najvišji slap na Japonskem: 133 metrov vode, ki pada v enem samem curku. Slap je sam po sebi božanstvo — pod njim stoji majhno svetišče Hiro. Od avtobusne postaje vas loči le kratko stopnišče skozi cedrov gozd.",
+    "tip": "Za 300 jenov se povzpnete na ploščad čisto blizu slapa; pridite dopoldne, ko sonce posveti v sotesko, in si vzemite kakšno uro časa.",
+    "maps": "Nachi Falls, Nachikatsuura, Wakayama",
+    "yt": "Nachi Falls Japan tallest waterfall"
+   },
+   {
+    "name": "Daimonzaka — kamnita pot med cedrami",
+    "desc": "Najlepših 600 metrov romarske poti: s kamni tlakovana pot se med stoletnimi cedrami vzpenja proti svetišču Nachi. Tu boste začutile, kako je bilo romati pred tisoč leti — mahovnata tišina, mehka svetloba, vonj po gozdu. In vse to brez pravega pohoda.",
+    "tip": "Pot ima 267 položnih stopnic; še lažje je, če se z avtobusom peljete na vrh in se po njej sprehodite navzdol — računajte 30-45 minut, kamni so ob dežju spolzki.",
+    "maps": "Daimonzaka, Nachikatsuura, Wakayama",
+    "yt": "Daimonzaka Kumano Kodo cedar stairway"
+   },
+   {
+    "name": "Kumano Hongu Taisha in velika torija Oyunohara",
+    "desc": "Glavno od treh velikih svetišč Kumana, skrito med mogočnimi cedrami, s strehami iz ciprese. Deset minut sprehoda stran, na rečni sipini Oyunohara, stoji največja torija na svetu — 34 metrov visoka vrata na mestu, kjer je svetišče stalo do poplave leta 1889. Novembra jo obdajo zlata riževa polja in obarvano hribovje.",
+    "tip": "Vstop je prost; ob svetišču je Kumano Hongu Heritage Center z razstavo o romarski poti — lep uvod za začetek potovanja, vse skupaj vam vzame dve do tri ure.",
+    "maps": "Kumano Hongu Taisha, Tanabe, Wakayama",
+    "yt": "Kumano Hongu Taisha Oyunohara torii gate"
+   },
+   {
+    "name": "Yunomine Onsen s kopeljo Tsuboyu",
+    "desc": "Menda najstarejše termalno naselje na Japonskem — ena sama ulica ob vročem potočku, kjer se iz vode kadi para. V vrelcu Yuzutsu si lahko skuhate jajčka ali sladki krompir. Tsuboyu, majhna kamnita kad za dve osebi, je edini vrelec na svetu, ki je vpisan na Unescov seznam in v katerem se še vedno smete kopati.",
+    "tip": "Za Tsuboyu ni rezervacij — vstopnico (slabih 800 jenov) kupite pri javnem kopališču in počakate na svojih 30 zasebnih minut; najkrajše vrste so zgodaj zjutraj.",
+    "maps": "Yunomine Onsen, Tanabe, Wakayama",
+    "yt": "Yunomine Onsen Tsuboyu bath Kumano",
+    "desc_note": ""
+   },
+   {
+    "name": "Tradicionalna ladjica po reki Kumano do Shinguja",
+    "desc": "Romarji so zadnji del poti od Honguja do svetišča Hayatama Taisha prepluli po reki — in to lahko naredite tudi ve. Devetdeset minut drsite v leseni ladjici s ploskim dnom mimo slapov in skalnih sten, vodič vmes zaigra na bambusovo flavto. Najlepši košček poti, za katerega ne potrebujete niti koraka hoje.",
+    "tip": "Vozi le do 30. novembra, zato rezervirajte vsaj 20 dni prej prek strani Kumano Travel; na koncu si oglejte še cinobrasto svetišče Kumano Hayatama Taisha s tisočletnim drevesom nagi.",
+    "maps": "Michi-no-Eki Dorokyokaido Kumanogawa, Shingu, Wakayama",
+    "yt": "Kumano River traditional boat tour Shingu"
+   },
+   {
+    "name": "Soteska Doro-kyo v jesenskih barvah",
+    "desc": "Manj znan biser: smaragdno zelena reka med navpičnimi skalami, ki jih konec novembra prekrijejo rdeči javorji. Po soteski vas v majhnem čolnu popelje domačin — 40 minut miru, kakršnega ne najdete v nobenem vodniku. Prav v času vašega obiska so barve na vrhuncu.",
+    "tip": "Čoln vozi do konca novembra (ob ponedeljkih ne), plačilo le v gotovini; javnega prevoza ni, zato prosite nastanitev, da vam uredi rezervacijo in taksi.",
+    "maps": "Dorokyo Gorge, Totsukawa",
+    "yt": "Dorokyo Gorge boat autumn leaves Japan"
+   },
+   {
+    "name": "Kawayu Onsen in rečno kopališče Sennin-buro",
+    "desc": "V Kawayuju vroča voda privre kar iz rečnega dna — z lopatko si lahko izkopljete svoj lastni bazenček. Prvega decembra pa reko zajezijo v Sennin-buro, \"kopel za tisoč ljudi\": ogromen naravni bazen s 40-stopinjsko vodo sredi rečne struge. Če boste tam še 1. decembra, ga ujamete prvi dan sezone.",
+    "tip": "Sennin-buro je brezplačen in odprt 6.30-22.00, kopalke so obvezne; prej se lahko vse leto namakate v onsenih tamkajšnjih ryokanov.",
+    "maps": "Kawayu Onsen, Tanabe, Wakayama",
+    "yt": "Kawayu Onsen Sennin-buro river bath"
+   }
+  ],
+  "practical": [
+   "Brez avtomobila so vaš prevoz lokalni avtobusi (Ryujin bus iz Kii-Tanabe do Honguja, Kumano Kotsu okoli Nachija). Sprejemajo le gotovino ali QR-plačilo, IC kartice (Suica/Icoca) ne delujejo. Splača se 4-dnevna vozovnica Kumano Hongu Line; ob vstopu povejte vozniku, kje izstopate.",
+   "November je vrh sezone. Nastanitve v Yunomineju in Kawayuju ter ladjico po reki Kumano rezervirajte čim prej prek uradnega sistema Kumano Travel (kumano-travel.com) — ladjico obvezno vsaj 20 dni vnaprej. Avtobusi so jeseni polni, zato pridite na postajo nekaj minut prej.",
+   "Dvignite dovolj gotovine, preden zapustite Tanabe ali Shingu (bankomati v 7-Eleven ali na pošti). V vasicah Hongu, Yunomine in Kawayu je bankomatov malo, avtobusi, vstopnine in čoln v Doro-kyo pa so gotovinski.",
+   "Novembrsko vreme: podnevi prijetnih 12-17 stopinj, zvečer v hribih hladno. Oblecite se po plasteh, vzemite dežnik in čevlje z dobrim oprijemom — kamnita Daimonzaka je ob dežju spolzka. Za onsene si pripravite kopalke (Sennin-buro) in majhno brisačo.",
+   "Med Hongujem, Yunominejem in Kawayujem vozi lokalni avtobus le nekajkrat na dan — fotografirajte si vozni red na postaji. Prtljago vam med kraji lahko preveze luggage shuttle (rezervacija prek Kumano Travel), tako hodite le z nahrbtnikom."
+  ],
+  "day_plan": [
+   {
+    "time": "Zjutraj",
+    "what": "Z avtobusom do Kumano Hongu Taisha. V jutranji tišini si oglejte svetišče, nato se počasi sprehodite deset minut do velikanske torije Oyunohara med riževimi polji."
+   },
+   {
+    "time": "Dopoldne",
+    "what": "Oglejte si razstavo v Kumano Hongu Heritage Center, potem pa kosilo v vasi Hongu — poskusite mehari-zushi, riževe kroglice, zavite v gorčične liste."
+   },
+   {
+    "time": "Popoldne",
+    "what": "Avtobus do Yunomineja. V vrelcu Yuzutsu si skuhajte jajčka, kupite vstopnico za Tsuboyu in ob potočku počakajte na svojih 30 zasebnih minut v Unescovi kopeli."
+   },
+   {
+    "time": "Zvečer",
+    "what": "Vrnitev v ryokan v Kawayuju. Večerja kaiseki, potem pa še zadnje namakanje v vročem vrelcu ob reki — pod zvezdami, ki jih v teh hribih res vidite."
+   }
+  ],
+  "food_categories": [
+   {
+    "name": "Romarska kosila ob Hongu Taishi",
+    "emoji": "🍜",
+    "intro": "Okoli velikega svetišča Hongu boste jedle tako kot romarji nekoč: topla juha s soba rezanci in mehari-zushi, riževa kroglica, zavita v vložene gorčične liste.",
+    "places": [
+     {
+      "name": "Sabo Chinchoan Hongu",
+      "desc": "Čajnica tik ob stopnicah svetišča. Naročite si moude sobo z mehari-zushijem, za posladek pa moude mochi — mehke riževe kolačke s sladko fižolovo pasto, ki jih prodajajo samo pri treh svetiščih Kumana. Zaprto ob sredah, plačilo v gotovini.",
+      "price": "€",
+      "maps": "Sabo Chinchoan Hongu Tanabe Wakayama"
+     },
+     {
+      "name": "Kumanoco Shokudo",
+      "desc": "Prenovljena stara japonska hiša minuto od Oyunohare, kjer kuhajo iz domačega riža, zelenjave in jajc lastnih kokoši. Odlične dnevne malice in lokalno craft pivo; imajo tudi vegetarijanske jedi. Odprto do večera, zaprto ob torkih — redkost v teh krajih.",
+      "price": "€€",
+      "maps": "Kumanoco Shokudo Restaurant Hongu Tanabe"
+     },
+     {
+      "name": "Oshokuji Shimoji Hongu",
+      "desc": "Preprosta domača gostilna dve minuti od svetišča. Udon z mehari-zushijem ali teishoku krožnik — hitro, poceni in pošteno. Odprto le do 14.30, zato pridite na zgodnje kosilo; zaprto ob sredah.",
+      "price": "€",
+      "maps": "Oshokuji Shimoji Hongu Tanabe Wakayama"
+     }
+    ]
+   },
+   {
+    "name": "Čajnice ob slapu Nachi in Daimonzaki",
+    "emoji": "🍵",
+    "intro": "Po sprehodu med starimi cedrami Daimonzake si privoščite počitek s pogledom na slap Nachi, ki ga novembra obdajo jesenske barve — najlepša terasa za skodelico čaja na celi poti.",
+    "places": [
+     {
+      "name": "Oshokuji Dokoro Kaihami",
+      "desc": "Gostilnica na Nachisanu z naravnost razgledniškim pogledom na slap. Naročite Kumano sobo ali set z mehari-zushijem, imajo angleški jedilnik in prijazno postrežbo. Odprto le od 11. do 15. ure, plačilo v gotovini.",
+      "price": "€",
+      "maps": "Oshokuji Dokoro Kaihami Nachisan Nachikatsuura"
+     },
+     {
+      "name": "Sabo Chinchoan Nachisan",
+      "desc": "Sestrska čajnica tiste pri Hongu Taishi, tik ob svetišču Nachi Taisha. Topel udon vas pogreje po stopnicah, moude mochi pa je lep priboljšek za na pot ali darilo domov.",
+      "price": "€",
+      "maps": "Sabo Chinchoan Nachisan Nachikatsuura"
+     },
+     {
+      "name": "Miharashitei",
+      "desc": "Skromna razgledna čajnica med Nachi Taisho in pagodo — ime pomeni prav 'hišica z razgledom'. Amazake, dango in zelen čaj, medtem ko vam slap in tristopenjska pagoda pozirata za najlepšo fotografijo potovanja.",
+      "price": "€",
+      "maps": "Miharashitei Nachisan Nachikatsuura"
+     }
+    ]
+   },
+   {
+    "name": "Sveža tuna iz Katsuure",
+    "emoji": "🐟",
+    "prices": null,
+    "places": [
+     {
+      "name": "Bodai",
+      "desc": "Minuto od postaje Kii-Katsuura; njihova posebnost je nama-maguro chutoro katsu — sredica ostane rožnata in se topi v ustih. Za večerjo sprejemajo rezervacije med 17.30 in 19.00, kar je za vas pet idealno.",
+      "price": "€€",
+      "maps": "Bodai restaurant Kii-Katsuura Nachikatsuura"
+     },
+     {
+      "name": "Katsuura Gyoko Nigiwai Ichiba",
+      "desc": "Živahna tržnica ob ribiškem pristanišču, pet minut od postaje. Privoščite si maguro-don, skledo riža s svežo tuno, ali ocvrte tunine polpete — sproščeno, poceni in brez čakanja.",
+      "price": "€",
+      "maps": "Katsuura Fishing Port Nigiwai Market Nachikatsuura"
+     },
+     {
+      "name": "Meharizushi Nidaime",
+      "desc": "Najbolje ocenjena gostilna v mestu: maguro teishoku s svežo tuno ali set mehari-zushija, obojega po domače in v izdatnih porcijah. Odprto do 20. ure, kar je tu prava redkost.",
+      "price": "€",
+      "maps": "Meharizushi Nidaime Nachikatsuura"
+     }
+    ],
+    "intro": "Pristanišče Kii-Katsuura, pol ure od slapu Nachi, iztovori največ sveže, nikoli zamrznjene tune na Japonskem — tukaj boste jedle maguro, kakršnega doma ni."
+   },
+   {
+    "name": "Onsen vasici Yunomine in Kawayu",
+    "emoji": "🥚",
+    "intro": "V Yunominu si v vrelcu Yuzutsu skuhajte lastna onsen jajca in sladki krompir, v Kawayuju pa se 1. decembra odpre slavna rečna kopel Sennin-buro — če boste takrat še tam, je ne zamudite.",
+    "places": [
+     {
+      "name": "Yunomune Chaya",
+      "desc": "Prijetna čajnica med kopeljo Tsuboyu in templjem Toko-ji, odprta od jutra do 17. ure. Angleški jedilnik, lahka kosila in kava; jajca za kuhanje v vrelcu kupite v trgovinici čez cesto. Gotovina.",
+      "price": "€",
+      "maps": "Yunomune Chaya Yunomine Onsen Tanabe"
+     },
+     {
+      "name": "Yunomine Onsen Shokudo",
+      "desc": "Edina prava gostilnica v vasi — preprosti domači krožniki, ramen in riževe jedi. Odprta tudi zvečer, ko vse drugo zapre, zaprto ob ponedeljkih.",
+      "price": "€",
+      "maps": "Yunomine Onsen Shokudo Tanabe Wakayama"
+     },
+     {
+      "name": "Pension Ashita no Mori",
+      "desc": "Restavracija ob reki v Kawayuju s pogledom na jesensko obarvana pobočja. Dobri mesni in domači krožniki v mirnem okolju; nujna je rezervacija, zato prosite gostiteljico v ryokanu, da pokliče.",
+      "price": "€€",
+      "maps": "Pension Ashita no Mori Kawayu Onsen Tanabe"
+     },
+     {
+      "name": "Tearoom Kobuchi",
+      "desc": "Majhna čajnica v Kawayuju: mehari-zushi, set s postrvjo ayu z žara in kava, skuhana z onsen vodo — poskusite, drugje je ne boste dobile. Odprto za kosilo in zgodnjo večerjo.",
+      "price": "€",
+      "maps": "Tearoom Kobuchi Kawayu Onsen Tanabe"
+     }
+    ]
+   }
+  ],
+  "extra_videos": [
+   {
+    "id": "-v11bqJar9o",
+    "title": "World's Largest Torii Gate & Kumano Hongu Taisha | UNESCO Kumano Kodo Walk 4K",
+    "channel": "Walking Around the World 4K",
+    "sight": "Kumano Hongu Taisha in največja torii vrata na svetu (Oyunohara)"
+   },
+   {
+    "id": "zbWhuNWYhjU",
+    "title": "4K Japan Slow Walk | 1000 Year Old Japanese Onsen Town | Yunomine Onsen Hidden in Wakayama Mountains",
+    "channel": "World Wanderings: 4K Walking Tours",
+    "sight": "Yunomine Onsen — tisočletna termalna vasica"
+   },
+   {
+    "id": "02qiGTT17dA",
+    "title": "Kumano Nachi Taisha Shrine, Nachi Waterfall, Seiganto-ji Temple, Kumano Kodo, Wakayama",
+    "channel": "M's FILM",
+    "sight": "Svetišče Nachi Taisha, slap Nachi in pagoda Seiganto-ji"
+   }
+  ]
+ },
+ {
+  "key": "koyasan",
+  "sights": [
+   {
+    "name": "Okunoin – sveto pokopališče in mavzolej Kobo Daišija",
+    "desc": "Najsvetejši kraj Koyasana: dva kilometra dolga, povsem ravna pot med tisočletnimi cedrami in več kot 200.000 nagrobniki vodi do mavzoleja, kjer po verovanju Kobo Daiši še vedno meditira. Ob poti boste videle grobnice slavnih samurajskih rodbin, na koncu pa dvorano Torodo z več tisoč večno gorečimi svetilkami. Novembra se med cedrami zlato obarvajo ginki in javorji — eden najlepših jesenskih prizorov na gori.",
+    "tip": "Pojdite dopoldne v miru (dvorana Torodo je odprta 6.00-17.00); če želite krajšo pot, izstopite na postaji Okunoin-mae — do mavzoleja je potem le slab kilometer.",
+    "maps": "Okunoin Cemetery, Koya, Wakayama",
+    "yt": "Okunoin cemetery Koyasan walk autumn"
+   },
+   {
+    "name": "Danjo Garan s pagodo Konpon Daito",
+    "desc": "Osrednji tempeljski kompleks, ki ga je zasnoval sam Kobo Daiši leta 826. V sredini stoji 49 metrov visoka cinobrasto rdeča pagoda Konpon Daito, okoli nje pa dvorana Kondo in več manjših svetišč — vse na ravnem, peščenem dvorišču, ki ga prehodite brez napora. Jeseni rdeči javorji ob pagodi ustvarijo razglednico, kakršne ne boste pozabile.",
+    "tip": "Vrnite se še po večerji: Konpon Daito je vsak večer osvetljena in v novembrski temi deluje čarobno — to je jesenski večerni prizor Koyasana; do pagode pridite po drevoredu Jabara-michi od Kongobu-jija, ki velja za najlepšo momiji pot v mestu.",
+    "maps": "Danjo Garan Sacred Temple Complex, Koya, Wakayama",
+    "yt": "Danjo Garan Konpon Daito Koyasan autumn night"
+   },
+   {
+    "name": "Tempelj Kongobu-ji",
+    "desc": "Glavni tempelj šole šingon z razkošno poslikanimi drsnimi vrati in največjim kamnitim vrtom na Japonskem — Banryutei, kjer 140 kamnov upodablja dva zmaja v morju oblakov. Ogled poteka po lesenih hodnikih v copatih, brez stopnic in hitenja. V veliki dvorani s 169 tatamiji vam ob koncu postrežejo čaj in riževe piškotke — kar vzemite si čas in posedite.",
+    "tip": "Odprto 8.30-17.00 (zadnji vstop 16.30), vstopnina okoli 1.000 jenov; brezplačni čaj v dvorani Shin Betsuden je najprijetnejši postanek za oddih.",
+    "maps": "Kongobuji Temple, Koya, Wakayama",
+    "yt": "Kongobuji temple Banryutei rock garden Koyasan"
+   },
+   {
+    "name": "Prenočišče na gori (šukubo zaseden)",
+    "desc": "Klasična nočitev v templju pri menihih je novembra žal pogosto razprodana. Prespimo v preprostem gostišču ali hotelu na gori; vzdušje svete gore ostane, zlasti zvečer in zjutraj.",
+    "tip": "Šukubo rezervirajte več mesecev vnaprej; sicer poiščite gostišče ob glavni ulici in si pustite večer za Okunoin.",
+    "maps": "Fukuchiin, Koya, Wakayama",
+    "yt": "Fukuchiin shukubo temple stay Koyasan onsen"
+   },
+   {
+    "name": "Nočni sprehod po Okunoinu z menihom",
+    "desc": "Približno 90-minutni voden večerni sprehod po pokopališču, ki ga od leta 2011 skoraj vsak večer vodijo domačini iz templja Ekoin. Ob svetlobi kamnitih svetilk boste slišale zgodbe o Kobo Daišiju, legendah Okunoina in življenju menihov. Tempo je počasen, pot ravna, vzdušje pa nepozabno — ravno prav skrivnostno, ne strašljivo.",
+    "tip": "Rezervirajte vnaprej prek Ekoina ali strani Awesome Tours (uradni ponudnik); novembra zvečer temperatura pade proti ničli, zato oblecite tople plasti, kapo in rokavice.",
+    "maps": "Ekoin Temple, Koya, Wakayama",
+    "yt": "Okunoin night tour Koyasan monk guided"
+   },
+   {
+    "name": "Mavzolej rodbine Tokugawa",
+    "desc": "Skrit dragulj, ki ga večina obiskovalcev izpusti: dve enaki, bogato pozlačeni stavbi iz leta 1643, posvečeni prvima šogunoma Iejasuju in Hidetadi. Rezbarije, lak in zlati listi so vrhunec razkošnega sloga zgodnjega obdobja Edo. Tu boste skoraj sami, ogled pa je kratek in povsem nenaporen.",
+    "tip": "Odprto 8.30-17.00; lepo se poveže z bližnjo Ženskim templjem Nyonindo, spominom na čase, ko ženske na sveto goro niso smele — do leta 1872 so molile prav tam.",
+    "maps": "Tokugawa Mausoleum, Koya, Wakayama",
+    "yt": "Tokugawa Mausoleum Koyasan"
+   },
+   {
+    "name": "Muzej Reihokan",
+    "desc": "Zakladnica Koyasana s približno 28.000 umetninami, med njimi 21 narodnih zakladov: budistični kipi, mandale in svitki, ki so jih stoletja hranili templji na gori. Razstava je pregledna in ravno prav velika za uro ali dve mirnega ogleda. Idealno zatočišče, če vas preseneti dež ali mraz.",
+    "tip": "Novembra odprto 8.30-17.00, vstopnina okoli 1.300 jenov; jeseni je na ogled običajno posebna sezonska razstava.",
+    "maps": "Koyasan Reihokan Museum, Koya, Wakayama",
+    "yt": "Koyasan Reihokan Museum treasures"
+   },
+   {
+    "name": "Prepisovanje suter v Daishi Kyokai",
+    "desc": "V duhovnem središču gore lahko brez rezervacije poskusite šakjo — prepisovanje Srčne sutre s čopičem po rahlo natisnjeni predlogi. Sedite v topli dvorani, roka počasi sledi znakom, misli pa se same umirijo. Čudovita skupna izkušnja za vas pet, tudi če ne znate niti besede japonsko.",
+    "tip": "Pridite dopoldne in si vzemite kakšno uro; za simboličen prispevek lahko prejmete tudi budistični blagoslov jukai.",
+    "maps": "Koyasan Daishi Kyokai, Koya, Wakayama",
+    "yt": "Daishi Kyokai Koyasan sutra copying shakyo"
+   }
+  ],
+  "practical": [
+   "Iz Osake se peljite z vlakom Nankai s postaje Osaka-Namba do Gokurakubashija, nato z vzpenjačo na goro in z avtobusom v mesto (skupaj okoli 2 uri). Kupite Koyasan World Heritage Ticket — 2-dnevna vozovnica vključuje vlak, vzpenjačo, vse avtobuse po gori in popuste pri vstopninah.",
+   "Od zgornje postaje vzpenjače do mesta obvezno z avtobusom — hoja po cesti tam ni dovoljena. Po samem mestu pa je vse blizu: med Kongobu-jijem, Garanom in vhodom v Okunoin vozijo avtobusi, razdalje so kratke in ravne.",
+   "Šukubo (tempeljsko prenočišče) rezervirajte čim prej, najbolje prek uradne strani Koyasan Shukubo Association (eng-shukubo.net) — november je zaradi jesenskih barv med najbolj zasedenimi meseci.",
+   "Imejte dovolj gotovine: vstopnine v templje in manjše trgovine pogosto sprejemajo samo jene, bankomatov na gori pa je malo (najzanesljivejši je na pošti).",
+   "Koyasan leži na 800 m — novembra so jutra okoli ničle, templji pa so le skromno ogrevani. Vzemite tople plasti, debele nogavice (po templjih hodite v copatih ali nogavicah) in dežnik. Jesenske barve so na gori na vrhuncu prve dni novembra, prej kot v Kyotu — Koyasan zato uvrstite na začetek potovanja."
+  ],
+  "day_plan": [
+   {
+    "time": "Zjutraj",
+    "what": "Vstanite k jutranji molitvi menihov v svojem templju (okoli 6.00-7.00, sodelovanje je prostovoljno) in si privoščite tempeljski zajtrk. Potem mirna kava in kratek sprehod po prebujajočem se mestu."
+   },
+   {
+    "time": "Dopoldne",
+    "what": "Ogled Kongobu-jija s kamnitim vrtom Banryutei in čajem v veliki dvorani, nato po javorjevem drevoredu Jabara-michi do Danjo Garana in rdeče pagode Konpon Daito."
+   },
+   {
+    "time": "Popoldne",
+    "what": "Po lahkem kosilu se z avtobusom zapeljite do mostu Ichinohashi in prehodite ravno, dve kilometri dolgo pot skozi Okunoin do dvorane Torodo in mavzoleja Kobo Daišija. Hodite počasi, ustavljajte se — to je bistvo Koyasana."
+   },
+   {
+    "time": "Zvečer",
+    "what": "Zgodnja večerja šodžin rjori v templju, nato voden nočni sprehod po Okunoinu z menihom ali pa krajši postanek ob osvetljeni pagodi Konpon Daito. Za konec — če spite v Fukuchiinu — topel onsen pred spanjem."
+   }
+  ],
+  "food_categories": [
+   {
+    "name": "Shojin ryori — meniška kuhinja za kosilo",
+    "emoji": "🥢",
+    "intro": "Koyasan je domovina shojin ryori, budistične rastlinske kuhinje, in prav tu jo boste jedle najbolje na Japonskem — a pozor, večina lokalov zapre kuhinjo že sredi popoldneva, zato pridite na zgodnje kosilo.",
+    "places": [
+     {
+      "name": "Hanabishi",
+      "desc": "Najbolj ugledna restavracija v mestu, kuhar je nekoč kuhal celo za cesarski par. Naročite set sankozen s sezamovim tofujem in dengakujem, za posladek pa sojin puding s kakijem. Za skupino petih se splača rezervirati vnaprej — rezervacije sprejemajo tudi prek spleta.",
+      "price": "€€",
+      "maps": "Hanabishi Koyasan"
+     },
+     {
+      "name": "Chuo Shokudo Sanbo",
+      "desc": "Domačen lokal sredi mesta z angleškim menijem in prijaznim osebjem. Privoščite si bento v obliki cvetlične košarice ali juho kenchin — sezamov tofu tu postrežejo tudi ocvrt, kar je posebnost. Odprt le do zgodnjega popoldneva, zato pridite pred poldnevom.",
+      "price": "€€",
+      "maps": "Chuo Shokudo Sanbo Koyasan"
+     },
+     {
+      "name": "Shojin Dining Kirihouju",
+      "desc": "Šestdeset let stara hiša s sproščeno različico meniške kuhinje. Kosilo shokado kiri pride v lepi lakirani škatli s sezamovim tofujem, ocvrto in dušeno zelenjavo. Mize je mogoče rezervirati, kar je za peterico priročno.",
+      "price": "€€",
+      "maps": "Shojin Dining Kirihouju Koyasan"
+     }
+    ]
+   },
+   {
+    "name": "Goma-tofu — sezamov tofu",
+    "emoji": "🥣",
+    "intro": "Svilnat tofu iz belega sezama in kudzu škroba je najslavnejša specialiteta Koyasana — sveže narejenega boste okusile samo tukaj.",
+    "places": [
+     {
+      "name": "Kadohama Gomatofu Sohonpo",
+      "desc": "Najbolj znana hiša sezamovega tofuja, blizu velikih vrat Daimon. V jedilnem delu naročite degustacijski set: goma-tofu v tempuri, s sojino omako in kot sladica s kinako moko ter črnim sirupom. Lepo urejen prostor, primeren za skupino.",
+      "price": "€",
+      "maps": "Kadohama Gomatofu Sohonpo Koyasan"
+     },
+     {
+      "name": "Gomadofu Hamadaya",
+      "desc": "Družinska delavnica iz leta 1905, na poti proti Okunoinu. Svež tofu postrežejo na dva načina: slano z vasabijem in sojino omako ali sladko s sladkorjem wasanbon — poskusite oboje. Prostor je majhen, zato je to postanek, ne dolgo posedanje.",
+      "price": "€",
+      "maps": "Gomadofu Hamadaya Koyasan"
+     }
+    ]
+   },
+   {
+    "name": "Domača kosila in edina prava večerja v mestu",
+    "emoji": "🍜",
+    "intro": "Ker templji strežejo večerjo že ob šestih, je izbira zvečer v mestu skromna — a nekaj toplih, poceni naslovov se najde.",
+    "places": [
+     {
+      "name": "Maruman",
+      "desc": "Preprosta domača jedilnica z več kot 80 jedmi in plastičnimi modeli v izložbi, da je izbira lažja. Odlična je soba z gorsko zelenjavo in nežnim dašijem, tudi njihov goma-tofu je vreden pokušine. Samo gotovina.",
+      "price": "€",
+      "maps": "Maruman Shokudo Koyasan"
+     },
+     {
+      "name": "Miyasan",
+      "desc": "Majhna izakaya in ena redkih možnosti za večerjo v mestu, če kakšen večer ne boste jedle v templju. Slavni so po hrustljavem ocvrtem piščancu in jedeh iz koya-dofuja, lokalnega posušenega tofuja. Prostora je malo, zato pridite zgodaj; plačilo z gotovino.",
+      "price": "€",
+      "maps": "Miyasan Koyasan izakaya"
+     }
+    ]
+   },
+   {
+    "name": "Kavarne, čaj in sladice",
+    "emoji": "🍡",
+    "intro": "Novembra, ko javorji ob poti Jabara-michi proti Danjo Garanu žarijo v rdečem, se toplo skodelico čaja in sladko malenkost še posebej prileže.",
+    "places": [
+     {
+      "name": "Bon On Shya",
+      "desc": "Prisrčna mednarodna kavarna z domačimi kolači in odlično kavo; lastnika govorita angleško in francosko. Dnevni vegetarijanski meni s šestimi do osmimi krožnički, čajem in sladico je ena najboljših vrednosti v mestu. Prijetno za daljše posedanje in klepet.",
+      "price": "€",
+      "maps": "Bon On Shya Koyasan cafe"
+     },
+     {
+      "name": "Kasakuni Mirokuishi Honpo",
+      "desc": "Stara slaščičarna, ki je uradni dobavitelj sladic templju Kongobu-ji. Vzemite tople yakimochi (pečene riževe kolačke z azuki fižolom) in sladice miroku-ishi, poimenovane po slavnem kamnu iz Okunoina — lepo darilo za domov.",
+      "price": "€",
+      "maps": "Kasakuni Koyasan"
+     }
+    ]
+   },
+   {
+    "name": "Večerja v templju — shukubo",
+    "emoji": "🏮",
+    "intro": "Najlepša večerja na Koyasanu je tista v templju, kjer prespite: menihi jo postrežejo na desetinah drobnih krožničkov, po njej pa se lahko sprehodite do vsak večer osvetljenega Danjo Garana ali se pridružite večernemu vodenju po Okunoinu.",
+    "places": [
+     {
+      "name": "Ekoin Temple",
+      "desc": "Najbolj priljubljen shukubo za tuje goste: mladi menihi govorijo angleško, večerjo vam prinesejo v sobo, zjutraj pa lahko prisostvujete ognjenemu obredu goma. Od tu vodijo tudi večerne oglede pokopališča Okunoin. Rezervirajte več mesecev vnaprej.",
+      "price": "€€",
+      "maps": "Ekoin Temple Koyasan"
+     },
+     {
+      "name": "Soji-in",
+      "desc": "Tempelj tik ob Danjo Garanu s povsem vegansko večerjo in zajtrkom izjemne kakovosti. Jeste v miru, na pladnjih polnih drobnih sezonskih jedi — novembra z okusi gob, kostanja in gorske zelenjave.",
+      "price": "€€€",
+      "maps": "Sojiin Temple Koyasan"
+     },
+     {
+      "name": "Fukuchiin",
+      "desc": "Prostornejši shukubo z lepim vrtom in edinim pravim onsenom na Koyasanu — po večerji iz meniške kuhinje se pogrejete še v termalni kopeli, kar bo novembra prav prišlo. Udobna izbira za skupino, ki noče spati na trdem.",
+      "price": "€€€",
+      "maps": "Fukuchiin Koyasan"
+     }
+    ]
+   }
+  ],
+  "extra_videos": [
+   {
+    "id": "AtAxbGQvk74",
+    "title": "Danjo Garan Koyasan - Wakayama - 壇上伽藍 - 4K Ultra HD",
+    "channel": "TokyoStreetView - Japan The Beautiful",
+    "sight": "Danjo Garan – sveti tempeljski kompleks s pagodo Konpon Daito"
+   },
+   {
+    "id": "YsGRkQNDyKM",
+    "title": "Japan Largest Rock Garden (Koyasan Kongōbuji Temple 金剛峯寺), Japan",
+    "channel": "fenway",
+    "sight": "Kongobu-ji – največji kamniti vrt na Japonskem (Banryutei)"
+   },
+   {
+    "id": "nePcNjvQZDY",
+    "title": "800 Year Old Japanese Accommodation | Shukubo Temple Stay",
+    "channel": "ONLY in JAPAN * GO",
+    "sight": "Shukubo – prenočitev v budističnem templju"
+   }
+  ]
+ },
+ {
+  "key": "iya",
+  "sights": [
+   {
+    "name": "Most Kazurabashi (viseči most iz trt)",
+    "desc": "45 metrov dolg most, spleten iz gorskih trt, ki so ga po legendi zgradili begunci klana Heike. Danes je skrito ojačan z jeklenimi kabli, zato ga boste prečkale varno, čeprav vam bo srce malo hitreje bilo. Takoj za mostom vas čaka 40-metrski slap Biwa, ob parkirišču pa stojnice z žara pečenimi dobrotami.",
+    "tip": "Vstopnina 550 jenov, odprt 8:00-17:00; vsak večer med 19:00 in 21:30 je most osvetljen (takrat prečkanje ni mogoče) — večerni pogled si res privoščite.",
+    "maps": "Iya Kazurabashi Bridge, Miyoshi, Tokushima",
+    "yt": "Iya Kazurabashi vine bridge Iya Valley Japan"
+   },
+   {
+    "name": "Ladjica po soteski Oboke",
+    "desc": "Pol ure mirne vožnje po smaragdni reki Yoshino, med marmornatimi skalami, ki jih je reka brusila milijone let. Novembra se pobočja nad vodo obarvajo rdeče in zlato — pogled z ladjice je takrat najlepši. Vožnja je udobna in povsem primerna za počasen tempo.",
+    "tip": "Okoli 1500 jenov, ladjice vozijo od 9:00 do 16:30 vsakih 20-30 minut brez rezervacije; jesenske barve v soteski vrh dosežejo sredi novembra, takrat pridite raje dopoldne.",
+    "maps": "Oboke Gorge Sightseeing Boat, Miyoshi, Tokushima",
+    "yt": "Oboke Gorge sightseeing boat cruise autumn"
+   },
+   {
+    "name": "Hotel Iya Onsen — kopel ob reki z vzpenjačo",
+    "desc": "Do vročih vrelcev na dnu soteske se spustite s hotelsko vzpenjačo — pet minut vožnje po 42-stopinjskem pobočju, naravnost med jesenske barve. Spodaj vas čakata odprti kopeli tik ob reki, voda je mehka, rahlo peneča in prijetno topla. To je tisti trenutek potovanja, ki ga ne boste pozabile.",
+    "tip": "Dnevni obisk okoli 1900 jenov (vzpenjača vključena); še lepše je prespati tu in se kopati zvečer ali ob zori — sobe rezervirajte več mesecev vnaprej.",
+    "maps": "Hotel Iya Onsen, Miyoshi, Tokushima",
+    "yt": "Hotel Iya Onsen cable car open air bath Iya Valley"
+   },
+   {
+    "name": "Razgledišče Hi-no-Ji in kipec dečka",
+    "desc": "Najbolj slaven razgled doline Iya: reka se globoko spodaj zavije v obliki japonske pismenke \"hi\". Nekaj minut naprej na 200-metrski pečini stoji bronasti kipec dečka, ki lula v prepad — spomin na objestne domačine iz starih časov. Oba postanka sta tik ob cesti, brez hoje in brez vstopnine.",
+    "tip": "Ustavite se na poti med Oboke in mostom Kazurabashi; najlepša svetloba je dopoldne, novembra pa so pobočja okoli razgledišča polna momiji barv.",
+    "maps": "Iya Valley Peeing Boy Statue, Miyoshi, Tokushima",
+    "yt": "Iya Valley Peeing Boy statue Hinoji viewpoint"
+   },
+   {
+    "name": "Vas Ochiai in njeno razgledišče",
+    "desc": "Zgodovinska vasica, ki se vzpenja skoraj 400 metrov po pobočju — slamnate strehe, kamnite poti in njivice, stare več stoletij. Najlepše jo boste videle z razgledne ploščadi na nasprotnem bregu, kamor se pripeljete z avtom. Kdor želi, si v vasi ogleda še obnovljeno hišo Nagaoka-ke s slamnato streho.",
+    "tip": "Razgledišče je vedno odprto in brezplačno; hiša Nagaoka-ke je odprta 9:00-17:00, zaprta ob sredah — za sprehod po vasi si vzemite počasno urico.",
+    "maps": "Ochiai Village Observation Deck, Higashiiya, Miyoshi, Tokushima",
+    "yt": "Ochiai village Iya Valley thatched houses"
+   },
+   {
+    "name": "Dvojna mostova Oku-Iya",
+    "desc": "Globlje v dolini, kjer je turistov le peščica, visita dva mostova iz trt — daljši \"moški\" in krajši \"ženski\" most, tik ob majhnem slapu. Okolica je mirna, gozdnata in kot nalašč za lahkoten sprehod ob reki. Marsikdo pravi, da je tu vzdušje še lepše kot pri glavnem mostu.",
+    "tip": "Pozor: mostova sta odprta samo do 30. novembra (9:00-17:00), pozimi zapreta — obisk načrtujte v prvi polovici potovanja, skupaj z izletom proti gori Tsurugi.",
+    "maps": "Oku-Iya Double Vine Bridges, Higashiiya, Miyoshi, Tokushima",
+    "yt": "Oku-Iya double vine bridges Niju Kazurabashi"
+   },
+   {
+    "name": "Sedežnica na sveto goro Tsurugi",
+    "desc": "Tsurugi je druga najvišja gora Šikokuja in sveta gora romarjev. S sedežnice, ki vas z Minokoshija popelje na 1750 metrov, se odpre širok razgled čez valovita slemena — brez enega samega napornega koraka. Že ob spodnji postaji boste videle, kako se jesen z vrhov spušča v dolino.",
+    "tip": "Sedežnica obratuje le od sredine aprila do konca novembra — izberite jasen, miren dan zgodaj na potovanju in se oblecite zelo toplo, zgoraj je lahko okoli ledišča.",
+    "maps": "Tsurugisan Tozan Lift Minokoshi Station, Miyoshi, Tokushima",
+    "yt": "Mt Tsurugi chairlift Minokoshi Shikoku"
+   },
+   {
+    "name": "Lapis Oboke — hišica yokaijev in topla kopel za noge",
+    "desc": "Prijazna obcestna postaja korak od postaje Oboke: v hiši yokaijev boste spoznale lokalne pravljične pošasti, iz teh krajev naj bi izviral celo znameniti jokajoči dedek Konaki-jijii. Zgoraj je zbirka kamnin in mineralov, pred vrati pa brezplačna kopel za noge s pogledom na sotesko in kavarna s teraso.",
+    "tip": "Idealen postanek za kavo ali ob deževnem dnevu; novembra tu tradicionalno pripravijo festival yokaijev — preverite datum na kraju samem.",
+    "maps": "Lapis Oboke, Miyoshi, Tokushima",
+    "yt": "Lapis Oboke yokai museum Tokushima"
+   }
+  ],
+  "practical": [
+   "Dolina Iya je odročna, ceste pa ozke in vijugaste. Najudobneje je z najetim avtom in izkušeno voznico; brez avta izberite redni izletniški avtobus z vodičem iz Awa-Ikede (okoli 5 ur in 45 minut, vključeni kosilo in vstopnine: Oboke ladjica, Kazurabashi, razgledišča) ali KOTOBUS shuttle. Lokalni avtobusi iz Oboke vozijo le vsako uro ali dve.",
+   "Do Oboke se lahko pripeljete s panoramskim vlakom Shikoku Mannaka Sennen Monogatari (Tadotsu-Oboke, okoli 3 ure, večinoma ob koncih tedna in praznikih) — eleganten vlak s postrežbo, kot nalašč za vas. Rezervirajte na spletu JR Shikoku od enega meseca do 10 dni pred vožnjo.",
+   "Imejte dovolj gotovine: most, ladjica, stojnice in majhne gostilne sprejemajo skoraj samo jene v gotovini, bankomatov pa je v dolini zelo malo. Denar dvignite že v Awa-Ikedi ali na pošti.",
+   "November je vrh jesenske sezone — prenočišča (Hotel Iya Onsen, kmečke hiše Togenkyo-Iya v Ochiaiju, Iyashi no Onsenkyo) rezervirajte čim prej, po možnosti nekaj mesecev vnaprej.",
+   "Računajte na mraz: dolina leži visoko in jutra so lahko okoli ledišča. Oblecite se po plasteh, vzemite kape in rokavice. Vse, kar pozimi zapre (dvojna mostova Oku-Iya, sedežnica Tsurugi), obiščite do konca novembra; barve so v dolini najlepše v prvi polovici meseca."
+  ],
+  "day_plan": [
+   {
+    "time": "Zjutraj",
+    "what": "Začnite ob reki: pol ure z ladjico po soteski Oboke med jesensko obarvanimi pobočji. Potem kava in brezplačna kopel za noge v Lapis Oboke, morda še hitri pozdrav yokaijem."
+   },
+   {
+    "time": "Dopoldne",
+    "what": "Počasi se zapeljite v dolino Iya s postankoma pri razgledišču Hi-no-Ji in kipcu dečka na pečini. Fotografije, globok vdih in naprej."
+   },
+   {
+    "time": "Popoldne",
+    "what": "Prečkajte most Kazurabashi in si oglejte slap Biwa, nato pozno kosilo ob mostu: iya soba rezanci in dekomawashi z žara. Če ostane moči, še kratek skok do razgledišča nad vasjo Ochiai."
+   },
+   {
+    "time": "Zvečer",
+    "what": "Nastanite se v Hotelu Iya Onsen in se z vzpenjačo spustite do vroče kopeli tik ob reki. Po večerji si tiste, ki spite bliže mostu, oglejte še večerno osvetlitev Kazurabashija (19:00-21:30)."
+   }
+  ],
+  "food_categories": [
+   {
+    "name": "Iya soba – ajdovi rezanci iz doline",
+    "emoji": "🍜",
+    "intro": "Ajda je stoletja rasla na strmih pobočjih doline Iya, zato so tukajšnji debelejši, kratko rezani rezanci soba prava jed kraja – privoščite si jih vsaj dvakrat.",
+    "places": [
+     {
+      "name": "祖谷そば もみじ亭 (Iya Soba Momijitei)",
+      "desc": "Dvesto let stara kmečka hiša v obrečnem kompleksu West-West, tik nad sotesko Oboke – skozi okna boste videle jesensko obarvano sotesko. Naročite boke-age sobo z velikim kosom ocvrtega lokalnega tofuja. Odprto 11.00–17.00, ob sredah zaprto; ob poldnevu pride več ljudi, a je prostora dovolj.",
+      "price": "€",
+      "maps": "Iya Soba Momijitei West-West Miyoshi Tokushima"
+     },
+     {
+      "name": "そば処 祖谷美人 (Iya Bijin)",
+      "desc": "Restavracija s teraso, ki visi nad sotesko Iya, ob cesti proti mostu Kazurabashi. Ročno rezana ploščata soba z močnim vonjem po ajdi, zraven pa nabodalo dekomawashi ali na soli pečena rečna postrv amego. Ker je zraven tudi majhen ryokan, sprejemajo rezervacije – za pet oseb pokličite dan prej.",
+      "price": "€€",
+      "maps": "Iya Bijin soba restaurant Nishi-Iya Miyoshi Tokushima"
+     },
+     {
+      "name": "せんきち (Senkichi)",
+      "desc": "Lepo obnovljena stara vaška hiša ob cesti 45 med Oboke in Zahodno Iyo. Ajdo zmeljejo vsako jutro, rezanci so brez vsakih dodatkov, dobra je tudi tempura. Ure odprtja se v gorah rade spreminjajo, zato pred obiskom pokličite; s seboj imejte gotovino.",
+      "price": "€",
+      "maps": "Senkichi soba restaurant Miyoshi Tokushima"
+     }
+    ]
+   },
+   {
+    "name": "Lokalne specialitete za pokušino",
+    "emoji": "🍢",
+    "intro": "Dolina ima tri dobrote, ki jih drugod ne boste našle: nabodalo dekomawashi s sladko miso polivko, trdi kamniti tofu iwa-dofu in na oglju pečeno postrv amego.",
+    "places": [
+     {
+      "name": "歩危マート (Boke Mart)",
+      "desc": "Majhna domača trgovina minuto od postaje Oboke, kjer je zbrana vsa dolina: kamniti tofu, ocvrti tofu boke-age, domači konjak in kislina za pod zob. V sosednji prodajalni strežejo tudi tople jedi, na primer Iya sobo in domačo juho. Odlično za malico ali darila; računajte na gotovino.",
+      "price": "€",
+      "maps": "Boke Mart Oboke Miyoshi Tokushima"
+     },
+     {
+      "name": "かずら橋夢舞台 (Kazurabashi Yumebutai)",
+      "desc": "Postajališče tik ob visečem mostu iz vinske trte. Na stojnicah pred vhodom počasi pečejo dekomawashi in soljeno postrv amego na oglju – vzemite eno nabodalo in jo pojejte kar ob reki. V notranji restavraciji je dovolj miz za vseh pet, zraven pa še trgovina z lokalnimi izdelki. Zvečer je most osvetljen (19.00–21.30), novembra ob vrhuncu jesenskih barv še posebej lep.",
+      "price": "€",
+      "maps": "Kazurabashi Yumebutai Miyoshi Tokushima"
+     }
+    ]
+   },
+   {
+    "name": "Kosilo z razgledom in toplice",
+    "emoji": "♨️",
+    "intro": "Novembra sta soteski Oboke in Iya v najlepših barvah – najlepše ju boste doživele z ladjice in iz tople vode, kosilo z razgledom pa je zraven.",
+    "places": [
+     {
+      "name": "レストラン大歩危峡まんなか (Restaurant Obokekyo Mannaka)",
+      "desc": "Restavracija tik nad pristanom izletniških ladjic po soteski Oboke – najprej pol ure vožnje med jesensko obarvanimi skalami (brez rezervacije, ladjice vozijo sproti), potem kosilo ob velikih oknih nad reko. Naročite set s pečeno rečno ribo in Iya sobo. Skupine so tu vsakdanjost, kosilo lahko tudi rezervirate; kuhinja dela do 16.00.",
+      "price": "€€",
+      "maps": "Restaurant Obokekyo Mannaka Miyoshi Tokushima"
+     },
+     {
+      "name": "ホテル祖谷温泉 (Hotel Iya Onsen)",
+      "desc": "Slavni hotel, kjer se z vzpenjačo spustite 170 metrov do vročih vrelcev ob sami reki – dnevni obisk stane okoli 2.000 jenov, na recepciji se javite do 16.00. Privoščite si kombinacijo: najprej kopel med jesenskim listjem, nato kosilo iz gorskih sestavin v restavraciji z razgledom na sotesko. Kosilo za pet oseb obvezno rezervirajte vnaprej.",
+      "price": "€€€",
+      "maps": "Hotel Iya Onsen Miyoshi Tokushima"
+     }
+    ]
+   },
+   {
+    "name": "Kavarne za počitek",
+    "emoji": "☕",
+    "intro": "Kavarn je v dolini malo, a ti dve sta pravi dragulj – ravno prav za oddih med počasnim raziskovanjem.",
+    "places": [
+     {
+      "name": "ハレとケ珈琲 (Haretoke Coffee)",
+      "desc": "Kavarna v nekdanji osnovni šoli ob vhodu v dolino, blizu postaje Iyaguchi. Kavo pražijo sami, k njej vzemite njihov canelé ali pico iz domače moke, po kavarni pa se sprehajajo hišne mačke. Odprto 11.00–16.00 (ob koncih tedna do 17.00), ob sredah in četrtkih zaprto.",
+      "price": "€",
+      "maps": "Haretoke Coffee Miyoshi Tokushima"
+     },
+     {
+      "name": "森のくまさん (Mori no Kumasan)",
+      "desc": "Majhna kavarna tik ob mostu Kazurabashi, specializirana za domači med. Naročite palačinke ali francoski toast z medom in kavo, na terasi pa vam bodo morda iz roke jedle gozdne ptice. Prijeten postanek po prečkanju mostu.",
+      "price": "€",
+      "maps": "Mori no Kumasan cafe Kazurabashi Miyoshi Tokushima"
+     }
+    ]
+   }
+  ],
+  "extra_videos": [
+   {
+    "id": "AWB2zI2Ae0U",
+    "title": "Autumn in Japan - Hiking Mt Tsurugi, Tokushima 4K",
+    "channel": "Currently Hannah",
+    "sight": "Gora Tsurugi – jesenski pohod in žičnica"
+   },
+   {
+    "id": "lvldvmY-AQQ",
+    "title": "Breathtaking views and exquisite onsen at unexplored region - Hotel Iyaonsen Iya Valley - Tokushima",
+    "channel": "Documentrip - Onsen Geek 🇯🇵",
+    "sight": "Onsen v dolini Iya (hotel Iya Onsen s kabinsko žičnico do termalnih kopeli)"
+   },
+   {
+    "id": "PLHCu8pihgQ",
+    "title": "Trip to IYA 🇯🇵/ Explore Hidden Valley in Japan / Kazurabashi / Oboke Gorge / Japan Travel 4K VLOG",
+    "channel": "Planet Journey",
+    "sight": "Viseči most Kazurabashi in soteska Oboke"
+   }
+  ]
+ },
+ {
+  "key": "ine",
+  "sights": [
+   {
+    "name": "Ladjica po zalivu Ine (Ine-wan Meguri)",
+    "desc": "To je tisti pogled, zaradi katerega greste v Ine: okoli 230 lesenih hišic funaya, ki stojijo tik nad vodo, se najlepše vidi z morja. Velika izletniška ladjica naredi 25-minutni krog po mirnem zalivu, med vožnjo pa lahko z roke hranite galebe. Ladja ima pokrito palubo in se skoraj ne ziba, zato je vožnja prijetna tudi, če niste ravno pomorščakinje.",
+    "tip": "Ladjice vozijo vsak dan od 9.00 do 16.00 na vsake pol ure, brez rezervacije; vozovnica okoli 1200 jenov, vštejte približno eno uro s postankom.",
+    "maps": "Ine Bay Sightseeing Boat, Hide, Ine, Kyoto",
+    "yt": "Ine bay boat cruise funaya village"
+   },
+   {
+    "name": "Razgledna točka Funaya no Sato",
+    "desc": "Park ob cesti na hribčku nad zalivom, od koder se odpre pogled na celoten polkrog vasice in vseh njenih funay. Tu sta tudi restavraciji, kjer si privoščite kosilo iz rib, ujetih isto jutro v zalivu. Idealno za počasen začetek dneva: razgled, fotografija, kava.",
+    "tip": "Do parka pripelje avtobus ali taksi (peš je vzpon strm — raje se peljite); restavracija Funaya streže kosila iz sezonskih rib z razgledom.",
+    "maps": "Funaya no Sato Park, Ine, Kyoto",
+    "yt": "Funaya no Sato Park Ine viewpoint"
+   },
+   {
+    "name": "Sprehod med funayami in postanek v INE CAFE",
+    "desc": "Ozka obalna ulica se vije med hišicami, kjer spodaj še vedno spijo ribiške barke, zgoraj pa živijo družine. Hodite počasi, kukajte v male trgovinice in se ustavite v INE CAFE — kavarni, zasnovani tako, da skozi okna vidite samo morsko gladino. Domača sirova torta z lokalnimi jajci in limonada z medom se prilegata po sprehodu.",
+    "tip": "Ulica je povsem ravna in primerna za počasen tempo; kavarna je odprta do okoli 17.00, ob koncih tedna pričakujte kratko čakanje na mizo ob oknu.",
+    "maps": "INE CAFE, Hirata, Ine, Kyoto",
+    "yt": "INE CAFE Ine no Funaya walk"
+   },
+   {
+    "name": "Pivovarna sakeja Mukai Shuzo",
+    "desc": "Majhna družinska pivovarna sakeja iz leta 1754, ki stoji kar ob vodi — domačini se po zaboj sakeja pripeljejo z barko. Vodi jo Kuniko Mukai, ena prvih mojstric sakeja na Japonskem. Njihova posebnost je Ine Mankai, rožnat sake iz starodavnega rdečega riža, ki spominja na desertno vino. Pravi skriti biser za degustacijo in lepo darilo za domov.",
+    "tip": "Odprto vsak dan 9.00-17.00, vstop prost, kar vstopite; steklenica Ine Mankai je najboljši spominek iz vasi — plačilo raje z gotovino.",
+    "maps": "Mukai Shuzo, Ine, Kyoto",
+    "yt": "Mukai Shuzo Ine sake brewery Ine Mankai"
+   },
+   {
+    "name": "Peščena kosa Amanohashidate in tempelj Chion-ji",
+    "desc": "Amanohashidate, \"most v nebesa\", je 3 km dolga peščena kosa z več tisoč bori in šteje med tri najslavnejše razglede Japonske. Na južnem vhodu stoji tempelj Chion-ji s 500 let staro pagodo, posvečen modrosti, tik ob njem pa rdeči vrtljivi most Kaisenkyo, ki se zasuka, kadar mimo pripelje ladja. Sprehod po kosi je popolnoma raven, med borovci in ob morju.",
+    "tip": "Ni treba prehoditi vsega: sprehodite se le prvi del od Chion-jija, nazaj (ali naprej) pa se peljite z izletniško ladjico čez zaliv; november prinese jesenske barve ob poti.",
+    "maps": "Amanohashidate Sandbar, Miyazu, Kyoto",
+    "yt": "Amanohashidate sandbar walk Chionji temple"
+   },
+   {
+    "name": "Park Kasamatsu in svetišče Motoise Kono",
+    "desc": "Na severni strani kose vas kabinska žičnica ali odprta sedežnica brez napora popelje do parka Kasamatsu z znamenitim pogledom na Amanohashidate. Tu domačini razgled gledajo sklonjeni med nogami — poskusite, kosa je tako videti kot most v nebo. Ob spodnji postaji stoji Motoise Kono, najpomembnejše svetišče pokrajine Tango, kjer naj bi nekoč prebivala sončna boginja Amaterasu — tiho, dostojanstveno, brez gneče.",
+    "tip": "Sredi in konec novembra so pobočja ob žičnici obarvana v momiji; žičnica in sedežnica sta vključeni v izletniško vozovnico Amanohashidate-Ine.",
+    "maps": "Kasamatsu Park, Miyazu, Kyoto",
+    "yt": "Kasamatsu Park Amanohashidate cable car view"
+   },
+   {
+    "name": "Tempelj Nariai-ji — jesenske barve in večerna osvetlitev",
+    "desc": "Tisočtristo let star romarski tempelj visoko nad zalivom, obdan z okoli dvesto javorji, ki novembra zažarijo v rdečem. Peterostropna pagoda med škrlatnimi listi je eden najlepših jesenskih prizorov severnega Kyota. Sredi novembra tempelj tradicionalno pripravi večerno osvetlitev javorjev, pagode in glavne dvorane — čaroben večer, vreden posebnega načrta.",
+    "tip": "Iz parka Kasamatsu vozi gorski avtobus (7 minut) do vrat templja, torej brez vzpenjanja; osvetlitev je navadno en vikend sredi novembra (17.00-21.00, okoli 1000 jenov) — točne datume za 2026 preverite na strani amanohashidate.jp.",
+    "maps": "Nariaiji Temple, Miyazu, Kyoto",
+    "yt": "Nariaiji temple autumn leaves illumination"
+   },
+   {
+    "name": "Onsen Chie no Yu",
+    "desc": "Majhno termalno kopališče tik ob postaji Amanohashidate, katerega ime pomeni \"kopel modrosti\". Voda, bogata z natrijem in magnezijem, slovi kot \"kopel za lepoto\" in je med obiskovalkami še posebej priljubljena. Notranji in zunanji bazenčki, po ogledih pa si pred vhodom brezplačno privoščite še toplo kopel za noge.",
+    "tip": "Vstop okoli 700 jenov; popoln zaključek dneva pred večerjo — brisačo si lahko izposodite, novembra pa topla voda po vetrovnem dnevu ob morju res tekne.",
+    "maps": "Amanohashidate Onsen Chie no Yu, Miyazu, Kyoto",
+    "yt": "Amanohashidate Onsen Chie no Yu"
+   }
+  ],
+  "practical": [
+   "Prevoz: iz Kyota vozi direktni vlak Hashidate (Limited Express) do postaje Amanohashidate, vožnja traja dobri dve uri. Naprej do Ineja pelje avtobus Tankai, približno 60 minut po obali — usedite se na levo stran za razglede na morje.",
+   "Vozovnica: na turističnem uradu ob postaji Amanohashidate kupite 2-dnevno vozovnico Amanohashidate-Ine (okoli 3500 jenov). Pokrije avtobuse do Ineja, žičnico na Kasamatsu, gorski avtobus do Nariai-jija in izletniške ladjice — vse na eni kartici, brez preračunavanja.",
+   "Gotovina: Ine je majhna ribiška vas — kavarne, sakarna, morski taksiji in manjše restavracije pogosto sprejemajo samo gotovino. Dvignite jo že v Kyotu ali na bankomatu pošte, v vasi bankomata skorajda ni.",
+   "Rezervacije: prenočišča v funayah in boljše restavracije v Ineju se za november zapolnijo več mesecev vnaprej — rezervirajte takoj. Restavracij v vasi je malo in kuhinje zaprejo zgodaj, zato kosilo načrtujte pred 14. uro.",
+   "Vreme: november ob Japonskem morju je muhast — sonce, veter in kratke plohe se izmenjujejo, temperature so med 8 in 15 stopinjami. Vzemite nepremočljivo jakno, tople plasti in šal za vožnjo z ladjico; ravno to vreme pa prinese najlepše jesenske barve, ki vrh dosežejo sredi in konec novembra."
+  ],
+  "day_plan": [
+   {
+    "time": "Zjutraj",
+    "what": "Z avtobusom iz Amanohashidata po obalni cesti do Ineja. Najprej na razgledno točko Funaya no Sato — jutranji pogled na zaliv in vseh 230 hišic vam bo vzel dih ob prvi kavi."
+   },
+   {
+    "time": "Dopoldne",
+    "what": "Vožnja z ladjico po zalivu s hranjenjem galebov, nato počasen sprehod po vaški ulici med funayami. Postanek v sakarni Mukai Shuzo za požirek rožnatega sakeja, kosilo iz svežih rib v vasi."
+   },
+   {
+    "time": "Popoldne",
+    "what": "Sladica z razgledom na morje v INE CAFE, nato z avtobusom nazaj do Amanohashidata. Z žičnico gor v park Kasamatsu, pogled \"med nogami\" na peščeno koso in obisk svetišča Motoise Kono ob vznožju."
+   },
+   {
+    "time": "Zvečer",
+    "what": "Namočite se v onsen Chie no Yu ob postaji in dan zaokrožite z večerjo. Če pade vaš obisk na vikend osvetlitve, se z gorskim avtobusom zapeljite še na večerni momiji v tempelj Nariai-ji."
+   }
+  ],
+  "food_categories": [
+   {
+    "name": "Sveže ribe iz zaliva Ine",
+    "emoji": "🐟",
+    "intro": "Ribiči pripeljejo jutranji ulov naravnost pod hiše na vodi, novembra pa se ravno začenja sezona mastne zimske rumenorepe (buri) — boste jedle ribo, ki je bila zjutraj še v zalivu.",
+    "places": [
+     {
+      "name": "Funaya Shokudo",
+      "desc": "Preprosta jedilnica v prvem nadstropju turističnega urada, z okni naravnost na zaliv in funaye. Naročite dnevni set s sašimijem in pečeno ribo (okoli 1.800 jenov) — poštena cena in porcija. Kosilo strežejo le do 15h, pridite raje pred poldnevom.",
+      "price": "€€",
+      "maps": "Funaya Shokudo Ine Kyoto"
+     },
+     {
+      "name": "Wadatsumi",
+      "desc": "Suši mojster gre vsako jutro sam po ribe iz zaliva. Opoldne suši seti za 2.000–3.000 jenov, zvečer kaiseki večerja — zanjo je potrebna rezervacija, kar je za vas pet pravzaprav idealno. V lepem novem kompleksu Funaya Biyori ob vodi.",
+      "price": "€€",
+      "maps": "Wadatsumi Funaya Biyori Ine"
+     },
+     {
+      "name": "Restaurant Funaya",
+      "desc": "V počivališču Funaya no Sato nad vasjo, kamor se pripeljete z avtom — od zgoraj boste videle ves zaliv naenkrat. Vodja je iz ribiške družine in vsako jutro sam izbere ribe; privoščite si kaisendon ali sašimi rumenorepe.",
+      "price": "€€",
+      "maps": "Restaurant Funaya Michi-no-Eki Funaya no Sato Ine"
+     },
+     {
+      "name": "Aburaya",
+      "desc": "Majhna domača gostilna s kakšnimi tridesetimi sedeži, znana po sašimi teišokuju. Odprta samo za kosilo do 14h, ob sredah zaprta — in za vsak primer imejte s seboj gotovino.",
+      "price": "€€",
+      "maps": "Aburaya restaurant Ine Kyoto"
+     }
+    ]
+   },
+   {
+    "name": "Kava in sake ob vodi",
+    "emoji": "☕",
+    "intro": "Po vožnji z ladjico po zalivu se najlepše usesti tik nad vodo — Ine ima kavarno prve vrste in eno najbolj posebnih sake pivovarn na Japonskem.",
+    "places": [
+     {
+      "name": "INE CAFE",
+      "desc": "Velika steklena stena naravnost nad zalivom, funaye na dosegu roke. Privoščite si sirovo torto iz lokalnih jajc in domačo medeno limonado; opoldne imajo tudi poke skledo s svežo ribo. Rezervacij ne sprejemajo, ob sredah zaprto — pridite dopoldne, ko je še mirno.",
+      "price": "€",
+      "maps": "INE CAFE Ine Kyoto"
+     },
+     {
+      "name": "Mukai Shuzo",
+      "desc": "Sake pivovarna iz leta 1754, tik ob vodi — vodi jo Kuniko Mukai, prva ženska glavna varilka sakeja na Japonskem. Poskusite njen rožnati Ine Mankai iz starodavnega rdečega riža, sladko-kiselkast kot rose; steklenica je najlepši spomin iz Ineja.",
+      "price": "€",
+      "maps": "Mukai Shuzo sake brewery Ine"
+     }
+    ]
+   },
+   {
+    "name": "Amanohashidate — čajnice in mochiji modrosti",
+    "emoji": "🍡",
+    "intro": "Pri templju Chion-ji na začetku slavne peščene kose že stoletja strežejo chie no mochi, 'mochije modrosti' — sredi novembra pa je čisto blizu še večerna osvetlitev jesenskega javorja pri templju Nariai-ji (običajno en vikend, preverite točen datum).",
+    "places": [
+     {
+      "name": "Chitose Chaya",
+      "desc": "Ena od štirih zgodovinskih čajnic ob templju Chion-ji. Sveži mehki mochiji z azuki pasto in skodelica zelenega čaja — sladek počitek pred sprehodom med borovci ali po njem.",
+      "price": "€",
+      "maps": "Chitose Chaya Amanohashidate Miyazu"
+     },
+     {
+      "name": "Hashidate Chaya",
+      "desc": "Edina čajnica sredi same peščene kose, pod borovci. Njihova posebnost je asari-don, riž s školjkami iz zaliva, za posladek pa zenzai — topla sladka fižolova juha z mochijem. Idealna vmesna postaja, da vam ni treba prehoditi vsega naenkrat.",
+      "price": "€",
+      "maps": "Hashidate Chaya Amanohashidate Miyazu"
+     },
+     {
+      "name": "Hikobee Chaya",
+      "desc": "Domačini prisegajo, da so tu mochiji najboljši od vseh štirih čajnic. Pet minut hoje od postaje Amanohashidate, odprto že od jutra — lepo za zajtrk s čajem, preden se gneča sploh zbudi.",
+      "price": "€",
+      "maps": "Hikobee Chaya Amanohashidate Miyazu"
+     }
+    ]
+   },
+   {
+    "name": "Večerja in rakova sezona",
+    "emoji": "🦀",
+    "intro": "Šestega novembra se v Tangu odpre lov na slavne rake matsuba — boste tam ravno v najboljšem času, za večerje pa se v teh mirnih krajih vedno splača rezervirati.",
+    "places": [
+     {
+      "name": "310 amanohashidate",
+      "desc": "Dve minuti od postaje Amanohashidate in ena redkih restavracij v kraju, odprtih zvečer. Zakonski par pripravlja japonsko-italijanske jedi iz lokalnih sestavin, lepo na pogled in po evropsko izdatne; govorijo angleško. Rezervirajte vnaprej, mizo za pet vam brez težav pripravijo.",
+      "price": "€€",
+      "maps": "310 amanohashidate Miyazu"
+     },
+     {
+      "name": "Namiji",
+      "desc": "Majhna suši restavracija blizu postaje Miyazu — šef Kishimoto gre vsako jutro sam v pristanišče, pozimi pride na mizo tudi rak matsuba. Ima odlično izbiro lokalnega sakeja. Prostora je malo, zato je rezervacija nujna.",
+      "price": "€€€",
+      "maps": "Namiji sushi Miyazu"
+     },
+     {
+      "name": "Amanohashidate Winery",
+      "desc": "Vinska klet s prostorno restavracijo in pogledom na zaliv, do nje se pripeljete z avtom. Kosilo z lokalnimi jedmi in degustacija njihovih vin — sproščena, nezahtevna postaja, kjer je za skupino vedno dovolj prostora.",
+      "price": "€€",
+      "maps": "Amanohashidate Winery Miyazu"
+     }
+    ]
+   }
+  ],
+  "extra_videos": [
+   {
+    "id": "xT1EsiYQ4dg",
+    "title": "【4K Japan Walk】Walk through the Funaya area of Ine, a seaside village in Kyoto",
+    "channel": "Scenery of Japan",
+    "sight": "Sprehod med hišami funaya v vasici Ine (4K)"
+   },
+   {
+    "id": "oFXTFCvlO8g",
+    "title": "伊根湾めぐり遊覧船　重要伝統的建物群『舟屋』を見学できる、京都府伊根町の遊覧船に乗ってきた　【特集・春の丹後半島10-5】",
+    "channel": "大人の鉄道旅行チャンネル by sankikikai",
+    "sight": "Vožnja z izletniško ladjico po zalivu Ine (pogled na funaya z morja)"
+   },
+   {
+    "id": "sLmLfgzvCZ4",
+    "title": "Walking at Sunset across Amanohashidate Sandbar | Miyazu, Japan",
+    "channel": "Ambient Exploration",
+    "sight": "Amanohashidate – sprehod čez peščeno koso ob sončnem zahodu"
+   }
+  ]
+ },
+ {
+  "key": "kyoto",
+  "sights": [
+   {
+    "name": "Tempelj Eikando (Zenrin-ji)",
+    "desc": "Japonci mu rečejo kar \"Eikando jesenskih listov\" — okoli 3.000 javorjev obarva vrtove, ribnik in pobočja v škrlatno in zlato. Ravno v času vašega obiska je tu vrhunec jeseni. Zvečer tempelj zasije v posebni osvetlitvi, ki se zrcali v ribniku — to bo eden tistih večerov, ki si jih boste zapomnile.",
+    "tip": "Večerna osvetlitev poteka vsako jesen od približno srede novembra do začetka decembra (17.30-21.00); pridite ob odprtju večernega vstopa, vstopnina okoli 1.000 jenov, računajte 1,5 ure.",
+    "maps": "Eikando Zenrinji Temple, Sakyo Ward, Kyoto",
+    "yt": "Eikando temple autumn illumination Kyoto"
+   },
+   {
+    "name": "Arašijama: vrt Tenryu-ji in bambusov gozd",
+    "desc": "Vrt zen templja Tenryu-ji ob ribniku Sogenchi je star 700 let, v ozadju pa se dvigajo gore Arašijame — novembra vse v jesenskih barvah nad vodo. Skozi severna vrata vrta stopite naravnost v slavni bambusov gozd. Vse je ravno in počasno, ravno prav za lep dopoldan.",
+    "tip": "Pridite pred 9. uro, ko je še mirno; vstop v vrt 500 jenov; če želite še panoramski vlak Sagano ob soteski Hozu, vstopnice rezervirajte vsaj mesec vnaprej.",
+    "maps": "Tenryuji Temple, Arashiyama, Kyoto",
+    "yt": "Tenryuji temple garden Arashiyama autumn leaves"
+   },
+   {
+    "name": "Ginkaku-ji in Filozofska pot",
+    "desc": "Srebrni paviljon je bil upokojenska vila šoguna — mahovnat vrt, skrbno oblikovan pesek in razgledna točka nad mestom. Od tam se začne dva kilometra dolga ravna Filozofska pot ob kanalu, polna kavarnic in malih svetišč. Novembra jo obarvajo javorji, vi pa hodite počasi in postajate, kjer vam paše.",
+    "tip": "Pot je ravna in lahka; najlepše dopoldne med tednom; vstop v Ginkaku-ji 500 jenov; med potjo se ustavite pri tihem templju Honen-in s čudovitimi vrati.",
+    "maps": "Ginkakuji Temple, Kyoto",
+    "yt": "Ginkakuji Philosopher's Path Kyoto autumn"
+   },
+   {
+    "name": "Zen vrt Ryoan-ji",
+    "desc": "Najslavnejši kamniti zen vrt na svetu: 15 kamnov v belem pesku, a z verande nikoli ne vidite vseh hkrati. Usedite se, umirite in pustite, da vrt deluje. Okoli ribnika Kyoyochi vodi še prijetna sprehajalna pot pod javorji.",
+    "tip": "Najmirneje zgodaj zjutraj (odprto od 8.00) ali pozno popoldne; vstop 600 jenov, dovolj je ura; do Zlatega paviljona Kinkaku-ji je le 5 minut s taksijem.",
+    "maps": "Ryoanji Temple, Kyoto",
+    "yt": "Ryoanji zen rock garden Kyoto"
+   },
+   {
+    "name": "Tempelj Tofuku-ji in most Tsutenkyo",
+    "desc": "S pokritega mostu Tsutenkyo boste gledale naravnost na dolino z okoli 2.000 javorji — eden najlepših jesenskih prizorov v vsej Japonski. Ob mostu je še strog zen vrt Hojo s karirastim mahom, ki je čisto drugačen od vseh drugih.",
+    "tip": "Vrhunec barv je v drugi polovici novembra in takrat je gneča velika — pridite ob odprtju ob 8.30 na delovni dan; vstop na most okoli 1.000 jenov.",
+    "maps": "Tofukuji Temple, Kyoto",
+    "yt": "Tofukuji temple Tsutenkyo bridge autumn"
+   },
+   {
+    "name": "Gion in jesenski ples Gion Odori",
+    "desc": "Stara gejšina četrt s čajnimi hišami in lesenimi pročelji je najlepša v večernem mraku, ko zasvetijo lampijoni na ulici Hanamikoji. Od 1. do 10. novembra — ravno ob začetku vašega potovanja — je v gledališču Gion Kaikan edina jesenska plesna predstava gejš in maik v Kyotu.",
+    "tip": "Gion Odori: predstavi ob 13.30 in 16.00, vstopnice okoli 4.000-7.000 jenov, doplačilo za čaj, ki ga postreže maiko — rezervirajte vnaprej; v bližini ima tempelj Kodai-ji večerno jesensko osvetlitev do 21.30.",
+    "maps": "Gion Kaikan, Higashiyama Ward, Kyoto",
+    "yt": "Gion Odori geisha dance Kyoto"
+   },
+   {
+    "name": "Čajna ceremonija Camellia",
+    "desc": "V majhni čajni hiši na stari kamniti ulici Ninenzaka, blizu templja Kiyomizu-dera, vam gostiteljica v tekoči angleščini pokaže vsak korak ceremonije. Nato si vsaka sama stepe svojo skodelico matche in jo v miru popije s sladico. Toplo, osebno doživetje za slabo uro sedenja.",
+    "tip": "Seansa traja 45 minut, skupinska stane okoli 3.000 jenov, termini od 10.00 do 17.00 — rezervirajte na njihovi spletni strani nekaj dni vnaprej.",
+    "maps": "Camellia Flower Tea Ceremony, Ninenzaka, Kyoto",
+    "yt": "Camellia tea ceremony experience Kyoto"
+   },
+   {
+    "name": "Vrt Okochi Sanso",
+    "desc": "Skriti biser tik ob bambusovem gozdu: vila slavnega filmskega igralca Denjira Okochija z vrtovi na pobočju in razgledi na Kyoto ter reko Hozu. Medtem ko se zunaj dreni gneča, je tu skoraj prazno. V ceno vstopnice sta vključeni matcha in sladica v čajnici sredi vrta.",
+    "tip": "Vstop 1.000 jenov z matcho, odprto 9.00-17.00; poti so tlakovane, a se mestoma rahlo vzpenjajo — vzemite si uro in pol brez hitenja.",
+    "maps": "Okochi Sanso Garden, Arashiyama, Kyoto",
+    "yt": "Okochi Sanso villa garden Arashiyama Kyoto"
+   }
+  ],
+  "practical": [
+   "Za pet oseb sta dva taksija pogosto udobnejša in celo cenovno primerljiva z avtobusom — štart okoli 500 jenov, vožnja od postaje do Giona okoli 1.200 jenov. Novembra so mestni avtobusi nabito polni, podzemna železnica pa je skoraj vedno hitrejša od avtobusa v prometu.",
+   "Vsaka naj si na letališču ali postaji omisli IC kartico (ICOCA/Suica) — z njo plačujete avtobuse, podzemno, vlake in večino taksijev. Za dneve z več vožnjami se splača dnevna vozovnica podzemna + avtobus za 1.100 jenov.",
+   "Rezervirajte vnaprej: panoramski vlak Sagano in čoln po reki Hozugawa vsaj mesec prej, vstopnice za Gion Odori in čajno ceremonijo pa nekaj tednov prej. Za večerne osvetlitve (Eikando, Kodai-ji) rezervacija večinoma ni potrebna, le vrsta je.",
+   "Imejte gotovino: vstopnine v templje (500-1.000 jenov) in manjše stojnice na tržnici Nishiki pogosto sprejemajo samo gotovino. Dvig je najlažji na bankomatih v trgovinah 7-Eleven, ki sprejemajo tuje kartice.",
+   "November v Kyotu: dnevi prijetni (10-17 °C), večeri hladni — za večerne osvetlitve vzemite tople plasti in udobne čevlje. Gneči se najlažje izognete zgodaj zjutraj (ob odprtju templjev) ali zvečer; velike kovčke pustite v hotelu, na avtobusih niso zaželeni."
+  ],
+  "day_plan": [
+   {
+    "time": "Zjutraj",
+    "what": "Ob 8.30, ko odprejo, boste imele Ginkaku-ji skoraj zase. V miru si oglejte srebrni paviljon in mahovnat vrt ter razgled nad mestom."
+   },
+   {
+    "time": "Dopoldne",
+    "what": "Počasen sprehod po Filozofski poti ob kanalu, pod jesenskimi javorji. Postanek za kavo v eni od kavarnic in kratek obisk tihega templja Honen-in."
+   },
+   {
+    "time": "Popoldne",
+    "what": "S taksijem do tržnice Nishiki: pozno kosilo kar med stojnicami — dashimaki omleta, kisle dobrote, matcha sladice. Nato počitek v hotelu."
+   },
+   {
+    "time": "Zvečer",
+    "what": "Večerna osvetlitev templja Eikando — javorji in pagoda se zrcalijo v ribniku. Po njej večerja v Gionu in sprehod po lampijonski ulici Hanamikoji."
+   }
+  ],
+  "food_categories": [
+   {
+    "name": "Tofu ob templjih: yudofu in yuba",
+    "emoji": "🍲",
+    "intro": "Kyoto je mesto tofuja — ob templjih, ki jih boste obiskale, stojijo stoletja stare hiše, kjer vroč tofu (yudofu) postrežejo z vrtom in jesenskimi barvami pred očmi.",
+    "places": [
+     {
+      "name": "Nanzenji Junsei",
+      "desc": "Tik ob templju Nanzen-ji, deset minut od Eikanda — odlično kosilo pred večerno jesensko osvetlitvijo. Naročite si set yudofu: vroč tofu v dashiju, tempura in priloge, ob pogledu na velik sprehajalni vrt. Rezervirati je mogoče prek njihove spletne strani, kar novembra toplo priporočam.",
+      "price": "€€",
+      "maps": "Nanzenji Junsei Kyoto"
+     },
+     {
+      "name": "Okutan Nanzenji",
+      "desc": "Najstarejša tofu restavracija v Kyotu, odprta že leta 1635. Tofu delajo vsak dan sveže; set s sezamovim tofujem in zelenjavno tempuro je preprost in izjemno dober. Odprto samo za kosilo, ob četrtkih zaprto — pridite ob odprtju, da se izognete vrsti.",
+      "price": "€€",
+      "maps": "Okutan Nanzenji Kyoto"
+     },
+     {
+      "name": "Shoraian",
+      "desc": "Skrita vila nad reko v Arashiyami, do nje vodi 15 minut lepe poti ob vodi. Tofu kaiseki meni ob oknih z razgledom na pobočje javorjev — novembra je to eden najlepših prizorov v Kyotu. Rezervacija je nujna, najbolje več tednov vnaprej.",
+      "price": "€€€",
+      "maps": "Shoraian Arashiyama Kyoto"
+     },
+     {
+      "name": "Saga Tofu Ine",
+      "desc": "Sproščena različica tofu kosila nasproti vhoda v tempelj Tenryu-ji v Arashiyami. Privoščite si set z yubo (nežno sojino kožico) in tofu obaro — brez rezervacije, primerno tudi, ko so noge že utrujene.",
+      "price": "€€",
+      "maps": "Saga Tofu Ine Arashiyama Kyoto"
+     }
+    ]
+   },
+   {
+    "name": "Rezanci: soba in udon",
+    "emoji": "🍜",
+    "intro": "Topla skleda rezancev je najboljše kosilo med sprehodi po templjih — hitro, poceni in ravno prav lahko za novembrski dan.",
+    "places": [
+     {
+      "name": "Omen Ginkakuji Honten",
+      "desc": "Nekaj korakov od Ginkaku-jija in Filozofske poti; ljubljenec domačinov. Naročite njihov znameniti omen: udon, ki ga pomakate v sezamovo-sojino omako s kupčkom sveže zelenjave. Prostorna hiša, brez težav sprejmejo pet oseb.",
+      "price": "€€",
+      "maps": "Omen Ginkakuji Honten Kyoto"
+     },
+     {
+      "name": "Honke Owariya Main Branch",
+      "desc": "Soba delajo že več kot 550 let — najstarejša restavracija v mestu, v čudoviti stari trgovski hiši. Poskusite horai soba: stolpič mrzlih rezancev z osmimi dodatki, ali toplo sobo z yuzujem. Blizu gradu Nijo, sprejemajo rezervacije.",
+      "price": "€€",
+      "maps": "Honke Owariya Honten Kyoto"
+     },
+     {
+      "name": "Arashiyama Yoshimura",
+      "desc": "Soba hiša z razgledom na most Togetsukyo in jesensko pobočje — novembra vredna vsake minute čakanja. Naročite set s tempuro in sveže rezano sobo; pridite pred poldnevom, ker je razgledna vrsta miz hitro polna.",
+      "price": "€€",
+      "maps": "Arashiyama Yoshimura soba Kyoto"
+     }
+    ]
+   },
+   {
+    "name": "Večerja za skupino: kaiseki in obanzai",
+    "emoji": "🍱",
+    "intro": "Za skupne večere si vsaj enkrat privoščite kaiseki — praznično zaporedje malih sezonskih jedi — ali obanzai, kjotsko domačo kuhinjo v toplem vzdušju.",
+    "places": [
+     {
+      "name": "Gion Karyo",
+      "desc": "Prijazen uvod v kaiseki na slavni ulici Hanamikoji v Gionu: večerni meni okoli 10.000 jenov, novembra poln gob, kostanja in javorjevih poudarkov. Spletna rezervacija je preprosta in za pet oseb nujna — mize potrdijo takoj.",
+      "price": "€€€",
+      "maps": "Gion Karyo Hanamikoji Kyoto"
+     },
+     {
+      "name": "Menami",
+      "desc": "Kyotska institucija za obanzai od leta 1939, ob kanalu Kiyamachi. Sedite k pultu ali mizi in izberite več malih krožnikov sezonske zelenjave, ribe in tofuja — kot bi vas pogostila japonska gospodinja. Rezervacijo uredite prek hotela, vzdušje je sproščeno in srčno.",
+      "price": "€€",
+      "maps": "Menami Kiyamachi Kyoto"
+     },
+     {
+      "name": "Kyo no Obanzai Dokoro Rokkakuya Kyoto Ten",
+      "desc": "Praktična izbira pet minut od postaje Kyoto: obanzai meniji z desetimi jedmi za okoli 3.000–3.500 jenov, rezervacije sprejemajo že za dve osebi. Idealno za večer, ko se vrnete utrujene in bi rade samo dobro jedle.",
+      "price": "€€",
+      "maps": "Rokkakuya obanzai Kyoto Station"
+     }
+    ]
+   },
+   {
+    "name": "Matcha, wagashi in kavice",
+    "emoji": "🍵",
+    "intro": "Kyoto je prestolnica zelenega čaja — popoldanski postanek za matcha sladico spada k dnevu enako kot tempelj.",
+    "places": [
+     {
+      "name": "Saryo Tsujiri Gion Honten",
+      "desc": "Najbolj slavni matcha parfait v mestu: plasti matcha sladoleda, želeja, biskvita in sladkega fižola (okoli 1.500 jenov). Vrsta se premika hitro, v treh nadstropjih je dovolj miz. Popoln postanek po sprehodu skozi Gion.",
+      "price": "€",
+      "maps": "Saryo Tsujiri Gion Honten Kyoto"
+     },
+     {
+      "name": "Kagizen Yoshifusa Main Store",
+      "desc": "Slaščičarna iz leta 1726 v Gionu, mirna in elegantna. V čajnem salonu zadaj si privoščite kuzukiri — hladne prosojne rezance iz pušpanovega škroba, ki jih pomakate v sirup iz črnega sladkorja. Tišina, les in lepota — čisto po vašem okusu.",
+      "price": "€",
+      "maps": "Kagizen Yoshifusa Gion Kyoto"
+     },
+     {
+      "name": "% Arabica Kyoto Arashiyama",
+      "desc": "Majhna kavarna s svetovno znano kavo in razgledom na reko Katsura — latte v roke in na sprehod ob vodi. Vrsta je pogosta, a hitra; kava je res med najboljšimi v mestu.",
+      "price": "€",
+      "maps": "% Arabica Kyoto Arashiyama"
+     }
+    ]
+   },
+   {
+    "name": "Nishiki: prigrizki na tržnici",
+    "emoji": "🍡",
+    "intro": "Nishiki je kjotska kuhinja pod streho — 400 metrov stojnic, kjer greste počasi od enega prigrizka do drugega; največ jih je odprtih dopoldne in zgodaj popoldne, gotovina pride prav.",
+    "places": [
+     {
+      "name": "Konnamonja Nishiki Market",
+      "desc": "Drobni krofki iz sojinega mleka, ocvrti sproti — hrustljavi zunaj, puhasti znotraj, vrečka za nekaj sto jenov. Sladica, ki si jo boste delile kar med hojo.",
+      "price": "€",
+      "maps": "Konnamonja Nishiki Market Kyoto"
+     },
+     {
+      "name": "Miki Keiran",
+      "desc": "Stara mojstrica tamagoyakija: topla, mehka rolada iz jajc in dashija, ki se skoraj stopi v ustih. Kupite jo po kosu in pojejte sveže — to je okus tržnice v enem grižljaju.",
+      "price": "€",
+      "maps": "Miki Keiran Nishiki Market Kyoto"
+     },
+     {
+      "name": "Ajisai no Toyo",
+      "desc": "Majhna stojnica z jeguljo na oglju, odprta že od leta 1912. Skodelica riža z unagijem v sladki karamelizirani omaki je najbolj nasiten prigrizek na tržnici — če najdete prosto mizico, se usedite in privoščite.",
+      "price": "€€",
+      "maps": "Ajisai no Toyo Nishiki Market Kyoto"
+     }
+    ]
+   }
+  ],
+  "extra_videos": [
+   {
+    "id": "rXhyn368Vg4",
+    "title": "Hozugawa River Boat Ride | Kyoto Autumn Colors | Impressions of Kyoto",
+    "channel": "Too Much Luggage",
+    "sight": "Vožnja s čolnom po reki Hozugawa (Arashiyama) v jesenskih barvah"
+   },
+   {
+    "id": "tU2R7JPdkCo",
+    "title": "【4K】Nishiki Market Walking Tour in Kyoto, Japan",
+    "channel": "The KYOTO",
+    "sight": "Tržnica Nishiki — sprehod skozi »kuhinjo Kyota«"
+   },
+   {
+    "id": "yRu01dv435Q",
+    "title": "永観堂 禅林寺 紅葉ライトアップ 2023 Kyoto Walk - Eikando Autumn Leaves 4K HDR Japan",
+    "channel": "Osaka BlackCat",
+    "sight": "Tempelj Eikando (Zenrin-ji) — večerna jesenska osvetlitev javorjev"
+   }
+  ]
+ },
+ {
+  "key": "osaka",
+  "sights": [
+   {
+    "name": "Grad Osaka in vrt Nishinomaru",
+    "desc": "Mogočen grad sredi ogromnega parka, ki se novembra obarva v zlato in rdeče. Iz vrta Nishinomaru boste imele najlepši pogled na grajski stolp, uokvirjen v jesenske javorje in ginke. Po notranjem jarku vozi tudi pozlačena ladjica gozabune — 20 minut mirne vožnje s pogledom na obzidje, brez kakršnegakoli napora.",
+    "tip": "Pridite dopoldne, računajte 2-3 ure počasnega tempa; od približno srede novembra zvečer (17.00-22.00) v vrtu Nishinomaru poteka jesenska osvetlitev Osaka Castle Illuminage (okoli 2.000 jenov).",
+    "maps": "Osaka Castle, Chuo Ward, Osaka",
+    "yt": "Osaka Castle autumn leaves Nishinomaru Garden"
+   },
+   {
+    "name": "Dotonbori in ladjica Tombori",
+    "desc": "Najbolj živahen kotiček Osake ob kanalu, poln svetlečih reklam in znamenitega tekača Glico. Namesto prerivanja po ulici si privoščite 20-minutno vožnjo z ladjico Tombori River Cruise — vse luči in mostove boste videle udobno sede z vode. Zvečer je vzdušje čarobno.",
+    "tip": "Ladjice vozijo vsake pol ure od 11.00 do 21.00 s pomola Tazaemonbashi (odrasli 2.000 jenov, vključeno v Osaka Amazing Pass); najlepše je po mraku, okoli 17.30-19.00.",
+    "maps": "Tombori River Cruise, Tazaemonbashi Pier, Dotonbori, Osaka",
+    "yt": "Tombori River Cruise Dotonbori night Osaka"
+   },
+   {
+    "name": "Tržnica Kuromon Ichiba",
+    "desc": "Pokrita tržnica, ki ji pravijo »kuhinja Osake« — 600 metrov stojnic s svežimi morskimi sadeži, sadjem in sladicami, vse pod streho in po ravnem. Tu si privoščite pozni zajtrk: rezine tune, pečene pokrovače, takoyaki ali jagode v sladkorju. Jeste lahko kar sproti, na klopcah med stojnicami.",
+    "tip": "Najlepše je med 9.00 in 10.30, preden pridejo množice; večina stojnic sprejema samo gotovino in se zapre okoli 17.00.",
+    "maps": "Kuromon Ichiba Market, Nipponbashi, Osaka",
+    "yt": "Kuromon Ichiba Market Osaka food tour"
+   },
+   {
+    "name": "Tempelj Shitenno-ji in vrt Gokuraku-jodo",
+    "desc": "Najstarejši budistični tempelj na Japonskem, ustanovljen leta 593, s petnadstropno pagodo in mirnim dvoriščem. Pravi biser je vrt Gokuraku-jodo — »vrt raja« z ribnikoma in potočkom, kjer se novembra javorji obarvajo škrlatno. Tu boste začutile tiho, duhovno Japonsko, daleč od mestnega vrveža.",
+    "tip": "Vstop na dvorišče je prost, vrt stane le 300 jenov; najlepše barve so od srede novembra naprej, za obisk računajte poldrugo uro počasne hoje po ravnem.",
+    "maps": "Shitennoji Temple, Tennoji, Osaka",
+    "yt": "Shitennoji Temple Osaka Gokuraku Jodo Garden autumn"
+   },
+   {
+    "name": "Vrt Keitakuen",
+    "desc": "Skrit japonski sprehajalni vrt v parku Tennoji, nekdanja last bogate družine Sumitomo. Okoli ribnika vodijo položne potke, jeseni pa se javorji ob vodi razžarijo v rdeče in zlato. Tudi v vrhuncu sezone je tu skoraj prazno — popoln kraj, da se usedete in samo gledate.",
+    "tip": "Vstopnina je samo 150 jenov, odprto 9.30-17.00, ob ponedeljkih zaprto; lepo se poveže s Shitenno-jijem, ki je 10 minut stran.",
+    "maps": "Keitakuen Garden, Tennoji Park, Osaka",
+    "yt": "Keitakuen Garden Osaka autumn foliage"
+   },
+   {
+    "name": "Umeda Sky Building",
+    "desc": "Dva stolpa, povezana z »lebdečim vrtom« na višini 173 metrov — razgled na vso Osako v krogu 360 stopinj. Gor pelje dvigalo in pokrite tekoče stopnice, tako da hoje skoraj ni. Sončni zahod od tu je uvrščen med sto najlepših na Japonskem, novembra pa sonce zaide že okoli 16.50.",
+    "tip": "Pridite okoli 16.00, da ujamete dnevno svetlobo, zahod in večerne luči v enem obisku; vstopnica okoli 1.500 jenov, odprto do 22.30, karte lahko kupite vnaprej prek spleta.",
+    "maps": "Umeda Sky Building, Kita Ward, Osaka",
+    "yt": "Umeda Sky Building Kuchu Teien Observatory sunset"
+   },
+   {
+    "name": "Shinsekai in stolp Tsutenkaku",
+    "desc": "Retro četrt iz začetka 20. stoletja, kjer čas teče počasneje: pisani neonski napisi, stari lokali in stolp Tsutenkaku z Billikenom, božanstvom sreče. Tu je doma kushikatsu — ocvrti nabodalčki, ki si jih privoščite v eni od domačih gostilnic. Samo zapomnite si zlato pravilo: v skupno omako se pomoči samo enkrat!",
+    "tip": "Najprijetneje je pozno popoldne, ko se prižgejo luči; za vzpon na Tsutenkaku (10.00-20.00) rezervirajte termin prek spleta, da se izognete vrsti.",
+    "maps": "Tsutenkaku, Shinsekai, Osaka",
+    "yt": "Shinsekai Osaka Tsutenkaku kushikatsu evening"
+   },
+   {
+    "name": "Muzej bivanja in življenja Osake",
+    "desc": "Čudovit notranji muzej, kjer se sprehodite po naravno veliki ulici Osake iz obdobja Edo — s trgovinicami, hišami in svetlobo, ki se preliva iz dneva v noč. Za drobiž si lahko izposodite kimono in se v njem sprehodite po stari ulici; fotografije bodo videti kot iz drugega stoletja. Vse je pod streho, idealno za deževen ali hladen dan.",
+    "tip": "Računajte uro in pol do dve; ob torkih zaprto, izposoja kimona je poceni (nekaj sto jenov), a pridite zgodaj, ker so vrste; postaja Tenjinbashisuji 6-chome je tik pod muzejem.",
+    "maps": "Osaka Museum of Housing and Living, Kita Ward, Osaka",
+    "yt": "Osaka Museum of Housing and Living kimono Edo street"
+   }
+  ],
+  "practical": [
+   "Razmislite o vozovnici Osaka Amazing Pass (1 dan okoli 2.800 jenov): vključuje metro in mestne avtobuse ter brezplačen vstop v grad Osaka, vrt Nishinomaru, ladjico gozabune, Tombori River Cruise in Umeda Sky Building — če v enem dnevu obiščete dvoje ali troje od tega, se že splača.",
+   "Za vse ostale dni si na letališču ali postaji omislite kartico ICOCA (ali Suico v telefonu): z njo se samo dotaknete čitalca na metroju, avtobusu in v mnogih trgovinah. Postaje imajo dvigala in tekoče stopnice, razdalje med znamenitostmi pa so kratke — Osaka je za počasen tempo zelo prijazna.",
+   "Imejte vedno nekaj gotovine: stojnice na Kuromonu, kushikatsu gostilnice v Shinsekaiu in manjši lokali pogosto ne sprejemajo kartic. Dvig z evropsko kartico deluje brez težav na bankomatih v trgovinah 7-Eleven in na poštah.",
+   "November je v Osaki prijeten in večinoma suh: podnevi okoli 15-17 °C, zvečer pade pod 10 °C. Oblecite se v plasteh in vzemite topel šal za večerne osvetlitve — sonce zaide že pred 17. uro, kar je pravzaprav prednost, saj luči vidite še pred večerjo.",
+   "Jesenske osvetlitve rezervirajte oz. načrtujte vnaprej: Midosuji Illumination (brezplačna, 4 km svetlečega drevoreda po glavni aveniji) traja od 3. novembra do konca decembra, Osaka Castle Illuminage v vrtu Nishinomaru pa se tradicionalno začne sredi novembra — nakup vstopnice na kraju samem zvečer je preprost, a preverite datume na uradni strani, ko bo objavljen program 2026."
+  ],
+  "day_plan": [
+   {
+    "time": "Zjutraj",
+    "what": "Okoli 9.00 se odpravite na tržnico Kuromon Ichiba na pozni zajtrk: sveža tuna, pečene pokrovače, sadje. Vse pod streho, brez hitenja."
+   },
+   {
+    "time": "Dopoldne",
+    "what": "Z metrojem do gradu Osaka: sprehod skozi vrt Nishinomaru med jesenskimi javorji in vožnja s pozlačeno ladjico gozabune po grajskem jarku. Vmes kava in počitek v parku."
+   },
+   {
+    "time": "Popoldne",
+    "what": "Okoli 16.00 se odpeljite do Umeda Sky Buildinga in ujemite sončni zahod z lebdečega vrta — novembra sonce zaide že pred 17. uro, mesto pa se pod vami prižge."
+   },
+   {
+    "time": "Zvečer",
+    "what": "Vrnitev proti Dotonboriju: najprej 20-minutna vožnja z ladjico Tombori med svetlečimi reklamami, nato večerja v eni od domačih restavracij. Če vam ostane moči, se sprehodite še mimo svetleče avenije Midosuji."
+   }
+  ],
+  "food_categories": [
+   {
+    "name": "Okonomiyaki in takoyaki – duša Osake",
+    "emoji": "🥞",
+    "intro": "Osaka je prestolnica hrane z žara (konamon) in okonomiyaki tu ni prigrizek, ampak obred — pripravijo vam ga na vroči plošči pred očmi.",
+    "places": [
+     {
+      "name": "Okonomiyaki Mizuno",
+      "desc": "Družinska hiša na Dotonboriju od leta 1945, večkrat nagrajena z Michelinovim Bib Gourmandom. Naročite si yamaimo-yaki iz jamsa namesto moke — je mehkejši in lažji. Vrsta je krajša, če pridete ob odprtju ob 11h.",
+      "price": "€€",
+      "maps": "Okonomiyaki Mizuno Dotonbori Osaka"
+     },
+     {
+      "name": "Fukutaro Honten",
+      "desc": "Legenda v Sennichimae, med najboljšimi na Tabelogu; tu si privoščite negiyaki, tanjšo različico s hribom mlade čebule. Sprejemajo rezervacije, zato je odlična izbira za vseh pet skupaj.",
+      "price": "€€",
+      "maps": "Fukutaro Main Branch Sennichimae Osaka"
+     },
+     {
+      "name": "Okonomiyaki Kiji Umeda Sky Building",
+      "desc": "Skrit v retro uličici Takimi-koji v kleti Umeda Sky Buildinga — idealno za kosilo pred vzponom na razgledno ploščad. Majhen lokal, hitra menjava miz, poskusite modan-yaki z rezanci. Plačilo v gotovini.",
+      "price": "€",
+      "maps": "Okonomiyaki Kiji Umeda Sky Building Osaka"
+     },
+     {
+      "name": "Takoyaki Wanaka Sennichimae",
+      "desc": "Ena najbolj cenjenih stojnic s takoyakiji v mestu, blizu trga Kuromon. Kroglice s hobotnico so zunaj hrustljave, znotraj kremaste — vzemite porcijo za pokušino med sprehodom.",
+      "price": "€",
+      "maps": "Takoyaki Wanaka Sennichimae Osaka"
+     }
+    ]
+   },
+   {
+    "name": "Trg Kuromon – sveže ribe in sashimi",
+    "emoji": "🐟",
+    "intro": "Pokriti trg Kuromon je 600 metrov dolga »kuhinja Osake« — pridite dopoldne, ko je ponudba najbolj sveža in gneča še znosna.",
+    "places": [
+     {
+      "name": "Kuromon Sanpei",
+      "desc": "Najbolj znana ribja stojnica na trgu s certifikatom za varnost hrane prefekture Osaka. Privoščite si kaisendon, skledo riža s svežim sashimijem po lastni izbiri — kakovost potrjujejo tudi domačini.",
+      "price": "€€",
+      "maps": "Kuromon Sanpei Osaka"
+     },
+     {
+      "name": "Maguroya Kurogin",
+      "desc": "Specialisti za tuno: režejo jo pred vami, od cenovno prijaznih nigirijev do mastnega otora, ki se topi na jeziku. Odprto od 9.30 do razprodaje, zato ne odlašajte do popoldneva.",
+      "price": "€€",
+      "maps": "Maguroya Kurogin Kuromon Ichiba Osaka"
+     }
+    ]
+   },
+   {
+    "name": "Kushikatsu v Shinsekaiju",
+    "emoji": "🍢",
+    "intro": "Retro četrt Shinsekai pod stolpom Tsutenkaku je rojstni kraj kushikatsuja — ocvrtih nabodalc, ki jih pomočite v skupno omako (a samo enkrat, to je železno pravilo!).",
+    "places": [
+     {
+      "name": "Kushikatsu Daruma Shinsekai Honten",
+      "desc": "Prav tu se je leta 1929 kushikatsu rodil; nabodalca so lahka in hrustljava, cene pa prijazne (110–300 jenov za kos). Ob koncih tedna se vrsti izognete, če pridete zgodaj popoldne.",
+      "price": "€€",
+      "maps": "Kushikatsu Daruma Shinsekai Honten Osaka"
+     },
+     {
+      "name": "Yaekatsu",
+      "desc": "Izbira domačinov od leta 1949 — manj turistov, krajša vrsta in po mnenju mnogih še boljša nabodalca. Za okrog 2.000 jenov na osebo se boste najedle do sitega. Samo gotovina.",
+      "price": "€",
+      "maps": "Yaekatsu Shinsekai Osaka"
+     }
+    ]
+   },
+   {
+    "name": "Sladice, kava in počitek",
+    "emoji": "🍡",
+    "intro": "Ko vas po sprehodu ob jesenskem listju zazebe v prste, se v Osaki najlepše pogrejete ob topli sladici iz rdečega fižola ali skodelici kave v stari kavarni.",
+    "places": [
+     {
+      "name": "Meoto Zenzai",
+      "desc": "Drobna slaščičarna iz leta 1883 ob mahovitem templju Hozenji; zenzai, toplo sladko juho iz azuki fižola z mochijem, vam postrežejo v dveh skodelicah — simbol sloge. Popolna nagrada za hladen novembrski dan.",
+      "price": "€",
+      "maps": "Meoto Zenzai Hozenji Namba Osaka"
+     },
+     {
+      "name": "Marufuku Coffee Sennichimae Honten",
+      "desc": "Retro kavarna iz leta 1934, kjer čas teče počasneje: temna, gosta kava po hišni metodi in palačinke z bakrene plošče. Idealen predah po trgu Kuromon, ki je le nekaj minut stran.",
+      "price": "€",
+      "maps": "Marufuku Coffee Sennichimae Honten Osaka"
+     },
+     {
+      "name": "Rikuro's Namba Main Branch",
+      "desc": "Sloviti »tresoči se« sirov kolač, ki ga pečejo sproti in ob zvoku zvonca vročega vzamejo iz pečice — cela torta stane manj kot kava doma. V nadstropju je čajnica, če ga želite pojesti sede.",
+      "price": "€",
+      "maps": "Rikuro's Namba Main Branch Osaka"
+     }
+    ]
+   },
+   {
+    "name": "Mirna večerja za skupino",
+    "emoji": "🍲",
+    "intro": "Za skupne večere izberite lokale z rezervacijo in mizami za pet — in vedite, da se od 3. novembra do konca decembra 2026 po večerji lahko sprehodite pod svetlobno okrašenimi drevoredi Midosuji Illumination med Umedo in Nambo.",
+    "places": [
+     {
+      "name": "Shabuzen Umeda",
+      "desc": "Shabu-shabu iz japonske črne govedine v mirnih polzasebnih sobah za do 14 oseb — vsaka si skuha svoj košček v skupnem loncu, tempo pa narekujete same. Rezervirajte vnaprej, tri minute od postaje Higashi-Umeda.",
+      "price": "€€€",
+      "maps": "Shabuzen Umeda Osaka"
+     },
+     {
+      "name": "Dotombori Imai Honten",
+      "desc": "Tiha oaza sredi vrveža Dotonborija, od leta 1946 slavna po kitsune udonu z nežno dashi juho in sladkim ocvrtim tofujem. Za skupinsko večerjo si privoščite udon-suki, lonec za deljenje; rezervacije sprejemajo.",
+      "price": "€€",
+      "maps": "Dotombori Imai Honten Osaka"
+     },
+     {
+      "name": "Umeda Kani Shokudo",
+      "desc": "Praznik rakovice blizu postaje Umeda: kani v obliki sashimija, na žaru in v loncu, tudi kot meniji brez naglice. Prostora je za veliko gostov, zato skupina petih ni nikoli težava — a rezervacija odpravi vsako skrb.",
+      "price": "€€€",
+      "maps": "Umeda Kani Shokudo Osaka"
+     }
+    ]
+   }
+  ],
+  "extra_videos": [
+   {
+    "id": "_Ab4Rpjt-w8",
+    "title": "Night Hike Up Osaka Castle | Peaceful Fall Vibes 4K Walk",
+    "channel": "Walking with Greg",
+    "sight": "Grad Osaka (jesenski večerni sprehod po parku)"
+   },
+   {
+    "id": "Qk47hdUVN54",
+    "title": "[4K] OSAKA Tombori River Cruise Tour (FULL RIDE) in Dotonbori Osaka, Japan 2019 Travel Guide 🎧",
+    "channel": "Wind Walk Travel Videos ¬",
+    "sight": "Dotonbori (vožnja s čolnom po reki Dotonbori)"
+   },
+   {
+    "id": "5WK4k5plAJU",
+    "title": "【 Umeda Sky Building 】Sunset and night view from the observation deck / OSAKA WALK GUIDE #103",
+    "channel": "Osaka Walk Guide",
+    "sight": "Umeda Sky Building (sončni zahod z razgledne ploščadi)"
+   }
+  ]
+ },
+ {
+  "sights": [
+   {
+    "name": "Pagoda Chureito",
+    "desc": "Najslavnejši razgled na Fuji: petstopenjska pagoda nad mestom Fujiyoshida, z goro v ozadju in javorji v ospredju. Do nje vodi okoli 400 stopnic (so tudi počivališča).",
+    "tip": "Pridite zgodaj zjutraj za najjasnejši Fuji in manj gneče; jeseni so javorji okoli pagode čudoviti.",
+    "maps": "Chureito Pagoda, Fujiyoshida",
+    "yt": "Chureito Pagoda Fuji autumn"
+   },
+   {
+    "name": "Obala Oishi Park",
+    "desc": "Sprehajalna pot ob severni obali jezera Kawaguchi z neposrednim pogledom čez vodo na Fuji in sezonskim cvetjem. Ravno, lahko, brezplačno.",
+    "tip": "Najlepše ob jasnem jutru; ob poti so kavarne z razgledom.",
+    "maps": "Oishi Park, Fujikawaguchiko",
+    "yt": "Oishi Park Lake Kawaguchi Fuji"
+   },
+   {
+    "name": "Gondola Kachi Kachi (Tenjozan)",
+    "desc": "Kratka vožnja z gondolo na razgledišče Tenjozan nad jezerom — pogled na Fuji in celo jezero z višine.",
+    "tip": "Ob lepem vremenu obvezno; vrh ima teraso in klopi.",
+    "maps": "Mt. Fuji Panoramic Ropeway, Fujikawaguchiko",
+    "yt": "Kachi Kachi Ropeway Kawaguchiko"
+   },
+   {
+    "name": "Vas Oshino Hakkai",
+    "desc": "Slikovita stara vas z osmimi kristalno čistimi izviri, napajanimi z vodo s Fujija, in pogledom na goro med tradicionalnimi strehami.",
+    "tip": "Lepo se poveže z obiskom jezera; majhne stojnice s prigrizki.",
+    "maps": "Oshino Hakkai, Oshino",
+    "yt": "Oshino Hakkai Mount Fuji village"
+   },
+   {
+    "name": "Javorjev koridor Momiji Kairo",
+    "desc": "Drevored ognjeno rdečih javorjev ob potoku blizu jezera; konec novembra poteka festival z večerno osvetlitvijo.",
+    "tip": "Festival tradicionalno v drugi polovici novembra — preverite datume; zvečer osvetljeno.",
+    "maps": "Momiji Corridor, Fujikawaguchiko",
+    "yt": "Momiji Corridor Kawaguchiko autumn festival"
+   },
+   {
+    "name": "Muzej Itchiku Kubota",
+    "desc": "Miren muzej z razkošnimi kimoni tehnike tsujigahana in lepim vrtom ob jezeru — oduhovljen biser stran od gneče.",
+    "tip": "Lepa izbira za mirnejše popoldne ali slabše vreme.",
+    "maps": "Itchiku Kubota Art Museum, Fujikawaguchiko",
+    "yt": "Itchiku Kubota Art Museum Kawaguchiko"
+   }
+  ],
+  "food_categories": [
+   {
+    "name": "Lokalne specialitete pod Fujijem",
+    "emoji": "🍜",
+    "intro": "Topla, domača hrana Yamanašija — kot nalašč za hladen gorski dan.",
+    "places": [
+     {
+      "name": "Hoto Fudo",
+      "desc": "Slovita hiša za hoto — debele ploščate rezance v gosti bučni miso juhi. Poceni, obilno in grejoče.",
+      "price": "€€",
+      "maps": "Hoto Fudo Kawaguchiko"
+     },
+     {
+      "name": "Sakurai Udon",
+      "desc": "Preprosta družinska hiša za yoshida udon, žilave lokalne rezance; priljubljena med domačini.",
+      "price": "€",
+      "maps": "Sakurai Udon, Fujiyoshida"
+     },
+     {
+      "name": "Fujiyama Cookie",
+      "desc": "Drobna pekarna piškotov v obliki Fujija ob jezeru — sladek spominek in kava za na pot.",
+      "price": "€",
+      "maps": "Fujiyama Cookie, Fujikawaguchiko"
+     }
+    ]
+   }
+  ],
+  "day_plan": [
+   {
+    "time": "Zjutraj",
+    "what": "Zgodaj do jezera (Oishi Park), dokler je gladina mirna in Fuji jasen. Kava z razgledom na goro."
+   },
+   {
+    "time": "Dopoldne",
+    "what": "Vzpon k pagodi Chureito za najlepšo razglednico Japonske; nato topla hoto juha za kosilo."
+   },
+   {
+    "time": "Popoldne",
+    "what": "Gondola Kachi Kachi ali mirna vas Oshino Hakkai; po želji muzej Itchiku Kubota."
+   },
+   {
+    "time": "Zvečer",
+    "what": "Če je čas festivala, večerni sprehod po osvetljenem javorjevem koridorju Momiji Kairo."
+   }
+  ],
+  "practical": [
+   "Fuji je muhast — najjasnejši je zjutraj. Če je zjutraj oblačno, poskusite spet pozneje; novembra so pogledi pogosto odlični.",
+   "Lokalni avtobus (Retro Bus) povezuje postajo Kawaguchiko z jezerom, pagodo in parki — udobno brez hoje med njimi.",
+   "Oblecite se toplo: pod Fujijem je zvečer in zjutraj mrzlo, ponekod blizu ničle.",
+   "Za sobo z razgledom na Fuji rezervirajte zgodaj in izrecite, da želite pogled na goro."
+  ],
+  "extra_videos": [],
+  "key": "kawaguchiko"
+ },
+ {
+  "sights": [
+   {
+    "name": "Tempelj Kuon-ji",
+    "desc": "Osrednji tempelj šole Nichiren, obkrožen s cedrami in javorji. Do glavne dvorane vodi 287 strmih stopnic (Bodai-tei) ali udobna vzpenjača ob strani.",
+    "tip": "Stopnice so zahtevne — brez skrbi, vzpenjača (Shariden) pelje do vrha; jeseni žarijo javorji.",
+    "maps": "Kuonji Temple, Minobu",
+    "yt": "Kuonji Temple Minobusan autumn"
+   },
+   {
+    "name": "Vzpenjača na vrh Minobu",
+    "desc": "Gondola na vrh gore Minobu (okoli 1.150 m) z razglediščem; ob jasnem dnevu se vidi tudi Fuji in Južne Alpe.",
+    "tip": "Na vrhu je tempelj Shichimen in razgledne terase; toplo se oblecite.",
+    "maps": "Minobusan Ropeway, Minobu",
+    "yt": "Minobusan ropeway Mount Minobu view"
+   },
+   {
+    "name": "Velika vrata Sanmon",
+    "desc": "Mogočna lesena vhodna vrata templja, ena največjih te vrste — veličasten začetek vzpona po cedrovem drevoredu.",
+    "tip": "Lep postanek za fotografijo pred vzponom po stopnicah.",
+    "maps": "Kuonji Sanmon Gate, Minobu",
+    "yt": "Kuonji Sanmon gate Minobu"
+   },
+   {
+    "name": "Jutranja molitev (asa-gongyo)",
+    "desc": "Obred menihov ob svitu, pri katerem lahko gostje šukuboja tiho prisostvujejo — bobni, petje suter in prvi dnevni svit skozi tempelj.",
+    "tip": "Vključena za goste prenočišča Kakurinbo; topla oblačila za zgodnje jutro.",
+    "maps": "Kakurinbo, Minobu",
+    "yt": "Minobusan morning prayer temple"
+   },
+   {
+    "name": "Staro romarsko mestece Minobu",
+    "desc": "Ulica ob vznožju gore z malimi trgovinicami, kjer prodajajo parjene manjuje in romarske spominke — živ košček tradicije.",
+    "tip": "Poskusite sveže Minobu manju, še toplega iz pare.",
+    "maps": "Minobu town, Yamanashi",
+    "yt": "Minobu town pilgrimage street"
+   }
+  ],
+  "food_categories": [
+   {
+    "name": "Tempeljska in romarska kuhinja",
+    "emoji": "🥢",
+    "intro": "Nežna, premišljena hrana gore — del izkušnje, ne le obrok.",
+    "places": [
+     {
+      "name": "Šukubo Kakurinbo",
+      "desc": "Vegetarijanska meniška večerja (shojin ryori) tam, kjer prenočimo — lepo postreženi sezonski hodovi.",
+      "price": "€€",
+      "maps": "Kakurinbo, Minobu"
+     },
+     {
+      "name": "Minobu manju (Eishindo)",
+      "desc": "Tradicionalna slaščičarna s parjenimi polnjenimi kolački ob romarski poti — sladka moč za na pot.",
+      "price": "€",
+      "maps": "Eishindo, Minobu"
+     }
+    ]
+   }
+  ],
+  "day_plan": [
+   {
+    "time": "Popoldne",
+    "what": "Prihod na goro Minobu in nastanitev v šukuboju Kakurinbo. Sprehod po starem mestecu in topel Minobu manju."
+   },
+   {
+    "time": "Zvečer",
+    "what": "Meniška vegetarijanska večerja (shojin ryori) v templju; zgodaj v tišino gorske noči."
+   },
+   {
+    "time": "Zjutraj",
+    "what": "Jutranja molitev ob svitu, nato tempelj Kuon-ji — po stopnicah ali z vzpenjačo do glavne dvorane."
+   },
+   {
+    "time": "Dopoldne",
+    "what": "Po želji gondola na vrh za razglede, nato pot naprej proti morju (Izu)."
+   }
+  ],
+  "practical": [
+   "Povezave z javnim prevozom so redke — vozne rede preverite vnaprej in si pustite dovolj časa za prestope.",
+   "Prenočitev Kakurinbo je rezervirana; upoštevajte tempeljski red (zgodnja večerja, tišina zvečer, jutranja molitev).",
+   "Sobe so tatami s futoni; vzemite tople nogavice in udobna oblačila za okoli templja.",
+   "Gotovina: na gori in v malih trgovinah kartice pogosto ne delujejo."
+  ],
+  "extra_videos": [],
+  "key": "minobusan"
+ },
+ {
+  "sights": [
+   {
+    "name": "Tempelj Todai-ji in Veliki Buda",
+    "desc": "Ena največjih lesenih zgradb na svetu skriva 15-metrskega bronastega Budo (Daibutsu) iz 8. stoletja — veličastno in ganljivo.",
+    "tip": "Pridite zgodaj (odprto od 7.30–8.00); vstopnina okoli 600 jenov.",
+    "maps": "Todaiji Temple, Nara",
+    "yt": "Todaiji Great Buddha Nara"
+   },
+   {
+    "name": "Park Nara in jeleni",
+    "desc": "Ogromen park, kjer se med zlatimi javorji sprehaja več kot tisoč krotkih jelenov; mnogi se priklonijo za priboljšek.",
+    "tip": "Kupite jelenje piškote (shika senbei) pri stojnicah; piškote skrijte, dokler jih ne daste.",
+    "maps": "Nara Park, Nara",
+    "yt": "Nara Park deer autumn"
+   },
+   {
+    "name": "Svetišče Kasuga Taisha",
+    "desc": "Vermiljon rdeče svetišče sredi gozda, do katerega vodi pot med tisočimi kamnitimi in bronastimi lučmi.",
+    "tip": "Pot skozi gozd je mirna in senčna; luči so najlepše proti večeru.",
+    "maps": "Kasuga Taisha, Nara",
+    "yt": "Kasuga Taisha lanterns Nara"
+   },
+   {
+    "name": "Vrt Isuien",
+    "desc": "Miren krajinski vrt z ribnikom in čajnicami ter 'izposojenim' razgledom na gore — manj znan, zato tih biser.",
+    "tip": "Ob ribniku je čajnica za matcho; lep umik od gneče pri jelenih.",
+    "maps": "Isuien Garden, Nara",
+    "yt": "Isuien Garden Nara autumn"
+   },
+   {
+    "name": "Dvorana Nigatsu-do",
+    "desc": "Del kompleksa Todai-ji na pobočju; z lesene verande se odpre lep razgled na mesto in park, zlasti ob sončnem zahodu.",
+    "tip": "Vzpon je kratek; vstop je brezplačen, večerni razgled je čudovit.",
+    "maps": "Nigatsudo Hall, Nara",
+    "yt": "Nigatsudo Nara sunset view"
+   },
+   {
+    "name": "Tempelj Kofuku-ji in pagoda",
+    "desc": "Peterokapna pagoda, ena najvišjih na Japonskem, tik ob parku — eleganten simbol Nare.",
+    "tip": "Lepo na poti med postajo in Todai-jijem; zvečer včasih osvetljena.",
+    "maps": "Kofukuji Temple, Nara",
+    "yt": "Kofukuji five-story pagoda Nara"
+   }
+  ],
+  "food_categories": [
+   {
+    "name": "Narske specialitete",
+    "emoji": "🍡",
+    "intro": "Stare jedi nekdanje prestolnice — za na pot ali mirno kosilo.",
+    "places": [
+     {
+      "name": "Nakatanidou",
+      "desc": "Sloviti hitri tolkači riževega mochija z zeliščem yomogi — predstava in sveža sladica hkrati.",
+      "price": "€",
+      "maps": "Nakatanidou, Nara"
+     },
+     {
+      "name": "Hiraso",
+      "desc": "Uveljavljena hiša za kakinoha-zushi — sushi, zavit v liste kakija; lepa narska posebnost.",
+      "price": "€€",
+      "maps": "Hiraso, Nara"
+     },
+     {
+      "name": "Mizuya Chaya",
+      "desc": "Prijetna čajnica ob potoku v parku Nara, idealna za počitek s čajem med jeleni in javorji.",
+      "price": "€",
+      "maps": "Mizuya Chaya, Nara Park"
+     }
+    ]
+   }
+  ],
+  "day_plan": [
+   {
+    "time": "Zjutraj",
+    "what": "Zgodaj v Todai-ji k Velikemu Budi, ko je še mirno; nato med jeleni v parku s shika senbei."
+   },
+   {
+    "time": "Dopoldne",
+    "what": "Pot skozi gozd lučk do svetišča Kasuga Taisha; vmes pagoda Kofuku-ji."
+   },
+   {
+    "time": "Popoldne",
+    "what": "Mirno kosilo (kakinoha-zushi ali mochi), nato tih vrt Isuien ob ribniku."
+   },
+   {
+    "time": "Zvečer",
+    "what": "Po želji razgled z verande Nigatsu-do ob sončnem zahodu, nato nazaj v Kyoto/Osako."
+   }
+  ],
+  "practical": [
+   "Nara je enodnevni izlet — iz Kjota ali Osake je pol ure do 45 minut z vlakom; vse glavne znamenitosti so na dosegu peš.",
+   "Jeleni so krotki, a divji: piškote dajte hitro, hrano skrijte v torbo in pazite na papir (radi ga grizljajo).",
+   "Večina znamenitosti je blizu skupaj v parku — izberite udobne čevlje za lahko hojo po gramozu.",
+   "Zgodaj zjutraj je park najlepši in najmirnejši, z meglo med drevesi."
+  ],
+  "extra_videos": [],
+  "key": "nara"
+ },
+ {
+  "sights": [
+   {
+    "name": "Park miru (Peace Memorial Park)",
+    "desc": "Prostoren park ob reki s spomeniki žrtvam atomske bombe — kraj tihega spomina in upanja na mir.",
+    "tip": "Mirno zjutraj; ob Otroškem spomeniku miru visijo tisoči papirnatih žerjavov.",
+    "maps": "Hiroshima Peace Memorial Park",
+    "yt": "Hiroshima Peace Memorial Park"
+   },
+   {
+    "name": "Muzej miru",
+    "desc": "Pretresljiv, a pomemben muzej, ki pripoveduje zgodbo 6. avgusta 1945 skozi osebne predmete in pričevanja.",
+    "tip": "Vzemite si čas in počitek po obisku; obisk je čustveno zahteven.",
+    "maps": "Hiroshima Peace Memorial Museum",
+    "yt": "Hiroshima Peace Memorial Museum"
+   },
+   {
+    "name": "Atomska kupola (A-Bomb Dome)",
+    "desc": "Ostanek stavbe skoraj pod epicentrom, ohranjen kot opomin — UNESCO spomenik miru ob reki.",
+    "tip": "Najbolj ganljiv ob mraku; čez reko je lep pogled nanj.",
+    "maps": "Atomic Bomb Dome, Hiroshima",
+    "yt": "Atomic Bomb Dome Hiroshima"
+   },
+   {
+    "name": "Otok Miyajima in torija Itsukušima",
+    "desc": "Z ladjo na sveti otok, kjer velika rdeča torija ob plimi lebdi nad morjem — ena najlepših podob Japonske.",
+    "tip": "Preverite urnik plime: ob plimi torija 'plava', ob oseki lahko pridete do nje peš.",
+    "maps": "Itsukushima Shrine, Miyajima",
+    "yt": "Itsukushima floating torii Miyajima"
+   },
+   {
+    "name": "Dolina Momijidani na Miyajimi",
+    "desc": "Dolina javorjev pod goro Misen; jeseni žari v rdečem, od tod pa vodi vzpenjača proti vrhu z razgledom na Notranje morje.",
+    "tip": "Konec novembra je obarvanje na vrhuncu; na otoku so tudi krotki jeleni.",
+    "maps": "Momijidani Park, Miyajima",
+    "yt": "Momijidani Miyajima autumn"
+   },
+   {
+    "name": "Vrt Shukkeien",
+    "desc": "Lep mestni krajinski vrt iz 17. stoletja z ribnikom in mostički — miren oddih v Hiroshimi.",
+    "tip": "Blizu središča; lepa ustavitev pred vrnitvijo.",
+    "maps": "Shukkeien Garden, Hiroshima",
+    "yt": "Shukkeien Garden Hiroshima autumn"
+   }
+  ],
+  "food_categories": [
+   {
+    "name": "Hiroshimski okusi",
+    "emoji": "🥞",
+    "intro": "Mesto z močnim kulinaričnim značajem — plastni okonomiyaki in sveže ostrige.",
+    "places": [
+     {
+      "name": "Okonomimura",
+      "desc": "Stavba, polna stojnic s hiroshimskim okonomiyakijem (s testeninami yakisoba) — izberete mojstra in gledate peko.",
+      "price": "€€",
+      "maps": "Okonomimura, Hiroshima"
+     },
+     {
+      "name": "Kakiya (Miyajima)",
+      "desc": "Priljubljena hiša za ostrige na glavni ulici Miyajime — na žaru, ocvrte ali v rižoti.",
+      "price": "€€",
+      "maps": "Kakiya, Miyajima"
+     },
+     {
+      "name": "Momijido",
+      "desc": "Slaščičarna z momiji manju (kolački v obliki javorjevega lista) — tudi ocvrti; sladek spominek z otoka.",
+      "price": "€",
+      "maps": "Momijido, Miyajima"
+     }
+    ]
+   }
+  ],
+  "day_plan": [
+   {
+    "time": "Zjutraj",
+    "what": "Zgodaj s shinkansnom v Hiroshimo; Park miru, Atomska kupola in muzej, dokler je mirno."
+   },
+   {
+    "time": "Dopoldne",
+    "what": "Hiroshimski okonomiyaki za kosilo (Okonomimura), nato z vlakom in trajektom na Miyajimo."
+   },
+   {
+    "time": "Popoldne",
+    "what": "Svetišče Itsukušima in plavajoča torija, dolina javorjev Momijidani, ostrige in momiji manju."
+   },
+   {
+    "time": "Zvečer",
+    "what": "Torija ob sončnem zahodu, nato trajekt in shinkansen nazaj v Osako."
+   }
+  ],
+  "practical": [
+   "Enodnevni izlet iz Osake: shinkansen 'Nozomi' iz Shin-Osake do Hiroshime je okoli 1 h 25 min; začnite zgodaj.",
+   "Za Miyajimo: lokalni vlak JR do Miyajimaguchi, nato trajekt (~10 min). Preverite urnik plime za torijo.",
+   "Muzej miru je čustveno zahteven — načrtujte miren postanek po njem (vrt Shukkeien ali obala Miyajime).",
+   "Na Miyajimi so jeleni in nekaj vzpona do vzpenjače; udobni čevlji prav pridejo."
+  ],
+  "extra_videos": [],
+  "key": "hiroshima"
+ }
+]

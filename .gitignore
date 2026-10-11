@@ -1,0 +1,6 @@
+*.zip
+.DS_Store
+**/.DS_Store
+.claude/
+__pycache__/
+**/__pycache__/

@@ -1,0 +1,47 @@
+{
+  "intro": "Nekaj doživetij ni le za gledanje, ampak za dušo in roke — kuhanje, čaj, tihi vrtovi in ustvarjanje. Tukaj so preverjeni, resnični kraji; odpiralne čase in rezervacije potrdite bliže obisku.",
+  "categories": [
+    {
+      "name": "Kuharske delavnice", "emoji": "🍳",
+      "intro": "Naučite se pripraviti tisto, kar jeste — sproščeno, v malih skupinah in v slovenščini razumljivo (delavnice tečejo v angleščini).",
+      "items": [
+        { "name": "Uzuki Cooking Class", "city": "Kyoto", "desc": "Priljubljena domača delavnica pri gostiteljici, kjer skupaj pripravite tradicionalno japonsko kosilo (obanzai). Topla, družinska izkušnja za malo skupino.", "maps": "Uzuki Cooking Class, Kyoto", "booking": "Rezervacija vnaprej prek njihove spletne strani (cookinguzuki)." },
+        { "name": "Haru Cooking Class", "city": "Kyoto", "desc": "Pri gostitelju Taru pripravite washoku ali vegetarijansko kaiseki; vključen je tudi ogled tržnice za sestavine. Lepo za radovedne kuharice.", "maps": "Haru Cooking Class, Kyoto", "booking": "Rezervacija prek spletne strani (haru-cookingclass)." },
+        { "name": "Wagashi delavnica Kanshundo", "city": "Kyoto", "desc": "Izdelovanje sezonskih sladic wagashi pri stari slaščičarni blizu Kiyomizuja — ročno oblikujete cvetove in liste ter jih pojeste z matcho.", "maps": "Kanshundo Higashiten, Higashiyama, Kyoto", "booking": "Rezervacija po telefonu/spletu." },
+        { "name": "Buddha Bellies Cooking Class", "city": "Tokio", "desc": "Prijetna delavnica sushija, ramna ali bento pri izkušeni japonski učiteljici — razloži tudi kulturo za jedjo.", "maps": "Buddha Bellies Cooking Class Tokyo", "booking": "Rezervacija vnaprej prek spleta." },
+        { "name": "Okonomiyaki po domače", "city": "Osaka", "desc": "V Osaki se naučite speči okonomiyaki (slano palačinko) kar sami na plošči za mizo — zabaven, sproščen večer v mestu hrane.", "maps": "okonomiyaki cooking class Osaka Dotonbori", "booking": "Prek platform za doživetja ali lokala z delavnicami." }
+      ]
+    },
+    {
+      "name": "Čajne hiše in čajna ceremonija", "emoji": "🍵",
+      "intro": "Ura miru ob skodelici sveže stepene matche — obred, ki uči, da lepota živi v majhnih gibih.",
+      "items": [
+        { "name": "Camellia Tea Ceremony", "city": "Kyoto", "desc": "Jasna, prijazna čajna ceremonija v Higashiyami (in v hiši Camellia Garden), primerna za tujce — brez pritiska, z lepo razlago.", "maps": "Camellia Tea Ceremony, Higashiyama, Kyoto", "booking": "Rezervacija prek spletne strani (tea-kyoto)." },
+        { "name": "Ippodo Chaho — čajnica Kaboku", "city": "Kyoto", "desc": "Slovita čajarna iz leta 1717; v čajnici Kaboku vam postrežejo matcho ali gyokuro z navodili, kako ju pravilno pripraviti doma.", "maps": "Ippodo Tea Kyoto Honten", "booking": "Brez rezervacije, pridete lahko sproti." },
+        { "name": "Nakajima-no-ochaya", "city": "Tokio", "desc": "Čajnica na otočku sredi ribnika v vrtu Hamarikyu — matcha in wagashi z razgledom na vodo, sredi mesta.", "maps": "Nakajima Tea House, Hamarikyu Gardens, Tokyo", "booking": "Brez rezervacije, ob vstopnini v vrt." },
+        { "name": "Tsuen Tea", "city": "Uji (blizu Kyota)", "desc": "Ena najstarejših čajnic na svetu (1160) ob mostu v Ujiju, prestolnici zelenega čaja — za ljubiteljice matche pravo romanje.", "maps": "Tsuen Tea, Uji", "booking": "Brez rezervacije." }
+      ]
+    },
+    {
+      "name": "Zen vrtovi", "emoji": "🪷",
+      "intro": "Zbirka najlepših vrtov na vaši poti — kraji, kjer se čas upočasni in misli utihnejo.",
+      "items": [
+        { "name": "Ryoan-ji", "city": "Kyoto", "desc": "Najslavnejši kamniti vrt na svetu: petnajst kamnov v zgrabljenem produ, ki jih nikoli ne vidiš vseh naenkrat. Pridite zgodaj zjutraj.", "maps": "Ryoan-ji Temple, Kyoto", "booking": "Odprto dnevno, brez rezervacije." },
+        { "name": "Ginkaku-ji (Srebrni paviljon)", "city": "Kyoto", "desc": "Mahovnat vrt in kup belega peska 'Morje srebrnega peska'; ob koncu je Filozofska pot, ki jeseni zažari.", "maps": "Ginkaku-ji, Kyoto", "booking": "Odprto dnevno." },
+        { "name": "Vrt Banryutei, Kongobu-ji", "city": "Koya-san", "desc": "Največji kamniti vrt na Japonskem — prod predstavlja oblake, kamni pa dva zmaja, ki varujeta tempelj. Mirna veranda za posedanje.", "maps": "Kongobuji Temple, Koya, Wakayama", "booking": "Odprto dnevno." },
+        { "name": "Koishikawa Korakuen", "city": "Tokio", "desc": "Eden najstarejših in najlepših krajinskih vrtov Tokia, jeseni poln rdečih javorjev — miren pobeg sredi mesta.", "maps": "Koishikawa Korakuen Garden, Tokyo", "booking": "Odprto dnevno." }
+      ]
+    },
+    {
+      "name": "Ustvarjanje in nakup", "emoji": "🎨",
+      "intro": "Za ustvarjalno dušo: japonski papir, čopiči, barve, keramika, čaj in noži — material in spominki, ki navdihujejo.",
+      "items": [
+        { "name": "Kyukyodo", "city": "Kyoto", "desc": "Stara trgovina (1663) s kadilom, ročno izdelanim papirjem washi, čopiči in pisali za kaligrafijo — raj za ustvarjalke.", "maps": "Kyukyodo Kyoto Honten, Teramachi", "booking": "Trgovina, brez rezervacije." },
+        { "name": "Keramika Kiyomizu-zaka", "city": "Kyoto", "desc": "Ulice navzgor h Kiyomizu-deri so polne delavnic keramike Kiyomizu-yaki — skodelice, čajniki in sklede za matcho kot lepi spominki.", "maps": "Kiyomizu-zaka pottery shops, Kyoto", "booking": "Trgovine, brez rezervacije." },
+        { "name": "Aritsugu", "city": "Kyoto", "desc": "Slovita nožarna (1560) v tržnici Nishiki, kjer mojstri kujejo japonske kuhinjske nože in vam ime brezplačno vgravirajo.", "maps": "Aritsugu, Nishiki Market, Kyoto", "booking": "Trgovina, brez rezervacije." },
+        { "name": "Kappabashi (ulica kuhinjskega orodja)", "city": "Tokio", "desc": "Cela ulica trgovin z noži, posodo, čajnim priborom in celo voščenimi vzorci jedi — odlična za kuharske spominke.", "maps": "Kappabashi Kitchen Town, Tokyo", "booking": "Trgovine, brez rezervacije." },
+        { "name": "Itoya Ginza", "city": "Tokio", "desc": "Legendarna papirnica in trgovina z umetniškim materialom (12 nadstropij): papir, peresa, barve, akvareli — za skice in mandale.", "maps": "Itoya Ginza, Tokyo", "booking": "Trgovina, brez rezervacije." }
+      ]
+    }
+  ]
+}

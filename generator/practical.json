@@ -1,0 +1,161 @@
+{
+  "pred-odhodom": {
+    "emoji": "🎒",
+    "title": "Pred odhodom",
+    "subtitle": "Kaj urediti in spakirati doma",
+    "intro": "Nekaj majhnih priprav doma naredi potovanje veliko bolj brezskrbno. Spodaj je vse, kar velja urediti, preden odletite.",
+    "sections": [
+      {
+        "heading": "Kaj spakirati", "emoji": "🧳",
+        "items": [
+          { "name": "Obleka po plasteh", "text": "November je večinoma suh in sončen (12–17 °C podnevi), a zjutraj in zvečer sveže. Najboljše so plasti: majica, jopica, lahek plašč. V gorah (Koya-san, Iya) računajte na 0–10 °C — dodajte toplo jakno, kapo in šal." },
+          { "name": "Udobni, prehojeni čevlji", "text": "Najpomembnejši kos prtljage. Izberite take, ki se hitro sezujejo — v templjih, ryokanih in mnogih restavracijah se boste pogosto sezuvale." },
+          { "name": "Nogavice brez lukenj :)", "text": "Ravno zaradi sezuvanja. Vzemite tudi kakšen par toplejših za tatami sobe in tempeljske nočitve." },
+          { "name": "Zložljiv dežnik", "text": "Majhen dežnik v torbici reši kakšen deževen dan; povsod jih sicer prodajajo tudi na vsakem vogalu." },
+          { "name": "Majhen nahrbtnik", "text": "Za daljše potovalne dneve (Kumano, Koya-san, Iya), ko kovčke pošljete naprej in potujete na lahko." },
+          { "name": "Zdravila in osebno", "text": "Vsa redna zdravila v originalni embalaži, z imenom učinkovine. Dodajte proti prehladu, žuljem, bolečini in morebitni želodčni." }
+        ]
+      },
+      {
+        "heading": "eSIM in internet", "emoji": "📶",
+        "items": [
+          { "name": "eSIM (najlažje)", "text": "Če ima telefon eSIM (večina novejših), si vnaprej naložite podatkovni paket (npr. Airalo ali Ubigi) — aktivira se šele ob prihodu. Za mesec dni izberite večji ali neomejen paket." },
+          { "name": "Žepni WiFi", "text": "Alternativa za skupino: en žepni WiFi usmerjevalnik deli internet za vse; prevzamete ga na letališču ali vam ga pošljejo domov." },
+          { "name": "Nasvet za skupino", "text": "Dovolj je, da ima internet ena ali dve od vas z Google Maps; ostale se lahko povežete prek deljenja povezave (hotspot)." }
+        ]
+      },
+      {
+        "heading": "Koristne aplikacije", "emoji": "📱",
+        "items": [
+          { "name": "Google Maps", "text": "Nepogrešljiv za vlake in avtobuse — pokaže peron, ceno in točno uro odhoda. Deluje odlično po vsej Japonski." },
+          { "name": "Google Translate", "text": "Naložite si japonščino za uporabo brez interneta; funkcija fotoaparata prevaja jedilnike in napise v živo." },
+          { "name": "Japan Travel (NAVITIME)", "text": "Podroben načrtovalec poti z vlaki, primeren za bolj zapletene povezave (npr. Kumano, Iya)." },
+          { "name": "Prevozne kartice", "text": "Na iPhone lahko dodate Suico kar v Denarnico (Wallet) in plačujete z dotikom telefona." }
+        ]
+      },
+      {
+        "heading": "Elektrika in dokumenti", "emoji": "🔌",
+        "items": [
+          { "name": "Adapter (tip A)", "text": "Japonske vtičnice so tip A (ploščati vtič), napetost 100 V. Vzemite dva ali tri adapterje za skupino in eno razdelilko." },
+          { "name": "Potni list in kopije", "text": "Potni list naj velja še vsaj do konca potovanja. Naredite fotografije/kopije in jih shranite v telefon in v oblak." },
+          { "name": "Potovalno zavarovanje", "text": "Sklenite zdravstveno potovalno zavarovanje z ustreznim kritjem; shranite številko za pomoč v telefon." },
+          { "name": "Rezervacije na enem mestu", "text": "Vse potrdila (hoteli, ryokani, vlaki, delavnice) shranite v eno mapo v telefonu za dostop brez interneta." }
+        ]
+      }
+    ]
+  },
+  "denar": {
+    "emoji": "💴",
+    "title": "Denar in plačevanje",
+    "subtitle": "Kartice, gotovina in okvirne cene",
+    "intro": "Japonska je varna in poštena dežela, a še vedno deloma gotovinska — zlasti na podeželju. Tukaj je vse, kar velja vedeti o denarju.",
+    "sections": [
+      {
+        "heading": "Kartice", "emoji": "💳",
+        "items": [
+          { "name": "Visa in Mastercard", "text": "V mestih, hotelih in večjih restavracijah kartice sprejemajo brez težav (tudi brezstično). Na podeželju in pri malih ponudnikih pogosto ne — zato imejte vedno tudi gotovino." },
+          { "name": "Revolut", "text": "Odlična za potovanje: ugoden tečaj, plačevanje brez provizij in dvig gotovine (do mesečne omejitve brezplačno). Pred potjo naložite denar in v aplikaciji vklopite plačila na Japonskem." },
+          { "name": "Nasvet", "text": "Imejte vsaj dve kartici (npr. Revolut + ena banka) za primer, če ena ne deluje. Obvestite banko, da boste v tujini." }
+        ]
+      },
+      {
+        "heading": "Gotovina in bankomati", "emoji": "🏧",
+        "items": [
+          { "name": "Zakaj gotovina", "text": "Male gostilne, stojnice, vstopnine v vrtove, tempeljske nočitve in podeželje (Kumano, Iya, Ine) pogosto sprejemajo samo gotovino (jene)." },
+          { "name": "Kje dvigniti", "text": "Najzanesljivejši bankomati za tuje kartice so v trgovinah 7-Eleven (7 Bank) in na poštah (Japan Post Bank) — najdete jih povsod, delujejo v angleščini." },
+          { "name": "Koliko na dan", "text": "Za sproten denar (hrana, vstopnine, drobni nakupi) računajte okvirno 6.000–10.000 jenov (pribl. 35–60 €) na osebo na dan, več ob posebnih večerjah ali nakupih." },
+          { "name": "Denarnica za kovance", "text": "Kovanci se hitro naberejo (tudi 500 jenov je kovanec); majhna denarnica za drobiž zelo prav pride." }
+        ]
+      },
+      {
+        "heading": "IC kartica za drobna plačila", "emoji": "🎫",
+        "items": [
+          { "name": "Suica / ICOCA", "text": "Prepaid kartica za vlake, metro, avtobuse in celo trgovinice ter avtomate. Priložite jo k čitalniku — brez kupovanja vozovnic vsakič." },
+          { "name": "Na telefonu", "text": "iPhone jo lahko doda v Denarnico in polni s kartico; sicer kupite fizično kartico na postaji." }
+        ]
+      },
+      {
+        "heading": "Okvirne cene", "emoji": "🧾",
+        "items": [
+          { "name": "Kava / čaj", "text": "pribl. 400–600 jenov (3–4 €)" },
+          { "name": "Preprosto kosilo (soba, ramen, set)", "text": "pribl. 900–1.500 jenov (6–10 €)" },
+          { "name": "Lepa večerja", "text": "pribl. 3.000–6.000 jenov (20–40 €); kaiseki več" },
+          { "name": "Vstopnina (vrt, tempelj)", "text": "pribl. 300–600 jenov (2–4 €)" },
+          { "name": "Kratka vožnja s taksijem", "text": "pribl. 700–1.500 jenov (5–10 €); za pet oseb pogosto dve vozili" }
+        ]
+      }
+    ]
+  },
+  "prevoz": {
+    "emoji": "🚄",
+    "title": "Vlaki in prevoz",
+    "subtitle": "Kako se premikati po Japonski",
+    "intro": "Japonski vlaki so točni, čisti in udobni — potovanje z njimi je del doživetja. Nekaj napotkov, da bo vse gladko.",
+    "sections": [
+      {
+        "heading": "Shinkansen (hitri vlak)", "emoji": "🚅",
+        "items": [
+          { "name": "Vozovnice", "text": "Kupite jih na postaji (avtomat ali okence 'midori no madoguchi') ali vnaprej prek spleta. Za skupino petih se splača kupiti skupaj, da sedite skupaj." },
+          { "name": "Rezervirani sedeži", "text": "Ob nakupu vozovnice rezervacija sedeža ne stane veliko in je za skupino zelo priporočljiva — nerezervirani vagoni so lahko polni." },
+          { "name": "Veliki kovčki", "text": "Za velike kovčke je na nekaterih progah treba rezervirati mesto z odlagalnim prostorom (zadnja vrsta). Ali pa — kovčke raje pošljite naprej." }
+        ]
+      },
+      {
+        "heading": "IC kartica in lokalni prevoz", "emoji": "🚌",
+        "items": [
+          { "name": "Suica / ICOCA", "text": "Za metro, mestne vlake in avtobuse: priložite kartico ob vstopu in izstopu, cena se odšteje sama. Deluje po skoraj vsej državi." },
+          { "name": "Lokalni vlaki in avtobusi", "text": "Na podeželju (Kumano, Iya, Ine) vozijo redkeje — vozne rede preverite vnaprej na Google Maps in računajte na kakšno čakanje." },
+          { "name": "Ali se JR Pass splača", "text": "Po podražitvi se za tovrstno pot z veliko podeželja pogosto NE splača več. Raje kupujte posamezne vozovnice; preverite izračun bliže odhodu." }
+        ]
+      },
+      {
+        "heading": "Pošiljanje kovčkov (takuhaibin)", "emoji": "📦",
+        "items": [
+          { "name": "Kako deluje", "text": "Iz hotela lahko kovčke z dostavno službo (npr. Yamato 'Kuroneko') pošljete naravnost v naslednji hotel, običajno za ~1.500–2.500 jenov na kos, dostava naslednji dan." },
+          { "name": "Kdaj uporabiti", "text": "Idealno za daljše in zahtevnejše etape (Izu→Kumano, Kumano→Koya-san, →Iya): vi potujete z lahkim nahrbtnikom, kovčki vas počakajo." },
+          { "name": "Nasvet", "text": "Recepcija hotela vam z veseljem pomaga izpolniti obrazec. Za noč vmes vzemite s seboj le nujno v nahrbtniku." }
+        ]
+      },
+      {
+        "heading": "Na postaji in v taksiju", "emoji": "🚕",
+        "items": [
+          { "name": "Google Maps pokaže vse", "text": "Vpišite cilj in aplikacija pove peron, uro, ceno in prestope — zanesljivo tudi za zapletene poti." },
+          { "name": "Taksi", "text": "Vrata se odpirajo in zapirajo samodejno — ne dotikajte se jih. Vozniki so zanesljivi in pošteni; naslov pokažite napisan ali na zemljevidu." },
+          { "name": "Tišina na vlaku", "text": "Na vlakih se govori tiho, telefoni so na tiho in klicev ni. Prtljago daste na polico nad sedežem." }
+        ]
+      }
+    ]
+  },
+  "stroski": {
+    "emoji": "💰",
+    "title": "Okvirni stroški",
+    "subtitle": "Zelo groba ocena — da laže načrtujete",
+    "intro": "Spodnje so zelo okvirne ocene na osebo (brez mednarodnih letov). Resnični strošek je najbolj odvisen od izbire nastanitev; ryokani z večerjo in nočitve v templju so dražji, a doživetje zase.",
+    "sections": [
+      {
+        "heading": "Na dan (na osebo)", "emoji": "📅",
+        "items": [
+          { "name": "Hrana", "text": "pribl. 3.000–6.000 jenov (20–40 €); posebna kaiseki večerja več" },
+          { "name": "Vstopnine in doživetja", "text": "pribl. 1.000–3.000 jenov (7–20 €); delavnice in ceremonije več" },
+          { "name": "Lokalni prevoz", "text": "pribl. 1.000–2.500 jenov (7–17 €), odvisno od dneva" },
+          { "name": "Drobno", "text": "kava, sladice, spominki — po okusu" }
+        ]
+      },
+      {
+        "heading": "Večje postavke", "emoji": "🧾",
+        "items": [
+          { "name": "Nastanitev", "text": "pribl. 8.000–20.000 jenov na osebo na noč (50–130 €); ryokan/šukubo z večerjo več. To je navadno največji strošek." },
+          { "name": "Vlaki za cel mesec", "text": "pribl. 45.000–75.000 jenov (300–480 €) za vse etape skupaj; posamezne vozovnice se za to pot pogosto splačajo bolj kot JR Pass." },
+          { "name": "Pošiljanje kovčkov", "text": "pribl. 1.500–2.500 jenov na kos na etapo (10–17 €) — pametna naložba na daljših etapah." }
+        ]
+      },
+      {
+        "heading": "Zelo groba vsota za mesec", "emoji": "🎯",
+        "items": [
+          { "name": "Brez mednarodnih letov", "text": "okvirno 4.000–7.000 € na osebo za cel mesec, odvisno predvsem od nastanitev in večerij." },
+          { "name": "Nasvet", "text": "Nekaj razkošja (onsen ryokan, šukubo, kakšna kaiseki) uravnotežite s preprostimi kosili (soba, ramen, tržnice) — tako si privoščite vrhunce brez skrbi." }
+        ]
+      }
+    ]
+  }
+}
