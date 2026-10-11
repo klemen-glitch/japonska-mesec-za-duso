@@ -16,7 +16,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 
 # Verzija gradnje — doda se v naslov CSS/JS (?v=BUILD), da brskalnik vedno
 # naloži svežo različico. Ob vsaki spremembi povečaj.
-BUILD = "12"
+BUILD = "13"
 
 # ----------------------------------------------------------------------------
 # VSEBINA
@@ -333,6 +333,8 @@ PRACTICAL = _load_json("practical.json", {})
 DOZIVETJA = _load_json("dozivetja.json", {})
 # Dodatki po lokacijah (extras.json = {key: {prespati, dez}})
 EXTRAS = _load_json("extras.json", {})
+# Foto/video izzivi za album (izzivi.json = {key: [{t, x}, ...]})
+IZZIVI = _load_json("izzivi.json", {})
 
 # Zemljevidi: središče (lat, lon), stopnja povečave (zoom) in iskalni niz za Google Maps.
 # Zoom: ~11–12 = regija/večje mesto, 13 = mesto/kraj, 14 = ožji kraj/vas.
@@ -627,6 +629,24 @@ def map_section(key):
             f'📍 Odpri na Google Zemljevidu</a>\n</section>\n')
 
 
+def izzivi_section(key):
+    items = IZZIVI.get(key, [])
+    if not items:
+        return ""
+    parts = ['<section class="card-section izzivi" aria-labelledby="izzivi">',
+             '  <h2 id="izzivi">📸 Foto izzivi za album</h2>',
+             '  <p class="cat-intro">Nekaj izzivov za vaš skupni album — večinoma fotografije, kjer vas ujame ena od vas. '
+             'Obkljukajte, ko vam uspe; iz teh utrinkov bo nastala vaša potopisna knjiga. 🌸</p>',
+             '  <ul class="chk-list">']
+    for i, it in enumerate(items):
+        ic = "🎥" if it.get("t") == "video" else "📸"
+        cid = f"izziv-{key}-{i}"
+        parts.append(f'    <li><label><input type="checkbox" data-persist id="{cid}"> '
+                     f'<span>{ic} {esc(it["x"])}</span></label></li>')
+    parts.append("  </ul>\n</section>")
+    return "\n".join(parts) + "\n"
+
+
 def stay_section(key):
     e = EXTRAS.get(key, {})
     if not e.get("prespati"):
@@ -739,6 +759,7 @@ def location_page(i, loc):
 
     out += map_section(loc["key"])
     out += day_plan_section(g)
+    out += izzivi_section(loc["key"])
     out += food_section(loc, g)
     out += practical_section(g)
     out += stay_section(loc["key"])
@@ -1077,7 +1098,8 @@ def index_page():
   <h2 id="welcome">👋 Dobrodošle</h2>
   <p>Pred vami je mesec, kakršnega si privoščimo enkrat v življenju — cel november na Japonskem, v času, ko se javorji obarvajo v najlepše rdeče in zlato. Ta vodnik ni seznam, ki bi ga bilo treba prehiteti; je vaš tihi spremljevalec.</p>
   <p>Potujte počasi. Ena znamenitost dopoldne, ena popoldne, vmes skodelica čaja. Ustavite se, kjer je lepo, in tam ostanite dlje, kot se zdi potrebno. Japonska najlepše nagradi tiste, ki se ji ne mudi.</p>
-  <p>Na vsaki postaji boste našle znamenitosti z zemljevidi, kje in kaj jesti, kdaj je kraj najlepši, kje si vzeti uro zase — in prostor za svoje zapiske. Lepo pot, drage naše. 🍁</p>
+  <p>Na vsaki postaji boste našle znamenitosti z zemljevidi, kje in kaj jesti, kdaj je kraj najlepši, kje si vzeti uro zase — in prostor za svoje zapiske.</p>
+  <p>Čaka vas tudi nekaj <strong>foto izzivov</strong> za vsako postajo — obkljukate jih, ko vam uspe, iz njih pa bo nastal vaš skupni album in potopisna knjiga. Marjetica, Helena, Ljuba in Magda: fotoaparati pripravljeni! 🍁</p>
 </section>
 """
     out += '<ul class="route" aria-label="Pot potovanja">\n'

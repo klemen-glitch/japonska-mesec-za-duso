@@ -678,6 +678,12 @@ main {
 
 .stay-section { background: var(--bg-alt); border-color: transparent; }
 
+/* ---------- Foto izzivi za album ---------- */
+
+.izzivi { background: var(--accent-soft); border-color: transparent; }
+.izzivi .cat-intro { color: var(--ink); }
+.izzivi .chk-list li { border-top-color: color-mix(in srgb, var(--accent) 18%, transparent); }
+
 /* ---------- Videi ---------- */
 
 .video-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }

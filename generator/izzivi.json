@@ -1,0 +1,80 @@
+{
+  "tokio": [
+    { "t": "foto", "x": "Vse štiri pod velikimi torii svetišča Meiji Jingu — prvi skupinski posnetek potovanja." },
+    { "t": "foto", "x": "Magda na klopci ob ribniku v vrtu Rikugien s skodelico matche — ostale jo tiho ujamejo (Magdin trenutek v živo)." },
+    { "t": "foto", "x": "Prvi pravi sushi na tržnici Tsukiji — nasmeh ob prvem grižljaju, od blizu." },
+    { "t": "video", "x": "Kratek video (15 s): vožnja z ladjico po reki Sumidi — mesto z vode in vaši glasovi." }
+  ],
+  "chichibu": [
+    { "t": "foto", "x": "Gozdna kopel: vsaka objame svojo cedro — štirje objemi dreves v enem kadru." },
+    { "t": "foto", "x": "Marjetica ob potoku v soteski Mitake — mir gozda, ujet v eni sliki." },
+    { "t": "foto", "x": "Najlepši rdeči javorjev list, ki ga najdete — od blizu, da se vidijo žile." },
+    { "t": "foto", "x": "Skupinska na kamnitih stopnicah svetišča med visokimi cedrami." }
+  ],
+  "kawaguchiko": [
+    { "t": "foto", "x": "»Dve gori Fuji«: vse štiri ob jezeru, da se v mirni vodi vidi tudi odsev gore." },
+    { "t": "foto", "x": "Klasična razglednica: skupinska pri pagodi Chureito z goro Fuji v ozadju." },
+    { "t": "foto", "x": "Helena z goro Fuji »na dlani« (perspektivni trik — dlan pod vrhom)." },
+    { "t": "foto", "x": "Štirje portreti s kavo ob jezeru, Fuji za vami." }
+  ],
+  "minobusan": [
+    { "t": "foto", "x": "Vse štiri v tempeljskih copatih pred šukubojem Kakurinbo, kjer prespite." },
+    { "t": "foto", "x": "Meniška večerja shojin ryori od zgoraj — lepo pogrnjena miza kot umetnina (brez obrazov)." },
+    { "t": "foto", "x": "Ljuba na vrhu stopnic pred glavno dvorano Kuon-ji — dosežek dneva." },
+    { "t": "video", "x": "Video (15 s): jutranja megla in cedre pred templjem (če je molitev, le zvok, spoštljivo)." }
+  ],
+  "izu": [
+    { "t": "foto", "x": "Noge v onsenu z razgledom na morje — para in modrina (brez obrazov)." },
+    { "t": "foto", "x": "Skupinska na rdečem mostu Katsura v Shuzenjiju." },
+    { "t": "foto", "x": "Magda na bambusovi poti — pogled navzgor med visokimi stebli." },
+    { "t": "foto", "x": "Vaše silhuete ob sončnem zahodu nad oceanom (obala Jogasaki)." }
+  ],
+  "kumano": [
+    { "t": "foto", "x": "Vse štiri ob velikanski cedri na Daimonzaki — položite dlani na njeno deblo." },
+    { "t": "foto", "x": "Ikona Japonske: rdeča pagoda Seiganto-ji in slap Nachi v enem kadru." },
+    { "t": "foto", "x": "Marjetica na kamnitih stopnicah romarske poti, meglice med drevesi." },
+    { "t": "foto", "x": "Noge v rečni kopeli Kawayu — topel prod ob reki." }
+  ],
+  "koyasan": [
+    { "t": "foto", "x": "Okunoin ob mraku: kamnite luči med cedrami — ujemite njihovo svetlobo (brez bliskavice)." },
+    { "t": "foto", "x": "Vse štiri pred cinobrasto pagodo Konpon Daito." },
+    { "t": "foto", "x": "Helena na verandi pred kamnitim vrtom Banryutei — mir zgrabljenega proda." },
+    { "t": "video", "x": "Video (15 s): tih večerni sprehod skozi Okunoin — koraki, cedre, lučke." }
+  ],
+  "iya": [
+    { "t": "foto", "x": "Na sredini visečega mostu Kazurabashi — pogum in smeh (nekdo slika z brega)." },
+    { "t": "foto", "x": "Skupinska na razgledišču Hi-no-Ji nad velikim ovinkom smaragdne reke." },
+    { "t": "foto", "x": "Ljuba ob reki iz ladjice v soteski Oboke." },
+    { "t": "foto", "x": "Jesenske barve doline — štiri majhne postave sredi velike narave." }
+  ],
+  "ine": [
+    { "t": "foto", "x": "Zlata ura: vse štiri ob zalivu, funaye in odsevi v vodi za vami." },
+    { "t": "foto", "x": "Z ladjice: vrsta lesenih hišic funaya tik nad morjem." },
+    { "t": "foto", "x": "Nazdravljanje z lokalnim sakejem pri pivovarni Mukai — kanpai!" },
+    { "t": "foto", "x": "Magda na obali med galebi — mir ribiške vasice." }
+  ],
+  "nara": [
+    { "t": "foto", "x": "Ujemite trenutek, ko se jelen prikloni — najlepše Marjetici (ali komurkoli)." },
+    { "t": "foto", "x": "Vse štiri pred Velikim Budo v Todai-ju — za občutek, kako je velik." },
+    { "t": "foto", "x": "Pot med tisočimi lučmi svetišča Kasuga — ena od vas med lučmi." },
+    { "t": "video", "x": "Video (10 s): hranjenje jelenov — smeh in jeleni, ki sledijo piškotom." }
+  ],
+  "kyoto": [
+    { "t": "foto", "x": "Ikona Kjota: skupinska med žarečimi rdečimi javorji (tempelj Eikando ali ribnik)." },
+    { "t": "foto", "x": "Bambusov gaj Arašijama zgodaj zjutraj — pogled navzgor, vse štiri med bambusom." },
+    { "t": "foto", "x": "Helena na verandi pred zen vrtom Ryoan-ji — petnajst kamnov in mir." },
+    { "t": "foto", "x": "Čajna ceremonija: roke s skodelico matche od blizu." }
+  ],
+  "osaka": [
+    { "t": "foto", "x": "Dotonbori zvečer: vse štiri pod neoni, luči se zrcalijo v kanalu." },
+    { "t": "foto", "x": "Vsaka s svojim takoyakijem — štirje nasmehi, štiri kroglice." },
+    { "t": "foto", "x": "Ljuba pred gradom Osaka med zlatimi ginki." },
+    { "t": "video", "x": "Video (15 s): vrvež tržnice Kuromon in vaše pokušanje." }
+  ],
+  "hiroshima": [
+    { "t": "foto", "x": "Miyajima: vse štiri pred veliko plavajočo torijo ob plimi — čudovit skupni posnetek." },
+    { "t": "foto", "x": "Tih, spoštljiv posnetek pri Spomeniku miru (papirnati žerjavi) — brez smeha, le mir." },
+    { "t": "foto", "x": "Jeseni v dolini Momijidani — rdeči javorji in ena od vas na mostičku." },
+    { "t": "foto", "x": "Zadnji skupni posnetek potovanja: vse štiri ob sončnem zahodu na Miyajimi — konec čudovite poti." }
+  ]
+}
