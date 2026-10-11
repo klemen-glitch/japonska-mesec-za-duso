@@ -412,24 +412,54 @@ def head(title, desc, with_map=False):
 
 
 def nav(current_key):
-    def link(href, key, label):
-        cur = ' aria-current="page"' if current_key == key else ""
-        return f'<a href="{href}"{cur}>{label}</a>'
+    def cur(key):
+        return ' aria-current="page"' if current_key == key else ""
 
-    links = [link("index.html", "index", "🏠 Domov"),
-             link("nacrt.html", "nacrt", "🗺️ Načrt poti")]
+    primary = [
+        ("index.html", "index", "🏠", "Domov"),
+        ("nacrt.html", "nacrt", "🗺️", "Načrt poti"),
+        ("dozivetja.html", "dozivetja", "🎨", "Doživetja"),
+        ("priprave.html", "priprave", "🎒", "Priprave"),
+        ("nasveti.html", "nasveti", "💡", "Nasveti"),
+    ]
+    prim = "\n".join(
+        f'        <a href="{h}"{cur(k)}><span class="mi-emoji" aria-hidden="true">{e}</span>{esc(l)}</a>'
+        for (h, k, e, l) in primary)
+    stations = "\n".join(
+        f'        <a href="{loc["key"]}.html"{cur(loc["key"])}>'
+        f'<span class="mi-emoji" aria-hidden="true">{loc["emoji"]}</span>{esc(loc["nav"])}</a>'
+        for loc in LOCATIONS)
+
+    # trenutna stran za oznako v gumbu
+    here = "Domov"
+    for h, k, e, l in primary:
+        if k == current_key:
+            here = l
     for loc in LOCATIONS:
-        links.append(link(f'{loc["key"]}.html', loc["key"], f'{loc["emoji"]} {esc(loc["nav"])}'))
-    links.append(link("dozivetja.html", "dozivetja", "🎨 Doživetja"))
-    links.append(link("priprave.html", "priprave", "🎒 Priprave"))
-    links.append(link("nasveti.html", "nasveti", "💡 Nasveti"))
-    return (
-        '<header class="site-header">\n'
-        '  <a class="brand" href="index.html">🍁 Japonska — Mesec za dušo</a>\n'
-        '  <nav class="topnav" aria-label="Meni">\n    '
-        + "\n    ".join(links)
-        + "\n  </nav>\n</header>\n"
-    )
+        if loc["key"] == current_key:
+            here = loc["nav"]
+
+    return f'''<header class="site-header">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">🍁 Mesec za dušo</a>
+    <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="main-menu">
+      <span class="mt-ico" aria-hidden="true">☰</span> Meni
+    </button>
+  </div>
+  <nav class="main-menu" id="main-menu" aria-label="Glavni meni" hidden>
+    <div class="menu-inner">
+      <div class="menu-primary">
+{prim}
+      </div>
+      <p class="menu-label">Postaje potovanja</p>
+      <div class="menu-stations">
+{stations}
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="menu-backdrop" id="menu-backdrop" hidden></div>
+'''
 
 
 FOOTER = """<footer>

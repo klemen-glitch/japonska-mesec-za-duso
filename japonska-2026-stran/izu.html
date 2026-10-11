@@ -15,28 +15,41 @@
 </head>
 <body>
 <header class="site-header">
-  <a class="brand" href="index.html">🍁 Japonska — Mesec za dušo</a>
-  <nav class="topnav" aria-label="Meni">
-    <a href="index.html">🏠 Domov</a>
-    <a href="nacrt.html">🗺️ Načrt poti</a>
-    <a href="tokio.html">🗼 Tokio</a>
-    <a href="chichibu.html">🌳 Chichibu</a>
-    <a href="kawaguchiko.html">🗻 Fuji</a>
-    <a href="minobusan.html">🏯 Minobu</a>
-    <a href="izu.html" aria-current="page">🌊 Izu</a>
-    <a href="kumano.html">⛩️ Kumano</a>
-    <a href="koyasan.html">🏔️ Koya-san</a>
-    <a href="iya.html">🏞️ Iya</a>
-    <a href="ine.html">🎣 Ine</a>
-    <a href="nara.html">🦌 Nara</a>
-    <a href="kyoto.html">🍁 Kyoto</a>
-    <a href="osaka.html">🏙️ Osaka</a>
-    <a href="hiroshima.html">🕊️ Hiroshima</a>
-    <a href="dozivetja.html">🎨 Doživetja</a>
-    <a href="priprave.html">🎒 Priprave</a>
-    <a href="nasveti.html">💡 Nasveti</a>
+  <div class="nav-inner">
+    <a class="brand" href="index.html">🍁 Mesec za dušo</a>
+    <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="main-menu">
+      <span class="mt-ico" aria-hidden="true">☰</span> Meni
+    </button>
+  </div>
+  <nav class="main-menu" id="main-menu" aria-label="Glavni meni" hidden>
+    <div class="menu-inner">
+      <div class="menu-primary">
+        <a href="index.html"><span class="mi-emoji" aria-hidden="true">🏠</span>Domov</a>
+        <a href="nacrt.html"><span class="mi-emoji" aria-hidden="true">🗺️</span>Načrt poti</a>
+        <a href="dozivetja.html"><span class="mi-emoji" aria-hidden="true">🎨</span>Doživetja</a>
+        <a href="priprave.html"><span class="mi-emoji" aria-hidden="true">🎒</span>Priprave</a>
+        <a href="nasveti.html"><span class="mi-emoji" aria-hidden="true">💡</span>Nasveti</a>
+      </div>
+      <p class="menu-label">Postaje potovanja</p>
+      <div class="menu-stations">
+        <a href="tokio.html"><span class="mi-emoji" aria-hidden="true">🗼</span>Tokio</a>
+        <a href="chichibu.html"><span class="mi-emoji" aria-hidden="true">🌳</span>Chichibu</a>
+        <a href="kawaguchiko.html"><span class="mi-emoji" aria-hidden="true">🗻</span>Fuji</a>
+        <a href="minobusan.html"><span class="mi-emoji" aria-hidden="true">🏯</span>Minobu</a>
+        <a href="izu.html" aria-current="page"><span class="mi-emoji" aria-hidden="true">🌊</span>Izu</a>
+        <a href="kumano.html"><span class="mi-emoji" aria-hidden="true">⛩️</span>Kumano</a>
+        <a href="koyasan.html"><span class="mi-emoji" aria-hidden="true">🏔️</span>Koya-san</a>
+        <a href="iya.html"><span class="mi-emoji" aria-hidden="true">🏞️</span>Iya</a>
+        <a href="ine.html"><span class="mi-emoji" aria-hidden="true">🎣</span>Ine</a>
+        <a href="nara.html"><span class="mi-emoji" aria-hidden="true">🦌</span>Nara</a>
+        <a href="kyoto.html"><span class="mi-emoji" aria-hidden="true">🍁</span>Kyoto</a>
+        <a href="osaka.html"><span class="mi-emoji" aria-hidden="true">🏙️</span>Osaka</a>
+        <a href="hiroshima.html"><span class="mi-emoji" aria-hidden="true">🕊️</span>Hiroshima</a>
+      </div>
+    </div>
   </nav>
 </header>
+<div class="menu-backdrop" id="menu-backdrop" hidden></div>
 <main>
 <section class="loc-hero">
   <div class="scene-banner"><img class="photo-banner" src="images/izu.jpg" alt="Izu polotok" loading="eager" decoding="async"></div>

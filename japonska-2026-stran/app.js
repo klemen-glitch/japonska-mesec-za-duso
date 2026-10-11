@@ -24,6 +24,33 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
+/* Meni: gumb odpre/zapre pregleden meni. */
+document.addEventListener("DOMContentLoaded", function () {
+  var toggle = document.getElementById("menu-toggle");
+  var menu = document.getElementById("main-menu");
+  var backdrop = document.getElementById("menu-backdrop");
+  if (!toggle || !menu) return;
+
+  function setOpen(open) {
+    menu.hidden = !open;
+    if (backdrop) backdrop.hidden = !open;
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    document.body.style.overflow = open ? "hidden" : "";
+  }
+  toggle.addEventListener("click", function (e) {
+    e.stopPropagation();
+    setOpen(menu.hidden);
+  });
+  if (backdrop) backdrop.addEventListener("click", function () { setOpen(false); });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && !menu.hidden) setOpen(false);
+  });
+  menu.addEventListener("click", function (e) { e.stopPropagation(); });
+  document.addEventListener("click", function () {
+    if (!menu.hidden) setOpen(false);
+  });
+});
+
 /* Kontrolni seznam: obkljukano se shrani v telefon (localStorage). */
 document.addEventListener("DOMContentLoaded", function () {
   var boxes = document.querySelectorAll('input[type="checkbox"][data-persist]');

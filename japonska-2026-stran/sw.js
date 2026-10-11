@@ -2,7 +2,7 @@
    da osnovne informacije delujejo tudi brez interneta.
    Ob spremembi strani povečaj številko različice spodaj. */
 
-var CACHE_NAME = "japonska-2026-v10";
+var CACHE_NAME = "japonska-2026-v11";
 
 var PAGES = [
   "./",
@@ -56,15 +56,22 @@ self.addEventListener("activate", function (event) {
   );
 });
 
-/* Strategija: najprej poskusi splet (da so novosti vidne),
-   če ni povezave, postrezi shranjeno različico. */
+/* Strategija: najprej poskusi splet (da so novosti vedno vidne),
+   če ni povezave, postrezi shranjeno različico.
+   Za strani, CSS in JS obidemo brskalnikov predpomnilnik (cache: "reload"),
+   da nikoli ne obtičimo na stari različici; slike se normalno predpomnijo. */
 self.addEventListener("fetch", function (event) {
   if (event.request.method !== "GET") return;
   var url = new URL(event.request.url);
-  if (url.origin !== self.location.origin) return; // YouTube ipd. pusti pri miru
+  if (url.origin !== self.location.origin) return; // YouTube, zemljevidi ipd. pusti pri miru
+
+  var isHTML = event.request.mode === "navigate" ||
+               (event.request.headers.get("accept") || "").indexOf("text/html") !== -1;
+  var fresh = isHTML || /\.(css|js|json)$/i.test(url.pathname);
+  var req = fresh ? new Request(event.request.url, { cache: "reload" }) : event.request;
 
   event.respondWith(
-    fetch(event.request)
+    fetch(req)
       .then(function (response) {
         var copy = response.clone();
         caches.open(CACHE_NAME).then(function (cache) {
