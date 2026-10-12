@@ -6,9 +6,11 @@
   <title>Minobusan · Japonska 2026</title>
   <meta name="description" content="Minobusan: znamenitosti, hrana in nasveti — vodnik Japonska 2026.">
   <meta name="theme-color" content="#7b2230">
-  <link rel="stylesheet" href="style.css?v=13">
+  <link rel="stylesheet" href="style.css?v=14">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="album.js?v=14"></script>
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
@@ -26,6 +28,8 @@
       <div class="menu-primary">
         <a href="index.html"><span class="mi-emoji" aria-hidden="true">🏠</span>Domov</a>
         <a href="nacrt.html"><span class="mi-emoji" aria-hidden="true">🗺️</span>Načrt poti</a>
+        <a href="izziv.html"><span class="mi-emoji" aria-hidden="true">📸</span>Izzivi</a>
+        <a href="nalozi.html"><span class="mi-emoji" aria-hidden="true">📤</span>Naloži fotografije</a>
         <a href="dozivetja.html"><span class="mi-emoji" aria-hidden="true">🎨</span>Doživetja</a>
         <a href="priprave.html"><span class="mi-emoji" aria-hidden="true">🎒</span>Priprave</a>
         <a href="nasveti.html"><span class="mi-emoji" aria-hidden="true">💡</span>Nasveti</a>
@@ -122,13 +126,10 @@
 </section>
 <section class="card-section izzivi" aria-labelledby="izzivi">
   <h2 id="izzivi">📸 Foto izzivi za album</h2>
-  <p class="cat-intro">Nekaj izzivov za vaš skupni album — večinoma fotografije, kjer vas ujame ena od vas. Obkljukajte, ko vam uspe; iz teh utrinkov bo nastala vaša potopisna knjiga. 🌸</p>
-  <ul class="chk-list">
-    <li><label><input type="checkbox" data-persist id="izziv-minobusan-0"> <span>📸 Vse štiri v tempeljskih copatih pred šukubojem Kakurinbo, kjer prespite.</span></label></li>
-    <li><label><input type="checkbox" data-persist id="izziv-minobusan-1"> <span>📸 Meniška večerja shojin ryori od zgoraj — lepo pogrnjena miza kot umetnina (brez obrazov).</span></label></li>
-    <li><label><input type="checkbox" data-persist id="izziv-minobusan-2"> <span>📸 Ljuba na vrhu stopnic pred glavno dvorano Kuon-ji — dosežek dneva.</span></label></li>
-    <li><label><input type="checkbox" data-persist id="izziv-minobusan-3"> <span>🎥 Video (15 s): jutranja megla in cedre pred templjem (če je molitev, le zvok, spoštljivo).</span></label></li>
-  </ul>
+  <p class="cat-intro">Naložite fotografijo (ali video) za izziv — takoj se označi kot opravljen in se spodaj pokaže sličica. Iz tega nastane vaš skupni album. <a href="izziv.html">Vsi izzivi na enem mestu →</a></p>
+  <div class="album-gate"></div>
+  <div class="izziv-board" data-scope="minobusan"></div>
+  <script type="application/json" id="izziv-data">[{"id": "minobusan-0", "t": "foto", "x": "Vse štiri v tempeljskih copatih pred šukubojem Kakurinbo, kjer prespite.", "s": "minobusan", "sn": "Minobu", "e": "🏯"}, {"id": "minobusan-1", "t": "foto", "x": "Meniška večerja shojin ryori od zgoraj — lepo pogrnjena miza kot umetnina (brez obrazov).", "s": "minobusan", "sn": "Minobu", "e": "🏯"}, {"id": "minobusan-2", "t": "foto", "x": "Ljuba na vrhu stopnic pred glavno dvorano Kuon-ji — dosežek dneva.", "s": "minobusan", "sn": "Minobu", "e": "🏯"}, {"id": "minobusan-3", "t": "video", "x": "Video (15 s): jutranja megla in cedre pred templjem (če je molitev, le zvok, spoštljivo).", "s": "minobusan", "sn": "Minobu", "e": "🏯"}]</script>
 </section>
 <section class="card-section" aria-labelledby="hrana">
   <h2 id="hrana">🍜 Hrana — kaj in kje jesti</h2>
@@ -232,6 +233,6 @@
   <p>🍁 Japonska — Mesec za dušo · 3. november – 2. december 2026 · Tokio → Osaka</p>
   <p>Z ljubeznijo pripravljeno za Magdo in prijateljice</p>
 </footer>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 </body>
 </html>

@@ -16,7 +16,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 
 # Verzija gradnje — doda se v naslov CSS/JS (?v=BUILD), da brskalnik vedno
 # naloži svežo različico. Ob vsaki spremembi povečaj.
-BUILD = "13"
+BUILD = "14"
 
 # ----------------------------------------------------------------------------
 # VSEBINA
@@ -393,12 +393,18 @@ def esc(s):
     return html.escape(str(s), quote=True)
 
 
-def head(title, desc, with_map=False):
+def head(title, desc, with_map=False, with_album=False):
     leaflet = ""
     if with_map:
         leaflet = (
             '  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">\n'
             '  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>\n'
+        )
+    album = ""
+    if with_album:
+        album = (
+            '  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>\n'
+            f'  <script defer src="album.js?v={BUILD}"></script>\n'
         )
     return f"""<!DOCTYPE html>
 <html lang="sl">
@@ -409,7 +415,7 @@ def head(title, desc, with_map=False):
   <meta name="description" content="{esc(desc)}">
   <meta name="theme-color" content="#7b2230">
   <link rel="stylesheet" href="style.css?v={BUILD}">
-{leaflet}  <link rel="manifest" href="manifest.json">
+{leaflet}{album}  <link rel="manifest" href="manifest.json">
   <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 </head>
@@ -424,6 +430,8 @@ def nav(current_key):
     primary = [
         ("index.html", "index", "🏠", "Domov"),
         ("nacrt.html", "nacrt", "🗺️", "Načrt poti"),
+        ("izziv.html", "izziv", "📸", "Izzivi"),
+        ("nalozi.html", "nalozi", "📤", "Naloži fotografije"),
         ("dozivetja.html", "dozivetja", "🎨", "Doživetja"),
         ("priprave.html", "priprave", "🎒", "Priprave"),
         ("nasveti.html", "nasveti", "💡", "Nasveti"),
@@ -629,22 +637,30 @@ def map_section(key):
             f'📍 Odpri na Google Zemljevidu</a>\n</section>\n')
 
 
+def _challenge_data(key):
+    loc = next((l for l in LOCATIONS if l["key"] == key), None)
+    out = []
+    for i, it in enumerate(IZZIVI.get(key, [])):
+        out.append({"id": f"{key}-{i}", "t": it.get("t", "foto"), "x": it["x"],
+                    "s": key, "sn": loc["nav"] if loc else key,
+                    "e": loc["emoji"] if loc else "📍"})
+    return out
+
+
 def izzivi_section(key):
     items = IZZIVI.get(key, [])
     if not items:
         return ""
-    parts = ['<section class="card-section izzivi" aria-labelledby="izzivi">',
-             '  <h2 id="izzivi">📸 Foto izzivi za album</h2>',
-             '  <p class="cat-intro">Nekaj izzivov za vaš skupni album — večinoma fotografije, kjer vas ujame ena od vas. '
-             'Obkljukajte, ko vam uspe; iz teh utrinkov bo nastala vaša potopisna knjiga. 🌸</p>',
-             '  <ul class="chk-list">']
-    for i, it in enumerate(items):
-        ic = "🎥" if it.get("t") == "video" else "📸"
-        cid = f"izziv-{key}-{i}"
-        parts.append(f'    <li><label><input type="checkbox" data-persist id="{cid}"> '
-                     f'<span>{ic} {esc(it["x"])}</span></label></li>')
-    parts.append("  </ul>\n</section>")
-    return "\n".join(parts) + "\n"
+    data = json.dumps(_challenge_data(key), ensure_ascii=False)
+    return (
+        '<section class="card-section izzivi" aria-labelledby="izzivi">\n'
+        '  <h2 id="izzivi">📸 Foto izzivi za album</h2>\n'
+        '  <p class="cat-intro">Naložite fotografijo (ali video) za izziv — takoj se označi kot opravljen in se spodaj pokaže sličica. '
+        'Iz tega nastane vaš skupni album. <a href="izziv.html">Vsi izzivi na enem mestu →</a></p>\n'
+        '  <div class="album-gate"></div>\n'
+        f'  <div class="izziv-board" data-scope="{key}"></div>\n'
+        f'  <script type="application/json" id="izziv-data">{data}</script>\n'
+        '</section>\n')
 
 
 def stay_section(key):
@@ -736,7 +752,7 @@ def location_page(i, loc):
 
     out = head(f"{loc['name']} · Japonska 2026",
                f"{loc['name']}: znamenitosti, hrana in nasveti — vodnik Japonska 2026.",
-               with_map=True)
+               with_map=True, with_album=True)
     out += nav(loc["key"])
     out += "<main>\n"
 
@@ -1071,6 +1087,51 @@ def dozivetja_page():
     return out
 
 
+def _all_challenge_data():
+    out = []
+    for loc in LOCATIONS:
+        out.extend(_challenge_data(loc["key"]))
+    return out
+
+
+def nalozi_page():
+    out = head("Naloži fotografije · Japonska — Mesec za dušo",
+               "Naložite fotografije in videe s telefona v skupni album potovanja.",
+               with_album=True)
+    out += nav("nalozi")
+    out += "<main>\n"
+    out += _page_hero("📤", "Vaše fotografije in videi", "Naloži fotografije",
+                      "Izberite postajo in naložite slike ali videe kar s telefona")
+    out += '<p class="intro-note">Prvič vnesete skupno kodo, nato pa le izberete postajo in slike. Vse pristane v spodnjem skupnem albumu.</p>\n'
+    out += '<div class="album-gate"></div>\n'
+    out += '<section class="card-section album-upload"></section>\n'
+    out += '<h2 class="section-title">📸 Naš album</h2>\n'
+    out += '<div class="album-gallery"></div>\n'
+    out += '<div class="back-row"><a class="back-button" href="izziv.html">📸 Poglej foto izzive</a></div>\n'
+    out += "</main>\n" + FOOTER
+    return out
+
+
+def izziv_page():
+    data = json.dumps(_all_challenge_data(), ensure_ascii=False)
+    out = head("Foto izzivi · Japonska — Mesec za dušo",
+               "Vsi foto izzivi potovanja — naložite sliko in izziv je opravljen.",
+               with_album=True)
+    out += nav("izziv")
+    out += "<main>\n"
+    out += _page_hero("📸", "Skupaj gradimo album", "Foto izzivi",
+                      "Za Marjetico, Heleno, Ljubo in Magdo")
+    out += ('<p class="intro-note">Za vsako postajo nekaj izzivov. Ko naložite fotografijo (ali video) za izziv, '
+            'ta pade na dno kot <strong>opravljen</strong> in se pokaže sličica — tako nastane vaš potopis. '
+            'Nalaganje odklenete s skupno kodo (enkrat).</p>\n')
+    out += '<div class="album-gate"></div>\n'
+    out += '<section class="card-section"><div class="izziv-board" data-scope="all"></div></section>\n'
+    out += f'<script type="application/json" id="izziv-data">{data}</script>\n'
+    out += '<div class="back-row"><a class="back-button" href="nalozi.html">📤 Naloži fotografije</a></div>\n'
+    out += "</main>\n" + FOOTER
+    return out
+
+
 def index_page():
     out = head(
         "Japonska — Mesec za dušo",
@@ -1084,8 +1145,7 @@ def index_page():
   <h1>Japonska<br><span class="h1-sub">Mesec za dušo</span></h1>
   <p class="dates">3. november – 2. december 2026 · Tokio → Osaka</p>
   <p class="tagline">Potovalni vodnik za Magdo in prijateljice — vaš žepni spremljevalec: za vsako postajo znamenitosti z zemljevidi, preverjene restavracije, osebne rubrike, nasveti in videi.</p>
-  <!-- Povezavo do foto albuma vpišeš v datoteki app.js (PHOTO_ALBUM_URL) -->
-  <a id="photo-link" class="photo-button" href="#">📸 Naše fotografije</a>
+  <a class="photo-button" href="nalozi.html">📸 Naš album — naloži fotografije</a>
 </section>
 <nav class="quick-links" aria-label="Glavna poglavja">
   <a href="nacrt.html"><span class="ql-emoji" aria-hidden="true">🗺️</span><span class="ql-t">Načrt poti</span><span class="ql-d">30 dni, dan za dnem</span></a>
@@ -1150,7 +1210,9 @@ print("written nasveti.html")
 
 for name, builder in [("nacrt.html", nacrt_page),
                       ("priprave.html", priprave_page),
-                      ("dozivetja.html", dozivetja_page)]:
+                      ("dozivetja.html", dozivetja_page),
+                      ("nalozi.html", nalozi_page),
+                      ("izziv.html", izziv_page)]:
     with open(os.path.join(OUT, name), "w", encoding="utf-8") as f:
         f.write(builder())
     print(f"written {name}")

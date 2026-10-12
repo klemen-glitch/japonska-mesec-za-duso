@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Foto izzivi · Japonska — Mesec za dušo</title>
+  <meta name="description" content="Vsi foto izzivi potovanja — naložite sliko in izziv je opravljen.">
+  <meta name="theme-color" content="#7b2230">
+  <link rel="stylesheet" href="style.css?v=14">
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="album.js?v=14"></script>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+</head>
+<body>
+<header class="site-header">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">🍁 Mesec za dušo</a>
+    <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="main-menu">
+      <span class="mt-ico" aria-hidden="true">☰</span> Meni
+    </button>
+  </div>
+  <nav class="main-menu" id="main-menu" aria-label="Glavni meni" hidden>
+    <div class="menu-inner">
+      <div class="menu-primary">
+        <a href="index.html"><span class="mi-emoji" aria-hidden="true">🏠</span>Domov</a>
+        <a href="nacrt.html"><span class="mi-emoji" aria-hidden="true">🗺️</span>Načrt poti</a>
+        <a href="izziv.html" aria-current="page"><span class="mi-emoji" aria-hidden="true">📸</span>Izzivi</a>
+        <a href="nalozi.html"><span class="mi-emoji" aria-hidden="true">📤</span>Naloži fotografije</a>
+        <a href="dozivetja.html"><span class="mi-emoji" aria-hidden="true">🎨</span>Doživetja</a>
+        <a href="priprave.html"><span class="mi-emoji" aria-hidden="true">🎒</span>Priprave</a>
+        <a href="nasveti.html"><span class="mi-emoji" aria-hidden="true">💡</span>Nasveti</a>
+      </div>
+      <p class="menu-label">Postaje potovanja</p>
+      <div class="menu-stations">
+        <a href="tokio.html"><span class="mi-emoji" aria-hidden="true">🗼</span>Tokio</a>
+        <a href="chichibu.html"><span class="mi-emoji" aria-hidden="true">🌳</span>Chichibu</a>
+        <a href="kawaguchiko.html"><span class="mi-emoji" aria-hidden="true">🗻</span>Fuji</a>
+        <a href="minobusan.html"><span class="mi-emoji" aria-hidden="true">🏯</span>Minobu</a>
+        <a href="izu.html"><span class="mi-emoji" aria-hidden="true">🌊</span>Izu</a>
+        <a href="kumano.html"><span class="mi-emoji" aria-hidden="true">⛩️</span>Kumano</a>
+        <a href="koyasan.html"><span class="mi-emoji" aria-hidden="true">🏔️</span>Koya-san</a>
+        <a href="iya.html"><span class="mi-emoji" aria-hidden="true">🏞️</span>Iya</a>
+        <a href="ine.html"><span class="mi-emoji" aria-hidden="true">🎣</span>Ine</a>
+        <a href="nara.html"><span class="mi-emoji" aria-hidden="true">🦌</span>Nara</a>
+        <a href="kyoto.html"><span class="mi-emoji" aria-hidden="true">🍁</span>Kyoto</a>
+        <a href="osaka.html"><span class="mi-emoji" aria-hidden="true">🏙️</span>Osaka</a>
+        <a href="hiroshima.html"><span class="mi-emoji" aria-hidden="true">🕊️</span>Hiroshima</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="menu-backdrop" id="menu-backdrop" hidden></div>
+<main>
+<section class="loc-hero">
+  <div class="loc-emoji" aria-hidden="true">📸</div>
+  <p class="kicker">Skupaj gradimo album</p>
+  <h1>Foto izzivi</h1>
+  <p class="loc-sub">Za Marjetico, Heleno, Ljubo in Magdo</p>
+</section>
+<p class="intro-note">Za vsako postajo nekaj izzivov. Ko naložite fotografijo (ali video) za izziv, ta pade na dno kot <strong>opravljen</strong> in se pokaže sličica — tako nastane vaš potopis. Nalaganje odklenete s skupno kodo (enkrat).</p>
+<div class="album-gate"></div>
+<section class="card-section"><div class="izziv-board" data-scope="all"></div></section>
+<script type="application/json" id="izziv-data">[{"id": "tokio-0", "t": "foto", "x": "Vse štiri pod velikimi torii svetišča Meiji Jingu — prvi skupinski posnetek potovanja.", "s": "tokio", "sn": "Tokio", "e": "🗼"}, {"id": "tokio-1", "t": "foto", "x": "Magda na klopci ob ribniku v vrtu Rikugien s skodelico matche — ostale jo tiho ujamejo (Magdin trenutek v živo).", "s": "tokio", "sn": "Tokio", "e": "🗼"}, {"id": "tokio-2", "t": "foto", "x": "Prvi pravi sushi na tržnici Tsukiji — nasmeh ob prvem grižljaju, od blizu.", "s": "tokio", "sn": "Tokio", "e": "🗼"}, {"id": "tokio-3", "t": "video", "x": "Kratek video (15 s): vožnja z ladjico po reki Sumidi — mesto z vode in vaši glasovi.", "s": "tokio", "sn": "Tokio", "e": "🗼"}, {"id": "chichibu-0", "t": "foto", "x": "Gozdna kopel: vsaka objame svojo cedro — štirje objemi dreves v enem kadru.", "s": "chichibu", "sn": "Chichibu", "e": "🌳"}, {"id": "chichibu-1", "t": "foto", "x": "Marjetica ob potoku v soteski Mitake — mir gozda, ujet v eni sliki.", "s": "chichibu", "sn": "Chichibu", "e": "🌳"}, {"id": "chichibu-2", "t": "foto", "x": "Najlepši rdeči javorjev list, ki ga najdete — od blizu, da se vidijo žile.", "s": "chichibu", "sn": "Chichibu", "e": "🌳"}, {"id": "chichibu-3", "t": "foto", "x": "Skupinska na kamnitih stopnicah svetišča med visokimi cedrami.", "s": "chichibu", "sn": "Chichibu", "e": "🌳"}, {"id": "kawaguchiko-0", "t": "foto", "x": "»Dve gori Fuji«: vse štiri ob jezeru, da se v mirni vodi vidi tudi odsev gore.", "s": "kawaguchiko", "sn": "Fuji", "e": "🗻"}, {"id": "kawaguchiko-1", "t": "foto", "x": "Klasična razglednica: skupinska pri pagodi Chureito z goro Fuji v ozadju.", "s": "kawaguchiko", "sn": "Fuji", "e": "🗻"}, {"id": "kawaguchiko-2", "t": "foto", "x": "Helena z goro Fuji »na dlani« (perspektivni trik — dlan pod vrhom).", "s": "kawaguchiko", "sn": "Fuji", "e": "🗻"}, {"id": "kawaguchiko-3", "t": "foto", "x": "Štirje portreti s kavo ob jezeru, Fuji za vami.", "s": "kawaguchiko", "sn": "Fuji", "e": "🗻"}, {"id": "minobusan-0", "t": "foto", "x": "Vse štiri v tempeljskih copatih pred šukubojem Kakurinbo, kjer prespite.", "s": "minobusan", "sn": "Minobu", "e": "🏯"}, {"id": "minobusan-1", "t": "foto", "x": "Meniška večerja shojin ryori od zgoraj — lepo pogrnjena miza kot umetnina (brez obrazov).", "s": "minobusan", "sn": "Minobu", "e": "🏯"}, {"id": "minobusan-2", "t": "foto", "x": "Ljuba na vrhu stopnic pred glavno dvorano Kuon-ji — dosežek dneva.", "s": "minobusan", "sn": "Minobu", "e": "🏯"}, {"id": "minobusan-3", "t": "video", "x": "Video (15 s): jutranja megla in cedre pred templjem (če je molitev, le zvok, spoštljivo).", "s": "minobusan", "sn": "Minobu", "e": "🏯"}, {"id": "izu-0", "t": "foto", "x": "Noge v onsenu z razgledom na morje — para in modrina (brez obrazov).", "s": "izu", "sn": "Izu", "e": "🌊"}, {"id": "izu-1", "t": "foto", "x": "Skupinska na rdečem mostu Katsura v Shuzenjiju.", "s": "izu", "sn": "Izu", "e": "🌊"}, {"id": "izu-2", "t": "foto", "x": "Magda na bambusovi poti — pogled navzgor med visokimi stebli.", "s": "izu", "sn": "Izu", "e": "🌊"}, {"id": "izu-3", "t": "foto", "x": "Vaše silhuete ob sončnem zahodu nad oceanom (obala Jogasaki).", "s": "izu", "sn": "Izu", "e": "🌊"}, {"id": "kumano-0", "t": "foto", "x": "Vse štiri ob velikanski cedri na Daimonzaki — položite dlani na njeno deblo.", "s": "kumano", "sn": "Kumano", "e": "⛩️"}, {"id": "kumano-1", "t": "foto", "x": "Ikona Japonske: rdeča pagoda Seiganto-ji in slap Nachi v enem kadru.", "s": "kumano", "sn": "Kumano", "e": "⛩️"}, {"id": "kumano-2", "t": "foto", "x": "Marjetica na kamnitih stopnicah romarske poti, meglice med drevesi.", "s": "kumano", "sn": "Kumano", "e": "⛩️"}, {"id": "kumano-3", "t": "foto", "x": "Noge v rečni kopeli Kawayu — topel prod ob reki.", "s": "kumano", "sn": "Kumano", "e": "⛩️"}, {"id": "koyasan-0", "t": "foto", "x": "Okunoin ob mraku: kamnite luči med cedrami — ujemite njihovo svetlobo (brez bliskavice).", "s": "koyasan", "sn": "Koya-san", "e": "🏔️"}, {"id": "koyasan-1", "t": "foto", "x": "Vse štiri pred cinobrasto pagodo Konpon Daito.", "s": "koyasan", "sn": "Koya-san", "e": "🏔️"}, {"id": "koyasan-2", "t": "foto", "x": "Helena na verandi pred kamnitim vrtom Banryutei — mir zgrabljenega proda.", "s": "koyasan", "sn": "Koya-san", "e": "🏔️"}, {"id": "koyasan-3", "t": "video", "x": "Video (15 s): tih večerni sprehod skozi Okunoin — koraki, cedre, lučke.", "s": "koyasan", "sn": "Koya-san", "e": "🏔️"}, {"id": "iya-0", "t": "foto", "x": "Na sredini visečega mostu Kazurabashi — pogum in smeh (nekdo slika z brega).", "s": "iya", "sn": "Iya", "e": "🏞️"}, {"id": "iya-1", "t": "foto", "x": "Skupinska na razgledišču Hi-no-Ji nad velikim ovinkom smaragdne reke.", "s": "iya", "sn": "Iya", "e": "🏞️"}, {"id": "iya-2", "t": "foto", "x": "Ljuba ob reki iz ladjice v soteski Oboke.", "s": "iya", "sn": "Iya", "e": "🏞️"}, {"id": "iya-3", "t": "foto", "x": "Jesenske barve doline — štiri majhne postave sredi velike narave.", "s": "iya", "sn": "Iya", "e": "🏞️"}, {"id": "ine-0", "t": "foto", "x": "Zlata ura: vse štiri ob zalivu, funaye in odsevi v vodi za vami.", "s": "ine", "sn": "Ine", "e": "🎣"}, {"id": "ine-1", "t": "foto", "x": "Z ladjice: vrsta lesenih hišic funaya tik nad morjem.", "s": "ine", "sn": "Ine", "e": "🎣"}, {"id": "ine-2", "t": "foto", "x": "Nazdravljanje z lokalnim sakejem pri pivovarni Mukai — kanpai!", "s": "ine", "sn": "Ine", "e": "🎣"}, {"id": "ine-3", "t": "foto", "x": "Magda na obali med galebi — mir ribiške vasice.", "s": "ine", "sn": "Ine", "e": "🎣"}, {"id": "nara-0", "t": "foto", "x": "Ujemite trenutek, ko se jelen prikloni — najlepše Marjetici (ali komurkoli).", "s": "nara", "sn": "Nara", "e": "🦌"}, {"id": "nara-1", "t": "foto", "x": "Vse štiri pred Velikim Budo v Todai-ju — za občutek, kako je velik.", "s": "nara", "sn": "Nara", "e": "🦌"}, {"id": "nara-2", "t": "foto", "x": "Pot med tisočimi lučmi svetišča Kasuga — ena od vas med lučmi.", "s": "nara", "sn": "Nara", "e": "🦌"}, {"id": "nara-3", "t": "video", "x": "Video (10 s): hranjenje jelenov — smeh in jeleni, ki sledijo piškotom.", "s": "nara", "sn": "Nara", "e": "🦌"}, {"id": "kyoto-0", "t": "foto", "x": "Ikona Kjota: skupinska med žarečimi rdečimi javorji (tempelj Eikando ali ribnik).", "s": "kyoto", "sn": "Kyoto", "e": "🍁"}, {"id": "kyoto-1", "t": "foto", "x": "Bambusov gaj Arašijama zgodaj zjutraj — pogled navzgor, vse štiri med bambusom.", "s": "kyoto", "sn": "Kyoto", "e": "🍁"}, {"id": "kyoto-2", "t": "foto", "x": "Helena na verandi pred zen vrtom Ryoan-ji — petnajst kamnov in mir.", "s": "kyoto", "sn": "Kyoto", "e": "🍁"}, {"id": "kyoto-3", "t": "foto", "x": "Čajna ceremonija: roke s skodelico matche od blizu.", "s": "kyoto", "sn": "Kyoto", "e": "🍁"}, {"id": "osaka-0", "t": "foto", "x": "Dotonbori zvečer: vse štiri pod neoni, luči se zrcalijo v kanalu.", "s": "osaka", "sn": "Osaka", "e": "🏙️"}, {"id": "osaka-1", "t": "foto", "x": "Vsaka s svojim takoyakijem — štirje nasmehi, štiri kroglice.", "s": "osaka", "sn": "Osaka", "e": "🏙️"}, {"id": "osaka-2", "t": "foto", "x": "Ljuba pred gradom Osaka med zlatimi ginki.", "s": "osaka", "sn": "Osaka", "e": "🏙️"}, {"id": "osaka-3", "t": "video", "x": "Video (15 s): vrvež tržnice Kuromon in vaše pokušanje.", "s": "osaka", "sn": "Osaka", "e": "🏙️"}, {"id": "hiroshima-0", "t": "foto", "x": "Miyajima: vse štiri pred veliko plavajočo torijo ob plimi — čudovit skupni posnetek.", "s": "hiroshima", "sn": "Hiroshima", "e": "🕊️"}, {"id": "hiroshima-1", "t": "foto", "x": "Tih, spoštljiv posnetek pri Spomeniku miru (papirnati žerjavi) — brez smeha, le mir.", "s": "hiroshima", "sn": "Hiroshima", "e": "🕊️"}, {"id": "hiroshima-2", "t": "foto", "x": "Jeseni v dolini Momijidani — rdeči javorji in ena od vas na mostičku.", "s": "hiroshima", "sn": "Hiroshima", "e": "🕊️"}, {"id": "hiroshima-3", "t": "foto", "x": "Zadnji skupni posnetek potovanja: vse štiri ob sončnem zahodu na Miyajimi — konec čudovite poti.", "s": "hiroshima", "sn": "Hiroshima", "e": "🕊️"}]</script>
+<div class="back-row"><a class="back-button" href="nalozi.html">📤 Naloži fotografije</a></div>
+</main>
+<footer>
+  <p>🍁 Japonska — Mesec za dušo · 3. november – 2. december 2026 · Tokio → Osaka</p>
+  <p>Z ljubeznijo pripravljeno za Magdo in prijateljice</p>
+</footer>
+<script src="app.js?v=14"></script>
+</body>
+</html>

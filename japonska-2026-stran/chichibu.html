@@ -6,9 +6,11 @@
   <title>Chichibu · Japonska 2026</title>
   <meta name="description" content="Chichibu: znamenitosti, hrana in nasveti — vodnik Japonska 2026.">
   <meta name="theme-color" content="#7b2230">
-  <link rel="stylesheet" href="style.css?v=13">
+  <link rel="stylesheet" href="style.css?v=14">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="album.js?v=14"></script>
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
@@ -26,6 +28,8 @@
       <div class="menu-primary">
         <a href="index.html"><span class="mi-emoji" aria-hidden="true">🏠</span>Domov</a>
         <a href="nacrt.html"><span class="mi-emoji" aria-hidden="true">🗺️</span>Načrt poti</a>
+        <a href="izziv.html"><span class="mi-emoji" aria-hidden="true">📸</span>Izzivi</a>
+        <a href="nalozi.html"><span class="mi-emoji" aria-hidden="true">📤</span>Naloži fotografije</a>
         <a href="dozivetja.html"><span class="mi-emoji" aria-hidden="true">🎨</span>Doživetja</a>
         <a href="priprave.html"><span class="mi-emoji" aria-hidden="true">🎒</span>Priprave</a>
         <a href="nasveti.html"><span class="mi-emoji" aria-hidden="true">💡</span>Nasveti</a>
@@ -149,13 +153,10 @@
 </section>
 <section class="card-section izzivi" aria-labelledby="izzivi">
   <h2 id="izzivi">📸 Foto izzivi za album</h2>
-  <p class="cat-intro">Nekaj izzivov za vaš skupni album — večinoma fotografije, kjer vas ujame ena od vas. Obkljukajte, ko vam uspe; iz teh utrinkov bo nastala vaša potopisna knjiga. 🌸</p>
-  <ul class="chk-list">
-    <li><label><input type="checkbox" data-persist id="izziv-chichibu-0"> <span>📸 Gozdna kopel: vsaka objame svojo cedro — štirje objemi dreves v enem kadru.</span></label></li>
-    <li><label><input type="checkbox" data-persist id="izziv-chichibu-1"> <span>📸 Marjetica ob potoku v soteski Mitake — mir gozda, ujet v eni sliki.</span></label></li>
-    <li><label><input type="checkbox" data-persist id="izziv-chichibu-2"> <span>📸 Najlepši rdeči javorjev list, ki ga najdete — od blizu, da se vidijo žile.</span></label></li>
-    <li><label><input type="checkbox" data-persist id="izziv-chichibu-3"> <span>📸 Skupinska na kamnitih stopnicah svetišča med visokimi cedrami.</span></label></li>
-  </ul>
+  <p class="cat-intro">Naložite fotografijo (ali video) za izziv — takoj se označi kot opravljen in se spodaj pokaže sličica. Iz tega nastane vaš skupni album. <a href="izziv.html">Vsi izzivi na enem mestu →</a></p>
+  <div class="album-gate"></div>
+  <div class="izziv-board" data-scope="chichibu"></div>
+  <script type="application/json" id="izziv-data">[{"id": "chichibu-0", "t": "foto", "x": "Gozdna kopel: vsaka objame svojo cedro — štirje objemi dreves v enem kadru.", "s": "chichibu", "sn": "Chichibu", "e": "🌳"}, {"id": "chichibu-1", "t": "foto", "x": "Marjetica ob potoku v soteski Mitake — mir gozda, ujet v eni sliki.", "s": "chichibu", "sn": "Chichibu", "e": "🌳"}, {"id": "chichibu-2", "t": "foto", "x": "Najlepši rdeči javorjev list, ki ga najdete — od blizu, da se vidijo žile.", "s": "chichibu", "sn": "Chichibu", "e": "🌳"}, {"id": "chichibu-3", "t": "foto", "x": "Skupinska na kamnitih stopnicah svetišča med visokimi cedrami.", "s": "chichibu", "sn": "Chichibu", "e": "🌳"}]</script>
 </section>
 <section class="card-section" aria-labelledby="hrana">
   <h2 id="hrana">🍜 Hrana — kaj in kje jesti</h2>
@@ -364,6 +365,6 @@
   <p>🍁 Japonska — Mesec za dušo · 3. november – 2. december 2026 · Tokio → Osaka</p>
   <p>Z ljubeznijo pripravljeno za Magdo in prijateljice</p>
 </footer>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 </body>
 </html>

@@ -827,6 +827,77 @@ main {
 }
 .chk-reset:hover { background: var(--line-strong); }
 
+/* ---------- Album: koda + ime ---------- */
+
+.album-gate { margin: 0.2rem 0 1rem; }
+.gate-row {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem;
+  background: var(--bg-alt); border-radius: var(--radius-sm); padding: 0.7rem 0.9rem;
+}
+.gate-lbl { font-weight: 600; color: var(--ink); }
+.gate-pin {
+  font-size: 1.05rem; padding: 0.5rem 0.7rem; border: 1px solid var(--line-strong);
+  border-radius: 10px; background: var(--bg); color: var(--ink); width: 7rem;
+  font-family: var(--sans);
+}
+.gate-btn, .gate-name {
+  font-family: var(--sans); font-size: 0.95rem; font-weight: 600; cursor: pointer;
+  border: none; border-radius: var(--radius-pill); padding: 0.5rem 1rem;
+  background: var(--accent); color: #fff;
+}
+.gate-name { background: var(--bg); color: var(--ink); border: 1px solid var(--line-strong); }
+.gate-name.on { background: var(--accent); color: #fff; border-color: transparent; }
+
+/* ---------- Izzivi: tabla ---------- */
+
+.izziv-progress { font-weight: 600; color: var(--accent); margin: 0 0 0.8rem; }
+.izziv-items { list-style: none; margin: 0; padding: 0; }
+.izziv-item { padding: 0.9rem 0; border-top: 1px solid var(--line); }
+.izziv-item:first-child { border-top: 0; }
+.izziv-item.done { opacity: 0.95; }
+.izziv-head { display: flex; align-items: flex-start; gap: 0.6rem; }
+.izziv-mark { font-size: 1.15rem; flex: 0 0 auto; }
+.izziv-text { font-size: 1.04rem; color: var(--ink); }
+.izziv-item.done .izziv-text { color: var(--ink-soft); }
+.izziv-st {
+  display: inline-block; font-size: 0.72rem; font-weight: 700; color: var(--accent);
+  background: var(--accent-soft); border-radius: var(--radius-pill);
+  padding: 0.1rem 0.55rem; margin-right: 0.45rem; white-space: nowrap;
+}
+.izziv-shots { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.6rem 0 0 1.75rem; }
+.izziv-act { margin: 0.6rem 0 0 1.75rem; display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+.izziv-status { font-size: 0.9rem; color: var(--ink-soft); }
+
+/* ---------- Album: nalagalnik + galerija ---------- */
+
+.album-field { display: block; margin: 0 0 0.8rem; }
+.album-field > span { display: block; font-weight: 600; margin-bottom: 0.35rem; }
+.album-select {
+  width: 100%; font-size: 1.05rem; padding: 0.65rem 0.7rem; border-radius: 10px;
+  border: 1px solid var(--line-strong); background: var(--bg); color: var(--ink);
+  font-family: var(--sans);
+}
+.album-big-btn { width: 100%; text-align: center; }
+.album-status { margin: 0.7rem 0 0; color: var(--ink-soft); font-weight: 600; }
+.album-empty { color: var(--ink-soft); text-align: center; padding: 1.5rem 0; }
+.album-st-h { font-size: 1.1rem; margin: 1.3rem 0 0.5rem; color: var(--ink); }
+
+.album-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.4rem;
+}
+@media (min-width: 620px) { .album-grid { grid-template-columns: repeat(4, 1fr); } }
+.album-thumb {
+  display: block; position: relative; aspect-ratio: 1 / 1; overflow: hidden;
+  border-radius: 10px; background: var(--bg-alt); border: 1px solid var(--line);
+}
+.album-thumb img, .album-thumb video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.album-thumb.sm { width: 84px; height: 84px; aspect-ratio: auto; flex: 0 0 auto; }
+.album-thumb .vtag {
+  position: absolute; right: 5px; bottom: 5px; background: rgba(0,0,0,0.6);
+  color: #fff; border-radius: 50%; width: 22px; height: 22px;
+  display: flex; align-items: center; justify-content: center; font-size: 0.7rem;
+}
+
 /* ---------- Noga ---------- */
 
 footer {
