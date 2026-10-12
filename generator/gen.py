@@ -16,7 +16,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 
 # Verzija gradnje — doda se v naslov CSS/JS (?v=BUILD), da brskalnik vedno
 # naloži svežo različico. Ob vsaki spremembi povečaj.
-BUILD = "14"
+BUILD = "15"
 
 # ----------------------------------------------------------------------------
 # VSEBINA
@@ -1106,6 +1106,7 @@ def nalozi_page():
     out += '<div class="album-gate"></div>\n'
     out += '<section class="card-section album-upload"></section>\n'
     out += '<h2 class="section-title">📸 Naš album</h2>\n'
+    out += '<div class="album-download"></div>\n'
     out += '<div class="album-gallery"></div>\n'
     out += '<div class="back-row"><a class="back-button" href="izziv.html">📸 Poglej foto izzive</a></div>\n'
     out += "</main>\n" + FOOTER

@@ -293,7 +293,67 @@
     });
   }
 
-  function rerenderAll() { renderBoards(); renderGallery(); }
+  // ---- prenos celega albuma (.zip) ----------------------------------------
+  function loadJsZip() {
+    return new Promise(function (res, rej) {
+      if (window.JSZip) return res();
+      var s = document.createElement("script");
+      s.src = "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js";
+      s.onload = res; s.onerror = rej;
+      document.head.appendChild(s);
+    });
+  }
+  function baseName(p) { var a = (p || "").split("/"); return a[a.length - 1]; }
+  function safeFolder(k) {
+    var n = (STNAME[k] || k || "drugo");
+    return n.replace(/[^0-9A-Za-zČŠŽčšž _-]/g, "").trim() || "drugo";
+  }
+
+  function downloadAll(btn, status) {
+    if (!uploadsCache || !uploadsCache.length) { if (status) status.textContent = "Album je še prazen."; return; }
+    btn.disabled = true;
+    var total = uploadsCache.length, ok = 0, i = 0, zip;
+    if (status) status.textContent = "Pripravljam …";
+    loadJsZip().then(function () {
+      zip = new JSZip();
+      function next() {
+        if (i >= total) {
+          if (status) status.textContent = "Pakiram " + ok + " datotek v .zip …";
+          zip.generateAsync({ type: "blob" }).then(function (out) {
+            var a = document.createElement("a");
+            a.href = URL.createObjectURL(out);
+            a.download = "japonska-album.zip";
+            document.body.appendChild(a); a.click(); a.remove();
+            if (status) status.textContent = "Preneseno ✓ (" + ok + " datotek)";
+            btn.disabled = false;
+          });
+          return;
+        }
+        var u = uploadsCache[i++];
+        if (status) status.textContent = "Pripravljam " + i + "/" + total + " …";
+        fetch(pub(u.path)).then(function (r) { return r.blob(); }).then(function (blob) {
+          zip.file(safeFolder(u.station) + "/" + baseName(u.path), blob);
+          ok++; next();
+        }).catch(function (e) { console.warn("skip", u.path, e); next(); });
+      }
+      next();
+    }).catch(function () { if (status) status.textContent = "Napaka pri pripravi prenosa."; btn.disabled = false; });
+  }
+
+  function renderDownload() {
+    var box = document.querySelector(".album-download");
+    if (!box) return;
+    box.innerHTML = "";
+    if (!uploadsCache || !uploadsCache.length) return;
+    var btn = document.createElement("button");
+    btn.type = "button"; btn.className = "photo-button album-dl-btn";
+    btn.textContent = "⬇️ Prenesi vse slike (.zip)";
+    var status = document.createElement("span"); status.className = "album-status dl-status";
+    btn.addEventListener("click", function () { downloadAll(btn, status); });
+    box.appendChild(btn); box.appendChild(status);
+  }
+
+  function rerenderAll() { renderBoards(); renderGallery(); renderDownload(); }
 
   function escapeHtml(s) {
     return String(s).replace(/[&<>"]/g, function (c) {

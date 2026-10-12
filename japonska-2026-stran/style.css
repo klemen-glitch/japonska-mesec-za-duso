@@ -880,6 +880,9 @@ main {
 .album-big-btn { width: 100%; text-align: center; }
 .album-status { margin: 0.7rem 0 0; color: var(--ink-soft); font-weight: 600; }
 .album-empty { color: var(--ink-soft); text-align: center; padding: 1.5rem 0; }
+.album-download { margin: 0 0 1rem; text-align: center; }
+.album-dl-btn[disabled] { opacity: 0.6; cursor: default; }
+.dl-status { display: block; margin-top: 0.5rem; }
 .album-st-h { font-size: 1.1rem; margin: 1.3rem 0 0.5rem; color: var(--ink); }
 
 .album-grid {
