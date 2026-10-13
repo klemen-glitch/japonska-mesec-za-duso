@@ -29,6 +29,7 @@ CFG = {
     "theme": "#7b2230",
     "desc": "Potovalni vodnik: Japonska, 3. november – 2. december 2026, Tokio → Osaka.",
     "people": ["Marjetica", "Helena", "Ljuba", "Magda"],
+    "dates": "3. november – 2. december 2026",
     # kontekst zemljevidov: pogled »država« (središče, povečava) in največja oddaljenost točk od postaje (km)
     "country": {"name": "Japonska", "c": [37.9, 137.6], "z": 5},
     "geo_radius_km": 60,
@@ -63,6 +64,14 @@ TXT = {
     "nacrt_desc": "30-dnevni načrt poti po Japonski: dan za dnem in prehodi med kraji, 3. 11.–2. 12. 2026.",
     "nacrt_hero": ("🗺️", "Hrbtenica potovanja", "Načrt poti — 30 dni", "Dan za dnem, od Tokia do Osake", "nacrt"),
     "kako_title": "Kako uporabljati · Japonska — Mesec za dušo",
+    "kviz_hero": ("🧠", "Preizkusite znanje", "Kviz o Japonski", "15 vprašanj iz zanimivosti na postajah"),
+    "kviz_intro": "Odgovori so skriti v zanimivostih na postajah. Vsak odgovor pokaže razlago — tako se vmes tudi kaj naučite.",
+    "lov_hero": ("🔎", "Zbirajte na poti", "Lov na stvari", "Označite, kar opazite — od torij do pitnih avtomatov"),
+    "lov_intro": "Odprite med potjo, tapnite, ko kaj opazite, in na koncu preštejte. Označbe ostanejo v vašem telefonu.",
+    "knjiga_hero": ("📖", "Iz vaših slik", "Potopisna knjiga", "Fotografije iz albuma po postajah, pripravljene za tisk"),
+    "knjiga_intro": "Knjiga se sestavi sama iz slik, ki ste jih naložile. Z ✕ izpustite slike, ki jih ne želite, in jo natisnite ali shranite kot PDF.",
+    "stroski_hero": ("💴", "Skupna evidenca", "Skupni stroški", "Kdo je plačal, kdo komu koliko dolguje — vsi vidite isto"),
+    "facts_h": "💡 Še več zanimivosti",
     "izziv_why": "Zakaj to počnemo?",
     "izzivi_intro": ("Naložite fotografijo (ali video) za izziv — takoj se označi kot opravljen in se spodaj pokaže sličica. "
                      "Iz tega nastane vaš skupni album."),
@@ -78,7 +87,7 @@ OUT = os.path.join(SITE_DIR, CFG["slug"])
 
 # Verzija gradnje — doda se v naslov CSS/JS (?v=BUILD), da brskalnik vedno
 # naloži svežo različico. Ob vsaki spremembi povečaj.
-BUILD = "19"
+BUILD = "20"
 
 # ----------------------------------------------------------------------------
 # VSEBINA
@@ -405,6 +414,11 @@ LEG_LINKS = JP.LEG_LINKS
 QUICKBUY = JP.QUICKBUY
 DOZ_SEARCH = JP.DOZ_SEARCH
 FOOD_LINKS = JP.FOOD_LINKS
+FACTS = JP.FACTS
+QUIZ = JP.QUIZ
+LOV = JP.LOV
+SHOW_FX = True            # pretvornik valut (Japonska)
+FEATURES = {"stroski": True}
 GEO_RADIUS = JP.GEO_RADIUS
 
 _SL_MON = ["jan", "feb", "mar", "apr", "maj", "jun", "jul", "avg", "sep", "okt", "nov", "dec"]
@@ -563,6 +577,7 @@ def trip_boot():
     """Nastavitve potovanja za JS + zaščita: brez PIN-a vrne na vstopno stran."""
     t = {"id": CFG["id"], "slug": CFG["slug"], "people": CFG["people"], "gate": "../index.html",
          "after": CFG.get("after"), "t": CFG.get("t"), "color": CFG.get("pin"), "country": CFG.get("country"),
+         "title": CFG["title"], "dates": CFG.get("dates"),
          "stations": [{"k": l["key"], "e": l["emoji"], "n": l["nav"]} for l in LOCATIONS]}
     guard = ('(function(){try{var s=JSON.parse(localStorage.getItem("trip_session")||"null");'
              'var ok=s&&s.trips&&s.trips.some(function(t){return t.slug===TRIP.slug});'
@@ -608,6 +623,10 @@ NAV_PRIMARY = [
     ("nacrt.html", "nacrt", "🗺️", "Načrt poti"),
     ("izziv.html", "izziv", "📸", "Izzivi"),
     ("nalozi.html", "nalozi", "📤", "Naloži fotografije"),
+    ("knjiga.html", "knjiga", "📖", "Potopisna knjiga"),
+    ("kviz.html", "kviz", "🧠", "Kviz"),
+    ("lov.html", "lov", "🔎", "Lov na stvari"),
+    ("stroski.html", "stroski", "💴", "Skupni stroški"),
     ("dozivetja.html", "dozivetja", "🎨", "Doživetja"),
     ("priprave.html", "priprave", "🎒", "Priprave"),
     ("prevajalec.html", "prevajalec", "🔍", "Prevajalec s kamero"),
@@ -964,6 +983,46 @@ def stay_section(key):
     return "\n".join(parts) + "\n"
 
 
+def wx_box(key):
+    """Vreme v kraju (Open-Meteo); če je znan datum bivanja, tudi lanski podatki za ta čas."""
+    m = MAPS.get(key)
+    if not m:
+        return ""
+    loc = next((l for l in LOCATIONS if l["key"] == key), {})
+    lod = LODGING.get(key, {})
+    stay = ""
+    if lod and not lod.get("optional"):
+        d = stay_dates(key)
+        if d:
+            stay = f' data-stay="{d[0]},{d[1]}"'
+    return (f'<section class="card-section wx-box" hidden data-lat="{m[0]}" data-lon="{m[1]}" '
+            f'data-place="{esc(loc.get("nav", ""))}" data-title="🌦️ Vreme v kraju"{stay}></section>\n')
+
+
+def facts_section(key):
+    facts = FACTS.get(key, [])
+    if not facts:
+        return ""
+    items = "".join(f"    <li>{esc(f)}</li>\n" for f in facts)
+    return (f'<section class="card-section facts-section" aria-labelledby="zanimivosti-vec">\n'
+            f'  <h2 id="zanimivosti-vec">{TXT["facts_h"]}</h2>\n  <ul class="nice-list">\n{items}  </ul>\n</section>\n')
+
+
+def all_facts():
+    """Seznam zanimivosti za »zanimivost dneva« na domači strani."""
+    out = []
+    for loc in LOCATIONS:
+        if loc.get("fact"):
+            out.append({"t": loc["fact"], "s": loc["nav"]})
+        for f in FACTS.get(loc["key"], []):
+            out.append({"t": f, "s": loc["nav"]})
+    return out
+
+
+def facts_script():
+    return ('<script type="application/json" id="facts-data">' + json.dumps(all_facts(), ensure_ascii=False) + "</script>\n")
+
+
 def book_section(key):
     items = BOOK.get(key)
     if not items:
@@ -1091,6 +1150,7 @@ def location_page(i, loc):
 </section>
 """
 
+    out += wx_box(loc["key"])
     if g.get("sights"):
         out += sights_section(g)
     else:
@@ -1111,7 +1171,7 @@ def location_page(i, loc):
   <h2 id="zanimivost">💡 Zanimivost</h2>
   <p>{esc(loc['fact'])}</p>
 </section>
-<section class="card-section magda-section" aria-labelledby="magda">
+{facts_section(loc["key"])}<section class="card-section magda-section" aria-labelledby="magda">
   <h2 id="magda">{TXT["magda"]}</h2>
   <p>{esc(loc['magda'])}</p>
 </section>
@@ -1519,6 +1579,8 @@ def priprave_page():
     out += '  <a class="chip" href="#seznam">✅ Kontrolni seznam</a>\n'
     out += "</nav>\n"
     out += quickbuy_section()
+    if SHOW_FX:
+        out += fx_box_html()
     for k in order:
         d = PRACTICAL.get(k)
         if not d:
@@ -1677,6 +1739,10 @@ QUICK_LINKS = [
     ("dozivetja.html", "🎨", "Doživetja", "delavnice, čaj, vrtovi"),
     ("priprave.html", "🎒", "Priprave", "denar, vlaki, pakiranje"),
     ("priprave.html#povezave", "🔗", "Kupi in rezerviraj", "vlaki, nastanitve, vstopnice"),
+    ("kviz.html", "🧠", "Kviz", "preizkusite znanje o Japonski"),
+    ("lov.html", "🔎", "Lov na stvari", "torije, jeleni, matcha …"),
+    ("knjiga.html", "📖", "Potopisna knjiga", "iz slik v albumu"),
+    ("stroski.html", "💴", "Skupni stroški", "kdo komu koliko dolguje"),
     ("nacrt.html#prehodi", "🚄", "Prevozi in vozovnice", "povezave za nakup"),
     ("nasveti.html#kartice", "🪪", "Kartice za domačine", "pokažite zaslon"),
     ("nasveti.html#fraze", "🗣️", "Fraze", "z izgovorjavo 🔊"),
@@ -1704,6 +1770,7 @@ def index_page():
 </section>
 <a class="tour-banner" id="tour-banner" href="kako.html" hidden><span class="tb-e">🎓</span><span class="tb-t"><strong>Prvič tukaj?</strong> Poglej kratko predstavitev (2 minuti) →</span></a>
 <section class="today-card" id="today" hidden aria-live="polite"></section>
+<section class="fact-today" id="fact-today" hidden></section>
 """
     out += '<nav class="quick-links" aria-label="Glavna poglavja">\n'
     for href, e, t, d in QUICK_LINKS:
@@ -1755,10 +1822,64 @@ def index_page():
   <a class="back-button" href="nujno.html">🆘 Nujne informacije</a>
 </div>
 """
-    out += trip_script() + route_script()
+    out += trip_script() + route_script() + facts_script()
     out += "</main>\n"
     out += FOOTER
     return out
+
+
+def _extra_script(out, *files):
+    tags = "".join(f'<script defer src="{f}?v={BUILD}"></script>\n' for f in files)
+    return out.replace("</body>", tags + "</body>", 1)
+
+
+def kviz_page():
+    out = head(TXT["kviz_hero"][2] + " · " + CFG["title"], TXT["kviz_intro"])
+    out += nav("kviz") + "<main>\n"
+    out += _page_hero(*TXT["kviz_hero"])
+    out += f'<p class="intro-note">{esc(TXT["kviz_intro"])}</p>\n'
+    out += ('<section class="card-section quiz" aria-live="polite"><p class="buy-note" id="quiz-best"></p>'
+            '<div id="quiz-stage"></div></section>\n')
+    out += f'<script type="application/json" id="quiz-data">{json.dumps(QUIZ, ensure_ascii=False)}</script>\n'
+    out += '<div class="back-row"><a class="back-button" href="index.html">🏠 Nazaj na pregled</a></div>\n</main>\n' + FOOTER
+    return _extra_script(out, "fun.js")
+
+
+def lov_page():
+    out = head(TXT["lov_hero"][2] + " · " + CFG["title"], TXT["lov_intro"])
+    out += nav("lov") + "<main>\n"
+    out += _page_hero(*TXT["lov_hero"])
+    out += f'<p class="intro-note">{esc(TXT["lov_intro"])}</p>\n<div id="lov-host"></div>\n'
+    out += f'<script type="application/json" id="lov-data">{json.dumps(LOV, ensure_ascii=False)}</script>\n'
+    out += '<div class="back-row"><a class="back-button" href="izziv.html">📸 Foto izzivi</a></div>\n</main>\n' + FOOTER
+    return _extra_script(out, "fun.js")
+
+
+def knjiga_page():
+    out = head(TXT["knjiga_hero"][2] + " · " + CFG["title"], TXT["knjiga_intro"], with_album=True)
+    out += nav("knjiga") + "<main>\n"
+    out += _page_hero(*TXT["knjiga_hero"])
+    out += f'<p class="intro-note no-print">{esc(TXT["knjiga_intro"])}</p>\n<div id="book-host"></div>\n'
+    out += f'<script type="application/json" id="izziv-data">{json.dumps(_all_challenge_data(), ensure_ascii=False)}</script>\n'
+    out += '<div class="back-row no-print"><a class="back-button" href="nalozi.html">📤 Naloži še fotografije</a></div>\n</main>\n' + FOOTER
+    return _extra_script(out, "knjiga.js")
+
+
+def fx_box_html():
+    return ('<section class="card-section fx-box"><h2>💴 Pretvornik evro ↔ jen</h2>'
+            '<div class="mf-row"><label class="mf">Evri (€)<input class="fx-eur" type="text" inputmode="decimal" placeholder="0"></label>'
+            '<label class="mf">Jeni (¥)<input class="fx-jpy" type="text" inputmode="numeric" placeholder="0"></label></div>'
+            '<p class="buy-note fx-note"></p></section>\n')
+
+
+def stroski_page():
+    out = head("Skupni stroški · " + CFG["title"], TXT["stroski_hero"][3], with_album=True)
+    out += nav("stroski") + "<main>\n"
+    out += _page_hero(*TXT["stroski_hero"])
+    out += fx_box_html()
+    out += '<div id="money-host"></div>\n'
+    out += '<div class="back-row"><a class="back-button" href="priprave.html#povezave">🔗 Kupi in rezerviraj</a></div>\n</main>\n' + FOOTER
+    return _extra_script(out, "money.js")
 
 
 def _wiz_steps():
@@ -1854,6 +1975,18 @@ def _wiz_steps():
             "Priprave: pakiranje, eSIM, denar, vlaki, okvirni stroški in kontrolni seznam za odhod (obkljukate, telefon si zapomni).",
             "Doživetja: kuharske delavnice, čajne hiše, zen vrtovi in nakup za ustvarjalne duše."],
          "", ("priprave.html", "Odpri priprave →"), ""),
+        ("🌦️", "Vreme in sonce", [
+            "Na vsaki postaji in na domači strani vidite napoved za kraj (Open-Meteo): temperature, dež in uro sončnega vzhoda in zahoda. Pred odhodom pokaže tudi, kakšno je bilo vreme lani ob istem času — za pakiranje."],
+         "", None, ""),
+        ("🧠", "Kviz in lov na stvari", [
+            "Kviz preizkusi znanje o Japonski (odgovori so v zanimivostih na postajah). »Lov na stvari« je seznam, ki ga odkljukate med potjo: torije, matcha, jeleni, pitni avtomati."],
+         "", ("kviz.html", "Preizkusi kviz →"), ""),
+        ("📖", "Potopisna knjiga", [
+            "Iz slik v albumu se sama sestavi knjiga po postajah. Izpustite, kar ne želite, nato jo natisnite ali shranite kot PDF."],
+         "", ("knjiga.html", "Odpri knjigo →"), ""),
+        ("💴", "Skupni stroški", [
+            "Vpišite, kdo je kaj plačal in za koga. Vse štiri vidite isti seznam, na koncu pa aplikacija izračuna, kdo komu koliko dolguje (jeni in evri ločeno). Zraven je tudi pretvornik evro ↔ jen."],
+         "", ("stroski.html", "Odpri stroške →"), ""),
         ("📲", "Dodajte stran na domači zaslon", [
             "Da bo stran kot prava aplikacija (ikona na zaslonu, odpira se čez cel zaslon). Ob prvem odprtju z domačega zaslona boste kodo vnesle še enkrat."],
          demo_install, None, ""),
@@ -2022,7 +2155,7 @@ def write_pwa(pages):
     }
     with open(os.path.join(OUT, "manifest.json"), "w", encoding="utf-8") as f:
         json.dump(manifest, f, ensure_ascii=False, indent=2)
-    listing = ["./"] + [f"./{p}" for p in pages] + ["./style.css", "./app.js", "./album.js", "./manifest.json",
+    listing = ["./"] + [f"./{p}" for p in pages] + ["./style.css", "./app.js", "./album.js", "./fun.js", "./money.js", "./knjiga.js", "./manifest.json",
                                                      "./icons/icon-192.png", "./icons/icon-512.png",
                                                      "./icons/apple-touch-icon.png", "./icons/favicon.svg"]
     if os.path.exists(os.path.join(OUT, "prevajalec.js")):
@@ -2036,7 +2169,7 @@ def write_pwa(pages):
 def copy_assets(extra_files=()):
     """Skupne datoteke (CSS/JS/ikone) iz generator/assets v mapo potovanja."""
     os.makedirs(OUT, exist_ok=True)
-    for name in ["style.css", "app.js", "album.js"] + list(extra_files):
+    for name in ["style.css", "app.js", "album.js", "fun.js", "money.js", "knjiga.js"] + list(extra_files):
         shutil.copy2(os.path.join(ASSETS_DIR, name), os.path.join(OUT, name))
     icons_out = os.path.join(OUT, "icons")
     os.makedirs(icons_out, exist_ok=True)
@@ -2064,7 +2197,9 @@ def build():
                          ("nacrt.html", nacrt_page), ("priprave.html", priprave_page),
                          ("dozivetja.html", dozivetja_page), ("nalozi.html", nalozi_page),
                          ("izziv.html", izziv_page), ("nujno.html", nujno_page),
-                         ("kako.html", kako_page), ("prevajalec.html", prevajalec_page)])
+                         ("kako.html", kako_page), ("prevajalec.html", prevajalec_page),
+                         ("kviz.html", kviz_page), ("lov.html", lov_page), ("knjiga.html", knjiga_page),
+                         ("stroski.html", stroski_page)])
     for i, loc in enumerate(LOCATIONS):
         name = f"{loc['key']}.html"
         with open(os.path.join(OUT, name), "w", encoding="utf-8") as f:

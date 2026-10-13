@@ -227,6 +227,22 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   box.innerHTML = html;
   box.hidden = false;
+  // vreme za današnjo (ali prvo) postajo
+  var kk = cur ? cur.k : (diff > 0 ? days[0].k : "");
+  var rdEl = document.getElementById("route-data");
+  if (kk && rdEl) {
+    try {
+      JSON.parse(rdEl.textContent).forEach(function (st) {
+        if (st.k !== kk) return;
+        var w = document.createElement("div");
+        w.className = "wx-box wx-compact"; w.hidden = true;
+        w.setAttribute("data-lat", st.lat); w.setAttribute("data-lon", st.lon);
+        w.setAttribute("data-compact", "1"); w.setAttribute("data-place", st.n);
+        if (!cur && diff > 0) w.setAttribute("data-from", days[0].iso);
+        box.appendChild(w); initWxBox(w);
+      });
+    } catch (er) {}
+  }
 });
 
 /* ============================================================
@@ -469,3 +485,158 @@ if ("serviceWorker" in navigator) {
     });
   });
 }
+
+/* ============================================================
+   Vreme (Open-Meteo, brez ključa), zanimivost dneva, pretvornik valut
+   ============================================================ */
+var WX_DAYS = ["ned", "pon", "tor", "sre", "čet", "pet", "sob"];
+var WX_MON = ["jan", "feb", "mar", "apr", "maj", "jun", "jul", "avg", "sep", "okt", "nov", "dec"];
+
+function wxCode(c) {
+  if (c === 0) return ["☀️", "Jasno"];
+  if (c === 1 || c === 2) return ["🌤️", "Delno oblačno"];
+  if (c === 3) return ["☁️", "Oblačno"];
+  if (c === 45 || c === 48) return ["🌫️", "Megla"];
+  if (c >= 51 && c <= 57) return ["🌦️", "Rosenje"];
+  if (c >= 61 && c <= 67) return ["🌧️", "Dež"];
+  if (c >= 71 && c <= 77) return ["🌨️", "Sneg"];
+  if (c >= 80 && c <= 82) return ["🌦️", "Plohe"];
+  if (c === 85 || c === 86) return ["🌨️", "Snežne plohe"];
+  if (c >= 95) return ["⛈️", "Nevihte"];
+  return ["🌡️", "—"];
+}
+
+function wxFetch(url, cacheKey, maxAgeMin) {
+  var cached = null;
+  try { cached = JSON.parse(localStorage.getItem(cacheKey) || "null"); } catch (e) {}
+  if (cached && Date.now() - cached.t < maxAgeMin * 60000) return Promise.resolve(cached.d);
+  return fetch(url).then(function (r) { if (!r.ok) throw new Error("wx"); return r.json(); }).then(function (d) {
+    try { localStorage.setItem(cacheKey, JSON.stringify({ t: Date.now(), d: d })); } catch (e) {}
+    return d;
+  }).catch(function (e) { if (cached) return cached.d; throw e; });
+}
+
+function wxHM(iso) { return (iso || "").slice(11, 16).replace(/^0/, ""); }
+
+function wxTip(days) {
+  if (!days.length) return "";
+  var minT = Math.min.apply(null, days.map(function (d) { return d.min; }));
+  var maxT = Math.max.apply(null, days.map(function (d) { return d.max; }));
+  var rain = Math.max.apply(null, days.map(function (d) { return d.rain || 0; }));
+  var fog = days.some(function (d) { return d.code === 45 || d.code === 48; });
+  var tips = [];
+  if (rain >= 50) tips.push("☔ Verjetnost dežja je visoka — dežnik ali pelerina v nahrbtnik, nepremočljivi čevlji.");
+  else if (rain >= 25) tips.push("🌂 Možen je dež — majhen dežnik naj bo pri roki.");
+  if (minT <= 5) tips.push("🧣 Hladna jutra — topla jakna, kapa in rokavice.");
+  else if (minT <= 10) tips.push("🧥 Sveža jutra — plasti: majica, pulover, jakna.");
+  if (maxT >= 24) tips.push("🧴 Toplo čez dan — lahka oblačila, voda in zaščita pred soncem.");
+  if (fog) tips.push("🌫️ Jutranja megla je možna — za razglede počakajte, da se razkadi.");
+  if (!tips.length) tips.push("😊 Vreme je prijazno — udobna oblačila v plasteh zadoščajo.");
+  return tips.join(" ");
+}
+
+function initWxBox(el) {
+  var lat = el.getAttribute("data-lat"), lon = el.getAttribute("data-lon");
+  if (!lat || !lon || !window.fetch) return;
+  var compact = el.getAttribute("data-compact") === "1";
+  el.innerHTML = '<div class="wx-main"></div><div class="wx-hist-slot"></div>';
+  var mainEl = el.querySelector(".wx-main"), histEl = el.querySelector(".wx-hist-slot");
+  var stay = (el.getAttribute("data-stay") || "").split(",");
+  var place = el.getAttribute("data-place") || "";
+  var url = "https://api.open-meteo.com/v1/forecast?latitude=" + lat + "&longitude=" + lon +
+    "&current=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min," +
+    "precipitation_probability_max,sunrise,sunset&timezone=auto&forecast_days=7";
+  wxFetch(url, "wx:" + lat + "," + lon, 120).then(function (d) {
+    var dl = d.daily, days = [];
+    for (var i = 0; i < dl.time.length; i++) {
+      days.push({ date: dl.time[i], code: dl.weather_code[i], max: dl.temperature_2m_max[i], min: dl.temperature_2m_min[i],
+        rain: dl.precipitation_probability_max[i], sunrise: dl.sunrise[i], sunset: dl.sunset[i] });
+    }
+    var cur = wxCode(d.current.weather_code);
+    var ttl = el.getAttribute("data-title");
+    var html = (ttl ? "<h2>" + ttl + "</h2>" : "") + '<div class="wx-head"><span class="wx-ic">' + cur[0] + '</span><span class="wx-t">' + Math.round(d.current.temperature_2m) +
+      '°C</span><span class="wx-d">' + (place ? place + " · " : "") + cur[1] + " zdaj</span></div>";
+    var from = el.getAttribute("data-from"), start = 0;
+    if (from) { for (var q = 0; q < days.length; q++) { if (days[q].date >= from) { start = q; break; } } }
+    var shown = compact ? days.slice(start, start + 3) : days;
+    html += '<div class="wx-days">' + shown.map(function (x) {
+      var dt = new Date(x.date + "T12:00:00"), c = wxCode(x.code);
+      return '<div class="wx-day"><b>' + WX_DAYS[dt.getDay()] + " " + dt.getDate() + ".</b><span class=\"wx-i\">" + c[0] + "</span><span>" +
+        Math.round(x.min) + "–" + Math.round(x.max) + "°</span><i>" + (x.rain != null ? "💧" + x.rain + " %" : "") + "</i></div>";
+    }).join("") + "</div>";
+    var sd = compact ? shown[0] : days[0], sdt = new Date(sd.date + "T12:00:00");
+    html += '<p class="wx-sun">🌅 ' + wxHM(sd.sunrise) + " · 🌇 " + wxHM(sd.sunset) + " (" + (sd === days[0] ? "danes" : sdt.getDate() + ". " + WX_MON[sdt.getMonth()]) + ")</p>";
+    var rel = compact ? shown : days.slice(0, 5);
+    html += '<p class="wx-tip">' + wxTip(rel) + "</p>";
+    mainEl.innerHTML = html;
+    el.hidden = false;
+  }).catch(function () { /* brez interneta vreme ostane skrito */ });
+
+  // podnebje: lani ob istem času (če je potovanje čez več kot 14 dni)
+  if (!compact && stay.length === 2 && stay[0]) {
+    var s = new Date(stay[0] + "T12:00:00"), e = new Date(stay[1] + "T12:00:00");
+    var ahead = (s - new Date()) / 86400000;
+    if (ahead > 14) {
+      function sh(dt) { var c = new Date(dt); c.setFullYear(c.getFullYear() - 1); return c.toISOString().slice(0, 10); }
+      var u2 = "https://archive-api.open-meteo.com/v1/archive?latitude=" + lat + "&longitude=" + lon + "&start_date=" + sh(s) +
+        "&end_date=" + sh(new Date(e.getTime() - 86400000)) + "&daily=temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=auto";
+      wxFetch(u2, "wxh:" + lat + "," + lon + ":" + stay[0], 60 * 24 * 30).then(function (h) {
+        var mx = h.daily.temperature_2m_max, mn = h.daily.temperature_2m_min, pr = h.daily.precipitation_sum;
+        if (!mx || !mx.length) return;
+        var avg = function (a) { return a.reduce(function (p, c) { return p + c; }, 0) / a.length; };
+        var wet = pr.filter(function (v) { return v >= 1; }).length;
+        var p = document.createElement("p");
+        p.className = "wx-hist";
+        p.innerHTML = "📊 Lani ob istem času (" + (s.getDate()) + ". " + WX_MON[s.getMonth()] + "–" + (new Date(e.getTime() - 86400000).getDate()) + ". " +
+          WX_MON[new Date(e.getTime() - 86400000).getMonth()] + "): povprečno " + Math.round(avg(mn)) + "–" + Math.round(avg(mx)) +
+          " °C, dež v " + wet + " od " + pr.length + " dni. Napoved za vaše dni bo na voljo 2 tedna pred odhodom.";
+        histEl.appendChild(p);
+        el.hidden = false;
+      }).catch(function () {});
+    }
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll(".wx-box[data-lat]").forEach(initWxBox);
+
+  /* Zanimivost dneva */
+  var fe = document.getElementById("facts-data"), fbox = document.getElementById("fact-today");
+  if (fe && fbox) {
+    var facts = [];
+    try { facts = JSON.parse(fe.textContent); } catch (e) {}
+    if (facts.length) {
+      var d0 = new Date(); var seed = d0.getFullYear() * 400 + d0.getMonth() * 31 + d0.getDate();
+      var idx = seed % facts.length;
+      function show() {
+        var f = facts[idx];
+        fbox.innerHTML = '<div class="ft-kicker">💡 Zanimivost dneva' + (f.s ? " · " + f.s : "") + '</div><p>' + f.t.replace(/[&<>]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]; }) +
+          '</p><button type="button" class="ft-next">🔀 Še ena</button>';
+        fbox.hidden = false;
+        fbox.querySelector(".ft-next").addEventListener("click", function () { idx = (idx + 1 + Math.floor(Math.random() * (facts.length - 1))) % facts.length; show(); });
+      }
+      show();
+    }
+  }
+
+  /* Pretvornik EUR ↔ JPY (ECB prek Frankfurterja; ob napaki shranjen ali okviren tečaj) */
+  document.querySelectorAll(".fx-box").forEach(function (box) {
+    var rate = 175, label = "okviren tečaj";
+    try { var c = JSON.parse(localStorage.getItem("fx:EURJPY") || "null"); if (c) { rate = c.r; label = "tečaj z dne " + c.d; } } catch (e) {}
+    var eur = box.querySelector(".fx-eur"), jpy = box.querySelector(".fx-jpy"), note = box.querySelector(".fx-note");
+    function setNote() { note.textContent = "1 € = " + Math.round(rate * 100) / 100 + " ¥ (" + label + "). Banke in menjalnice imajo svoj tečaj in provizijo."; }
+    function fromEur() { var v = parseFloat(String(eur.value).replace(",", ".")); jpy.value = isNaN(v) ? "" : Math.round(v * rate); }
+    function fromJpy() { var v = parseFloat(String(jpy.value).replace(",", ".")); eur.value = isNaN(v) ? "" : (Math.round(v / rate * 100) / 100).toFixed(2); }
+    eur.addEventListener("input", fromEur); jpy.addEventListener("input", fromJpy);
+    setNote();
+    if (window.fetch) {
+      fetch("https://api.frankfurter.dev/v1/latest?base=EUR&symbols=JPY").then(function (r) { return r.json(); }).then(function (j) {
+        if (j && j.rates && j.rates.JPY) {
+          rate = j.rates.JPY; label = "tečaj ECB, " + j.date;
+          try { localStorage.setItem("fx:EURJPY", JSON.stringify({ r: rate, d: j.date })); } catch (e) {}
+          setNote(); if (eur.value) fromEur();
+        }
+      }).catch(function () {});
+    }
+  });
+});

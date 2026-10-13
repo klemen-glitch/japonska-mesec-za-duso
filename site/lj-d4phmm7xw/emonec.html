@@ -7,8 +7,8 @@
   <meta name="description" content="Hotel Emonec: kaj početi, izzivi in nasveti — Zmajeva pustolovščina, Ljubljana.">
   <meta name="robots" content="noindex,nofollow">
   <meta name="theme-color" content="#2f8f6b">
-  <script>window.TRIP={"id": "ljubljana", "slug": "lj-d4phmm7xw", "people": ["Ana", "Maks"], "gate": "../index.html", "after": ["Bravo, zmajska ekipa!", "Poglejta <a href=\"nalozi.html\">skupni album</a> in iz slik sestavita svojo Zmajevo knjigo."], "t": {"locked": "Presenečenje čaka — odklene se, ko naložita sliko ali video.", "empty": "Album je še prazen — naložita prvo fotografijo. 📸", "thanks": "naloženih ✓ — odlično!", "more": "Odpri vodnik za to postajo →", "pre": "Pustolovščina se začne {date}. Poglejta <a href=\"priprave.html\">priprave</a> in kontrolni seznam."}, "color": "#2f8f6b", "country": {"name": "Slovenija", "c": [46.12, 14.82], "z": 8}, "stations": [{"k": "vlak", "e": "🚂", "n": "Vlak"}, {"k": "emonec", "e": "🏨", "n": "Hotel"}, {"k": "center", "e": "🏰", "n": "Center"}, {"k": "zoo", "e": "🦁", "n": "Živalski vrt"}, {"k": "domov", "e": "🏠", "n": "Domov"}]};(function(){try{var s=JSON.parse(localStorage.getItem("trip_session")||"null");var ok=s&&s.trips&&s.trips.some(function(t){return t.slug===TRIP.slug});if(!ok){location.replace(TRIP.gate+"?next="+encodeURIComponent(TRIP.slug));}}catch(e){}})();</script>
-  <link rel="stylesheet" href="style.css?v=19">
+  <script>window.TRIP={"id": "ljubljana", "slug": "lj-d4phmm7xw", "people": ["Ana", "Maks"], "gate": "../index.html", "after": ["Bravo, zmajska ekipa!", "Poglejta <a href=\"nalozi.html\">skupni album</a> in iz slik sestavita svojo Zmajevo knjigo."], "t": {"locked": "Presenečenje čaka — odklene se, ko naložita sliko ali video.", "empty": "Album je še prazen — naložita prvo fotografijo. 📸", "thanks": "naloženih ✓ — odlično!", "more": "Odpri vodnik za to postajo →", "pre": "Pustolovščina se začne {date}. Poglejta <a href=\"priprave.html\">priprave</a> in kontrolni seznam."}, "color": "#2f8f6b", "country": {"name": "Slovenija", "c": [46.12, 14.82], "z": 8}, "title": "Zmajeva pustolovščina", "dates": "15.–16. oktober 2026", "stations": [{"k": "vlak", "e": "🚂", "n": "Vlak"}, {"k": "emonec", "e": "🏨", "n": "Hotel"}, {"k": "center", "e": "🏰", "n": "Center"}, {"k": "zoo", "e": "🦁", "n": "Živalski vrt"}, {"k": "domov", "e": "🏠", "n": "Domov"}]};(function(){try{var s=JSON.parse(localStorage.getItem("trip_session")||"null");var ok=s&&s.trips&&s.trips.some(function(t){return t.slug===TRIP.slug});if(!ok){location.replace(TRIP.gate+"?next="+encodeURIComponent(TRIP.slug));}}catch(e){}})();</script>
+  <link rel="stylesheet" href="style.css?v=20">
   <style>
     :root { --accent:#1f7a5a; --accent-ink:#1f7a5a; --accent-soft:#e8f5ee; --pin:#2f8f6b; --orange:#c8553d; --gold:#b08a2e; }
     @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --accent:#6fd0a6; --accent-ink:#6fd0a6; --accent-soft:#14261e; --pin:#2f8f6b; --orange:#e08a6c; --gold:#d2b256; } }
@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script defer src="album.js?v=19"></script>
+  <script defer src="album.js?v=20"></script>
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
@@ -38,6 +38,9 @@
         <a href="nacrt.html"><span class="mi-emoji" aria-hidden="true">🗺️</span>Načrt poti</a>
         <a href="izziv.html"><span class="mi-emoji" aria-hidden="true">📸</span>Izzivi</a>
         <a href="nalozi.html"><span class="mi-emoji" aria-hidden="true">📤</span>Naloži fotografije</a>
+        <a href="knjiga.html"><span class="mi-emoji" aria-hidden="true">📖</span>Zmajeva knjiga</a>
+        <a href="kviz.html"><span class="mi-emoji" aria-hidden="true">🧠</span>Zmajev kviz</a>
+        <a href="lov.html"><span class="mi-emoji" aria-hidden="true">🔎</span>Zmajev lov</a>
         <a href="priprave.html"><span class="mi-emoji" aria-hidden="true">🎒</span>Priprave</a>
         <a href="nujno.html"><span class="mi-emoji" aria-hidden="true">🆘</span>Nujno</a>
         <a href="../index.html?izpis=1"><span class="mi-emoji" aria-hidden="true">🔑</span>Zamenjaj potovanje</a>
@@ -63,6 +66,7 @@
   <p class="loc-intro">Hotel Emonec je v središču Ljubljane, približno 12 minut hoje od železniške postaje. Takoj ob prihodu odložita prtljago (tudi če sobe še niso pripravljene, jo hotelsko osebje običajno shrani), nato pa lahko lahkotno odkrivata mesto. Zvečer se vrneta, počijeta in se naslednje jutro odpravita v živalski vrt.</p>
   <p class="visit-wrap"><button type="button" class="visit-btn" data-visit="emonec">☐ Označi kot obiskano</button></p>
 </section>
+<section class="card-section wx-box" hidden data-lat="46.0508" data-lon="14.505" data-place="Hotel" data-title="🌦️ Vreme v kraju" data-stay="2026-10-15,2026-10-16"></section>
 <section class="card-section" aria-labelledby="znamenitosti">
   <h2 id="znamenitosti">🦒 Kaj videti in početi</h2>
   <article class="sight">
@@ -149,6 +153,15 @@
   <h2 id="zanimivost">💡 Zanimivost</h2>
   <p>Ime »Emonec« spominja na Emono — rimsko mesto, ki je pred skoraj 2000 leti stalo na območju današnje Ljubljane. Ostanke rimskega zidu še vedno vidite v mestu.</p>
 </section>
+<section class="card-section facts-section" aria-labelledby="zanimivosti-vec">
+  <h2 id="zanimivosti-vec">💡 Še več zanimivosti</h2>
+  <ul class="nice-list">
+    <li>Emona je bila rimsko mesto, ustanovljeno v prvih letih 1. stoletja na območju današnje Ljubljane; zid in ostanke lahko vidita še danes.</li>
+    <li>Ljubljana je bila leta 2016 Zelena prestolnica Evrope — središče je večinoma brez avtomobilov.</li>
+    <li>Ljubljana ima naziv Unescovo mesto književnosti (od leta 2015).</li>
+    <li>Stolnica sv. Nikolaja, ki jo vidita blizu hotela, ima bronasta vrata iz leta 1996 s prizori iz zgodovine.</li>
+  </ul>
+</section>
 <section class="card-section magda-section" aria-labelledby="magda">
   <h2 id="magda">🐉 Zmajeva skrivnost</h2>
   <p>Pred spanjem naj Maks poišče na zemljevidu živalski vrt — in mami pove, katero žival se najbolj veseli. Spanje bo takrat prišlo kar samo.</p>
@@ -191,6 +204,6 @@
   <p>Z ljubeznijo pripravljeno za Ano in Maksa</p>
   <p><a href="kako.html">🎓 Kako uporabljati to stran</a> · <a href="../index.html?izpis=1">🔑 Zamenjaj potovanje</a></p>
 </footer>
-<script src="app.js?v=19"></script>
+<script src="app.js?v=20"></script>
 </body>
 </html>

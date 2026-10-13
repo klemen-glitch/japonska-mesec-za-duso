@@ -45,6 +45,10 @@ G.LEG_LINKS = C.LEG_LINKS
 G.QUICKBUY = C.QUICKBUY
 G.DOZ_SEARCH = False
 G.GEO_RADIUS = {}
+G.FACTS = C.FACTS
+G.QUIZ = C.QUIZ
+G.LOV = C.LOV
+G.SHOW_FX = False
 G.FOOD_LINKS = C.FOOD_LINKS
 G.STATIONS_LABEL = "Postaje pustolovščine"
 G.NAV_PRIMARY = [
@@ -53,6 +57,9 @@ G.NAV_PRIMARY = [
     ("nacrt.html", "nacrt", "🗺️", "Načrt poti"),
     ("izziv.html", "izziv", "📸", "Izzivi"),
     ("nalozi.html", "nalozi", "📤", "Naloži fotografije"),
+    ("knjiga.html", "knjiga", "📖", "Zmajeva knjiga"),
+    ("kviz.html", "kviz", "🧠", "Zmajev kviz"),
+    ("lov.html", "lov", "🔎", "Zmajev lov"),
     ("priprave.html", "priprave", "🎒", "Priprave"),
     ("nujno.html", "nujno", "🆘", "Nujno"),
 ]
@@ -82,9 +89,13 @@ G.videos_section = videos_section_lj
 QUICK_LINKS = [
     ("nacrt.html", "🗺️", "Načrt poti", "2 dneva, korak za korakom"),
     ("zoo.html", "🦁", "Živalski vrt", "poglobljen načrt in izzivi"),
+    ("center.html", "🏰", "Ljubljana s Katjo", "zmaji, grad, mostovi"),
     ("izziv.html", "📸", "Foto izzivi", f"{N_IZZIVOV} izzivov in presenečenja"),
     ("nalozi.html", "📤", "Naloži fotografije", "album iz vajinih telefonov"),
     ("priprave.html", "🎒", "Priprave", "kontrolni seznam"),
+    ("kviz.html", "🧠", "Zmajev kviz", "14 vprašanj o živalih in Ljubljani"),
+    ("lov.html", "🔎", "Zmajev lov", "živali, zmaji, števci"),
+    ("knjiga.html", "📖", "Zmajeva knjiga", "iz vajinih slik"),
     ("priprave.html#povezave", "🔗", "Kupi in rezerviraj", "vlak, zoo, hotel"),
     ("nacrt.html#prehodi", "🚆", "Prevozi", "vlak, avtobus 18, povezave"),
     ("nujno.html", "🆘", "Nujno", "112, 113, hotel"),
@@ -104,6 +115,7 @@ def index_page():
   <a class="photo-button" href="nalozi.html">📸 Vajin album — naloži fotografije</a>
 </section>
 <section class="today-card" id="today" hidden aria-live="polite"></section>
+<section class="fact-today" id="fact-today" hidden></section>
 """
     out += '<nav class="quick-links" aria-label="Glavna poglavja">\n'
     for href, e, t, d in QUICK_LINKS:
@@ -141,7 +153,7 @@ def index_page():
 """
     out += "</ul>\n"
     out += '<div class="back-row"><a class="back-button" href="nujno.html">🆘 Nujne informacije</a></div>\n'
-    out += G.trip_script() + G.route_script()
+    out += G.trip_script() + G.route_script() + G.facts_script()
     out += "</main>\n" + G.FOOTER
     return out
 
@@ -263,6 +275,15 @@ def wiz_steps():
             "Fotografije in videe naložita kar s telefona. Izbereta, kdo sta (Ana ali Maks), nato postajo in slike.",
             "Vse pristane v vajinem skupnem albumu, ki ga vidita le vidva. Na koncu ga z enim klikom prenesta kot .zip."],
          demo_upload, ("nalozi.html", "Odpri album →"), ""),
+        ("🌦️", "Vreme in sonce", [
+            "Na vsaki postaji in na domači strani vidita napoved za kraj: temperature, dež in uro sončnega vzhoda in zahoda — da veta, kaj obleči."],
+         "", None, ""),
+        ("🧠", "Zmajev kviz in lov", [
+            "Kviz preizkusi znanje o živalih in Ljubljani (odgovori so v zanimivostih). »Zmajev lov« je seznam, ki ga odkljukata med potjo: živali, zmaji in števci."],
+         "", ("kviz.html", "Preizkusita kviz →"), ""),
+        ("📖", "Zmajeva knjiga", [
+            "Iz slik v albumu se sama sestavi knjiga po postajah. Izpustita, česar nočeta, nato jo natisneta ali shranita kot PDF."],
+         "", ("knjiga.html", "Odpri knjigo →"), ""),
         ("🆘", "Nujno — mir v žepu", [
             "Posebna stran s številkami 112 in 113 ter nasveti, kaj storiti, če se kdo izgubi ali če se zgodi kaj nepričakovanega. Upamo, da je ne bosta potrebovala."],
          demo_nujno, ("nujno.html", "Odpri nujne informacije →"), ""),
@@ -292,7 +313,8 @@ def build():
         G.shutil.copy2(os.path.join(icons_src, name), os.path.join(icons_out, name))
     pages = G.write_pages([("index.html", index_page), ("nacrt.html", G.nacrt_page), ("priprave.html", priprave_page),
                            ("nalozi.html", G.nalozi_page), ("izziv.html", G.izziv_page), ("nujno.html", nujno_page),
-                           ("kako.html", G.kako_page)])
+                           ("kako.html", G.kako_page), ("kviz.html", G.kviz_page), ("lov.html", G.lov_page),
+                           ("knjiga.html", G.knjiga_page)])
     for i, loc in enumerate(G.LOCATIONS):
         name = f"{loc['key']}.html"
         with open(os.path.join(G.OUT, name), "w", encoding="utf-8") as f:

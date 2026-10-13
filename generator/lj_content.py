@@ -11,6 +11,7 @@ CFG = {
     "theme": "#2f8f6b",
     "desc": "Ana in Maks v Ljubljani: 15.–16. oktober 2026 — vlak, hotel, Katja in cel dan v živalskem vrtu.",
     "people": ["Ana", "Maks"],
+    "dates": "15.–16. oktober 2026",
     "country": {"name": "Slovenija", "c": [46.12, 14.82], "z": 8},
     "geo_radius_km": 12,
     "after": ["Bravo, zmajska ekipa!",
@@ -61,6 +62,13 @@ TXT = {
     "nacrt_hero": ("🗺️", "Hrbtenica pustolovščine", "Načrt poti — 2 dneva", "Dan za dnem, od Maribora do živalskega vrta"),
     "kako_title": "Kako uporabljati · Zmajeva pustolovščina",
     "album_title": "📸 Vajin album",
+    "kviz_hero": ("🧠", "Preizkusita znanje", "Zmajev kviz", "14 vprašanj o živalih, zmajih in Ljubljani"),
+    "kviz_intro": "Odgovori so skriti v zanimivostih na postajah. Vsak odgovor pokaže razlago — tako se vmes tudi kaj naučita.",
+    "lov_hero": ("🔎", "Zbirajta na poti", "Zmajev lov", "Označita vsako žival in vsakega zmaja, ki ju opazita"),
+    "lov_intro": "Odprita med potjo, tapnita, ko kaj opazita, in na koncu preštejta. Maks šteje zmaje, Ana živali — ali obratno! Označbe ostanejo v vajinem telefonu.",
+    "knjiga_hero": ("📖", "Iz vajinih slik", "Zmajeva knjiga", "Fotografije iz albuma po postajah, pripravljene za tisk"),
+    "knjiga_intro": "Knjiga se sestavi sama iz slik, ki ju naložita. Z ✕ izpustita slike, ki jih nočeta, nato jo natisneta ali shranita kot PDF.",
+    "facts_h": "💡 Še več zanimivosti",
     "izziv_jump": "📸 Poglejta foto izzive",
 }
 
@@ -792,4 +800,92 @@ QUICKBUY = [
 FOOD_LINKS = [
     ("🍽️ Restavracije v bližini (Google Zemljevidi)", "https://www.google.com/maps/search/?api=1&query=restavracije+Ljubljana+center"),
     ("📞 Rezervacijo mize za 2 uredita po telefonu ali prek spletne strani lokala", None),
+]
+
+# --------------------------------------------------------------------------- zanimivosti, kviz, lov (Ljubljana)
+FACTS = {
+    "vlak": [
+        "Slovenija ima približno 1.200 km železniških prog — in kar nekaj jih vodi mimo rek, kot je Sava.",
+        "Preden pustita Maribor: ob Dravi raste najstarejša trta na svetu (nad 400 let) — po zapisu Guinnessove knjige rekordov.",
+        "Ime postaje Zidani Most pomeni prav to: kamnit most. Tu se reki Savinja in Sava stečeta.",
+        "Slovenija je med najbolj gozdnatimi državami Evrope: gozd pokriva okoli 60 % površine — iz vlaka ga vidita res veliko.",
+    ],
+    "emonec": [
+        "Emona je bila rimsko mesto, ustanovljeno v prvih letih 1. stoletja na območju današnje Ljubljane; zid in ostanke lahko vidita še danes.",
+        "Ljubljana je bila leta 2016 Zelena prestolnica Evrope — središče je večinoma brez avtomobilov.",
+        "Ljubljana ima naziv Unescovo mesto književnosti (od leta 2015).",
+        "Stolnica sv. Nikolaja, ki jo vidita blizu hotela, ima bronasta vrata iz leta 1996 s prizori iz zgodovine.",
+    ],
+    "center": [
+        "Ljubljanski grad stoji na vzpetini okoli 376 m nad morjem; z razglednega stolpa vidita ob jasnem dnevu tudi Alpe.",
+        "Zmajski most je bil zgrajen okoli leta 1901 in velja za eden prvih velikih armiranobetonskih obočnih mostov v mestu.",
+        "Tromostovje ima dva stranska mostova za pešce, ki ju je dodal Jože Plečnik; osrednji most je starejši.",
+        "Narodna in univerzitetna knjižnica (NUK) je Plečnikovo delo (okoli 1941) — poglejta velika stopnišča in svetilke.",
+        "Ljubljanica ima več imen na svoji poti (Pivka, Unica …), zato ji pravijo tudi »reka sedmerih imen«.",
+    ],
+    "zoo": [
+        "Ljubljanski živalski vrt je član evropskega združenja živalskih vrtov in akvarijev (EAZA).",
+        "Sibirski tiger lahko v enem obroku poje več deset kilogramov mesa — pa vendar je večino dneva miren.",
+        "Žirafe spijo zelo malo, pogosto manj kot dve uri na dan, v kratkih počitkih.",
+        "Kalifornijski morski levi lahko plavajo okoli 40 km/h.",
+        "Gepard v nekaj sekundah pospeši do skoraj 100 km/h — najhitrejša kopenska žival.",
+        "Vrt združuje alpske, panonske in sredozemske živali — tako kot Slovenija sama.",
+    ],
+    "domov": [
+        "Svetovni dan čebel (20. maja) je nastal na pobudo Slovenije — ker je čebelarstvo pri nas zelo staro.",
+        "Najvišja gora Slovenije je Triglav (2.864 m) — na grbu in zastavi.",
+        "Ko pridete domov, primerjajta prvi in zadnji posnetek dneva: kaj se je spremenilo? To je Zmajeva knjiga.",
+    ],
+}
+
+QUIZ = {
+    "ranks": [
+        {"min": 0, "e": "🥚", "t": "Zmajevo jajce", "x": "Vse se začne z jajcem! Preberita zanimivosti in poskusita še enkrat."},
+        {"min": 5, "e": "🐲", "t": "Mladi zmaj", "x": "Odlično — že veliko veš o živalih in Ljubljani!"},
+        {"min": 9, "e": "🐉", "t": "Zmaj Ljubljane", "x": "Izvrstno! Poznata mesto in zoo kot pravi domačina."},
+        {"min": 12, "e": "🏆", "t": "Zmajev mojster", "x": "Skoraj brez napake — lahko postaneta vodnika po Ljubljani!"},
+    ],
+    "questions": [
+        {"q": "Katera žival je simbol Ljubljane?", "a": ["Zmaj", "Medved", "Lev"], "c": 0, "e": "Zmaj je na mestnem grbu, na gradu in na Zmajskem mostu."},
+        {"q": "Kdo je po izročilu premagal zmaja v ljubljanskem močvirju?", "a": ["Herkul", "Jazon", "Odisej"], "c": 1, "e": "Jazon, vodja Argonavtov, ki se je z zlatim runom vračal domov."},
+        {"q": "Koliko zmajev stoji na Zmajskem mostu?", "a": ["2", "4", "6"], "c": 1, "e": "Na vsakem koncu mostu sta po dva zmaja."},
+        {"q": "Kdo je oblikoval Tromostovje?", "a": ["Jože Plečnik", "France Prešeren", "Ivan Cankar"], "c": 0, "e": "Arhitekt Jože Plečnik je dodal stranska mostova."},
+        {"q": "Katera slonica živi v ljubljanskem zoo že od leta 1977?", "a": ["Jumbo", "Ganga", "Dumbo"], "c": 1, "e": "Ganga je najstarejša prebivalka vrta."},
+        {"q": "Kako dolg je jezik žirafe?", "a": ["Okoli 10 cm", "Do okoli 50 cm", "Čez 2 m"], "c": 1, "e": "Do 50 cm in temno modrikast — da se ne opeče na soncu."},
+        {"q": "Katera mačka je največja na svetu?", "a": ["Lev", "Sibirski tiger", "Gepard"], "c": 1, "e": "Sibirski tiger — in ima vsak tiger drugačne črte."},
+        {"q": "Kaj imajo morski levi, tjulnji pa ne?", "a": ["Zunanje ušesne školjke", "Rep", "Krila"], "c": 0, "e": "To je najlažji način, da jih ločite."},
+        {"q": "Rdeča panda je …", "a": ["Sorodnica velike pande", "Pripadnica lastne družine", "Vrsta medveda"], "c": 1, "e": "Rdeča panda pripada lastni družini — ni v sorodu z veliko pando."},
+        {"q": "Katera pesem je slovenska himna (njena sedma kitica)?", "a": ["Zdravljica", "Lepa Vida", "Slovenija, od kod lepote tvoje"], "c": 0, "e": "Zdravljica, pesem Franceta Prešerna."},
+        {"q": "Kje najdete najstarejšo trto na svetu?", "a": ["V Ljubljani", "V Mariboru", "Na Bledu"], "c": 1, "e": "V Mariboru, ob Dravi — več kot 400 let stara."},
+        {"q": "Kako božate koze v Mini ZOO?", "a": ["Jih lovite", "Počepnete in počakate, da pridejo same", "Jih dvignete"], "c": 1, "e": "To je pravilo Mini ZOO: počepnite in počakajte."},
+        {"q": "Kako se imenuje rimsko mesto na območju Ljubljane?", "a": ["Emona", "Celeia", "Poetovio"], "c": 0, "e": "Emona — po njej se imenuje tudi vaš hotel."},
+        {"q": "Katera žival doseže v nekaj sekundah skoraj 100 km/h?", "a": ["Slon", "Gepard", "Žirafa"], "c": 1, "e": "Gepard je najhitrejša kopenska žival."},
+    ],
+}
+
+LOV = [
+    {"t": "Živali v zoo", "x": "Označita vsako žival, ki sta jo videla (na živo!).", "items": [
+        {"id": "slon", "e": "🐘", "n": "Slon (Ganga)"}, {"id": "zirafa", "e": "🦒", "n": "Žirafa"}, {"id": "tiger", "e": "🐅", "n": "Tiger"},
+        {"id": "levi", "e": "🦭", "n": "Morski lev"}, {"id": "medved", "e": "🐻", "n": "Rjavi medved"}, {"id": "volk", "e": "🐺", "n": "Volk"},
+        {"id": "panda", "e": "🐼", "n": "Rdeča panda"}, {"id": "opica", "e": "🐒", "n": "Opica"}, {"id": "papiga", "e": "🦜", "n": "Papiga ali druga ptica"},
+        {"id": "sova", "e": "🦉", "n": "Sova ali orel"}, {"id": "kaca", "e": "🐍", "n": "Kača ali kuščar"}, {"id": "koza", "e": "🐐", "n": "Koza ali ovca (Mini ZOO)"},
+        {"id": "alpaka", "e": "🦙", "n": "Alpaka ali guanako"}, {"id": "gepard", "e": "🐆", "n": "Gepard ali leopard"}, {"id": "ris", "e": "🐈", "n": "Ris ali divja mačka"},
+        {"id": "pelikan", "e": "🦩", "n": "Pelikan ali flamingo"},
+    ]},
+    {"t": "Zmaji in mesto", "items": [
+        {"id": "zmaj_most", "e": "🐉", "n": "Zmaj na Zmajskem mostu"}, {"id": "zmaj_grb", "e": "🛡️", "n": "Zmaj na grbu ali gradu"},
+        {"id": "tromostovje", "e": "🌉", "n": "Tromostovje"}, {"id": "preseren", "e": "🗿", "n": "Prešernov kip"},
+        {"id": "ljubljanica", "e": "🌊", "n": "Reka Ljubljanica"}, {"id": "grad", "e": "🏰", "n": "Ljubljanski grad"},
+        {"id": "trznica", "e": "🍎", "n": "Plečnikova tržnica"}, {"id": "sladoled", "e": "🍦", "n": "Sladoled ali čokolada"},
+    ]},
+    {"t": "Na poti", "items": [
+        {"id": "vlak", "e": "🚂", "n": "Vlak Maribor–Ljubljana"}, {"id": "bus18", "e": "🚌", "n": "Avtobus št. 18"},
+        {"id": "katja", "e": "👩", "n": "Srečanje s Katjo"}, {"id": "hotel", "e": "🏨", "n": "Hotel Emonec"},
+        {"id": "zidani", "e": "🌉", "n": "Zidani Most iz vlaka"}, {"id": "megla", "e": "🌫️", "n": "Megla ob reki ali v mestu"},
+    ]},
+    {"t": "Števci", "items": [
+        {"id": "c_zmaji", "e": "🐉", "n": "Zmaji, ki sta jih našla", "count": True},
+        {"id": "c_zivali", "e": "📸", "n": "Živali, ki sta jih fotografirala", "count": True},
+        {"id": "c_slike", "e": "🖼️", "n": "Fotografije za Zmajevo knjigo", "count": True},
+    ]},
 ]

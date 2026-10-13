@@ -12,7 +12,8 @@ ki so prirejena tej kodi. Drugi potovanj ne vidijo.
   - `gen.py` — skupne predloge + potovanje Japonska
   - `gen_lj.py` + `lj_content.py` + `art_lj.py` — potovanje Ljubljana
   - `gen_site.py` — koren spletišča
-  - `assets/` — skupni CSS/JS/ikone (kopirajo se v vsako potovanje; urejaj SAMO tukaj)
+  - `assets/` — skupni CSS/JS/ikone (kopirajo se v vsako potovanje; urejaj SAMO tukaj): `app.js` (osnova, vreme, zanimivost dneva, pretvornik), `fun.js` (kviz, lov), `money.js` (skupni stroški), `knjiga.js` (potopisna knjiga), `album.js`
+  - `data_jp.py`, `lj_content.py` — vsebina (nastanitve, povezave, zanimivosti, kviz, lov); `links.py` — graditelji povezav; `geocode*.py` + `geocache.json` — koordinate znamenitosti
 
 ## Objava
 GitHub Pages objavi mapo `site/` (`.github/workflows/pages.yml`).

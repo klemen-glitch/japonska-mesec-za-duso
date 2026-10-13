@@ -7,8 +7,8 @@
   <meta name="description" content="Živalski vrt Ljubljana: kaj početi, izzivi in nasveti — Zmajeva pustolovščina, Ljubljana.">
   <meta name="robots" content="noindex,nofollow">
   <meta name="theme-color" content="#2f8f6b">
-  <script>window.TRIP={"id": "ljubljana", "slug": "lj-d4phmm7xw", "people": ["Ana", "Maks"], "gate": "../index.html", "after": ["Bravo, zmajska ekipa!", "Poglejta <a href=\"nalozi.html\">skupni album</a> in iz slik sestavita svojo Zmajevo knjigo."], "t": {"locked": "Presenečenje čaka — odklene se, ko naložita sliko ali video.", "empty": "Album je še prazen — naložita prvo fotografijo. 📸", "thanks": "naloženih ✓ — odlično!", "more": "Odpri vodnik za to postajo →", "pre": "Pustolovščina se začne {date}. Poglejta <a href=\"priprave.html\">priprave</a> in kontrolni seznam."}, "color": "#2f8f6b", "country": {"name": "Slovenija", "c": [46.12, 14.82], "z": 8}, "stations": [{"k": "vlak", "e": "🚂", "n": "Vlak"}, {"k": "emonec", "e": "🏨", "n": "Hotel"}, {"k": "center", "e": "🏰", "n": "Center"}, {"k": "zoo", "e": "🦁", "n": "Živalski vrt"}, {"k": "domov", "e": "🏠", "n": "Domov"}]};(function(){try{var s=JSON.parse(localStorage.getItem("trip_session")||"null");var ok=s&&s.trips&&s.trips.some(function(t){return t.slug===TRIP.slug});if(!ok){location.replace(TRIP.gate+"?next="+encodeURIComponent(TRIP.slug));}}catch(e){}})();</script>
-  <link rel="stylesheet" href="style.css?v=19">
+  <script>window.TRIP={"id": "ljubljana", "slug": "lj-d4phmm7xw", "people": ["Ana", "Maks"], "gate": "../index.html", "after": ["Bravo, zmajska ekipa!", "Poglejta <a href=\"nalozi.html\">skupni album</a> in iz slik sestavita svojo Zmajevo knjigo."], "t": {"locked": "Presenečenje čaka — odklene se, ko naložita sliko ali video.", "empty": "Album je še prazen — naložita prvo fotografijo. 📸", "thanks": "naloženih ✓ — odlično!", "more": "Odpri vodnik za to postajo →", "pre": "Pustolovščina se začne {date}. Poglejta <a href=\"priprave.html\">priprave</a> in kontrolni seznam."}, "color": "#2f8f6b", "country": {"name": "Slovenija", "c": [46.12, 14.82], "z": 8}, "title": "Zmajeva pustolovščina", "dates": "15.–16. oktober 2026", "stations": [{"k": "vlak", "e": "🚂", "n": "Vlak"}, {"k": "emonec", "e": "🏨", "n": "Hotel"}, {"k": "center", "e": "🏰", "n": "Center"}, {"k": "zoo", "e": "🦁", "n": "Živalski vrt"}, {"k": "domov", "e": "🏠", "n": "Domov"}]};(function(){try{var s=JSON.parse(localStorage.getItem("trip_session")||"null");var ok=s&&s.trips&&s.trips.some(function(t){return t.slug===TRIP.slug});if(!ok){location.replace(TRIP.gate+"?next="+encodeURIComponent(TRIP.slug));}}catch(e){}})();</script>
+  <link rel="stylesheet" href="style.css?v=20">
   <style>
     :root { --accent:#1f7a5a; --accent-ink:#1f7a5a; --accent-soft:#e8f5ee; --pin:#2f8f6b; --orange:#c8553d; --gold:#b08a2e; }
     @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --accent:#6fd0a6; --accent-ink:#6fd0a6; --accent-soft:#14261e; --pin:#2f8f6b; --orange:#e08a6c; --gold:#d2b256; } }
@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script defer src="album.js?v=19"></script>
+  <script defer src="album.js?v=20"></script>
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
@@ -38,6 +38,9 @@
         <a href="nacrt.html"><span class="mi-emoji" aria-hidden="true">🗺️</span>Načrt poti</a>
         <a href="izziv.html"><span class="mi-emoji" aria-hidden="true">📸</span>Izzivi</a>
         <a href="nalozi.html"><span class="mi-emoji" aria-hidden="true">📤</span>Naloži fotografije</a>
+        <a href="knjiga.html"><span class="mi-emoji" aria-hidden="true">📖</span>Zmajeva knjiga</a>
+        <a href="kviz.html"><span class="mi-emoji" aria-hidden="true">🧠</span>Zmajev kviz</a>
+        <a href="lov.html"><span class="mi-emoji" aria-hidden="true">🔎</span>Zmajev lov</a>
         <a href="priprave.html"><span class="mi-emoji" aria-hidden="true">🎒</span>Priprave</a>
         <a href="nujno.html"><span class="mi-emoji" aria-hidden="true">🆘</span>Nujno</a>
         <a href="../index.html?izpis=1"><span class="mi-emoji" aria-hidden="true">🔑</span>Zamenjaj potovanje</a>
@@ -63,6 +66,7 @@
   <p class="loc-intro">Živalski vrt leži na južnem pobočju Rožnika, v gozdu in na travnikih, ki so del krajinskega parka. Površine je okoli 19,6 hektara, poti pa je po objavljenih podatkih 5–6 km — dovolj za cel dan raziskovanja. Spodaj je predlog poti od vhoda do izhoda, s krmljenji, igrišči, odmori in kar 20 izzivi za Zmajevo knjigo. Malo načrta, veliko radovednosti!</p>
   <p class="visit-wrap"><button type="button" class="visit-btn" data-visit="zoo">☐ Označi kot obiskano</button></p>
 </section>
+<section class="card-section wx-box" hidden data-lat="46.0553" data-lon="14.4722" data-place="Živalski vrt" data-title="🌦️ Vreme v kraju"></section>
 <section class="card-section" aria-labelledby="znamenitosti">
   <h2 id="znamenitosti">🦒 Kaj videti in početi</h2>
   <article class="sight">
@@ -224,6 +228,17 @@
   <h2 id="zanimivost">💡 Zanimivost</h2>
   <p>Živalski vrt Ljubljana je bil ustanovljen leta 1949 in je od leta 1951 na današnji lokaciji pod Rožnikom. Slonica Ganga tam živi od leta 1977 in je najstarejša prebivalka vrta.</p>
 </section>
+<section class="card-section facts-section" aria-labelledby="zanimivosti-vec">
+  <h2 id="zanimivosti-vec">💡 Še več zanimivosti</h2>
+  <ul class="nice-list">
+    <li>Ljubljanski živalski vrt je član evropskega združenja živalskih vrtov in akvarijev (EAZA).</li>
+    <li>Sibirski tiger lahko v enem obroku poje več deset kilogramov mesa — pa vendar je večino dneva miren.</li>
+    <li>Žirafe spijo zelo malo, pogosto manj kot dve uri na dan, v kratkih počitkih.</li>
+    <li>Kalifornijski morski levi lahko plavajo okoli 40 km/h.</li>
+    <li>Gepard v nekaj sekundah pospeši do skoraj 100 km/h — najhitrejša kopenska žival.</li>
+    <li>Vrt združuje alpske, panonske in sredozemske živali — tako kot Slovenija sama.</li>
+  </ul>
+</section>
 <section class="card-section magda-section" aria-labelledby="magda">
   <h2 id="magda">🐉 Zmajeva skrivnost</h2>
   <p>Za trenutek se ustavita pri kakšni živali, ki je najbolj mirna, in 2 minuti samo opazujta — brez telefona. Kaj dela? Kaj bi počela, če bi bila ona? To je pogosto najlepši spomin dneva.</p>
@@ -266,6 +281,6 @@
   <p>Z ljubeznijo pripravljeno za Ano in Maksa</p>
   <p><a href="kako.html">🎓 Kako uporabljati to stran</a> · <a href="../index.html?izpis=1">🔑 Zamenjaj potovanje</a></p>
 </footer>
-<script src="app.js?v=19"></script>
+<script src="app.js?v=20"></script>
 </body>
 </html>

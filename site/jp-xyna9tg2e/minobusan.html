@@ -7,13 +7,13 @@
   <meta name="description" content="Minobusan: znamenitosti, hrana in nasveti — vodnik Japonska 2026.">
   <meta name="robots" content="noindex,nofollow">
   <meta name="theme-color" content="#7b2230">
-  <script>window.TRIP={"id": "japonska", "slug": "jp-xyna9tg2e", "people": ["Marjetica", "Helena", "Ljuba", "Magda"], "gate": "../index.html", "after": null, "t": null, "color": null, "country": {"name": "Japonska", "c": [37.9, 137.6], "z": 5}, "stations": [{"k": "tokio", "e": "🗼", "n": "Tokio"}, {"k": "chichibu", "e": "🌳", "n": "Chichibu"}, {"k": "kawaguchiko", "e": "🗻", "n": "Fuji"}, {"k": "minobusan", "e": "🏯", "n": "Minobu"}, {"k": "izu", "e": "🌊", "n": "Izu"}, {"k": "kumano", "e": "⛩️", "n": "Kumano"}, {"k": "koyasan", "e": "🏔️", "n": "Koya-san"}, {"k": "iya", "e": "🏞️", "n": "Iya"}, {"k": "ine", "e": "🎣", "n": "Ine"}, {"k": "nara", "e": "🦌", "n": "Nara"}, {"k": "kyoto", "e": "🍁", "n": "Kyoto"}, {"k": "osaka", "e": "🏙️", "n": "Osaka"}, {"k": "hiroshima", "e": "🕊️", "n": "Hiroshima"}]};(function(){try{var s=JSON.parse(localStorage.getItem("trip_session")||"null");var ok=s&&s.trips&&s.trips.some(function(t){return t.slug===TRIP.slug});if(!ok){location.replace(TRIP.gate+"?next="+encodeURIComponent(TRIP.slug));}}catch(e){}})();</script>
-  <link rel="stylesheet" href="style.css?v=19">
+  <script>window.TRIP={"id": "japonska", "slug": "jp-xyna9tg2e", "people": ["Marjetica", "Helena", "Ljuba", "Magda"], "gate": "../index.html", "after": null, "t": null, "color": null, "country": {"name": "Japonska", "c": [37.9, 137.6], "z": 5}, "title": "Japonska — Mesec za dušo", "dates": "3. november – 2. december 2026", "stations": [{"k": "tokio", "e": "🗼", "n": "Tokio"}, {"k": "chichibu", "e": "🌳", "n": "Chichibu"}, {"k": "kawaguchiko", "e": "🗻", "n": "Fuji"}, {"k": "minobusan", "e": "🏯", "n": "Minobu"}, {"k": "izu", "e": "🌊", "n": "Izu"}, {"k": "kumano", "e": "⛩️", "n": "Kumano"}, {"k": "koyasan", "e": "🏔️", "n": "Koya-san"}, {"k": "iya", "e": "🏞️", "n": "Iya"}, {"k": "ine", "e": "🎣", "n": "Ine"}, {"k": "nara", "e": "🦌", "n": "Nara"}, {"k": "kyoto", "e": "🍁", "n": "Kyoto"}, {"k": "osaka", "e": "🏙️", "n": "Osaka"}, {"k": "hiroshima", "e": "🕊️", "n": "Hiroshima"}]};(function(){try{var s=JSON.parse(localStorage.getItem("trip_session")||"null");var ok=s&&s.trips&&s.trips.some(function(t){return t.slug===TRIP.slug});if(!ok){location.replace(TRIP.gate+"?next="+encodeURIComponent(TRIP.slug));}}catch(e){}})();</script>
+  <link rel="stylesheet" href="style.css?v=20">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script defer src="album.js?v=19"></script>
+  <script defer src="album.js?v=20"></script>
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
@@ -34,6 +34,10 @@
         <a href="nacrt.html"><span class="mi-emoji" aria-hidden="true">🗺️</span>Načrt poti</a>
         <a href="izziv.html"><span class="mi-emoji" aria-hidden="true">📸</span>Izzivi</a>
         <a href="nalozi.html"><span class="mi-emoji" aria-hidden="true">📤</span>Naloži fotografije</a>
+        <a href="knjiga.html"><span class="mi-emoji" aria-hidden="true">📖</span>Potopisna knjiga</a>
+        <a href="kviz.html"><span class="mi-emoji" aria-hidden="true">🧠</span>Kviz</a>
+        <a href="lov.html"><span class="mi-emoji" aria-hidden="true">🔎</span>Lov na stvari</a>
+        <a href="stroski.html"><span class="mi-emoji" aria-hidden="true">💴</span>Skupni stroški</a>
         <a href="dozivetja.html"><span class="mi-emoji" aria-hidden="true">🎨</span>Doživetja</a>
         <a href="priprave.html"><span class="mi-emoji" aria-hidden="true">🎒</span>Priprave</a>
         <a href="prevajalec.html"><span class="mi-emoji" aria-hidden="true">🔍</span>Prevajalec s kamero</a>
@@ -70,6 +74,7 @@
   <p class="loc-intro">Na gori Minobu stoji Kuon-ji, osrednji tempelj budistične šole Nichiren, obkrožen s starodavnimi cedrami in jeseni z žarečimi javorji. Tu prenočimo pri menihih v šukuboju Kakurinbo (že rezervirano) — z vegetarijansko večerjo in jutranjim mirom. Umirjen, oduhovljen postanek na poti proti jugu.</p>
   <p class="visit-wrap"><button type="button" class="visit-btn" data-visit="minobusan">☐ Označi kot obiskano</button></p>
 </section>
+<section class="card-section wx-box" hidden data-lat="35.404" data-lon="138.437" data-place="Minobu" data-title="🌦️ Vreme v kraju" data-stay="2026-11-08,2026-11-09"></section>
 <section class="card-section" aria-labelledby="znamenitosti">
   <h2 id="znamenitosti">⛩️ Znamenitosti in doživetja</h2>
   <article class="sight">
@@ -202,6 +207,14 @@
   <h2 id="zanimivost">💡 Zanimivost</h2>
   <p>Šukubo (prenočitev v templju) je na gori Minobu tradicija že stoletja — romarji so tu prenočevali na poti h grobu meniha Nichirena, ki je na tej gori preživel svoja zadnja leta.</p>
 </section>
+<section class="card-section facts-section" aria-labelledby="zanimivosti-vec">
+  <h2 id="zanimivosti-vec">💡 Še več zanimivosti</h2>
+  <ul class="nice-list">
+    <li>Pred gorskim templjem Kuon-ji vodi 287 stopnic, imenovanih Bodaitei — romarji jih premagajo kot del čiščenja duha.</li>
+    <li>Menih Nichiren je na gori Minobu preživel približno 9 let (od 1274); tu je zapisal veliko svojih spisov, danes je Kuon-ji glavni tempelj njegove šole.</li>
+    <li>V šukuboju vas običajno čaka tatami soba, vegetarijanska večerja (shojin ryori) in jutranja molitev ob zori; goste prosijo, naj molitev spoštujejo.</li>
+  </ul>
+</section>
 <section class="card-section magda-section" aria-labelledby="magda">
   <h2 id="magda">💛 Magdin trenutek</h2>
   <p>Po meniški večerji stopite ven v tišino gorske noči. Ni televizije, ni hrupa — le zvonovi, cedre in zvezde. Dovolite si, da za eno noč čisto upočasnite.</p>
@@ -261,6 +274,6 @@
   <p>Z ljubeznijo pripravljeno za Magdo in prijateljice</p>
   <p><a href="kako.html">🎓 Kako uporabljati to stran</a> · <a href="../index.html?izpis=1">🔑 Zamenjaj potovanje</a></p>
 </footer>
-<script src="app.js?v=19"></script>
+<script src="app.js?v=20"></script>
 </body>
 </html>

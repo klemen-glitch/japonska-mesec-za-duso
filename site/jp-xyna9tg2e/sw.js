@@ -1,6 +1,6 @@
 /* Service worker potovanja: najprej splet (sveže), sicer predpomnilnik. */
-var CACHE_NAME = "japonska-19";
-var PAGES = ["./", "./index.html", "./nasveti.html", "./nacrt.html", "./priprave.html", "./dozivetja.html", "./nalozi.html", "./izziv.html", "./nujno.html", "./kako.html", "./prevajalec.html", "./tokio.html", "./chichibu.html", "./kawaguchiko.html", "./minobusan.html", "./izu.html", "./kumano.html", "./koyasan.html", "./iya.html", "./ine.html", "./nara.html", "./kyoto.html", "./osaka.html", "./hiroshima.html", "./style.css", "./app.js", "./album.js", "./manifest.json", "./icons/icon-192.png", "./icons/icon-512.png", "./icons/apple-touch-icon.png", "./icons/favicon.svg", "./prevajalec.js"];
+var CACHE_NAME = "japonska-20";
+var PAGES = ["./", "./index.html", "./nasveti.html", "./nacrt.html", "./priprave.html", "./dozivetja.html", "./nalozi.html", "./izziv.html", "./nujno.html", "./kako.html", "./prevajalec.html", "./kviz.html", "./lov.html", "./knjiga.html", "./stroski.html", "./tokio.html", "./chichibu.html", "./kawaguchiko.html", "./minobusan.html", "./izu.html", "./kumano.html", "./koyasan.html", "./iya.html", "./ine.html", "./nara.html", "./kyoto.html", "./osaka.html", "./hiroshima.html", "./style.css", "./app.js", "./album.js", "./fun.js", "./money.js", "./knjiga.js", "./manifest.json", "./icons/icon-192.png", "./icons/icon-512.png", "./icons/apple-touch-icon.png", "./icons/favicon.svg", "./prevajalec.js"];
 
 self.addEventListener("install", function (event) {
   event.waitUntil(
