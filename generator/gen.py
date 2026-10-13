@@ -16,7 +16,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 
 # Verzija gradnje — doda se v naslov CSS/JS (?v=BUILD), da brskalnik vedno
 # naloži svežo različico. Ob vsaki spremembi povečaj.
-BUILD = "17"
+BUILD = "18"
 
 # ----------------------------------------------------------------------------
 # VSEBINA
@@ -435,6 +435,7 @@ def nav(current_key):
         ("nalozi.html", "nalozi", "📤", "Naloži fotografije"),
         ("dozivetja.html", "dozivetja", "🎨", "Doživetja"),
         ("priprave.html", "priprave", "🎒", "Priprave"),
+        ("prevajalec.html", "prevajalec", "🔍", "Prevajalec s kamero"),
         ("nasveti.html", "nasveti", "💡", "Nasveti in kartice"),
         ("nujno.html", "nujno", "🆘", "Nujno"),
     ]
@@ -1348,7 +1349,9 @@ QUICK_LINKS = [
     ("priprave.html", "🎒", "Priprave", "denar, vlaki, pakiranje"),
     ("nasveti.html#kartice", "🪪", "Kartice za domačine", "pokažite zaslon"),
     ("nasveti.html#fraze", "🗣️", "Fraze", "z izgovorjavo 🔊"),
+    ("prevajalec.html", "🔍", "Prevajalec s kamero", "japonski napis → slovensko"),
     ("nujno.html", "🆘", "Nujno", "110, 119, veleposlaništvo"),
+    ("kako.html", "🎓", "Kako uporabljati", "predstavitev vseh funkcij"),
 ]
 
 
@@ -1467,6 +1470,8 @@ def _wiz_steps():
                   '<p class="demo-hint">Poskusite: tapnite kartico zgoraj.</p>')
     demo_nujno = ('<div class="call-grid demo-calls"><div class="call-btn call-red"><span class="c-num">110</span><span class="c-lbl">Policija</span></div>'
                   '<div class="call-btn call-red"><span class="c-num">119</span><span class="c-lbl">Rešilec</span></div></div>')
+    demo_lens = ('<div class="demo-lens"><div class="demo-lens-cam"><span>出口</span><span>営業時間 9:00〜17:00</span></div>'
+                 '<div class="demo-lens-arrow">⬇</div><div class="demo-lens-out">Izhod<br>Delovni čas 9.00–17.00</div></div>')
     demo_install = ('<div class="demo-install"><div><strong>🍎 iPhone (Safari)</strong><br>Deli ⬆️ → »Dodaj na začetni zaslon«</div>'
                     '<div><strong>🤖 Android (Chrome)</strong><br>Meni ⋮ → »Dodaj na začetni zaslon«</div></div>')
 
@@ -1507,6 +1512,10 @@ def _wiz_steps():
         ("🔊", "Japonske fraze z izgovorjavo", [
             "Pri frazah je gumb 🔊: telefon jo izgovori po japonsko. Zraven so japonski zapis, izgovorjava po slovensko in pomen."],
          "", ("nasveti.html#fraze", "Odpri fraze →"), ""),
+        ("🔍", "Prevajalec s kamero", [
+            "Kot Google Lens: odprete kamero, napis postavite v okvir in tapnete »Prevedi«. Telefon prebere japonsko besedilo in ga prevede v slovenščino (ali angleščino).",
+            "Prepoznano besedilo lahko popravite, poslušate ali pokažete večje. Dobro deluje pri tablah, jedilnikih in vozovnicah."],
+         demo_lens, ("prevajalec.html", "Odpri prevajalec →"), ""),
         ("🆘", "Nujno — mir v žepu", [
             "Posebna stran s 110, 119, številko Japan Visitor Hotline, veleposlaništvom RS v Tokiu in koraki ob izgubi kartice, telefona ali potnega lista. Upamo, da je ne boste potrebovale."],
          demo_nujno, ("nujno.html", "Odpri nujne informacije →"), ""),
@@ -1552,6 +1561,78 @@ def kako_page():
     return out
 
 
+def prevajalec_page():
+    out = head("Prevajalec s kamero · Japonska — Mesec za dušo",
+               "Usmerite kamero proti japonskemu besedilu in dobite prevod v slovenščino.")
+    out += nav("prevajalec")
+    out += "<main>\n"
+    out += _page_hero("🔍", "Kot Google Lens", "Prevajalec s kamero",
+                      "Usmerite telefon proti japonskemu napisu — prevod se prikaže pod njim")
+
+    out += """<section class="card-section tr-card" aria-labelledby="tr-kamera">
+  <h2 id="tr-kamera">📷 Kamera</h2>
+  <div class="tr-cam" id="tr-cam" hidden>
+    <video id="tr-video" playsinline muted autoplay></video>
+    <div class="tr-guide" id="tr-guide" aria-hidden="true"></div>
+  </div>
+  <p class="tr-hint" id="tr-hint">Napis postavite v okvir, držite telefon mirno in tapnite »Prevedi«.</p>
+  <div class="tr-actions">
+    <button type="button" class="tr-btn tr-primary" id="tr-open">📷 Odpri kamero</button>
+    <button type="button" class="tr-btn tr-primary" id="tr-snap" hidden>📸 Prevedi</button>
+    <button type="button" class="tr-btn" id="tr-close" hidden>✕ Zapri kamero</button>
+  </div>
+  <div class="tr-actions">
+    <label class="tr-btn tr-file">🖼️ Slikaj ali izberi sliko<input type="file" id="tr-file" accept="image/*" capture="environment" hidden></label>
+    <label class="tr-check"><input type="checkbox" id="tr-crop" checked> Prevedi samo okvir</label>
+  </div>
+  <p class="tr-status" id="tr-status" role="status" aria-live="polite"></p>
+</section>
+
+<section class="card-section tr-card" aria-labelledby="tr-rezultat">
+  <h2 id="tr-rezultat">📝 Besedilo in prevod</h2>
+  <label class="tr-lbl" for="tr-ja">Prepoznano japonsko besedilo <span>(lahko ga popravite ali vtipkate/prilepite svoje)</span></label>
+  <textarea id="tr-ja" class="tr-ja" lang="ja" rows="4" placeholder="Tukaj se prikaže prepoznano besedilo …"></textarea>
+  <div class="tr-row">
+    <label class="tr-sel">Prevedi v
+      <select id="tr-lang"><option value="sl">slovenščino</option><option value="en">angleščino</option></select>
+    </label>
+    <button type="button" class="tr-btn tr-primary" id="tr-go">🔁 Prevedi</button>
+  </div>
+  <div class="tr-out" id="tr-out" aria-live="polite"><span class="tr-out-empty">Prevod se prikaže tukaj.</span></div>
+  <div class="tr-actions">
+    <button type="button" class="tr-btn" id="tr-say">🔊 Poslušaj japonsko</button>
+    <button type="button" class="tr-btn" id="tr-copy">📋 Kopiraj prevod</button>
+    <button type="button" class="tr-btn" id="tr-show">🪪 Pokaži večje</button>
+  </div>
+</section>
+
+<section class="card-section" aria-labelledby="tr-nasveti">
+  <h2 id="tr-nasveti">💡 Za boljši rezultat</h2>
+  <ul class="nice-list">
+    <li><strong>Dobra svetloba</strong> — brez sence in bleščanja; ponoči pomaga svetilka telefona.</li>
+    <li><strong>Blizu in ravno</strong> — telefon vzporedno z napisom, besedilo naj zapolni okvir.</li>
+    <li><strong>Natisnjeno besedilo</strong> — table, jedilniki, vozovnice. Rokopis in napisi v umetniških pisavah so težji.</li>
+    <li><strong>Navpično besedilo</strong> (pogosto na templjih) prebere slabše — poskusite ga zasukati ali vtipkati.</li>
+    <li><strong>Hrana</strong> — pri jedilnikih prevod pomaga razumeti sestavine; pri alergijah pokažite raje kartico »Imam alergijo na …«.</li>
+  </ul>
+</section>
+
+<section class="card-section tr-alt" aria-labelledby="tr-google">
+  <h2 id="tr-google">🔎 Za najboljši prevod</h2>
+  <p class="cat-intro">Za zahtevnejše napise (rokopis, navpično besedilo, žive slike) uporabite aplikacijo Google, ki je v tem še boljša.</p>
+  <div class="tr-actions">
+    <a class="tr-btn" href="https://translate.google.com/?sl=ja&tl=sl&op=images" target="_blank" rel="noopener">Google Prevajalnik — slika</a>
+    <a class="tr-btn" href="https://lens.google.com/" target="_blank" rel="noopener">Google Lens</a>
+  </div>
+  <p class="fine-note">Zasebnost: slika se obdela v vašem telefonu; prevajalski storitvi se pošlje le prepoznano besedilo (brez slike). Prvič se prenese majhna datoteka za prepoznavo japonščine (~2 MB), zato je potreben internet. Prevodi so strojni — pri pomembnih stvareh (zdravje, alergije, plačila) preverite z osebjem.</p>
+</section>
+"""
+    out += '<div class="back-row"><a class="back-button" href="nasveti.html#kartice">🪪 Kartice za domačine</a></div>\n'
+    out += "</main>\n" + FOOTER
+    out = out.replace("</body>", f'<script src="prevajalec.js?v={BUILD}"></script>\n</body>', 1)
+    return out
+
+
 # ----------------------------------------------------------------------------
 
 os.makedirs(OUT, exist_ok=True)
@@ -1570,7 +1651,8 @@ for name, builder in [("nacrt.html", nacrt_page),
                       ("nalozi.html", nalozi_page),
                       ("izziv.html", izziv_page),
                       ("nujno.html", nujno_page),
-                      ("kako.html", kako_page)]:
+                      ("kako.html", kako_page),
+                      ("prevajalec.html", prevajalec_page)]:
     with open(os.path.join(OUT, name), "w", encoding="utf-8") as f:
         f.write(builder())
     print(f"written {name}")

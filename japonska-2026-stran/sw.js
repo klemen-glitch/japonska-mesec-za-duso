@@ -2,7 +2,7 @@
    da osnovne informacije delujejo tudi brez interneta.
    Ob spremembi strani povečaj številko različice spodaj. */
 
-var CACHE_NAME = "japonska-2026-v17";
+var CACHE_NAME = "japonska-2026-v18";
 
 var PAGES = [
   "./",
@@ -28,6 +28,8 @@ var PAGES = [
   "./izziv.html",
   "./nujno.html",
   "./kako.html",
+  "./prevajalec.html",
+  "./prevajalec.js",
   "./style.css",
   "./app.js",
   "./album.js",

@@ -1171,6 +1171,51 @@ main {
 .tb-t { font-size: 0.98rem; line-height: 1.35; }
 .tb-x { position: absolute; right: 0.5rem; top: 0.45rem; background: transparent; border: 0; font-size: 1rem; color: var(--ink-soft); cursor: pointer; padding: 0.3rem 0.5rem; }
 
+/* ---------- Prevajalec s kamero ---------- */
+
+.tr-cam { position: relative; width: 100%; aspect-ratio: 4 / 3; max-height: 70vh; background: #000; border-radius: var(--radius-sm); overflow: hidden; margin: 0 0 0.8rem; }
+.tr-cam[hidden] { display: none; }
+.tr-cam video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.tr-guide {
+  position: absolute; left: 5%; top: 27%; width: 90%; height: 46%; border: 3px solid #fff; border-radius: 12px;
+  box-shadow: 0 0 0 9999px rgba(0,0,0,0.42); pointer-events: none;
+}
+.tr-guide[hidden] { display: none; }
+.tr-hint { margin: 0 0 0.7rem; color: var(--ink-soft); font-size: 0.95rem; }
+.tr-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin: 0.5rem 0; }
+.tr-btn {
+  font-family: var(--sans); font-size: 1rem; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block;
+  border: none; border-radius: var(--radius-pill); padding: 0.75rem 1.2rem; background: var(--bg-alt); color: var(--ink);
+}
+.tr-btn:hover { background: var(--line-strong); opacity: 1; }
+.tr-btn[hidden] { display: none; }
+.tr-btn:disabled { opacity: 0.55; cursor: default; }
+.tr-primary { background: var(--accent); color: #fff; }
+.tr-primary:hover { background: color-mix(in srgb, var(--accent) 85%, #000); }
+.tr-check { font-size: 0.92rem; color: var(--ink-soft); display: inline-flex; align-items: center; gap: 0.4rem; }
+.tr-status { min-height: 1.4rem; margin: 0.4rem 0 0; font-weight: 600; color: var(--ink-soft); }
+.tr-status.ok { color: #1f7a3d; }
+.tr-status.warn { color: #b3261e; }
+.tr-lbl { display: block; font-weight: 600; margin: 0 0 0.4rem; }
+.tr-lbl span { font-weight: 400; color: var(--ink-soft); font-size: 0.88rem; }
+.tr-ja {
+  width: 100%; font-family: var(--sans); font-size: 1.15rem; line-height: 1.5; padding: 0.8rem; border-radius: var(--radius-sm);
+  border: 1px solid var(--line-strong); background: var(--bg); color: var(--ink); resize: vertical;
+}
+.tr-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.6rem; margin: 0.7rem 0; }
+.tr-sel { display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 600; }
+.tr-sel select { font-family: var(--sans); font-size: 1rem; padding: 0.55rem 0.7rem; border-radius: 10px; border: 1px solid var(--line-strong); background: var(--bg); color: var(--ink); }
+.tr-out {
+  background: var(--accent-soft); border-radius: var(--radius-sm); padding: 1rem 1.1rem; min-height: 4.5rem;
+  font-size: 1.35rem; line-height: 1.45; font-weight: 600; color: var(--ink); margin: 0.4rem 0 0.4rem;
+}
+.tr-out-empty { color: var(--ink-faint); font-size: 1rem; font-weight: 400; }
+
+.demo-lens { display: grid; gap: 0.5rem; text-align: center; }
+.demo-lens-cam { background: #1c1c1e; color: #fff; border: 3px solid #fff; outline: 2px solid var(--line-strong); border-radius: 12px; padding: 1rem 0.6rem; display: grid; gap: 0.3rem; font-size: 1.3rem; font-weight: 700; }
+.demo-lens-arrow { font-size: 1.2rem; color: var(--ink-soft); }
+.demo-lens-out { background: var(--accent-soft); border-radius: 12px; padding: 0.8rem; font-weight: 650; line-height: 1.4; }
+
 /* ---------- Noga ---------- */
 
 footer {
