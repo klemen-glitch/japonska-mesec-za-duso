@@ -7,7 +7,7 @@
   <meta name="description" content="Z vlakom v Ljubljano: kaj početi, izzivi in nasveti — Zmajeva pustolovščina, Ljubljana.">
   <meta name="robots" content="noindex,nofollow">
   <meta name="theme-color" content="#2f8f6b">
-  <script>window.TRIP={"id": "ljubljana", "slug": "lj-d4phmm7xw", "people": ["Ana", "Maks"], "gate": "../index.html", "after": ["Bravo, zmajska ekipa!", "Poglejta <a href=\"nalozi.html\">skupni album</a> in iz slik sestavita svojo Zmajevo knjigo."], "t": {"locked": "Presenečenje čaka — odklene se, ko naložita sliko ali video.", "empty": "Album je še prazen — naložita prvo fotografijo. 📸", "thanks": "naloženih ✓ — odlično!", "more": "Odpri vodnik za to postajo →", "pre": "Pustolovščina se začne {date}. Poglejta <a href=\"priprave.html\">priprave</a> in kontrolni seznam."}, "color": "#2f8f6b", "stations": [{"k": "vlak", "e": "🚂", "n": "Vlak"}, {"k": "emonec", "e": "🏨", "n": "Hotel"}, {"k": "center", "e": "🏰", "n": "Center"}, {"k": "zoo", "e": "🦁", "n": "Živalski vrt"}, {"k": "domov", "e": "🏠", "n": "Domov"}]};(function(){try{var s=JSON.parse(localStorage.getItem("trip_session")||"null");var ok=s&&s.trips&&s.trips.some(function(t){return t.slug===TRIP.slug});if(!ok){location.replace(TRIP.gate+"?next="+encodeURIComponent(TRIP.slug));}}catch(e){}})();</script>
+  <script>window.TRIP={"id": "ljubljana", "slug": "lj-d4phmm7xw", "people": ["Ana", "Maks"], "gate": "../index.html", "after": ["Bravo, zmajska ekipa!", "Poglejta <a href=\"nalozi.html\">skupni album</a> in iz slik sestavita svojo Zmajevo knjigo."], "t": {"locked": "Presenečenje čaka — odklene se, ko naložita sliko ali video.", "empty": "Album je še prazen — naložita prvo fotografijo. 📸", "thanks": "naloženih ✓ — odlično!", "more": "Odpri vodnik za to postajo →", "pre": "Pustolovščina se začne {date}. Poglejta <a href=\"priprave.html\">priprave</a> in kontrolni seznam."}, "color": "#2f8f6b", "country": {"name": "Slovenija", "c": [46.12, 14.82], "z": 8}, "stations": [{"k": "vlak", "e": "🚂", "n": "Vlak"}, {"k": "emonec", "e": "🏨", "n": "Hotel"}, {"k": "center", "e": "🏰", "n": "Center"}, {"k": "zoo", "e": "🦁", "n": "Živalski vrt"}, {"k": "domov", "e": "🏠", "n": "Domov"}]};(function(){try{var s=JSON.parse(localStorage.getItem("trip_session")||"null");var ok=s&&s.trips&&s.trips.some(function(t){return t.slug===TRIP.slug});if(!ok){location.replace(TRIP.gate+"?next="+encodeURIComponent(TRIP.slug));}}catch(e){}})();</script>
   <link rel="stylesheet" href="style.css?v=19">
   <style>
     :root { --accent:#1f7a5a; --accent-ink:#1f7a5a; --accent-soft:#e8f5ee; --pin:#2f8f6b; --orange:#c8553d; --gold:#b08a2e; }
@@ -74,7 +74,7 @@
     </div>
   </article>
   <article class="sight">
-    <h3><span class="sight-icon" aria-hidden="true">🚶</span>Železniška postaja Ljubljana</h3>
+    <h3><span class="sight-icon" aria-hidden="true">🚶</span>Železniška postaja Ljubljana<span class="sight-no" title="Številka na zemljevidu">1</span></h3>
     <p>Ob prihodu izstopita na glavni postaji; do Hotela Emonec je okoli 12 minut peš po središču.</p>
     <p class="sight-tip">💡 Ostanita skupaj in pojdita počasi — v zoo ju bo čakalo veliko hoje.</p>
     <div class="action-row">
@@ -84,7 +84,10 @@
 </section>
 <section class="card-section map-section" aria-labelledby="zemljevid">
   <h2 id="zemljevid">🗺️ Zemljevid kraja</h2>
+  <div class="map-modes" role="group" aria-label="Pogled zemljevida"><button type="button" class="on" data-mode="city">📍 Kraj</button><button type="button" data-mode="country">🌏 Slovenija</button></div>
   <div class="area-map" data-lat="46.0582" data-lon="14.5103" data-zoom="14" role="img" aria-label="Zemljevid — Železniška postaja Ljubljana, Trg osvobodilne fronte"></div>
+  <p class="map-legend"><span class="rm-pin rm-inline">1</span> znamenitosti (po vrsti v seznamu) &nbsp; <span class="rm-pin rm-food rm-inline">🍴</span> hrana. Tapnite oznako za povezavo.</p>
+  <script type="application/json" class="map-pts">[{"t": "s", "n": 1, "name": "Železniška postaja Ljubljana", "lat": 46.05817, "lon": 14.51028, "q": "Železniška postaja Ljubljana"}]</script>
   <a class="pin-btn map-open" href="https://www.google.com/maps/search/?api=1&query=%C5%BDelezni%C5%A1ka%20postaja%20Ljubljana%2C%20Trg%20osvobodilne%20fronte" target="_blank" rel="noopener">📍 Odpri na Google Zemljevidu</a>
 </section>
 <section class="card-section izzivi" aria-labelledby="izzivi">
@@ -109,6 +112,14 @@
     <li>Vozni red in vozovnice: potniski.sz.si ali na blagajni — točno uro odhoda preverita nekaj dni pred potjo.</li>
     <li>Nahrbtnik za vsakega: voda, malica, polnilec, dežnik; kovčki naj imajo kolesca (do hotela je kratka pot peš).</li>
     <li>Peron preverita na tabli ali v obvestilih; do vlaka pridita pet minut prej.</li>
+  </ul>
+</section>
+<section class="card-section book-section" aria-labelledby="karte">
+  <h2 id="karte">🎟️ Karte, prevoz in rezervacije</h2>
+  <p class="cat-intro">Uradne in preverjene strani: tapnite in rezervirajte ali preverite urnik.</p>
+  <ul class="book-list">
+    <li><a class="buy-btn alt" href="https://potniski.sz.si/" target="_blank" rel="noopener">Vozovnice in vozni red — Slovenske železnice →</a><span class="book-note">Vozovnici kupita vnaprej; za otroka velja otroška cena.</span></li>
+    <li><a class="buy-btn alt" href="https://www.google.com/maps/dir/?api=1&amp;origin=Maribor%20railway%20station&amp;destination=Ljubljana%20railway%20station&amp;travelmode=transit" target="_blank" rel="noopener">Vozni red Maribor → Ljubljana (Google Zemljevidi) →</a><span class="book-note">Preveri odhode in peron.</span></li>
   </ul>
 </section>
 <section class="card-section fact-section" aria-labelledby="zanimivost">

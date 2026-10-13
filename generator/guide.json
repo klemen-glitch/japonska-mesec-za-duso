@@ -62,7 +62,7 @@
   "practical": [
    "Že na letališču si omislite kartico Suica ali Pasmo (obstaja tudi v iPhonovi Denarnici) — z njo plačujete vlake, metro, avtobuse in celo v trgovinicah. Potujte med 9.30 in 16.00, ko so vlaki prazni in se udobno sedi.",
    "Imejte vedno nekaj gotovine (jenov): male trgovine v Yanaki, stojnice na Tsukijiju in vstopnine v vrtove pogosto sprejemajo samo gotovino. Najzanesljiveje dvigujete na bankomatih v trgovinah 7-Eleven, ki sprejemajo tuje kartice.",
-   "Vnaprej rezervirajte: vstopnice za večerno osvetlitev Rikugiena (prek spleta, cenejše kot na blagajni), sedeže na ladjici Tokyo Cruise in mize v restavracijah — za skupino petih je rezervacija na Japonskem skoraj obvezna.",
+   "Vnaprej rezervirajte: vstopnice za večerno osvetlitev Rikugiena (prek spleta, cenejše kot na blagajni), sedeže na ladjici Tokyo Cruise in mize v restavracijah — za skupino štirih je rezervacija na Japonskem skoraj obvezna.",
    "November v Tokiu je eden najlepših mesecev: večinoma suho in sončno, čez dan 12–17 °C, zjutraj in zvečer okoli 8–10 °C. Vzemite plasti in eno toplejšo jakno za večerne osvetlitve; sonce zaide že okoli 16.30, zato vrtove obiščite dopoldne, osvetlitve pa po temi.",
    "Za pet oseb sta pogosto najudobnejši dve taksi vozili (japonski taksisti so izjemno zanesljivi, vrata se odpirajo sama) — za krajše razdalje se splača bolj, kot bi mislile. In držite se pravila počasnega tempa: ena glavna znamenitost dopoldne, ena popoldne, vmes kava ali čaj."
   ],
@@ -98,7 +98,7 @@
      },
      {
       "name": "Sushizanmai Honten",
-      "desc": "Velika, živahna hiša, znana po tuni — naročite krožnik maguro v treh rezih (akami, chutoro, otoro). Odprto je vse dni in ima dovolj miz za vas pet, tudi če pridete brez rezervacije.",
+      "desc": "Velika, živahna hiša, znana po tuni — naročite krožnik maguro v treh rezih (akami, chutoro, otoro). Odprto je vse dni in ima dovolj miz za vas štiri, tudi če pridete brez rezervacije.",
       "price": "€€",
       "maps": "Sushizanmai Honten, Tsukiji, Tokyo"
      },
@@ -130,9 +130,9 @@
     ]
    },
    {
-    "name": "Večerja za vas pet",
+    "name": "Večerja za vas štiri",
     "emoji": "🍢",
-    "intro": "Za skupne večerje izberite hiše z rezervacijo in udobnimi sedeži — tu so tri, kjer bo mizo za pet dam lepo pripraviti vnaprej.",
+    "intro": "Za skupne večerje izberite hiše z rezervacijo in udobnimi sedeži — tu so tri, kjer bo mizo za štiri dame lepo pripraviti vnaprej.",
     "places": [
      {
       "name": "Hantei Nezu Honten",
@@ -337,7 +337,7 @@
      },
      {
       "name": "Kikuya Shokudo (喜久家食堂)",
-      "desc": "Družinska gostilna iz leta 1933 na glavni ulici proti skalam Iwadatami v Nagatoru. Waraji katsudon in miso katsudon sta izdatna, postrežba domača, za eno mizo pa je prostora dovolj tudi za vas pet.",
+      "desc": "Družinska gostilna iz leta 1933 na glavni ulici proti skalam Iwadatami v Nagatoru. Waraji katsudon in miso katsudon sta izdatna, postrežba domača, za eno mizo pa je prostora dovolj tudi za vas štiri.",
       "price": "€",
       "maps": "Kikuya Shokudo Nagatoro"
      }
@@ -375,7 +375,7 @@
     "places": [
      {
       "name": "Mamagotoya (ままごと屋)",
-      "desc": "Elegantno večhodno kosilo iz tofuja in yube v skoraj sto let stari hiši tik nad reko, v lasti sakarne Ozawa. Rezervirajte vnaprej — za skupino petih je to najlepše in najmirnejše kosilo v vsej dolini.",
+      "desc": "Elegantno večhodno kosilo iz tofuja in yube v skoraj sto let stari hiši tik nad reko, v lasti sakarne Ozawa. Rezervirajte vnaprej — za skupino štirih je to najlepše in najmirnejše kosilo v vsej dolini.",
       "price": "€€€",
       "maps": "Mamagotoya tofu restaurant Sawai Ome"
      },
@@ -425,7 +425,7 @@
     "places": [
      {
       "name": "Takasago Horumon (高砂ホルモン)",
-      "desc": "Chichibuška institucija: na mizi imate žar in same pečete koščke marinirane svinjine, zraven pa mrzlo pivo. Živahno, poceni in zelo lokalno — za pet oseb obvezno rezervirajte, ker se po 18. uri napolni.",
+      "desc": "Chichibuška institucija: na mizi imate žar in same pečete koščke marinirane svinjine, zraven pa mrzlo pivo. Živahno, poceni in zelo lokalno — za štiri osebe obvezno rezervirajte, ker se po 18. uri napolni.",
       "price": "€€",
       "maps": "Takasago Horumon Chichibu"
      },
@@ -812,7 +812,7 @@
     "places": [
      {
       "name": "Bodai",
-      "desc": "Minuto od postaje Kii-Katsuura; njihova posebnost je nama-maguro chutoro katsu — sredica ostane rožnata in se topi v ustih. Za večerjo sprejemajo rezervacije med 17.30 in 19.00, kar je za vas pet idealno.",
+      "desc": "Minuto od postaje Kii-Katsuura; njihova posebnost je nama-maguro chutoro katsu — sredica ostane rožnata in se topi v ustih. Za večerjo sprejemajo rezervacije med 17.30 in 19.00, kar je za vas štiri idealno.",
       "price": "€€",
       "maps": "Bodai restaurant Kii-Katsuura Nachikatsuura"
      },
@@ -938,7 +938,7 @@
    },
    {
     "name": "Prepisovanje suter v Daishi Kyokai",
-    "desc": "V duhovnem središču gore lahko brez rezervacije poskusite šakjo — prepisovanje Srčne sutre s čopičem po rahlo natisnjeni predlogi. Sedite v topli dvorani, roka počasi sledi znakom, misli pa se same umirijo. Čudovita skupna izkušnja za vas pet, tudi če ne znate niti besede japonsko.",
+    "desc": "V duhovnem središču gore lahko brez rezervacije poskusite šakjo — prepisovanje Srčne sutre s čopičem po rahlo natisnjeni predlogi. Sedite v topli dvorani, roka počasi sledi znakom, misli pa se same umirijo. Čudovita skupna izkušnja za vas štiri, tudi če ne znate niti besede japonsko.",
     "tip": "Pridite dopoldne in si vzemite kakšno uro; za simboličen prispevek lahko prejmete tudi budistični blagoslov jukai.",
     "maps": "Koyasan Daishi Kyokai, Koya, Wakayama",
     "yt": "Daishi Kyokai Koyasan sutra copying shakyo"
@@ -977,7 +977,7 @@
     "places": [
      {
       "name": "Hanabishi",
-      "desc": "Najbolj ugledna restavracija v mestu, kuhar je nekoč kuhal celo za cesarski par. Naročite set sankozen s sezamovim tofujem in dengakujem, za posladek pa sojin puding s kakijem. Za skupino petih se splača rezervirati vnaprej — rezervacije sprejemajo tudi prek spleta.",
+      "desc": "Najbolj ugledna restavracija v mestu, kuhar je nekoč kuhal celo za cesarski par. Naročite set sankozen s sezamovim tofujem in dengakujem, za posladek pa sojin puding s kakijem. Za skupino štirih se splača rezervirati vnaprej — rezervacije sprejemajo tudi prek spleta.",
       "price": "€€",
       "maps": "Hanabishi Koyasan"
      },
@@ -1198,7 +1198,7 @@
      },
      {
       "name": "そば処 祖谷美人 (Iya Bijin)",
-      "desc": "Restavracija s teraso, ki visi nad sotesko Iya, ob cesti proti mostu Kazurabashi. Ročno rezana ploščata soba z močnim vonjem po ajdi, zraven pa nabodalo dekomawashi ali na soli pečena rečna postrv amego. Ker je zraven tudi majhen ryokan, sprejemajo rezervacije – za pet oseb pokličite dan prej.",
+      "desc": "Restavracija s teraso, ki visi nad sotesko Iya, ob cesti proti mostu Kazurabashi. Ročno rezana ploščata soba z močnim vonjem po ajdi, zraven pa nabodalo dekomawashi ali na soli pečena rečna postrv amego. Ker je zraven tudi majhen ryokan, sprejemajo rezervacije – za štiri osebe pokličite dan prej.",
       "price": "€€",
       "maps": "Iya Bijin soba restaurant Nishi-Iya Miyoshi Tokushima"
      },
@@ -1223,7 +1223,7 @@
      },
      {
       "name": "かずら橋夢舞台 (Kazurabashi Yumebutai)",
-      "desc": "Postajališče tik ob visečem mostu iz vinske trte. Na stojnicah pred vhodom počasi pečejo dekomawashi in soljeno postrv amego na oglju – vzemite eno nabodalo in jo pojejte kar ob reki. V notranji restavraciji je dovolj miz za vseh pet, zraven pa še trgovina z lokalnimi izdelki. Zvečer je most osvetljen (19.00–21.30), novembra ob vrhuncu jesenskih barv še posebej lep.",
+      "desc": "Postajališče tik ob visečem mostu iz vinske trte. Na stojnicah pred vhodom počasi pečejo dekomawashi in soljeno postrv amego na oglju – vzemite eno nabodalo in jo pojejte kar ob reki. V notranji restavraciji je dovolj miz za vse štiri, zraven pa še trgovina z lokalnimi izdelki. Zvečer je most osvetljen (19.00–21.30), novembra ob vrhuncu jesenskih barv še posebej lep.",
       "price": "€",
       "maps": "Kazurabashi Yumebutai Miyoshi Tokushima"
      }
@@ -1242,7 +1242,7 @@
      },
      {
       "name": "ホテル祖谷温泉 (Hotel Iya Onsen)",
-      "desc": "Slavni hotel, kjer se z vzpenjačo spustite 170 metrov do vročih vrelcev ob sami reki – dnevni obisk stane okoli 2.000 jenov, na recepciji se javite do 16.00. Privoščite si kombinacijo: najprej kopel med jesenskim listjem, nato kosilo iz gorskih sestavin v restavraciji z razgledom na sotesko. Kosilo za pet oseb obvezno rezervirajte vnaprej.",
+      "desc": "Slavni hotel, kjer se z vzpenjačo spustite 170 metrov do vročih vrelcev ob sami reki – dnevni obisk stane okoli 2.000 jenov, na recepciji se javite do 16.00. Privoščite si kombinacijo: najprej kopel med jesenskim listjem, nato kosilo iz gorskih sestavin v restavraciji z razgledom na sotesko. Kosilo za štiri osebe obvezno rezervirajte vnaprej.",
       "price": "€€€",
       "maps": "Hotel Iya Onsen Miyoshi Tokushima"
      }
@@ -1388,7 +1388,7 @@
      },
      {
       "name": "Wadatsumi",
-      "desc": "Suši mojster gre vsako jutro sam po ribe iz zaliva. Opoldne suši seti za 2.000–3.000 jenov, zvečer kaiseki večerja — zanjo je potrebna rezervacija, kar je za vas pet pravzaprav idealno. V lepem novem kompleksu Funaya Biyori ob vodi.",
+      "desc": "Suši mojster gre vsako jutro sam po ribe iz zaliva. Opoldne suši seti za 2.000–3.000 jenov, zvečer kaiseki večerja — zanjo je potrebna rezervacija, kar je za vas štiri pravzaprav idealno. V lepem novem kompleksu Funaya Biyori ob vodi.",
       "price": "€€",
       "maps": "Wadatsumi Funaya Biyori Ine"
      },
@@ -1646,7 +1646,7 @@
     "places": [
      {
       "name": "Gion Karyo",
-      "desc": "Prijazen uvod v kaiseki na slavni ulici Hanamikoji v Gionu: večerni meni okoli 10.000 jenov, novembra poln gob, kostanja in javorjevih poudarkov. Spletna rezervacija je preprosta in za pet oseb nujna — mize potrdijo takoj.",
+      "desc": "Prijazen uvod v kaiseki na slavni ulici Hanamikoji v Gionu: večerni meni okoli 10.000 jenov, novembra poln gob, kostanja in javorjevih poudarkov. Spletna rezervacija je preprosta in za štiri osebe nujna — mize potrdijo takoj.",
       "price": "€€€",
       "maps": "Gion Karyo Hanamikoji Kyoto"
      },
@@ -1835,7 +1835,7 @@
      },
      {
       "name": "Fukutaro Honten",
-      "desc": "Legenda v Sennichimae, med najboljšimi na Tabelogu; tu si privoščite negiyaki, tanjšo različico s hribom mlade čebule. Sprejemajo rezervacije, zato je odlična izbira za vseh pet skupaj.",
+      "desc": "Legenda v Sennichimae, med najboljšimi na Tabelogu; tu si privoščite negiyaki, tanjšo različico s hribom mlade čebule. Sprejemajo rezervacije, zato je odlična izbira za vse štiri skupaj.",
       "price": "€€",
       "maps": "Fukutaro Main Branch Sennichimae Osaka"
      },
@@ -1919,7 +1919,7 @@
    {
     "name": "Mirna večerja za skupino",
     "emoji": "🍲",
-    "intro": "Za skupne večere izberite lokale z rezervacijo in mizami za pet — in vedite, da se od 3. novembra do konca decembra 2026 po večerji lahko sprehodite pod svetlobno okrašenimi drevoredi Midosuji Illumination med Umedo in Nambo.",
+    "intro": "Za skupne večere izberite lokale z rezervacijo in mizami za štiri — in vedite, da se od 3. novembra do konca decembra 2026 po večerji lahko sprehodite pod svetlobno okrašenimi drevoredi Midosuji Illumination med Umedo in Nambo.",
     "places": [
      {
       "name": "Shabuzen Umeda",
@@ -1935,7 +1935,7 @@
      },
      {
       "name": "Umeda Kani Shokudo",
-      "desc": "Praznik rakovice blizu postaje Umeda: kani v obliki sashimija, na žaru in v loncu, tudi kot meniji brez naglice. Prostora je za veliko gostov, zato skupina petih ni nikoli težava — a rezervacija odpravi vsako skrb.",
+      "desc": "Praznik rakovice blizu postaje Umeda: kani v obliki sashimija, na žaru in v loncu, tudi kot meniji brez naglice. Prostora je za veliko gostov, zato skupina štirih ni nikoli težava — a rezervacija odpravi vsako skrb.",
       "price": "€€€",
       "maps": "Umeda Kani Shokudo Osaka"
      }

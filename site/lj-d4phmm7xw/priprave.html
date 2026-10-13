@@ -7,7 +7,7 @@
   <meta name="description" content="Prevoz, živalski vrt, vreme in kontrolni seznam za odhod.">
   <meta name="robots" content="noindex,nofollow">
   <meta name="theme-color" content="#2f8f6b">
-  <script>window.TRIP={"id": "ljubljana", "slug": "lj-d4phmm7xw", "people": ["Ana", "Maks"], "gate": "../index.html", "after": ["Bravo, zmajska ekipa!", "Poglejta <a href=\"nalozi.html\">skupni album</a> in iz slik sestavita svojo Zmajevo knjigo."], "t": {"locked": "Presenečenje čaka — odklene se, ko naložita sliko ali video.", "empty": "Album je še prazen — naložita prvo fotografijo. 📸", "thanks": "naloženih ✓ — odlično!", "more": "Odpri vodnik za to postajo →", "pre": "Pustolovščina se začne {date}. Poglejta <a href=\"priprave.html\">priprave</a> in kontrolni seznam."}, "color": "#2f8f6b", "stations": [{"k": "vlak", "e": "🚂", "n": "Vlak"}, {"k": "emonec", "e": "🏨", "n": "Hotel"}, {"k": "center", "e": "🏰", "n": "Center"}, {"k": "zoo", "e": "🦁", "n": "Živalski vrt"}, {"k": "domov", "e": "🏠", "n": "Domov"}]};(function(){try{var s=JSON.parse(localStorage.getItem("trip_session")||"null");var ok=s&&s.trips&&s.trips.some(function(t){return t.slug===TRIP.slug});if(!ok){location.replace(TRIP.gate+"?next="+encodeURIComponent(TRIP.slug));}}catch(e){}})();</script>
+  <script>window.TRIP={"id": "ljubljana", "slug": "lj-d4phmm7xw", "people": ["Ana", "Maks"], "gate": "../index.html", "after": ["Bravo, zmajska ekipa!", "Poglejta <a href=\"nalozi.html\">skupni album</a> in iz slik sestavita svojo Zmajevo knjigo."], "t": {"locked": "Presenečenje čaka — odklene se, ko naložita sliko ali video.", "empty": "Album je še prazen — naložita prvo fotografijo. 📸", "thanks": "naloženih ✓ — odlično!", "more": "Odpri vodnik za to postajo →", "pre": "Pustolovščina se začne {date}. Poglejta <a href=\"priprave.html\">priprave</a> in kontrolni seznam."}, "color": "#2f8f6b", "country": {"name": "Slovenija", "c": [46.12, 14.82], "z": 8}, "stations": [{"k": "vlak", "e": "🚂", "n": "Vlak"}, {"k": "emonec", "e": "🏨", "n": "Hotel"}, {"k": "center", "e": "🏰", "n": "Center"}, {"k": "zoo", "e": "🦁", "n": "Živalski vrt"}, {"k": "domov", "e": "🏠", "n": "Domov"}]};(function(){try{var s=JSON.parse(localStorage.getItem("trip_session")||"null");var ok=s&&s.trips&&s.trips.some(function(t){return t.slug===TRIP.slug});if(!ok){location.replace(TRIP.gate+"?next="+encodeURIComponent(TRIP.slug));}}catch(e){}})();</script>
   <link rel="stylesheet" href="style.css?v=19">
   <style>
     :root { --accent:#1f7a5a; --accent-ink:#1f7a5a; --accent-soft:#e8f5ee; --pin:#2f8f6b; --orange:#c8553d; --gold:#b08a2e; }
@@ -61,8 +61,41 @@
   <a class="chip" href="#p0">🚂 Pot in prevoz</a>
   <a class="chip" href="#p1">🦁 Živalski vrt: koristno vedeti</a>
   <a class="chip" href="#p2">🌤️ Vreme in oblačila</a>
+  <a class="chip" href="#povezave">🔗 Kupi in rezerviraj</a>
   <a class="chip" href="#seznam">✅ Kontrolni seznam</a>
 </nav>
+<h2 class="chapter-title" id="povezave">🔗 Kupi in rezerviraj</h2>
+<p class="chapter-sub">Neposredne povezave — tapnite in kupite, rezervirajte ali preverite vozni red</p>
+<section class="card-section quickbuy" aria-labelledby="povezave">
+  <h3 class="stay-sub">🚆 Vlak Maribor ↔ Ljubljana</h3>
+  <div class="buy-row">
+    <a class="buy-btn alt" href="https://potniski.sz.si/" target="_blank" rel="noopener">Slovenske železnice — vozovnice →</a>
+    <a class="buy-btn alt" href="https://www.google.com/maps/dir/?api=1&amp;origin=Maribor%20railway%20station&amp;destination=Ljubljana%20railway%20station&amp;travelmode=transit" target="_blank" rel="noopener">Vozni red tja (Google) →</a>
+    <a class="buy-btn alt" href="https://www.google.com/maps/dir/?api=1&amp;origin=Ljubljana%20railway%20station&amp;destination=Maribor%20railway%20station&amp;travelmode=transit" target="_blank" rel="noopener">Vozni red domov (Google) →</a>
+  </div>
+  <h3 class="stay-sub">🚌 Avtobus v živalski vrt</h3>
+  <div class="buy-row">
+    <a class="buy-btn alt" href="https://www.lpp.si/en" target="_blank" rel="noopener">LPP — avtobus št. 18 →</a>
+    <a class="buy-btn alt" href="https://www.google.com/maps/dir/?api=1&amp;origin=Bavarski%20dvor%2C%20Ljubljana&amp;destination=%C5%BDivalski%20vrt%20Ljubljana&amp;travelmode=transit" target="_blank" rel="noopener">Pot do zoo (Google) →</a>
+  </div>
+  <h3 class="stay-sub">🏨 Hotel</h3>
+  <div class="buy-row">
+    <a class="buy-btn alt" href="https://www.hotel-emonec.com/" target="_blank" rel="noopener">Hotel Emonec — uradna stran →</a>
+    <a class="buy-btn alt" href="https://www.booking.com/hotel/si/emonec.html" target="_blank" rel="noopener">Booking — stran hotela →</a>
+  </div>
+  <h3 class="stay-sub">🎟️ Vstopnice in urniki</h3>
+  <div class="buy-row">
+    <a class="buy-btn alt" href="https://trgovina.zoo.si/" target="_blank" rel="noopener">Živalski vrt — vstopnice →</a>
+    <a class="buy-btn alt" href="https://www.zoo.si/odpiralni-cas" target="_blank" rel="noopener">Živalski vrt — odpiralni čas →</a>
+    <a class="buy-btn alt" href="https://www.ljubljanskigrad.si/en/" target="_blank" rel="noopener">Ljubljanski grad →</a>
+    <a class="buy-btn alt" href="https://www.he.si/" target="_blank" rel="noopener">Hiša eksperimentov →</a>
+  </div>
+  <h3 class="stay-sub">🌐 Mesto</h3>
+  <div class="buy-row">
+    <a class="buy-btn alt" href="https://www.visitljubljana.com/en/" target="_blank" rel="noopener">Turistična informacija Ljubljana →</a>
+  </div>
+  <p class="buy-note">Povezave vodijo na uradne strani ali iskanja; cene in razpoložljivost so vedno aktualne šele tam.</p>
+</section>
 <section class="card-section" aria-labelledby="p0">
   <h2 id="p0">🚂 Pot in prevoz</h2>
   <ul class="nice-list">

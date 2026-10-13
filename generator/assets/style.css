@@ -589,6 +589,22 @@ main {
 }
 .map-section .area-map .leaflet-control-attribution { font-size: 0.7rem; }
 .map-open { display: inline-block; }
+.map-section .area-map { height: 340px; }
+@media (min-width: 720px) { .map-section .area-map { height: 420px; } }
+.map-modes { display: inline-flex; gap: 0.25rem; padding: 0.2rem; margin: 0 0 0.7rem; background: var(--bg-alt); border-radius: var(--radius-pill); }
+.map-modes button {
+  font: inherit; font-size: 0.88rem; font-weight: 600; color: var(--ink-soft); background: transparent; border: 0;
+  padding: 0.38rem 0.9rem; border-radius: var(--radius-pill); cursor: pointer;
+}
+.map-modes button.on { background: var(--card); color: var(--accent); box-shadow: var(--shadow-sm); }
+.rm-pin.rm-food { background: var(--orange); width: 20px; height: 20px; font-size: 0.72rem; }
+.rm-pin.rm-inline { display: inline-flex; width: 18px; height: 18px; font-size: 0.62rem; vertical-align: middle; }
+.rm-pin.rm-food.rm-inline { width: 18px; height: 18px; font-size: 0.62rem; }
+.sight-no {
+  display: inline-flex; align-items: center; justify-content: center; width: 1.3rem; height: 1.3rem; margin-left: 0.5rem;
+  border-radius: 50%; background: var(--pin); color: #fff; font-size: 0.72rem; font-weight: 700; vertical-align: middle;
+}
+.leaflet-popup-content a { color: var(--accent); font-weight: 600; }
 
 /* ---------- Hrana po kategorijah ---------- */
 
@@ -1230,3 +1246,29 @@ footer {
 footer p { margin: 0.25rem 0; }
 
 @media (min-width: 700px) { html { font-size: 18px; } }
+
+/* ---------- Nastanitve, rezervacije, povezave za nakup ---------- */
+.buy-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.6rem 0; }
+.buy-btn {
+  display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.55rem 0.95rem; border-radius: var(--radius-pill);
+  background: var(--accent); color: #fff; font-size: 0.9rem; font-weight: 600; text-decoration: none; line-height: 1.25;
+  border: 1px solid var(--accent);
+}
+.buy-btn:hover { opacity: 0.9; }
+.buy-btn.alt { background: var(--bg-alt); color: var(--accent); border-color: var(--line); }
+.buy-btn.alt:hover { background: var(--line); opacity: 1; }
+.buy-note { font-size: 0.82rem; color: var(--ink-soft); margin: 0.3rem 0 0.6rem; }
+.stay-box { margin-top: 0.8rem; padding: 0.9rem 1rem; background: var(--bg-alt); border-radius: var(--radius-sm); }
+.stay-dates { margin: 0 0 0.4rem; font-size: 0.98rem; }
+.stay-booked { margin: 0.4rem 0; padding: 0.6rem 0.8rem; background: var(--accent-soft); border-radius: var(--radius-sm); }
+.stay-sub { margin: 1rem 0 0.25rem; font-size: 1.02rem; }
+.stay-box p { margin: 0.2rem 0 0.4rem; }
+.stay-search { margin: 0.3rem 0 0.4rem; padding-left: 1.3rem; }
+.stay-search li { margin: 0.3rem 0; }
+.book-list { list-style: none; margin: 0.4rem 0 0; padding: 0; }
+.book-list li { display: flex; flex-direction: column; align-items: flex-start; gap: 0.15rem; padding: 0.55rem 0; border-top: 1px solid var(--line); }
+.book-list li:first-child { border-top: 0; }
+.book-note { font-size: 0.84rem; color: var(--ink-soft); padding-left: 0.4rem; }
+.quickbuy .stay-sub:first-child { margin-top: 0; }
+.leg .buy-row { margin: 0.4rem 0 0; }
+.place .buy-row { margin: 0.4rem 0 0; }

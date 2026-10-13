@@ -39,6 +39,12 @@ G.TRIP_START = dt.date(*C.TRIP_START)
 G.REGION_KEY = C.REGION_KEY
 G.DAYTRIP_BASE = {}
 G.CHECKLIST = C.CHECKLIST
+G.LODGING = C.LODGING
+G.BOOK = C.BOOK
+G.LEG_LINKS = C.LEG_LINKS
+G.QUICKBUY = C.QUICKBUY
+G.DOZ_SEARCH = False
+G.FOOD_LINKS = C.FOOD_LINKS
 G.STATIONS_LABEL = "Postaje pustolovščine"
 G.NAV_PRIMARY = [
     ("index.html", "index", "🏠", "Domov"),
@@ -78,6 +84,8 @@ QUICK_LINKS = [
     ("izziv.html", "📸", "Foto izzivi", f"{N_IZZIVOV} izzivov in presenečenja"),
     ("nalozi.html", "📤", "Naloži fotografije", "album iz vajinih telefonov"),
     ("priprave.html", "🎒", "Priprave", "kontrolni seznam"),
+    ("priprave.html#povezave", "🔗", "Kupi in rezerviraj", "vlak, zoo, hotel"),
+    ("nacrt.html#prehodi", "🚆", "Prevozi", "vlak, avtobus 18, povezave"),
     ("nujno.html", "🆘", "Nujno", "112, 113, hotel"),
 ]
 
@@ -185,7 +193,9 @@ def priprave_page():
     out += '<nav class="chip-row" aria-label="Vsebina">\n'
     for i, (e, t, _) in enumerate(PRIPRAVE):
         out += f'  <a class="chip" href="#p{i}">{e} {esc(t)}</a>\n'
+    out += '  <a class="chip" href="#povezave">🔗 Kupi in rezerviraj</a>\n'
     out += '  <a class="chip" href="#seznam">✅ Kontrolni seznam</a>\n</nav>\n'
+    out += G.quickbuy_section()
     for i, (e, t, items) in enumerate(PRIPRAVE):
         out += f'<section class="card-section" aria-labelledby="p{i}">\n  <h2 id="p{i}">{e} {esc(t)}</h2>\n  <ul class="nice-list">\n'
         for name, text in items:

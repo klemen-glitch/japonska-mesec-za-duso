@@ -81,7 +81,7 @@
           { "name": "Preprosto kosilo (soba, ramen, set)", "text": "pribl. 900–1.500 jenov (6–10 €)" },
           { "name": "Lepa večerja", "text": "pribl. 3.000–6.000 jenov (20–40 €); kaiseki več" },
           { "name": "Vstopnina (vrt, tempelj)", "text": "pribl. 300–600 jenov (2–4 €)" },
-          { "name": "Kratka vožnja s taksijem", "text": "pribl. 700–1.500 jenov (5–10 €); za pet oseb pogosto dve vozili" }
+          { "name": "Kratka vožnja s taksijem", "text": "pribl. 700–1.500 jenov (5–10 €); za štiri osebe pogosto dve vozili" }
         ]
       }
     ]
@@ -95,7 +95,7 @@
       {
         "heading": "Shinkansen (hitri vlak)", "emoji": "🚅",
         "items": [
-          { "name": "Vozovnice", "text": "Kupite jih na postaji (avtomat ali okence 'midori no madoguchi') ali vnaprej prek spleta. Za skupino petih se splača kupiti skupaj, da sedite skupaj." },
+          { "name": "Vozovnice", "text": "Kupite jih na postaji (avtomat ali okence 'midori no madoguchi') ali vnaprej prek spleta. Za skupino štirih se splača kupiti skupaj, da sedite skupaj." },
           { "name": "Rezervirani sedeži", "text": "Ob nakupu vozovnice rezervacija sedeža ne stane veliko in je za skupino zelo priporočljiva — nerezervirani vagoni so lahko polni." },
           { "name": "Veliki kovčki", "text": "Za velike kovčke je na nekaterih progah treba rezervirati mesto z odlagalnim prostorom (zadnja vrsta). Ali pa — kovčke raje pošljite naprej." }
         ]

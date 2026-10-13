@@ -11,6 +11,8 @@ CFG = {
     "theme": "#2f8f6b",
     "desc": "Ana in Maks v Ljubljani: 15.–16. oktober 2026 — vlak, hotel, Katja in cel dan v živalskem vrtu.",
     "people": ["Ana", "Maks"],
+    "country": {"name": "Slovenija", "c": [46.12, 14.82], "z": 8},
+    "geo_radius_km": 12,
     "after": ["Bravo, zmajska ekipa!",
               "Poglejta <a href=\"nalozi.html\">skupni album</a> in iz slik sestavita svojo Zmajevo knjigo."],
     "t": {
@@ -708,3 +710,86 @@ for _g in GUIDE.values():
     for _s in _g.get("sights", []):
         if _s["name"] in _ICONS:
             _s["icon"] = _ICONS[_s["name"]]
+
+# --------------------------------------------------------------------------- povezave za nakup in rezervacije
+from links import gdir, gsearch   # noqa: E402
+
+SZ = "https://potniski.sz.si/"
+LPP = "https://www.lpp.si/en"
+ZOO_TICKETS = "https://trgovina.zoo.si/"
+ZOO_HOURS = "https://www.zoo.si/odpiralni-cas"
+CASTLE = "https://www.ljubljanskigrad.si/en/"
+HE = "https://www.he.si/"
+VISIT = "https://www.visitljubljana.com/en/"
+HOTEL = "https://www.hotel-emonec.com/"
+HOTEL_BOOKING = "https://www.booking.com/hotel/si/emonec.html"
+
+LODGING = {
+    "emonec": {
+        "in": "2026-10-15", "out": "2026-10-16",
+        "booked": ("Nastanitev je izbrana: Hotel Emonec, Wolfova ulica 12. Preverita potrditev rezervacije (ura prijave in odjave, zajtrk) "
+                   "in pri recepciji vprašata, ali lahko prtljago odložita že ob prihodu in jo pustita še po odjavi."),
+        "where": "Središče Ljubljane, okoli 12 minut hoje od železniške postaje in nekaj minut do Prešernovega trga.",
+        "links": [("🏨 Hotel Emonec — uradna stran", HOTEL), ("🏨 Booking — stran hotela", HOTEL_BOOKING),
+                  ("🚶 Pot od postaje do hotela (peš)", gdir("Ljubljana railway station", "Hotel Emonec, Wolfova ulica 12, Ljubljana", "walking"))],
+    },
+}
+
+BOOK = {
+    "vlak": [
+        ("Vozovnice in vozni red — Slovenske železnice", SZ, "Vozovnici kupita vnaprej; za otroka velja otroška cena."),
+        ("Vozni red Maribor → Ljubljana (Google Zemljevidi)", gdir("Maribor railway station", "Ljubljana railway station"), "Preveri odhode in peron."),
+    ],
+    "emonec": [
+        ("Hotel Emonec — uradna stran", HOTEL, "Kontakt, prijava, zajtrk."),
+        ("Booking — stran hotela", HOTEL_BOOKING, "Potrditev, ocene, podrobnosti."),
+        ("Pot od postaje do hotela (Google, peš)", gdir("Ljubljana railway station", "Hotel Emonec, Wolfova ulica 12, Ljubljana", "walking"), "Okoli 12 minut hoje."),
+    ],
+    "center": [
+        ("Ljubljanski grad — urnik, vstopnice, vzpenjača", CASTLE, "Preverita delovni čas in ceno vzpenjače."),
+        ("Hiša eksperimentov — urnik in vstopnice", HE, "Po zadnjih podatkih: tor–čet 10–13, sob–ned 10–18; pon in pet zaprto — preverita!"),
+        ("Turistična informacija Ljubljana — prireditve in nasveti", VISIT, "Kaj se dogaja v mestu."),
+    ],
+    "zoo": [
+        ("Vstopnice za živalski vrt (spletna trgovina)", ZOO_TICKETS, "Vnaprej kupljena vstopnica prihrani čakanje."),
+        ("Odpiralni čas in navodila", ZOO_HOURS, "Oktobra po objavljenih podatkih 9.00–18.00."),
+        ("Avtobus št. 18 — LPP (vozni red, plačilo)", LPP, "Smer Stožice; postaja »Živalski vrt«."),
+        ("Pot do zoo z avtobusom (Google Zemljevidi)", gdir("Bavarski dvor, Ljubljana", "Živalski vrt Ljubljana"), "Iz središča v približno 20 min."),
+    ],
+    "domov": [
+        ("Vozni red Ljubljana → Maribor (Slovenske železnice)", SZ, "Izberita odhod glede na čas izhoda iz zoo."),
+        ("Pot domov (Google Zemljevidi)", gdir("Ljubljana railway station", "Maribor railway station"), "Vozni red v telefonu."),
+    ],
+}
+
+LEG_LINKS = {
+    ("Maribor", "Ljubljana"): [("Slovenske železnice — vozovnice", SZ),
+                               ("Vozni red (Google)", gdir("Maribor railway station", "Ljubljana railway station"))],
+    ("Železniška postaja Ljubljana", "Hotel Emonec"): [
+        ("Pot peš (Google)", gdir("Ljubljana railway station", "Hotel Emonec, Wolfova ulica 12, Ljubljana", "walking"))],
+    ("Hotel Emonec", "Živalski vrt"): [
+        ("LPP — avtobus 18", LPP), ("Vozni red (Google)", gdir("Bavarski dvor, Ljubljana", "Živalski vrt Ljubljana")),
+        ("Vstopnice za zoo", ZOO_TICKETS)],
+    ("Ljubljana", "Maribor"): [("Slovenske železnice — vozni red", SZ),
+                               ("Vozni red (Google)", gdir("Ljubljana railway station", "Maribor railway station"))],
+}
+
+QUICKBUY = [
+    ("🚆", "Vlak Maribor ↔ Ljubljana", [
+        ("Slovenske železnice — vozovnice", SZ),
+        ("Vozni red tja (Google)", gdir("Maribor railway station", "Ljubljana railway station")),
+        ("Vozni red domov (Google)", gdir("Ljubljana railway station", "Maribor railway station"))]),
+    ("🚌", "Avtobus v živalski vrt", [
+        ("LPP — avtobus št. 18", LPP),
+        ("Pot do zoo (Google)", gdir("Bavarski dvor, Ljubljana", "Živalski vrt Ljubljana"))]),
+    ("🏨", "Hotel", [("Hotel Emonec — uradna stran", HOTEL), ("Booking — stran hotela", HOTEL_BOOKING)]),
+    ("🎟️", "Vstopnice in urniki", [
+        ("Živalski vrt — vstopnice", ZOO_TICKETS), ("Živalski vrt — odpiralni čas", ZOO_HOURS),
+        ("Ljubljanski grad", CASTLE), ("Hiša eksperimentov", HE)]),
+    ("🌐", "Mesto", [("Turistična informacija Ljubljana", VISIT)]),
+]
+
+FOOD_LINKS = [
+    ("🍽️ Restavracije v bližini (Google Zemljevidi)", "https://www.google.com/maps/search/?api=1&query=restavracije+Ljubljana+center"),
+    ("📞 Rezervacijo mize za 2 uredita po telefonu ali prek spletne strani lokala", None),
+]

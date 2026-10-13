@@ -7,7 +7,7 @@
   <meta name="description" content="Živalski vrt Ljubljana: kaj početi, izzivi in nasveti — Zmajeva pustolovščina, Ljubljana.">
   <meta name="robots" content="noindex,nofollow">
   <meta name="theme-color" content="#2f8f6b">
-  <script>window.TRIP={"id": "ljubljana", "slug": "lj-d4phmm7xw", "people": ["Ana", "Maks"], "gate": "../index.html", "after": ["Bravo, zmajska ekipa!", "Poglejta <a href=\"nalozi.html\">skupni album</a> in iz slik sestavita svojo Zmajevo knjigo."], "t": {"locked": "Presenečenje čaka — odklene se, ko naložita sliko ali video.", "empty": "Album je še prazen — naložita prvo fotografijo. 📸", "thanks": "naloženih ✓ — odlično!", "more": "Odpri vodnik za to postajo →", "pre": "Pustolovščina se začne {date}. Poglejta <a href=\"priprave.html\">priprave</a> in kontrolni seznam."}, "color": "#2f8f6b", "stations": [{"k": "vlak", "e": "🚂", "n": "Vlak"}, {"k": "emonec", "e": "🏨", "n": "Hotel"}, {"k": "center", "e": "🏰", "n": "Center"}, {"k": "zoo", "e": "🦁", "n": "Živalski vrt"}, {"k": "domov", "e": "🏠", "n": "Domov"}]};(function(){try{var s=JSON.parse(localStorage.getItem("trip_session")||"null");var ok=s&&s.trips&&s.trips.some(function(t){return t.slug===TRIP.slug});if(!ok){location.replace(TRIP.gate+"?next="+encodeURIComponent(TRIP.slug));}}catch(e){}})();</script>
+  <script>window.TRIP={"id": "ljubljana", "slug": "lj-d4phmm7xw", "people": ["Ana", "Maks"], "gate": "../index.html", "after": ["Bravo, zmajska ekipa!", "Poglejta <a href=\"nalozi.html\">skupni album</a> in iz slik sestavita svojo Zmajevo knjigo."], "t": {"locked": "Presenečenje čaka — odklene se, ko naložita sliko ali video.", "empty": "Album je še prazen — naložita prvo fotografijo. 📸", "thanks": "naloženih ✓ — odlično!", "more": "Odpri vodnik za to postajo →", "pre": "Pustolovščina se začne {date}. Poglejta <a href=\"priprave.html\">priprave</a> in kontrolni seznam."}, "color": "#2f8f6b", "country": {"name": "Slovenija", "c": [46.12, 14.82], "z": 8}, "stations": [{"k": "vlak", "e": "🚂", "n": "Vlak"}, {"k": "emonec", "e": "🏨", "n": "Hotel"}, {"k": "center", "e": "🏰", "n": "Center"}, {"k": "zoo", "e": "🦁", "n": "Živalski vrt"}, {"k": "domov", "e": "🏠", "n": "Domov"}]};(function(){try{var s=JSON.parse(localStorage.getItem("trip_session")||"null");var ok=s&&s.trips&&s.trips.some(function(t){return t.slug===TRIP.slug});if(!ok){location.replace(TRIP.gate+"?next="+encodeURIComponent(TRIP.slug));}}catch(e){}})();</script>
   <link rel="stylesheet" href="style.css?v=19">
   <style>
     :root { --accent:#1f7a5a; --accent-ink:#1f7a5a; --accent-soft:#e8f5ee; --pin:#2f8f6b; --orange:#c8553d; --gold:#b08a2e; }
@@ -126,7 +126,7 @@
     </div>
   </article>
   <article class="sight">
-    <h3><span class="sight-icon" aria-hidden="true">🐒</span>Rdeče pande, opice in drobne živali</h3>
+    <h3><span class="sight-icon" aria-hidden="true">🐒</span>Rdeče pande, opice in drobne živali<span class="sight-no" title="Številka na zemljevidu">1</span></h3>
     <p>Rdeča panda ni v sorodu z velikim pando, je pa ena najbolj ljubkih živali. Kaj vse še živi v vrtu, ugotovita sama: na zemljevidu iščita opice, ptice in majhne sesalce.</p>
     <p class="sight-tip">💡 Živali se menjajo — če katere ni, poiščita naslednjo. Pomembno je, da hodita počasi in opazujeta.</p>
     <div class="action-row">
@@ -152,7 +152,10 @@
 </section>
 <section class="card-section map-section" aria-labelledby="zemljevid">
   <h2 id="zemljevid">🗺️ Zemljevid kraja</h2>
+  <div class="map-modes" role="group" aria-label="Pogled zemljevida"><button type="button" class="on" data-mode="city">📍 Kraj</button><button type="button" data-mode="country">🌏 Slovenija</button></div>
   <div class="area-map" data-lat="46.0553" data-lon="14.4722" data-zoom="16" role="img" aria-label="Zemljevid — Živalski vrt Ljubljana, Večna pot 70"></div>
+  <p class="map-legend"><span class="rm-pin rm-inline">1</span> znamenitosti (po vrsti v seznamu) &nbsp; <span class="rm-pin rm-food rm-inline">🍴</span> hrana. Tapnite oznako za povezavo.</p>
+  <script type="application/json" class="map-pts">[{"t": "s", "n": 1, "name": "Rdeče pande, opice in drobne živali", "lat": 46.0553, "lon": 14.47219, "q": "Živalski vrt Ljubljana"}]</script>
   <a class="pin-btn map-open" href="https://www.google.com/maps/search/?api=1&query=%C5%BDivalski%20vrt%20Ljubljana%2C%20Ve%C4%8Dna%20pot%2070" target="_blank" rel="noopener">📍 Odpri na Google Zemljevidu</a>
 </section>
 <section class="card-section" aria-labelledby="dan">
@@ -184,6 +187,7 @@
   </ul>
   <h3 style="margin:1.2rem 0 0.3rem; font-size:1.1rem;">Kje jesti — izberite kategorijo</h3>
   <p class="cat-intro">Dotaknite se kategorije in odprl se bo seznam preverjenih predlogov s povezavo na zemljevid.</p>
+  <div class="buy-row"><a class="buy-btn alt" href="https://www.google.com/maps/search/?api=1&amp;query=restavracije+Ljubljana+center" target="_blank" rel="noopener">🍽️ Restavracije v bližini (Google Zemljevidi)</a><span class="buy-note">📞 Rezervacijo mize za 2 uredita po telefonu ali prek spletne strani lokala</span></div>
   <details class="food-cat">
     <summary><span class="cat-emoji" aria-hidden="true">🍦</span><span class="cat-name">Prigrizek v živalskem vrtu</span><span class="cat-count">1 predlog</span><span class="chev" aria-hidden="true">▶</span></summary>
     <div class="cat-body">
@@ -204,6 +208,16 @@
     <li>Živali spoštujemo: ne hranimo, ne kričimo, ne tolčemo po steklu. Živalim je potreben mir.</li>
     <li>Psi so dobrodošli s kupljeno vstopnico, vendar v Mini ZOO, ograjo Avstralije in na otroška igrišča ne smejo.</li>
     <li>Informacije: info@zoo.si, telefon +386 1 24 42 190. Urnik krmljenja in treningov je običajno objavljen ob vhodu in na zoo.si.</li>
+  </ul>
+</section>
+<section class="card-section book-section" aria-labelledby="karte">
+  <h2 id="karte">🎟️ Karte, prevoz in rezervacije</h2>
+  <p class="cat-intro">Uradne in preverjene strani: tapnite in rezervirajte ali preverite urnik.</p>
+  <ul class="book-list">
+    <li><a class="buy-btn alt" href="https://trgovina.zoo.si/" target="_blank" rel="noopener">Vstopnice za živalski vrt (spletna trgovina) →</a><span class="book-note">Vnaprej kupljena vstopnica prihrani čakanje.</span></li>
+    <li><a class="buy-btn alt" href="https://www.zoo.si/odpiralni-cas" target="_blank" rel="noopener">Odpiralni čas in navodila →</a><span class="book-note">Oktobra po objavljenih podatkih 9.00–18.00.</span></li>
+    <li><a class="buy-btn alt" href="https://www.lpp.si/en" target="_blank" rel="noopener">Avtobus št. 18 — LPP (vozni red, plačilo) →</a><span class="book-note">Smer Stožice; postaja »Živalski vrt«.</span></li>
+    <li><a class="buy-btn alt" href="https://www.google.com/maps/dir/?api=1&amp;origin=Bavarski%20dvor%2C%20Ljubljana&amp;destination=%C5%BDivalski%20vrt%20Ljubljana&amp;travelmode=transit" target="_blank" rel="noopener">Pot do zoo z avtobusom (Google Zemljevidi) →</a><span class="book-note">Iz središča v približno 20 min.</span></li>
   </ul>
 </section>
 <section class="card-section fact-section" aria-labelledby="zanimivost">

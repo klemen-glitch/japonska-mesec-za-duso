@@ -11,6 +11,8 @@ import html
 import urllib.parse
 
 import art
+import links as L
+import data_jp as JP
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(os.path.join(HERE, ".."))
@@ -27,6 +29,9 @@ CFG = {
     "theme": "#7b2230",
     "desc": "Potovalni vodnik: Japonska, 3. november – 2. december 2026, Tokio → Osaka.",
     "people": ["Marjetica", "Helena", "Ljuba", "Magda"],
+    # kontekst zemljevidov: pogled »država« (središče, povečava) in največja oddaljenost točk od postaje (km)
+    "country": {"name": "Japonska", "c": [37.9, 137.6], "z": 5},
+    "geo_radius_km": 60,
 }
 
 # Besedila, ki se razlikujejo po potovanju
@@ -393,6 +398,78 @@ EXTRAS = _load_json("extras.json", {})
 # Foto/video izzivi za album (izzivi.json = {key: [{t, x}, ...]})
 IZZIVI = _load_json("izzivi.json", {})
 
+# Praktični podatki: nastanitve, vstopnice, povezave za prevoz (data_jp.py; za drugo potovanje jih prepiše gen_<ime>.py)
+LODGING = JP.LODGING
+BOOK = JP.BOOK
+LEG_LINKS = JP.LEG_LINKS
+QUICKBUY = JP.QUICKBUY
+DOZ_SEARCH = JP.DOZ_SEARCH
+FOOD_LINKS = JP.FOOD_LINKS
+
+_SL_MON = ["jan", "feb", "mar", "apr", "maj", "jun", "jul", "avg", "sep", "okt", "nov", "dec"]
+
+
+def sl_date(iso):
+    y, m, d = (int(x) for x in iso.split("-"))
+    return f"{d}. {_SL_MON[m - 1]}"
+
+
+# Koordinate znamenitosti/lokalov (geocode.py → geocache.json)
+GEO = _load_json("geocache.json", {})
+
+_GENERIC = {"cafe", "restaurant", "shop", "house", "honten", "store", "market", "sushi", "ramen", "udon", "soba",
+            "tempura", "noodle", "noodles", "kitchen", "bakery", "main", "branch", "hotel"}
+
+
+def _dist_km(a_lat, a_lon, b_lat, b_lon):
+    import math
+    r = 6371.0
+    p1, p2 = math.radians(a_lat), math.radians(b_lat)
+    dp, dl = p2 - p1, math.radians(b_lon - a_lon)
+    h = math.sin(dp / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(dl / 2) ** 2
+    return 2 * r * math.asin(math.sqrt(h))
+
+
+def _geo_ok(q, key, food):
+    """Koordinate iz predpomnilnika, če so verjetno prave (blizu postaje, ime se ujema)."""
+    g = GEO.get(q)
+    m = MAPS.get(key)
+    if not g or not m:
+        return None
+    if _dist_km(m[0], m[1], g["lat"], g["lon"]) > CFG.get("geo_radius_km", 60):
+        return None
+    broad = g.get("cls") in ("boundary", "place") and g.get("via", q) != q
+    if broad or (food and g.get("cls") in ("boundary", "place")):
+        return None
+    if food:
+        first = q.split(",")[0].lower()
+        toks = [t for t in re.findall(r"[a-z0-9]+", first) if len(t) >= 4 and t not in _GENERIC]
+        if toks and not any(t in (g.get("name", "") or "").lower() for t in toks):
+            return None
+    return g
+
+
+def map_points(key):
+    """Točke za zemljevid kraja: oštevilčene znamenitosti (s) in lokali s hrano (f)."""
+    pts, sight_no = [], {}
+    guide = GUIDE.get(key, {})
+    n = 0
+    for sg in guide.get("sights", []):
+        g = _geo_ok(sg.get("maps", ""), key, False)
+        if g:
+            n += 1
+            sight_no[sg["name"]] = n
+            pts.append({"t": "s", "n": n, "name": sg["name"], "lat": round(g["lat"], 5), "lon": round(g["lon"], 5),
+                        "q": sg["maps"]})
+    for c in guide.get("food_categories", []):
+        for pl in c.get("places", []):
+            g = _geo_ok(pl.get("maps", ""), key, True)
+            if g:
+                pts.append({"t": "f", "name": pl["name"], "lat": round(g["lat"], 5), "lon": round(g["lon"], 5),
+                            "q": pl["maps"]})
+    return pts, sight_no
+
+
 # Zemljevidi: središče (lat, lon), stopnja povečave (zoom) in iskalni niz za Google Maps.
 # Zoom: ~11–12 = regija/večje mesto, 13 = mesto/kraj, 14 = ožji kraj/vas.
 MAPS = {
@@ -453,7 +530,7 @@ def esc(s):
 def trip_boot():
     """Nastavitve potovanja za JS + zaščita: brez PIN-a vrne na vstopno stran."""
     t = {"id": CFG["id"], "slug": CFG["slug"], "people": CFG["people"], "gate": "../index.html",
-         "after": CFG.get("after"), "t": CFG.get("t"), "color": CFG.get("pin"),
+         "after": CFG.get("after"), "t": CFG.get("t"), "color": CFG.get("pin"), "country": CFG.get("country"),
          "stations": [{"k": l["key"], "e": l["emoji"], "n": l["nav"]} for l in LOCATIONS]}
     guard = ('(function(){try{var s=JSON.parse(localStorage.getItem("trip_session")||"null");'
              'var ok=s&&s.trips&&s.trips.some(function(t){return t.slug===TRIP.slug});'
@@ -627,8 +704,10 @@ def sights_section(g):
              f'  <h2 id="znamenitosti">{TXT.get("sights_h", "⛩️ Znamenitosti in doživetja")}</h2>']
     for s in sights:
         icon = s.get("icon") or sight_icon(s["name"], s.get("desc", ""))
+        no = map_points(g.get("key", ""))[1].get(s["name"])
+        badge = f'<span class="sight-no" title="Številka na zemljevidu">{no}</span>' if no else ""
         parts.append('  <article class="sight">')
-        parts.append(f'    <h3><span class="sight-icon" aria-hidden="true">{icon}</span>{esc(s["name"])}</h3>')
+        parts.append(f'    <h3><span class="sight-icon" aria-hidden="true">{icon}</span>{esc(s["name"])}{badge}</h3>')
         parts.append(f"    <p>{esc(s['desc'])}</p>")
         if s.get("tip"):
             parts.append(f'    <p class="sight-tip">💡 {esc(s["tip"])}</p>')
@@ -679,6 +758,10 @@ def food_section(loc, g):
     if cats:
         parts.append('  <h3 style="margin:1.2rem 0 0.3rem; font-size:1.1rem;">Kje jesti — izberite kategorijo</h3>')
         parts.append('  <p class="cat-intro">Dotaknite se kategorije in odprl se bo seznam preverjenih predlogov s povezavo na zemljevid.</p>')
+        if FOOD_LINKS:
+            parts.append('  <div class="buy-row">' + "".join(
+                _btn(lbl, url, "buy-btn alt") if url else f'<span class="buy-note">{esc(lbl)}</span>'
+                for lbl, url in FOOD_LINKS) + "</div>")
         for c in cats:
             places = c.get("places", [])
             if not places:
@@ -717,14 +800,27 @@ def practical_section(g):
 
 
 def map_section(key):
+    """Zemljevid kraja: privzeto na ravni mesta/kraja (z oštevilčenimi znamenitostmi in lokali);
+    gumb »država« pokaže, kje v državi je kraj. Povečava se prilagodi točkam (fitBounds v app.js)."""
     m = MAPS.get(key)
     if not m:
         return ""
     lat, lon, zoom, q = m
+    pts, _ = map_points(key)
+    ctry = (CFG.get("country") or {}).get("name", "država")
+    legend = ""
+    if pts:
+        legend = ('  <p class="map-legend"><span class="rm-pin rm-inline">1</span> znamenitosti (po vrsti v seznamu) '
+                  '&nbsp; <span class="rm-pin rm-food rm-inline">🍴</span> hrana. Tapnite oznako za povezavo.</p>\n')
     return (f'<section class="card-section map-section" aria-labelledby="zemljevid">\n'
             f'  <h2 id="zemljevid">🗺️ Zemljevid kraja</h2>\n'
+            f'  <div class="map-modes" role="group" aria-label="Pogled zemljevida">'
+            f'<button type="button" class="on" data-mode="city">📍 Kraj</button>'
+            f'<button type="button" data-mode="country">🌏 {esc(ctry)}</button></div>\n'
             f'  <div class="area-map" data-lat="{lat}" data-lon="{lon}" data-zoom="{zoom}" '
             f'role="img" aria-label="Zemljevid — {esc(q)}"></div>\n'
+            f'{legend}'
+            f'  <script type="application/json" class="map-pts">{json.dumps(pts, ensure_ascii=False)}</script>\n'
             f'  <a class="pin-btn map-open" href="{maps_url(q)}" target="_blank" rel="noopener">'
             f'📍 Odpri na Google Zemljevidu</a>\n</section>\n')
 
@@ -755,13 +851,114 @@ def izzivi_section(key):
         '</section>\n')
 
 
+def stay_dates(key):
+    """(prihod, odhod) iz načrta poti: od prvega dne postaje do dneva po zadnjem; lahko prepiše »in«/»out«."""
+    ent = LODGING.get(key, {})
+    if ent.get("in") and ent.get("out"):
+        return ent["in"], ent["out"]
+    days = [d for d in ITINERARY.get("days", [])
+            if REGION_KEY.get(d["region"]) == key and d["region"] != "Odhod" and key not in DAYTRIP_BASE]
+    if not days:
+        return None
+    ci = day_iso(days[0]["day"])
+    co = (_dt.date.fromisoformat(day_iso(days[-1]["day"])) + _dt.timedelta(days=1)).isoformat()
+    return ci, co
+
+
+def _btn(label, url, cls="buy-btn"):
+    return f'<a class="{cls}" href="{esc(url)}" target="_blank" rel="noopener">{label}</a>'
+
+
 def stay_section(key):
     e = EXTRAS.get(key, {})
-    if not e.get("prespati"):
+    lod = LODGING.get(key)
+    if not e.get("prespati") and not lod:
         return ""
-    return (f'<section class="card-section stay-section" aria-labelledby="prespati">\n'
-            f'  <h2 id="prespati">🏡 Kje prespati</h2>\n'
-            f'  <p>{esc(e["prespati"])}</p>\n</section>\n')
+    parts = ['<section class="card-section stay-section" aria-labelledby="prespati">',
+             '  <h2 id="prespati">🏡 Kje prespati</h2>']
+    if e.get("prespati"):
+        parts.append(f'  <p>{esc(e["prespati"])}</p>')
+    if lod:
+        adults = len(CFG["people"])
+        rooms = lod.get("rooms", max(1, adults // 2))
+        dates = stay_dates(key)
+        parts.append('  <div class="stay-box">')
+        if lod.get("optional"):
+            parts.append('    <p class="stay-dates">Neobvezno: dodatna noč (če jo želite)</p>')
+        elif dates:
+            ci, co = dates
+            parts.append(f'    <p class="stay-dates">📅 <strong>{sl_date(ci)} → {sl_date(co)}</strong> · {L.nights(ci, co)} '
+                         f'{"noč" if L.nights(ci, co) == 1 else ("noči" if L.nights(ci, co) == 2 else "noči")}'
+                         f' · {adults} {"osebi" if adults == 2 else "osebe"} · {rooms} {"soba" if rooms == 1 else "sobi"}</p>')
+        else:
+            ci = co = None
+        if not dates or lod.get("optional"):
+            ci = co = None
+        if lod.get("booked"):
+            parts.append(f'    <p class="stay-booked">✅ {esc(lod["booked"])}</p>')
+        elif lod.get("book"):
+            q = lod["book"]
+            parts.append('    <div class="buy-row">')
+            parts.append("      " + _btn("🏨 Booking.com", L.booking(q, ci, co, adults, rooms)))
+            if lod.get("air"):
+                parts.append("      " + _btn("🏠 Airbnb (2+ spalnici)", L.airbnb(lod["air"], ci, co, adults)))
+            parts.append("      " + _btn("🔎 Google Hotels (primerjava)", L.google_hotels(q, ci, co, adults)))
+            parts.append("    </div>")
+            note = (f"Datumi, {adults} osebe in {rooms} sobi so že vneseni; Booking je filtriran na brezplačen preklic in oceno 8+."
+                    if ci else "Datume vnesite sami; Booking je filtriran na brezplačen preklic in oceno 8+.")
+            parts.append(f'    <p class="buy-note">{esc(note)} Preverite končno ceno z davki in pogoje preklica.</p>')
+        if lod.get("where"):
+            parts.append(f'    <h3 class="stay-sub">📍 Kje iskati</h3>\n    <p>{esc(lod["where"])}</p>')
+        if lod.get("cheaper"):
+            parts.append(f'    <h3 class="stay-sub">💶 Kje je ceneje</h3>\n    <p>{esc(lod["cheaper"])}</p>')
+        if lod.get("search"):
+            n = len(lod["search"])
+            parts.append(f'    <h3 class="stay-sub">🔍 Kaj poiščite ({"4 najboljše možnosti" if n >= 4 else "predlogi"})</h3>')
+            parts.append('    <ol class="stay-search">')
+            for it in lod["search"]:
+                parts.append(f"      <li>{esc(it)}</li>")
+            parts.append("    </ol>")
+        if lod.get("links"):
+            parts.append('    <div class="buy-row">')
+            for lbl, url in lod["links"]:
+                parts.append("      " + _btn(lbl, url, "buy-btn alt"))
+            parts.append("    </div>")
+        parts.append("  </div>")
+    parts.append("</section>")
+    return "\n".join(parts) + "\n"
+
+
+def book_section(key):
+    items = BOOK.get(key)
+    if not items:
+        return ""
+    parts = ['<section class="card-section book-section" aria-labelledby="karte">',
+             '  <h2 id="karte">🎟️ Karte, prevoz in rezervacije</h2>',
+             '  <p class="cat-intro">Uradne in preverjene strani: tapnite in rezervirajte ali preverite urnik.</p>',
+             '  <ul class="book-list">']
+    for it in items:
+        label, url = it[0], it[1]
+        note = it[2] if len(it) > 2 else ""
+        parts.append(f'    <li>{_btn(esc(label) + " →", url, "buy-btn alt")}'
+                     + (f'<span class="book-note">{esc(note)}</span>' if note else "") + "</li>")
+    parts.append("  </ul>\n</section>")
+    return "\n".join(parts) + "\n"
+
+
+def quickbuy_section():
+    if not QUICKBUY:
+        return ""
+    parts = ['<h2 class="chapter-title" id="povezave">🔗 Kupi in rezerviraj</h2>',
+             '<p class="chapter-sub">Neposredne povezave — tapnite in kupite, rezervirajte ali preverite vozni red</p>',
+             '<section class="card-section quickbuy" aria-labelledby="povezave">']
+    for emoji, title, items in QUICKBUY:
+        parts.append(f'  <h3 class="stay-sub">{emoji} {esc(title)}</h3>\n  <div class="buy-row">')
+        for lbl, url in items:
+            parts.append("    " + _btn(esc(lbl) + " →", url, "buy-btn alt"))
+        parts.append("  </div>")
+    parts.append('  <p class="buy-note">Povezave vodijo na uradne strani ali iskanja; cene in razpoložljivost so vedno aktualne šele tam.</p>')
+    parts.append("</section>")
+    return "\n".join(parts) + "\n"
 
 
 RUBRIC_META = [
@@ -872,6 +1069,7 @@ def location_page(i, loc):
     out += food_section(loc, g)
     out += practical_section(g)
     out += stay_section(loc["key"])
+    out += book_section(loc["key"])
 
     out += f"""<section class="card-section fact-section" aria-labelledby="zanimivost">
   <h2 id="zanimivost">💡 Zanimivost</h2>
@@ -1147,6 +1345,13 @@ def practical_block(data):
     return out
 
 
+def _leg_links(lg):
+    items = LEG_LINKS.get((lg["from"], lg["to"]))
+    if not items:
+        return ""
+    return ('    <div class="buy-row">' + "".join(_btn(esc(lbl), url, "buy-btn alt") for lbl, url in items) + "</div>\n")
+
+
 def nacrt_page():
     it = ITINERARY
     out = head(TXT["nacrt_title"], TXT["nacrt_desc"])
@@ -1185,6 +1390,7 @@ def nacrt_page():
                     f'<span class="leg-dur">🕒 {esc(lg["duration"])}</span></div>\n'
                     f'    <p class="leg-how">{esc(lg["how"])}</p>\n'
                     f'    <p class="leg-tip">💡 {esc(lg["tip"])}</p>\n'
+                    + _leg_links(lg) +
                     '  </div>\n')
         out += "</section>\n"
 
@@ -1273,8 +1479,10 @@ def priprave_page():
         d = PRACTICAL.get(k)
         if d:
             out += f'  <a class="chip" href="#{k}">{d.get("emoji","")} {esc(d["title"])}</a>\n'
+    out += '  <a class="chip" href="#povezave">🔗 Kupi in rezerviraj</a>\n'
     out += '  <a class="chip" href="#seznam">✅ Kontrolni seznam</a>\n'
     out += "</nav>\n"
+    out += quickbuy_section()
     for k in order:
         d = PRACTICAL.get(k)
         if not d:
@@ -1313,6 +1521,11 @@ def dozivetja_page():
                 out += f'    <p class="booking">📝 {esc(p["booking"])}</p>\n'
             if p.get("maps"):
                 out += f'    <a class="pin-btn" href="{maps_url(p["maps"])}" target="_blank" rel="noopener">📍 Zemljevid</a>\n'
+            if DOZ_SEARCH:
+                qn = f'{p["name"]} {p.get("city", "")}'.strip()
+                out += ('    <div class="buy-row">' + _btn("🔎 Termini (Klook)", L.klook(qn), "buy-btn alt")
+                        + _btn("🔎 Termini (GetYourGuide)", L.gyg(qn), "buy-btn alt")
+                        + _btn("🔎 Google", L.gsearch(qn + " booking"), "buy-btn alt") + "</div>\n")
             out += "  </div>\n"
         out += "</section>\n"
     out += '<div class="back-row"><a class="back-button" href="index.html">🏠 Nazaj na pregled</a></div>\n'
@@ -1427,6 +1640,8 @@ QUICK_LINKS = [
     ("nalozi.html", "📤", "Naloži fotografije", "album iz vaših telefonov"),
     ("dozivetja.html", "🎨", "Doživetja", "delavnice, čaj, vrtovi"),
     ("priprave.html", "🎒", "Priprave", "denar, vlaki, pakiranje"),
+    ("priprave.html#povezave", "🔗", "Kupi in rezerviraj", "vlaki, nastanitve, vstopnice"),
+    ("nacrt.html#prehodi", "🚄", "Prevozi in vozovnice", "povezave za nakup"),
     ("nasveti.html#kartice", "🪪", "Kartice za domačine", "pokažite zaslon"),
     ("nasveti.html#fraze", "🗣️", "Fraze", "z izgovorjavo 🔊"),
     ("prevajalec.html", "🔍", "Prevajalec s kamero", "japonski napis → slovensko"),

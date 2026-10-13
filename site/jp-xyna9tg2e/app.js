@@ -93,35 +93,88 @@ document.addEventListener("DOMContentLoaded", function () {
   update();
 });
 
-/* Zemljevidi (Leaflet): statični predogled s pravo povečavo za vsak kraj.
-   Za raziskovanje je tu gumb »Odpri na Google Zemljevidu«. */
+/* Zemljevidi kraja (Leaflet). Raven povečave sledi kontekstu:
+   • »Kraj« (privzeto): prilagodi se točkam (znamenitosti, lokali) — raven mesta/kraja;
+   • »Država«: kje v državi je kraj (TRIP.country).
+   Pregledni zemljevid poti na domači strani se prilagodi vsem postajam (spodaj). */
 document.addEventListener("DOMContentLoaded", function () {
   var els = document.querySelectorAll(".area-map[data-lat]");
   if (!els.length || typeof L === "undefined") return;
-  /* Vsi zemljevidi kažejo celotno Japonsko z označbo kraja —
-     da se vidi, kje v državi je. Za podrobnosti je gumb Google Zemljevid. */
-  var JAPAN_VIEW = [37.9, 137.6];
-  var JAPAN_ZOOM = 5;
+  var TRP = window.TRIP || {};
+  var CTRY = TRP.country || { c: [46.15, 14.99], z: 7 };
+  var PIN = TRP.color || "#9c2a3c";
+  function esc(x) { return String(x).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function gUrl(q) { return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(q); }
+
   els.forEach(function (el) {
     var lat = parseFloat(el.getAttribute("data-lat"));
     var lon = parseFloat(el.getAttribute("data-lon"));
+    var z0 = parseInt(el.getAttribute("data-zoom"), 10) || 13;
     if (isNaN(lat) || isNaN(lon)) return;
+    var sec = el.closest(".map-section") || el.parentNode;
+    var pts = [];
+    var pe = sec.querySelector("script.map-pts");
+    if (pe) { try { pts = JSON.parse(pe.textContent); } catch (er) {} }
     try {
       var map = L.map(el, {
-        center: JAPAN_VIEW, zoom: JAPAN_ZOOM,
-        dragging: false, scrollWheelZoom: false, doubleClickZoom: false,
-        boxZoom: false, keyboard: false, touchZoom: false,
-        zoomControl: false, attributionControl: true
+        zoomControl: true, attributionControl: true, scrollWheelZoom: false, doubleClickZoom: true,
+        boxZoom: false, keyboard: false, touchZoom: false, dragging: !L.Browser.mobile, tap: true
       });
-      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        maxZoom: 19, attribution: "© OpenStreetMap"
-      }).addTo(map);
-      L.circleMarker([lat, lon], {
-        radius: 10, color: "#5e1a25", weight: 3,
-        fillColor: "#c96a2a", fillOpacity: 0.95
-      }).addTo(map);
-      // osveži velikost, ko je kontejner dokončno postavljen
-      setTimeout(function () { map.invalidateSize(); }, 200);
+      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 19, attribution: "© OpenStreetMap" }).addTo(map);
+
+      var cityLayer = L.layerGroup();
+      var latlngs = [];
+      pts.forEach(function (p) {
+        var food = p.t === "f";
+        var icon = L.divIcon({
+          className: "rm-wrap",
+          html: '<span class="rm-pin' + (food ? " rm-food" : "") + '">' + (food ? "🍴" : p.n) + "</span>",
+          iconSize: food ? [20, 20] : [24, 24], iconAnchor: food ? [10, 10] : [12, 12]
+        });
+        var mk = L.marker([p.lat, p.lon], { icon: icon, keyboard: false, riseOnHover: true });
+        mk.bindPopup("<strong>" + esc(p.name) + '</strong><br><a href="' + gUrl(p.q) + '" target="_blank" rel="noopener">Odpri v Google Zemljevidih →</a>');
+        cityLayer.addLayer(mk);
+        if (!food) latlngs.push([p.lat, p.lon]);          // pogled določajo znamenitosti; lokali le dopolnijo
+      });
+      if (!latlngs.length) pts.forEach(function (p) { latlngs.push([p.lat, p.lon]); });
+      // postaja sama (središče kraja), če ni drugih točk
+      var home = L.circleMarker([lat, lon], { radius: 10, color: "#fff", weight: 3, fillColor: PIN, fillOpacity: 0.95 });
+
+      var legend = sec.querySelector(".map-legend");
+      function showCity() {
+        if (legend) legend.hidden = false;
+        map.eachLayer(function (l) { if (l === home || l === cityLayer) map.removeLayer(l); });
+        if (pts.length) {
+          cityLayer.addTo(map);
+          if (latlngs.length > 1) map.fitBounds(latlngs, { padding: [30, 30], maxZoom: 16 });
+          else map.setView(latlngs[0], 15);
+        } else {
+          home.addTo(map);
+          map.setView([lat, lon], Math.max(z0, 12));
+        }
+      }
+      function showCountry() {
+        if (legend) legend.hidden = true;
+        map.eachLayer(function (l) { if (l === cityLayer) map.removeLayer(l); });
+        home.addTo(map);
+        map.setView(CTRY.c, CTRY.z);
+      }
+
+      var btns = sec.querySelectorAll(".map-modes button");
+      btns.forEach(function (b) {
+        b.addEventListener("click", function () {
+          btns.forEach(function (x) { x.classList.toggle("on", x === b); });
+          if (b.getAttribute("data-mode") === "country") showCountry(); else showCity();
+        });
+      });
+
+      showCity();
+      // osveži velikost, ko je kontejner dokončno postavljen (in ponovno prilagodi pogled)
+      setTimeout(function () {
+        map.invalidateSize();
+        var on = sec.querySelector(".map-modes button.on");
+        if (!on || on.getAttribute("data-mode") !== "country") showCity();
+      }, 250);
     } catch (e) { /* brez interneta zemljevid pač ostane prazen */ }
   });
 });
