@@ -15,6 +15,9 @@ ki so prirejena tej kodi. Drugi potovanj ne vidijo.
   - `assets/` — skupni CSS/JS/ikone (kopirajo se v vsako potovanje; urejaj SAMO tukaj): `app.js` (osnova, vreme, zanimivost dneva, pretvornik), `fun.js` (kviz, lov), `money.js` (skupni stroški), `knjiga.js` (potopisna knjiga), `album.js`
   - `data_jp.py`, `lj_content.py` — vsebina (nastanitve, povezave, zanimivosti, kviz, lov); `links.py` — graditelji povezav; `geocode*.py` + `geocache.json` — koordinate znamenitosti
 
+## Funkcije (povzetek)
+Vreme, zanimivosti, kviz, lov, potopisna knjiga, skupni stroški (Japonska), dežni način (Plan B), koledar (.ics), delovanje brez interneta (service worker + čakalna vrsta), Moje rezervacije, kartice za taksista (Japonska), zdravstvena kartica (Nujno), dnevnik, pogovorni prevajalnik (Japonska), Telegram pomočnik (`generator/bot/`, navodila v `TELEGRAM-NAVODILA.md`), potopis (`generator/potopis/`).
+
 ## Objava
 GitHub Pages objavi mapo `site/` (`.github/workflows/pages.yml`).
 
