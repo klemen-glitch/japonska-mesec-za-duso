@@ -1,0 +1,172 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Potovalni vodniki//SL
+CALSCALE:GREGORIAN
+X-WR-CALNAME:Zmajeva pustolovščina
+BEGIN:VEVENT
+UID:10d1fdec11cd62fc9583@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261015
+DTEND;VALUE=DATE:20261016
+SUMMARY:🏰 Dan 1 · Ljubljana s Katjo
+DESCRIPTION:Z vlakom v Ljubljano\n\nVlak iz Maribora (približno 2 uri). O
+ b prihodu odložita kovčka v Hotelu Emonec (Wolfova 12)\, nato srečanje
+  s Katjo: Prešernov trg\, Tromostovje\, Zmajski most\, sladoled ali topl
+ a čokolada ob reki. Večerja v središču in zgodaj spat.\n\nVodnik: htt
+ ps://klemen-glitch.github.io/japonska-mesec-za-duso/lj-d4phmm7xw/center.h
+ tml
+LOCATION:Ljubljana s Katjo
+URL:https://klemen-glitch.github.io/japonska-mesec-za-duso/lj-d4phmm7xw/ce
+ nter.html
+END:VEVENT
+BEGIN:VEVENT
+UID:cc8e8bad75691f5f8524@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261016
+DTEND;VALUE=DATE:20261017
+SUMMARY:🦁 Dan 2 · Živalski vrt Ljubljana
+DESCRIPTION:Cel dan v živalskem vrtu\n\nZajtrk\, odjava in odhod z avtobu
+ som št. 18 do postaje »Živalski vrt« (zoo odpre ob 9.00). Slon Ganga\
+ , žirafe\, tigri\, morski levi\, Mini ZOO\, odmor in igrišče. Popoldne
+  po prtljago v hotelu in vlak domov.\n\nVodnik: https://klemen-glitch.git
+ hub.io/japonska-mesec-za-duso/lj-d4phmm7xw/zoo.html
+LOCATION:Živalski vrt Ljubljana
+URL:https://klemen-glitch.github.io/japonska-mesec-za-duso/lj-d4phmm7xw/zo
+ o.html
+END:VEVENT
+BEGIN:VEVENT
+UID:edc9dd487460b7a78bbf@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261016
+DTEND;VALUE=DATE:20261017
+SUMMARY:🚉 Premik: Hotel Emonec → Živalski vrt
+DESCRIPTION:avtobus št. 18 (smer Stožice) do postaje »Živalski vrt« 
+ — vstopita npr. na Bavarskem dvoru ali Konzorciju\; ali peš okoli 25
+ –35 min\nČas: okoli 20–30 min\n💡 Za plačilo vozovnice preverita 
+ aktualne možnosti (kartica Urbana ali brezstično plačilo) v aplikaciji
+  Ljubljana Bus (LPP). Čez dan vozi približno vsakih 14 minut.\n\nLPP 
+ — avtobus 18: https://www.lpp.si/en\nVozni red (Google): https://www.go
+ ogle.com/maps/dir/?api=1&origin=Bavarski%20dvor%2C%20Ljubljana&destinatio
+ n=%C5%BDivalski%20vrt%20Ljubljana&travelmode=transit\nVstopnice za zoo: h
+ ttps://trgovina.zoo.si/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🚉 Premik: Hotel Emonec → Živalski vrt
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:3e48947d7b0bd355f68b@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261015
+DTEND;VALUE=DATE:20261016
+SUMMARY:🏨 Nastanitev: Hotel Emonec
+DESCRIPTION:Nastanitev je izbrana: Hotel Emonec\, Wolfova ulica 12. Prever
+ ita potrditev rezervacije (ura prijave in odjave\, zajtrk) in pri recepci
+ ji vprašata\, ali lahko prtljago odložita že ob prihodu in jo pustita 
+ še po odjavi.\n\nPodrobnosti: https://klemen-glitch.github.io/japonska-m
+ esec-za-duso/lj-d4phmm7xw/emonec.html#prespati
+LOCATION:Hotel Emonec
+END:VEVENT
+BEGIN:VEVENT
+UID:728185d506985e740698@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART:20261016T090000
+DTEND:20261016T093000
+SUMMARY:⏱️ Živalski vrt Ljubljana: 9.00
+DESCRIPTION:Prihod z avtobusom št. 18 (postaja »Živalski vrt«). Vzemit
+ a zemljevid\, kupita vstopnici (ali jih že imata) in se slikata pod vhod
+ om.
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏱️ Živalski vrt Ljubljana: 9.00
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:9742dd659b11d96cd19c@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART:20261016T093000
+DTEND:20261016T110000
+SUMMARY:⏱️ Živalski vrt Ljubljana: 9.30
+DESCRIPTION:Prvi del poti: slon Ganga\, žirafe in tigri — najbolj »vel
+ ike« živali\, ko so še spočite in aktivne. Za vsako žival izpolnita 
+ izziv.
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏱️ Živalski vrt Ljubljana: 9.30
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:0b9a1be3de744692e885@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART:20261016T110000
+DTEND:20261016T120000
+SUMMARY:⏱️ Živalski vrt Ljubljana: 11.00
+DESCRIPTION:Morski levi: trening ali napajanje — po objavljenem urniku. 
+ Poglejta\, kako se levi učijo trikov.
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏱️ Živalski vrt Ljubljana: 11.00
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ed1551d3960631f2d89a@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART:20261016T120000
+DTEND:20261016T130000
+SUMMARY:⏱️ Živalski vrt Ljubljana: 12.00
+DESCRIPTION:Odmor: malica ali sladoled. Poglejta zemljevid in izberita\, k
+ aj gresta gledat po kosilu.
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏱️ Živalski vrt Ljubljana: 12.00
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:fdd6c42131f8114b196d@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART:20261016T130000
+DTEND:20261016T143000
+SUMMARY:⏱️ Živalski vrt Ljubljana: 13.00
+DESCRIPTION:Mini ZOO: pobožajta koze in ovce po pravilih. Poiščita viva
+ rij in igrišče — Maks izbere\, kje se zadržita dlje.
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏱️ Živalski vrt Ljubljana: 13.00
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:6210e37bc528791f5917@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART:20261016T143000
+DTEND:20261016T160000
+SUMMARY:⏱️ Živalski vrt Ljubljana: 14.30
+DESCRIPTION:Druga polovica poti: volk\, medved\, rdeče pande\, opice in p
+ tice. Hodita počasi in opazujta — katera žival jima je najbolj smešn
+ a?
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏱️ Živalski vrt Ljubljana: 14.30
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:bd656ea0ec2bd1c836bb@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART:20261016T160000
+DTEND:20261016T170000
+SUMMARY:⏱️ Živalski vrt Ljubljana: 16.00
+DESCRIPTION:Zadnji postanek: trgovinica z darili (izberita en spominek) in
+  zadnja slika pri izhodu. Nato avtobus nazaj v središče.
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:⏱️ Živalski vrt Ljubljana: 16.00
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+END:VCALENDAR

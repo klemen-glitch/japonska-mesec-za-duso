@@ -86,13 +86,103 @@
 
   // ---- podatki -------------------------------------------------------------
   function fetchUploads() {
+    var ck = "albumlist:" + TRIP.id;
     return sb.rpc("trip_album_list", { p_pin: getPin(), p_trip: TRIP.id })
       .then(function (r) {
         if (r && r.error && typeof tripAuthFail === "function" && tripAuthFail(r.error)) { tripReLogin(null); }
-        uploadsCache = (r && r.data) || []; return uploadsCache;
+        if (r && !r.error && r.data) { try { localStorage.setItem(ck, JSON.stringify(r.data)); } catch (e) {} uploadsCache = r.data; }
+        else {
+          // brez povezave: zadnji znani seznam
+          var c = null; try { c = JSON.parse(localStorage.getItem(ck) || "null"); } catch (e) {}
+          uploadsCache = c || [];
+        }
+        return withPending();
       })
-      .catch(function () { uploadsCache = []; return uploadsCache; });
+      .catch(function () {
+        var c = null; try { c = JSON.parse(localStorage.getItem(ck) || "null"); } catch (e) {}
+        uploadsCache = c || [];
+        return withPending();
+      });
   }
+
+  // ---- čakalna vrsta (IndexedDB): slike, izbrane brez interneta -------------
+  var QDB = null;
+  function qdb() {
+    if (QDB) return QDB;
+    QDB = new Promise(function (res, rej) {
+      if (!window.indexedDB) return rej(new Error("idb"));
+      var rq = indexedDB.open("tripq", 1);
+      rq.onupgradeneeded = function () { rq.result.createObjectStore("uploads", { keyPath: "id", autoIncrement: true }); };
+      rq.onsuccess = function () { res(rq.result); };
+      rq.onerror = function () { rej(rq.error); };
+    });
+    return QDB;
+  }
+  function qAll() {
+    return qdb().then(function (db) {
+      return new Promise(function (res) {
+        var out = [], tx = db.transaction("uploads", "readonly"), cur = tx.objectStore("uploads").openCursor();
+        cur.onsuccess = function () { var c = cur.result; if (c) { out.push(c.value); c.continue(); } else res(out); };
+        cur.onerror = function () { res(out); };
+      });
+    }).catch(function () { return []; });
+  }
+  function qAdd(item) {
+    return qdb().then(function (db) {
+      return new Promise(function (res, rej) {
+        var tx = db.transaction("uploads", "readwrite"); tx.objectStore("uploads").add(item);
+        tx.oncomplete = function () { res(); }; tx.onerror = function () { rej(tx.error); };
+      });
+    });
+  }
+  function qDel(id) {
+    return qdb().then(function (db) {
+      return new Promise(function (res) {
+        var tx = db.transaction("uploads", "readwrite"); tx.objectStore("uploads").delete(id);
+        tx.oncomplete = function () { res(); }; tx.onerror = function () { res(); };
+      });
+    }).catch(function () {});
+  }
+  var pendingItems = [];
+  function withPending() {
+    return qAll().then(function (all) {
+      pendingItems = all.filter(function (q) { return q.trip === TRIP.id; });
+      pendingItems.forEach(function (q) {
+        if (!q.url) q.url = URL.createObjectURL(q.blob);
+        uploadsCache.push({ station: q.station, challenge_id: q.challenge || null, uploader: q.name, path: null, mime: q.mime, pending: true, _url: q.url });
+      });
+      return uploadsCache;
+    });
+  }
+  function isNetFail(e) {
+    var m = (e && (e.message || e.error || String(e))) || "";
+    return !navigator.onLine || /fetch|network|load failed|timeout|offline/i.test(m);
+  }
+  var flushingQ = false;
+  function flushQueue() {
+    if (flushingQ || !navigator.onLine || !getPin()) return Promise.resolve();
+    flushingQ = true;
+    return qAll().then(function (all) {
+      var mine = all.filter(function (q) { return q.trip === TRIP.id; }), ok = 0;
+      function step(i) {
+        if (i >= mine.length) return Promise.resolve();
+        var q = mine[i];
+        var path = TRIP.id + "/" + q.station + "/" + (q.challenge || "splosno") + "/" + uuid() + "." + q.ext;
+        return sb.storage.from(BUCKET).upload(path, q.blob, { contentType: q.mime || undefined, upsert: false }).then(function (res) {
+          if (res.error) throw res.error;
+          return sb.rpc("trip_album_add", { p_pin: getPin(), p_trip: TRIP.id, p_station: q.station, p_challenge: q.challenge || null,
+            p_uploader: q.name || null, p_path: path, p_mime: q.mime || null });
+        }).then(function (r) {
+          if (r && r.error) throw r.error;
+          return qDel(q.id).then(function () { ok++; return step(i + 1); });
+        }).catch(function (e) { if (isNetFail(e)) return Promise.resolve(); return step(i + 1); });
+      }
+      return step(0).then(function () { if (ok) return fetchUploads().then(rerenderAll); });
+    }).then(function () { flushingQ = false; }, function () { flushingQ = false; });
+  }
+  window.addEventListener("online", function () { setTimeout(flushQueue, 800); });
+  setTimeout(flushQueue, 3000);
+
   function uuid() {
     if (window.crypto && crypto.randomUUID) return crypto.randomUUID();
     return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
@@ -112,10 +202,10 @@
   function uploadFiles(files, station, challengeId, statusEl, done) {
     if (!files || !files.length) { if (done) done(); return; }
     var name = getName();
-    var total = files.length, ok = 0, idx = 0;
+    var total = files.length, ok = 0, idx = 0, queued = 0;
     function next() {
       if (idx >= files.length) {
-        fetchUploads().then(function () { rerenderAll(); if (done) done(ok); });
+        fetchUploads().then(function () { rerenderAll(); if (done) done(ok + queued); });
         return;
       }
       var file = files[idx++];
@@ -132,6 +222,12 @@
         .then(function (r) { if (r && r.error) throw r.error; ok++; next(); })
         .catch(function (e) {
           console.warn("upload napaka", e);
+          if (isNetFail(e)) {
+            qAdd({ trip: TRIP.id, station: station, challenge: challengeId || null, name: name, mime: file.type || "", ext: extOf(file), blob: file })
+              .then(function () { queued++; if (statusEl) statusEl.textContent = "📴 Brez povezave — slika čaka in se naloži sama (" + queued + ")."; next(); })
+              .catch(function () { if (statusEl) statusEl.textContent = "Napaka pri eni datoteki — poskušam naprej …"; next(); });
+            return;
+          }
           if (statusEl) statusEl.textContent = "Napaka pri eni datoteki — poskušam naprej …";
           next();
         });
@@ -155,7 +251,7 @@
 
   // ---- izris medijev -------------------------------------------------------
   function mediaEl(u, cls) {
-    var url = pub(u.path);
+    var url = u.pending ? u._url : pub(u.path);
     var wrap = document.createElement("a");
     wrap.href = url; wrap.target = "_blank"; wrap.rel = "noopener";
     wrap.className = cls || "album-thumb";
@@ -170,6 +266,7 @@
       img.src = url; img.loading = "lazy"; img.alt = "";
       wrap.appendChild(img);
     }
+    if (u.pending) { var pt = document.createElement("span"); pt.className = "vtag pend"; pt.textContent = "⏳"; wrap.appendChild(pt); }
     return wrap;
   }
 
@@ -406,6 +503,7 @@
           return;
         }
         var u = uploadsCache[i++];
+        if (u.pending) { next(); return; }
         if (status) status.textContent = "Pripravljam " + i + "/" + total + " …";
         fetch(pub(u.path)).then(function (r) { return r.blob(); }).then(function (blob) {
           zip.file(safeFolder(u.station) + "/" + baseName(u.path), blob);

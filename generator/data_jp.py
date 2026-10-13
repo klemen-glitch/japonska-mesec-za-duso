@@ -456,3 +456,141 @@ IZZIVI_KEEP = {
     "izu": [0, 1, 3], "kumano": [0, 1, 3], "koyasan": [0, 1, 2], "iya": [0, 1, 2], "ine": [0, 1, 2],
     "nara": [0, 1], "kyoto": [0, 1, 3], "osaka": [0, 1, 3], "hiroshima": [1, 3],
 }
+
+# --------------------------------------------------------------------------- Plan B za dež (notranje možnosti po postajah)
+RAIN = {
+    "tokio": [
+        ("Tokijski narodni muzej (Ueno)", "največji muzej na Japonskem: samurajski meči, kimono, budistični kipi — cel dan pod streho", "Tokyo National Museum, Ueno"),
+        ("Muzej Nezu (Aoyama)", "umetnost in lep vrt s čajnico; tudi v dežju je vrt čaroben", "Nezu Museum, Minato, Tokyo"),
+        ("Muzej Sumida Hokusai", "valovi Hokusaija in ukiyo-e, blizu Asakuse", "Sumida Hokusai Museum, Tokyo"),
+        ("Pokrite ulice Asakusa (Nakamise)", "stojnice, spominki in prigrizki pod streho pri templju Sensō-ji", "Nakamise Shopping Street, Asakusa"),
+    ],
+    "chichibu": [
+        ("Hiša festivala Chichibu (vozovi)", "razstava vozov nočnega festivala Chichibu", "Chichibu Yatai Kaikan"),
+        ("Onsen Matsuri no Yu (postaja Seibu-Chichibu)", "vroč bazen in lokali na postaji — idealno po mokrem sprehodu", "Chichibu Matsuri no Yu, Seibu-Chichibu Station"),
+        ("Soba delavnica ali kosilo", "ajdovi rezanci, topla juha in pogovor z domačini", "soba noodles Chichibu"),
+    ],
+    "kawaguchiko": [
+        ("Muzej Itchiku Kubota", "kimono kot umetnina in vrt s pogledom na Fuji", "Itchiku Kubota Art Museum, Kawaguchiko"),
+        ("Gozd glasbe (Music Forest Museum)", "evropski glasbeni mehanizmi in vrtovi pod steklenimi strehami", "Kawaguchiko Music Forest Museum"),
+        ("Hoto rezanci", "toplo kosilo: debeli rezanci v miso juhi", "Hoto Fudo Kawaguchiko"),
+    ],
+    "minobusan": [
+        ("Dvorane templja Kuon-ji", "glavna dvorana in notranji prostori — mir in zvok dežja", "Kuon-ji Temple, Minobu"),
+        ("Dan v šukuboju", "vprašajte za prepisovanje sutre (shakyo) ali meditacijo", "Kakurinbo Minobu"),
+    ],
+    "izu": [
+        ("Javni onsen v Shuzenjiju", "vroča kopel je najlepša v dežju — preverite javne kopeli v mestu", "Shuzenji Onsen public bath"),
+        ("Akvarij Izu-Mito Sea Paradise", "morski svet pod streho", "Izu Mito Sea Paradise"),
+        ("Wasabi vrt Kadoya", "wasabi sladoled in sprehod pod nadstreški", "Wasabi Garden Kadoya Kawazu"),
+    ],
+    "kumano": [
+        ("Kumano Hongu Heritage Center", "zgodovina romarske poti v razstavah in filmih", "Kumano Hongu Heritage Center"),
+        ("Kopel Tsuboyu / Kawayu", "svetovna dediščina in rečna kopel — dež dodaja vzdušje", "Tsuboyu Yunomine Onsen"),
+        ("Kumano Kodo Kan (Tanabe)", "informacije o poti in razstava v mestu", "Kumano Kodo Kan, Tanabe"),
+    ],
+    "koyasan": [
+        ("Muzej Reihokan", "templjske zakladnice in budistična umetnost", "Koyasan Reihokan Museum"),
+        ("Tempelj Kongobu-ji (notranjost)", "zasloni, tatami in kamniti vrt — v dežju brez gneče", "Kongobuji Temple, Koyasan"),
+        ("Meditacija Ajikan (Daishi Kyokai)", "vodena meditacija in kaligrafija", "Koyasan Daishi Kyokai"),
+    ],
+    "iya": [
+        ("Kopel v hotelu Iya Onsen", "kopališče ob reki; ob dežju je vzdušje posebno", "Hotel Iya Onsen"),
+        ("Muzej Lapis Oboke", "kamnine in fosili ob soteski", "Lapis Oboke Miyoshi"),
+        ("Dan v nastanitvi", "dolina je ob dežju skrivnostna — kopel, branje in čaj", "Iya Valley Miyoshi"),
+    ],
+    "ine": [
+        ("Pivovarna sakeja Mukai Shuzo", "degustacija v notranjosti, ob oknu z razgledom na zaliv", "Mukai Shuzo Ine"),
+        ("Kavarna v funayi", "topla skodelica z razgledom na dež nad zalivom", "Ine Cafe funaya"),
+    ],
+    "nara": [
+        ("Dvorana Daibutsuden v Todai-ju", "veliki Buda je pod streho", "Todaiji Daibutsuden"),
+        ("Narodni muzej Nara", "budistična umetnost", "Nara National Museum"),
+        ("Zakladnica Kofuku-ji", "kipi svetovnega slovesa", "Kofukuji National Treasure Hall"),
+        ("Naramachi", "stara soseska: trgovinice, kavarne in mochi", "Naramachi Nara"),
+    ],
+    "kyoto": [
+        ("Tržnica Nishiki (pokrita)", "kuhinja Kyota pod streho", "Nishiki Market Kyoto"),
+        ("Sanjusangendo", "1001 kipov Kannon v dolgi dvorani", "Sanjusangendo Kyoto"),
+        ("Narodni muzej Kyoto", "japonska umetnost in zgodovina", "Kyoto National Museum"),
+        ("Čajna hiša Ippodo", "matcha in sladice med mokrim popoldnem", "Ippodo Tea Kyoto"),
+    ],
+    "osaka": [
+        ("Pokrita Kuromon in Shinsaibashi-suji", "tržnica in dolga pokrita nakupovalna ulica", "Shinsaibashi-suji Shopping Street"),
+        ("Muzej zgodovine Osake", "razgled na grad skozi okna, razstave pod streho", "Osaka Museum of History"),
+        ("Akvarij Kaiyukan", "kitovi psi in morski svet", "Osaka Aquarium Kaiyukan"),
+        ("Muzej bivanja Osaka", "stara mestna ulica Edo v pokritem prostoru", "Osaka Museum of Housing and Living"),
+    ],
+    "hiroshima": [
+        ("Spominski muzej miru", "najpomembnejša postaja dneva — vseskozi pod streho", "Hiroshima Peace Memorial Museum"),
+        ("Orizuru Tower", "razgled in papirnati žerjavi", "Hiroshima Orizuru Tower"),
+        ("Okonomi-mura", "stavba s hirošimskimi okonomiyaki, ves čas pod streho", "Okonomimura Hiroshima"),
+        ("Muzej umetnosti Hiroshima", "francoski impresionisti pod streho", "Hiroshima Museum of Art"),
+    ],
+}
+
+# --------------------------------------------------------------------------- kartice za taksista in pogovor
+TAXI_DESTS = [
+    {"ja": "東京駅", "sl": "Postaja Tokio", "lat": "Tokyo Station"},
+    {"ja": "上野駅", "sl": "Postaja Ueno", "lat": "Ueno Station, Tokyo"},
+    {"ja": "新宿駅", "sl": "Postaja Shinjuku", "lat": "Shinjuku Station"},
+    {"ja": "浅草寺", "sl": "Tempelj Sensō-ji (Asakusa)", "lat": "Senso-ji, Asakusa"},
+    {"ja": "成田空港", "sl": "Letališče Narita", "lat": "Narita International Airport"},
+    {"ja": "羽田空港", "sl": "Letališče Haneda", "lat": "Haneda Airport"},
+    {"ja": "河口湖駅", "sl": "Postaja Kawaguchiko", "lat": "Kawaguchiko Station"},
+    {"ja": "身延山久遠寺", "sl": "Tempelj Kuon-ji (Minobu)", "lat": "Kuon-ji Temple, Minobu"},
+    {"ja": "修善寺駅", "sl": "Postaja Shuzenji", "lat": "Shuzenji Station"},
+    {"ja": "紀伊勝浦駅", "sl": "Postaja Kii-Katsuura", "lat": "Kii-Katsuura Station"},
+    {"ja": "那智の滝", "sl": "Slap Nachi", "lat": "Nachi Falls"},
+    {"ja": "熊野本宮大社", "sl": "Svetišče Hongu Taisha", "lat": "Kumano Hongu Taisha"},
+    {"ja": "高野山", "sl": "Koya-san", "lat": "Koyasan"},
+    {"ja": "祖谷のかずら橋", "sl": "Viseči most Iya", "lat": "Iya Kazurabashi"},
+    {"ja": "大歩危駅", "sl": "Postaja Oboke", "lat": "Oboke Station"},
+    {"ja": "伊根の舟屋", "sl": "Funaya v Ine", "lat": "Ine no Funaya"},
+    {"ja": "京都駅", "sl": "Postaja Kyoto", "lat": "Kyoto Station"},
+    {"ja": "嵐山", "sl": "Arašijama", "lat": "Arashiyama, Kyoto"},
+    {"ja": "祇園", "sl": "Gion", "lat": "Gion, Kyoto"},
+    {"ja": "大阪駅", "sl": "Postaja Osaka", "lat": "Osaka Station"},
+    {"ja": "新大阪駅", "sl": "Postaja Shin-Osaka", "lat": "Shin-Osaka Station"},
+    {"ja": "なんば駅", "sl": "Postaja Namba", "lat": "Namba Station"},
+    {"ja": "道頓堀", "sl": "Dotonbori", "lat": "Dotonbori"},
+    {"ja": "関西国際空港", "sl": "Letališče Kansai", "lat": "Kansai International Airport"},
+    {"ja": "奈良駅", "sl": "Postaja Nara", "lat": "Nara Station"},
+    {"ja": "広島駅", "sl": "Postaja Hiroshima", "lat": "Hiroshima Station"},
+    {"ja": "宮島口", "sl": "Pristanišče za Miyajimo", "lat": "Miyajimaguchi Station"},
+]
+
+TAXI_PHRASES = [
+    {"ja": "ここで止めてください。", "ro": "Koko de tomete kudasai.", "sl": "Ustavite tukaj, prosim."},
+    {"ja": "駅までお願いします。", "ro": "Eki made onegai shimasu.", "sl": "Do postaje, prosim."},
+    {"ja": "クレジットカードは使えますか？", "ro": "Kurejitto kādo wa tsukaemasu ka?", "sl": "Ali lahko plačam s kartico?"},
+    {"ja": "領収書をお願いします。", "ro": "Ryōshūsho o onegai shimasu.", "sl": "Račun (potrdilo), prosim."},
+    {"ja": "トランクを開けてください。", "ro": "Toranku o akete kudasai.", "sl": "Odprite prtljažnik, prosim."},
+    {"ja": "もう少しゆっくりお願いします。", "ro": "Mō sukoshi yukkuri onegai shimasu.", "sl": "Malo počasneje, prosim."},
+    {"ja": "どのくらいかかりますか？", "ro": "Dono kurai kakarimasu ka?", "sl": "Koliko časa bo trajalo?"},
+    {"ja": "いくらですか？", "ro": "Ikura desu ka?", "sl": "Koliko stane?"},
+    {"ja": "ありがとうございます。", "ro": "Arigatō gozaimasu.", "sl": "Hvala lepa."},
+]
+
+CONV_PHRASES = [
+    {"sl": "Dober dan!", "ja": "こんにちは。", "ro": "Konnichiwa."},
+    {"sl": "Hvala lepa.", "ja": "ありがとうございます。", "ro": "Arigatō gozaimasu."},
+    {"sl": "Oprostite.", "ja": "すみません。", "ro": "Sumimasen."},
+    {"sl": "Ne razumem.", "ja": "わかりません。", "ro": "Wakarimasen."},
+    {"sl": "Počasneje, prosim.", "ja": "もう少しゆっくりお願いします。", "ro": "Mō sukoshi yukkuri onegai shimasu."},
+    {"sl": "Kje je stranišče?", "ja": "トイレはどこですか？", "ro": "Toire wa doko desu ka?"},
+    {"sl": "Koliko stane?", "ja": "いくらですか？", "ro": "Ikura desu ka?"},
+    {"sl": "Račun, prosim.", "ja": "お会計をお願いします。", "ro": "Okaikei o onegai shimasu."},
+    {"sl": "Ali imate meni v angleščini?", "ja": "英語のメニューはありますか？", "ro": "Eigo no menyū wa arimasu ka?"},
+    {"sl": "Brez mesa in rib, prosim.", "ja": "肉と魚は食べられません。", "ro": "Niku to sakana wa taberaremasen."},
+    {"sl": "Imam alergijo.", "ja": "アレルギーがあります。", "ro": "Arerugī ga arimasu."},
+    {"sl": "Voda, prosim.", "ja": "お水をお願いします。", "ro": "Omizu o onegai shimasu."},
+    {"sl": "Kje je postaja?", "ja": "駅はどこですか？", "ro": "Eki wa doko desu ka?"},
+    {"sl": "S katerega peronu odpelje vlak?", "ja": "何番線から出ますか？", "ro": "Nan-ban-sen kara demasu ka?"},
+    {"sl": "Pomagajte mi, prosim.", "ja": "助けてください。", "ro": "Tasukete kudasai."},
+    {"sl": "Potrebujem zdravnika.", "ja": "医者が必要です。", "ro": "Isha ga hitsuyō desu."},
+    {"sl": "Pokličite rešilca!", "ja": "救急車を呼んでください！", "ro": "Kyūkyūsha o yonde kudasai!"},
+    {"sl": "Ali lahko fotografiram?", "ja": "写真を撮ってもいいですか？", "ro": "Shashin o totte mo ii desu ka?"},
+    {"sl": "Ali lahko plačam s kartico?", "ja": "カードで払えますか？", "ro": "Kādo de haraemasu ka?"},
+    {"sl": "Pokažem na zemljevidu.", "ja": "地図で見せます。", "ro": "Chizu de misemasu."},
+]

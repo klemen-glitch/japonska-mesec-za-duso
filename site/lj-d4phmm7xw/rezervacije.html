@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Moje rezervacije · Zmajeva pustolovščina</title>
+  <meta name="description" content="Hotel, vozovnice in vstopnice — vidita jih oba">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#2f8f6b">
+  <script>window.TRIP={"id": "ljubljana", "slug": "lj-d4phmm7xw", "people": ["Ana", "Maks"], "gate": "../index.html", "after": ["Bravo, zmajska ekipa!", "Poglejta <a href=\"nalozi.html\">skupni album</a> in iz slik sestavita svojo Zmajevo knjigo."], "t": {"locked": "Presenečenje čaka — odklene se, ko naložita sliko ali video.", "empty": "Album je še prazen — naložita prvo fotografijo. 📸", "thanks": "naloženih ✓ — odlično!", "more": "Odpri vodnik za to postajo →", "afterHero": "Pustolovščina je za vama — poglejta album, sestavita Zmajevo knjigo in preizkusita kviz.", "afterBtn": "📖 Odpri Zmajevo knjigo", "pre": "Pustolovščina se začne {date}. Poglejta <a href=\"priprave.html\">priprave</a> in kontrolni seznam."}, "color": "#2f8f6b", "country": {"name": "Slovenija", "c": [46.12, 14.82], "z": 8}, "title": "Zmajeva pustolovščina", "dates": "15.–16. oktober 2026", "build": "22", "stations": [{"k": "vlak", "e": "🚂", "n": "Vlak", "nm": "Z vlakom v Ljubljano", "s": "Maribor → Ljubljana, prvi del pustolovščine"}, {"k": "emonec", "e": "🏨", "n": "Hotel", "nm": "Hotel Emonec", "s": "Kovčka odložita, nočitev v središču Ljubljane"}, {"k": "center", "e": "🏰", "n": "Center", "nm": "Ljubljana s Katjo", "s": "Zmaji, mostovi, grad in sladoled z najboljšo družbo"}, {"k": "zoo", "e": "🦁", "n": "Živalski vrt", "nm": "Živalski vrt Ljubljana", "s": "Cel dan med slonom, žirafami, tigri in morskimi levi"}, {"k": "domov", "e": "🏠", "n": "Domov", "nm": "Domov z zmajem", "s": "Povratek v Maribor in zadnji zapisi"}], "days": [{"d": 1, "iso": "2026-10-15", "k": "center", "r": "Ljubljana", "dt": "čet, 15. okt"}, {"d": 2, "iso": "2026-10-16", "k": "zoo", "r": "Živalski vrt", "dt": "pet, 16. okt"}]};(function(){try{var s=JSON.parse(localStorage.getItem("trip_session")||"null");var ok=s&&s.trips&&s.trips.some(function(t){return t.slug===TRIP.slug});if(!ok){location.replace(TRIP.gate+"?next="+encodeURIComponent(TRIP.slug));}}catch(e){}})();</script>
+  <link rel="stylesheet" href="style.css?v=22">
+  <style>
+    :root { --accent:#1f7a5a; --accent-ink:#1f7a5a; --accent-soft:#e8f5ee; --pin:#2f8f6b; --orange:#c8553d; --gold:#b08a2e; }
+    @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --accent:#6fd0a6; --accent-ink:#6fd0a6; --accent-soft:#14261e; --pin:#2f8f6b; --orange:#e08a6c; --gold:#d2b256; } }
+    :root[data-theme="dark"] { --accent:#6fd0a6; --accent-ink:#6fd0a6; --accent-soft:#14261e; --pin:#2f8f6b; --orange:#e08a6c; --gold:#d2b256; }
+  </style>
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="data.js?v=22"></script>
+  <script defer src="album.js?v=22"></script>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+</head>
+<body>
+<header class="site-header">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">🐉 Zmajeva pustolovščina</a>
+    <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="main-menu">
+      <span class="mt-ico" aria-hidden="true">☰</span> Meni
+    </button>
+  </div>
+  <nav class="main-menu" id="main-menu" aria-label="Glavni meni" hidden>
+    <div class="menu-inner">
+      <div class="menu-primary">
+        <a href="index.html"><span class="mi-emoji" aria-hidden="true">🏠</span>Domov</a>
+        <a href="kako.html"><span class="mi-emoji" aria-hidden="true">🎓</span>Kako uporabljati</a>
+        <a href="nacrt.html"><span class="mi-emoji" aria-hidden="true">🗺️</span>Načrt poti</a>
+        <a href="izziv.html"><span class="mi-emoji" aria-hidden="true">📸</span>Izzivi</a>
+        <a href="nalozi.html"><span class="mi-emoji" aria-hidden="true">📤</span>Naloži fotografije</a>
+        <a href="knjiga.html"><span class="mi-emoji" aria-hidden="true">📖</span>Zmajeva knjiga</a>
+        <a href="rezervacije.html" aria-current="page"><span class="mi-emoji" aria-hidden="true">🧾</span>Moje rezervacije</a>
+        <a href="dnevnik.html"><span class="mi-emoji" aria-hidden="true">✍️</span>Zmajev dnevnik</a>
+        <a href="kviz.html"><span class="mi-emoji" aria-hidden="true">🧠</span>Zmajev kviz</a>
+        <a href="lov.html"><span class="mi-emoji" aria-hidden="true">🔎</span>Zmajev lov</a>
+        <a href="priprave.html"><span class="mi-emoji" aria-hidden="true">🎒</span>Priprave</a>
+        <a href="nujno.html"><span class="mi-emoji" aria-hidden="true">🆘</span>Nujno</a>
+        <a href="../index.html?izpis=1"><span class="mi-emoji" aria-hidden="true">🔑</span>Zamenjaj potovanje</a>
+      </div>
+      <p class="menu-label">Postaje pustolovščine</p>
+      <div class="menu-stations">
+        <a href="vlak.html"><span class="mi-emoji" aria-hidden="true">🚂</span>Vlak</a>
+        <a href="emonec.html"><span class="mi-emoji" aria-hidden="true">🏨</span>Hotel</a>
+        <a href="center.html"><span class="mi-emoji" aria-hidden="true">🏰</span>Center</a>
+        <a href="zoo.html"><span class="mi-emoji" aria-hidden="true">🦁</span>Živalski vrt</a>
+        <a href="domov.html"><span class="mi-emoji" aria-hidden="true">🏠</span>Domov</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="menu-backdrop" id="menu-backdrop" hidden></div>
+<main>
+<section class="loc-hero">
+  <div class="loc-emoji" aria-hidden="true">🧾</div>
+  <p class="kicker">Vse na enem mestu</p>
+  <h1>Moje rezervacije</h1>
+  <p class="loc-sub">Hotel, vozovnice in vstopnice — vidita jih oba</p>
+</section>
+<div id="book-host"></div>
+<script type="application/json" id="stays-data">[{"k": "emonec", "n": "Hotel", "e": "🏨", "ci": "2026-10-15", "co": "2026-10-16"}]</script>
+<div class="back-row"><a class="back-button" href="priprave.html#povezave">🔗 Kupi in rezerviraj</a></div>
+</main>
+<footer>
+  <p>🐉 Zmajeva pustolovščina · 15.–16. oktober 2026 · Maribor → Ljubljana</p>
+  <p>Z ljubeznijo pripravljeno za Ano in Maksa</p>
+  <p><a href="kako.html">🎓 Kako uporabljati to stran</a> · <a href="../index.html?izpis=1">🔑 Zamenjaj potovanje</a></p>
+</footer>
+<script src="app.js?v=22"></script>
+<script defer src="rezervacije.js?v=22"></script>
+</body>
+</html>

@@ -46,9 +46,11 @@ G.QUICKBUY = C.QUICKBUY
 G.DOZ_SEARCH = False
 G.GEO_RADIUS = {}
 G.FACTS = C.FACTS
+G.RAIN = C.RAIN
 G.QUIZ = C.QUIZ
 G.LOV = C.LOV
 G.SHOW_FX = False
+G.FEATURES = {"stroski": False, "taksi": False, "pogovor": False}
 G.FOOD_LINKS = C.FOOD_LINKS
 G.STATIONS_LABEL = "Postaje pustolovščine"
 G.NAV_PRIMARY = [
@@ -58,6 +60,8 @@ G.NAV_PRIMARY = [
     ("izziv.html", "izziv", "📸", "Izzivi"),
     ("nalozi.html", "nalozi", "📤", "Naloži fotografije"),
     ("knjiga.html", "knjiga", "📖", "Zmajeva knjiga"),
+    ("rezervacije.html", "rezervacije", "🧾", "Moje rezervacije"),
+    ("dnevnik.html", "dnevnik", "✍️", "Zmajev dnevnik"),
     ("kviz.html", "kviz", "🧠", "Zmajev kviz"),
     ("lov.html", "lov", "🔎", "Zmajev lov"),
     ("priprave.html", "priprave", "🎒", "Priprave"),
@@ -96,8 +100,12 @@ QUICK_LINKS = [
     ("kviz.html", "🧠", "Zmajev kviz", "14 vprašanj o živalih in Ljubljani"),
     ("lov.html", "🔎", "Zmajev lov", "živali, zmaji, števci"),
     ("knjiga.html", "📖", "Zmajeva knjiga", "iz vajinih slik"),
+    ("rezervacije.html", "🧾", "Moje rezervacije", "hotel, vlak, vstopnice"),
+    ("dnevnik.html", "✍️", "Zmajev dnevnik", "povzetek dneva"),
+    ("nujno.html#zdravje", "🩺", "Zdravstvena kartica", "v Nujno"),
     ("priprave.html#povezave", "🔗", "Kupi in rezerviraj", "vlak, zoo, hotel"),
     ("nacrt.html#prehodi", "🚆", "Prevozi", "vlak, avtobus 18, povezave"),
+    ("potovanje.ics", "📅", "Dodaj v koledar", "iPhone, Google, Outlook"),
     ("nujno.html", "🆘", "Nujno", "112, 113, hotel"),
 ]
 
@@ -153,7 +161,7 @@ def index_page():
 """
     out += "</ul>\n"
     out += '<div class="back-row"><a class="back-button" href="nujno.html">🆘 Nujne informacije</a></div>\n'
-    out += G.trip_script() + G.route_script() + G.facts_script() + G.legs_script() + G.hero_templates()
+    out += G.trip_script() + G.route_script() + G.facts_script() + G.legs_script() + G.hero_templates() + G.rain_script()
     out += "</main>\n" + G.FOOTER
     return out
 
@@ -161,7 +169,7 @@ def index_page():
 # --------------------------------------------------------------------------- nujno, priprave
 def nujno_page():
     out = G.head("Nujno · Zmajeva pustolovščina",
-                 "Nujne številke, kaj storiti ob težavi in prostor za pomembne številke.")
+                 "Nujne številke, zdravstvena kartica, kaj storiti ob težavi in prostor za pomembne številke.", with_album=True)
     out += G.nav("nujno")
     out += "<main>\n"
     out += G._page_hero("🆘", "Mir v žepu", "Nujne informacije", "Upamo, da jih ne bosta potrebovala — a dobro je, da so tu")
@@ -171,10 +179,11 @@ def nujno_page():
         out += (f'  <details class="step-box"><summary><span class="sb-e">{e}</span>{esc(h)}</summary>'
                 f'<p>{esc(t)}</p></details>\n')
     out += "</section>\n"
+    out += G.zdravje_html()
     out += C.NUJNO_NOTES_HTML
     out += '<div class="back-row"><a class="back-button" href="index.html">🏠 Nazaj na pregled</a></div>\n'
     out += "</main>\n" + G.FOOTER
-    return out
+    return G._extra_script(out, "zdravje.js")
 
 
 PRIPRAVE = [
@@ -206,8 +215,10 @@ def priprave_page():
     out += '<nav class="chip-row" aria-label="Vsebina">\n'
     for i, (e, t, _) in enumerate(PRIPRAVE):
         out += f'  <a class="chip" href="#p{i}">{e} {esc(t)}</a>\n'
+    out += '  <a class="chip" href="#offline">📴 Brez interneta</a>\n'
     out += '  <a class="chip" href="#povezave">🔗 Kupi in rezerviraj</a>\n'
     out += '  <a class="chip" href="#seznam">✅ Kontrolni seznam</a>\n</nav>\n'
+    out += G.offline_box_html()
     out += G.quickbuy_section()
     for i, (e, t, items) in enumerate(PRIPRAVE):
         out += f'<section class="card-section" aria-labelledby="p{i}">\n  <h2 id="p{i}">{e} {esc(t)}</h2>\n  <ul class="nice-list">\n'
@@ -279,6 +290,18 @@ def wiz_steps():
             "Med potjo se domača stran sama prilagodi: naslovna slika, naslov in gumbi so za kraj, kjer sta danes; pokaže tudi, kaj vaju čaka jutri (in povezave za nakup vozovnic). Ime in ikona zavihka v brskalniku pokažeta dan in kraj; v načrtu dneva je označen del, ki je zdaj na vrsti.",
             "Za preizkus dodajta ?dan=2026-10-16 na konec naslova domače strani."],
          "", None, ""),
+        ("☂️", "Dežni način", [
+            "Gumb z dežnikom (spodaj desno) preklopi vso aplikacijo na dežni način: modra tema, kapljice v ozadju in Plan B (notranje možnosti) za današnji kraj na vrhu. Če napoved kaže dež, vama ga app predlaga."],
+         "", None, ""),
+        ("📴", "Brez interneta", [
+            "Aplikacija si shrani strani, slike in rezervacije v telefon, zato deluje tudi brez signala. Slike, ki jih naložita brez povezave, počakajo in se naložijo same. Na strani Priprave je gumb »Pripravi za brez interneta«."],
+         "", ("priprave.html#offline", "Odpri priprave →"), ""),
+        ("🧾", "Rezervacije in zdravstvena kartica", [
+            "V »Moje rezervacije« vpišeta hotel in vozovnice, ki ju vidita oba. V Nujno vsak vpiše zdravstvene podatke; ob težavi pokažeta kartico zdravniku."],
+         "", ("rezervacije.html", "Odpri rezervacije →"), ""),
+        ("✍️", "Zmajev dnevnik", [
+            "Vsak večer eden od vaju napiše kratek povzetek dneva (v aplikaciji ali v Telegramu). Iz teh besedil in slik na koncu nastane potopis."],
+         "", ("dnevnik.html", "Odpri dnevnik →"), ""),
         ("🌦️", "Vreme in sonce", [
             "Na vsaki postaji in na domači strani vidita napoved za kraj: temperature, dež in uro sončnega vzhoda in zahoda — da veta, kaj obleči."],
          "", None, ""),
@@ -318,13 +341,15 @@ def build():
     pages = G.write_pages([("index.html", index_page), ("nacrt.html", G.nacrt_page), ("priprave.html", priprave_page),
                            ("nalozi.html", G.nalozi_page), ("izziv.html", G.izziv_page), ("nujno.html", nujno_page),
                            ("kako.html", G.kako_page), ("kviz.html", G.kviz_page), ("lov.html", G.lov_page),
-                           ("knjiga.html", G.knjiga_page)])
+                           ("knjiga.html", G.knjiga_page), ("rezervacije.html", G.rezervacije_page),
+                           ("dnevnik.html", G.dnevnik_page)])
     for i, loc in enumerate(G.LOCATIONS):
         name = f"{loc['key']}.html"
         with open(os.path.join(G.OUT, name), "w", encoding="utf-8") as f:
             f.write(G.location_page(i, loc))
         pages.append(name)
         print(f"written {name}")
+    G.write_ics()
     G.write_pwa(pages)
     print(f"done — {G.OUT} · izzivov: {N_IZZIVOV}")
 

@@ -1,0 +1,814 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Potovalni vodniki//SL
+CALSCALE:GREGORIAN
+X-WR-CALNAME:Japonska — Mesec za dušo
+BEGIN:VEVENT
+UID:ac592f94c084f011ab36@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261103
+DTEND;VALUE=DATE:20261104
+SUMMARY:🗼 Dan 1 · Tokio
+DESCRIPTION:Prihod v Tokio\n\nPristanek ob 12.10. Po carini uredite IC kar
+ tico in eSIM\, prevoz do hotela\, lahek večerni sprehod in prva večerja
+  blizu nastanitve.\n\nVodnik: https://klemen-glitch.github.io/japonska-me
+ sec-za-duso/jp-xyna9tg2e/tokio.html
+LOCATION:Tokio
+URL:https://klemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/to
+ kio.html
+END:VEVENT
+BEGIN:VEVENT
+UID:9fc9469f228076421b35@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261104
+DTEND;VALUE=DATE:20261105
+SUMMARY:🗼 Dan 2 · Tokio
+DESCRIPTION:Stari Tokio\n\nJutranji Meiji Jingu\, popoldne počasen spreho
+ d po Yanaki in ulici Yanaka Ginza\, svetišče Nezu.\n\nVodnik: https://k
+ lemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/tokio.html
+LOCATION:Tokio
+URL:https://klemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/to
+ kio.html
+END:VEVENT
+BEGIN:VEVENT
+UID:f3e0eb24976e5d5df4a5@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261105
+DTEND;VALUE=DATE:20261106
+SUMMARY:🌳 Dan 3 · Chichibu
+DESCRIPTION:Enodnevni izlet v gore\n\nZ vlakom v Chichibu: gozdna kopel\, 
+ svetišče in soba rezanci. Zvečer nazaj v Tokio — kovčki ostanejo v 
+ hotelu.\n\nVodnik: https://klemen-glitch.github.io/japonska-mesec-za-duso
+ /jp-xyna9tg2e/chichibu.html
+LOCATION:Chichibu
+URL:https://klemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/ch
+ ichibu.html
+END:VEVENT
+BEGIN:VEVENT
+UID:4bbf7d815abbc69899c8@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261105
+DTEND;VALUE=DATE:20261106
+SUMMARY:🚉 Premik: Tokio → Chichibu (izlet)
+DESCRIPTION:Ekspres Seibu 'Laview' iz Ikebukura do Seibu-Chichibu\nČas: p
+ ribl. 80 min (vsak način)\n💡 Enodnevni izlet: zjutraj tja\, zvečer n
+ azaj. Kovčki ostanejo v hotelu v Tokiu.\n\nVozni red (Google): https://w
+ ww.google.com/maps/dir/?api=1&origin=Ikebukuro%20Station&destination=Seib
+ u-Chichibu%20Station&travelmode=transit\nSeibu Laview — vozovnice: http
+ s://www.google.com/search?q=Seibu%20Laview%20Ikebukuro%20Chichibu%20limit
+ ed%20express%20ticket
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🚉 Premik: Tokio → Chichibu (izlet)
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2d52ca3b274b786ce95f@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261106
+DTEND;VALUE=DATE:20261107
+SUMMARY:🗼 Dan 4 · Tokio
+DESCRIPTION:Vrtovi in voda\n\nZajtrk na tržnici Tsukiji\, vrt Hamarikyu s
+  čajnico Nakajima\, ladjica po reki Sumidi\; zvečer po želji osvetljen
+ i vrt Rikugien.\n\nVodnik: https://klemen-glitch.github.io/japonska-mesec
+ -za-duso/jp-xyna9tg2e/tokio.html
+LOCATION:Tokio
+URL:https://klemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/to
+ kio.html
+END:VEVENT
+BEGIN:VEVENT
+UID:5960cbd391d096b525a7@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261106
+DTEND;VALUE=DATE:20261107
+SUMMARY:🚉 Premik: Letališče (Haneda/Narita) → Tokio
+DESCRIPTION:Narita Express / Keisei Skyliner ali Haneda monorail do sredi
+ šča\nČas: 40–90 min\n💡 Prilet ob 12.10 — po carini uredite IC k
+ artico (Suica/ICOCA ali na iPhone) in eSIM.\n\nSkyliner (Keisei) — vozo
+ vnice: https://www.keisei.co.jp/keisei/tetudou/skyliner/us/index.php\nNar
+ ita Express (JR East): https://www.jreast.co.jp/e/nex/\nVozni red (Google
+ ): https://www.google.com/maps/dir/?api=1&origin=Narita%20International%2
+ 0Airport&destination=Ueno%20Station&travelmode=transit
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🚉 Premik: Letališče (Haneda/Narita) → Tokio
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:26ad1c8319f094d117a3@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261107
+DTEND;VALUE=DATE:20261108
+SUMMARY:🗻 Dan 5 · Kawaguchiko & gora Fuji
+DESCRIPTION:Pod goro Fuji\n\nIz Tokia proti jezeru Kawaguchi. Pagoda Chure
+ ito in obala Oishi Park z razgledom na Fuji. Prenočimo ob jezeru.\n\nVod
+ nik: https://klemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/
+ kawaguchiko.html
+LOCATION:Kawaguchiko & gora Fuji
+URL:https://klemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/ka
+ waguchiko.html
+END:VEVENT
+BEGIN:VEVENT
+UID:8f7e39bec39c9397faab@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261107
+DTEND;VALUE=DATE:20261108
+SUMMARY:🚉 Premik: Tokio → Fuji – Kawaguchiko
+DESCRIPTION:Ekspres 'Fuji Excursion' iz Shinjuka ali avtobus\nČas: pribl.
+  2 uri\n💡 Rezervirajte vnaprej\; za poglede na Fuji sedite na desni st
+ rani vlaka.\n\nFuji Excursion / Fujikyu: https://www.fujikyu.co.jp/en/\nA
+ vtobus Shinjuku → Kawaguchiko: https://www.highwaybus.com/gp/index\nVoz
+ ni red (Google): https://www.google.com/maps/dir/?api=1&origin=Shinjuku%2
+ 0Station&destination=Kawaguchiko%20Station&travelmode=transit
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🚉 Premik: Tokio → Fuji – Kawaguchiko
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:a0007768576c8833f333@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+SUMMARY:🏯 Dan 6 · Minobusan
+DESCRIPTION:Noč pri menihih (Kakurinbo)\n\nPot na goro Minobu\, tempelj K
+ uon-ji. Prenočimo v šukuboju Kakurinbo (že rezervirano) — meniška v
+ ečerja in jutranji mir.\n\nVodnik: https://klemen-glitch.github.io/japon
+ ska-mesec-za-duso/jp-xyna9tg2e/minobusan.html
+LOCATION:Minobusan
+URL:https://klemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/mi
+ nobusan.html
+END:VEVENT
+BEGIN:VEVENT
+UID:5153243bd91191b3cb6a@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+SUMMARY:🚉 Premik: Fuji – Kawaguchiko → Minobusan
+DESCRIPTION:Vlak/avtobus prek Fujikawaguchiko in Minobu\nČas: pribl. 2–
+ 2\,5 ure\n💡 Povezava je redka — preverite vozni red\; tempelj Kakuri
+ nbo priporoča popoldanski prihod.\n\nVozni red (Google): https://www.goo
+ gle.com/maps/dir/?api=1&origin=Kawaguchiko%20Station&destination=Minobu%2
+ 0Station&travelmode=transit\nNavitime: https://japantravel.navitime.com/e
+ n/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🚉 Premik: Fuji – Kawaguchiko → Minobusan
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:7d2ef1064bbdd55c9a84@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261109
+DTEND;VALUE=DATE:20261110
+SUMMARY:🌊 Dan 7 · Izu polotok
+DESCRIPTION:Na polotok Izu\n\nJutranja molitev\, nato proti morju na Izu. 
+ Nastanitev v onsen ryokanu\; zvečer prvi onsen z razgledom.\n\nVodnik: h
+ ttps://klemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/izu.ht
+ ml
+LOCATION:Izu polotok
+URL:https://klemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/iz
+ u.html
+END:VEVENT
+BEGIN:VEVENT
+UID:b86ad05bad47303c2a34@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261109
+DTEND;VALUE=DATE:20261110
+SUMMARY:🚉 Premik: Minobusan → Izu
+DESCRIPTION:Vlak prek Fujija/Mishime\, nato na Izu (ekspres 'Odoriko')\nČ
+ as: pribl. 3–4 ure\n💡 Lep prehod proti morju\; če potujete zgodaj\,
+  ste v ryokanu za popoldanski onsen.\n\nVozni red (Google): https://www.g
+ oogle.com/maps/dir/?api=1&origin=Minobu%20Station&destination=Shuzenji%20
+ Station&travelmode=transit\nOdoriko ekspres — vozovnice: https://www.go
+ ogle.com/search?q=JR%20Odoriko%20limited%20express%20Izu%20ticket%20reser
+ vation
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🚉 Premik: Minobusan → Izu
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:30548115157873679dab@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261110
+DTEND;VALUE=DATE:20261111
+SUMMARY:🌊 Dan 8 · Izu polotok
+DESCRIPTION:Onsen mestece Shuzenji\n\nJavorjev gaj Momijirin\, rdeči most
+  Katsura\, bambusova pot\; zvečer po želji osvetlitev v Niji no Sato.\n
+ \nVodnik: https://klemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9
+ tg2e/izu.html
+LOCATION:Izu polotok
+URL:https://klemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/iz
+ u.html
+END:VEVENT
+BEGIN:VEVENT
+UID:5241ff23eecde88c8cea@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261111
+DTEND;VALUE=DATE:20261112
+SUMMARY:🌊 Dan 9 · Izu polotok
+DESCRIPTION:Obala in morje\n\nSprehod po obali Jogasaki\, morska hrana\, p
+ očasen dan brez naglice.\n\nVodnik: https://klemen-glitch.github.io/japo
+ nska-mesec-za-duso/jp-xyna9tg2e/izu.html
+LOCATION:Izu polotok
+URL:https://klemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/iz
+ u.html
+END:VEVENT
+BEGIN:VEVENT
+UID:08650c5c10a7ed04d81e@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261112
+DTEND;VALUE=DATE:20261113
+SUMMARY:⛩️ Dan 10 · Kumano Kodo
+DESCRIPTION:Dolga vožnja na jug\n\nDaljši potovalni dan proti polotoku K
+ ii (prek Nagoje). Kovčke pošljite naprej\, potujte z lahkim nahrbtnikom
+ .\n\nVodnik: https://klemen-glitch.github.io/japonska-mesec-za-duso/jp-xy
+ na9tg2e/kumano.html
+LOCATION:Kumano Kodo
+URL:https://klemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/ku
+ mano.html
+END:VEVENT
+BEGIN:VEVENT
+UID:c3ebdc2cc83cad9a5751@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261112
+DTEND;VALUE=DATE:20261113
+SUMMARY:🚉 Premik: Izu → Kumano Kodo
+DESCRIPTION:Shinkansen do Nagoje\, nato ekspres 'Nanki' do Kii-Katsuura/Na
+ chi\nČas: 6–7 ur (cel dan)\n💡 Najdaljša etapa — kovčke pošljit
+ e naprej (takuhaibin)\, potujte z lahkim nahrbtnikom in vzemite malico.\n
+ \nSmart EX — shinkansen do Nagoje: https://smart-ex.jp/en/\nJR Central 
+ — informacije (Wide View Nanki): https://global.jr-central.co.jp/en/\nV
+ ozni red (Google): https://www.google.com/maps/dir/?api=1&origin=Shuzenji
+ %20Station&destination=Kii-Katsuura%20Station&travelmode=transit
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🚉 Premik: Izu → Kumano Kodo
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:338dfa0bd797b5ad003b@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261113
+DTEND;VALUE=DATE:20261114
+SUMMARY:⛩️ Dan 11 · Kumano Kodo
+DESCRIPTION:Svetišče in slap Nachi\n\nKamnita pot Daimonzaka med cedrami
+ \, pagoda Seiganto-ji in slap Nachi. Zvečer onsen.\n\nVodnik: https://kl
+ emen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/kumano.html
+LOCATION:Kumano Kodo
+URL:https://klemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/ku
+ mano.html
+END:VEVENT
+BEGIN:VEVENT
+UID:305a31b2ce8514c24d30@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261114
+DTEND;VALUE=DATE:20261115
+SUMMARY:⛩️ Dan 12 · Kumano Kodo
+DESCRIPTION:Hongu in rečna kopel\n\nVelika torija Oyunohara in Hongu Tais
+ ha\; kopel Tsuboyu v Yunomine ali rečni Kawayu Onsen.\n\nVodnik: https:/
+ /klemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/kumano.html
+LOCATION:Kumano Kodo
+URL:https://klemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/ku
+ mano.html
+END:VEVENT
+BEGIN:VEVENT
+UID:69feb79cd9f45c8b98d3@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
+SUMMARY:🏔️ Dan 13 · Koya-san
+DESCRIPTION:Na sveto goro\n\nPot na Koya-san. Nočitev pri menihih je zase
+ dena — prespimo v preprostem gostišču/hotelu na gori (dovolj je 1 no
+ č). Zvečer sprehod med lučkami Okunoina.\n\nVodnik: https://klemen-gli
+ tch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/koyasan.html
+LOCATION:Koya-san
+URL:https://klemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/ko
+ yasan.html
+END:VEVENT
+BEGIN:VEVENT
+UID:8032a52c0f98cdb11ff3@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261116
+SUMMARY:🚉 Premik: Kumano Kodo → Koya-san
+DESCRIPTION:Avtobus/vlak prek Kii-Tanabeja in Osake\, Nankai do Gokurakuba
+ shi\, žičnica na goro\nČas: 5–7 ur\n💡 Nočitev pri menihih je zas
+ edena — rezervirajte navaden hotel/gostišče na gori\; dovolj je 1 no
+ č.\n\nVozni red (Google): https://www.google.com/maps/dir/?api=1&origin=
+ Kii-Katsuura%20Station&destination=Koyasan&travelmode=transit\nKoyasan To
+ urist Association — dostop: https://www.koyasan.or.jp/en/\nMeiko Bus: h
+ ttps://www.meikobus.jp/en/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🚉 Premik: Kumano Kodo → Koya-san
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:81e5ec07414c982281d7@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261116
+DTEND;VALUE=DATE:20261117
+SUMMARY:🏔️ Dan 14 · Koya-san
+DESCRIPTION:Templji in vrtovi\n\nDanjo Garan s pagodo Konpon Daito\, tempe
+ lj Kongobu-ji z vrtom Banryutei\; shojin ryori za kosilo.\n\nVodnik: http
+ s://klemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/koyasan.h
+ tml
+LOCATION:Koya-san
+URL:https://klemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/ko
+ yasan.html
+END:VEVENT
+BEGIN:VEVENT
+UID:8d7e254b6d89ccb84fbb@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261117
+DTEND;VALUE=DATE:20261118
+SUMMARY:🏞️ Dan 15 · Shikoku — dolina Iya
+DESCRIPTION:Na Shikoku\n\nDaljša vožnja prek Osake in Okajame v dolino I
+ ya. Nastanitev v gorah.\n\nVodnik: https://klemen-glitch.github.io/japons
+ ka-mesec-za-duso/jp-xyna9tg2e/iya.html
+LOCATION:Shikoku — dolina Iya
+URL:https://klemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/iy
+ a.html
+END:VEVENT
+BEGIN:VEVENT
+UID:ccd56a16baffce5a5e8e@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261117
+DTEND;VALUE=DATE:20261118
+SUMMARY:🚉 Premik: Koya-san → Iya
+DESCRIPTION:Žičnica in Nankai v Osako\, shinkansen do Okajame\, ekspres 
+ 'Nanpu' do Oboke\nČas: 6–7 ur\n💡 Spet daljša etapa prek Shikokuja\
+ ; razmislite o pošiljanju kovčkov.\n\nSmart EX — shinkansen do Okayam
+ e: https://smart-ex.jp/en/\nVozni red (Google): https://www.google.com/ma
+ ps/dir/?api=1&origin=Koyasan&destination=Oboke%20Station&travelmode=trans
+ it
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🚉 Premik: Koya-san → Iya
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:ce5056f52641780ff237@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261118
+DTEND;VALUE=DATE:20261119
+SUMMARY:🏞️ Dan 16 · Shikoku — dolina Iya
+DESCRIPTION:Viseči most in soteska\n\nMost Kazurabashi iz trte\, razgledi
+ šče Hi-no-Ji\, vožnja z ladjico po soteski Oboke.\n\nVodnik: https://k
+ lemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/iya.html
+LOCATION:Shikoku — dolina Iya
+URL:https://klemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/iy
+ a.html
+END:VEVENT
+BEGIN:VEVENT
+UID:16e2fd7c298b886472ec@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261119
+DTEND;VALUE=DATE:20261120
+SUMMARY:🏞️ Dan 17 · Shikoku — dolina Iya
+DESCRIPTION:Vasi in kopel\n\nVas Ochiai\, dvojni mostovi Oku-Iya ali rečn
+ a kopel hotela Iya Onsen. Miren dan v naravi.\n\nVodnik: https://klemen-g
+ litch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/iya.html
+LOCATION:Shikoku — dolina Iya
+URL:https://klemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/iy
+ a.html
+END:VEVENT
+BEGIN:VEVENT
+UID:7fbb1281ec5cd10c411e@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261121
+SUMMARY:🎣 Dan 18 · Ine
+DESCRIPTION:K morju v Ine\n\nVožnja z otoka nazaj proti severu prefekture
+  Kyoto. Prihod v ribiško vasico Ine\, večerni sprehod ob zalivu.\n\nVod
+ nik: https://klemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/
+ ine.html
+LOCATION:Ine
+URL:https://klemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/in
+ e.html
+END:VEVENT
+BEGIN:VEVENT
+UID:761f3ff6ded1f7dae6fb@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261121
+SUMMARY:🚉 Premik: Iya → Ine
+DESCRIPTION:Ekspres do Okajame/Takamatsu\, prek Kyota 'Hashidate' do Amano
+ hashidateja\, avtobus do Ine\nČas: cel dan\n💡 Dolga\, a slikovita pot
+ \; v Ine pridete proti večeru — ravno za sončni zahod nad zalivom.\n\
+ nVozni red (Google): https://www.google.com/maps/dir/?api=1&origin=Oboke%
+ 20Station&destination=Amanohashidate%20Station&travelmode=transit\nNaviti
+ me: https://japantravel.navitime.com/en/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🚉 Premik: Iya → Ine
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:efe9db9d48a181feafdf@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261121
+DTEND;VALUE=DATE:20261122
+SUMMARY:🎣 Dan 19 · Ine
+DESCRIPTION:Hiše na vodi\n\nVožnja z ladjico po zalivu\, razgledna točk
+ a Funaya no Sato\, pivovarna sakeja Mukai Shuzo\, sončni zahod.\n\nVodni
+ k: https://klemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/in
+ e.html
+LOCATION:Ine
+URL:https://klemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/in
+ e.html
+END:VEVENT
+BEGIN:VEVENT
+UID:801bdee910868e0e0aca@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+SUMMARY:🍁 Dan 20 · Kyoto
+DESCRIPTION:V Kyoto (po možnosti prek Nare)\n\nPrek Amanohashidateja v Ky
+ oto. Če je logistično izvedljivo\, vmes dan v Nari\; sicer Naro naredim
+ o kot izlet iz Osake.\n\nVodnik: https://klemen-glitch.github.io/japonska
+ -mesec-za-duso/jp-xyna9tg2e/kyoto.html
+LOCATION:Kyoto
+URL:https://klemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/ky
+ oto.html
+END:VEVENT
+BEGIN:VEVENT
+UID:5fa9c336b679c3e0c318@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261123
+SUMMARY:🚉 Premik: Ine → Kyoto
+DESCRIPTION:Avtobus do Amanohashidateja\, ekspres 'Hashidate' do Kyota\nČ
+ as: pribl. 2–2\,5 ure\n💡 Če čas dopušča\, vmes postanek v Nari\;
+  sicer Naro naredite kot izlet iz Osake.\n\nVozni red (Google): https://w
+ ww.google.com/maps/dir/?api=1&origin=Ine%2C%20Kyoto&destination=Kyoto%20S
+ tation&travelmode=transit\nNavitime: https://japantravel.navitime.com/en/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🚉 Premik: Ine → Kyoto
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:d500f41aa669a9454ef5@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261123
+DTEND;VALUE=DATE:20261124
+SUMMARY:🍁 Dan 21 · Kyoto
+DESCRIPTION:Arašijama\n\nZgodaj v bambusov gaj in vrt Tenryu-ji\, čajnic
+ a in vrt Okochi Sanso\; popoldne po reki Hozu.\n\nVodnik: https://klemen-
+ glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/kyoto.html
+LOCATION:Kyoto
+URL:https://klemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/ky
+ oto.html
+END:VEVENT
+BEGIN:VEVENT
+UID:13275f5631b651e09d10@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261124
+DTEND;VALUE=DATE:20261125
+SUMMARY:🍁 Dan 22 · Kyoto
+DESCRIPTION:Zen vrtovi\n\nKamniti vrt Ryoan-ji zgodaj zjutraj\, Ginkaku-ji
+  in Filozofska pot v jesenskih barvah.\n\nVodnik: https://klemen-glitch.g
+ ithub.io/japonska-mesec-za-duso/jp-xyna9tg2e/kyoto.html
+LOCATION:Kyoto
+URL:https://klemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/ky
+ oto.html
+END:VEVENT
+BEGIN:VEVENT
+UID:bcd4fa42e704c9a92f03@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261125
+DTEND;VALUE=DATE:20261126
+SUMMARY:🍁 Dan 23 · Kyoto
+DESCRIPTION:Jesenska osvetlitev\n\nTofuku-ji in most Tsutenkyo\; zvečer o
+ svetljeni javorji templja Eikando.\n\nVodnik: https://klemen-glitch.githu
+ b.io/japonska-mesec-za-duso/jp-xyna9tg2e/kyoto.html
+LOCATION:Kyoto
+URL:https://klemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/ky
+ oto.html
+END:VEVENT
+BEGIN:VEVENT
+UID:21fabb8b56f406376139@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261126
+DTEND;VALUE=DATE:20261127
+SUMMARY:🍁 Dan 24 · Kyoto
+DESCRIPTION:Čaj\, ustvarjanje in Gion\n\nČajna ceremonija\, delavnica (w
+ agashi\, kaligrafija ali ikebana)\, nakup v Nishikiju\; zvečer sprehod p
+ o Gionu.\n\nVodnik: https://klemen-glitch.github.io/japonska-mesec-za-dus
+ o/jp-xyna9tg2e/kyoto.html
+LOCATION:Kyoto
+URL:https://klemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/ky
+ oto.html
+END:VEVENT
+BEGIN:VEVENT
+UID:39b3d6803c8023a647e8@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261127
+DTEND;VALUE=DATE:20261128
+SUMMARY:🏙️ Dan 25 · Osaka
+DESCRIPTION:V Osako\n\nKratka vožnja v Osako. Grad Osaka in vrt Nishinoma
+ ru\, zvečer Dotonbori.\n\nVodnik: https://klemen-glitch.github.io/japons
+ ka-mesec-za-duso/jp-xyna9tg2e/osaka.html
+LOCATION:Osaka
+URL:https://klemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/os
+ aka.html
+END:VEVENT
+BEGIN:VEVENT
+UID:7c3cc9f1e090375a5ef5@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261127
+DTEND;VALUE=DATE:20261128
+SUMMARY:🚉 Premik: Kyoto → Osaka
+DESCRIPTION:JR 'Special Rapid' ali shinkansen\nČas: 15–30 min\n💡 Naj
+ krajša etapa potovanja\; vlaki vozijo zelo pogosto.\n\nVozni red (Google
+ ): https://www.google.com/maps/dir/?api=1&origin=Kyoto%20Station&destinat
+ ion=Osaka%20Station&travelmode=transit\nJR West — informacije: https://
+ www.westjr.co.jp/global/en/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🚉 Premik: Kyoto → Osaka
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:a303d9511ccca581fd85@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261128
+DTEND;VALUE=DATE:20261129
+SUMMARY:🏙️ Dan 26 · Osaka
+DESCRIPTION:Okusi Osake\n\nTržnica Kuromon\, takoyaki in okonomiyaki\, la
+ djica Tombori\; skriti vrt Keitakuen za uro miru.\n\nVodnik: https://klem
+ en-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/osaka.html
+LOCATION:Osaka
+URL:https://klemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/os
+ aka.html
+END:VEVENT
+BEGIN:VEVENT
+UID:61a312cc7db58f00cc23@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:🦌 Dan 27 · Nara
+DESCRIPTION:Osaka ali izlet v Naro\n\nKdor Nare ni ujel na poti v Kyoto: e
+ nodnevni izlet (Todai-ji\, jeleni\, Kasuga Taisha). Ostale po Osaki po ž
+ elji.\n\nVodnik: https://klemen-glitch.github.io/japonska-mesec-za-duso/j
+ p-xyna9tg2e/nara.html
+LOCATION:Nara
+URL:https://klemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/na
+ ra.html
+END:VEVENT
+BEGIN:VEVENT
+UID:6751f820c1eae0fa2d88@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261129
+DTEND;VALUE=DATE:20261130
+SUMMARY:🚉 Premik: Osaka → Nara (izlet)
+DESCRIPTION:JR ali Kintetsu linija\nČas: pribl. 45 min (vsak način)\n
+ 💡 Enodnevni izlet\, če Nare ne ujamete na poti iz Ine v Kyoto.\n\nVoz
+ ni red (Google): https://www.google.com/maps/dir/?api=1&origin=Osaka%20Na
+ mba%20Station&destination=Nara%20Station&travelmode=transit\nJR West: htt
+ ps://www.westjr.co.jp/global/en/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🚉 Premik: Osaka → Nara (izlet)
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:44c448364b0eaf66bd29@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261130
+DTEND;VALUE=DATE:20261201
+SUMMARY:🕊️ Dan 28 · Hiroshima
+DESCRIPTION:Izlet v Hiroshimo\, kdor želi\n\nZgodaj s shinkansnom v Hiros
+ himo: Park miru in muzej\, nato otok Miyajima s plavajočo torijo. Zveče
+ r nazaj v Osako.\n\nVodnik: https://klemen-glitch.github.io/japonska-mese
+ c-za-duso/jp-xyna9tg2e/hiroshima.html
+LOCATION:Hiroshima
+URL:https://klemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/hi
+ roshima.html
+END:VEVENT
+BEGIN:VEVENT
+UID:fc9cf4a9ccb68e832be7@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261130
+DTEND;VALUE=DATE:20261201
+SUMMARY:🚉 Premik: Osaka → Hiroshima (izlet)
+DESCRIPTION:Shinkansen 'Nozomi' iz Shin-Osake\nČas: pribl. 1 h 25 min (vs
+ ak način)\n💡 Za Miyajimo dodajte še trajekt (~45 min skupaj). Zgodaj
+  začnite — vredno je.\n\nSmart EX — shinkansen Nozomi: https://smart
+ -ex.jp/en/\nVozni red (Google): https://www.google.com/maps/dir/?api=1&or
+ igin=Shin-Osaka%20Station&destination=Hiroshima%20Station&travelmode=tran
+ sit
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🚉 Premik: Osaka → Hiroshima (izlet)
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:0ed780218481c8d72889@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261201
+DTEND;VALUE=DATE:20261202
+SUMMARY:🏙️ Dan 29 · Osaka
+DESCRIPTION:Zadnji počasni dan\n\nZadnji kotički Osake\, tržnica\, zadn
+ ja skodelica matche in spominki. Poslovilna večerja\, pakiranje.\n\nVodn
+ ik: https://klemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/o
+ saka.html
+LOCATION:Osaka
+URL:https://klemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/os
+ aka.html
+END:VEVENT
+BEGIN:VEVENT
+UID:e038d884817cabed6fb7@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261201
+DTEND;VALUE=DATE:20261202
+SUMMARY:🚉 Premik: Kyoto → Osaka
+DESCRIPTION:JR 'Special Rapid' ali shinkansen\nČas: 15–30 min\n💡 Naj
+ krajša etapa potovanja\; vlaki vozijo zelo pogosto.\n\nVozni red (Google
+ ): https://www.google.com/maps/dir/?api=1&origin=Kyoto%20Station&destinat
+ ion=Osaka%20Station&travelmode=transit\nJR West — informacije: https://
+ www.westjr.co.jp/global/en/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:🚉 Premik: Kyoto → Osaka
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cc48fed204b8d5718599@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261202
+DTEND;VALUE=DATE:20261203
+SUMMARY:🏙️ Dan 30 · Osaka
+DESCRIPTION:Pot domov\n\nDopoldne mirno\, nato prevoz na letališče Kansa
+ i. Let domov ob 22.45. Mesec za dušo se izteče — a ostane v srcu.\n\n
+ Vodnik: https://klemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg
+ 2e/osaka.html
+LOCATION:Osaka
+URL:https://klemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/os
+ aka.html
+END:VEVENT
+BEGIN:VEVENT
+UID:bd77a31fd12317c65141@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261103
+DTEND;VALUE=DATE:20261104
+SUMMARY:✈️ Prihod: Letališče (Haneda/Narita) → Tokio
+DESCRIPTION:Narita Express / Keisei Skyliner ali Haneda monorail do sredi
+ šča\nČas: 40–90 min\n💡 Prilet ob 12.10 — po carini uredite IC k
+ artico (Suica/ICOCA ali na iPhone) in eSIM.
+END:VEVENT
+BEGIN:VEVENT
+UID:e06dd06fea8a18c805f8@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261202
+DTEND;VALUE=DATE:20261203
+SUMMARY:✈️ Odhod: Osaka → Letališče Kansai (KIX)
+DESCRIPTION:Ekspres 'Haruka' ali Nankai 'Rapi:t'\nČas: 40–50 min\n💡 
+ Let domov ob 22.45 — na letališču bodite vsaj 3 ure prej\; zadnji dan
+  brez prevelikega programa.
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:✈️ Odhod: Osaka → Letališče Kansai (KIX)
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:724fbd0f98ddd6f72cd5@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261103
+DTEND;VALUE=DATE:20261107
+SUMMARY:🏨 Nastanitev: Tokio
+DESCRIPTION:Ueno ali Asakusa — blizu Yanake\, tržnice in ladjice\; Skyl
+ iner z letališča Narita pripelje prav na postajo Keisei Ueno. Za več p
+ ovezav in nakupov: Shinjuku ali postaja Tokio.\n\nPodrobnosti: https://kl
+ emen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/tokio.html#pres
+ pati
+LOCATION:Tokio
+END:VEVENT
+BEGIN:VEVENT
+UID:ffaeebb04dc2851b4aa0@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261107
+DTEND;VALUE=DATE:20261108
+SUMMARY:🏨 Nastanitev: Kawaguchiko & gora Fuji
+DESCRIPTION:Ob jezeru Kawaguchi — severna obala (razgled na Fuji) ali ok
+ oli postaje Kawaguchiko za lažje povezave.\n\nPodrobnosti: https://kleme
+ n-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/kawaguchiko.html#p
+ respati
+LOCATION:Kawaguchiko & gora Fuji
+END:VEVENT
+BEGIN:VEVENT
+UID:9882abed2330019c7636@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+SUMMARY:🏨 Nastanitev: Minobusan
+DESCRIPTION:Nastanitev je že rezervirana (šukubo Kakurinbo). Shranite po
+ trditev in številko rezervacije v telefon in na papir. Ob prihodu prever
+ ite uro prijave\, uro večerje in jutranje molitve (točno po urniku) ter
+  ali plačate na kraju samem (pogosto gotovina).\n\nPodrobnosti: https://
+ klemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/minobusan.htm
+ l#prespati
+LOCATION:Minobusan
+END:VEVENT
+BEGIN:VEVENT
+UID:462504a2aa5da0780ea0@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261109
+DTEND;VALUE=DATE:20261112
+SUMMARY:🏨 Nastanitev: Izu polotok
+DESCRIPTION:Shuzenji (onsen mesto s starim središčem\, bambusova pot\, M
+ omijirin) — ali obala Izukogen\, če želite razgled na morje.\n\nPodro
+ bnosti: https://klemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg
+ 2e/izu.html#prespati
+LOCATION:Izu polotok
+END:VEVENT
+BEGIN:VEVENT
+UID:973b81e0d25b4ea25082@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261112
+DTEND;VALUE=DATE:20261115
+SUMMARY:🏨 Nastanitev: Kumano Kodo
+DESCRIPTION:Yunomine ali Kawayu Onsen (rečna kopel) za Hongu\; Katsuura/N
+ achi za slap in morje. Ponudba je majhna — preverite razdalje do poti.\
+ n\nPodrobnosti: https://klemen-glitch.github.io/japonska-mesec-za-duso/jp
+ -xyna9tg2e/kumano.html#prespati
+LOCATION:Kumano Kodo
+END:VEVENT
+BEGIN:VEVENT
+UID:109047a67367cd41fb63@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261115
+DTEND;VALUE=DATE:20261117
+SUMMARY:🏨 Nastanitev: Koya-san
+DESCRIPTION:Glavna ulica Koya-san (med Senjuguchi in Daimon) — blizu Oku
+ noina\, Danjo Garan in avtobusov.\n\nPodrobnosti: https://klemen-glitch.g
+ ithub.io/japonska-mesec-za-duso/jp-xyna9tg2e/koyasan.html#prespati
+LOCATION:Koya-san
+END:VEVENT
+BEGIN:VEVENT
+UID:3093aa4d4788a5d43ab5@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261117
+DTEND;VALUE=DATE:20261120
+SUMMARY:🏨 Nastanitev: Shikoku — dolina Iya
+DESCRIPTION:Dolina Iya — Hotel Iya Onsen (kopel ob reki\, žičnica) ali
+  tradicionalna slamnata hiša (kominka) v Higashi-Iya ali Nishi-Iya.\n\nP
+ odrobnosti: https://klemen-glitch.github.io/japonska-mesec-za-duso/jp-xyn
+ a9tg2e/iya.html#prespati
+LOCATION:Shikoku — dolina Iya
+END:VEVENT
+BEGIN:VEVENT
+UID:19238f75a2f14ef345b1@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261122
+SUMMARY:🏨 Nastanitev: Ine
+DESCRIPTION:Ine — nepozabno je prespati kar v funayi (hiše nad vodo)\; 
+ nekaj nastanitev je v samem zalivu\, ostale v bližnjih krajih.\n\nPodrob
+ nosti: https://klemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2
+ e/ine.html#prespati
+LOCATION:Ine
+END:VEVENT
+BEGIN:VEVENT
+UID:5a55c5f3641bbbe31f1f@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261122
+DTEND;VALUE=DATE:20261127
+SUMMARY:🏨 Nastanitev: Kyoto
+DESCRIPTION:Ob postaji Kyoto (povezave)\, Shijo–Kawaramachi (hrana\, Gio
+ n) ali Higashiyama (mirneje\, bližje templjem).\n\nPodrobnosti: https://
+ klemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/kyoto.html#pr
+ espati
+LOCATION:Kyoto
+END:VEVENT
+BEGIN:VEVENT
+UID:4c09f5bbcac2f8d4b05f@potovanja
+DTSTAMP:20261013T205537Z
+DTSTART;VALUE=DATE:20261127
+DTEND;VALUE=DATE:20261202
+SUMMARY:🏨 Nastanitev: Osaka
+DESCRIPTION:Namba ali Shinsaibashi (hrana\, Dotonbori\; vlak Rapi:t na let
+ ališče Kansai gre prav iz Nambe) ali Umeda (povezave).\n\nPodrobnosti: 
+ https://klemen-glitch.github.io/japonska-mesec-za-duso/jp-xyna9tg2e/osaka
+ .html#prespati
+LOCATION:Osaka
+END:VEVENT
+END:VCALENDAR

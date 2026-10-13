@@ -569,6 +569,8 @@ function initWxBox(el) {
     html += '<p class="wx-tip">' + wxTip(rel) + "</p>";
     mainEl.innerHTML = html;
     el.hidden = false;
+    var r0 = shown[0] && shown[0].rain;
+    if (r0 != null && r0 >= 60 && typeof tripRainSuggest === "function") tripRainSuggest(r0, place);
   }).catch(function () { /* brez interneta vreme ostane skrito */ });
 
   // podnebje: lani ob istem času (če je potovanje čez več kot 14 dni)
@@ -864,3 +866,203 @@ function tripReLogin(host, msg) {
   }
   setTimeout(function () { location.href = url; }, 1800);
 }
+
+/* ============================================================
+   Dežni način ☂️: modra tema, kapljice v ozadju, Plan B za dež na vrhu (domača stran in stran postaje).
+   Stanje se shrani po potovanju; ob visoki verjetnosti dežja app predlaga preklop.
+   ============================================================ */
+(function () {
+  function esc(x) { return String(x == null ? "" : x).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function isOn() { try { return localStorage.getItem(SK("rain")) === "1"; } catch (e) { return false; } }
+  function save(on) { try { localStorage.setItem(SK("rain"), on ? "1" : "0"); } catch (e) {} }
+  var planbHome = null, fab = null, layer = null;
+  var themeMeta = null, themeOrig = null;
+
+  function buildLayer() {
+    if (layer) return;
+    layer = document.createElement("div");
+    layer.id = "rain-layer"; layer.setAttribute("aria-hidden", "true");
+    var h = "";
+    for (var i = 0; i < 42; i++) {
+      h += '<i class="drop" style="left:' + (Math.random() * 100).toFixed(1) + "%;animation-delay:" + (-Math.random() * 3).toFixed(2) +
+        "s;animation-duration:" + (0.9 + Math.random() * 1.1).toFixed(2) + "s;opacity:" + (0.25 + Math.random() * 0.4).toFixed(2) + '"></i>';
+    }
+    layer.innerHTML = h;
+    document.body.insertBefore(layer, document.body.firstChild);
+  }
+
+  function homeCard(on) {
+    var old = document.querySelector(".rain-card");
+    if (old) old.parentNode.removeChild(old);
+    var ql = document.querySelector(".quick-links .ql-rain");
+    if (ql) ql.parentNode.removeChild(ql);
+    var hero = document.getElementById("hero");
+    if (!hero) return;
+    hero.classList.toggle("hero-rain", on);
+    if (!on) return;
+    var rd = document.getElementById("rain-data"), data = {};
+    if (rd) { try { data = JSON.parse(rd.textContent); } catch (e) {} }
+    var ctx = tripCtx(), key = "";
+    if (ctx && ctx.station) key = ctx.station.k;
+    else if (ctx && ctx.phase === "before" && ctx.days[0]) key = ctx.days[0].k;
+    var d = data[key];
+    if (!d) return;
+    var html = '<div class="today-kicker">☔ Dežni način</div><h2>Plan B: ' + esc(d.e + " " + d.n) + "</h2>";
+    if (d.dez) html += "<p>" + esc(d.dez) + "</p>";
+    if (d.items && d.items.length) {
+      html += '<ul class="rain-list">' + d.items.map(function (it) {
+        return "<li><strong>" + esc(it[0]) + "</strong> — " + esc(it[1]) + ' <a class="pin-btn" href="' + esc(it[2]) + '" target="_blank" rel="noopener">📍</a></li>';
+      }).join("") + "</ul>";
+    }
+    html += '<p><button type="button" class="here-btn" data-rain-toggle>☀️ Nazaj na običajni način</button></p>';
+    var card = document.createElement("section");
+    card.className = "today-card rain-card"; card.innerHTML = html;
+    var anchor = document.getElementById("today") || hero;
+    anchor.parentNode.insertBefore(card, anchor.nextSibling);
+    var q = document.querySelector(".quick-links");
+    if (q) {
+      var a = document.createElement("a");
+      a.className = "ql-rain"; a.href = key + ".html#plan-b";
+      a.innerHTML = '<span class="ql-emoji" aria-hidden="true">☔</span><span class="ql-t">Plan B: ' + esc(d.n) + '</span><span class="ql-d">notranje možnosti</span>';
+      q.insertBefore(a, q.firstChild);
+    }
+  }
+
+  function stationSection(on) {
+    var pb = document.getElementById("plan-b");
+    if (!pb) return;
+    var loc = document.querySelector(".loc-hero");
+    if (!planbHome) planbHome = { parent: pb.parentNode, next: pb.nextSibling };
+    if (on && loc) {
+      loc.parentNode.insertBefore(pb, loc.nextSibling);
+      pb.classList.add("rain-top");
+    } else if (planbHome) {
+      pb.classList.remove("rain-top");
+      planbHome.parent.insertBefore(pb, planbHome.next);
+    }
+  }
+
+  function apply() {
+    var on = isOn();
+    var root = document.documentElement;
+    if (on) root.setAttribute("data-rain", "1"); else root.removeAttribute("data-rain");
+    if (on) buildLayer();
+    if (layer) layer.style.display = on ? "" : "none";
+    if (!themeMeta) { themeMeta = document.querySelector('meta[name="theme-color"]'); themeOrig = themeMeta ? themeMeta.getAttribute("content") : null; }
+    if (themeMeta) themeMeta.setAttribute("content", on ? "#1f6fb2" : themeOrig);
+    if (fab) {
+      fab.setAttribute("aria-pressed", on ? "true" : "false");
+      fab.textContent = on ? "🌧️" : "☂️";
+      fab.title = on ? "Izklopi dežni način" : "Dežni način (Plan B)";
+    }
+    homeCard(on);
+    stationSection(on);
+    var sg = document.querySelector(".rain-suggest");
+    if (sg && on) sg.parentNode.removeChild(sg);
+  }
+
+  function toggle() { save(!isOn()); apply(); }
+  window.tripRainToggle = toggle;
+
+  window.tripRainSuggest = function (pct, where) {
+    if (isOn() || document.querySelector(".rain-suggest")) return;
+    try { if (sessionStorage.getItem("rain_dismiss") === tripToday()) return; } catch (e) {}
+    var b = document.createElement("div");
+    b.className = "rain-suggest";
+    b.innerHTML = '<span>☔ Napoved' + (where ? " za " + esc(where) : "") + ": dež (" + pct + " %). Preklopite na dežni način?</span>" +
+      '<button type="button" class="here-btn" data-rain-toggle>Preklopi</button><button type="button" class="rain-x" aria-label="Zapri">✕</button>';
+    var hd = document.querySelector(".site-header");
+    if (hd && hd.parentNode) hd.parentNode.insertBefore(b, hd.nextSibling); else document.body.insertBefore(b, document.body.firstChild);
+    b.querySelector(".rain-x").addEventListener("click", function () {
+      try { sessionStorage.setItem("rain_dismiss", tripToday()); } catch (e) {}
+      b.parentNode.removeChild(b);
+    });
+  };
+
+  document.addEventListener("click", function (e) {
+    var t = e.target.closest && e.target.closest("[data-rain-toggle]");
+    if (t) { e.preventDefault(); toggle(); }
+  });
+
+  function init() {
+    fab = document.createElement("button");
+    fab.type = "button"; fab.id = "rain-fab"; fab.className = "no-print";
+    fab.addEventListener("click", toggle);
+    document.body.appendChild(fab);
+    apply();
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
+})();
+
+/* ============================================================
+   Brez interneta: oznaka povezave, samodejna priprava (enkrat na različico) in gumb »Pripravi za brez interneta«.
+   Strežniški del je v sw.js (precache-all).
+   ============================================================ */
+(function () {
+  var T = window.TRIP || {};
+  var pill = null;
+
+  function pendingCount() { return (window.TripData && TripData.pending) ? TripData.pending() : 0; }
+  function updatePill() {
+    var off = !navigator.onLine, n = pendingCount();
+    if (!off && !n) { if (pill) { pill.parentNode.removeChild(pill); pill = null; } return; }
+    if (!pill) {
+      pill = document.createElement("div");
+      pill.id = "net-pill"; pill.className = "no-print"; pill.setAttribute("role", "status");
+      document.body.appendChild(pill);
+    }
+    pill.textContent = (off ? "📴 Brez povezave — vse shranjeno deluje" : "🔄 Pošiljam shranjeno …") + (n ? " · ⏳ " + n + " čaka" : "");
+    pill.classList.toggle("off", off);
+  }
+  window.addEventListener("online", updatePill);
+  window.addEventListener("offline", updatePill);
+  document.addEventListener("tripdata:queue", updatePill);
+  document.addEventListener("tripdata:synced", updatePill);
+  document.addEventListener("DOMContentLoaded", updatePill);
+
+  function readyInfo() { try { return JSON.parse(localStorage.getItem("offline_ready") || "null"); } catch (e) { return null; } }
+  function isReady() { var r = readyInfo(); return !!(r && r.b === T.build); }
+
+  function paint(done, total, fin) {
+    document.querySelectorAll(".offline-box").forEach(function (box) {
+      var bar = box.querySelector(".offline-bar i"), msg = box.querySelector(".offline-msg"), btn = box.querySelector("[data-offline-go]");
+      if (bar) bar.style.width = (total ? Math.round(done * 100 / total) : 0) + "%";
+      if (msg) msg.textContent = fin ? "✅ Pripravljeno: " + done + " datotek je shranjenih v telefonu. Aplikacija deluje tudi brez interneta." : "Nalagam … " + done + " / " + total;
+      if (btn) btn.disabled = !fin && done < total;
+    });
+  }
+
+  function start() {
+    if (!("serviceWorker" in navigator)) return;
+    navigator.serviceWorker.ready.then(function (reg) {
+      var sw = reg.active || navigator.serviceWorker.controller;
+      if (sw) sw.postMessage({ type: "precache-all" });
+    });
+  }
+
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.addEventListener("message", function (ev) {
+      var d = ev.data || {};
+      if (d.type === "precache-progress") paint(d.done, d.total, false);
+      if (d.type === "precache-done") {
+        try { localStorage.setItem("offline_ready", JSON.stringify({ b: T.build, t: Date.now(), n: d.total, f: d.fail })); } catch (e) {}
+        paint(d.done, d.total, true);
+      }
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    var r = readyInfo();
+    document.querySelectorAll(".offline-box").forEach(function (box) {
+      var btn = box.querySelector("[data-offline-go]");
+      if (r && r.b === T.build) paint(r.n - (r.f || 0), r.n, true);
+      if (btn) btn.addEventListener("click", function () {
+        if (!navigator.onLine) { var m = box.querySelector(".offline-msg"); if (m) m.textContent = "Za pripravo potrebujete internet — poskusite, ko ste na WiFi."; return; }
+        paint(0, 1, false); start();
+      });
+    });
+    // samodejno enkrat na različico (ne ob varčevanju s podatki)
+    var saver = navigator.connection && navigator.connection.saveData;
+    if (navigator.onLine && !isReady() && !saver && "serviceWorker" in navigator) setTimeout(start, 7000);
+  });
+})();

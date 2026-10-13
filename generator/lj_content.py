@@ -12,6 +12,7 @@ CFG = {
     "desc": "Ana in Maks v Ljubljani: 15.–16. oktober 2026 — vlak, hotel, Katja in cel dan v živalskem vrtu.",
     "people": ["Ana", "Maks"],
     "dates": "15.–16. oktober 2026",
+    "base_url": "https://klemen-glitch.github.io/japonska-mesec-za-duso",
     "country": {"name": "Slovenija", "c": [46.12, 14.82], "z": 8},
     "geo_radius_km": 12,
     "after": ["Bravo, zmajska ekipa!",
@@ -71,6 +72,9 @@ TXT = {
     "knjiga_hero": ("📖", "Iz vajinih slik", "Zmajeva knjiga", "Fotografije iz albuma po postajah, pripravljene za tisk"),
     "knjiga_intro": "Knjiga se sestavi sama iz slik, ki ju naložita. Z ✕ izpustita slike, ki jih nočeta, nato jo natisneta ali shranita kot PDF.",
     "facts_h": "💡 Še več zanimivosti",
+    "rez_hero": ("🧾", "Vse na enem mestu", "Moje rezervacije", "Hotel, vozovnice in vstopnice — vidita jih oba"),
+    "dnevnik_hero": ("✍️", "Za Zmajevo knjigo", "Zmajev dnevnik", "Kratek povzetek vsakega dne — iz tega nastane potopis"),
+    "zdravje_intro": "Vsak vpiše svoje podatke; vidita jih oba (in delujejo tudi brez interneta). Ob težavi pokažita zdravniku kartico.",
     "izziv_jump": "📸 Poglejta foto izzive",
 }
 
@@ -897,3 +901,30 @@ LOV = [
         {"id": "c_slike", "e": "🖼️", "n": "Fotografije za Zmajevo knjigo", "count": True},
     ]},
 ]
+
+# --------------------------------------------------------------------------- Plan B za dež (Ljubljana)
+RAIN = {
+    "vlak": [
+        ("Igre v vlaku", "Zmajev kviz in Zmajev lov v aplikaciji — brez zunanjega vremena", "Slovenske železnice vlak"),
+    ],
+    "emonec": [
+        ("Narodni muzej Slovenije", "okoli 650 m od hotela: arheologija in zlata zgodovina Slovenije", "Narodni muzej Slovenije Ljubljana"),
+        ("Mestni muzej Ljubljana", "zgodovina mesta in Emona (pod streho)", "Mestni muzej Ljubljana"),
+        ("Stolnica sv. Nikolaja (notranjost)", "baročna notranjost, kratek postanek", "Stolnica sv. Nikolaja Ljubljana"),
+    ],
+    "center": [
+        ("Prirodoslovni muzej Slovenije", "živali, minerali in dinozavri — super za Maksa", "Prirodoslovni muzej Slovenije Ljubljana"),
+        ("Hiša eksperimentov", "vse se sme poskusiti (preverita urnik!)", "Hiša eksperimentov, Trubarjeva cesta 39, Ljubljana"),
+        ("Mestni muzej Ljubljana", "zgodovina mesta pod streho", "Mestni muzej Ljubljana"),
+        ("Topla čokolada v kavarni", "po sprehodu — in z Katjo klepet", "topla čokolada Ljubljana center"),
+    ],
+    "zoo": [
+        ("Vivarij in terariji", "notranji prostori: kače, kuščarji, žabe", "Vivarij Živalski vrt Ljubljana"),
+        ("Restavracija v zoo", "toplo kosilo in sladoled pod streho", "Restavracija Živalski vrt Ljubljana"),
+        ("Pelerina + izzivi", "živali so ob dežju pogosto bolj skrivnostne — izzivi še vedno veljajo", "Živalski vrt Ljubljana"),
+        ("Rezerva: Prirodoslovni muzej", "če dež postane premočan, se vrnita v mesto", "Prirodoslovni muzej Slovenije Ljubljana"),
+    ],
+    "domov": [
+        ("Kavarna na postaji", "topel napitek pred vlakom", "kavarna železniška postaja Ljubljana"),
+    ],
+}

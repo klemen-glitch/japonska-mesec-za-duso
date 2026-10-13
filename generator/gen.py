@@ -30,6 +30,7 @@ CFG = {
     "desc": "Potovalni vodnik: Japonska, 3. november – 2. december 2026, Tokio → Osaka.",
     "people": ["Marjetica", "Helena", "Ljuba", "Magda"],
     "dates": "3. november – 2. december 2026",
+    "base_url": "https://klemen-glitch.github.io/japonska-mesec-za-duso",
     # kontekst zemljevidov: pogled »država« (središče, povečava) in največja oddaljenost točk od postaje (km)
     "country": {"name": "Japonska", "c": [37.9, 137.6], "z": 5},
     "geo_radius_km": 60,
@@ -72,6 +73,10 @@ TXT = {
     "knjiga_intro": "Knjiga se sestavi sama iz slik, ki ste jih naložile. Z ✕ izpustite slike, ki jih ne želite, in jo natisnite ali shranite kot PDF.",
     "stroski_hero": ("💴", "Skupna evidenca", "Skupni stroški", "Kdo je plačal, kdo komu koliko dolguje — vsi vidite isto"),
     "facts_h": "💡 Še več zanimivosti",
+    "rez_hero": ("🧾", "Vse na enem mestu", "Moje rezervacije", "Hoteli, vozovnice in vstopnice — vidite jih vse štiri"),
+    "taksi_hero": ("🚕", "Pokažite voznika", "Kartice za taksista", "Naslov v japonščini na celem zaslonu — brez govorjenja"),
+    "dnevnik_hero": ("✍️", "Za potopis", "Dnevnik potovanja", "Kratek povzetek vsakega dne — iz tega nastane potopis"),
+    "zdravje_intro": "Vsaka vpiše svoje podatke; vidite jih vse štiri (in delujejo tudi brez interneta). Ob težavi pokažite zdravniku kartico v japonščini in angleščini.",
     "izziv_why": "Zakaj to počnemo?",
     "izzivi_intro": ("Naložite fotografijo (ali video) za izziv — takoj se označi kot opravljen in se spodaj pokaže sličica. "
                      "Iz tega nastane vaš skupni album."),
@@ -87,7 +92,7 @@ OUT = os.path.join(SITE_DIR, CFG["slug"])
 
 # Verzija gradnje — doda se v naslov CSS/JS (?v=BUILD), da brskalnik vedno
 # naloži svežo različico. Ob vsaki spremembi povečaj.
-BUILD = "21"
+BUILD = "22"
 
 # ----------------------------------------------------------------------------
 # VSEBINA
@@ -416,10 +421,14 @@ QUICKBUY = JP.QUICKBUY
 DOZ_SEARCH = JP.DOZ_SEARCH
 FOOD_LINKS = JP.FOOD_LINKS
 FACTS = JP.FACTS
+RAIN = JP.RAIN
 QUIZ = JP.QUIZ
 LOV = JP.LOV
 SHOW_FX = True            # pretvornik valut (Japonska)
-FEATURES = {"stroski": True}
+FEATURES = {"stroski": True, "taksi": True, "pogovor": True}
+TAXI_DESTS = JP.TAXI_DESTS
+TAXI_PHRASES = JP.TAXI_PHRASES
+CONV_PHRASES = JP.CONV_PHRASES
 GEO_RADIUS = JP.GEO_RADIUS
 
 _SL_MON = ["jan", "feb", "mar", "apr", "maj", "jun", "jul", "avg", "sep", "okt", "nov", "dec"]
@@ -578,7 +587,7 @@ def trip_boot():
     """Nastavitve potovanja za JS + zaščita: brez PIN-a vrne na vstopno stran."""
     t = {"id": CFG["id"], "slug": CFG["slug"], "people": CFG["people"], "gate": "../index.html",
          "after": CFG.get("after"), "t": CFG.get("t"), "color": CFG.get("pin"), "country": CFG.get("country"),
-         "title": CFG["title"], "dates": CFG.get("dates"),
+         "title": CFG["title"], "dates": CFG.get("dates"), "build": BUILD,
          "stations": [{"k": l["key"], "e": l["emoji"], "n": l["nav"], "nm": l["name"], "s": l["sub"]} for l in LOCATIONS],
          "days": [{"d": d["day"], "iso": day_iso(d["day"]), "k": REGION_KEY.get(d["region"], ""), "r": d["region"],
                    "dt": d["date"]} for d in ITINERARY.get("days", [])]}
@@ -599,6 +608,7 @@ def head(title, desc, with_map=False, with_album=False):
     if with_album:
         album = (
             '  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>\n'
+            f'  <script defer src="data.js?v={BUILD}"></script>\n'
             f'  <script defer src="album.js?v={BUILD}"></script>\n'
         )
     return f"""<!DOCTYPE html>
@@ -630,9 +640,12 @@ NAV_PRIMARY = [
     ("kviz.html", "kviz", "🧠", "Kviz"),
     ("lov.html", "lov", "🔎", "Lov na stvari"),
     ("stroski.html", "stroski", "💴", "Skupni stroški"),
+    ("rezervacije.html", "rezervacije", "🧾", "Moje rezervacije"),
+    ("taksi.html", "taksi", "🚕", "Kartice za taksista"),
+    ("dnevnik.html", "dnevnik", "✍️", "Dnevnik"),
     ("dozivetja.html", "dozivetja", "🎨", "Doživetja"),
     ("priprave.html", "priprave", "🎒", "Priprave"),
-    ("prevajalec.html", "prevajalec", "🔍", "Prevajalec s kamero"),
+    ("prevajalec.html", "prevajalec", "🔍", "Prevajalec (govor + kamera)"),
     ("nasveti.html", "nasveti", "💡", "Nasveti in kartice"),
     ("nujno.html", "nujno", "🆘", "Nujno"),
 ]
@@ -986,6 +999,36 @@ def stay_section(key):
     return "\n".join(parts) + "\n"
 
 
+def rain_section(key):
+    """Plan B za dež: notranje možnosti; v »dežnem načinu« ga JS postavi na vrh strani."""
+    items = RAIN.get(key, [])
+    dez = EXTRAS.get(key, {}).get("dez", "")
+    if not items and not dez:
+        return ""
+    parts = ['<section class="card-section rain-section" id="plan-b" aria-labelledby="planb-h">',
+             '  <h2 id="planb-h">☔ Plan B za dež</h2>']
+    if dez:
+        parts.append(f"  <p>{esc(dez)}</p>")
+    if items:
+        parts.append('  <ul class="rain-list">')
+        for n, d, q in items:
+            parts.append(f'    <li><strong>{esc(n)}</strong> — {esc(d)} <a class="pin-btn" href="{maps_url(q)}" target="_blank" rel="noopener">📍 Zemljevid</a></li>')
+        parts.append("  </ul>")
+    parts.append('  <button type="button" class="buy-btn rain-switch" data-rain-toggle>☂️ Dežni način</button>')
+    parts.append("</section>")
+    return "\n".join(parts) + "\n"
+
+
+def rain_script():
+    rows = {}
+    for loc in LOCATIONS:
+        k = loc["key"]
+        if RAIN.get(k) or EXTRAS.get(k, {}).get("dez"):
+            rows[k] = {"n": loc["nav"], "e": loc["emoji"], "dez": EXTRAS.get(k, {}).get("dez", ""),
+                       "items": [[n, d, maps_url(q)] for n, d, q in RAIN.get(k, [])]}
+    return '<script type="application/json" id="rain-data">' + json.dumps(rows, ensure_ascii=False) + "</script>\n"
+
+
 def wx_box(key):
     """Vreme v kraju (Open-Meteo); če je znan datum bivanja, tudi lanski podatki za ta čas."""
     m = MAPS.get(key)
@@ -1164,6 +1207,7 @@ def location_page(i, loc):
 
     out += map_section(loc["key"])
     out += day_plan_section(g)
+    out += rain_section(loc["key"])
     out += izzivi_section(loc["key"])
     out += food_section(loc, g)
     out += practical_section(g)
@@ -1390,7 +1434,7 @@ NUJNO_STEPS = [
 
 def nujno_page():
     out = head("Nujno · Japonska — Mesec za dušo",
-               "Nujne številke, veleposlaništvo, kaj storiti ob izgubi kartice ali telefona, in kartice za pomoč v japonščini.")
+               "Nujne številke, veleposlaništvo, kaj storiti ob izgubi kartice ali telefona, in kartice za pomoč v japonščini.", with_album=True)
     out += nav("nujno")
     out += "<main>\n"
     out += _page_hero("🆘", "Mir v žepu", "Nujne informacije",
@@ -1403,6 +1447,7 @@ def nujno_page():
         out += (f'  <details class="step-box"><summary><span class="sb-e">{e}</span>{esc(h)}</summary>'
                 f'<p>{esc(t)}</p></details>\n')
     out += "</section>\n"
+    out += zdravje_html()
 
     out += '<section class="card-section" aria-labelledby="povej">\n  <h2 id="povej">🗣️ Povej po japonsko (pokaži zaslon)</h2>\n  <div class="show-grid">\n'
     for e, sl, jp, ro in NUJNO_CARDS:
@@ -1412,7 +1457,7 @@ def nujno_page():
     out += NUJNO_NOTES_HTML
     out += '<div class="back-row"><a class="back-button" href="index.html">🏠 Nazaj na pregled</a></div>\n'
     out += "</main>\n" + FOOTER
-    return out
+    return _extra_script(out, "zdravje.js")
 
 
 def _page_hero(emoji, kicker, title, subtitle, photo_key=None):
@@ -1462,6 +1507,8 @@ def nacrt_page():
     if it.get("intro"):
         out += f'<p class="intro-note">{esc(it["intro"])}</p>\n'
 
+    out += ('<p class="cal-row"><a class="buy-btn" href="potovanje.ics" download="potovanje.ics">📅 Dodaj v koledar</a> '
+            '<span class="buy-note">Dnevi, nastanitve in prevozi — odpre se v koledarju (iPhone, Google, Outlook).</span></p>\n')
     # dnevi, grupirani po regiji
     out += '<section class="card-section" aria-labelledby="dnevi">\n  <h2 id="dnevi">📅 Dan za dnem</h2>\n'
     out += '  <ol class="itinerary">\n'
@@ -1578,9 +1625,11 @@ def priprave_page():
         d = PRACTICAL.get(k)
         if d:
             out += f'  <a class="chip" href="#{k}">{d.get("emoji","")} {esc(d["title"])}</a>\n'
+    out += '  <a class="chip" href="#offline">📴 Brez interneta</a>\n'
     out += '  <a class="chip" href="#povezave">🔗 Kupi in rezerviraj</a>\n'
     out += '  <a class="chip" href="#seznam">✅ Kontrolni seznam</a>\n'
     out += "</nav>\n"
+    out += offline_box_html()
     out += quickbuy_section()
     if SHOW_FX:
         out += fx_box_html()
@@ -1721,6 +1770,37 @@ def trip_script():
             + json.dumps(rows, ensure_ascii=False) + "</script>\n")
 
 
+def _extra_script(out, *files):
+    tags = "".join(f'<script defer src="{f}?v={BUILD}"></script>\n' for f in files)
+    return out.replace("</body>", tags + "</body>", 1)
+
+
+def zdravje_html():
+    return (f'<section class="card-section" id="zdravje" aria-labelledby="zdravje-h">\n  <h2 id="zdravje-h">🩺 Zdravstvena kartica</h2>\n'
+            f'  <p class="cat-intro">{esc(TXT["zdravje_intro"])}</p>\n  <div id="zdravje-host"></div>\n</section>\n')
+
+
+def stays_script():
+    rows = []
+    for loc in LOCATIONS:
+        k = loc["key"]
+        lod = LODGING.get(k)
+        if not lod or lod.get("optional"):
+            continue
+        d = stay_dates(k)
+        if d:
+            rows.append({"k": k, "n": loc["nav"], "e": loc["emoji"], "ci": d[0], "co": d[1]})
+    return '<script type="application/json" id="stays-data">' + json.dumps(rows, ensure_ascii=False) + "</script>\n"
+
+
+def offline_box_html():
+    return ('<section class="card-section offline-box" id="offline"><h2>📴 Brez interneta</h2>'
+            '<p class="cat-intro">Aplikacija deluje tudi brez povezave: strani, slike, načrt, rezervacije, taksi kartice in zdravstvene kartice se shranijo v telefon. '
+            'Zemljevid prikaže območja, ki ste jih že odprli. Slike, ki jih naložite brez interneta, počakajo in se naložijo same.</p>'
+            '<button type="button" class="buy-btn" data-offline-go>📥 Pripravi za brez interneta</button>'
+            '<div class="offline-bar"><i></i></div><p class="buy-note offline-msg"></p></section>\n')
+
+
 def hero_templates():
     """Naslovne slike postaj (neaktivne predloge) — JS jih uporabi, ko potovanje teče in se domača stran prilagodi kraju."""
     return "".join(f'<template id="hero-tpl-{l["key"]}">{banner_html(l["key"], art.location_scene(l["key"]), l["name"])}</template>\n'
@@ -1761,7 +1841,13 @@ QUICK_LINKS = [
     ("lov.html", "🔎", "Lov na stvari", "torije, jeleni, matcha …"),
     ("knjiga.html", "📖", "Potopisna knjiga", "iz slik v albumu"),
     ("stroski.html", "💴", "Skupni stroški", "kdo komu koliko dolguje"),
+    ("rezervacije.html", "🧾", "Moje rezervacije", "hoteli in vozovnice na enem mestu"),
+    ("taksi.html", "🚕", "Kartice za taksista", "naslov v japonščini"),
+    ("dnevnik.html", "✍️", "Dnevnik", "povzetek dneva za potopis"),
+    ("prevajalec.html", "💬", "Pogovorni prevajalnik", "govorite in prevede"),
+    ("nujno.html#zdravje", "🩺", "Zdravstvena kartica", "v Nujno"),
     ("nacrt.html#prehodi", "🚄", "Prevozi in vozovnice", "povezave za nakup"),
+    ("potovanje.ics", "📅", "Dodaj v koledar", "iPhone, Google, Outlook"),
     ("nasveti.html#kartice", "🪪", "Kartice za domačine", "pokažite zaslon"),
     ("nasveti.html#fraze", "🗣️", "Fraze", "z izgovorjavo 🔊"),
     ("prevajalec.html", "🔍", "Prevajalec s kamero", "japonski napis → slovensko"),
@@ -1840,15 +1926,10 @@ def index_page():
   <a class="back-button" href="nujno.html">🆘 Nujne informacije</a>
 </div>
 """
-    out += trip_script() + route_script() + facts_script() + legs_script() + hero_templates()
+    out += trip_script() + route_script() + facts_script() + legs_script() + hero_templates() + rain_script()
     out += "</main>\n"
     out += FOOTER
     return out
-
-
-def _extra_script(out, *files):
-    tags = "".join(f'<script defer src="{f}?v={BUILD}"></script>\n' for f in files)
-    return out.replace("</body>", tags + "</body>", 1)
 
 
 def kviz_page():
@@ -1881,6 +1962,35 @@ def knjiga_page():
     out += f'<script type="application/json" id="izziv-data">{json.dumps(_all_challenge_data(), ensure_ascii=False)}</script>\n'
     out += '<div class="back-row no-print"><a class="back-button" href="nalozi.html">📤 Naloži še fotografije</a></div>\n</main>\n' + FOOTER
     return _extra_script(out, "knjiga.js")
+
+
+def rezervacije_page():
+    out = head("Moje rezervacije · " + CFG["title"], TXT["rez_hero"][3], with_album=True)
+    out += nav("rezervacije") + "<main>\n"
+    out += _page_hero(*TXT["rez_hero"])
+    out += '<div id="book-host"></div>\n' + stays_script()
+    out += '<div class="back-row"><a class="back-button" href="priprave.html#povezave">🔗 Kupi in rezerviraj</a></div>\n</main>\n' + FOOTER
+    return _extra_script(out, "rezervacije.js")
+
+
+def taksi_page():
+    out = head("Kartice za taksista · " + CFG["title"], TXT["taksi_hero"][3], with_album=True)
+    out += nav("taksi") + "<main>\n"
+    out += _page_hero(*TXT["taksi_hero"])
+    out += '<div id="taxi-host"></div>\n'
+    out += f'<script type="application/json" id="taxi-dests">{json.dumps(TAXI_DESTS, ensure_ascii=False)}</script>\n'
+    out += f'<script type="application/json" id="taxi-phrases">{json.dumps(TAXI_PHRASES, ensure_ascii=False)}</script>\n'
+    out += '<div class="back-row"><a class="back-button" href="rezervacije.html">🧾 Moje rezervacije</a></div>\n</main>\n' + FOOTER
+    return _extra_script(out, "rezervacije.js")
+
+
+def dnevnik_page():
+    out = head("Dnevnik · " + CFG["title"], TXT["dnevnik_hero"][3], with_album=True)
+    out += nav("dnevnik") + "<main>\n"
+    out += _page_hero(*TXT["dnevnik_hero"])
+    out += '<div id="diary-host"></div>\n'
+    out += '<div class="back-row"><a class="back-button" href="knjiga.html">📖 Potopisna knjiga</a></div>\n</main>\n' + FOOTER
+    return _extra_script(out, "dnevnik.js")
 
 
 def fx_box_html():
@@ -2009,6 +2119,21 @@ def _wiz_steps():
         ("💴", "Skupni stroški", [
             "Vpišite, kdo je kaj plačal in za koga. Vse štiri vidite isti seznam, na koncu pa aplikacija izračuna, kdo komu koliko dolguje (jeni in evri ločeno). Zraven je tudi pretvornik evro ↔ jen."],
          "", ("stroski.html", "Odpri stroške →"), ""),
+        ("☂️", "Dežni način", [
+            "Rdeč gumb z dežnikom (spodaj desno) preklopi vso aplikacijo na dežni način: modra tema, kapljice v ozadju in Plan B (notranje možnosti) za današnji kraj na vrhu. Če napoved kaže dež, vam ga app tudi predlaga."],
+         "", None, ""),
+        ("📴", "Brez interneta", [
+            "Aplikacija si shrani strani, slike in rezervacije v telefon, zato deluje tudi v gorah brez signala. Slike, ki jih naložite brez povezave, počakajo in se naložijo same. Na strani Priprave je gumb »Pripravi za brez interneta«."],
+         "", ("priprave.html#offline", "Odpri priprave →"), ""),
+        ("🧾", "Rezervacije, taksi in zdravstvena kartica", [
+            "V »Moje rezervacije« vpišete hotele in vozovnice, ki jih vidite vse. Naslov v japonščini se prikaže kot »Kartica za taksista«. V Nujno vsaka vpiše zdravstvene podatke; ob težavi pokažete kartico v japonščini in angleščini."],
+         "", ("rezervacije.html", "Odpri rezervacije →"), ""),
+        ("💬", "Pogovorni prevajalnik", [
+            "Na strani Prevajalec tapnete mikrofon, govorite slovensko in telefon prevede, izgovori in prikaže veliko besedilo. Za domačina je gumb »Govori domačin«. Hitre fraze delujejo tudi brez interneta."],
+         "", ("prevajalec.html", "Odpri prevajalnik →"), ""),
+        ("✍️", "Dnevnik in potopis", [
+            "Vsak večer ena od vas napiše kratek povzetek dneva (v aplikaciji ali v Telegramu). Iz teh besedil in slik na koncu nastane potopis."],
+         "", ("dnevnik.html", "Odpri dnevnik →"), ""),
         ("📲", "Dodajte stran na domači zaslon", [
             "Da bo stran kot prava aplikacija (ikona na zaslonu, odpira se čez cel zaslon). Ob prvem odprtju z domačega zaslona boste kodo vnesle še enkrat."],
          demo_install, None, ""),
@@ -2048,12 +2173,36 @@ def kako_page():
 
 
 def prevajalec_page():
-    out = head("Prevajalec s kamero · Japonska — Mesec za dušo",
-               "Usmerite kamero proti japonskemu besedilu in dobite prevod v slovenščino.")
+    out = head("Prevajalec · Japonska — Mesec za dušo",
+               "Pogovorni prevajalnik (govor) in prevajalec s kamero: slovensko ↔ japonsko.")
     out += nav("prevajalec")
     out += "<main>\n"
-    out += _page_hero("🔍", "Kot Google Lens", "Prevajalec s kamero",
-                      "Usmerite telefon proti japonskemu napisu — prevod se prikaže pod njim")
+    out += _page_hero("🔍", "Govor in kamera", "Prevajalec",
+                      "Pogovor (govorite v telefon) ali kamera (usmerite proti napisu)")
+    out += ('<div class="tr-tabs" role="tablist"><button type="button" class="on" data-tab="pogovor">💬 Pogovor</button>'
+            '<button type="button" data-tab="kamera">📷 Kamera</button></div>\n')
+    out += """<section class="card-section pg-card" id="pogovor" data-pane="pogovor">
+  <h2>💬 Pogovor</h2>
+  <p class="cat-intro">Tapnite mikrofon in govorite — telefon prevede, izgovori in prikaže veliko besedilo za domačina.</p>
+  <div class="pg-mics">
+    <button type="button" class="pg-mic pg-sl" data-lang="sl-SI" data-dir="sl-ja">🎤<b>Govorim jaz</b><span>slovensko → japonsko</span></button>
+    <button type="button" class="pg-mic pg-ja" data-lang="ja-JP" data-dir="ja-sl">🎤<b>Govori domačin</b><span>japonsko → slovensko</span></button>
+  </div>
+  <div class="pg-live" id="pg-live" aria-live="polite"></div>
+  <p class="pg-status" id="pg-status" role="status"></p>
+  <div class="pg-type">
+    <input type="text" id="pg-text" placeholder="…ali natipkajte besedilo" autocomplete="off">
+    <div class="pg-send-row"><button type="button" class="buy-btn" id="pg-to-ja">➡️ v japonščino</button><button type="button" class="buy-btn alt" id="pg-to-sl">⬅️ v slovenščino</button>
+    <label class="tr-check"><input type="checkbox" id="pg-auto" checked> 🔊 Samodejno izgovori</label></div>
+  </div>
+  <div class="pg-log" id="pg-log" aria-live="polite"></div>
+  <p><button type="button" class="bk-copy" id="pg-clear">🧹 Počisti pogovor</button></p>
+  <details class="pg-quick" open><summary>⚡ Hitre fraze (delujejo tudi brez interneta)</summary><div id="pg-chips"></div></details>
+  <p class="fine-note">Govor prepozna telefon; v prevajalsko storitev se pošlje samo besedilo. Na iPhonu mora biti vklopljen diktat (Nastavitve → Splošno → Tipkovnica). Prevodi so strojni — pri zdravju in plačilih preverite z osebjem.</p>
+</section>
+"""
+    out += f'<script type="application/json" id="pg-phrases">{json.dumps(CONV_PHRASES, ensure_ascii=False)}</script>\n'
+    out += '<div data-pane="kamera" hidden>\n'
 
     out += """<section class="card-section tr-card" aria-labelledby="tr-kamera">
   <h2 id="tr-kamera">📷 Kamera</h2>
@@ -2114,8 +2263,12 @@ def prevajalec_page():
 </section>
 """
     out += '<div class="back-row"><a class="back-button" href="nasveti.html#kartice">🪪 Kartice za domačine</a></div>\n'
-    out += "</main>\n" + FOOTER
-    out = out.replace("</body>", f'<script src="prevajalec.js?v={BUILD}"></script>\n</body>', 1)
+    out += "</div>\n</main>\n" + FOOTER
+    tabs_js = ("<script>document.querySelectorAll('.tr-tabs button').forEach(function(b){b.addEventListener('click',function(){"
+               "var t=b.getAttribute('data-tab');document.querySelectorAll('.tr-tabs button').forEach(function(x){x.classList.toggle('on',x===b)});"
+               "document.querySelectorAll('[data-pane]').forEach(function(p){p.hidden=p.getAttribute('data-pane')!==t});});});"
+               "if(location.hash==='#kamera'){var k=document.querySelector('[data-tab=kamera]');if(k)k.click();}</script>\n")
+    out = out.replace("</body>", tabs_js + f'<script defer src="prevajalec.js?v={BUILD}"></script>\n<script defer src="pogovor.js?v={BUILD}"></script>\n</body>', 1)
     return out
 
 
@@ -2125,9 +2278,54 @@ def prevajalec_page():
 
 import shutil
 
-SW_TEMPLATE = """/* Service worker potovanja: najprej splet (sveže), sicer predpomnilnik. */
+SW_TEMPLATE = """/* Service worker potovanja: aplikacija deluje tudi brez interneta.
+   - strani, skripte, slogi: najprej splet (največ 3,5 s), sicer shranjena različica
+   - slike, ikone: shranjene (stale-while-revalidate)
+   - knjižnice (Leaflet, supabase-js …), zemljevidne ploščice in album slike: shranjene ob prvi uporabi
+   - »Pripravi za brez interneta«: sporočilo {type:"precache-all"} naloži vse naenkrat */
 var CACHE_NAME = "__CACHE__";
+var RT = "rt-1";
 var PAGES = __PAGES__;
+var ASSETS = __ASSETS__;
+var CDN = __CDN__;
+
+function trim(cache, max) {
+  cache.keys().then(function (keys) {
+    if (keys.length > max) return Promise.all(keys.slice(0, keys.length - max).map(function (k) { return cache.delete(k); }));
+  });
+}
+function putRT(req, res, max) {
+  if (res && (res.ok || res.type === "opaque")) {
+    var copy = res.clone();
+    caches.open(RT).then(function (c) { c.put(req, copy).then(function () { if (max) trim(c, max); }); });
+  }
+  return res;
+}
+function cacheFirst(req, max) {
+  return caches.match(req).then(function (hit) {
+    return hit || fetch(req).then(function (res) { return putRT(req, res, max); });
+  });
+}
+function swr(req, max) {
+  return caches.match(req).then(function (hit) {
+    var net = fetch(req).then(function (res) { return putRT(req, res, max); }).catch(function () { return hit; });
+    return hit || net;
+  });
+}
+function networkFirst(event) {
+  var fresh = new Request(event.request.url, { cache: "reload" });
+  var net = fetch(fresh).then(function (res) {
+    var copy = res.clone();
+    if (res.ok) caches.open(CACHE_NAME).then(function (c) { c.put(event.request, copy); });
+    return res;
+  });
+  var timeout = new Promise(function (_, rej) { setTimeout(rej, 3500); });
+  return Promise.race([net, timeout]).catch(function () {
+    return caches.match(event.request, { ignoreSearch: true }).then(function (c) {
+      return c || net.catch(function () { return caches.match("./index.html"); });
+    });
+  });
+}
 
 self.addEventListener("install", function (event) {
   event.waitUntil(
@@ -2140,30 +2338,75 @@ self.addEventListener("install", function (event) {
 self.addEventListener("activate", function (event) {
   event.waitUntil(
     caches.keys().then(function (keys) {
-      return Promise.all(keys.filter(function (k) { return k !== CACHE_NAME; }).map(function (k) { return caches.delete(k); }));
+      return Promise.all(keys.filter(function (k) { return k !== CACHE_NAME && k !== RT; }).map(function (k) { return caches.delete(k); }));
     }).then(function () { return self.clients.claim(); })
   );
 });
 
 self.addEventListener("fetch", function (event) {
-  if (event.request.method !== "GET") return;
-  var url = new URL(event.request.url);
-  if (url.origin !== self.location.origin) return;
-  var isHTML = event.request.mode === "navigate" ||
-               (event.request.headers.get("accept") || "").indexOf("text/html") !== -1;
-  var fresh = isHTML || /\\.(css|js|json)$/i.test(url.pathname);
-  var req = fresh ? new Request(event.request.url, { cache: "reload" }) : event.request;
-  event.respondWith(
-    fetch(req).then(function (response) {
-      var copy = response.clone();
-      caches.open(CACHE_NAME).then(function (cache) { cache.put(event.request, copy); });
-      return response;
-    }).catch(function () {
-      return caches.match(event.request).then(function (cached) { return cached || caches.match("./index.html"); });
-    })
-  );
+  var req = event.request;
+  if (req.method !== "GET") return;
+  var url = new URL(req.url);
+  if (url.origin === self.location.origin) {
+    var isHTML = req.mode === "navigate" || (req.headers.get("accept") || "").indexOf("text/html") !== -1;
+    if (isHTML || /\\.(css|js|json|ics)$/i.test(url.pathname)) { event.respondWith(networkFirst(event)); return; }
+    event.respondWith(swr(req, 400));
+    return;
+  }
+  var h = url.hostname;
+  if (/\\.supabase\\.co$/.test(h)) {
+    if (url.pathname.indexOf("/storage/v1/object/public/") === 0) event.respondWith(cacheFirst(req, 400));
+    return;                                   // API (rpc) gre vedno na splet
+  }
+  if (/tile\\.openstreetmap\\.org$/.test(h)) { event.respondWith(swr(req, 600)); return; }
+  if (/cdnjs\\.cloudflare\\.com$|cdn\\.jsdelivr\\.net$|unpkg\\.com$/.test(h)) { event.respondWith(cacheFirst(req, 0)); return; }
+});
+
+self.addEventListener("message", function (event) {
+  var d = event.data || {};
+  if (d.type !== "precache-all") return;
+  var jobs = [];
+  PAGES.forEach(function (u) { jobs.push({ u: u, page: true }); });
+  ASSETS.forEach(function (u) { jobs.push({ u: u }); });
+  CDN.forEach(function (u) { jobs.push({ u: u, cdn: true }); });
+  var done = 0, fail = 0, total = jobs.length, idx = 0;
+  function notify(fin) {
+    self.clients.matchAll().then(function (cs) {
+      cs.forEach(function (c) { c.postMessage({ type: fin ? "precache-done" : "precache-progress", done: done, total: total, fail: fail }); });
+    });
+  }
+  function worker(pa, pr) {
+    if (idx >= jobs.length) return Promise.resolve();
+    var j = jobs[idx++];
+    var cache = j.page ? pa : pr;
+    var rq = j.cdn ? new Request(j.u, { mode: "no-cors" }) : new Request(j.u, { cache: j.page ? "reload" : "default" });
+    return fetch(rq).then(function (r) {
+      if (r && (r.ok || r.type === "opaque")) return cache.put(j.u, r);
+      fail++;
+    }).catch(function () { fail++; }).then(function () {
+      done++; if (done % 4 === 0) notify(false);
+      return worker(pa, pr);
+    });
+  }
+  event.waitUntil(caches.open(CACHE_NAME).then(function (pa) {
+    return caches.open(RT).then(function (pr) { return Promise.all([worker(pa, pr), worker(pa, pr), worker(pa, pr), worker(pa, pr)]); });
+  }).then(function () { notify(true); }));
 });
 """
+
+CDN_LIBS = [
+    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css",
+    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js",
+    "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2",
+    "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js",
+]
+
+
+def write_ics():
+    import ics as _ics
+    base = CFG.get("base_url", "") + "/" + CFG["slug"]
+    with open(os.path.join(OUT, "potovanje.ics"), "w", encoding="utf-8", newline="") as f:
+        f.write(_ics.build(__import__(__name__), base))
 
 
 def write_pwa(pages):
@@ -2177,13 +2420,21 @@ def write_pwa(pages):
     }
     with open(os.path.join(OUT, "manifest.json"), "w", encoding="utf-8") as f:
         json.dump(manifest, f, ensure_ascii=False, indent=2)
-    listing = ["./"] + [f"./{p}" for p in pages] + ["./style.css", "./app.js", "./album.js", "./fun.js", "./money.js", "./knjiga.js", "./manifest.json",
-                                                     "./icons/icon-192.png", "./icons/icon-512.png",
-                                                     "./icons/apple-touch-icon.png", "./icons/favicon.svg"]
-    if os.path.exists(os.path.join(OUT, "prevajalec.js")):
-        listing.append("./prevajalec.js")
+    js_files = sorted(f for f in os.listdir(OUT) if f.endswith(".js") and f != "sw.js")
+    listing = ["./"] + [f"./{p}" for p in pages] + [f"./{f}" for f in js_files] + [
+        "./style.css", "./manifest.json", "./potovanje.ics", "./icons/icon-192.png", "./icons/icon-512.png",
+        "./icons/apple-touch-icon.png", "./icons/favicon.svg"]
+    assets = []
+    img_root = os.path.join(OUT, "images")
+    if os.path.isdir(img_root):
+        for root, _d, files in os.walk(img_root):
+            for fn in sorted(files):
+                if fn.lower().endswith((".jpg", ".jpeg", ".png", ".webp", ".svg", ".gif")):
+                    assets.append("./" + os.path.relpath(os.path.join(root, fn), OUT).replace(os.sep, "/"))
     sw = (SW_TEMPLATE.replace("__CACHE__", f"{CFG['id']}-{BUILD}")
-          .replace("__PAGES__", json.dumps(listing, ensure_ascii=False)))
+          .replace("__PAGES__", json.dumps(listing, ensure_ascii=False))
+          .replace("__ASSETS__", json.dumps(assets, ensure_ascii=False))
+          .replace("__CDN__", json.dumps(CDN_LIBS)))
     with open(os.path.join(OUT, "sw.js"), "w", encoding="utf-8") as f:
         f.write(sw)
 
@@ -2191,7 +2442,7 @@ def write_pwa(pages):
 def copy_assets(extra_files=()):
     """Skupne datoteke (CSS/JS/ikone) iz generator/assets v mapo potovanja."""
     os.makedirs(OUT, exist_ok=True)
-    for name in ["style.css", "app.js", "album.js", "fun.js", "money.js", "knjiga.js"] + list(extra_files):
+    for name in ["style.css", "app.js", "data.js", "album.js", "fun.js", "money.js", "knjiga.js", "rezervacije.js", "zdravje.js", "dnevnik.js"] + list(extra_files):
         shutil.copy2(os.path.join(ASSETS_DIR, name), os.path.join(OUT, name))
     icons_out = os.path.join(OUT, "icons")
     os.makedirs(icons_out, exist_ok=True)
@@ -2214,20 +2465,22 @@ def write_pages(builders):
 def build():
     """Gradnja potovanja Japonska (privzeto)."""
     os.makedirs(OUT, exist_ok=True)
-    copy_assets(["prevajalec.js"])
+    copy_assets(["prevajalec.js", "pogovor.js"])
     pages = write_pages([("index.html", index_page), ("nasveti.html", nasveti_page),
                          ("nacrt.html", nacrt_page), ("priprave.html", priprave_page),
                          ("dozivetja.html", dozivetja_page), ("nalozi.html", nalozi_page),
                          ("izziv.html", izziv_page), ("nujno.html", nujno_page),
                          ("kako.html", kako_page), ("prevajalec.html", prevajalec_page),
                          ("kviz.html", kviz_page), ("lov.html", lov_page), ("knjiga.html", knjiga_page),
-                         ("stroski.html", stroski_page)])
+                         ("stroski.html", stroski_page), ("rezervacije.html", rezervacije_page), ("taksi.html", taksi_page),
+                         ("dnevnik.html", dnevnik_page)])
     for i, loc in enumerate(LOCATIONS):
         name = f"{loc['key']}.html"
         with open(os.path.join(OUT, name), "w", encoding="utf-8") as f:
             f.write(location_page(i, loc))
         pages.append(name)
         print(f"written {name}")
+    write_ics()
     write_pwa(pages)
     n_vids = sum(len(v) for v in VIDEOS.values())
     print(f"done — embedded videos: {n_vids}")
