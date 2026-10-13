@@ -143,10 +143,10 @@ LOCATIONS = [
     {
         "key": "zoo", "emoji": "🦁", "name": "Živalski vrt Ljubljana", "nav": "Živalski vrt",
         "sub": "Cel dan med slonom, žirafami, tigri in morskimi levi",
-        "teaser": "Glavni dan: poglobljen načrt, 20+ izzivov in veliko živali. Slon Ganga čaka!",
+        "teaser": "Glavni dan: poglobljen načrt, 15 izzivov in veliko živali. Slon Ganga čaka!",
         "intro": ("Živalski vrt leži na južnem pobočju Rožnika, v gozdu in na travnikih, ki so del krajinskega parka. "
                   "Površine je okoli 19,6 hektara, poti pa je po objavljenih podatkih 5–6 km — dovolj za cel dan raziskovanja. "
-                  "Spodaj je predlog poti od vhoda do izhoda, s krmljenji, igrišči, odmori in kar 20 izzivi za Zmajevo knjigo. "
+                  "Spodaj je predlog poti od vhoda do izhoda, s krmljenji, igrišči, odmori in 15 izzivi za Zmajevo knjigo. "
                   "Malo načrta, veliko radovednosti!"),
         "food": [
             ("Sladoled in prigrizek v živalskem vrtu", "po objavljenih podatkih je v vrtu restavracija s sladoledom — idealen odmor po Mini ZOO"),
@@ -577,7 +577,7 @@ IZZIVI = {
         {"t": "foto", "x": "Zadnja slika v zoo: Ana in Maks utrujena, a srečna ob izhodu.",
          "w": "Zadnja slika dneva je pogosto najlepša. Primerjata jo s tisto na vhodu zjutraj.",
          "p": {"k": "skrivnost", "h": "Zmajeva nagrada",
-               "x": "Če sta opravila vsaj 15 izzivov v zoo, si zaslužita »zmajsko diplomo«. Izdelata jo doma in jo pokažeta vsem!"}},
+               "x": "Če sta opravila vsaj 10 izzivov v zoo, si zaslužita »zmajsko diplomo«. Izdelata jo doma in jo pokažeta vsem!"}},
     ],
     "domov": [
         {"t": "foto", "x": "Zadnja slika na postaji v Ljubljani: nahrbtnika, utrujena in nasmejana.",
@@ -598,6 +598,12 @@ IZZIVI = {
                "x": "Doma odpreta Zmajevo knjigo in izberita pet najlepših slik. Tista, ki jo izbereta oba, je naslovnica!"}},
     ],
 }
+
+# izbor izzivov (indeksi iz seznamov zgoraj) — manj izzivov na dan; največ ostane v živalskem vrtu.
+# Dan 1 (vlak + hotel + center): 13, dan 2 (zoo + domov): 18. Spremeni seznam, če želiš kakšnega vrniti.
+_KEEP = {"vlak": [0, 1, 3], "emonec": [0, 2, 4], "center": [0, 1, 2, 3, 4, 6, 8],
+         "zoo": [0, 2, 3, 4, 5, 6, 7, 9, 11, 12, 14, 15, 17, 18, 20], "domov": [0, 2, 3]}
+IZZIVI = {k: [v[i] for i in _KEEP[k]] if k in _KEEP else v for k, v in IZZIVI.items()}
 
 # --------------------------------------------------------------------------- načrt poti
 ITINERARY = {

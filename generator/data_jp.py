@@ -448,3 +448,11 @@ LOV = [
         {"id": "c_slike", "e": "📸", "n": "Fotografije za knjigo", "count": True},
     ]},
 ]
+
+# izbor izzivov (indeksi iz izzivi.json) — manj izzivov na dan: ena-dnevne postaje 2, ostale 3.
+# Spremeni seznam, če želiš kakšnega vrniti; izzivi.json ostane poln.
+IZZIVI_KEEP = {
+    "tokio": [0, 2, 3], "chichibu": [0, 2], "kawaguchiko": [0, 1], "minobusan": [0, 1],
+    "izu": [0, 1, 3], "kumano": [0, 1, 3], "koyasan": [0, 1, 2], "iya": [0, 1, 2], "ine": [0, 1, 2],
+    "nara": [0, 1], "kyoto": [0, 1, 3], "osaka": [0, 1, 3], "hiroshima": [1, 3],
+}

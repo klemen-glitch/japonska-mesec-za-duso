@@ -406,6 +406,7 @@ DOZIVETJA = _load_json("dozivetja.json", {})
 EXTRAS = _load_json("extras.json", {})
 # Foto/video izzivi za album (izzivi.json = {key: [{t, x}, ...]})
 IZZIVI = _load_json("izzivi.json", {})
+IZZIVI = {k: ([v[i] for i in JP.IZZIVI_KEEP[k] if i < len(v)] if k in JP.IZZIVI_KEEP else v) for k, v in IZZIVI.items()}
 
 # Praktični podatki: nastanitve, vstopnice, povezave za prevoz (data_jp.py; za drugo potovanje jih prepiše gen_<ime>.py)
 LODGING = JP.LODGING
@@ -1751,7 +1752,7 @@ def route_script():
 
 QUICK_LINKS = [
     ("nacrt.html", "🗺️", "Načrt poti", "30 dni, dan za dnem"),
-    ("izziv.html", "📸", "Foto izzivi", "52 izzivov in presenečenja"),
+    ("izziv.html", "📸", "Foto izzivi", f"{sum(len(v) for v in IZZIVI.values())} izzivov in presenečenja"),
     ("nalozi.html", "📤", "Naloži fotografije", "album iz vaših telefonov"),
     ("dozivetja.html", "🎨", "Doživetja", "delavnice, čaj, vrtovi"),
     ("priprave.html", "🎒", "Priprave", "denar, vlaki, pakiranje"),
@@ -1813,9 +1814,9 @@ def index_page():
   <p>Pred vami je mesec, kakršnega si privoščimo enkrat v življenju — cel november na Japonskem, v času, ko se javorji obarvajo v najlepše rdeče in zlato. Ta vodnik ni seznam, ki bi ga bilo treba prehiteti; je vaš tihi spremljevalec.</p>
   <p>Potujte počasi. Ena znamenitost dopoldne, ena popoldne, vmes skodelica čaja. Ustavite se, kjer je lepo, in tam ostanite dlje, kot se zdi potrebno. Japonska najlepše nagradi tiste, ki se ji ne mudi.</p>
   <p>Na vsaki postaji boste našle znamenitosti z zemljevidi, kje in kaj jesti, kdaj je kraj najlepši, kje si vzeti uro zase — in prostor za svoje zapiske.</p>
-  <p>Čaka vas tudi <strong>52 foto izzivov</strong> z majhnimi presenečenji: naložite sliko s telefona, izziv se opravi, odklene pa se zanimivost, skrivnost ali nagrada. Iz tega bo nastala vaša potopisna knjiga. Marjetica, Helena, Ljuba in Magda: fotoaparati pripravljeni! 🍁</p>
+  <p>Čaka vas tudi <strong>@@N@@ foto izzivov</strong> z majhnimi presenečenji: naložite sliko s telefona, izziv se opravi, odklene pa se zanimivost, skrivnost ali nagrada. Iz tega bo nastala vaša potopisna knjiga. Marjetica, Helena, Ljuba in Magda: fotoaparati pripravljeni! 🍁</p>
 </section>
-"""
+""".replace("@@N@@", str(sum(len(v) for v in IZZIVI.values())))
     out += '<h2 class="section-title">Naše postaje</h2>\n<ul class="cards">\n'
     for i, loc in enumerate(LOCATIONS):
         stop = f"Postaja {i + 1}"
