@@ -21,6 +21,8 @@ CFG = {
         "empty": "Album je še prazen — naložita prvo fotografijo. 📸",
         "thanks": "naloženih ✓ — odlično!",
         "more": "Odpri vodnik za to postajo →",
+        "afterHero": "Pustolovščina je za vama — poglejta album, sestavita Zmajevo knjigo in preizkusita kviz.",
+        "afterBtn": "📖 Odpri Zmajevo knjigo",
         "pre": "Pustolovščina se začne {date}. Poglejta <a href=\"priprave.html\">priprave</a> in kontrolni seznam.",
     },
 }

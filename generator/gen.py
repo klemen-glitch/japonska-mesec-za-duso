@@ -578,7 +578,9 @@ def trip_boot():
     t = {"id": CFG["id"], "slug": CFG["slug"], "people": CFG["people"], "gate": "../index.html",
          "after": CFG.get("after"), "t": CFG.get("t"), "color": CFG.get("pin"), "country": CFG.get("country"),
          "title": CFG["title"], "dates": CFG.get("dates"),
-         "stations": [{"k": l["key"], "e": l["emoji"], "n": l["nav"]} for l in LOCATIONS]}
+         "stations": [{"k": l["key"], "e": l["emoji"], "n": l["nav"], "nm": l["name"], "s": l["sub"]} for l in LOCATIONS],
+         "days": [{"d": d["day"], "iso": day_iso(d["day"]), "k": REGION_KEY.get(d["region"], ""), "r": d["region"],
+                   "dt": d["date"]} for d in ITINERARY.get("days", [])]}
     guard = ('(function(){try{var s=JSON.parse(localStorage.getItem("trip_session")||"null");'
              'var ok=s&&s.trips&&s.trips.some(function(t){return t.slug===TRIP.slug});'
              'if(!ok){location.replace(TRIP.gate+"?next="+encodeURIComponent(TRIP.slug));}}catch(e){}})();')
@@ -1718,6 +1720,21 @@ def trip_script():
             + json.dumps(rows, ensure_ascii=False) + "</script>\n")
 
 
+def hero_templates():
+    """Naslovne slike postaj (neaktivne predloge) — JS jih uporabi, ko potovanje teče in se domača stran prilagodi kraju."""
+    return "".join(f'<template id="hero-tpl-{l["key"]}">{banner_html(l["key"], art.location_scene(l["key"]), l["name"])}</template>\n'
+                   for l in LOCATIONS)
+
+
+def legs_script():
+    """Prehodi med kraji (za kartico »Jutri«): iz načrta poti + povezave za nakup."""
+    rows = []
+    for lg in ITINERARY.get("legs", []):
+        rows.append({"from": lg["from"], "to": lg["to"], "dur": lg["duration"], "how": lg["how"], "tip": lg["tip"],
+                     "links": [[a, b] for a, b in LEG_LINKS.get((lg["from"], lg["to"]), [])]})
+    return '<script type="application/json" id="legs-data">' + json.dumps(rows, ensure_ascii=False) + "</script>\n"
+
+
 def route_script():
     """JSON s postajami in koordinatami (za pregledni zemljevid poti)."""
     rows = []
@@ -1760,7 +1777,7 @@ def index_page():
     )
     out += nav("index")
     out += "<main>\n"
-    out += f"""<section class="hero">
+    out += f"""<section class="hero" id="hero">
   {banner_html("hero", art.home_scene(), "Japonska — Mesec za dušo", "home-banner")}
   <p class="leaves" aria-hidden="true">🍁 🍂 🍁</p>
   <h1>Japonska<br><span class="h1-sub">Mesec za dušo</span></h1>
@@ -1805,7 +1822,7 @@ def index_page():
         lbl = stop_label(loc)
         if lbl:
             stop += f" · {lbl}"
-        out += f"""  <li>
+        out += f"""  <li data-station="{loc['key']}">
     <a href="{loc['key']}.html">
       <span class="card-scene">{card_media(loc['key'], art.location_scene(loc['key']))}</span>
       <span class="card-body">
@@ -1822,7 +1839,7 @@ def index_page():
   <a class="back-button" href="nujno.html">🆘 Nujne informacije</a>
 </div>
 """
-    out += trip_script() + route_script() + facts_script()
+    out += trip_script() + route_script() + facts_script() + legs_script() + hero_templates()
     out += "</main>\n"
     out += FOOTER
     return out
@@ -1975,6 +1992,10 @@ def _wiz_steps():
             "Priprave: pakiranje, eSIM, denar, vlaki, okvirni stroški in kontrolni seznam za odhod (obkljukate, telefon si zapomni).",
             "Doživetja: kuharske delavnice, čajne hiše, zen vrtovi in nakup za ustvarjalne duše."],
          "", ("priprave.html", "Odpri priprave →"), ""),
+        ("📍", "Aplikacija ve, kje ste", [
+            "Med potjo se domača stran sama prilagodi: naslovna slika, naslov in gumbi so za kraj, kjer ste danes; pokaže tudi, kaj vas čaka jutri (in povezave za nakup vozovnic, če se premaknete). Ime in ikona zavihka v brskalniku pokažeta dan in kraj. Na strani postaje je označen trenutni del dneva.",
+            "Za preizkus dodajte ?dan=2026-11-29 na konec naslova domače strani."],
+         "", None, ""),
         ("🌦️", "Vreme in sonce", [
             "Na vsaki postaji in na domači strani vidite napoved za kraj (Open-Meteo): temperature, dež in uro sončnega vzhoda in zahoda. Pred odhodom pokaže tudi, kakšno je bilo vreme lani ob istem času — za pakiranje."],
          "", None, ""),

@@ -106,7 +106,7 @@ def index_page():
     out = G.head(C.CFG["title"] + " — Ljubljana", C.CFG["desc"], with_map=True)
     out += G.nav("index")
     out += "<main>\n"
-    out += f"""<section class="hero">
+    out += f"""<section class="hero" id="hero">
   {G.banner_html("hero", art.home_scene(), "Zmajeva pustolovščina — Ljubljana", "home-banner")}
   <p class="leaves" aria-hidden="true">🐉 🦁 🐘</p>
   <h1>Zmajeva<br><span class="h1-sub">pustolovščina</span></h1>
@@ -139,7 +139,7 @@ def index_page():
         lbl = G.stop_label(loc)
         if lbl:
             stop += f" · {lbl}"
-        out += f"""  <li>
+        out += f"""  <li data-station="{loc['key']}">
     <a href="{loc['key']}.html">
       <span class="card-scene">{G.card_media(loc['key'], art.location_scene(loc['key']))}</span>
       <span class="card-body">
@@ -153,7 +153,7 @@ def index_page():
 """
     out += "</ul>\n"
     out += '<div class="back-row"><a class="back-button" href="nujno.html">🆘 Nujne informacije</a></div>\n'
-    out += G.trip_script() + G.route_script() + G.facts_script()
+    out += G.trip_script() + G.route_script() + G.facts_script() + G.legs_script() + G.hero_templates()
     out += "</main>\n" + G.FOOTER
     return out
 
@@ -275,6 +275,10 @@ def wiz_steps():
             "Fotografije in videe naložita kar s telefona. Izbereta, kdo sta (Ana ali Maks), nato postajo in slike.",
             "Vse pristane v vajinem skupnem albumu, ki ga vidita le vidva. Na koncu ga z enim klikom prenesta kot .zip."],
          demo_upload, ("nalozi.html", "Odpri album →"), ""),
+        ("📍", "Aplikacija ve, kje sta", [
+            "Med potjo se domača stran sama prilagodi: naslovna slika, naslov in gumbi so za kraj, kjer sta danes; pokaže tudi, kaj vaju čaka jutri (in povezave za nakup vozovnic). Ime in ikona zavihka v brskalniku pokažeta dan in kraj; v načrtu dneva je označen del, ki je zdaj na vrsti.",
+            "Za preizkus dodajta ?dan=2026-10-16 na konec naslova domače strani."],
+         "", None, ""),
         ("🌦️", "Vreme in sonce", [
             "Na vsaki postaji in na domači strani vidita napoved za kraj: temperature, dež in uro sončnega vzhoda in zahoda — da veta, kaj obleči."],
          "", None, ""),

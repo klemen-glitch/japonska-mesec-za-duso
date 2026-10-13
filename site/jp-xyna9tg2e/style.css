@@ -1386,3 +1386,18 @@ footer p { margin: 0.25rem 0; }
   .bk-station { break-before: page; }
   .bk-cover { break-after: page; min-height: 80vh; display: flex; flex-direction: column; justify-content: center; }
 }
+
+/* ---------- Dinamičen potek (kje smo danes) ---------- */
+.hero-here .kicker { margin-top: 0.8rem; }
+.here-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-top: 0.8rem; }
+.here-btn { display: inline-block; padding: 0.7rem 1.1rem; border-radius: var(--radius-pill); background: var(--bg-alt); color: var(--accent); font-weight: 600; text-decoration: none; border: 1px solid var(--line); }
+.here-ribbon { margin: 0.8rem 1rem 0; padding: 0.6rem 0.9rem; border-radius: var(--radius-sm); background: var(--accent-soft); color: var(--accent); font-weight: 700; text-align: center; }
+.tomorrow-card .tm-move { margin: 0.6rem 0 0.2rem; }
+.ql-here { background: var(--accent-soft); border-color: var(--accent); }
+.cards li.is-here > a { outline: 3px solid var(--accent); outline-offset: -3px; }
+.cards li.is-past { opacity: 0.78; }
+.here-tag { display: inline-block; margin: 0 0.4rem 0.2rem 0; padding: 0.15rem 0.55rem; border-radius: var(--radius-pill); background: var(--accent); color: #fff; font-size: 0.74rem; font-weight: 700; }
+.plan-list li.plan-now { background: var(--accent-soft); border-radius: var(--radius-sm); }
+.plan-list li.plan-next { outline: 1px dashed var(--accent); border-radius: var(--radius-sm); }
+.plan-badge { display: inline-block; margin-right: 0.4rem; padding: 0.1rem 0.5rem; border-radius: var(--radius-pill); background: var(--accent); color: #fff; font-size: 0.72rem; font-weight: 700; margin-top: 0.2rem; }
+.rm-pin.rm-now { background: #e0452c; width: 30px; height: 30px; font-size: 0.8rem; box-shadow: 0 0 0 5px rgba(224, 69, 44, 0.3); }

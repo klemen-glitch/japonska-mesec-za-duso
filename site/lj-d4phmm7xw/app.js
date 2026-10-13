@@ -192,9 +192,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (!days.length) return;
 
   function pad(n) { return (n < 10 ? "0" : "") + n; }
-  var q = (location.search.match(/dan=(\d{4}-\d{2}-\d{2})/) || [])[1];
-  var now = new Date();
-  var todayIso = q || (now.getFullYear() + "-" + pad(now.getMonth() + 1) + "-" + pad(now.getDate()));
+  var todayIso = tripToday();
   function toDate(iso) { var p = iso.split("-"); return new Date(+p[0], +p[1] - 1, +p[2]); }
   var diff = Math.round((toDate(days[0].iso) - toDate(todayIso)) / 86400000);
 
@@ -255,6 +253,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var st = [];
   try { st = JSON.parse(dataEl.textContent); } catch (e) { return; }
   var map;
+  var hcx = tripCtx(), hereKey = hcx && hcx.station ? hcx.station.k : "";
   try {
     map = L.map(el, {
       zoomControl: false, attributionControl: true, dragging: false, scrollWheelZoom: false,
@@ -277,7 +276,7 @@ document.addEventListener("DOMContentLoaded", function () {
       pts.push([s.lat, s.lon]);
       var icon = L.divIcon({
         className: "rm-wrap",
-        html: '<span class="rm-pin' + (s.day ? " rm-day" : "") + '">' + s.i + "</span>",
+        html: '<span class="rm-pin' + (s.day ? " rm-day" : "") + (hereKey && s.k === hereKey ? " rm-now" : "") + '">' + s.i + "</span>",
         iconSize: [22, 22], iconAnchor: [11, 11]
       });
       var m = L.marker([s.lat, s.lon], { icon: icon, keyboard: false }).addTo(map);
@@ -605,6 +604,11 @@ document.addEventListener("DOMContentLoaded", function () {
   if (fe && fbox) {
     var facts = [];
     try { facts = JSON.parse(fe.textContent); } catch (e) {}
+    var fcx = tripCtx();
+    if (fcx && fcx.station) {
+      var here = facts.filter(function (f) { return f.s === fcx.station.n; });
+      if (here.length) facts = here;
+    }
     if (facts.length) {
       var d0 = new Date(); var seed = d0.getFullYear() * 400 + d0.getMonth() * 31 + d0.getDate();
       var idx = seed % facts.length;
@@ -640,3 +644,206 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+
+/* ============================================================
+   Dinamičen potek: aplikacija ve, kje so in kateri dan je.
+   Domača stran, zavihek brskalnika (naslov + ikona), stran postaje in načrt dneva se prilagodijo.
+   Za preizkus: ?dan=2026-11-29 (velja za vse strani v tej seji); ?dan= počisti.
+   ============================================================ */
+function tripToday() {
+  var m = location.search.match(/[?&]dan=([0-9-]*)/);
+  try {
+    if (m) {
+      if (/^\d{4}-\d{2}-\d{2}$/.test(m[1])) sessionStorage.setItem("dan_test", m[1]); else sessionStorage.removeItem("dan_test");
+    }
+    var t = sessionStorage.getItem("dan_test");
+    if (t) return t;
+  } catch (e) {}
+  var n = new Date();
+  function p2(x) { return (x < 10 ? "0" : "") + x; }
+  return n.getFullYear() + "-" + p2(n.getMonth() + 1) + "-" + p2(n.getDate());
+}
+
+function tripCtx() {
+  var T = window.TRIP || {}, days = T.days || [];
+  if (!days.length) return null;
+  var t = tripToday(), first = days[0].iso, last = days[days.length - 1].iso, ctx = { today: t, days: days };
+  if (t < first) {
+    ctx.phase = "before";
+    ctx.diff = Math.round((new Date(first + "T12:00:00") - new Date(t + "T12:00:00")) / 86400000);
+  } else if (t > last) {
+    ctx.phase = "after";
+  } else {
+    ctx.phase = "during";
+    for (var i = 0; i < days.length; i++) {
+      if (days[i].iso === t) { ctx.cur = days[i]; ctx.next = days[i + 1] || null; ctx.prev = days[i - 1] || null; break; }
+    }
+    if (!ctx.cur) { ctx.cur = days[0]; }
+    ctx.station = (T.stations || []).filter(function (s) { return s.k === ctx.cur.k; })[0] || null;
+  }
+  return ctx;
+}
+
+(function () {
+  function esc(x) { return String(x == null ? "" : x).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  var loadedDay = tripToday();
+  var baseTitle = document.title;
+
+  function setFavicon(emoji) {
+    var svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">' + emoji + "</text></svg>";
+    document.querySelectorAll('link[rel="icon"], link[rel="shortcut icon"]').forEach(function (l) { l.parentNode.removeChild(l); });
+    var l = document.createElement("link");
+    l.rel = "icon"; l.type = "image/svg+xml"; l.href = "data:image/svg+xml," + encodeURIComponent(svg);
+    document.head.appendChild(l);
+  }
+
+  function applyTab(ctx) {
+    if (!ctx) return;
+    var T = window.TRIP || {}, isHome = !!document.getElementById("hero");
+    if (ctx.phase === "during" && ctx.station) {
+      var st = ctx.station;
+      document.title = isHome ? st.e + " " + (st.nm || st.n) + " · Dan " + ctx.cur.d + "/" + ctx.days.length + " — " + (T.title || "")
+        : st.e + " " + baseTitle;
+      setFavicon(st.e);
+    } else if (ctx.phase === "before" && isHome) {
+      document.title = "⏳ Še " + ctx.diff + (ctx.diff === 1 ? " dan" : " dni") + " · " + (T.title || baseTitle);
+    } else if (ctx.phase === "after") {
+      if (isHome) document.title = "🌸 Potovanje je za vami · " + (T.title || baseTitle);
+      setFavicon("🌸");
+    }
+  }
+
+  function findLeg(from, to) {
+    var el = document.getElementById("legs-data"), legs = [];
+    if (!el) return null;
+    try { legs = JSON.parse(el.textContent); } catch (e) { return null; }
+    var hit = null;
+    legs.forEach(function (l) { if (l.from === from && l.to === to) hit = l; });
+    if (!hit) legs.forEach(function (l) { if (!hit && l.to === to) hit = l; });
+    return hit;
+  }
+
+  function applyHome(ctx) {
+    var hero = document.getElementById("hero");
+    if (!hero || !ctx) return;
+    var T = window.TRIP || {}, total = ctx.days.length;
+
+    if (ctx.phase === "during" && ctx.station) {
+      var st = ctx.station, cur = ctx.cur;
+      var tpl = document.getElementById("hero-tpl-" + st.k);
+      var h = new Date().getHours();
+      var greet = h < 11 ? "🌅 Dobro jutro" : (h < 18 ? "☀️ Dober dan" : "🌙 Dober večer");
+      hero.classList.add("hero-here");
+      hero.innerHTML = (tpl ? tpl.innerHTML : "") +
+        '<p class="kicker">' + greet + " · Dan " + cur.d + " od " + total + "</p>" +
+        "<h1>" + esc(st.e + " " + (st.nm || st.n)) + "</h1>" +
+        '<p class="tagline">' + esc(st.s || "") + "</p>" +
+        '<div class="here-actions"><a class="photo-button" href="' + st.k + '.html">📖 Vodnik: ' + esc(st.n) + "</a>" +
+        '<a class="here-btn" href="' + st.k + '.html#izzivi">📸 Izzivi tukaj</a>' +
+        '<a class="here-btn" href="nalozi.html">📤 Naloži fotografije</a></div>';
+
+      // kartica »Jutri« (in morebiten premik z linki za nakup)
+      var today = document.getElementById("today");
+      var tdata = [];
+      var tde = document.getElementById("trip-data");
+      if (tde) { try { tdata = JSON.parse(tde.textContent); } catch (e) {} }
+      if (ctx.next && today) {
+        var nx = ctx.next, nd = tdata.filter(function (d) { return d.d === nx.d; })[0] || {};
+        var html = '<div class="today-kicker">🌙 Jutri · ' + esc(nx.dt) + "</div><h2>Dan " + nx.d + " — " + esc(nd.t || nx.r) + '</h2><p class="today-region">' + esc(nx.r) + "</p>";
+        if (nd.p) html += "<p>" + esc(nd.p) + "</p>";
+        if (nx.k !== ctx.cur.k) {
+          var leg = findLeg(ctx.cur.r, nx.r);
+          if (leg) {
+            html += '<p class="tm-move">🚉 <strong>Premik: ' + esc(leg.from) + " → " + esc(leg.to) + "</strong> · " + esc(leg.dur) + "</p><p>" + esc(leg.how) + "</p>";
+            if (leg.tip) html += "<p>💡 " + esc(leg.tip) + "</p>";
+            if (leg.links && leg.links.length) {
+              html += '<div class="buy-row">' + leg.links.map(function (l) {
+                return '<a class="buy-btn alt" href="' + esc(l[1]) + '" target="_blank" rel="noopener">' + esc(l[0]) + "</a>";
+              }).join("") + "</div>";
+            }
+          }
+        }
+        var tm = document.createElement("section");
+        tm.className = "today-card tomorrow-card";
+        tm.innerHTML = html;
+        today.parentNode.insertBefore(tm, today.nextSibling);
+      }
+
+      // hitre povezave za današnji kraj
+      var ql = document.querySelector(".quick-links");
+      if (ql) {
+        var a1 = document.createElement("a"); a1.className = "ql-here"; a1.href = st.k + ".html#izzivi";
+        a1.innerHTML = '<span class="ql-emoji" aria-hidden="true">' + st.e + '</span><span class="ql-t">Izzivi: ' + esc(st.n) + '</span><span class="ql-d">danes na vrsti</span>';
+        var a2 = document.createElement("a"); a2.className = "ql-here"; a2.href = st.k + ".html";
+        a2.innerHTML = '<span class="ql-emoji" aria-hidden="true">📍</span><span class="ql-t">Vodnik: ' + esc(st.n) + '</span><span class="ql-d">kje smo danes</span>';
+        ql.insertBefore(a2, ql.firstChild); ql.insertBefore(a1, a2.nextSibling);
+      }
+
+      // kartice postaj: kje smo, kaj je že za nami
+      var passed = {}; ctx.days.forEach(function (d) { if (d.iso < ctx.today) passed[d.k] = 1; });
+      document.querySelectorAll(".cards li[data-station]").forEach(function (li) {
+        var k = li.getAttribute("data-station");
+        if (k === st.k) {
+          li.classList.add("is-here");
+          var body = li.querySelector(".card-body");
+          if (body) { var tg = document.createElement("span"); tg.className = "here-tag"; tg.textContent = "📍 Tu ste"; body.insertBefore(tg, body.firstChild); }
+        } else if (passed[k]) { li.classList.add("is-past"); }
+      });
+    } else if (ctx.phase === "after") {
+      var tl = hero.querySelector(".tagline"), pb = hero.querySelector(".photo-button");
+      var tt = (window.TRIP && TRIP.t) || {};
+      if (tl) tl.textContent = tt.afterHero || "Potovanje je za vami — poglejte album, sestavite potopisno knjigo in preizkusite kviz.";
+      if (pb) { pb.href = "knjiga.html"; pb.textContent = tt.afterBtn || "📖 Odprite potopisno knjigo"; }
+    }
+  }
+
+  function applyStation(ctx) {
+    var vb = document.querySelector(".visit-btn[data-visit]");
+    var loc = document.querySelector(".loc-hero");
+    if (!vb || !loc || !ctx || ctx.phase !== "during") return;
+    var key = vb.getAttribute("data-visit"), isHere = ctx.cur && ctx.cur.k === key;
+    var isNext = ctx.next && ctx.next.k === key && !isHere;
+    if (isHere || isNext) {
+      var rb = document.createElement("div");
+      rb.className = "here-ribbon";
+      rb.textContent = isHere ? "📍 Danes ste tu · Dan " + ctx.cur.d + " od " + ctx.days.length : "🌙 Jutri ste tukaj · Dan " + ctx.next.d;
+      loc.parentNode.insertBefore(rb, loc);
+    }
+    if (!isHere) return;
+    // načrt dneva: označi, kaj je zdaj na vrsti
+    var items = document.querySelectorAll(".plan-list li"), labels = [["pozno popoldne", 960], ["popoldne", 780], ["dopoldne", 540], ["zjutraj", 360], ["zvečer", 1080], ["ob prihodu", 0]];
+    function startOf(txt) {
+      var m = txt.match(/(\d{1,2})[.:](\d{2})/);
+      if (m) return parseInt(m[1], 10) * 60 + parseInt(m[2], 10);
+      var low = txt.toLowerCase();
+      for (var i = 0; i < labels.length; i++) { if (low.indexOf(labels[i][0]) !== -1) return labels[i][1]; }
+      return null;
+    }
+    var n = new Date(), now = n.getHours() * 60 + n.getMinutes(), nowEl = null, nextEl = null;
+    items.forEach(function (li) {
+      var te = li.querySelector(".plan-time"), st = te ? startOf(te.textContent) : null;
+      if (st === null) return;
+      if (st <= now) nowEl = li; else if (!nextEl) nextEl = li;
+    });
+    if (nowEl) {
+      nowEl.classList.add("plan-now");
+      var b = document.createElement("span"); b.className = "plan-badge"; b.textContent = "⏱️ Zdaj";
+      var ptime = nowEl.querySelector(".plan-time");
+      if (ptime) { ptime.appendChild(document.createElement("br")); ptime.appendChild(b); }
+    }
+    else if (nextEl) { nextEl.classList.add("plan-next"); }
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    var ctx = tripCtx();
+    applyTab(ctx);
+    applyHome(ctx);
+    applyStation(ctx);
+  });
+
+  // ob vrnitvi v aplikacijo po polnoči: osveži, da se vse prilagodi novemu dnevu
+  document.addEventListener("visibilitychange", function () {
+    if (!document.hidden && tripToday() !== loadedDay) location.reload();
+  });
+})();
