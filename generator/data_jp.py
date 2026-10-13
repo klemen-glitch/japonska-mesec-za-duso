@@ -291,3 +291,7 @@ FOOD_LINKS = [      # pri hrani: kje rezervirati mizo za 4
 ]
 
 DOZ_SEARCH = True     # pri doživetjih dodaj iskanje terminov (Klook, GetYourGuide)
+
+# največja oddaljenost točk od središča postaje (km) — strožje za mesta, širše za pokrajine
+GEO_RADIUS = {"tokio": 25, "chichibu": 40, "kawaguchiko": 20, "minobusan": 15, "izu": 35, "kumano": 40, "koyasan": 10,
+              "iya": 30, "ine": 25, "nara": 10, "kyoto": 25, "osaka": 25, "hiroshima": 30}

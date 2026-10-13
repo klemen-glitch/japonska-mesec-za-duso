@@ -405,6 +405,7 @@ LEG_LINKS = JP.LEG_LINKS
 QUICKBUY = JP.QUICKBUY
 DOZ_SEARCH = JP.DOZ_SEARCH
 FOOD_LINKS = JP.FOOD_LINKS
+GEO_RADIUS = JP.GEO_RADIUS
 
 _SL_MON = ["jan", "feb", "mar", "apr", "maj", "jun", "jul", "avg", "sep", "okt", "nov", "dec"]
 
@@ -430,21 +431,52 @@ def _dist_km(a_lat, a_lon, b_lat, b_lon):
     return 2 * r * math.asin(math.sqrt(h))
 
 
+def _norm(t):
+    import unicodedata
+    t = unicodedata.normalize("NFKD", t or "")
+    return "".join(c for c in t if not unicodedata.combining(c)).lower()
+
+
+def _words(t):
+    return [w for w in re.findall(r"[a-z0-9]+", _norm(t)) if len(w) >= 4 and w not in _GENERIC_PLACE]
+
+
+_GENERIC_PLACE = _GENERIC | {"shopping", "street", "garden", "gardens", "temple", "shrine", "castle", "bridge", "falls", "waterfall",
+                             "waterfalls", "museum", "park", "line", "station", "hall", "cemetery", "gorge", "mount", "onsen",
+                             "avenue", "boat", "cruise", "excursion", "ropeway", "cave", "zoo", "valley", "kodo", "japan",
+                             "tokyo", "kyoto", "osaka", "nara", "hiroshima", "saitama", "shizuoka", "wakayama", "tokushima",
+                             "yamanashi", "ward", "city", "prefecture", "sandbar", "market", "outer", "main"}
+
+
 def _geo_ok(q, key, food):
-    """Koordinate iz predpomnilnika, če so verjetno prave (blizu postaje, ime se ujema)."""
+    """Koordinate iz predpomnilnika, če so verjetno prave: blizu postaje in ime se ujema z iskanim."""
     g = GEO.get(q)
     m = MAPS.get(key)
     if not g or not m:
         return None
-    if _dist_km(m[0], m[1], g["lat"], g["lon"]) > CFG.get("geo_radius_km", 60):
+    rad = GEO_RADIUS.get(key, CFG.get("geo_radius_km", 60))
+    if _dist_km(m[0], m[1], g["lat"], g["lon"]) > rad:
         return None
-    broad = g.get("cls") in ("boundary", "place") and g.get("via", q) != q
-    if broad or (food and g.get("cls") in ("boundary", "place")):
+    fallback = g.get("via", q) != q
+    if g.get("cls") in ("boundary", "place") and (fallback or food):
         return None
-    if food:
-        first = q.split(",")[0].lower()
-        toks = [t for t in re.findall(r"[a-z0-9]+", first) if len(t) >= 4 and t not in _GENERIC]
-        if toks and not any(t in (g.get("name", "") or "").lower() for t in toks):
+    if g.get("cls") == "railway" or (g.get("cls") == "highway" and g.get("type") != "bus_stop"):
+        return None                                   # ceste, železnice, priključki — ne cilji
+    if food and g.get("via") == "photon":
+        return None                                   # mehko iskanje lokalov je preveč nezanesljivo (veriga/podružnica)
+    if q.split(",")[0].strip().startswith("Tokaikan"):
+        return None                                   # v OSM »Tokaikan« pomeni razgledni stolp, ne ryokan
+    first = q.split(",")[0]
+    name = g.get("name", "") or ""
+    wanted = _words(first)
+    flat = re.sub(r"[^a-z0-9]", "", _norm(name))
+    if wanted and not all(w[:max(5, len(w) - 2)] in flat for w in wanted):
+        return None                                   # ime se ne ujema (npr. druga znamenitost)
+    if g.get("via") == "photon":                      # mehko iskanje: izloči rezultate z dodatnimi imenskimi besedami
+        seg = name.split(",")[0]
+        qflat = re.sub(r"[^a-z0-9]", "", _norm(q))
+        extras = [w for w in _words(seg) if w[:max(5, len(w) - 2)] not in qflat]
+        if extras:
             return None
     return g
 
@@ -811,7 +843,11 @@ def map_section(key):
     legend = ""
     if pts:
         legend = ('  <p class="map-legend"><span class="rm-pin rm-inline">1</span> znamenitosti (po vrsti v seznamu) '
-                  '&nbsp; <span class="rm-pin rm-food rm-inline">🍴</span> hrana. Tapnite oznako za povezavo.</p>\n')
+                  '&nbsp; <span class="rm-pin rm-food rm-inline">🍴</span> hrana. Tapnite oznako za povezavo.'
+                  + (' Znamenitosti brez številke so na gumbu »Zemljevid« pri posamezni kartici.'
+                     if any(sg.get("maps") for sg in GUIDE.get(key, {}).get("sights", []))
+                     and sum(1 for p in pts if p["t"] == "s") < len(GUIDE.get(key, {}).get("sights", [])) else "")
+                  + '</p>\n')
     return (f'<section class="card-section map-section" aria-labelledby="zemljevid">\n'
             f'  <h2 id="zemljevid">🗺️ Zemljevid kraja</h2>\n'
             f'  <div class="map-modes" role="group" aria-label="Pogled zemljevida">'

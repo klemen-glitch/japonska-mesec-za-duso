@@ -18,9 +18,30 @@
 "Aburaya restaurant Ine Kyoto": null,
 "Ajisai no Toyo Nishiki Market Kyoto": null,
 "Amanohashidate Onsen Chie no Yu, Miyazu, Kyoto": null,
-"Amanohashidate Sandbar, Miyazu, Kyoto": null,
-"Amanohashidate Winery Miyazu": null,
-"Arashiyama Yoshimura soba Kyoto": null,
+"Amanohashidate Sandbar, Miyazu, Kyoto": {
+"cls": "natural",
+"lat": 35.5680023,
+"lon": 135.1906382,
+"name": "Amanohashidate, Miyazu, Kyoto Prefecture",
+"type": "beach",
+"via": "photon"
+},
+"Amanohashidate Winery Miyazu": {
+"cls": "natural",
+"lat": 35.5680023,
+"lon": 135.1906382,
+"name": "Amanohashidate, Miyazu, Kyoto Prefecture",
+"type": "beach",
+"via": "photon"
+},
+"Arashiyama Yoshimura soba Kyoto": {
+"cls": "amenity",
+"lat": 34.9964463,
+"lon": 135.7602292,
+"name": "Soba no mi yoshima, Kyoto, Kyoto Prefecture",
+"type": "restaurant",
+"via": "photon"
+},
 "Asakusa Imahan Kokusai Dori Honten, Asakusa, Tokyo": null,
 "Asami Reizo Kanasaki Honten Nagatoro": {
 "cls": "amenity",
@@ -39,7 +60,14 @@
 "via": "Atomic Bomb Dome, Hiroshima"
 },
 "Baird Brewery Gardens Shuzenji": null,
-"Bodai restaurant Kii-Katsuura Nachikatsuura": null,
+"Bodai restaurant Kii-Katsuura Nachikatsuura": {
+"cls": "amenity",
+"lat": 33.6280306,
+"lon": 135.9422715,
+"name": "bodai, Nachikatsuura, Wakayama Prefecture",
+"type": "restaurant",
+"via": "photon"
+},
 "Boke Mart Oboke Miyoshi Tokushima": null,
 "Bon On Shya Koyasan cafe": null,
 "Butamisodon Nosaka Chichibu": {
@@ -58,7 +86,14 @@
 "type": "yes",
 "via": "photon"
 },
-"Camellia Flower Tea Ceremony, Ninenzaka, Kyoto": null,
+"Camellia Flower Tea Ceremony, Ninenzaka, Kyoto": {
+"cls": "tourism",
+"lat": 34.998533,
+"lon": 135.7805489,
+"name": "Camellia Tea Ceremony, Kyoto, Kyoto Prefecture",
+"type": "attraction",
+"via": "photon"
+},
 "Chichibu Shrine, Chichibu, Saitama": {
 "cls": "amenity",
 "lat": 35.9975821,
@@ -76,8 +111,22 @@
 "type": "parking",
 "via": "photon"
 },
-"Chitose Chaya Amanohashidate Miyazu": null,
-"Chuo Shokudo Sanbo Koyasan": null,
+"Chitose Chaya Amanohashidate Miyazu": {
+"cls": "amenity",
+"lat": 35.5595082,
+"lon": 135.186743,
+"name": "Hashidate Chaya, Miyazu, Kyoto Prefecture",
+"type": "restaurant",
+"via": "photon"
+},
+"Chuo Shokudo Sanbo Koyasan": {
+"cls": "amenity",
+"lat": 34.2136963,
+"lon": 135.5861553,
+"name": "Chuoshokudo Sanbo 中央食堂 さんぼう, Kōya, Wakayama Prefecture",
+"type": "restaurant",
+"via": "photon"
+},
 "Chureito Pagoda, Fujiyoshida": {
 "cls": "man_made",
 "lat": 35.5012871,
@@ -104,8 +153,22 @@
 "type": "attraction",
 "via": "photon"
 },
-"Dorokyo Gorge, Totsukawa": null,
-"Dotombori Imai Honten Osaka": null,
+"Dorokyo Gorge, Totsukawa": {
+"cls": "tourism",
+"lat": 33.913062,
+"lon": 135.8948101,
+"name": "瀞峡 (Doro-kyo Gorge), Totsukawa, Nara Prefecture",
+"type": "viewpoint",
+"via": "photon"
+},
+"Dotombori Imai Honten Osaka": {
+"cls": "amenity",
+"lat": 34.6681036,
+"lon": 135.5009834,
+"name": "Namba Okonomiyaki Ajinoya Honten, Osaka, Osaka Prefecture",
+"type": "restaurant",
+"via": "photon"
+},
 "Eikando Zenrinji Temple, Sakyo Ward, Kyoto": {
 "cls": "information",
 "lat": 35.0139387,
@@ -115,8 +178,22 @@
 "via": "Eikando Zenrinji Temple, Sakyo Ward, Kyoto"
 },
 "Eishindo, Minobu": null,
-"Ekoin Temple Koyasan": null,
-"Ekoin Temple, Koya, Wakayama": null,
+"Ekoin Temple Koyasan": {
+"cls": "tourism",
+"lat": 34.2125026,
+"lon": 135.5940689,
+"name": "Keikō-in Temple, Kōya, Wakayama Prefecture",
+"type": "guest_house",
+"via": "photon"
+},
+"Ekoin Temple, Koya, Wakayama": {
+"cls": "tourism",
+"lat": 34.2125026,
+"lon": 135.5940689,
+"name": "Keikō-in Temple, Kōya, Wakayama Prefecture",
+"type": "guest_house",
+"via": "photon"
+},
 "Fujiichi seafood restaurant Ito Shizuoka": {
 "cls": "building",
 "lat": 34.8758208,
@@ -157,8 +234,22 @@
 "type": "hotel",
 "via": "Fukuchiin, Koya, Wakayama"
 },
-"Fukutaro Main Branch Sennichimae Osaka": null,
-"Funaya Shokudo Ine Kyoto": null,
+"Fukutaro Main Branch Sennichimae Osaka": {
+"cls": "amenity",
+"lat": 34.6655928,
+"lon": 135.5045307,
+"name": "Fukutaro Honten, Osaka, Osaka Prefecture",
+"type": "restaurant",
+"via": "photon"
+},
+"Funaya Shokudo Ine Kyoto": {
+"cls": "leisure",
+"lat": 35.6754627,
+"lon": 135.2928739,
+"name": "Funaya Village Park, Ine, Kyoto Prefecture",
+"type": "park",
+"via": "photon"
+},
 "Funaya no Sato Park, Ine, Kyoto": {
 "cls": "leisure",
 "lat": 35.6754627,
@@ -176,8 +267,22 @@
 "type": "place_of_worship",
 "via": "Ginkakuji Temple, Kyoto"
 },
-"Gion Kaikan, Higashiyama Ward, Kyoto": null,
-"Gion Karyo Hanamikoji Kyoto": null,
+"Gion Kaikan, Higashiyama Ward, Kyoto": {
+"cls": "building",
+"lat": 35.0020035,
+"lon": 135.7756733,
+"name": "Yasaka Kaikan (Imperial Hotel planned site), Kyoto, Kyoto Prefecture",
+"type": "retail",
+"via": "photon"
+},
+"Gion Karyo Hanamikoji Kyoto": {
+"cls": "amenity",
+"lat": 35.0017668,
+"lon": 135.774578,
+"name": "Gion Karyo 'Kaiseki' (iK), Kyoto, Kyoto Prefecture",
+"type": "restaurant",
+"via": "photon"
+},
 "Gomadofu Hamadaya Koyasan": null,
 "Gyokudo Art Museum, Mitake, Ome, Tokyo": {
 "cls": "tourism",
@@ -211,7 +316,14 @@
 "type": "restaurant",
 "via": "photon"
 },
-"Haretoke Coffee Miyoshi Tokushima": null,
+"Haretoke Coffee Miyoshi Tokushima": {
+"cls": "amenity",
+"lat": 33.9616323,
+"lon": 133.8006633,
+"name": "Haretoke cafe, Miyoshi, Tokushima Prefecture",
+"type": "cafe",
+"via": "photon"
+},
 "Hashidate Chaya Amanohashidate Miyazu": {
 "cls": "amenity",
 "lat": 35.5595082,
@@ -220,7 +332,14 @@
 "type": "restaurant",
 "via": "Hashidate Chaya Amanohashidate Miyazu"
 },
-"Hikobee Chaya Amanohashidate Miyazu": null,
+"Hikobee Chaya Amanohashidate Miyazu": {
+"cls": "amenity",
+"lat": 35.5595082,
+"lon": 135.186743,
+"name": "Hashidate Chaya, Miyazu, Kyoto Prefecture",
+"type": "restaurant",
+"via": "photon"
+},
 "Hiraso, Nara": {
 "cls": "amenity",
 "lat": 34.6841719,
@@ -261,7 +380,14 @@
 "type": "place_of_worship",
 "via": "Hodosan Shrine, Nagatoro, Saitama"
 },
-"Honke Owariya Honten Kyoto": null,
+"Honke Owariya Honten Kyoto": {
+"cls": "amenity",
+"lat": 35.0127481,
+"lon": 135.7601451,
+"name": "Honke Owariya, Kyoto, Kyoto Prefecture",
+"type": "restaurant",
+"via": "photon"
+},
 "Hotel Emonec, Wolfova ulica 12, Ljubljana": {
 "cls": "tourism",
 "lat": 46.0509643,
@@ -286,7 +412,14 @@
 "type": "hotel",
 "via": "Hotel Iya Onsen, Miyoshi, Tokushima"
 },
-"Hoto Fudo Kawaguchiko": null,
+"Hoto Fudo Kawaguchiko": {
+"cls": "amenity",
+"lat": 35.4988413,
+"lon": 138.7686189,
+"name": "Hoto Fudo, Fujikawaguchiko, Yamanashi Prefecture",
+"type": "restaurant",
+"via": "photon"
+},
 "INE CAFE Ine Kyoto": {
 "cls": "amenity",
 "lat": 35.6739163,
@@ -338,7 +471,14 @@
 "via": "Itsukushima Shrine, Miyajima"
 },
 "Iya Bijin soba restaurant Nishi-Iya Miyoshi Tokushima": null,
-"Iya Kazurabashi Bridge, Miyoshi, Tokushima": null,
+"Iya Kazurabashi Bridge, Miyoshi, Tokushima": {
+"cls": "tourism",
+"lat": 33.8535806,
+"lon": 134.0458633,
+"name": "Oku-Iya Niju Kazurabashi, Miyoshi, Tokushima Prefecture",
+"type": "viewpoint",
+"via": "photon"
+},
 "Iya Soba Momijitei West-West Miyoshi Tokushima": null,
 "Iya Valley Peeing Boy Statue, Miyoshi, Tokushima": null,
 "Izu Panorama Park, Izunokuni, Shizuoka": {
@@ -433,7 +573,14 @@
 "type": "cafe",
 "via": "Kayaba Coffee, Yanaka, Tokyo"
 },
-"Kazurabashi Yumebutai Miyoshi Tokushima": null,
+"Kazurabashi Yumebutai Miyoshi Tokushima": {
+"cls": "tourism",
+"lat": 33.8794103,
+"lon": 133.8265367,
+"name": "Hotel Kazurabashi, Miyoshi, Tokushima Prefecture",
+"type": "hotel",
+"via": "photon"
+},
 "Keitakuen Garden, Tennoji Park, Osaka": {
 "cls": "leisure",
 "lat": 34.6497113,
@@ -444,7 +591,14 @@
 },
 "Kenny's House Cafe Izu Kogen": null,
 "Kikuya Shokudo Nagatoro": null,
-"Kofukuji Temple, Nara": null,
+"Kofukuji Temple, Nara": {
+"cls": "amenity",
+"lat": 34.8994867,
+"lon": 135.717696,
+"name": "Kōfuku-ji Temple, Kumiyama, Kyoto Prefecture",
+"type": "place_of_worship",
+"via": "photon"
+},
 "Komadori Baiten Mitakesan Ome": {
 "cls": "tourism",
 "lat": 35.7835973,
@@ -453,10 +607,31 @@
 "type": "guest_house",
 "via": "photon"
 },
-"Kongobuji Temple, Koya, Wakayama": null,
-"Konnamonja Nishiki Market Kyoto": null,
+"Kongobuji Temple, Koya, Wakayama": {
+"cls": "amenity",
+"lat": 34.2138822,
+"lon": 135.5836872,
+"name": "Kongobu-ji, Kōya, Wakayama Prefecture",
+"type": "place_of_worship",
+"via": "photon"
+},
+"Konnamonja Nishiki Market Kyoto": {
+"cls": "amenity",
+"lat": 35.0050244,
+"lon": 135.7655699,
+"name": "Nishiki Market, Kyoto, Kyoto Prefecture",
+"type": "marketplace",
+"via": "photon"
+},
 "Koyasan Daishi Kyokai, Koya, Wakayama": null,
-"Koyasan Reihokan Museum, Koya, Wakayama": null,
+"Koyasan Reihokan Museum, Koya, Wakayama": {
+"cls": "tourism",
+"lat": 34.2112832,
+"lon": 135.5808875,
+"name": "Reihokan Museum, Kōya, Wakayama Prefecture",
+"type": "museum",
+"via": "photon"
+},
 "Kumano Hongu Taisha, Tanabe, Wakayama": {
 "cls": "amenity",
 "lat": 33.8403512,
@@ -473,7 +648,14 @@
 "type": "place_of_worship",
 "via": "Kumano Nachi Taisha, Nachikatsuura, Wakayama"
 },
-"Kumanoco Shokudo Restaurant Hongu Tanabe": null,
+"Kumanoco Shokudo Restaurant Hongu Tanabe": {
+"cls": "amenity",
+"lat": 33.8344239,
+"lon": 135.7725432,
+"name": "kumanoco restaurant, Tanabe, Wakayama Prefecture",
+"type": "restaurant",
+"via": "photon"
+},
 "Kuonji Sanmon Gate, Minobu": {
 "cls": "building",
 "lat": 35.3789374,
@@ -515,7 +697,14 @@
 "type": "museum",
 "via": "Lapis Oboke, Miyoshi, Tokushima"
 },
-"Ljubljana trgovina z darili center": null,
+"Ljubljana trgovina z darili center": {
+"cls": "shop",
+"lat": 46.0549027,
+"lon": 14.5087549,
+"name": "Žito trgovina kolodvorska, Ljubljana",
+"type": "bakery",
+"via": "photon"
+},
 "Ljubljanski grad": {
 "cls": "historic",
 "lat": 46.0487819,
@@ -525,10 +714,24 @@
 "via": "Ljubljanski grad"
 },
 "MAPLE BASE Chichibu Muse Park": null,
-"Maguroya Kurogin Kuromon Ichiba Osaka": null,
+"Maguroya Kurogin Kuromon Ichiba Osaka": {
+"cls": "shop",
+"lat": 34.6692597,
+"lon": 135.4735924,
+"name": "Megane Ichiba, Osaka, Osaka Prefecture",
+"type": "optician",
+"via": "photon"
+},
 "Mamagotoya tofu restaurant Sawai Ome": null,
 "Marufuku Coffee Sennichimae Honten Osaka": null,
-"Maruman Shokudo Koyasan": null,
+"Maruman Shokudo Koyasan": {
+"cls": "amenity",
+"lat": 34.712093,
+"lon": 135.497965,
+"name": "Maruman, Osaka, Osaka Prefecture",
+"type": "pub",
+"via": "photon"
+},
 "Meharizushi Nidaime Nachikatsuura": null,
 "Meiji Jingu, Shibuya, Tokyo": {
 "cls": "amenity",
@@ -538,13 +741,48 @@
 "type": "place_of_worship",
 "via": "Meiji Jingu, Shibuya, Tokyo"
 },
-"Menami Kiyamachi Kyoto": null,
-"Meoto Zenzai Hozenji Namba Osaka": null,
+"Menami Kiyamachi Kyoto": {
+"cls": "highway",
+"lat": 35.0049799,
+"lon": 135.7703877,
+"name": "Nishi Kiyamachi Street, Kyoto, Kyoto Prefecture",
+"type": "service",
+"via": "photon"
+},
+"Meoto Zenzai Hozenji Namba Osaka": {
+"cls": "amenity",
+"lat": 34.667785,
+"lon": 135.502398,
+"name": "Meoto Zenzai, Osaka, Osaka Prefecture",
+"type": "restaurant",
+"via": "photon"
+},
 "Michi no Eki Amagigoe Izu wasabi": null,
-"Michi-no-Eki Dorokyokaido Kumanogawa, Shingu, Wakayama": null,
-"Miharashitei Nachisan Nachikatsuura": null,
+"Michi-no-Eki Dorokyokaido Kumanogawa, Shingu, Wakayama": {
+"cls": "highway",
+"lat": 33.7904977,
+"lon": 135.8966232,
+"name": "道の駅瀞峡街道熊野川, Shingu, Wakayama Prefecture",
+"type": "services",
+"via": "photon"
+},
+"Miharashitei Nachisan Nachikatsuura": {
+"cls": "highway",
+"lat": 33.672069,
+"lon": 135.8930346,
+"name": "Nachisan Katsuura Line, Nachikatsuura, Wakayama Prefecture",
+"type": "primary",
+"via": "photon"
+},
 "Miki Keiran Nishiki Market Kyoto": null,
-"Mini ZOO Živalski vrt Ljubljana": null,
+"Mini ZOO Živalski vrt Ljubljana": {
+"cls": "tourism",
+"lat": 46.0552982,
+"lon": 14.4721944,
+"name": "Ljubljana ZOO, Ljubljana",
+"type": "zoo",
+"via": "photon"
+},
 "Minobu town, Yamanashi": {
 "cls": "amenity",
 "lat": 35.46788,
@@ -553,10 +791,38 @@
 "type": "townhall",
 "via": "Minobu town, Yamanashi"
 },
-"Minobusan Ropeway, Minobu": null,
-"Miyasan Koyasan izakaya": null,
-"Mizuya Chaya, Nara Park": null,
-"Momiji Corridor, Fujikawaguchiko": null,
+"Minobusan Ropeway, Minobu": {
+"cls": "highway",
+"lat": 35.3529447,
+"lon": 138.4520093,
+"name": "Minobusan I.C Ent, Minobu, Yamanashi Prefecture",
+"type": "traffic_signals",
+"via": "photon"
+},
+"Miyasan Koyasan izakaya": {
+"cls": "amenity",
+"lat": 34.2127738,
+"lon": 135.5933648,
+"name": "Miyasan, Kōya, Wakayama Prefecture",
+"type": "restaurant",
+"via": "photon"
+},
+"Mizuya Chaya, Nara Park": {
+"cls": "amenity",
+"lat": 34.683491,
+"lon": 135.846791,
+"name": "Mizuya-Chaya, Nara, Nara Prefecture",
+"type": "restaurant",
+"via": "photon"
+},
+"Momiji Corridor, Fujikawaguchiko": {
+"cls": "tourism",
+"lat": 35.5255857,
+"lon": 138.7624404,
+"name": "Momiji Tunnel- Maple trees covered road, Fujikawaguchiko, Yamanashi Prefecture",
+"type": "attraction",
+"via": "photon"
+},
 "Momijidani Park, Miyajima": {
 "cls": "leisure",
 "lat": 34.2938092,
@@ -681,7 +947,14 @@
 "type": "place_of_worship",
 "via": "Nezu Shrine, Bunkyo, Tokyo"
 },
-"Nigatsudo Hall, Nara": null,
+"Nigatsudo Hall, Nara": {
+"cls": "building",
+"lat": 34.6892745,
+"lon": 135.8442675,
+"name": "Nigatsu Hall, Nara, Nara Prefecture",
+"type": "shrine",
+"via": "photon"
+},
 "Niku no Suzuki, Yanaka Ginza, Tokyo": {
 "cls": "shop",
 "lat": 35.7276347,
@@ -726,7 +999,14 @@
 "via": "Okonomiyaki Mizuno Dotonbori Osaka"
 },
 "Oku-Iya Double Vine Bridges, Higashiiya, Miyoshi, Tokushima": null,
-"Okunoin Cemetery, Koya, Wakayama": null,
+"Okunoin Cemetery, Koya, Wakayama": {
+"cls": "highway",
+"lat": 34.2163037,
+"lon": 135.6037585,
+"name": "14 Okunoin-mae, Kōya, Wakayama Prefecture",
+"type": "bus_stop",
+"via": "photon"
+},
 "Okutama Visitor Center, Okutama, Tokyo": {
 "cls": "information",
 "lat": 35.8085273,
@@ -777,8 +1057,22 @@
 "via": "Oshino Hakkai, Oshino"
 },
 "Oshokuji Dokoro Kaihami Nachisan Nachikatsuura": null,
-"Oshokuji Shimoji Hongu Tanabe Wakayama": null,
-"Osrednja tržnica Ljubljana, Plečnikove arkade": null,
+"Oshokuji Shimoji Hongu Tanabe Wakayama": {
+"cls": "highway",
+"lat": 33.8211849,
+"lon": 135.7912396,
+"name": "Shimojibashi, Tanabe, Wakayama Prefecture",
+"type": "bus_stop",
+"via": "photon"
+},
+"Osrednja tržnica Ljubljana, Plečnikove arkade": {
+"cls": "amenity",
+"lat": 46.05122,
+"lon": 14.5096363,
+"name": "Ljubljanska tržnica, Ljubljana",
+"type": "marketplace",
+"via": "photon"
+},
 "Park Tivoli, Ljubljana": {
 "cls": "leisure",
 "lat": 46.0551457,
@@ -787,11 +1081,25 @@
 "type": "park",
 "via": "Park Tivoli, Ljubljana"
 },
-"Pension Ashita no Mori Kawayu Onsen Tanabe": null,
+"Pension Ashita no Mori Kawayu Onsen Tanabe": {
+"cls": "tourism",
+"lat": 33.8128214,
+"lon": 135.7743552,
+"name": "Ashita-no-Mori, Tanabe, Wakayama Prefecture",
+"type": "hotel",
+"via": "photon"
+},
 "Rakumiya Marugen Ito": null,
 "Restaurant Funaya Michi-no-Eki Funaya no Sato Ine": null,
 "Restaurant Obokekyo Mannaka Miyoshi Tokushima": null,
-"Restavracija Živalski vrt Ljubljana": null,
+"Restavracija Živalski vrt Ljubljana": {
+"cls": "tourism",
+"lat": 46.0552982,
+"lon": 14.4721944,
+"name": "Ljubljana ZOO, Ljubljana",
+"type": "zoo",
+"via": "photon"
+},
 "Rikugien Garden, Bunkyo, Tokyo": {
 "cls": "leisure",
 "lat": 35.7333998,
@@ -820,12 +1128,33 @@
 "type": "restaurant",
 "via": "Saga Tofu Ine Arashiyama Kyoto"
 },
-"Sakurai Udon, Fujiyoshida": null,
-"Saryo Tsujiri Gion Honten Kyoto": null,
+"Sakurai Udon, Fujiyoshida": {
+"cls": "amenity",
+"lat": 35.4751219,
+"lon": 138.7965032,
+"name": "Akaritei Handmade Udon, Fujiyoshida, Yamanashi Prefecture",
+"type": "restaurant",
+"via": "photon"
+},
+"Saryo Tsujiri Gion Honten Kyoto": {
+"cls": "amenity",
+"lat": 35.0037432,
+"lon": 135.7747249,
+"name": "Kyoto, Kyoto Prefecture",
+"type": "cafe",
+"via": "photon"
+},
 "Seibu Chichibu Ekimae Onsen Matsuri no Yu, Chichibu, Saitama": null,
 "Seiryu Garden Sawanoi-en Sawai Ome": null,
 "Senkichi soba restaurant Miyoshi Tokushima": null,
-"Shabuzen Umeda Osaka": null,
+"Shabuzen Umeda Osaka": {
+"cls": "railway",
+"lat": 34.7054194,
+"lon": 135.4983721,
+"name": "Osaka-Umeda, Osaka, Osaka Prefecture",
+"type": "station",
+"via": "photon"
+},
 "Shitennoji Temple, Tennoji, Osaka": {
 "cls": "highway",
 "lat": 34.6537197,
@@ -860,7 +1189,14 @@
 "via": "Shuzenji Niji no Sato, Izu, Shizuoka"
 },
 "Soba Koko Shuzenji": null,
-"Sojiin Temple Koyasan": null,
+"Sojiin Temple Koyasan": {
+"cls": "amenity",
+"lat": 34.2137585,
+"lon": 135.5818355,
+"name": "Sojiin, Kōya, Wakayama Prefecture",
+"type": "place_of_worship",
+"via": "photon"
+},
 "Stolnica sv. Nikolaja, Ljubljana": {
 "cls": "amenity",
 "lat": 46.0507631,
@@ -903,7 +1239,14 @@
 "type": "board",
 "via": "Tenryuji Temple, Arashiyama, Kyoto"
 },
-"Todaiji Temple, Nara": null,
+"Todaiji Temple, Nara": {
+"cls": "landuse",
+"lat": 34.6882437,
+"lon": 135.8397568,
+"name": "Tōdai-ji, Nara, Nara Prefecture",
+"type": "religious",
+"via": "photon"
+},
 "Tofukuji Temple, Kyoto": {
 "cls": "natural",
 "lat": 34.9760806,
@@ -987,7 +1330,14 @@
 "type": "viewpoint",
 "via": "Tsutenkaku, Shinsekai, Osaka"
 },
-"Umeda Kani Shokudo Osaka": null,
+"Umeda Kani Shokudo Osaka": {
+"cls": "amenity",
+"lat": 34.7056078,
+"lon": 135.4956879,
+"name": "Maido Ookini Shokudo, Osaka, Osaka Prefecture",
+"type": "fast_food",
+"via": "photon"
+},
 "Umeda Sky Building, Kita Ward, Osaka": {
 "cls": "building",
 "lat": 34.7052927,
@@ -996,12 +1346,33 @@
 "type": "office",
 "via": "Umeda Sky Building, Kita Ward, Osaka"
 },
-"Vivarij Živalski vrt Ljubljana": null,
+"Vivarij Živalski vrt Ljubljana": {
+"cls": "tourism",
+"lat": 46.0552982,
+"lon": 14.4721944,
+"name": "Ljubljana ZOO, Ljubljana",
+"type": "zoo",
+"via": "photon"
+},
 "Wadatsumi Funaya Biyori Ine": null,
 "Waheisoba Chichibu": null,
 "Wakamatsu soba Nagatoro": null,
-"Wasabi Garden Kadoya Kawazu": null,
-"Yaekatsu Shinsekai Osaka": null,
+"Wasabi Garden Kadoya Kawazu": {
+"cls": "amenity",
+"lat": 34.7941115,
+"lon": 138.9353271,
+"name": "Wasabi-en Kadoya, Kawazu, Shizuoka Prefecture",
+"type": "restaurant",
+"via": "photon"
+},
+"Yaekatsu Shinsekai Osaka": {
+"cls": "tourism",
+"lat": 34.6520901,
+"lon": 135.5061908,
+"name": "Shinsekai, Osaka, Osaka Prefecture",
+"type": "attraction",
+"via": "photon"
+},
 "Yanaka Ginza Shopping Street, Taito, Tokyo": {
 "cls": "highway",
 "lat": 35.7401964,
@@ -1026,7 +1397,14 @@
 "type": "restaurant",
 "via": "photon"
 },
-"Yunomine Onsen Shokudo Tanabe Wakayama": null,
+"Yunomine Onsen Shokudo Tanabe Wakayama": {
+"cls": "natural",
+"lat": 33.8287966,
+"lon": 135.757818,
+"name": "Yunomine Onsen Public Bath, Tanabe, Wakayama Prefecture",
+"type": "hot_spring",
+"via": "photon"
+},
 "Yunomine Onsen, Tanabe, Wakayama": {
 "cls": "place",
 "lat": 33.8288351,
@@ -1035,7 +1413,14 @@
 "type": "locality",
 "via": "Yunomine Onsen, Tanabe, Wakayama"
 },
-"Yunomune Chaya Yunomine Onsen Tanabe": null,
+"Yunomune Chaya Yunomine Onsen Tanabe": {
+"cls": "natural",
+"lat": 33.8287966,
+"lon": 135.757818,
+"name": "Yunomine Onsen Public Bath, Tanabe, Wakayama Prefecture",
+"type": "hot_spring",
+"via": "photon"
+},
 "Zenpuutei Nanaban Shuzenji": {
 "cls": "amenity",
 "lat": 34.9715214,
@@ -1060,7 +1445,14 @@
 "type": "restaurant",
 "via": "gostilna štruklji Ljubljana center"
 },
-"igrišče Živalski vrt Ljubljana": null,
+"igrišče Živalski vrt Ljubljana": {
+"cls": "tourism",
+"lat": 46.0552982,
+"lon": 14.4721944,
+"name": "Ljubljana ZOO, Ljubljana",
+"type": "zoo",
+"via": "photon"
+},
 "pizzeria Ljubljana center": {
 "cls": "amenity",
 "lat": 46.0546968,
@@ -1069,8 +1461,22 @@
 "type": "fast_food",
 "via": "pizzeria Ljubljana center"
 },
-"sladoled Ljubljana center": null,
-"topla čokolada Ljubljana center": null,
+"sladoled Ljubljana center": {
+"cls": "historic",
+"lat": 46.0487819,
+"lon": 14.5085383,
+"name": "Ljubljana Castle, Ljubljana",
+"type": "castle",
+"via": "photon"
+},
+"topla čokolada Ljubljana center": {
+"cls": "shop",
+"lat": 46.0487524,
+"lon": 14.5063525,
+"name": "Čokoladnica Ljubljana, Ljubljana",
+"type": "confectionery",
+"via": "photon"
+},
 "Železniška postaja Ljubljana": {
 "cls": "railway",
 "lat": 46.0581713,
@@ -1095,10 +1501,45 @@
 "type": "zoo",
 "via": "Živalski vrt Ljubljana"
 },
-"Živalski vrt Ljubljana medvedi": null,
+"Živalski vrt Ljubljana medvedi": {
+"cls": "tourism",
+"lat": 46.0552982,
+"lon": 14.4721944,
+"name": "Ljubljana ZOO, Ljubljana",
+"type": "zoo",
+"via": "photon"
+},
 "Živalski vrt Ljubljana morski levi": null,
-"Živalski vrt Ljubljana sloni": null,
-"Živalski vrt Ljubljana tigri": null,
-"Živalski vrt Ljubljana žirafe": null,
-"Živalski vrt Ljubljana, Večna pot 70": null
+"Živalski vrt Ljubljana sloni": {
+"cls": "tourism",
+"lat": 46.0552982,
+"lon": 14.4721944,
+"name": "Ljubljana ZOO, Ljubljana",
+"type": "zoo",
+"via": "photon"
+},
+"Živalski vrt Ljubljana tigri": {
+"cls": "tourism",
+"lat": 46.0552982,
+"lon": 14.4721944,
+"name": "Ljubljana ZOO, Ljubljana",
+"type": "zoo",
+"via": "photon"
+},
+"Živalski vrt Ljubljana žirafe": {
+"cls": "tourism",
+"lat": 46.0552982,
+"lon": 14.4721944,
+"name": "Ljubljana ZOO, Ljubljana",
+"type": "zoo",
+"via": "photon"
+},
+"Živalski vrt Ljubljana, Večna pot 70": {
+"cls": "amenity",
+"lat": 46.0520794,
+"lon": 14.4724422,
+"name": "Živalski vrt Ljubljana - ZOO, Ljubljana",
+"type": "car_sharing",
+"via": "photon"
+}
 }
