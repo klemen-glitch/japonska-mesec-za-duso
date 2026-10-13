@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shikoku — dolina Iya · Japonska 2026</title>
+  <meta name="description" content="Shikoku — dolina Iya: znamenitosti, hrana in nasveti — vodnik Japonska 2026.">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#7b2230">
+  <script>window.TRIP={"id": "japonska", "slug": "jp-xyna9tg2e", "people": ["Marjetica", "Helena", "Ljuba", "Magda"], "gate": "../index.html", "after": null, "t": null, "color": null, "stations": [{"k": "tokio", "e": "🗼", "n": "Tokio"}, {"k": "chichibu", "e": "🌳", "n": "Chichibu"}, {"k": "kawaguchiko", "e": "🗻", "n": "Fuji"}, {"k": "minobusan", "e": "🏯", "n": "Minobu"}, {"k": "izu", "e": "🌊", "n": "Izu"}, {"k": "kumano", "e": "⛩️", "n": "Kumano"}, {"k": "koyasan", "e": "🏔️", "n": "Koya-san"}, {"k": "iya", "e": "🏞️", "n": "Iya"}, {"k": "ine", "e": "🎣", "n": "Ine"}, {"k": "nara", "e": "🦌", "n": "Nara"}, {"k": "kyoto", "e": "🍁", "n": "Kyoto"}, {"k": "osaka", "e": "🏙️", "n": "Osaka"}, {"k": "hiroshima", "e": "🕊️", "n": "Hiroshima"}]};(function(){try{var s=JSON.parse(localStorage.getItem("trip_session")||"null");var ok=s&&s.trips&&s.trips.some(function(t){return t.slug===TRIP.slug});if(!ok){location.replace(TRIP.gate+"?next="+encodeURIComponent(TRIP.slug));}}catch(e){}})();</script>
+  <link rel="stylesheet" href="style.css?v=19">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="album.js?v=19"></script>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+</head>
+<body>
+<header class="site-header">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">🍁 Mesec za dušo</a>
+    <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="main-menu">
+      <span class="mt-ico" aria-hidden="true">☰</span> Meni
+    </button>
+  </div>
+  <nav class="main-menu" id="main-menu" aria-label="Glavni meni" hidden>
+    <div class="menu-inner">
+      <div class="menu-primary">
+        <a href="index.html"><span class="mi-emoji" aria-hidden="true">🏠</span>Domov</a>
+        <a href="kako.html"><span class="mi-emoji" aria-hidden="true">🎓</span>Kako uporabljati</a>
+        <a href="nacrt.html"><span class="mi-emoji" aria-hidden="true">🗺️</span>Načrt poti</a>
+        <a href="izziv.html"><span class="mi-emoji" aria-hidden="true">📸</span>Izzivi</a>
+        <a href="nalozi.html"><span class="mi-emoji" aria-hidden="true">📤</span>Naloži fotografije</a>
+        <a href="dozivetja.html"><span class="mi-emoji" aria-hidden="true">🎨</span>Doživetja</a>
+        <a href="priprave.html"><span class="mi-emoji" aria-hidden="true">🎒</span>Priprave</a>
+        <a href="prevajalec.html"><span class="mi-emoji" aria-hidden="true">🔍</span>Prevajalec s kamero</a>
+        <a href="nasveti.html"><span class="mi-emoji" aria-hidden="true">💡</span>Nasveti in kartice</a>
+        <a href="nujno.html"><span class="mi-emoji" aria-hidden="true">🆘</span>Nujno</a>
+        <a href="../index.html?izpis=1"><span class="mi-emoji" aria-hidden="true">🔑</span>Zamenjaj potovanje</a>
+      </div>
+      <p class="menu-label">Postaje potovanja</p>
+      <div class="menu-stations">
+        <a href="tokio.html"><span class="mi-emoji" aria-hidden="true">🗼</span>Tokio</a>
+        <a href="chichibu.html"><span class="mi-emoji" aria-hidden="true">🌳</span>Chichibu</a>
+        <a href="kawaguchiko.html"><span class="mi-emoji" aria-hidden="true">🗻</span>Fuji</a>
+        <a href="minobusan.html"><span class="mi-emoji" aria-hidden="true">🏯</span>Minobu</a>
+        <a href="izu.html"><span class="mi-emoji" aria-hidden="true">🌊</span>Izu</a>
+        <a href="kumano.html"><span class="mi-emoji" aria-hidden="true">⛩️</span>Kumano</a>
+        <a href="koyasan.html"><span class="mi-emoji" aria-hidden="true">🏔️</span>Koya-san</a>
+        <a href="iya.html" aria-current="page"><span class="mi-emoji" aria-hidden="true">🏞️</span>Iya</a>
+        <a href="ine.html"><span class="mi-emoji" aria-hidden="true">🎣</span>Ine</a>
+        <a href="nara.html"><span class="mi-emoji" aria-hidden="true">🦌</span>Nara</a>
+        <a href="kyoto.html"><span class="mi-emoji" aria-hidden="true">🍁</span>Kyoto</a>
+        <a href="osaka.html"><span class="mi-emoji" aria-hidden="true">🏙️</span>Osaka</a>
+        <a href="hiroshima.html"><span class="mi-emoji" aria-hidden="true">🕊️</span>Hiroshima</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="menu-backdrop" id="menu-backdrop" hidden></div>
+<main>
+<section class="loc-hero">
+  <div class="scene-banner"><img class="photo-banner" src="images/iya.jpg" alt="Shikoku — dolina Iya" loading="eager" decoding="async"></div>
+  <p class="kicker">🏞️ Postaja 8 od 13 · 3 noči</p>
+  <h1>Shikoku — dolina Iya</h1>
+  <p class="loc-sub">Skrita dolina visečih mostov</p>
+  <p class="loc-intro">Globoko na otoku Shikoku se skriva dolina Iya — eden najbolj odročnih in najlepših kotičkov Japonske. Strme gozdnate stene, smaragdna reka globoko spodaj in viseči mostovi iz trte, ki so nekoč skrivali begunce pred zasledovalci. Novembra dolina zažari v rdeči in zlati.</p>
+  <p class="visit-wrap"><button type="button" class="visit-btn" data-visit="iya">☐ Označi kot obiskano</button></p>
+</section>
+<section class="card-section" aria-labelledby="znamenitosti">
+  <h2 id="znamenitosti">⛩️ Znamenitosti in doživetja</h2>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">🍁</span>Most Kazurabashi (viseči most iz trt)</h3>
+    <p>45 metrov dolg most, spleten iz gorskih trt, ki so ga po legendi zgradili begunci klana Heike. Danes je skrito ojačan z jeklenimi kabli, zato ga boste prečkale varno, čeprav vam bo srce malo hitreje bilo. Takoj za mostom vas čaka 40-metrski slap Biwa, ob parkirišču pa stojnice z žara pečenimi dobrotami.</p>
+    <p class="sight-tip">💡 Vstopnina 550 jenov, odprt 8:00-17:00; vsak večer med 19:00 in 21:30 je most osvetljen (takrat prečkanje ni mogoče) — večerni pogled si res privoščite.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Iya%20Kazurabashi%20Bridge%2C%20Miyoshi%2C%20Tokushima" target="_blank" rel="noopener">📍 Zemljevid</a>
+      <a class="vid-btn" href="https://www.youtube.com/results?search_query=Iya%20Kazurabashi%20vine%20bridge%20Iya%20Valley%20Japan" target="_blank" rel="noopener">🎬 Video</a>
+    </div>
+  </article>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">⛵</span>Ladjica po soteski Oboke</h3>
+    <p>Pol ure mirne vožnje po smaragdni reki Yoshino, med marmornatimi skalami, ki jih je reka brusila milijone let. Novembra se pobočja nad vodo obarvajo rdeče in zlato — pogled z ladjice je takrat najlepši. Vožnja je udobna in povsem primerna za počasen tempo.</p>
+    <p class="sight-tip">💡 Okoli 1500 jenov, ladjice vozijo od 9:00 do 16:30 vsakih 20-30 minut brez rezervacije; jesenske barve v soteski vrh dosežejo sredi novembra, takrat pridite raje dopoldne.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Oboke%20Gorge%20Sightseeing%20Boat%2C%20Miyoshi%2C%20Tokushima" target="_blank" rel="noopener">📍 Zemljevid</a>
+      <a class="vid-btn" href="https://www.youtube.com/results?search_query=Oboke%20Gorge%20sightseeing%20boat%20cruise%20autumn" target="_blank" rel="noopener">🎬 Video</a>
+    </div>
+  </article>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">♨️</span>Hotel Iya Onsen — kopel ob reki z vzpenjačo</h3>
+    <p>Do vročih vrelcev na dnu soteske se spustite s hotelsko vzpenjačo — pet minut vožnje po 42-stopinjskem pobočju, naravnost med jesenske barve. Spodaj vas čakata odprti kopeli tik ob reki, voda je mehka, rahlo peneča in prijetno topla. To je tisti trenutek potovanja, ki ga ne boste pozabile.</p>
+    <p class="sight-tip">💡 Dnevni obisk okoli 1900 jenov (vzpenjača vključena); še lepše je prespati tu in se kopati zvečer ali ob zori — sobe rezervirajte več mesecev vnaprej.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Hotel%20Iya%20Onsen%2C%20Miyoshi%2C%20Tokushima" target="_blank" rel="noopener">📍 Zemljevid</a>
+      <a class="vid-btn" href="https://www.youtube.com/results?search_query=Hotel%20Iya%20Onsen%20cable%20car%20open%20air%20bath%20Iya%20Valley" target="_blank" rel="noopener">🎬 Video</a>
+    </div>
+  </article>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">🏯</span>Razgledišče Hi-no-Ji in kipec dečka</h3>
+    <p>Najbolj slaven razgled doline Iya: reka se globoko spodaj zavije v obliki japonske pismenke &quot;hi&quot;. Nekaj minut naprej na 200-metrski pečini stoji bronasti kipec dečka, ki lula v prepad — spomin na objestne domačine iz starih časov. Oba postanka sta tik ob cesti, brez hoje in brez vstopnine.</p>
+    <p class="sight-tip">💡 Ustavite se na poti med Oboke in mostom Kazurabashi; najlepša svetloba je dopoldne, novembra pa so pobočja okoli razgledišča polna momiji barv.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Iya%20Valley%20Peeing%20Boy%20Statue%2C%20Miyoshi%2C%20Tokushima" target="_blank" rel="noopener">📍 Zemljevid</a>
+      <a class="vid-btn" href="https://www.youtube.com/results?search_query=Iya%20Valley%20Peeing%20Boy%20statue%20Hinoji%20viewpoint" target="_blank" rel="noopener">🎬 Video</a>
+    </div>
+  </article>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">🌄</span>Vas Ochiai in njeno razgledišče</h3>
+    <p>Zgodovinska vasica, ki se vzpenja skoraj 400 metrov po pobočju — slamnate strehe, kamnite poti in njivice, stare več stoletij. Najlepše jo boste videle z razgledne ploščadi na nasprotnem bregu, kamor se pripeljete z avtom. Kdor želi, si v vasi ogleda še obnovljeno hišo Nagaoka-ke s slamnato streho.</p>
+    <p class="sight-tip">💡 Razgledišče je vedno odprto in brezplačno; hiša Nagaoka-ke je odprta 9:00-17:00, zaprta ob sredah — za sprehod po vasi si vzemite počasno urico.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Ochiai%20Village%20Observation%20Deck%2C%20Higashiiya%2C%20Miyoshi%2C%20Tokushima" target="_blank" rel="noopener">📍 Zemljevid</a>
+      <a class="vid-btn" href="https://www.youtube.com/results?search_query=Ochiai%20village%20Iya%20Valley%20thatched%20houses" target="_blank" rel="noopener">🎬 Video</a>
+    </div>
+  </article>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">⛵</span>Dvojna mostova Oku-Iya</h3>
+    <p>Globlje v dolini, kjer je turistov le peščica, visita dva mostova iz trt — daljši &quot;moški&quot; in krajši &quot;ženski&quot; most, tik ob majhnem slapu. Okolica je mirna, gozdnata in kot nalašč za lahkoten sprehod ob reki. Marsikdo pravi, da je tu vzdušje še lepše kot pri glavnem mostu.</p>
+    <p class="sight-tip">💡 Pozor: mostova sta odprta samo do 30. novembra (9:00-17:00), pozimi zapreta — obisk načrtujte v prvi polovici potovanja, skupaj z izletom proti gori Tsurugi.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Oku-Iya%20Double%20Vine%20Bridges%2C%20Higashiiya%2C%20Miyoshi%2C%20Tokushima" target="_blank" rel="noopener">📍 Zemljevid</a>
+      <a class="vid-btn" href="https://www.youtube.com/results?search_query=Oku-Iya%20double%20vine%20bridges%20Niju%20Kazurabashi" target="_blank" rel="noopener">🎬 Video</a>
+    </div>
+  </article>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">🌄</span>Sedežnica na sveto goro Tsurugi</h3>
+    <p>Tsurugi je druga najvišja gora Šikokuja in sveta gora romarjev. S sedežnice, ki vas z Minokoshija popelje na 1750 metrov, se odpre širok razgled čez valovita slemena — brez enega samega napornega koraka. Že ob spodnji postaji boste videle, kako se jesen z vrhov spušča v dolino.</p>
+    <p class="sight-tip">💡 Sedežnica obratuje le od sredine aprila do konca novembra — izberite jasen, miren dan zgodaj na potovanju in se oblecite zelo toplo, zgoraj je lahko okoli ledišča.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Tsurugisan%20Tozan%20Lift%20Minokoshi%20Station%2C%20Miyoshi%2C%20Tokushima" target="_blank" rel="noopener">📍 Zemljevid</a>
+      <a class="vid-btn" href="https://www.youtube.com/results?search_query=Mt%20Tsurugi%20chairlift%20Minokoshi%20Shikoku" target="_blank" rel="noopener">🎬 Video</a>
+    </div>
+  </article>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">♨️</span>Lapis Oboke — hišica yokaijev in topla kopel za noge</h3>
+    <p>Prijazna obcestna postaja korak od postaje Oboke: v hiši yokaijev boste spoznale lokalne pravljične pošasti, iz teh krajev naj bi izviral celo znameniti jokajoči dedek Konaki-jijii. Zgoraj je zbirka kamnin in mineralov, pred vrati pa brezplačna kopel za noge s pogledom na sotesko in kavarna s teraso.</p>
+    <p class="sight-tip">💡 Idealen postanek za kavo ali ob deževnem dnevu; novembra tu tradicionalno pripravijo festival yokaijev — preverite datum na kraju samem.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Lapis%20Oboke%2C%20Miyoshi%2C%20Tokushima" target="_blank" rel="noopener">📍 Zemljevid</a>
+      <a class="vid-btn" href="https://www.youtube.com/results?search_query=Lapis%20Oboke%20yokai%20museum%20Tokushima" target="_blank" rel="noopener">🎬 Video</a>
+    </div>
+  </article>
+</section>
+<section class="card-section map-section" aria-labelledby="zemljevid">
+  <h2 id="zemljevid">🗺️ Zemljevid kraja</h2>
+  <div class="area-map" data-lat="33.9" data-lon="133.84" data-zoom="12" role="img" aria-label="Zemljevid — Iya Valley, Miyoshi, Tokushima"></div>
+  <a class="pin-btn map-open" href="https://www.google.com/maps/search/?api=1&query=Iya%20Valley%2C%20Miyoshi%2C%20Tokushima" target="_blank" rel="noopener">📍 Odpri na Google Zemljevidu</a>
+</section>
+<section class="card-section" aria-labelledby="dan">
+  <h2 id="dan">🗓️ Predlog enega lepega dne</h2>
+  <ul class="plan-list">
+    <li><span class="plan-time"><span class="plan-ic" aria-hidden="true">🌅</span> Zjutraj</span><span>Začnite ob reki: pol ure z ladjico po soteski Oboke med jesensko obarvanimi pobočji. Potem kava in brezplačna kopel za noge v Lapis Oboke, morda še hitri pozdrav yokaijem.</span></li>
+    <li><span class="plan-time"><span class="plan-ic" aria-hidden="true">🌤️</span> Dopoldne</span><span>Počasi se zapeljite v dolino Iya s postankoma pri razgledišču Hi-no-Ji in kipcu dečka na pečini. Fotografije, globok vdih in naprej.</span></li>
+    <li><span class="plan-time"><span class="plan-ic" aria-hidden="true">🍂</span> Popoldne</span><span>Prečkajte most Kazurabashi in si oglejte slap Biwa, nato pozno kosilo ob mostu: iya soba rezanci in dekomawashi z žara. Če ostane moči, še kratek skok do razgledišča nad vasjo Ochiai.</span></li>
+    <li><span class="plan-time"><span class="plan-ic" aria-hidden="true">🌙</span> Zvečer</span><span>Nastanite se v Hotelu Iya Onsen in se z vzpenjačo spustite do vroče kopeli tik ob reki. Po večerji si tiste, ki spite bliže mostu, oglejte še večerno osvetlitev Kazurabashija (19:00-21:30).</span></li>
+  </ul>
+</section>
+<section class="card-section izzivi" aria-labelledby="izzivi">
+  <h2 id="izzivi">📸 Foto izzivi za album</h2>
+  <p class="cat-intro">Naložite fotografijo (ali video) za izziv — takoj se označi kot opravljen in se spodaj pokaže sličica. Iz tega nastane vaš skupni album. <a href="izziv.html">Vsi izzivi na enem mestu →</a></p>
+  <div class="album-gate"></div>
+  <div class="izziv-board" data-scope="iya"></div>
+  <script type="application/json" id="izziv-data">[{"id": "iya-0", "t": "foto", "x": "Na sredini visečega mostu Kazurabashi — pogum in smeh (nekdo slika z brega).", "w": "Most iz trte (kazura) v dolini Iya je star izdelek iz divje trte. Ideja: slika poguma — nekdo slika z brega, drugi pa stojijo na sredini.", "p": {"k": "zanimivost", "h": "Obnova vsaka tri leta", "x": "Most je dolg okoli 45 m, visok okoli 14 m, trta pa trohni, zato ga obnovijo vsaka tri leta. Po legendi so ga gradili tako, da so ga lahko hitro prerezali pred zasledovalci."}, "s": "iya", "sn": "Iya", "e": "🏞️"}, {"id": "iya-1", "t": "foto", "x": "Skupinska na razgledišču Hi-no-Ji nad velikim ovinkom smaragdne reke.", "w": "Razgledišče Hi-no-Ji kaže veliki ovinek reke v globoki soteski — naslovna slika doline Iya. Ideja: skupna slika »na robu sveta«.", "p": {"k": "zanimivost", "h": "Kipec pogumnega dečka", "x": "Na razgledišču stoji kipec dečka, ki se odvaja čez rob prepada, daleč nad reko. Pravijo, da so se tu nekoč fantje preizkušali v pogumu — poiščite ga."}, "s": "iya", "sn": "Iya", "e": "🏞️"}, {"id": "iya-2", "t": "foto", "x": "Ljuba ob reki iz ladjice v soteski Oboke.", "w": "Soteska Oboke je znana po strmih skalah in vožnji z ladjico po reki Yoshino. Ideja: Ljuba med skalami in vodo.", "p": {"k": "zanimivost", "h": "Veliki in majhni koraki", "x": "Soteski pravijo Ōboke, sosednji pa Koboke; ime naj bi pomenilo »veliki koraki« in »majhni koraki« — kako so ljudje nekoč korakali po robu strmih skal."}, "s": "iya", "sn": "Iya", "e": "🏞️"}, {"id": "iya-3", "t": "foto", "x": "Jesenske barve doline — štiri majhne postave sredi velike narave.", "w": "Slika »majhne postave v veliki naravi« pokaže razsežnost doline. Ideja: pokazati, kako majhne in srečne smo v veliki naravi.", "p": {"k": "skrivnost", "h": "Dolina skrivališča", "x": "Po legendi se je po bitki pri Dan-no-ura (leta 1185) v dolini skril poraženi klan Heike — kraj je bil tako odročen, da jih oblast dolgo ni našla."}, "s": "iya", "sn": "Iya", "e": "🏞️"}]</script>
+</section>
+<section class="card-section" aria-labelledby="hrana">
+  <h2 id="hrana">🍜 Hrana — kaj in kje jesti</h2>
+  <h3 style="margin:0 0 0.3rem; font-size:1.1rem;">Kaj poskusiti</h3>
+  <ul class="nice-list">
+    <li><strong>Ajdova soba</strong> — dolina Iya je znana po ajdi — rezanci so tu gostejši in bolj rustikalni</li>
+    <li><strong>Pečen piščanec</strong> — lokalna specialiteta z gorskih kmetij</li>
+    <li><strong>Gorska zelenjava (sansai)</strong> — divje rastline iz okoliških gozdov, pripravljene na sto načinov</li>
+  </ul>
+  <h3 style="margin:1.2rem 0 0.3rem; font-size:1.1rem;">Kje jesti — izberite kategorijo</h3>
+  <p class="cat-intro">Dotaknite se kategorije in odprl se bo seznam preverjenih predlogov s povezavo na zemljevid.</p>
+  <details class="food-cat">
+    <summary><span class="cat-emoji" aria-hidden="true">🍜</span><span class="cat-name">Iya soba – ajdovi rezanci iz doline</span><span class="cat-count">3 predlogi</span><span class="chev" aria-hidden="true">▶</span></summary>
+    <div class="cat-body">
+      <p class="cat-intro">Ajda je stoletja rasla na strmih pobočjih doline Iya, zato so tukajšnji debelejši, kratko rezani rezanci soba prava jed kraja – privoščite si jih vsaj dvakrat.</p>
+      <div class="place">
+        <div class="place-head"><strong>祖谷そば もみじ亭 (Iya Soba Momijitei)</strong><span class="price">€</span></div>
+        <p>Dvesto let stara kmečka hiša v obrečnem kompleksu West-West, tik nad sotesko Oboke – skozi okna boste videle jesensko obarvano sotesko. Naročite boke-age sobo z velikim kosom ocvrtega lokalnega tofuja. Odprto 11.00–17.00, ob sredah zaprto; ob poldnevu pride več ljudi, a je prostora dovolj.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Iya%20Soba%20Momijitei%20West-West%20Miyoshi%20Tokushima" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+      <div class="place">
+        <div class="place-head"><strong>そば処 祖谷美人 (Iya Bijin)</strong><span class="price">€€</span></div>
+        <p>Restavracija s teraso, ki visi nad sotesko Iya, ob cesti proti mostu Kazurabashi. Ročno rezana ploščata soba z močnim vonjem po ajdi, zraven pa nabodalo dekomawashi ali na soli pečena rečna postrv amego. Ker je zraven tudi majhen ryokan, sprejemajo rezervacije – za pet oseb pokličite dan prej.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Iya%20Bijin%20soba%20restaurant%20Nishi-Iya%20Miyoshi%20Tokushima" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+      <div class="place">
+        <div class="place-head"><strong>せんきち (Senkichi)</strong><span class="price">€</span></div>
+        <p>Lepo obnovljena stara vaška hiša ob cesti 45 med Oboke in Zahodno Iyo. Ajdo zmeljejo vsako jutro, rezanci so brez vsakih dodatkov, dobra je tudi tempura. Ure odprtja se v gorah rade spreminjajo, zato pred obiskom pokličite; s seboj imejte gotovino.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Senkichi%20soba%20restaurant%20Miyoshi%20Tokushima" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+    </div>
+  </details>
+  <details class="food-cat">
+    <summary><span class="cat-emoji" aria-hidden="true">🍢</span><span class="cat-name">Lokalne specialitete za pokušino</span><span class="cat-count">2 predloga</span><span class="chev" aria-hidden="true">▶</span></summary>
+    <div class="cat-body">
+      <p class="cat-intro">Dolina ima tri dobrote, ki jih drugod ne boste našle: nabodalo dekomawashi s sladko miso polivko, trdi kamniti tofu iwa-dofu in na oglju pečeno postrv amego.</p>
+      <div class="place">
+        <div class="place-head"><strong>歩危マート (Boke Mart)</strong><span class="price">€</span></div>
+        <p>Majhna domača trgovina minuto od postaje Oboke, kjer je zbrana vsa dolina: kamniti tofu, ocvrti tofu boke-age, domači konjak in kislina za pod zob. V sosednji prodajalni strežejo tudi tople jedi, na primer Iya sobo in domačo juho. Odlično za malico ali darila; računajte na gotovino.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Boke%20Mart%20Oboke%20Miyoshi%20Tokushima" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+      <div class="place">
+        <div class="place-head"><strong>かずら橋夢舞台 (Kazurabashi Yumebutai)</strong><span class="price">€</span></div>
+        <p>Postajališče tik ob visečem mostu iz vinske trte. Na stojnicah pred vhodom počasi pečejo dekomawashi in soljeno postrv amego na oglju – vzemite eno nabodalo in jo pojejte kar ob reki. V notranji restavraciji je dovolj miz za vseh pet, zraven pa še trgovina z lokalnimi izdelki. Zvečer je most osvetljen (19.00–21.30), novembra ob vrhuncu jesenskih barv še posebej lep.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Kazurabashi%20Yumebutai%20Miyoshi%20Tokushima" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+    </div>
+  </details>
+  <details class="food-cat">
+    <summary><span class="cat-emoji" aria-hidden="true">♨️</span><span class="cat-name">Kosilo z razgledom in toplice</span><span class="cat-count">2 predloga</span><span class="chev" aria-hidden="true">▶</span></summary>
+    <div class="cat-body">
+      <p class="cat-intro">Novembra sta soteski Oboke in Iya v najlepših barvah – najlepše ju boste doživele z ladjice in iz tople vode, kosilo z razgledom pa je zraven.</p>
+      <div class="place">
+        <div class="place-head"><strong>レストラン大歩危峡まんなか (Restaurant Obokekyo Mannaka)</strong><span class="price">€€</span></div>
+        <p>Restavracija tik nad pristanom izletniških ladjic po soteski Oboke – najprej pol ure vožnje med jesensko obarvanimi skalami (brez rezervacije, ladjice vozijo sproti), potem kosilo ob velikih oknih nad reko. Naročite set s pečeno rečno ribo in Iya sobo. Skupine so tu vsakdanjost, kosilo lahko tudi rezervirate; kuhinja dela do 16.00.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Restaurant%20Obokekyo%20Mannaka%20Miyoshi%20Tokushima" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+      <div class="place">
+        <div class="place-head"><strong>ホテル祖谷温泉 (Hotel Iya Onsen)</strong><span class="price">€€€</span></div>
+        <p>Slavni hotel, kjer se z vzpenjačo spustite 170 metrov do vročih vrelcev ob sami reki – dnevni obisk stane okoli 2.000 jenov, na recepciji se javite do 16.00. Privoščite si kombinacijo: najprej kopel med jesenskim listjem, nato kosilo iz gorskih sestavin v restavraciji z razgledom na sotesko. Kosilo za pet oseb obvezno rezervirajte vnaprej.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Hotel%20Iya%20Onsen%20Miyoshi%20Tokushima" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+    </div>
+  </details>
+  <details class="food-cat">
+    <summary><span class="cat-emoji" aria-hidden="true">☕</span><span class="cat-name">Kavarne za počitek</span><span class="cat-count">2 predloga</span><span class="chev" aria-hidden="true">▶</span></summary>
+    <div class="cat-body">
+      <p class="cat-intro">Kavarn je v dolini malo, a ti dve sta pravi dragulj – ravno prav za oddih med počasnim raziskovanjem.</p>
+      <div class="place">
+        <div class="place-head"><strong>ハレとケ珈琲 (Haretoke Coffee)</strong><span class="price">€</span></div>
+        <p>Kavarna v nekdanji osnovni šoli ob vhodu v dolino, blizu postaje Iyaguchi. Kavo pražijo sami, k njej vzemite njihov canelé ali pico iz domače moke, po kavarni pa se sprehajajo hišne mačke. Odprto 11.00–16.00 (ob koncih tedna do 17.00), ob sredah in četrtkih zaprto.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Haretoke%20Coffee%20Miyoshi%20Tokushima" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+      <div class="place">
+        <div class="place-head"><strong>森のくまさん (Mori no Kumasan)</strong><span class="price">€</span></div>
+        <p>Majhna kavarna tik ob mostu Kazurabashi, specializirana za domači med. Naročite palačinke ali francoski toast z medom in kavo, na terasi pa vam bodo morda iz roke jedle gozdne ptice. Prijeten postanek po prečkanju mostu.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Mori%20no%20Kumasan%20cafe%20Kazurabashi%20Miyoshi%20Tokushima" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+    </div>
+  </details>
+</section>
+<section class="card-section" aria-labelledby="prakticno">
+  <h2 id="prakticno">🧭 Dobro je vedeti</h2>
+  <ul class="nice-list">
+    <li>Dolina Iya je odročna, ceste pa ozke in vijugaste. Najudobneje je z najetim avtom in izkušeno voznico; brez avta izberite redni izletniški avtobus z vodičem iz Awa-Ikede (okoli 5 ur in 45 minut, vključeni kosilo in vstopnine: Oboke ladjica, Kazurabashi, razgledišča) ali KOTOBUS shuttle. Lokalni avtobusi iz Oboke vozijo le vsako uro ali dve.</li>
+    <li>Do Oboke se lahko pripeljete s panoramskim vlakom Shikoku Mannaka Sennen Monogatari (Tadotsu-Oboke, okoli 3 ure, večinoma ob koncih tedna in praznikih) — eleganten vlak s postrežbo, kot nalašč za vas. Rezervirajte na spletu JR Shikoku od enega meseca do 10 dni pred vožnjo.</li>
+    <li>Imejte dovolj gotovine: most, ladjica, stojnice in majhne gostilne sprejemajo skoraj samo jene v gotovini, bankomatov pa je v dolini zelo malo. Denar dvignite že v Awa-Ikedi ali na pošti.</li>
+    <li>November je vrh jesenske sezone — prenočišča (Hotel Iya Onsen, kmečke hiše Togenkyo-Iya v Ochiaiju, Iyashi no Onsenkyo) rezervirajte čim prej, po možnosti nekaj mesecev vnaprej.</li>
+    <li>Računajte na mraz: dolina leži visoko in jutra so lahko okoli ledišča. Oblecite se po plasteh, vzemite kape in rokavice. Vse, kar pozimi zapre (dvojna mostova Oku-Iya, sedežnica Tsurugi), obiščite do konca novembra; barve so v dolini najlepše v prvi polovici meseca.</li>
+  </ul>
+</section>
+<section class="card-section stay-section" aria-labelledby="prespati">
+  <h2 id="prespati">🏡 Kje prespati</h2>
+  <p>Ponudba je majhna, a posebna: hotel Iya Onsen z rečno kopeljo ali tradicionalna slamnata hiša (kominka) v gorah. Rezervirajte zgodaj; za premike računajte na avto ali redke lokalne avtobuse.</p>
+</section>
+<section class="card-section fact-section" aria-labelledby="zanimivost">
+  <h2 id="zanimivost">💡 Zanimivost</h2>
+  <p>Viseči mostovi v dolini Iya so spleteni iz gorske trte in jih po stari tradiciji redno obnavljajo. Pravijo, da so jih nekoč gradili prav zato, da bi jih ob nevarnosti lahko hitro prerezali in ustavili zasledovalce.</p>
+</section>
+<section class="card-section magda-section" aria-labelledby="magda">
+  <h2 id="magda">💛 Magdin trenutek</h2>
+  <p>Na sredini mostu Kazurabashi se ustavite — trdno se držite ograje! — in poglejte navzdol na smaragdno reko. Srce bo malo pospešilo, smeh na drugi strani pa bo toliko slajši.</p>
+</section>
+<section class="rubric-wrap" aria-label="Osebne rubrike">
+  <div class="card-section rubric rubric-moment">
+    <h2>🍁 Najlepši trenutek dneva</h2>
+    <p>Dolina Iya je najlepša dopoldne, ko se megla dviga iz globoke soteske in razgali strme, v rdeče in zlato odete stene. Z razgledišča Hi-no-Ji se takrat odpre pogled na reko, ki se v velikem ovinku vije globoko spodaj. Za konec dneva pa je čaroben mrak, ko se svetloba umakne izza gora in dolina utihne.</p>
+  </div>
+  <div class="card-section rubric rubric-hour">
+    <h2>☕ Vzemi si uro zase</h2>
+    <p>Privoščite si uro v rečni kopeli hotela Iya Onsen: z majhno vzpenjačo se spustite 170 metrov do dna soteske, kjer je odprt onsen tik ob smaragdni reki. Sedite v topli vodi, poslušajte tok in glejte pobarvane stene nad sabo. Če onsen ni po vašem, pa naj bo ura miru klop na razgledišču vasi Ochiai.</p>
+  </div>
+  <div class="card-section rubric rubric-mandala">
+    <h2>🎨 Navdih za mandalo</h2>
+    <p>Barve kraja: smaragdno zelena reke, rjava in siva pletene trte mostu, žareče rdeče in zlato jesenskih pobočij, slamnate strehe gorskih vasi. Vzorci: prepletena mreža visečega mostu, veliki ovinek reke, terase vasi Ochiai in plasti gora. Osrednji motiv naj bo pleten krog trte, znotraj njega pa reka, ki teče v spiralo.</p>
+  </div>
+  <div class="card-section rubric rubric-rain">
+    <h2>☔ Če dežuje</h2>
+    <p>Ob dežju megla naredi dolino čarobno. Pod streho so kopel hotela Iya Onsen, hišica yokaijev Lapis Oboke in topla kopel za noge.</p>
+  </div>
+  <div class="card-section diary">
+    <h2>📖 Magdin dnevnik</h2>
+    <p class="diary-hint">Prostor za vaše vtise, skice in najlepši spomin s te postaje.</p>
+    <div class="diary-lines" aria-hidden="true"></div>
+  </div>
+</section>
+<section class="card-section" aria-labelledby="videi">
+  <h2 id="videi">🎬 Videi za navdih</h2>
+  <div class="video-grid">
+    <figure>
+      <!-- Video zamenjaš tako, da spremeniš kodo za "embed/" v spodnji vrstici -->
+      <iframe class="video-frame" src="https://www.youtube-nocookie.com/embed/BN9P6s57_4E" title="Iya Valley in Autumn, Oboke, Shikoku, Japan 四國大步危祖谷秋色" loading="lazy" allowfullscreen allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+      <figcaption>Iya Valley in Autumn, Oboke, Shikoku, Japan 四國大步危祖谷秋色 · Ivan Tang</figcaption>
+    </figure>
+    <figure>
+      <!-- Video zamenjaš tako, da spremeniš kodo za "embed/" v spodnji vrstici -->
+      <iframe class="video-frame" src="https://www.youtube-nocookie.com/embed/9HiNFrC1be4" title="A short retreat in Iya Valley, Tokushima, Shikoku" loading="lazy" allowfullscreen allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+      <figcaption>A short retreat in Iya Valley, Tokushima, Shikoku · Nishi-Awa Tourism | にし阿波 剣山・吉野川観光圏</figcaption>
+    </figure>
+    <figure>
+      <!-- Video zamenjaš tako, da spremeniš kodo za "embed/" v spodnji vrstici -->
+      <iframe class="video-frame" src="https://www.youtube-nocookie.com/embed/c117Q7L0g8Y" title="Japan&#x27;s Most Historic Vine Bridge Iya no Kazurabashi Iya Valley Walking Tour" loading="lazy" allowfullscreen allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+      <figcaption>Japan&#x27;s Most Historic Vine Bridge Iya no Kazurabashi Iya Valley Walking Tour · Arwin Tours</figcaption>
+    </figure>
+    <figure>
+      <!-- Video zamenjaš tako, da spremeniš kodo za "embed/" v spodnji vrstici -->
+      <iframe class="video-frame" src="https://www.youtube-nocookie.com/embed/AWB2zI2Ae0U" title="Autumn in Japan - Hiking Mt Tsurugi, Tokushima 4K" loading="lazy" allowfullscreen allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+      <figcaption><strong>Gora Tsurugi – jesenski pohod in žičnica</strong> · Autumn in Japan - Hiking Mt Tsurugi, Tokushima 4K · Currently Hannah</figcaption>
+    </figure>
+    <figure>
+      <!-- Video zamenjaš tako, da spremeniš kodo za "embed/" v spodnji vrstici -->
+      <iframe class="video-frame" src="https://www.youtube-nocookie.com/embed/lvldvmY-AQQ" title="Breathtaking views and exquisite onsen at unexplored region - Hotel Iyaonsen Iya Valley - Tokushima" loading="lazy" allowfullscreen allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+      <figcaption><strong>Onsen v dolini Iya (hotel Iya Onsen s kabinsko žičnico do termalnih kopeli)</strong> · Breathtaking views and exquisite onsen at unexplored region - Hotel Iyaonsen Iya Valley - Tokushima · Documentrip - Onsen Geek 🇯🇵</figcaption>
+    </figure>
+    <figure>
+      <!-- Video zamenjaš tako, da spremeniš kodo za "embed/" v spodnji vrstici -->
+      <iframe class="video-frame" src="https://www.youtube-nocookie.com/embed/PLHCu8pihgQ" title="Trip to IYA 🇯🇵/ Explore Hidden Valley in Japan / Kazurabashi / Oboke Gorge / Japan Travel 4K VLOG" loading="lazy" allowfullscreen allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+      <figcaption><strong>Viseči most Kazurabashi in soteska Oboke</strong> · Trip to IYA 🇯🇵/ Explore Hidden Valley in Japan / Kazurabashi / Oboke Gorge / Japan Travel 4K VLOG · Planet Journey</figcaption>
+    </figure>
+  </div>
+  <p class="video-more">Več videov na YouTube: <a href="https://www.youtube.com/results?search_query=Iya%20Valley%20vine%20bridge" target="_blank" rel="noopener">»Iya Valley vine bridge«</a> · <a href="https://www.youtube.com/results?search_query=Shikoku%20Iya%20Valley%20autumn" target="_blank" rel="noopener">»Shikoku Iya Valley autumn«</a></p>
+</section>
+<div class="back-row"><a class="back-button" href="index.html">🏠 Nazaj na pregled</a></div>
+<nav class="pager" aria-label="Prejšnja in naslednja postaja">
+  <a class="prev" href="koyasan.html"><span class="pager-label">← Prejšnja postaja</span>🏔️ Koya-san</a>
+  <a class="next" href="ine.html"><span class="pager-label">Naslednja postaja →</span>🎣 Ine</a>
+</nav>
+</main>
+<footer>
+  <p>🍁 Japonska — Mesec za dušo · 3. november – 2. december 2026 · Tokio → Osaka</p>
+  <p>Z ljubeznijo pripravljeno za Magdo in prijateljice</p>
+  <p><a href="kako.html">🎓 Kako uporabljati to stran</a> · <a href="../index.html?izpis=1">🔑 Zamenjaj potovanje</a></p>
+</footer>
+<script src="app.js?v=19"></script>
+</body>
+</html>

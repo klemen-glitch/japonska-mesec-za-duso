@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ljubljana s Katjo · Zmajeva pustolovščina</title>
+  <meta name="description" content="Ljubljana s Katjo: kaj početi, izzivi in nasveti — Zmajeva pustolovščina, Ljubljana.">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#2f8f6b">
+  <script>window.TRIP={"id": "ljubljana", "slug": "lj-d4phmm7xw", "people": ["Ana", "Maks"], "gate": "../index.html", "after": ["Bravo, zmajska ekipa!", "Poglejta <a href=\"nalozi.html\">skupni album</a> in iz slik sestavita svojo Zmajevo knjigo."], "t": {"locked": "Presenečenje čaka — odklene se, ko naložita sliko ali video.", "empty": "Album je še prazen — naložita prvo fotografijo. 📸", "thanks": "naloženih ✓ — odlično!", "more": "Odpri vodnik za to postajo →", "pre": "Pustolovščina se začne {date}. Poglejta <a href=\"priprave.html\">priprave</a> in kontrolni seznam."}, "color": "#2f8f6b", "stations": [{"k": "vlak", "e": "🚂", "n": "Vlak"}, {"k": "emonec", "e": "🏨", "n": "Hotel"}, {"k": "center", "e": "🏰", "n": "Center"}, {"k": "zoo", "e": "🦁", "n": "Živalski vrt"}, {"k": "domov", "e": "🏠", "n": "Domov"}]};(function(){try{var s=JSON.parse(localStorage.getItem("trip_session")||"null");var ok=s&&s.trips&&s.trips.some(function(t){return t.slug===TRIP.slug});if(!ok){location.replace(TRIP.gate+"?next="+encodeURIComponent(TRIP.slug));}}catch(e){}})();</script>
+  <link rel="stylesheet" href="style.css?v=19">
+  <style>
+    :root { --accent:#1f7a5a; --accent-ink:#1f7a5a; --accent-soft:#e8f5ee; --pin:#2f8f6b; --orange:#c8553d; --gold:#b08a2e; }
+    @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --accent:#6fd0a6; --accent-ink:#6fd0a6; --accent-soft:#14261e; --pin:#2f8f6b; --orange:#e08a6c; --gold:#d2b256; } }
+    :root[data-theme="dark"] { --accent:#6fd0a6; --accent-ink:#6fd0a6; --accent-soft:#14261e; --pin:#2f8f6b; --orange:#e08a6c; --gold:#d2b256; }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="album.js?v=19"></script>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+</head>
+<body>
+<header class="site-header">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">🐉 Zmajeva pustolovščina</a>
+    <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="main-menu">
+      <span class="mt-ico" aria-hidden="true">☰</span> Meni
+    </button>
+  </div>
+  <nav class="main-menu" id="main-menu" aria-label="Glavni meni" hidden>
+    <div class="menu-inner">
+      <div class="menu-primary">
+        <a href="index.html"><span class="mi-emoji" aria-hidden="true">🏠</span>Domov</a>
+        <a href="kako.html"><span class="mi-emoji" aria-hidden="true">🎓</span>Kako uporabljati</a>
+        <a href="nacrt.html"><span class="mi-emoji" aria-hidden="true">🗺️</span>Načrt poti</a>
+        <a href="izziv.html"><span class="mi-emoji" aria-hidden="true">📸</span>Izzivi</a>
+        <a href="nalozi.html"><span class="mi-emoji" aria-hidden="true">📤</span>Naloži fotografije</a>
+        <a href="priprave.html"><span class="mi-emoji" aria-hidden="true">🎒</span>Priprave</a>
+        <a href="nujno.html"><span class="mi-emoji" aria-hidden="true">🆘</span>Nujno</a>
+        <a href="../index.html?izpis=1"><span class="mi-emoji" aria-hidden="true">🔑</span>Zamenjaj potovanje</a>
+      </div>
+      <p class="menu-label">Postaje pustolovščine</p>
+      <div class="menu-stations">
+        <a href="vlak.html"><span class="mi-emoji" aria-hidden="true">🚂</span>Vlak</a>
+        <a href="emonec.html"><span class="mi-emoji" aria-hidden="true">🏨</span>Hotel</a>
+        <a href="center.html" aria-current="page"><span class="mi-emoji" aria-hidden="true">🏰</span>Center</a>
+        <a href="zoo.html"><span class="mi-emoji" aria-hidden="true">🦁</span>Živalski vrt</a>
+        <a href="domov.html"><span class="mi-emoji" aria-hidden="true">🏠</span>Domov</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="menu-backdrop" id="menu-backdrop" hidden></div>
+<main>
+<section class="loc-hero">
+  <div class="scene-banner"><svg class="scene-svg" viewBox="0 0 1200 460" role="img" aria-label="Ilustracija Ljubljanskega gradu na gričku, zmajskega mostu in reke Ljubljanice" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="sky-center" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b8def0"/><stop offset="1" stop-color="#fdf1dc"/></linearGradient></defs><rect width="1200" height="460" fill="url(#sky-center)"/><circle cx="1010" cy="110" r="54" fill="#f6c76a" opacity="0.85"/><g opacity="0.85" transform="translate(170,90) scale(0.9)" fill="#fff"><ellipse cx="0" cy="0" rx="58" ry="22"/><ellipse cx="-34" cy="8" rx="34" ry="16"/><ellipse cx="38" cy="8" rx="38" ry="17"/><ellipse cx="14" cy="-14" rx="30" ry="18"/></g><g opacity="0.8" transform="translate(700,60) scale(0.7)" fill="#fff"><ellipse cx="0" cy="0" rx="58" ry="22"/><ellipse cx="-34" cy="8" rx="34" ry="16"/><ellipse cx="38" cy="8" rx="38" ry="17"/><ellipse cx="14" cy="-14" rx="30" ry="18"/></g><g transform="translate(300,330) scale(1.0)"><path d="M-230 0 C-200 -60 -120 -110 -20 -118 C80 -124 190 -90 240 0 Z" fill="#6aa57a"/><rect x="-120" y="-190" width="240" height="78" fill="#ecd9b8"/><rect x="-120" y="-190" width="240" height="8" fill="#c9b79c"/><rect x="-30" y="-262" width="62" height="78" fill="#ecd9b8"/><polygon points="-38,-262 0,-300 38,-262" fill="#b9573b"/><rect x="-6" y="-244" width="14" height="22" rx="7" fill="#9cc3d6"/><rect x="-130" y="-228" width="46" height="40" fill="#ecd9b8"/><polygon points="-136,-228 -107,-258 -78,-228" fill="#b9573b"/><rect x="84" y="-218" width="40" height="30" fill="#ecd9b8"/><polygon points="80,-218 104,-244 128,-218" fill="#b9573b"/><rect x="-96" y="-170" width="12" height="22" rx="6" fill="#9cc3d6"/><rect x="-60" y="-170" width="12" height="22" rx="6" fill="#9cc3d6"/><rect x="40" y="-170" width="12" height="22" rx="6" fill="#9cc3d6"/><rect x="76" y="-170" width="12" height="22" rx="6" fill="#9cc3d6"/></g><rect x="560" y="250" width="90" height="90" fill="#f0d5ae"/><polygon points="556,250 605.0,226 654,250" fill="#b9573b"/><rect x="574" y="264" width="14" height="20" rx="2" fill="#9cc3d6"/><rect x="580.0" y="264" width="2" height="20" fill="#ecd9b8" opacity="0.8"/><rect x="574" y="294" width="14" height="20" rx="2" fill="#9cc3d6"/><rect x="580.0" y="294" width="2" height="20" fill="#ecd9b8" opacity="0.8"/><rect x="602" y="264" width="14" height="20" rx="2" fill="#9cc3d6"/><rect x="608.0" y="264" width="2" height="20" fill="#ecd9b8" opacity="0.8"/><rect x="602" y="294" width="14" height="20" rx="2" fill="#9cc3d6"/><rect x="608.0" y="294" width="2" height="20" fill="#ecd9b8" opacity="0.8"/><rect x="630" y="264" width="14" height="20" rx="2" fill="#9cc3d6"/><rect x="636.0" y="264" width="2" height="20" fill="#ecd9b8" opacity="0.8"/><rect x="630" y="294" width="14" height="20" rx="2" fill="#9cc3d6"/><rect x="636.0" y="294" width="2" height="20" fill="#ecd9b8" opacity="0.8"/><rect x="656" y="230" width="70" height="110" fill="#e5b98d"/><polygon points="652,230 691.0,206 730,230" fill="#b9573b"/><rect x="670" y="244" width="14" height="20" rx="2" fill="#9cc3d6"/><rect x="676.0" y="244" width="2" height="20" fill="#ecd9b8" opacity="0.8"/><rect x="670" y="274" width="14" height="20" rx="2" fill="#9cc3d6"/><rect x="676.0" y="274" width="2" height="20" fill="#ecd9b8" opacity="0.8"/><rect x="670" y="304" width="14" height="20" rx="2" fill="#9cc3d6"/><rect x="676.0" y="304" width="2" height="20" fill="#ecd9b8" opacity="0.8"/><rect x="698" y="244" width="14" height="20" rx="2" fill="#9cc3d6"/><rect x="704.0" y="244" width="2" height="20" fill="#ecd9b8" opacity="0.8"/><rect x="698" y="274" width="14" height="20" rx="2" fill="#9cc3d6"/><rect x="704.0" y="274" width="2" height="20" fill="#ecd9b8" opacity="0.8"/><rect x="698" y="304" width="14" height="20" rx="2" fill="#9cc3d6"/><rect x="704.0" y="304" width="2" height="20" fill="#ecd9b8" opacity="0.8"/><rect x="730" y="260" width="100" height="80" fill="#f1e0c2"/><polygon points="726,260 780.0,236 834,260" fill="#b9573b"/><rect x="744" y="274" width="14" height="20" rx="2" fill="#9cc3d6"/><rect x="750.0" y="274" width="2" height="20" fill="#ecd9b8" opacity="0.8"/><rect x="744" y="304" width="14" height="20" rx="2" fill="#9cc3d6"/><rect x="750.0" y="304" width="2" height="20" fill="#ecd9b8" opacity="0.8"/><rect x="772" y="274" width="14" height="20" rx="2" fill="#9cc3d6"/><rect x="778.0" y="274" width="2" height="20" fill="#ecd9b8" opacity="0.8"/><rect x="772" y="304" width="14" height="20" rx="2" fill="#9cc3d6"/><rect x="778.0" y="304" width="2" height="20" fill="#ecd9b8" opacity="0.8"/><rect x="800" y="274" width="14" height="20" rx="2" fill="#9cc3d6"/><rect x="806.0" y="274" width="2" height="20" fill="#ecd9b8" opacity="0.8"/><rect x="800" y="304" width="14" height="20" rx="2" fill="#9cc3d6"/><rect x="806.0" y="304" width="2" height="20" fill="#ecd9b8" opacity="0.8"/><rect x="880" y="240" width="100" height="100" fill="#e9c9a0"/><polygon points="876,240 930.0,216 984,240" fill="#b9573b"/><rect x="894" y="254" width="14" height="20" rx="2" fill="#9cc3d6"/><rect x="900.0" y="254" width="2" height="20" fill="#ecd9b8" opacity="0.8"/><rect x="894" y="284" width="14" height="20" rx="2" fill="#9cc3d6"/><rect x="900.0" y="284" width="2" height="20" fill="#ecd9b8" opacity="0.8"/><rect x="894" y="314" width="14" height="20" rx="2" fill="#9cc3d6"/><rect x="900.0" y="314" width="2" height="20" fill="#ecd9b8" opacity="0.8"/><rect x="922" y="254" width="14" height="20" rx="2" fill="#9cc3d6"/><rect x="928.0" y="254" width="2" height="20" fill="#ecd9b8" opacity="0.8"/><rect x="922" y="284" width="14" height="20" rx="2" fill="#9cc3d6"/><rect x="928.0" y="284" width="2" height="20" fill="#ecd9b8" opacity="0.8"/><rect x="922" y="314" width="14" height="20" rx="2" fill="#9cc3d6"/><rect x="928.0" y="314" width="2" height="20" fill="#ecd9b8" opacity="0.8"/><rect x="950" y="254" width="14" height="20" rx="2" fill="#9cc3d6"/><rect x="956.0" y="254" width="2" height="20" fill="#ecd9b8" opacity="0.8"/><rect x="950" y="284" width="14" height="20" rx="2" fill="#9cc3d6"/><rect x="956.0" y="284" width="2" height="20" fill="#ecd9b8" opacity="0.8"/><rect x="950" y="314" width="14" height="20" rx="2" fill="#9cc3d6"/><rect x="956.0" y="314" width="2" height="20" fill="#ecd9b8" opacity="0.8"/><rect x="986" y="210" width="80" height="130" fill="#f0d5ae"/><polygon points="982,210 1026.0,186 1070,210" fill="#b9573b"/><rect x="1000" y="224" width="14" height="20" rx="2" fill="#9cc3d6"/><rect x="1006.0" y="224" width="2" height="20" fill="#ecd9b8" opacity="0.8"/><rect x="1000" y="254" width="14" height="20" rx="2" fill="#9cc3d6"/><rect x="1006.0" y="254" width="2" height="20" fill="#ecd9b8" opacity="0.8"/><rect x="1000" y="284" width="14" height="20" rx="2" fill="#9cc3d6"/><rect x="1006.0" y="284" width="2" height="20" fill="#ecd9b8" opacity="0.8"/><rect x="1000" y="314" width="14" height="20" rx="2" fill="#9cc3d6"/><rect x="1006.0" y="314" width="2" height="20" fill="#ecd9b8" opacity="0.8"/><rect x="1028" y="224" width="14" height="20" rx="2" fill="#9cc3d6"/><rect x="1034.0" y="224" width="2" height="20" fill="#ecd9b8" opacity="0.8"/><rect x="1028" y="254" width="14" height="20" rx="2" fill="#9cc3d6"/><rect x="1034.0" y="254" width="2" height="20" fill="#ecd9b8" opacity="0.8"/><rect x="1028" y="284" width="14" height="20" rx="2" fill="#9cc3d6"/><rect x="1034.0" y="284" width="2" height="20" fill="#ecd9b8" opacity="0.8"/><rect x="1028" y="314" width="14" height="20" rx="2" fill="#9cc3d6"/><rect x="1034.0" y="314" width="2" height="20" fill="#ecd9b8" opacity="0.8"/><rect x="1072" y="250" width="110" height="90" fill="#e5b98d"/><polygon points="1068,250 1127.0,226 1186,250" fill="#b9573b"/><rect x="1086" y="264" width="14" height="20" rx="2" fill="#9cc3d6"/><rect x="1092.0" y="264" width="2" height="20" fill="#ecd9b8" opacity="0.8"/><rect x="1086" y="294" width="14" height="20" rx="2" fill="#9cc3d6"/><rect x="1092.0" y="294" width="2" height="20" fill="#ecd9b8" opacity="0.8"/><rect x="1114" y="264" width="14" height="20" rx="2" fill="#9cc3d6"/><rect x="1120.0" y="264" width="2" height="20" fill="#ecd9b8" opacity="0.8"/><rect x="1114" y="294" width="14" height="20" rx="2" fill="#9cc3d6"/><rect x="1120.0" y="294" width="2" height="20" fill="#ecd9b8" opacity="0.8"/><rect x="1142" y="264" width="14" height="20" rx="2" fill="#9cc3d6"/><rect x="1148.0" y="264" width="2" height="20" fill="#ecd9b8" opacity="0.8"/><rect x="1142" y="294" width="14" height="20" rx="2" fill="#9cc3d6"/><rect x="1148.0" y="294" width="2" height="20" fill="#ecd9b8" opacity="0.8"/><rect x="496" y="313.0" width="8" height="33.0" fill="#6b4a34"/><ellipse cx="500" cy="277.8" rx="35.2" ry="44.0" fill="#1f5f48"/><rect x="836" y="316.0" width="8" height="30.0" fill="#6b4a34"/><ellipse cx="840" cy="284.0" rx="32.0" ry="40.0" fill="#1f5f48"/><rect x="0" y="340" width="1200" height="120" fill="#79b4cf"/><path d="M0 370 Q150 362 300 370 T600 370 T900 370 T1200 370" stroke="#fff" stroke-width="2" fill="none" opacity="0.45"/><path d="M0 398 Q150 390 300 398 T600 398 T900 398 T1200 398" stroke="#fff" stroke-width="2" fill="none" opacity="0.45"/><path d="M0 426 Q150 418 300 426 T600 426 T900 426 T1200 426" stroke="#fff" stroke-width="2" fill="none" opacity="0.45"/><path d="M420 346 Q 700 300 980 346 L980 362 Q 700 322 420 362 Z" fill="#c9b79c"/><rect x="420" y="338" width="560" height="10" fill="#a8977c"/><path d="M450 372 Q520 316 590 372 L590 392 L450 392 Z" fill="#4f8fb0" opacity="0.85"/><path d="M630 372 Q700 316 770 372 L770 392 L630 392 Z" fill="#4f8fb0" opacity="0.85"/><path d="M810 372 Q880 316 950 372 L950 392 L810 392 Z" fill="#4f8fb0" opacity="0.85"/><g transform="translate(440,332) scale(0.28,0.28)"><path d="M-120 40 C-170 20 -170 -30 -130 -40 C-160 -10 -140 10 -100 20 Z" fill="#1f5f48"/><path d="M-110 30 C-80 -40 20 -50 70 -20 C90 -8 100 0 112 -4 L118 14 C100 28 80 22 62 12 C20 -10 -40 0 -70 52 Z" fill="#2f8f6b"/><path d="M-60 40 C-30 0 20 -5 60 14 C30 8 -20 14 -60 40 Z" fill="#f4c26b" opacity="0.85"/><path d="M-20 -20 C-30 -80 10 -110 50 -118 C40 -100 52 -92 70 -92 C52 -80 62 -66 80 -62 C58 -54 44 -34 30 -22 Z" fill="#8cc9a8" stroke="#1f5f48" stroke-width="3"/><path d="M100 -8 C112 -30 140 -34 160 -22 C170 -16 168 -4 156 -2 L128 6 C118 14 104 12 100 -8 Z" fill="#2f8f6b"/><path d="M112 -26 L106 -46 L124 -32 Z M130 -32 L128 -52 L142 -34 Z" fill="#c8553d"/><circle cx="138" cy="-16" r="4.5" fill="#fff"/><circle cx="139" cy="-16" r="2.2" fill="#2a3a35"/><path d="M-30 40 L-40 62 L-20 62 L-8 44 Z M40 30 L36 56 L56 56 L58 32 Z" fill="#1f5f48"/></g><g transform="translate(960,332) scale(-0.28,0.28)"><path d="M-120 40 C-170 20 -170 -30 -130 -40 C-160 -10 -140 10 -100 20 Z" fill="#1f5f48"/><path d="M-110 30 C-80 -40 20 -50 70 -20 C90 -8 100 0 112 -4 L118 14 C100 28 80 22 62 12 C20 -10 -40 0 -70 52 Z" fill="#2f8f6b"/><path d="M-60 40 C-30 0 20 -5 60 14 C30 8 -20 14 -60 40 Z" fill="#f4c26b" opacity="0.85"/><path d="M-20 -20 C-30 -80 10 -110 50 -118 C40 -100 52 -92 70 -92 C52 -80 62 -66 80 -62 C58 -54 44 -34 30 -22 Z" fill="#8cc9a8" stroke="#1f5f48" stroke-width="3"/><path d="M100 -8 C112 -30 140 -34 160 -22 C170 -16 168 -4 156 -2 L128 6 C118 14 104 12 100 -8 Z" fill="#2f8f6b"/><path d="M112 -26 L106 -46 L124 -32 Z M130 -32 L128 -52 L142 -34 Z" fill="#c8553d"/><circle cx="138" cy="-16" r="4.5" fill="#fff"/><circle cx="139" cy="-16" r="2.2" fill="#2a3a35"/><path d="M-30 40 L-40 62 L-20 62 L-8 44 Z M40 30 L36 56 L56 56 L58 32 Z" fill="#1f5f48"/></g><rect x="0" y="392" width="1200" height="68" fill="#4f8fb0" opacity="0.35"/></svg></div>
+  <p class="kicker">🏰 Postaja 3 od 5 · popoldne s Katjo</p>
+  <h1>Ljubljana s Katjo</h1>
+  <p class="loc-sub">Zmaji, mostovi, grad in sladoled z najboljšo družbo</p>
+  <p class="loc-intro">Prvi popoldan je za mesto in za prijateljico Katjo. Ljubljana je majhna in prijazna — vse zanimivo je znotraj nekaj sto metrov: Tromostovje, Prešernov trg, Zmajski most, reka Ljubljanica in nad vsem grad. Spodaj je več idej; izberita tiste, ki vama (in Katji) ustrezajo — ni treba vsega.</p>
+  <p class="visit-wrap"><button type="button" class="visit-btn" data-visit="center">☐ Označi kot obiskano</button></p>
+</section>
+<section class="card-section" aria-labelledby="znamenitosti">
+  <h2 id="znamenitosti">🦒 Kaj videti in početi</h2>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">🌉</span>Tromostovje in Prešernov trg</h3>
+    <p>Tromostovje, ki ga je oblikoval Jože Plečnik (okoli 1929–1932), je trojica mostov na enem mestu. Na Prešernovem trgu stoji kip pesnika Franceta Prešerna — verzi njegove Zdravljice so slovenska himna.</p>
+    <p class="sight-tip">💡 Srečanje s Katjo je idealno na Prešernovem trgu — vsi ga poznajo.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Tromostovje%2C%20Ljubljana" target="_blank" rel="noopener">📍 Zemljevid</a>
+      <a class="vid-btn" href="https://www.youtube.com/results?search_query=Ljubljana%20Triple%20Bridge%20Ple%C4%8Dnik" target="_blank" rel="noopener">🎬 Video</a>
+    </div>
+  </article>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">🐉</span>Zmajski most</h3>
+    <p>Most z zelenimi zmaji stoji ob reki Ljubljanici. Na vsakem koncu ga čuvata dva zmaja, skupaj štirje. Zmaj je simbol mesta in je tudi na mestnem grbu.</p>
+    <p class="sight-tip">💡 Vsak naj si izbere svojega zmaja in mu da ime — potem ga iščita po vsem mestu.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Zmajski%20most%2C%20Ljubljana" target="_blank" rel="noopener">📍 Zemljevid</a>
+      <a class="vid-btn" href="https://www.youtube.com/results?search_query=Ljubljana%20Dragon%20Bridge" target="_blank" rel="noopener">🎬 Video</a>
+    </div>
+  </article>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">🏰</span>Ljubljanski grad</h3>
+    <p>Grad nad mestom je viden od povsod. Nanj se lahko povzpnete peš ali z vzpenjačo (Krekov trg); zgoraj je razgled na celo mesto, če je dan jasen — tudi na Kamniško-Savinjske Alpe.</p>
+    <p class="sight-tip">💡 Če vaju čas zanima, poglejta, ali se na gradu odvijajo kakšne otroške delavnice — na gradu je tudi lutkovni muzej.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Ljubljanski%20grad" target="_blank" rel="noopener">📍 Zemljevid</a>
+      <a class="vid-btn" href="https://www.youtube.com/results?search_query=Ljubljana%20Castle%20funicular" target="_blank" rel="noopener">🎬 Video</a>
+    </div>
+  </article>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">🍎</span>Plečnikova tržnica</h3>
+    <p>Osrednja ljubljanska tržnica ob reki, delo arhitekta Plečnika. Dopoldne so stojnice polne sadja, medu, sira in oktobrskih dobrot.</p>
+    <p class="sight-tip">💡 Tržnica je odprta predvsem dopoldne in ob nedeljah večinoma zaprta; popoldne so stojnice že redkejše.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Osrednja%20tr%C5%BEnica%20Ljubljana%2C%20Ple%C4%8Dnikove%20arkade" target="_blank" rel="noopener">📍 Zemljevid</a>
+    </div>
+  </article>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">🔬</span>Hiša eksperimentov</h3>
+    <p>Muzej, kjer smeš vse poskusiti sam: zvok, svetloba, magneti, optične iluzije. Odličen za Maksa.</p>
+    <p class="sight-tip">💡 Po zadnjih objavljenih podatkih je odprta torek–četrtek dopoldne (10.00–13.00) — pred obiskom preverita na spletu. Naslov: Trubarjeva cesta 39.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Hi%C5%A1a%20eksperimentov%2C%20Trubarjeva%20cesta%2039%2C%20Ljubljana" target="_blank" rel="noopener">📍 Zemljevid</a>
+      <a class="vid-btn" href="https://www.youtube.com/results?search_query=Hi%C5%A1a%20eksperimentov%20Ljubljana" target="_blank" rel="noopener">🎬 Video</a>
+    </div>
+  </article>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">🌳</span>Tivoli</h3>
+    <p>Največji mestni park, nekaj minut od središča. Jeseni so drevesa zlata in rdeča; v parku je več igrišč in sprehajalnih poti.</p>
+    <p class="sight-tip">💡 Če imata še energijo in si vzameta uro, je to idealen sprehod s Katjo.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Park%20Tivoli%2C%20Ljubljana" target="_blank" rel="noopener">📍 Zemljevid</a>
+    </div>
+  </article>
+</section>
+<section class="card-section map-section" aria-labelledby="zemljevid">
+  <h2 id="zemljevid">🗺️ Zemljevid kraja</h2>
+  <div class="area-map" data-lat="46.0516" data-lon="14.5085" data-zoom="15" role="img" aria-label="Zemljevid — Prešernov trg, Ljubljana"></div>
+  <a class="pin-btn map-open" href="https://www.google.com/maps/search/?api=1&query=Pre%C5%A1ernov%20trg%2C%20Ljubljana" target="_blank" rel="noopener">📍 Odpri na Google Zemljevidu</a>
+</section>
+<section class="card-section" aria-labelledby="dan">
+  <h2 id="dan">🗓️ Predlog enega lepega dne</h2>
+  <ul class="plan-list">
+    <li><span class="plan-time"><span class="plan-ic" aria-hidden="true">🍂</span> Popoldne</span><span>Srečanje s Katjo (npr. na Prešernovem trgu), skupen sprehod po Tromostovju in Zmajskem mostu; izberita še eno stvar: grad ali Hišo eksperimentov.</span></li>
+    <li><span class="plan-time"><span class="plan-ic" aria-hidden="true">•</span> Pozno popoldne</span><span>Sladoled ali topla čokolada ob Ljubljanici, nato počasi proti hotelu.</span></li>
+    <li><span class="plan-time"><span class="plan-ic" aria-hidden="true">🌙</span> Zvečer</span><span>Večerja v središču (Maks izbere), zgodaj nazaj v hotel.</span></li>
+  </ul>
+</section>
+<section class="card-section izzivi" aria-labelledby="izzivi">
+  <h2 id="izzivi">📸 Foto izzivi za album</h2>
+  <p class="cat-intro">Naložita fotografijo (ali video) za izziv — takoj se označi kot opravljen in se spodaj pokaže sličica. Iz tega nastane vajin skupni album. <a href="izziv.html">Vsi izzivi na enem mestu →</a></p>
+  <div class="album-gate"></div>
+  <div class="izziv-board" data-scope="center"></div>
+  <script type="application/json" id="izziv-data">[{"id": "center-0", "t": "foto", "x": "Ana, Maks in Katja skupaj — na Prešernovem trgu ali na Tromostovju.", "w": "Prva skupna slika s Katjo je »dokaz srečanja«. Poiščita zanimivo ozadje (kip, most ali reka).", "p": {"k": "zanimivost", "h": "Prešeren in Zdravljica", "x": "Na Prešernovem trgu stoji kip pesnika Franceta Prešerna. Njegova pesem Zdravljica je slovenska himna — pravzaprav njena sedma kitica.", "m": "Prešernov trg Ljubljana"}, "s": "center", "sn": "Center", "e": "🏰"}, {"id": "center-1", "t": "foto", "x": "Tromostovje: trije mostovi na enem mestu — poiščita najboljši kot za sliko.", "w": "Tromostovje je delo arhitekta Jožeta Plečnika (okoli 1929–1932): ob starem mostu je dodal še dva za pešce.", "p": {"k": "zanimivost", "h": "Zakaj trije?", "x": "Ob osrednjem mostu sta dodana dva ožja, za pešce — tako se mesto ni preveč razširilo, mostovi pa so postali slavni.", "m": "Tromostovje Ljubljana"}, "s": "center", "sn": "Center", "e": "🏰"}, {"id": "center-2", "t": "foto", "x": "Zmajski most: vsak izbere svojega zmaja in se slika z njim. Kako ga poimenujeta?", "w": "Na vsakem koncu mostu stojita dva zmaja, skupaj štirje. Zmaj je simbol mesta.", "p": {"k": "zanimivost", "h": "Zmaj Ljubljane", "x": "Po izročilu je zmaja v močvirju ob reki premagal Jazon, vodja Argonavtov, ki naj bi se z zlatim runom vračal po Ljubljanici. Zato je zmaj na mestnem grbu.", "m": "Zmajski most Ljubljana"}, "s": "center", "sn": "Center", "e": "🏰"}, {"id": "center-3", "t": "foto", "x": "Zmajski lov: najdita še vsaj tri druge zmaje v mestu (na grbu, kipu ali hiši).", "w": "Kdor dobro gleda, v Ljubljani zmajev ne manjka. Preštejta jih.", "p": {"k": "skrivnost", "h": "Zmajeva skrivnost", "x": "Zapišita število zmajev, ki sta jih našla. Jutri v zoo ugotovita, katera žival je zmaju najbolj podobna."}, "s": "center", "sn": "Center", "e": "🏰"}, {"id": "center-4", "t": "video", "x": "Panorama z gradu (ali kratka vožnja z vzpenjačo) — če se odločita za grad.", "w": "Pogled z gradu je najboljši razgled na mesto in strehe starega mestnega jedra.", "p": {"k": "zanimivost", "h": "Grad nad mestom", "x": "Ljubljanski grad stoji na vzpetini nad starim mestnim jedrom. Z razglednega stolpa vidita celo mesto in — ob jasnem dnevu — gore v daljavi.", "m": "Ljubljanski grad"}, "s": "center", "sn": "Center", "e": "🏰"}, {"id": "center-5", "t": "foto", "x": "Odsev v reki Ljubljanici — poglejta, kaj vse vidita v vodi (in naredita sliko).", "w": "Ljubljanica ima na svoji poti več imen (Pivka, Unica, Ljubljanica …) in so ji včasih rekli »reka sedmerih imen«.", "p": {"k": "skrivnost", "h": "Skrivnost reke", "x": "Del reke teče pod zemljo (kraške jame in ponori). Ko vidita Ljubljanico v mestu, je to le zadnji del njene poti."}, "s": "center", "sn": "Center", "e": "🏰"}, {"id": "center-6", "t": "foto", "x": "Sladoled ali topla čokolada s Katjo — trije kozarci/skodelice, vsak drugačen okus.", "w": "Kavarne in sladoledarne ob reki so pravi del mestnega življenja. Napitnine so pri nas dobrodošle, a prostovoljne.", "p": {"k": "nagrada", "h": "Nagrada: okus po Maksovi izbiri", "x": "Maks izbere nov okus (ali napitek), Katja in Ana poskusita po koščku — in vsak ugiba, kateri je Maksov izbor."}, "s": "center", "sn": "Center", "e": "🏰"}, {"id": "center-7", "t": "foto", "x": "Najbolj barvita stojnica na tržnici (sadje, zelenjava, med) — če greste dopoldne.", "w": "Plečnikova tržnica je delo istega arhitekta kot Tromostovje. Oktobra: jabolka, hruške, bučke in med.", "p": {"k": "zanimivost", "h": "Plečnikove arkade", "x": "Arhitekt Jože Plečnik je mesto oblikoval v več delih: mostovi, tržnica, park, knjižnica. Mnogi pravijo, da je Ljubljano »naredil po svoji meri«.", "m": "Osrednja tržnica Ljubljana"}, "s": "center", "sn": "Center", "e": "🏰"}, {"id": "center-8", "t": "foto", "x": "Hiša eksperimentov: slika Maksa pri svojem najljubšem eksperimentu (če je odprta).", "w": "V muzeju se vsi eksperimenti smejo poskusiti. Maks je »znanstvenik dneva«.", "p": {"k": "nagrada", "h": "Nagrada: znanstvenik dneva", "x": "Maks izbere eksperiment, ki ga pokaže Katji in Ani — razlaga naj bo kratka in zabavna.", "m": "Hiša eksperimentov Trubarjeva cesta 39 Ljubljana"}, "s": "center", "sn": "Center", "e": "🏰"}, {"id": "center-9", "t": "foto", "x": "Najbolj nenavadna stvar v mestu: vsak izbere in fotografira svojo — nato ugibajo, kaj je kdo izbral.", "w": "Najbolj nenavadne stvari so včasih najbolj zanimive. Poiščita kakšen čuden kip, napis ali balkon.", "p": {"k": "skrivnost", "h": "Skrivni kotiček", "x": "Vsak mesto skriva majhne skrivnosti — tiste, ki jih vidita le, če se ustavita. Danes sta jih našla vsaj tri."}, "s": "center", "sn": "Center", "e": "🏰"}]</script>
+</section>
+<section class="card-section" aria-labelledby="hrana">
+  <h2 id="hrana">🍜 Hrana — kaj in kje jesti</h2>
+  <h3 style="margin:0 0 0.3rem; font-size:1.1rem;">Kaj poskusiti</h3>
+  <ul class="nice-list">
+    <li><strong>Sladoled ali topla čokolada</strong> — ob Ljubljanici — Maks izbere okus, Katja in Ana pa poskusita po koščku</li>
+    <li><strong>Štruklji</strong> — slovenska specialiteta — zavit testo z nadevom (sirovi, orehovi, tarhonja). Poskusita v kakšni gostilni</li>
+    <li><strong>Sezonski prigrizki na tržnici</strong> — oktober je čas jabolk, kostanja in medu</li>
+  </ul>
+  <h3 style="margin:1.2rem 0 0.3rem; font-size:1.1rem;">Kje jesti — izberite kategorijo</h3>
+  <p class="cat-intro">Dotaknite se kategorije in odprl se bo seznam preverjenih predlogov s povezavo na zemljevid.</p>
+  <details class="food-cat">
+    <summary><span class="cat-emoji" aria-hidden="true">🍦</span><span class="cat-name">Sladoled in slaščice ob reki</span><span class="cat-count">2 predloga</span><span class="chev" aria-hidden="true">▶</span></summary>
+    <div class="cat-body">
+      <p class="cat-intro">Središče Ljubljane je polno slaščičarn in sladoledarn. Izberita kar tisto, ki ima najdaljšo vrsto otrok.</p>
+      <div class="place">
+        <div class="place-head"><strong>Sladoled blizu Ljubljanice</strong><span class="price">€</span></div>
+        <p>V Google Zemljevidih poiščita »sladoled« v središču in izberita najbolje ocenjeno sladoledarno; oktobra so lahko okusi bolj jesenski (kostanj, jabolko, čokolada).</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=sladoled%20Ljubljana%20center" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+      <div class="place">
+        <div class="place-head"><strong>Topla čokolada ali čaj</strong><span class="price">€</span></div>
+        <p>Če je hladno, se ogrejeta ob topli čokoladi. V središču je več kavarn z bogatimi napitki.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=topla%20%C4%8Dokolada%20Ljubljana%20center" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+    </div>
+  </details>
+  <details class="food-cat">
+    <summary><span class="cat-emoji" aria-hidden="true">🍽️</span><span class="cat-name">Kosilo in večerja v središču</span><span class="cat-count">2 predloga</span><span class="chev" aria-hidden="true">▶</span></summary>
+    <div class="cat-body">
+      <p class="cat-intro">Izberita kaj, kar bo všeč tudi Maksu — in poskusita vsaj eno slovensko jed.</p>
+      <div class="place">
+        <div class="place-head"><strong>Gostilna s štruklji</strong><span class="price">€€</span></div>
+        <p>V Googlu poiščita »štruklji Ljubljana« — več gostiln v središču jih ponuja. Naročita en sladki in en slani štrukelj in si ju razdelita.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=gostilna%20%C5%A1truklji%20Ljubljana%20center" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+      <div class="place">
+        <div class="place-head"><strong>Pica ali testenine</strong><span class="price">€€</span></div>
+        <p>Če Maks ne mara eksperimentov: v središču je dovolj dobrih piceric in italijanskih restavracij ob reki.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=pizzeria%20Ljubljana%20center" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+    </div>
+  </details>
+</section>
+<section class="card-section" aria-labelledby="prakticno">
+  <h2 id="prakticno">🧭 Dobro je vedeti</h2>
+  <ul class="nice-list">
+    <li>Središče je večinoma peš cona — vse, kar je zanimivo, je blizu: do vsega je 5–15 minut hoje.</li>
+    <li>Vzpon na grad: peš po poti (približno 10–15 minut navkreber) ali z vzpenjačo — izberita glede na energijo.</li>
+    <li>Urnike (grad, vzpenjača, Hiša eksperimentov) vedno preverita dan prej — oktobra so lahko skrajšani.</li>
+    <li>Najboljši čas za sprehod po središču: popoldne, ko se mesto prižge v zlati svetlobi.</li>
+  </ul>
+</section>
+<section class="card-section fact-section" aria-labelledby="zanimivost">
+  <h2 id="zanimivost">💡 Zanimivost</h2>
+  <p>Zmaj je simbol Ljubljane. Po izročilu je v močvirju ob reki zmaja premagal Jazon, vodja Argonavtov, ki naj bi se z zlatim runom vračal domov po Ljubljanici. Zato je zmaj na mestnem grbu, na mostu in tudi na gradu.</p>
+</section>
+<section class="card-section magda-section" aria-labelledby="magda">
+  <h2 id="magda">🐉 Zmajeva skrivnost</h2>
+  <p>Na Zmajskem mostu vsak izmed vas izbere svojega zmaja — in mu da ime. Potem ga iščite po vsem mestu.</p>
+</section>
+<section class="rubric-wrap" aria-label="Osebne rubrike">
+  <div class="card-section rubric rubric-moment">
+    <h2>🌟 Najlepši trenutek</h2>
+    <p>Ko se z reke zasvetijo prve luči in se odsevajo v vodi. Skupaj se ustavita in samo pogledata.</p>
+  </div>
+  <div class="card-section rubric rubric-hour">
+    <h2>☕ Odmor za dva</h2>
+    <p>Ana in Katja si vzameta pol ure ob kavi ali čaju, Maks pa gre na kratko igro okoli (v bližini) — ali pa si naroči sladoled.</p>
+  </div>
+  <div class="card-section rubric rubric-mandala">
+    <h2>✏️ Za risanje in zapisek</h2>
+    <p>Narišita Zmajski most z vsemi štirimi zmaji — in vsakemu dajta ime.</p>
+  </div>
+  <div class="card-section rubric rubric-rain">
+    <h2>☔ Če dežuje</h2>
+    <p>Če dežuje: Hiša eksperimentov (če je odprta), muzej ali kavarna s toplo čokolado. Dežnika v nahrbtnik.</p>
+  </div>
+  <div class="card-section diary">
+    <h2>📖 Zmajev dnevnik</h2>
+    <p class="diary-hint">Prostor za vajine vtise, skice in najboljši trenutek s te postaje.</p>
+    <div class="diary-lines" aria-hidden="true"></div>
+  </div>
+</section>
+<section class="card-section" aria-labelledby="videi">
+  <h2 id="videi">🎬 Videi za navdih</h2>
+  <p class="video-more">Poglejta na YouTube, preden greta (ali po poti): <a href="https://www.youtube.com/results?search_query=Ljubljana%20Dragon%20Bridge%20walking%20tour" target="_blank" rel="noopener">»Ljubljana Dragon Bridge walking tour«</a> · <a href="https://www.youtube.com/results?search_query=Ljubljanski%20grad%20vzpenja%C4%8Da" target="_blank" rel="noopener">»Ljubljanski grad vzpenjača«</a></p>
+</section>
+<div class="back-row"><a class="back-button" href="index.html">🏠 Nazaj na pregled</a></div>
+<nav class="pager" aria-label="Prejšnja in naslednja postaja">
+  <a class="prev" href="emonec.html"><span class="pager-label">← Prejšnja postaja</span>🏨 Hotel Emonec</a>
+  <a class="next" href="zoo.html"><span class="pager-label">Naslednja postaja →</span>🦁 Živalski vrt Ljubljana</a>
+</nav>
+</main>
+<footer>
+  <p>🐉 Zmajeva pustolovščina · 15.–16. oktober 2026 · Maribor → Ljubljana</p>
+  <p>Z ljubeznijo pripravljeno za Ano in Maksa</p>
+  <p><a href="kako.html">🎓 Kako uporabljati to stran</a> · <a href="../index.html?izpis=1">🔑 Zamenjaj potovanje</a></p>
+</footer>
+<script src="app.js?v=19"></script>
+</body>
+</html>

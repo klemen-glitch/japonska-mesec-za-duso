@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Koya-san · Japonska 2026</title>
+  <meta name="description" content="Koya-san: znamenitosti, hrana in nasveti — vodnik Japonska 2026.">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#7b2230">
+  <script>window.TRIP={"id": "japonska", "slug": "jp-xyna9tg2e", "people": ["Marjetica", "Helena", "Ljuba", "Magda"], "gate": "../index.html", "after": null, "t": null, "color": null, "stations": [{"k": "tokio", "e": "🗼", "n": "Tokio"}, {"k": "chichibu", "e": "🌳", "n": "Chichibu"}, {"k": "kawaguchiko", "e": "🗻", "n": "Fuji"}, {"k": "minobusan", "e": "🏯", "n": "Minobu"}, {"k": "izu", "e": "🌊", "n": "Izu"}, {"k": "kumano", "e": "⛩️", "n": "Kumano"}, {"k": "koyasan", "e": "🏔️", "n": "Koya-san"}, {"k": "iya", "e": "🏞️", "n": "Iya"}, {"k": "ine", "e": "🎣", "n": "Ine"}, {"k": "nara", "e": "🦌", "n": "Nara"}, {"k": "kyoto", "e": "🍁", "n": "Kyoto"}, {"k": "osaka", "e": "🏙️", "n": "Osaka"}, {"k": "hiroshima", "e": "🕊️", "n": "Hiroshima"}]};(function(){try{var s=JSON.parse(localStorage.getItem("trip_session")||"null");var ok=s&&s.trips&&s.trips.some(function(t){return t.slug===TRIP.slug});if(!ok){location.replace(TRIP.gate+"?next="+encodeURIComponent(TRIP.slug));}}catch(e){}})();</script>
+  <link rel="stylesheet" href="style.css?v=19">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="album.js?v=19"></script>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+</head>
+<body>
+<header class="site-header">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">🍁 Mesec za dušo</a>
+    <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="main-menu">
+      <span class="mt-ico" aria-hidden="true">☰</span> Meni
+    </button>
+  </div>
+  <nav class="main-menu" id="main-menu" aria-label="Glavni meni" hidden>
+    <div class="menu-inner">
+      <div class="menu-primary">
+        <a href="index.html"><span class="mi-emoji" aria-hidden="true">🏠</span>Domov</a>
+        <a href="kako.html"><span class="mi-emoji" aria-hidden="true">🎓</span>Kako uporabljati</a>
+        <a href="nacrt.html"><span class="mi-emoji" aria-hidden="true">🗺️</span>Načrt poti</a>
+        <a href="izziv.html"><span class="mi-emoji" aria-hidden="true">📸</span>Izzivi</a>
+        <a href="nalozi.html"><span class="mi-emoji" aria-hidden="true">📤</span>Naloži fotografije</a>
+        <a href="dozivetja.html"><span class="mi-emoji" aria-hidden="true">🎨</span>Doživetja</a>
+        <a href="priprave.html"><span class="mi-emoji" aria-hidden="true">🎒</span>Priprave</a>
+        <a href="prevajalec.html"><span class="mi-emoji" aria-hidden="true">🔍</span>Prevajalec s kamero</a>
+        <a href="nasveti.html"><span class="mi-emoji" aria-hidden="true">💡</span>Nasveti in kartice</a>
+        <a href="nujno.html"><span class="mi-emoji" aria-hidden="true">🆘</span>Nujno</a>
+        <a href="../index.html?izpis=1"><span class="mi-emoji" aria-hidden="true">🔑</span>Zamenjaj potovanje</a>
+      </div>
+      <p class="menu-label">Postaje potovanja</p>
+      <div class="menu-stations">
+        <a href="tokio.html"><span class="mi-emoji" aria-hidden="true">🗼</span>Tokio</a>
+        <a href="chichibu.html"><span class="mi-emoji" aria-hidden="true">🌳</span>Chichibu</a>
+        <a href="kawaguchiko.html"><span class="mi-emoji" aria-hidden="true">🗻</span>Fuji</a>
+        <a href="minobusan.html"><span class="mi-emoji" aria-hidden="true">🏯</span>Minobu</a>
+        <a href="izu.html"><span class="mi-emoji" aria-hidden="true">🌊</span>Izu</a>
+        <a href="kumano.html"><span class="mi-emoji" aria-hidden="true">⛩️</span>Kumano</a>
+        <a href="koyasan.html" aria-current="page"><span class="mi-emoji" aria-hidden="true">🏔️</span>Koya-san</a>
+        <a href="iya.html"><span class="mi-emoji" aria-hidden="true">🏞️</span>Iya</a>
+        <a href="ine.html"><span class="mi-emoji" aria-hidden="true">🎣</span>Ine</a>
+        <a href="nara.html"><span class="mi-emoji" aria-hidden="true">🦌</span>Nara</a>
+        <a href="kyoto.html"><span class="mi-emoji" aria-hidden="true">🍁</span>Kyoto</a>
+        <a href="osaka.html"><span class="mi-emoji" aria-hidden="true">🏙️</span>Osaka</a>
+        <a href="hiroshima.html"><span class="mi-emoji" aria-hidden="true">🕊️</span>Hiroshima</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="menu-backdrop" id="menu-backdrop" hidden></div>
+<main>
+<section class="loc-hero">
+  <div class="scene-banner"><img class="photo-banner" src="images/koyasan.jpg" alt="Koya-san" loading="eager" decoding="async"></div>
+  <p class="kicker">🏔️ Postaja 7 od 13 · 1–2 noči</p>
+  <h1>Koya-san</h1>
+  <p class="loc-sub">Sveta gora tisočih templjev</p>
+  <p class="loc-intro">Visoko v gorah leži Koya-san, sveto mesto s stotimi templji, ki ga je pred 1.200 leti ustanovil menih Kobo Daishi. Nočitev pri menihih je žal zasedena, a gora ostane eno najmočnejših doživetij poti — zlasti večerni sprehod med lučkami Okunoina in jutranji mir med cedrami. Ostanemo lahko tudi le eno noč.</p>
+  <p class="visit-wrap"><button type="button" class="visit-btn" data-visit="koyasan">☐ Označi kot obiskano</button></p>
+</section>
+<section class="card-section" aria-labelledby="znamenitosti">
+  <h2 id="znamenitosti">⛩️ Znamenitosti in doživetja</h2>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">♨️</span>Okunoin – sveto pokopališče in mavzolej Kobo Daišija</h3>
+    <p>Najsvetejši kraj Koyasana: dva kilometra dolga, povsem ravna pot med tisočletnimi cedrami in več kot 200.000 nagrobniki vodi do mavzoleja, kjer po verovanju Kobo Daiši še vedno meditira. Ob poti boste videle grobnice slavnih samurajskih rodbin, na koncu pa dvorano Torodo z več tisoč večno gorečimi svetilkami. Novembra se med cedrami zlato obarvajo ginki in javorji — eden najlepših jesenskih prizorov na gori.</p>
+    <p class="sight-tip">💡 Pojdite dopoldne v miru (dvorana Torodo je odprta 6.00-17.00); če želite krajšo pot, izstopite na postaji Okunoin-mae — do mavzoleja je potem le slab kilometer.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Okunoin%20Cemetery%2C%20Koya%2C%20Wakayama" target="_blank" rel="noopener">📍 Zemljevid</a>
+      <a class="vid-btn" href="https://www.youtube.com/results?search_query=Okunoin%20cemetery%20Koyasan%20walk%20autumn" target="_blank" rel="noopener">🎬 Video</a>
+    </div>
+  </article>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">⛩️</span>Danjo Garan s pagodo Konpon Daito</h3>
+    <p>Osrednji tempeljski kompleks, ki ga je zasnoval sam Kobo Daiši leta 826. V sredini stoji 49 metrov visoka cinobrasto rdeča pagoda Konpon Daito, okoli nje pa dvorana Kondo in več manjših svetišč — vse na ravnem, peščenem dvorišču, ki ga prehodite brez napora. Jeseni rdeči javorji ob pagodi ustvarijo razglednico, kakršne ne boste pozabile.</p>
+    <p class="sight-tip">💡 Vrnite se še po večerji: Konpon Daito je vsak večer osvetljena in v novembrski temi deluje čarobno — to je jesenski večerni prizor Koyasana; do pagode pridite po drevoredu Jabara-michi od Kongobu-jija, ki velja za najlepšo momiji pot v mestu.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Danjo%20Garan%20Sacred%20Temple%20Complex%2C%20Koya%2C%20Wakayama" target="_blank" rel="noopener">📍 Zemljevid</a>
+      <a class="vid-btn" href="https://www.youtube.com/results?search_query=Danjo%20Garan%20Konpon%20Daito%20Koyasan%20autumn%20night" target="_blank" rel="noopener">🎬 Video</a>
+    </div>
+  </article>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">🏯</span>Tempelj Kongobu-ji</h3>
+    <p>Glavni tempelj šole šingon z razkošno poslikanimi drsnimi vrati in največjim kamnitim vrtom na Japonskem — Banryutei, kjer 140 kamnov upodablja dva zmaja v morju oblakov. Ogled poteka po lesenih hodnikih v copatih, brez stopnic in hitenja. V veliki dvorani s 169 tatamiji vam ob koncu postrežejo čaj in riževe piškotke — kar vzemite si čas in posedite.</p>
+    <p class="sight-tip">💡 Odprto 8.30-17.00 (zadnji vstop 16.30), vstopnina okoli 1.000 jenov; brezplačni čaj v dvorani Shin Betsuden je najprijetnejši postanek za oddih.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Kongobuji%20Temple%2C%20Koya%2C%20Wakayama" target="_blank" rel="noopener">📍 Zemljevid</a>
+      <a class="vid-btn" href="https://www.youtube.com/results?search_query=Kongobuji%20temple%20Banryutei%20rock%20garden%20Koyasan" target="_blank" rel="noopener">🎬 Video</a>
+    </div>
+  </article>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">🏯</span>Prenočišče na gori (šukubo zaseden)</h3>
+    <p>Klasična nočitev v templju pri menihih je novembra žal pogosto razprodana. Prespimo v preprostem gostišču ali hotelu na gori; vzdušje svete gore ostane, zlasti zvečer in zjutraj.</p>
+    <p class="sight-tip">💡 Šukubo rezervirajte več mesecev vnaprej; sicer poiščite gostišče ob glavni ulici in si pustite večer za Okunoin.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Fukuchiin%2C%20Koya%2C%20Wakayama" target="_blank" rel="noopener">📍 Zemljevid</a>
+      <a class="vid-btn" href="https://www.youtube.com/results?search_query=Fukuchiin%20shukubo%20temple%20stay%20Koyasan%20onsen" target="_blank" rel="noopener">🎬 Video</a>
+    </div>
+  </article>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">♨️</span>Nočni sprehod po Okunoinu z menihom</h3>
+    <p>Približno 90-minutni voden večerni sprehod po pokopališču, ki ga od leta 2011 skoraj vsak večer vodijo domačini iz templja Ekoin. Ob svetlobi kamnitih svetilk boste slišale zgodbe o Kobo Daišiju, legendah Okunoina in življenju menihov. Tempo je počasen, pot ravna, vzdušje pa nepozabno — ravno prav skrivnostno, ne strašljivo.</p>
+    <p class="sight-tip">💡 Rezervirajte vnaprej prek Ekoina ali strani Awesome Tours (uradni ponudnik); novembra zvečer temperatura pade proti ničli, zato oblecite tople plasti, kapo in rokavice.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Ekoin%20Temple%2C%20Koya%2C%20Wakayama" target="_blank" rel="noopener">📍 Zemljevid</a>
+      <a class="vid-btn" href="https://www.youtube.com/results?search_query=Okunoin%20night%20tour%20Koyasan%20monk%20guided" target="_blank" rel="noopener">🎬 Video</a>
+    </div>
+  </article>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">🏯</span>Mavzolej rodbine Tokugawa</h3>
+    <p>Skrit dragulj, ki ga večina obiskovalcev izpusti: dve enaki, bogato pozlačeni stavbi iz leta 1643, posvečeni prvima šogunoma Iejasuju in Hidetadi. Rezbarije, lak in zlati listi so vrhunec razkošnega sloga zgodnjega obdobja Edo. Tu boste skoraj sami, ogled pa je kratek in povsem nenaporen.</p>
+    <p class="sight-tip">💡 Odprto 8.30-17.00; lepo se poveže z bližnjo Ženskim templjem Nyonindo, spominom na čase, ko ženske na sveto goro niso smele — do leta 1872 so molile prav tam.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Tokugawa%20Mausoleum%2C%20Koya%2C%20Wakayama" target="_blank" rel="noopener">📍 Zemljevid</a>
+      <a class="vid-btn" href="https://www.youtube.com/results?search_query=Tokugawa%20Mausoleum%20Koyasan" target="_blank" rel="noopener">🎬 Video</a>
+    </div>
+  </article>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">🏯</span>Muzej Reihokan</h3>
+    <p>Zakladnica Koyasana s približno 28.000 umetninami, med njimi 21 narodnih zakladov: budistični kipi, mandale in svitki, ki so jih stoletja hranili templji na gori. Razstava je pregledna in ravno prav velika za uro ali dve mirnega ogleda. Idealno zatočišče, če vas preseneti dež ali mraz.</p>
+    <p class="sight-tip">💡 Novembra odprto 8.30-17.00, vstopnina okoli 1.300 jenov; jeseni je na ogled običajno posebna sezonska razstava.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Koyasan%20Reihokan%20Museum%2C%20Koya%2C%20Wakayama" target="_blank" rel="noopener">📍 Zemljevid</a>
+      <a class="vid-btn" href="https://www.youtube.com/results?search_query=Koyasan%20Reihokan%20Museum%20treasures" target="_blank" rel="noopener">🎬 Video</a>
+    </div>
+  </article>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">🏘️</span>Prepisovanje suter v Daishi Kyokai</h3>
+    <p>V duhovnem središču gore lahko brez rezervacije poskusite šakjo — prepisovanje Srčne sutre s čopičem po rahlo natisnjeni predlogi. Sedite v topli dvorani, roka počasi sledi znakom, misli pa se same umirijo. Čudovita skupna izkušnja za vas pet, tudi če ne znate niti besede japonsko.</p>
+    <p class="sight-tip">💡 Pridite dopoldne in si vzemite kakšno uro; za simboličen prispevek lahko prejmete tudi budistični blagoslov jukai.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Koyasan%20Daishi%20Kyokai%2C%20Koya%2C%20Wakayama" target="_blank" rel="noopener">📍 Zemljevid</a>
+      <a class="vid-btn" href="https://www.youtube.com/results?search_query=Daishi%20Kyokai%20Koyasan%20sutra%20copying%20shakyo" target="_blank" rel="noopener">🎬 Video</a>
+    </div>
+  </article>
+</section>
+<section class="card-section map-section" aria-labelledby="zemljevid">
+  <h2 id="zemljevid">🗺️ Zemljevid kraja</h2>
+  <div class="area-map" data-lat="34.213" data-lon="135.584" data-zoom="14" role="img" aria-label="Zemljevid — Koyasan, Koya, Wakayama"></div>
+  <a class="pin-btn map-open" href="https://www.google.com/maps/search/?api=1&query=Koyasan%2C%20Koya%2C%20Wakayama" target="_blank" rel="noopener">📍 Odpri na Google Zemljevidu</a>
+</section>
+<section class="card-section" aria-labelledby="dan">
+  <h2 id="dan">🗓️ Predlog enega lepega dne</h2>
+  <ul class="plan-list">
+    <li><span class="plan-time"><span class="plan-ic" aria-hidden="true">🌅</span> Zjutraj</span><span>Vstanite k jutranji molitvi menihov v svojem templju (okoli 6.00-7.00, sodelovanje je prostovoljno) in si privoščite tempeljski zajtrk. Potem mirna kava in kratek sprehod po prebujajočem se mestu.</span></li>
+    <li><span class="plan-time"><span class="plan-ic" aria-hidden="true">🌤️</span> Dopoldne</span><span>Ogled Kongobu-jija s kamnitim vrtom Banryutei in čajem v veliki dvorani, nato po javorjevem drevoredu Jabara-michi do Danjo Garana in rdeče pagode Konpon Daito.</span></li>
+    <li><span class="plan-time"><span class="plan-ic" aria-hidden="true">🍂</span> Popoldne</span><span>Po lahkem kosilu se z avtobusom zapeljite do mostu Ichinohashi in prehodite ravno, dve kilometri dolgo pot skozi Okunoin do dvorane Torodo in mavzoleja Kobo Daišija. Hodite počasi, ustavljajte se — to je bistvo Koyasana.</span></li>
+    <li><span class="plan-time"><span class="plan-ic" aria-hidden="true">🌙</span> Zvečer</span><span>Zgodnja večerja šodžin rjori v templju, nato voden nočni sprehod po Okunoinu z menihom ali pa krajši postanek ob osvetljeni pagodi Konpon Daito. Za konec — če spite v Fukuchiinu — topel onsen pred spanjem.</span></li>
+  </ul>
+</section>
+<section class="card-section izzivi" aria-labelledby="izzivi">
+  <h2 id="izzivi">📸 Foto izzivi za album</h2>
+  <p class="cat-intro">Naložite fotografijo (ali video) za izziv — takoj se označi kot opravljen in se spodaj pokaže sličica. Iz tega nastane vaš skupni album. <a href="izziv.html">Vsi izzivi na enem mestu →</a></p>
+  <div class="album-gate"></div>
+  <div class="izziv-board" data-scope="koyasan"></div>
+  <script type="application/json" id="izziv-data">[{"id": "koyasan-0", "t": "foto", "x": "Okunoin ob mraku: kamnite luči med cedrami — ujemite njihovo svetlobo (brez bliskavice).", "w": "Okunoin je največje pokopališče na Japonskem, z več kot 200.000 nagrobniki. Slikajte spoštljivo: svetlobo luči in cedre, ne grobov od blizu. Ideja: najbolj mistična slika celotne poti.", "p": {"k": "skrivnost", "h": "Ogenj, ki ne ugasne", "x": "V dvorani luči (Torodo) v Okunoinu gorijo svetilke, med njimi plamen, ki naj ne bi ugasnil že več kot 900 let. Obiščite jo na poti proti mavzoleju Kobo Daishija."}, "s": "koyasan", "sn": "Koya-san", "e": "🏔️"}, {"id": "koyasan-1", "t": "foto", "x": "Vse štiri pred cinobrasto pagodo Konpon Daito.", "w": "Pagoda Konpon Daito v kompleksu Danjo Garan je simbolno središče Koya-sana. Ideja: skupinska slika pred ikono — za poglavje o gori.", "p": {"k": "skrivnost", "h": "Gora kot lotos", "x": "Koya-san leži v kotlini, obdani z osmimi vrhovi, ki spominjajo na osem listov lotosovega cveta — pagoda Konpon Daito velja za središče tega »mandalinega« sveta. Magda, to je navdih za mandalo."}, "s": "koyasan", "sn": "Koya-san", "e": "🏔️"}, {"id": "koyasan-2", "t": "foto", "x": "Helena na verandi pred kamnitim vrtom Banryutei — mir zgrabljenega proda.", "w": "Banryutei v templju Kongobu-ji je največji kamniti vrt Japonske. Prod je »morje oblakov«, kamni dva zmaja. Ideja: portret miru.", "p": {"k": "zanimivost", "h": "Dva zmaja v oblakih", "x": "Prod predstavlja oblake, okoli 140 kamnov pa dva zmaja, ki varujeta glavni tempelj. Pravijo, da so kamni s Shikokuja, rojstnega otoka Kobo Daishija — ravno otoka, ki ga boste obiskale v dolini Iya."}, "s": "koyasan", "sn": "Koya-san", "e": "🏔️"}, {"id": "koyasan-3", "t": "video", "x": "Video (15 s): tih večerni sprehod skozi Okunoin — koraki, cedre, lučke.", "w": "Okunoin je tih: koraki, cedre, lučke. Video 15 s ujame zvok, ki ga fotografija ne. Ideja: tihi gostje smo del tišine.", "p": {"k": "skrivnost", "h": "Obrok za Daishija", "x": "Kobo Daishi naj bi po izročilu še vedno meditiral v mavzoleju; menihi mu dvakrat na dan, zjutraj in dopoldne, prinesejo obrok. Če se v teh urah znajdete blizu, boste morda videle procesijo."}, "s": "koyasan", "sn": "Koya-san", "e": "🏔️"}]</script>
+</section>
+<section class="card-section" aria-labelledby="hrana">
+  <h2 id="hrana">🍜 Hrana — kaj in kje jesti</h2>
+  <h3 style="margin:0 0 0.3rem; font-size:1.1rem;">Kaj poskusiti</h3>
+  <ul class="nice-list">
+    <li><strong>Shojin ryori</strong> — budistična vegetarijanska kuhinja — tudi za kosilo v mestnih templjih, nežna in okusna</li>
+    <li><strong>Sezamov tofu (goma-dofu)</strong> — svilnata posebnost Koya-sana; take drugje ne najdete</li>
+  </ul>
+  <h3 style="margin:1.2rem 0 0.3rem; font-size:1.1rem;">Kje jesti — izberite kategorijo</h3>
+  <p class="cat-intro">Dotaknite se kategorije in odprl se bo seznam preverjenih predlogov s povezavo na zemljevid.</p>
+  <details class="food-cat">
+    <summary><span class="cat-emoji" aria-hidden="true">🥢</span><span class="cat-name">Shojin ryori — meniška kuhinja za kosilo</span><span class="cat-count">3 predlogi</span><span class="chev" aria-hidden="true">▶</span></summary>
+    <div class="cat-body">
+      <p class="cat-intro">Koyasan je domovina shojin ryori, budistične rastlinske kuhinje, in prav tu jo boste jedle najbolje na Japonskem — a pozor, večina lokalov zapre kuhinjo že sredi popoldneva, zato pridite na zgodnje kosilo.</p>
+      <div class="place">
+        <div class="place-head"><strong>Hanabishi</strong><span class="price">€€</span></div>
+        <p>Najbolj ugledna restavracija v mestu, kuhar je nekoč kuhal celo za cesarski par. Naročite set sankozen s sezamovim tofujem in dengakujem, za posladek pa sojin puding s kakijem. Za skupino petih se splača rezervirati vnaprej — rezervacije sprejemajo tudi prek spleta.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Hanabishi%20Koyasan" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+      <div class="place">
+        <div class="place-head"><strong>Chuo Shokudo Sanbo</strong><span class="price">€€</span></div>
+        <p>Domačen lokal sredi mesta z angleškim menijem in prijaznim osebjem. Privoščite si bento v obliki cvetlične košarice ali juho kenchin — sezamov tofu tu postrežejo tudi ocvrt, kar je posebnost. Odprt le do zgodnjega popoldneva, zato pridite pred poldnevom.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Chuo%20Shokudo%20Sanbo%20Koyasan" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+      <div class="place">
+        <div class="place-head"><strong>Shojin Dining Kirihouju</strong><span class="price">€€</span></div>
+        <p>Šestdeset let stara hiša s sproščeno različico meniške kuhinje. Kosilo shokado kiri pride v lepi lakirani škatli s sezamovim tofujem, ocvrto in dušeno zelenjavo. Mize je mogoče rezervirati, kar je za peterico priročno.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Shojin%20Dining%20Kirihouju%20Koyasan" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+    </div>
+  </details>
+  <details class="food-cat">
+    <summary><span class="cat-emoji" aria-hidden="true">🥣</span><span class="cat-name">Goma-tofu — sezamov tofu</span><span class="cat-count">2 predloga</span><span class="chev" aria-hidden="true">▶</span></summary>
+    <div class="cat-body">
+      <p class="cat-intro">Svilnat tofu iz belega sezama in kudzu škroba je najslavnejša specialiteta Koyasana — sveže narejenega boste okusile samo tukaj.</p>
+      <div class="place">
+        <div class="place-head"><strong>Kadohama Gomatofu Sohonpo</strong><span class="price">€</span></div>
+        <p>Najbolj znana hiša sezamovega tofuja, blizu velikih vrat Daimon. V jedilnem delu naročite degustacijski set: goma-tofu v tempuri, s sojino omako in kot sladica s kinako moko ter črnim sirupom. Lepo urejen prostor, primeren za skupino.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Kadohama%20Gomatofu%20Sohonpo%20Koyasan" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+      <div class="place">
+        <div class="place-head"><strong>Gomadofu Hamadaya</strong><span class="price">€</span></div>
+        <p>Družinska delavnica iz leta 1905, na poti proti Okunoinu. Svež tofu postrežejo na dva načina: slano z vasabijem in sojino omako ali sladko s sladkorjem wasanbon — poskusite oboje. Prostor je majhen, zato je to postanek, ne dolgo posedanje.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Gomadofu%20Hamadaya%20Koyasan" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+    </div>
+  </details>
+  <details class="food-cat">
+    <summary><span class="cat-emoji" aria-hidden="true">🍜</span><span class="cat-name">Domača kosila in edina prava večerja v mestu</span><span class="cat-count">2 predloga</span><span class="chev" aria-hidden="true">▶</span></summary>
+    <div class="cat-body">
+      <p class="cat-intro">Ker templji strežejo večerjo že ob šestih, je izbira zvečer v mestu skromna — a nekaj toplih, poceni naslovov se najde.</p>
+      <div class="place">
+        <div class="place-head"><strong>Maruman</strong><span class="price">€</span></div>
+        <p>Preprosta domača jedilnica z več kot 80 jedmi in plastičnimi modeli v izložbi, da je izbira lažja. Odlična je soba z gorsko zelenjavo in nežnim dašijem, tudi njihov goma-tofu je vreden pokušine. Samo gotovina.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Maruman%20Shokudo%20Koyasan" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+      <div class="place">
+        <div class="place-head"><strong>Miyasan</strong><span class="price">€</span></div>
+        <p>Majhna izakaya in ena redkih možnosti za večerjo v mestu, če kakšen večer ne boste jedle v templju. Slavni so po hrustljavem ocvrtem piščancu in jedeh iz koya-dofuja, lokalnega posušenega tofuja. Prostora je malo, zato pridite zgodaj; plačilo z gotovino.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Miyasan%20Koyasan%20izakaya" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+    </div>
+  </details>
+  <details class="food-cat">
+    <summary><span class="cat-emoji" aria-hidden="true">🍡</span><span class="cat-name">Kavarne, čaj in sladice</span><span class="cat-count">2 predloga</span><span class="chev" aria-hidden="true">▶</span></summary>
+    <div class="cat-body">
+      <p class="cat-intro">Novembra, ko javorji ob poti Jabara-michi proti Danjo Garanu žarijo v rdečem, se toplo skodelico čaja in sladko malenkost še posebej prileže.</p>
+      <div class="place">
+        <div class="place-head"><strong>Bon On Shya</strong><span class="price">€</span></div>
+        <p>Prisrčna mednarodna kavarna z domačimi kolači in odlično kavo; lastnika govorita angleško in francosko. Dnevni vegetarijanski meni s šestimi do osmimi krožnički, čajem in sladico je ena najboljših vrednosti v mestu. Prijetno za daljše posedanje in klepet.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Bon%20On%20Shya%20Koyasan%20cafe" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+      <div class="place">
+        <div class="place-head"><strong>Kasakuni Mirokuishi Honpo</strong><span class="price">€</span></div>
+        <p>Stara slaščičarna, ki je uradni dobavitelj sladic templju Kongobu-ji. Vzemite tople yakimochi (pečene riževe kolačke z azuki fižolom) in sladice miroku-ishi, poimenovane po slavnem kamnu iz Okunoina — lepo darilo za domov.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Kasakuni%20Koyasan" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+    </div>
+  </details>
+  <details class="food-cat">
+    <summary><span class="cat-emoji" aria-hidden="true">🏮</span><span class="cat-name">Večerja v templju — shukubo</span><span class="cat-count">3 predlogi</span><span class="chev" aria-hidden="true">▶</span></summary>
+    <div class="cat-body">
+      <p class="cat-intro">Najlepša večerja na Koyasanu je tista v templju, kjer prespite: menihi jo postrežejo na desetinah drobnih krožničkov, po njej pa se lahko sprehodite do vsak večer osvetljenega Danjo Garana ali se pridružite večernemu vodenju po Okunoinu.</p>
+      <div class="place">
+        <div class="place-head"><strong>Ekoin Temple</strong><span class="price">€€</span></div>
+        <p>Najbolj priljubljen shukubo za tuje goste: mladi menihi govorijo angleško, večerjo vam prinesejo v sobo, zjutraj pa lahko prisostvujete ognjenemu obredu goma. Od tu vodijo tudi večerne oglede pokopališča Okunoin. Rezervirajte več mesecev vnaprej.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Ekoin%20Temple%20Koyasan" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+      <div class="place">
+        <div class="place-head"><strong>Soji-in</strong><span class="price">€€€</span></div>
+        <p>Tempelj tik ob Danjo Garanu s povsem vegansko večerjo in zajtrkom izjemne kakovosti. Jeste v miru, na pladnjih polnih drobnih sezonskih jedi — novembra z okusi gob, kostanja in gorske zelenjave.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Sojiin%20Temple%20Koyasan" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+      <div class="place">
+        <div class="place-head"><strong>Fukuchiin</strong><span class="price">€€€</span></div>
+        <p>Prostornejši shukubo z lepim vrtom in edinim pravim onsenom na Koyasanu — po večerji iz meniške kuhinje se pogrejete še v termalni kopeli, kar bo novembra prav prišlo. Udobna izbira za skupino, ki noče spati na trdem.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Fukuchiin%20Koyasan" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+    </div>
+  </details>
+</section>
+<section class="card-section" aria-labelledby="prakticno">
+  <h2 id="prakticno">🧭 Dobro je vedeti</h2>
+  <ul class="nice-list">
+    <li>Iz Osake se peljite z vlakom Nankai s postaje Osaka-Namba do Gokurakubashija, nato z vzpenjačo na goro in z avtobusom v mesto (skupaj okoli 2 uri). Kupite Koyasan World Heritage Ticket — 2-dnevna vozovnica vključuje vlak, vzpenjačo, vse avtobuse po gori in popuste pri vstopninah.</li>
+    <li>Od zgornje postaje vzpenjače do mesta obvezno z avtobusom — hoja po cesti tam ni dovoljena. Po samem mestu pa je vse blizu: med Kongobu-jijem, Garanom in vhodom v Okunoin vozijo avtobusi, razdalje so kratke in ravne.</li>
+    <li>Šukubo (tempeljsko prenočišče) rezervirajte čim prej, najbolje prek uradne strani Koyasan Shukubo Association (eng-shukubo.net) — november je zaradi jesenskih barv med najbolj zasedenimi meseci.</li>
+    <li>Imejte dovolj gotovine: vstopnine v templje in manjše trgovine pogosto sprejemajo samo jene, bankomatov na gori pa je malo (najzanesljivejši je na pošti).</li>
+    <li>Koyasan leži na 800 m — novembra so jutra okoli ničle, templji pa so le skromno ogrevani. Vzemite tople plasti, debele nogavice (po templjih hodite v copatih ali nogavicah) in dežnik. Jesenske barve so na gori na vrhuncu prve dni novembra, prej kot v Kyotu — Koyasan zato uvrstite na začetek potovanja.</li>
+  </ul>
+</section>
+<section class="card-section stay-section" aria-labelledby="prespati">
+  <h2 id="prespati">🏡 Kje prespati</h2>
+  <p>Nočitev pri menihih (šukubo) je žal zasedena — prespimo v preprostem gostišču ali hotelu na gori (ob glavni ulici). Dovolj je ena noč; zjutraj se splača zgodaj v Okunoin.</p>
+</section>
+<section class="card-section fact-section" aria-labelledby="zanimivost">
+  <h2 id="zanimivost">💡 Zanimivost</h2>
+  <p>Okunoin je največje pokopališče na Japonskem — več kot 200.000 nagrobnikov med starodavnimi cedrami. Menihi verjamejo, da Kobo Daishi v svojem mavzoleju neprekinjeno meditira že več kot 1.200 let, zato mu vsak dan še vedno prinašajo obroke.</p>
+</section>
+<section class="card-section magda-section" aria-labelledby="magda">
+  <h2 id="magda">💛 Magdin trenutek</h2>
+  <p>Na večernem sprehodu skozi Okunoin hodite čisto počasi, čisto na koncu skupine. Lanterne, meglice med cedrami, vonj kadila — tega trenutka ne fotografirajte takoj; najprej ga samo doživite.</p>
+</section>
+<section class="rubric-wrap" aria-label="Osebne rubrike">
+  <div class="card-section rubric rubric-moment">
+    <h2>🍁 Najlepši trenutek dneva</h2>
+    <p>Okunoin je najlepši ob mraku, ko med starodavnimi cedrami zažarijo kamnite in bronaste luči, meglice pa se ovijejo okoli nagrobnikov — kraj postane tih in skoraj nezemeljski. Drug čaroben trenutek je zgodnje jutro, ko je zrak oster, iz gozda se dviga megla, rdeča pagoda Konpon Daito v Danjo Garanu pa gori v prvi svetlobi. Novembra je Koya-san hladen in svetel.</p>
+  </div>
+  <div class="card-section rubric rubric-hour">
+    <h2>☕ Vzemi si uro zase</h2>
+    <p>Sedite ob kamnitem vrtu Banryutei v templju Kongobu-ji — največjem kamnitem vrtu na Japonskem, kjer zgrabljen prod predstavlja oblake, kamni pa dva zmaja. Poiščite mesto na leseni verandi in ostanite; ni treba ničesar razumeti, dovolj je gledati črte v produ. Zvečer pa naj bo vaša ura miru tiha soba v templju po meniški večerji.</p>
+  </div>
+  <div class="card-section rubric rubric-mandala">
+    <h2>🎨 Navdih za mandalo</h2>
+    <p>Barve kraja: cinobrasto rdeča pagode, siv prod in valovite črte vrta Banryutei, zlato tempeljskih luči, mah in temno zelena ceder, indigo mraka. Vzorci: koncentrični zgrabljeni valovi v produ, krogi lučk vzdolž poti, silhuete pagode. Osrednji motiv naj bo mirno oko iz proda, iz katerega valovi tečejo do roba mandale.</p>
+  </div>
+  <div class="card-section rubric rubric-rain">
+    <h2>☔ Če dežuje</h2>
+    <p>Ob dežju je Okunoin med cedrami še bolj mističen. Pod streho sta muzej Reihokan in prepisovanje suter v Daishi Kyokai.</p>
+  </div>
+  <div class="card-section diary">
+    <h2>📖 Magdin dnevnik</h2>
+    <p class="diary-hint">Prostor za vaše vtise, skice in najlepši spomin s te postaje.</p>
+    <div class="diary-lines" aria-hidden="true"></div>
+  </div>
+</section>
+<section class="card-section" aria-labelledby="videi">
+  <h2 id="videi">🎬 Videi za navdih</h2>
+  <div class="video-grid">
+    <figure>
+      <!-- Video zamenjaš tako, da spremeniš kodo za "embed/" v spodnji vrstici -->
+      <iframe class="video-frame" src="https://www.youtube-nocookie.com/embed/T_y6C1zjzqU" title="Okunoin Cemetery walk | Mystical Heart of Koyasan, Japan | 4k" loading="lazy" allowfullscreen allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+      <figcaption>Okunoin Cemetery walk | Mystical Heart of Koyasan, Japan | 4k · Trip by Tormenta</figcaption>
+    </figure>
+    <figure>
+      <!-- Video zamenjaš tako, da spremeniš kodo za "embed/" v spodnji vrstici -->
+      <iframe class="video-frame" src="https://www.youtube-nocookie.com/embed/-uVGX_5XK7o" title="Experience Temple Lodging, Koyasan Shukubo, 48 hours in Mount Koya, Japan UNESCO World Heritage Site" loading="lazy" allowfullscreen allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+      <figcaption>Experience Temple Lodging, Koyasan Shukubo, 48 hours in Mount Koya, Japan UNESCO World Heritage Site · TRAVEL SIMPLE</figcaption>
+    </figure>
+    <figure>
+      <!-- Video zamenjaš tako, da spremeniš kodo za "embed/" v spodnji vrstici -->
+      <iframe class="video-frame" src="https://www.youtube-nocookie.com/embed/BQs-jlLedi4" title="8K - Okunoin Cemetery by Night - Wakayama - 奥の院墓地" loading="lazy" allowfullscreen allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+      <figcaption>8K - Okunoin Cemetery by Night - Wakayama - 奥の院墓地 · TokyoStreetView - Japan The Beautiful</figcaption>
+    </figure>
+    <figure>
+      <!-- Video zamenjaš tako, da spremeniš kodo za "embed/" v spodnji vrstici -->
+      <iframe class="video-frame" src="https://www.youtube-nocookie.com/embed/AtAxbGQvk74" title="Danjo Garan Koyasan - Wakayama - 壇上伽藍 - 4K Ultra HD" loading="lazy" allowfullscreen allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+      <figcaption><strong>Danjo Garan – sveti tempeljski kompleks s pagodo Konpon Daito</strong> · Danjo Garan Koyasan - Wakayama - 壇上伽藍 - 4K Ultra HD · TokyoStreetView - Japan The Beautiful</figcaption>
+    </figure>
+    <figure>
+      <!-- Video zamenjaš tako, da spremeniš kodo za "embed/" v spodnji vrstici -->
+      <iframe class="video-frame" src="https://www.youtube-nocookie.com/embed/YsGRkQNDyKM" title="Japan Largest Rock Garden (Koyasan Kongōbuji Temple 金剛峯寺), Japan" loading="lazy" allowfullscreen allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+      <figcaption><strong>Kongobu-ji – največji kamniti vrt na Japonskem (Banryutei)</strong> · Japan Largest Rock Garden (Koyasan Kongōbuji Temple 金剛峯寺), Japan · fenway</figcaption>
+    </figure>
+    <figure>
+      <!-- Video zamenjaš tako, da spremeniš kodo za "embed/" v spodnji vrstici -->
+      <iframe class="video-frame" src="https://www.youtube-nocookie.com/embed/nePcNjvQZDY" title="800 Year Old Japanese Accommodation | Shukubo Temple Stay" loading="lazy" allowfullscreen allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+      <figcaption><strong>Shukubo – prenočitev v budističnem templju</strong> · 800 Year Old Japanese Accommodation | Shukubo Temple Stay · ONLY in JAPAN * GO</figcaption>
+    </figure>
+  </div>
+  <p class="video-more">Več videov na YouTube: <a href="https://www.youtube.com/results?search_query=Koyasan%20Okunoin%20cemetery%20walk" target="_blank" rel="noopener">»Koyasan Okunoin cemetery walk«</a> · <a href="https://www.youtube.com/results?search_query=shukubo%20temple%20stay%20Japan" target="_blank" rel="noopener">»shukubo temple stay Japan«</a></p>
+</section>
+<div class="back-row"><a class="back-button" href="index.html">🏠 Nazaj na pregled</a></div>
+<nav class="pager" aria-label="Prejšnja in naslednja postaja">
+  <a class="prev" href="kumano.html"><span class="pager-label">← Prejšnja postaja</span>⛩️ Kumano Kodo</a>
+  <a class="next" href="iya.html"><span class="pager-label">Naslednja postaja →</span>🏞️ Shikoku — dolina Iya</a>
+</nav>
+</main>
+<footer>
+  <p>🍁 Japonska — Mesec za dušo · 3. november – 2. december 2026 · Tokio → Osaka</p>
+  <p>Z ljubeznijo pripravljeno za Magdo in prijateljice</p>
+  <p><a href="kako.html">🎓 Kako uporabljati to stran</a> · <a href="../index.html?izpis=1">🔑 Zamenjaj potovanje</a></p>
+</footer>
+<script src="app.js?v=19"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "Zmajeva pustolovščina",
+  "short_name": "Zmajeva pustolovščina",
+  "description": "Ana in Maks v Ljubljani: 15.–16. oktober 2026 — vlak, hotel, Katja in cel dan v živalskem vrtu.",
+  "lang": "sl",
+  "start_url": "./index.html",
+  "scope": "../",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2f8f6b",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

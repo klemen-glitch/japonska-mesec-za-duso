@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Japonska — Mesec za dušo</title>
+  <meta name="description" content="Potovalni vodnik za Magdo in prijateljice: Japonska, 3. november – 2. december 2026, Tokio → Osaka.">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#7b2230">
+  <script>window.TRIP={"id": "japonska", "slug": "jp-xyna9tg2e", "people": ["Marjetica", "Helena", "Ljuba", "Magda"], "gate": "../index.html", "after": null, "t": null, "color": null, "stations": [{"k": "tokio", "e": "🗼", "n": "Tokio"}, {"k": "chichibu", "e": "🌳", "n": "Chichibu"}, {"k": "kawaguchiko", "e": "🗻", "n": "Fuji"}, {"k": "minobusan", "e": "🏯", "n": "Minobu"}, {"k": "izu", "e": "🌊", "n": "Izu"}, {"k": "kumano", "e": "⛩️", "n": "Kumano"}, {"k": "koyasan", "e": "🏔️", "n": "Koya-san"}, {"k": "iya", "e": "🏞️", "n": "Iya"}, {"k": "ine", "e": "🎣", "n": "Ine"}, {"k": "nara", "e": "🦌", "n": "Nara"}, {"k": "kyoto", "e": "🍁", "n": "Kyoto"}, {"k": "osaka", "e": "🏙️", "n": "Osaka"}, {"k": "hiroshima", "e": "🕊️", "n": "Hiroshima"}]};(function(){try{var s=JSON.parse(localStorage.getItem("trip_session")||"null");var ok=s&&s.trips&&s.trips.some(function(t){return t.slug===TRIP.slug});if(!ok){location.replace(TRIP.gate+"?next="+encodeURIComponent(TRIP.slug));}}catch(e){}})();</script>
+  <link rel="stylesheet" href="style.css?v=19">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+</head>
+<body>
+<header class="site-header">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">🍁 Mesec za dušo</a>
+    <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="main-menu">
+      <span class="mt-ico" aria-hidden="true">☰</span> Meni
+    </button>
+  </div>
+  <nav class="main-menu" id="main-menu" aria-label="Glavni meni" hidden>
+    <div class="menu-inner">
+      <div class="menu-primary">
+        <a href="index.html" aria-current="page"><span class="mi-emoji" aria-hidden="true">🏠</span>Domov</a>
+        <a href="kako.html"><span class="mi-emoji" aria-hidden="true">🎓</span>Kako uporabljati</a>
+        <a href="nacrt.html"><span class="mi-emoji" aria-hidden="true">🗺️</span>Načrt poti</a>
+        <a href="izziv.html"><span class="mi-emoji" aria-hidden="true">📸</span>Izzivi</a>
+        <a href="nalozi.html"><span class="mi-emoji" aria-hidden="true">📤</span>Naloži fotografije</a>
+        <a href="dozivetja.html"><span class="mi-emoji" aria-hidden="true">🎨</span>Doživetja</a>
+        <a href="priprave.html"><span class="mi-emoji" aria-hidden="true">🎒</span>Priprave</a>
+        <a href="prevajalec.html"><span class="mi-emoji" aria-hidden="true">🔍</span>Prevajalec s kamero</a>
+        <a href="nasveti.html"><span class="mi-emoji" aria-hidden="true">💡</span>Nasveti in kartice</a>
+        <a href="nujno.html"><span class="mi-emoji" aria-hidden="true">🆘</span>Nujno</a>
+        <a href="../index.html?izpis=1"><span class="mi-emoji" aria-hidden="true">🔑</span>Zamenjaj potovanje</a>
+      </div>
+      <p class="menu-label">Postaje potovanja</p>
+      <div class="menu-stations">
+        <a href="tokio.html"><span class="mi-emoji" aria-hidden="true">🗼</span>Tokio</a>
+        <a href="chichibu.html"><span class="mi-emoji" aria-hidden="true">🌳</span>Chichibu</a>
+        <a href="kawaguchiko.html"><span class="mi-emoji" aria-hidden="true">🗻</span>Fuji</a>
+        <a href="minobusan.html"><span class="mi-emoji" aria-hidden="true">🏯</span>Minobu</a>
+        <a href="izu.html"><span class="mi-emoji" aria-hidden="true">🌊</span>Izu</a>
+        <a href="kumano.html"><span class="mi-emoji" aria-hidden="true">⛩️</span>Kumano</a>
+        <a href="koyasan.html"><span class="mi-emoji" aria-hidden="true">🏔️</span>Koya-san</a>
+        <a href="iya.html"><span class="mi-emoji" aria-hidden="true">🏞️</span>Iya</a>
+        <a href="ine.html"><span class="mi-emoji" aria-hidden="true">🎣</span>Ine</a>
+        <a href="nara.html"><span class="mi-emoji" aria-hidden="true">🦌</span>Nara</a>
+        <a href="kyoto.html"><span class="mi-emoji" aria-hidden="true">🍁</span>Kyoto</a>
+        <a href="osaka.html"><span class="mi-emoji" aria-hidden="true">🏙️</span>Osaka</a>
+        <a href="hiroshima.html"><span class="mi-emoji" aria-hidden="true">🕊️</span>Hiroshima</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="menu-backdrop" id="menu-backdrop" hidden></div>
+<main>
+<section class="hero">
+  <div class="scene-banner home-banner"><img class="photo-banner" src="images/hero.jpg" alt="Japonska — Mesec za dušo" loading="eager" decoding="async"></div>
+  <p class="leaves" aria-hidden="true">🍁 🍂 🍁</p>
+  <h1>Japonska<br><span class="h1-sub">Mesec za dušo</span></h1>
+  <p class="dates">3. november – 2. december 2026 · Tokio → Osaka</p>
+  <p class="tagline">Potovalni vodnik za Marjetico, Heleno, Ljubo in Magdo — vaš žepni spremljevalec: načrt dneva, znamenitosti, hrana, foto izzivi in nujne informacije.</p>
+  <a class="photo-button" href="nalozi.html">📸 Naš album — naloži fotografije</a>
+</section>
+<a class="tour-banner" id="tour-banner" href="kako.html" hidden><span class="tb-e">🎓</span><span class="tb-t"><strong>Prvič tukaj?</strong> Poglej kratko predstavitev (2 minuti) →</span></a>
+<section class="today-card" id="today" hidden aria-live="polite"></section>
+<nav class="quick-links" aria-label="Glavna poglavja">
+  <a href="nacrt.html"><span class="ql-emoji" aria-hidden="true">🗺️</span><span class="ql-t">Načrt poti</span><span class="ql-d">30 dni, dan za dnem</span></a>
+  <a href="izziv.html"><span class="ql-emoji" aria-hidden="true">📸</span><span class="ql-t">Foto izzivi</span><span class="ql-d">52 izzivov in presenečenja</span></a>
+  <a href="nalozi.html"><span class="ql-emoji" aria-hidden="true">📤</span><span class="ql-t">Naloži fotografije</span><span class="ql-d">album iz vaših telefonov</span></a>
+  <a href="dozivetja.html"><span class="ql-emoji" aria-hidden="true">🎨</span><span class="ql-t">Doživetja</span><span class="ql-d">delavnice, čaj, vrtovi</span></a>
+  <a href="priprave.html"><span class="ql-emoji" aria-hidden="true">🎒</span><span class="ql-t">Priprave</span><span class="ql-d">denar, vlaki, pakiranje</span></a>
+  <a href="nasveti.html#kartice"><span class="ql-emoji" aria-hidden="true">🪪</span><span class="ql-t">Kartice za domačine</span><span class="ql-d">pokažite zaslon</span></a>
+  <a href="nasveti.html#fraze"><span class="ql-emoji" aria-hidden="true">🗣️</span><span class="ql-t">Fraze</span><span class="ql-d">z izgovorjavo 🔊</span></a>
+  <a href="prevajalec.html"><span class="ql-emoji" aria-hidden="true">🔍</span><span class="ql-t">Prevajalec s kamero</span><span class="ql-d">japonski napis → slovensko</span></a>
+  <a href="nujno.html"><span class="ql-emoji" aria-hidden="true">🆘</span><span class="ql-t">Nujno</span><span class="ql-d">110, 119, veleposlaništvo</span></a>
+  <a href="kako.html"><span class="ql-emoji" aria-hidden="true">🎓</span><span class="ql-t">Kako uporabljati</span><span class="ql-d">predstavitev vseh funkcij</span></a>
+</nav>
+<section class="card-section map-route-sec" aria-labelledby="pot">
+  <h2 id="pot">🗺️ Naša pot</h2>
+  <div class="route-map" id="route-map" role="img" aria-label="Zemljevid poti po Japonski od Tokia do Osake"></div>
+  <p class="map-legend"><span class="lg-line"></span> nočitvene postaje po vrsti &nbsp; <span class="lg-dash"></span> enodnevni izleti. Tapnite številko za vodnik.</p>
+  <ol class="route-list">
+    <li><a href="tokio.html"><span class="rl-n">1</span><span class="rl-t">🗼 Tokio</span></a></li>
+    <li><a href="chichibu.html"><span class="rl-n rl-day">2</span><span class="rl-t">🌳 Chichibu</span></a></li>
+    <li><a href="kawaguchiko.html"><span class="rl-n">3</span><span class="rl-t">🗻 Fuji</span></a></li>
+    <li><a href="minobusan.html"><span class="rl-n">4</span><span class="rl-t">🏯 Minobu</span></a></li>
+    <li><a href="izu.html"><span class="rl-n">5</span><span class="rl-t">🌊 Izu</span></a></li>
+    <li><a href="kumano.html"><span class="rl-n">6</span><span class="rl-t">⛩️ Kumano</span></a></li>
+    <li><a href="koyasan.html"><span class="rl-n">7</span><span class="rl-t">🏔️ Koya-san</span></a></li>
+    <li><a href="iya.html"><span class="rl-n">8</span><span class="rl-t">🏞️ Iya</span></a></li>
+    <li><a href="ine.html"><span class="rl-n">9</span><span class="rl-t">🎣 Ine</span></a></li>
+    <li><a href="nara.html"><span class="rl-n rl-day">10</span><span class="rl-t">🦌 Nara</span></a></li>
+    <li><a href="kyoto.html"><span class="rl-n">11</span><span class="rl-t">🍁 Kyoto</span></a></li>
+    <li><a href="osaka.html"><span class="rl-n">12</span><span class="rl-t">🏙️ Osaka</span></a></li>
+    <li><a href="hiroshima.html"><span class="rl-n rl-day">13</span><span class="rl-t">🕊️ Hiroshima</span></a></li>
+  </ol>
+  <p class="visit-sum" id="visit-sum"></p>
+</section>
+<section class="welcome card-section" aria-labelledby="welcome">
+  <h2 id="welcome">👋 Dobrodošle</h2>
+  <p>Pred vami je mesec, kakršnega si privoščimo enkrat v življenju — cel november na Japonskem, v času, ko se javorji obarvajo v najlepše rdeče in zlato. Ta vodnik ni seznam, ki bi ga bilo treba prehiteti; je vaš tihi spremljevalec.</p>
+  <p>Potujte počasi. Ena znamenitost dopoldne, ena popoldne, vmes skodelica čaja. Ustavite se, kjer je lepo, in tam ostanite dlje, kot se zdi potrebno. Japonska najlepše nagradi tiste, ki se ji ne mudi.</p>
+  <p>Na vsaki postaji boste našle znamenitosti z zemljevidi, kje in kaj jesti, kdaj je kraj najlepši, kje si vzeti uro zase — in prostor za svoje zapiske.</p>
+  <p>Čaka vas tudi <strong>52 foto izzivov</strong> z majhnimi presenečenji: naložite sliko s telefona, izziv se opravi, odklene pa se zanimivost, skrivnost ali nagrada. Iz tega bo nastala vaša potopisna knjiga. Marjetica, Helena, Ljuba in Magda: fotoaparati pripravljeni! 🍁</p>
+</section>
+<h2 class="section-title">Naše postaje</h2>
+<ul class="cards">
+  <li>
+    <a href="tokio.html">
+      <span class="card-scene"><img class="card-photo" src="images/thumbs/tokio.jpg" alt="" loading="lazy" decoding="async"></span>
+      <span class="card-body">
+        <span class="stop-num">Postaja 1 · 4 noči</span> <span class="visit-tag" data-visit-tag="tokio" hidden>✅ Obiskano</span>
+        <span class="card-title">🗼 Tokio</span>
+        <span class="card-teaser">Velemesto, ki zna biti tiho: stari vrtovi, jutranja svetišča in najboljši sushi zajtrk.</span>
+        <span class="card-more">Odpri vodnik →</span>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="chichibu.html">
+      <span class="card-scene"><img class="card-photo" src="images/thumbs/chichibu.jpg" alt="" loading="lazy" decoding="async"></span>
+      <span class="card-body">
+        <span class="stop-num">Postaja 2 · Enodnevni izlet iz Tokia</span> <span class="visit-tag" data-visit-tag="chichibu" hidden>✅ Obiskano</span>
+        <span class="card-title">🌳 Chichibu</span>
+        <span class="card-teaser">Enodnevni izlet iz Tokia: gozdna kopel med cedrami, svetišča in ročni soba rezanci.</span>
+        <span class="card-more">Odpri vodnik →</span>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="kawaguchiko.html">
+      <span class="card-scene"><img class="card-photo" src="images/thumbs/kawaguchiko.jpg" alt="" loading="lazy" decoding="async"></span>
+      <span class="card-body">
+        <span class="stop-num">Postaja 3 · 1 noč</span> <span class="visit-tag" data-visit-tag="kawaguchiko" hidden>✅ Obiskano</span>
+        <span class="card-title">🗻 Kawaguchiko &amp; gora Fuji</span>
+        <span class="card-teaser">Gora Fuji nad mirnim jezerom, pagoda Chureito in jesenski drevored javorjev.</span>
+        <span class="card-more">Odpri vodnik →</span>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="minobusan.html">
+      <span class="card-scene"><img class="card-photo" src="images/thumbs/minobusan.jpg" alt="" loading="lazy" decoding="async"></span>
+      <span class="card-body">
+        <span class="stop-num">Postaja 4 · 1 noč pri menihih</span> <span class="visit-tag" data-visit-tag="minobusan" hidden>✅ Obiskano</span>
+        <span class="card-title">🏯 Minobusan</span>
+        <span class="card-teaser">Tempeljska nočitev pri menihih (šukubo Kakurinbo) in gorski tempelj Kuon-ji.</span>
+        <span class="card-more">Odpri vodnik →</span>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="izu.html">
+      <span class="card-scene"><img class="card-photo" src="images/thumbs/izu.jpg" alt="" loading="lazy" decoding="async"></span>
+      <span class="card-body">
+        <span class="stop-num">Postaja 5 · 3 noči</span> <span class="visit-tag" data-visit-tag="izu" hidden>✅ Obiskano</span>
+        <span class="card-title">🌊 Izu polotok</span>
+        <span class="card-teaser">Obala iz lave, polja pravega wasabija in onsen z razgledom na morje.</span>
+        <span class="card-more">Odpri vodnik →</span>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="kumano.html">
+      <span class="card-scene"><img class="card-photo" src="images/thumbs/kumano.jpg" alt="" loading="lazy" decoding="async"></span>
+      <span class="card-body">
+        <span class="stop-num">Postaja 6 · 3 noči</span> <span class="visit-tag" data-visit-tag="kumano" hidden>✅ Obiskano</span>
+        <span class="card-title">⛩️ Kumano Kodo</span>
+        <span class="card-teaser">Starodavna romarska pot pod tisočletnimi cedrami — sestra Camina de Santiago.</span>
+        <span class="card-more">Odpri vodnik →</span>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="koyasan.html">
+      <span class="card-scene"><img class="card-photo" src="images/thumbs/koyasan.jpg" alt="" loading="lazy" decoding="async"></span>
+      <span class="card-body">
+        <span class="stop-num">Postaja 7 · 1–2 noči</span> <span class="visit-tag" data-visit-tag="koyasan" hidden>✅ Obiskano</span>
+        <span class="card-title">🏔️ Koya-san</span>
+        <span class="card-teaser">Mistični Okunoin med cedrami, velika pagoda in sveti mir gore.</span>
+        <span class="card-more">Odpri vodnik →</span>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="iya.html">
+      <span class="card-scene"><img class="card-photo" src="images/thumbs/iya.jpg" alt="" loading="lazy" decoding="async"></span>
+      <span class="card-body">
+        <span class="stop-num">Postaja 8 · 3 noči</span> <span class="visit-tag" data-visit-tag="iya" hidden>✅ Obiskano</span>
+        <span class="card-title">🏞️ Shikoku — dolina Iya</span>
+        <span class="card-teaser">Skrita dolina z visečimi mostovi iz trte in smaragdno reko globoko spodaj.</span>
+        <span class="card-more">Odpri vodnik →</span>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="ine.html">
+      <span class="card-scene"><img class="card-photo" src="images/thumbs/ine.jpg" alt="" loading="lazy" decoding="async"></span>
+      <span class="card-body">
+        <span class="stop-num">Postaja 9 · 2 noči</span> <span class="visit-tag" data-visit-tag="ine" hidden>✅ Obiskano</span>
+        <span class="card-title">🎣 Ine</span>
+        <span class="card-teaser">»Benetke Japonske« — hiške s čolni tik nad vodo in najbolj svež sašimi.</span>
+        <span class="card-more">Odpri vodnik →</span>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="nara.html">
+      <span class="card-scene"><img class="card-photo" src="images/thumbs/nara.jpg" alt="" loading="lazy" decoding="async"></span>
+      <span class="card-body">
+        <span class="stop-num">Postaja 10 · Enodnevni izlet iz Kjota ali Osake</span> <span class="visit-tag" data-visit-tag="nara" hidden>✅ Obiskano</span>
+        <span class="card-title">🦌 Nara</span>
+        <span class="card-teaser">Veliki Buda, prijazni jeleni in zlati javorji v parku Nara.</span>
+        <span class="card-more">Odpri vodnik →</span>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="kyoto.html">
+      <span class="card-scene"><img class="card-photo" src="images/thumbs/kyoto.jpg" alt="" loading="lazy" decoding="async"></span>
+      <span class="card-body">
+        <span class="stop-num">Postaja 11 · 5 noči</span> <span class="visit-tag" data-visit-tag="kyoto" hidden>✅ Obiskano</span>
+        <span class="card-title">🍁 Kyoto</span>
+        <span class="card-teaser">Templji, zen vrtovi in čajne hiše na vrhuncu jesenskega obarvanja.</span>
+        <span class="card-more">Odpri vodnik →</span>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="osaka.html">
+      <span class="card-scene"><img class="card-photo" src="images/thumbs/osaka.jpg" alt="" loading="lazy" decoding="async"></span>
+      <span class="card-body">
+        <span class="stop-num">Postaja 12 · 5 noči</span> <span class="visit-tag" data-visit-tag="osaka" hidden>✅ Obiskano</span>
+        <span class="card-title">🏙️ Osaka</span>
+        <span class="card-teaser">Kuhinja Japonske za vesel zaključek: takoyaki, neonske luči in nazdravljanje.</span>
+        <span class="card-more">Odpri vodnik →</span>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a href="hiroshima.html">
+      <span class="card-scene"><img class="card-photo" src="images/thumbs/hiroshima.jpg" alt="" loading="lazy" decoding="async"></span>
+      <span class="card-body">
+        <span class="stop-num">Postaja 13 · Enodnevni izlet iz Osake</span> <span class="visit-tag" data-visit-tag="hiroshima" hidden>✅ Obiskano</span>
+        <span class="card-title">🕊️ Hiroshima</span>
+        <span class="card-teaser">Park miru, pretresljiv muzej in plavajoča torija svetišča Itsukušima na otoku Miyajima.</span>
+        <span class="card-more">Odpri vodnik →</span>
+      </span>
+    </a>
+  </li>
+</ul>
+<div class="back-row">
+  <a class="back-button" href="nujno.html">🆘 Nujne informacije</a>
+</div>
+<script type="application/json" id="trip-data">[{"d": 1, "iso": "2026-11-03", "date": "3. nov", "r": "Tokio", "t": "Prihod v Tokio", "p": "Pristanek ob 12.10. Po carini uredite IC kartico in eSIM, prevoz do hotela, lahek večerni sprehod in prva večerja blizu nastanitve.", "k": "tokio"}, {"d": 2, "iso": "2026-11-04", "date": "4. nov", "r": "Tokio", "t": "Stari Tokio", "p": "Jutranji Meiji Jingu, popoldne počasen sprehod po Yanaki in ulici Yanaka Ginza, svetišče Nezu.", "k": "tokio"}, {"d": 3, "iso": "2026-11-05", "date": "5. nov", "r": "Chichibu (izlet)", "t": "Enodnevni izlet v gore", "p": "Z vlakom v Chichibu: gozdna kopel, svetišče in soba rezanci. Zvečer nazaj v Tokio — kovčki ostanejo v hotelu.", "k": "chichibu"}, {"d": 4, "iso": "2026-11-06", "date": "6. nov", "r": "Tokio", "t": "Vrtovi in voda", "p": "Zajtrk na tržnici Tsukiji, vrt Hamarikyu s čajnico Nakajima, ladjica po reki Sumidi; zvečer po želji osvetljeni vrt Rikugien.", "k": "tokio"}, {"d": 5, "iso": "2026-11-07", "date": "7. nov", "r": "Fuji – Kawaguchiko", "t": "Pod goro Fuji", "p": "Iz Tokia proti jezeru Kawaguchi. Pagoda Chureito in obala Oishi Park z razgledom na Fuji. Prenočimo ob jezeru.", "k": "kawaguchiko"}, {"d": 6, "iso": "2026-11-08", "date": "8. nov", "r": "Minobusan", "t": "Noč pri menihih (Kakurinbo)", "p": "Pot na goro Minobu, tempelj Kuon-ji. Prenočimo v šukuboju Kakurinbo (že rezervirano) — meniška večerja in jutranji mir.", "k": "minobusan"}, {"d": 7, "iso": "2026-11-09", "date": "9. nov", "r": "Izu", "t": "Na polotok Izu", "p": "Jutranja molitev, nato proti morju na Izu. Nastanitev v onsen ryokanu; zvečer prvi onsen z razgledom.", "k": "izu"}, {"d": 8, "iso": "2026-11-10", "date": "10. nov", "r": "Izu", "t": "Onsen mestece Shuzenji", "p": "Javorjev gaj Momijirin, rdeči most Katsura, bambusova pot; zvečer po želji osvetlitev v Niji no Sato.", "k": "izu"}, {"d": 9, "iso": "2026-11-11", "date": "11. nov", "r": "Izu", "t": "Obala in morje", "p": "Sprehod po obali Jogasaki, morska hrana, počasen dan brez naglice.", "k": "izu"}, {"d": 10, "iso": "2026-11-12", "date": "12. nov", "r": "Kumano Kodo", "t": "Dolga vožnja na jug", "p": "Daljši potovalni dan proti polotoku Kii (prek Nagoje). Kovčke pošljite naprej, potujte z lahkim nahrbtnikom.", "k": "kumano"}, {"d": 11, "iso": "2026-11-13", "date": "13. nov", "r": "Kumano Kodo", "t": "Svetišče in slap Nachi", "p": "Kamnita pot Daimonzaka med cedrami, pagoda Seiganto-ji in slap Nachi. Zvečer onsen.", "k": "kumano"}, {"d": 12, "iso": "2026-11-14", "date": "14. nov", "r": "Kumano Kodo", "t": "Hongu in rečna kopel", "p": "Velika torija Oyunohara in Hongu Taisha; kopel Tsuboyu v Yunomine ali rečni Kawayu Onsen.", "k": "kumano"}, {"d": 13, "iso": "2026-11-15", "date": "15. nov", "r": "Koya-san", "t": "Na sveto goro", "p": "Pot na Koya-san. Nočitev pri menihih je zasedena — prespimo v preprostem gostišču/hotelu na gori (dovolj je 1 noč). Zvečer sprehod med lučkami Okunoina.", "k": "koyasan"}, {"d": 14, "iso": "2026-11-16", "date": "16. nov", "r": "Koya-san", "t": "Templji in vrtovi", "p": "Danjo Garan s pagodo Konpon Daito, tempelj Kongobu-ji z vrtom Banryutei; shojin ryori za kosilo.", "k": "koyasan"}, {"d": 15, "iso": "2026-11-17", "date": "17. nov", "r": "Iya", "t": "Na Shikoku", "p": "Daljša vožnja prek Osake in Okajame v dolino Iya. Nastanitev v gorah.", "k": "iya"}, {"d": 16, "iso": "2026-11-18", "date": "18. nov", "r": "Iya", "t": "Viseči most in soteska", "p": "Most Kazurabashi iz trte, razgledišče Hi-no-Ji, vožnja z ladjico po soteski Oboke.", "k": "iya"}, {"d": 17, "iso": "2026-11-19", "date": "19. nov", "r": "Iya", "t": "Vasi in kopel", "p": "Vas Ochiai, dvojni mostovi Oku-Iya ali rečna kopel hotela Iya Onsen. Miren dan v naravi.", "k": "iya"}, {"d": 18, "iso": "2026-11-20", "date": "20. nov", "r": "Ine", "t": "K morju v Ine", "p": "Vožnja z otoka nazaj proti severu prefekture Kyoto. Prihod v ribiško vasico Ine, večerni sprehod ob zalivu.", "k": "ine"}, {"d": 19, "iso": "2026-11-21", "date": "21. nov", "r": "Ine", "t": "Hiše na vodi", "p": "Vožnja z ladjico po zalivu, razgledna točka Funaya no Sato, pivovarna sakeja Mukai Shuzo, sončni zahod.", "k": "ine"}, {"d": 20, "iso": "2026-11-22", "date": "22. nov", "r": "Kyoto", "t": "V Kyoto (po možnosti prek Nare)", "p": "Prek Amanohashidateja v Kyoto. Če je logistično izvedljivo, vmes dan v Nari; sicer Naro naredimo kot izlet iz Osake.", "k": "kyoto"}, {"d": 21, "iso": "2026-11-23", "date": "23. nov", "r": "Kyoto", "t": "Arašijama", "p": "Zgodaj v bambusov gaj in vrt Tenryu-ji, čajnica in vrt Okochi Sanso; popoldne po reki Hozu.", "k": "kyoto"}, {"d": 22, "iso": "2026-11-24", "date": "24. nov", "r": "Kyoto", "t": "Zen vrtovi", "p": "Kamniti vrt Ryoan-ji zgodaj zjutraj, Ginkaku-ji in Filozofska pot v jesenskih barvah.", "k": "kyoto"}, {"d": 23, "iso": "2026-11-25", "date": "25. nov", "r": "Kyoto", "t": "Jesenska osvetlitev", "p": "Tofuku-ji in most Tsutenkyo; zvečer osvetljeni javorji templja Eikando.", "k": "kyoto"}, {"d": 24, "iso": "2026-11-26", "date": "26. nov", "r": "Kyoto", "t": "Čaj, ustvarjanje in Gion", "p": "Čajna ceremonija, delavnica (wagashi, kaligrafija ali ikebana), nakup v Nishikiju; zvečer sprehod po Gionu.", "k": "kyoto"}, {"d": 25, "iso": "2026-11-27", "date": "27. nov", "r": "Osaka", "t": "V Osako", "p": "Kratka vožnja v Osako. Grad Osaka in vrt Nishinomaru, zvečer Dotonbori.", "k": "osaka"}, {"d": 26, "iso": "2026-11-28", "date": "28. nov", "r": "Osaka", "t": "Okusi Osake", "p": "Tržnica Kuromon, takoyaki in okonomiyaki, ladjica Tombori; skriti vrt Keitakuen za uro miru.", "k": "osaka"}, {"d": 27, "iso": "2026-11-29", "date": "29. nov", "r": "Nara (izlet)", "t": "Osaka ali izlet v Naro", "p": "Kdor Nare ni ujel na poti v Kyoto: enodnevni izlet (Todai-ji, jeleni, Kasuga Taisha). Ostale po Osaki po želji.", "k": "nara"}, {"d": 28, "iso": "2026-11-30", "date": "30. nov", "r": "Hiroshima (izlet)", "t": "Izlet v Hiroshimo, kdor želi", "p": "Zgodaj s shinkansnom v Hiroshimo: Park miru in muzej, nato otok Miyajima s plavajočo torijo. Zvečer nazaj v Osako.", "k": "hiroshima"}, {"d": 29, "iso": "2026-12-01", "date": "1. dec", "r": "Osaka", "t": "Zadnji počasni dan", "p": "Zadnji kotički Osake, tržnica, zadnja skodelica matche in spominki. Poslovilna večerja, pakiranje.", "k": "osaka"}, {"d": 30, "iso": "2026-12-02", "date": "2. dec", "r": "Odhod", "t": "Pot domov", "p": "Dopoldne mirno, nato prevoz na letališče Kansai. Let domov ob 22.45. Mesec za dušo se izteče — a ostane v srcu.", "k": "osaka"}]</script>
+<script type="application/json" id="route-data">[{"k": "tokio", "n": "Tokio", "e": "🗼", "i": 1, "lat": 35.712, "lon": 139.775, "day": false, "base": ""}, {"k": "chichibu", "n": "Chichibu", "e": "🌳", "i": 2, "lat": 35.991, "lon": 139.085, "day": true, "base": "tokio"}, {"k": "kawaguchiko", "n": "Fuji", "e": "🗻", "i": 3, "lat": 35.517, "lon": 138.764, "day": false, "base": ""}, {"k": "minobusan", "n": "Minobu", "e": "🏯", "i": 4, "lat": 35.404, "lon": 138.437, "day": false, "base": ""}, {"k": "izu", "n": "Izu", "e": "🌊", "i": 5, "lat": 34.973, "lon": 138.925, "day": false, "base": ""}, {"k": "kumano", "n": "Kumano", "e": "⛩️", "i": 6, "lat": 33.668, "lon": 135.89, "day": false, "base": ""}, {"k": "koyasan", "n": "Koya-san", "e": "🏔️", "i": 7, "lat": 34.213, "lon": 135.584, "day": false, "base": ""}, {"k": "iya", "n": "Iya", "e": "🏞️", "i": 8, "lat": 33.9, "lon": 133.84, "day": false, "base": ""}, {"k": "ine", "n": "Ine", "e": "🎣", "i": 9, "lat": 35.682, "lon": 135.287, "day": false, "base": ""}, {"k": "nara", "n": "Nara", "e": "🦌", "i": 10, "lat": 34.685, "lon": 135.843, "day": true, "base": "kyoto"}, {"k": "kyoto", "n": "Kyoto", "e": "🍁", "i": 11, "lat": 35.011, "lon": 135.768, "day": false, "base": ""}, {"k": "osaka", "n": "Osaka", "e": "🏙️", "i": 12, "lat": 34.669, "lon": 135.501, "day": false, "base": ""}, {"k": "hiroshima", "n": "Hiroshima", "e": "🕊️", "i": 13, "lat": 34.393, "lon": 132.459, "day": true, "base": "osaka"}]</script>
+</main>
+<footer>
+  <p>🍁 Japonska — Mesec za dušo · 3. november – 2. december 2026 · Tokio → Osaka</p>
+  <p>Z ljubeznijo pripravljeno za Magdo in prijateljice</p>
+  <p><a href="kako.html">🎓 Kako uporabljati to stran</a> · <a href="../index.html?izpis=1">🔑 Zamenjaj potovanje</a></p>
+</footer>
+<script src="app.js?v=19"></script>
+</body>
+</html>

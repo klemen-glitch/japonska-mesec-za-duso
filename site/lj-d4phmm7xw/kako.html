@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kako uporabljati · Zmajeva pustolovščina</title>
+  <meta name="description" content="Kratka predstavitev vseh funkcij vodnika: korak za korakom z demo primeri.">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#2f8f6b">
+  <script>window.TRIP={"id": "ljubljana", "slug": "lj-d4phmm7xw", "people": ["Ana", "Maks"], "gate": "../index.html", "after": ["Bravo, zmajska ekipa!", "Poglejta <a href=\"nalozi.html\">skupni album</a> in iz slik sestavita svojo Zmajevo knjigo."], "t": {"locked": "Presenečenje čaka — odklene se, ko naložita sliko ali video.", "empty": "Album je še prazen — naložita prvo fotografijo. 📸", "thanks": "naloženih ✓ — odlično!", "more": "Odpri vodnik za to postajo →", "pre": "Pustolovščina se začne {date}. Poglejta <a href=\"priprave.html\">priprave</a> in kontrolni seznam."}, "color": "#2f8f6b", "stations": [{"k": "vlak", "e": "🚂", "n": "Vlak"}, {"k": "emonec", "e": "🏨", "n": "Hotel"}, {"k": "center", "e": "🏰", "n": "Center"}, {"k": "zoo", "e": "🦁", "n": "Živalski vrt"}, {"k": "domov", "e": "🏠", "n": "Domov"}]};(function(){try{var s=JSON.parse(localStorage.getItem("trip_session")||"null");var ok=s&&s.trips&&s.trips.some(function(t){return t.slug===TRIP.slug});if(!ok){location.replace(TRIP.gate+"?next="+encodeURIComponent(TRIP.slug));}}catch(e){}})();</script>
+  <link rel="stylesheet" href="style.css?v=19">
+  <style>
+    :root { --accent:#1f7a5a; --accent-ink:#1f7a5a; --accent-soft:#e8f5ee; --pin:#2f8f6b; --orange:#c8553d; --gold:#b08a2e; }
+    @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --accent:#6fd0a6; --accent-ink:#6fd0a6; --accent-soft:#14261e; --pin:#2f8f6b; --orange:#e08a6c; --gold:#d2b256; } }
+    :root[data-theme="dark"] { --accent:#6fd0a6; --accent-ink:#6fd0a6; --accent-soft:#14261e; --pin:#2f8f6b; --orange:#e08a6c; --gold:#d2b256; }
+  </style>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+</head>
+<body>
+<header class="site-header">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">🐉 Zmajeva pustolovščina</a>
+    <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="main-menu">
+      <span class="mt-ico" aria-hidden="true">☰</span> Meni
+    </button>
+  </div>
+  <nav class="main-menu" id="main-menu" aria-label="Glavni meni" hidden>
+    <div class="menu-inner">
+      <div class="menu-primary">
+        <a href="index.html"><span class="mi-emoji" aria-hidden="true">🏠</span>Domov</a>
+        <a href="kako.html" aria-current="page"><span class="mi-emoji" aria-hidden="true">🎓</span>Kako uporabljati</a>
+        <a href="nacrt.html"><span class="mi-emoji" aria-hidden="true">🗺️</span>Načrt poti</a>
+        <a href="izziv.html"><span class="mi-emoji" aria-hidden="true">📸</span>Izzivi</a>
+        <a href="nalozi.html"><span class="mi-emoji" aria-hidden="true">📤</span>Naloži fotografije</a>
+        <a href="priprave.html"><span class="mi-emoji" aria-hidden="true">🎒</span>Priprave</a>
+        <a href="nujno.html"><span class="mi-emoji" aria-hidden="true">🆘</span>Nujno</a>
+        <a href="../index.html?izpis=1"><span class="mi-emoji" aria-hidden="true">🔑</span>Zamenjaj potovanje</a>
+      </div>
+      <p class="menu-label">Postaje pustolovščine</p>
+      <div class="menu-stations">
+        <a href="vlak.html"><span class="mi-emoji" aria-hidden="true">🚂</span>Vlak</a>
+        <a href="emonec.html"><span class="mi-emoji" aria-hidden="true">🏨</span>Hotel</a>
+        <a href="center.html"><span class="mi-emoji" aria-hidden="true">🏰</span>Center</a>
+        <a href="zoo.html"><span class="mi-emoji" aria-hidden="true">🦁</span>Živalski vrt</a>
+        <a href="domov.html"><span class="mi-emoji" aria-hidden="true">🏠</span>Domov</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="menu-backdrop" id="menu-backdrop" hidden></div>
+<main>
+<section class="wiz" id="wiz" aria-label="Predstavitev">
+  <div class="wiz-top"><span class="wiz-count" id="wiz-count"></span><a class="wiz-skip" href="index.html">Preskoči →</a></div>
+  <div class="wiz-bar"><i id="wiz-fill"></i></div>
+  <div class="wiz-stage">
+    <article class="wiz-step" data-spot="">
+      <div class="wiz-emoji" aria-hidden="true">🐉</div>
+      <h2>Dobrodošla, zmajska ekipa!</h2>
+      <p>To je vajin žepni vodnik za dva dneva v Ljubljani (15.–16. oktober 2026): načrt dneva, ideje, foto izzivi in nujne informacije.</p>
+      <p>Predstavitev traja približno dve minuti. Tapnita »Naprej« in videla bosta vse, kar zna ta stran.</p>
+    </article>
+    <article class="wiz-step" data-spot=".menu-toggle" hidden>
+      <div class="wiz-emoji" aria-hidden="true">☰</div>
+      <h2>Meni — vse na enem mestu</h2>
+      <p>Gumb »Meni« zgoraj desno odpre pregleden meni: glavne strani in vseh 5 postaj. Je na vsaki strani.</p>
+      <div class="wiz-demo"><div class="demo-bar"><span>🐉 Zmajeva pustolovščina</span><span class="demo-pill">☰ Meni</span></div><ul class="demo-list"><li>🏠 Domov</li><li>🗺️ Načrt poti</li><li>📸 Izzivi</li><li>📤 Naloži fotografije</li><li>🆘 Nujno</li><li class="demo-more">… in vseh 5 postaj</li></ul></div>
+    </article>
+    <article class="wiz-step" data-spot="" hidden>
+      <div class="wiz-emoji" aria-hidden="true">📅</div>
+      <h2>Danes — kaj je na vrsti</h2>
+      <p>Med pustolovščino domača stran sama pokaže, kateri dan je danes: kje sta in kaj je v načrtu. Pred odhodom kaže odštevanje.</p>
+      <div class="wiz-demo"><div class="today-card demo-today"><div class="today-kicker">📅 Danes · 16. okt</div><h2>Dan 2 od 2 — Cel dan v živalskem vrtu</h2><p class="today-region">Živalski vrt</p><p>Avtobus št. 18, slon Ganga, morski levi in Mini ZOO.</p></div></div>
+    </article>
+    <article class="wiz-step" data-spot="" hidden>
+      <div class="wiz-emoji" aria-hidden="true">🗺️</div>
+      <h2>Načrt poti in zemljevid</h2>
+      <p>Načrt poti ima oba dneva in prehode (vlak, peš, avtobus). Na domači strani je zemljevid vseh postaj po vrsti.</p>
+      <a class="wiz-link" href="nacrt.html">Odpri načrt poti →</a>
+    </article>
+    <article class="wiz-step" data-spot="" hidden>
+      <div class="wiz-emoji" aria-hidden="true">🦁</div>
+      <h2>Postaje — vodnik za vsak del poti</h2>
+      <p>Vsaka postaja ima ideje, zemljevid, predlog dneva, nasvete in osebne rubrike. Največ je v živalskem vrtu: poglobljen načrt za cel dan.</p>
+      <div class="wiz-demo"><div class="demo-chips"><span>🦒 Kaj videti</span><span>📍 Zemljevid</span><span>🗓️ Predlog dneva</span><span>📸 Foto izzivi</span><span>🍦 Hrana</span><span>☔ Če dežuje</span><span>🌟 Najlepši trenutek</span><span>✏️ Risanje</span><span>📖 Dnevnik</span></div></div>
+      <a class="wiz-link" href="zoo.html">Poglej primer: Živalski vrt →</a>
+    </article>
+    <article class="wiz-step" data-spot="" hidden>
+      <div class="wiz-emoji" aria-hidden="true">✅</div>
+      <h2>Obiskano</h2>
+      <p>Na vsaki postaji je gumb »Označi kot obiskano«. Kar označita, ostane shranjeno v vajinem telefonu.</p>
+    </article>
+    <article class="wiz-step" data-spot="" hidden>
+      <div class="wiz-emoji" aria-hidden="true">📸</div>
+      <h2>Foto izzivi in presenečenja</h2>
+      <p>Skupaj je 45 foto izzivov — največ v živalskem vrtu. Pod vsakim je »drobni tisk«: zakaj se slikata tam.</p>
+      <p>Ko za izziv naložita sliko, se opravi in odklene presenečenje: zanimivost, skrivnost ali majhna nagrada. Preizkusita spodaj!</p>
+      <div class="wiz-demo"><div class="demo-izziv" data-demo="unlock"><div class="izziv-head"><span class="izziv-mark demo-mark">📸</span><span class="izziv-text">Ana in Maks pod vhodnim napisom ali pri vhodu v zoo.</span></div><div class="izziv-surprise locked demo-locked"><span class="sur-ic">🎁</span><span>Presenečenje čaka — odklene se, ko naložita sliko ali video.</span></div><div class="izziv-surprise open demo-open" hidden><div class="sur-head"><span class="sur-ic">💡</span><span><span class="sur-kind">Zanimivost odklenjena</span><strong>Zoo pod Rožnikom</strong></span></div><p>Živalski vrt leži na južnem pobočju Rožnika — v naravnem gozdu in na travnikih.</p></div><button type="button" class="pin-btn demo-btn">▶ Preizkusita: naloži sliko</button></div></div>
+      <a class="wiz-link" href="izziv.html">Odpri vse izzive →</a>
+    </article>
+    <article class="wiz-step" data-spot="" hidden>
+      <div class="wiz-emoji" aria-hidden="true">📤</div>
+      <h2>Naloži fotografije</h2>
+      <p>Fotografije in videe naložita kar s telefona. Izbereta, kdo sta (Ana ali Maks), nato postajo in slike.</p>
+      <p>Vse pristane v vajinem skupnem albumu, ki ga vidita le vidva. Na koncu ga z enim klikom prenesta kot .zip.</p>
+      <div class="wiz-demo"><div class="gate-row"><span class="gate-lbl">Nalagaš kot:</span><span class="gate-name">Ana</span><span class="gate-name on">Maks</span></div><div class="demo-upload"><span class="demo-select">🦁 Živalski vrt ▾</span><span class="demo-bigbtn">📷 Izberi fotografije ali video</span></div></div>
+      <a class="wiz-link" href="nalozi.html">Odpri album →</a>
+    </article>
+    <article class="wiz-step" data-spot="" hidden>
+      <div class="wiz-emoji" aria-hidden="true">🆘</div>
+      <h2>Nujno — mir v žepu</h2>
+      <p>Posebna stran s številkami 112 in 113 ter nasveti, kaj storiti, če se kdo izgubi ali če se zgodi kaj nepričakovanega. Upamo, da je ne bosta potrebovala.</p>
+      <div class="wiz-demo"><div class="call-grid demo-calls"><div class="call-btn call-red"><span class="c-num">112</span><span class="c-lbl">Nujna pomoč</span></div><div class="call-btn call-red"><span class="c-num">113</span><span class="c-lbl">Policija</span></div></div></div>
+      <a class="wiz-link" href="nujno.html">Odpri nujne informacije →</a>
+    </article>
+    <article class="wiz-step" data-spot="" hidden>
+      <div class="wiz-emoji" aria-hidden="true">🎒</div>
+      <h2>Priprave</h2>
+      <p>Prevoz, živalski vrt, vreme in kontrolni seznam za odhod (obkljukata, telefon si zapomni).</p>
+      <a class="wiz-link" href="priprave.html">Odpri priprave →</a>
+    </article>
+    <article class="wiz-step" data-spot="" hidden>
+      <div class="wiz-emoji" aria-hidden="true">📲</div>
+      <h2>Dodajta stran na domači zaslon</h2>
+      <p>Da bo stran kot prava aplikacija (ikona na zaslonu, odpira se čez cel zaslon). Ob prvem odprtju z domačega zaslona bosta kodo vnesla še enkrat.</p>
+      <div class="wiz-demo"><div class="demo-install"><div><strong>🍎 iPhone (Safari)</strong><br>Deli ⬆️ → »Dodaj na začetni zaslon«</div><div><strong>🤖 Android (Chrome)</strong><br>Meni ⋮ → »Dodaj na začetni zaslon«</div></div></div>
+    </article>
+    <article class="wiz-step" data-spot="" hidden>
+      <div class="wiz-emoji" aria-hidden="true">🐲</div>
+      <h2>Pripravljena!</h2>
+      <p>To je vse. Stran lahko to predstavitev kadar koli ponovita — v meniju poiščita »Kako uporabljati«. Lepo pot, Ana in Maks!</p>
+      <a class="wiz-link" href="index.html">Na domačo stran →</a>
+    </article>
+  </div>
+  <div class="wiz-nav"><button type="button" class="wiz-btn wiz-prev" id="wiz-prev">← Nazaj</button><div class="wiz-dots" id="wiz-dots" aria-hidden="true"></div><button type="button" class="wiz-btn wiz-next" id="wiz-next">Naprej →</button></div>
+</section>
+</main>
+<footer>
+  <p>🐉 Zmajeva pustolovščina · 15.–16. oktober 2026 · Maribor → Ljubljana</p>
+  <p>Z ljubeznijo pripravljeno za Ano in Maksa</p>
+  <p><a href="kako.html">🎓 Kako uporabljati to stran</a> · <a href="../index.html?izpis=1">🔑 Zamenjaj potovanje</a></p>
+</footer>
+<script src="app.js?v=19"></script>
+</body>
+</html>

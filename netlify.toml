@@ -1,4 +1,4 @@
-# Netlify: stran je statična, objavi mapo japonska-2026-stran
+# Netlify: stran je statična, objavi mapo site
 [build]
-  publish = "japonska-2026-stran"
+  publish = "site"
   command = ""

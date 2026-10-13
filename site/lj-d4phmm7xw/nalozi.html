@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Naloži fotografije · Zmajeva pustolovščina</title>
+  <meta name="description" content="Naložite fotografije in videe s telefona v skupni album potovanja.">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#2f8f6b">
+  <script>window.TRIP={"id": "ljubljana", "slug": "lj-d4phmm7xw", "people": ["Ana", "Maks"], "gate": "../index.html", "after": ["Bravo, zmajska ekipa!", "Poglejta <a href=\"nalozi.html\">skupni album</a> in iz slik sestavita svojo Zmajevo knjigo."], "t": {"locked": "Presenečenje čaka — odklene se, ko naložita sliko ali video.", "empty": "Album je še prazen — naložita prvo fotografijo. 📸", "thanks": "naloženih ✓ — odlično!", "more": "Odpri vodnik za to postajo →", "pre": "Pustolovščina se začne {date}. Poglejta <a href=\"priprave.html\">priprave</a> in kontrolni seznam."}, "color": "#2f8f6b", "stations": [{"k": "vlak", "e": "🚂", "n": "Vlak"}, {"k": "emonec", "e": "🏨", "n": "Hotel"}, {"k": "center", "e": "🏰", "n": "Center"}, {"k": "zoo", "e": "🦁", "n": "Živalski vrt"}, {"k": "domov", "e": "🏠", "n": "Domov"}]};(function(){try{var s=JSON.parse(localStorage.getItem("trip_session")||"null");var ok=s&&s.trips&&s.trips.some(function(t){return t.slug===TRIP.slug});if(!ok){location.replace(TRIP.gate+"?next="+encodeURIComponent(TRIP.slug));}}catch(e){}})();</script>
+  <link rel="stylesheet" href="style.css?v=19">
+  <style>
+    :root { --accent:#1f7a5a; --accent-ink:#1f7a5a; --accent-soft:#e8f5ee; --pin:#2f8f6b; --orange:#c8553d; --gold:#b08a2e; }
+    @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --accent:#6fd0a6; --accent-ink:#6fd0a6; --accent-soft:#14261e; --pin:#2f8f6b; --orange:#e08a6c; --gold:#d2b256; } }
+    :root[data-theme="dark"] { --accent:#6fd0a6; --accent-ink:#6fd0a6; --accent-soft:#14261e; --pin:#2f8f6b; --orange:#e08a6c; --gold:#d2b256; }
+  </style>
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="album.js?v=19"></script>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+</head>
+<body>
+<header class="site-header">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">🐉 Zmajeva pustolovščina</a>
+    <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="main-menu">
+      <span class="mt-ico" aria-hidden="true">☰</span> Meni
+    </button>
+  </div>
+  <nav class="main-menu" id="main-menu" aria-label="Glavni meni" hidden>
+    <div class="menu-inner">
+      <div class="menu-primary">
+        <a href="index.html"><span class="mi-emoji" aria-hidden="true">🏠</span>Domov</a>
+        <a href="kako.html"><span class="mi-emoji" aria-hidden="true">🎓</span>Kako uporabljati</a>
+        <a href="nacrt.html"><span class="mi-emoji" aria-hidden="true">🗺️</span>Načrt poti</a>
+        <a href="izziv.html"><span class="mi-emoji" aria-hidden="true">📸</span>Izzivi</a>
+        <a href="nalozi.html" aria-current="page"><span class="mi-emoji" aria-hidden="true">📤</span>Naloži fotografije</a>
+        <a href="priprave.html"><span class="mi-emoji" aria-hidden="true">🎒</span>Priprave</a>
+        <a href="nujno.html"><span class="mi-emoji" aria-hidden="true">🆘</span>Nujno</a>
+        <a href="../index.html?izpis=1"><span class="mi-emoji" aria-hidden="true">🔑</span>Zamenjaj potovanje</a>
+      </div>
+      <p class="menu-label">Postaje pustolovščine</p>
+      <div class="menu-stations">
+        <a href="vlak.html"><span class="mi-emoji" aria-hidden="true">🚂</span>Vlak</a>
+        <a href="emonec.html"><span class="mi-emoji" aria-hidden="true">🏨</span>Hotel</a>
+        <a href="center.html"><span class="mi-emoji" aria-hidden="true">🏰</span>Center</a>
+        <a href="zoo.html"><span class="mi-emoji" aria-hidden="true">🦁</span>Živalski vrt</a>
+        <a href="domov.html"><span class="mi-emoji" aria-hidden="true">🏠</span>Domov</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="menu-backdrop" id="menu-backdrop" hidden></div>
+<main>
+<section class="loc-hero">
+  <div class="loc-emoji" aria-hidden="true">📤</div>
+  <p class="kicker">Vajine fotografije in videi</p>
+  <h1>Naloži fotografije</h1>
+  <p class="loc-sub">Izberita postajo in naložita slike ali videe kar s telefona</p>
+</section>
+<p class="intro-note">Izberita postajo in naložita slike ali videe. Vse pristane v spodnjem skupnem albumu — vidita ga samo vidva (in kdor ima vajino kodo).</p>
+<div class="album-gate"></div>
+<section class="card-section album-upload"></section>
+<h2 class="section-title">📸 Vajin album</h2>
+<div class="album-download"></div>
+<div class="album-gallery"></div>
+<div class="back-row"><a class="back-button" href="izziv.html">📸 Poglejta foto izzive</a></div>
+</main>
+<footer>
+  <p>🐉 Zmajeva pustolovščina · 15.–16. oktober 2026 · Maribor → Ljubljana</p>
+  <p>Z ljubeznijo pripravljeno za Ano in Maksa</p>
+  <p><a href="kako.html">🎓 Kako uporabljati to stran</a> · <a href="../index.html?izpis=1">🔑 Zamenjaj potovanje</a></p>
+</footer>
+<script src="app.js?v=19"></script>
+</body>
+</html>

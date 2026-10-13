@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nujno · Zmajeva pustolovščina</title>
+  <meta name="description" content="Nujne številke, kaj storiti ob težavi in prostor za pomembne številke.">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#2f8f6b">
+  <script>window.TRIP={"id": "ljubljana", "slug": "lj-d4phmm7xw", "people": ["Ana", "Maks"], "gate": "../index.html", "after": ["Bravo, zmajska ekipa!", "Poglejta <a href=\"nalozi.html\">skupni album</a> in iz slik sestavita svojo Zmajevo knjigo."], "t": {"locked": "Presenečenje čaka — odklene se, ko naložita sliko ali video.", "empty": "Album je še prazen — naložita prvo fotografijo. 📸", "thanks": "naloženih ✓ — odlično!", "more": "Odpri vodnik za to postajo →", "pre": "Pustolovščina se začne {date}. Poglejta <a href=\"priprave.html\">priprave</a> in kontrolni seznam."}, "color": "#2f8f6b", "stations": [{"k": "vlak", "e": "🚂", "n": "Vlak"}, {"k": "emonec", "e": "🏨", "n": "Hotel"}, {"k": "center", "e": "🏰", "n": "Center"}, {"k": "zoo", "e": "🦁", "n": "Živalski vrt"}, {"k": "domov", "e": "🏠", "n": "Domov"}]};(function(){try{var s=JSON.parse(localStorage.getItem("trip_session")||"null");var ok=s&&s.trips&&s.trips.some(function(t){return t.slug===TRIP.slug});if(!ok){location.replace(TRIP.gate+"?next="+encodeURIComponent(TRIP.slug));}}catch(e){}})();</script>
+  <link rel="stylesheet" href="style.css?v=19">
+  <style>
+    :root { --accent:#1f7a5a; --accent-ink:#1f7a5a; --accent-soft:#e8f5ee; --pin:#2f8f6b; --orange:#c8553d; --gold:#b08a2e; }
+    @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --accent:#6fd0a6; --accent-ink:#6fd0a6; --accent-soft:#14261e; --pin:#2f8f6b; --orange:#e08a6c; --gold:#d2b256; } }
+    :root[data-theme="dark"] { --accent:#6fd0a6; --accent-ink:#6fd0a6; --accent-soft:#14261e; --pin:#2f8f6b; --orange:#e08a6c; --gold:#d2b256; }
+  </style>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+</head>
+<body>
+<header class="site-header">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">🐉 Zmajeva pustolovščina</a>
+    <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="main-menu">
+      <span class="mt-ico" aria-hidden="true">☰</span> Meni
+    </button>
+  </div>
+  <nav class="main-menu" id="main-menu" aria-label="Glavni meni" hidden>
+    <div class="menu-inner">
+      <div class="menu-primary">
+        <a href="index.html"><span class="mi-emoji" aria-hidden="true">🏠</span>Domov</a>
+        <a href="kako.html"><span class="mi-emoji" aria-hidden="true">🎓</span>Kako uporabljati</a>
+        <a href="nacrt.html"><span class="mi-emoji" aria-hidden="true">🗺️</span>Načrt poti</a>
+        <a href="izziv.html"><span class="mi-emoji" aria-hidden="true">📸</span>Izzivi</a>
+        <a href="nalozi.html"><span class="mi-emoji" aria-hidden="true">📤</span>Naloži fotografije</a>
+        <a href="priprave.html"><span class="mi-emoji" aria-hidden="true">🎒</span>Priprave</a>
+        <a href="nujno.html" aria-current="page"><span class="mi-emoji" aria-hidden="true">🆘</span>Nujno</a>
+        <a href="../index.html?izpis=1"><span class="mi-emoji" aria-hidden="true">🔑</span>Zamenjaj potovanje</a>
+      </div>
+      <p class="menu-label">Postaje pustolovščine</p>
+      <div class="menu-stations">
+        <a href="vlak.html"><span class="mi-emoji" aria-hidden="true">🚂</span>Vlak</a>
+        <a href="emonec.html"><span class="mi-emoji" aria-hidden="true">🏨</span>Hotel</a>
+        <a href="center.html"><span class="mi-emoji" aria-hidden="true">🏰</span>Center</a>
+        <a href="zoo.html"><span class="mi-emoji" aria-hidden="true">🦁</span>Živalski vrt</a>
+        <a href="domov.html"><span class="mi-emoji" aria-hidden="true">🏠</span>Domov</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="menu-backdrop" id="menu-backdrop" hidden></div>
+<main>
+<section class="loc-hero">
+  <div class="loc-emoji" aria-hidden="true">🆘</div>
+  <p class="kicker">Mir v žepu</p>
+  <h1>Nujne informacije</h1>
+  <p class="loc-sub">Upamo, da jih ne bosta potrebovala — a dobro je, da so tu</p>
+</section>
+<section class="card-section nujno-calls" aria-labelledby="klic">
+  <h2 id="klic">📞 Takoj pokliči</h2>
+  <div class="call-grid">
+    <a class="call-btn call-red" href="tel:112"><span class="c-num">112</span><span class="c-lbl">Nujna pomoč<br><small>reševalci, gasilci, policija</small></span></a>
+    <a class="call-btn call-red" href="tel:113"><span class="c-num">113</span><span class="c-lbl">Policija</span></a>
+    <a class="call-btn" href="tel:+38612442190"><span class="c-num">01 244 21 90</span><span class="c-lbl">Živalski vrt Ljubljana<br><small>informacije</small></span></a>
+  </div>
+  <p class="fine-note">Številka 112 deluje po vsej Evropi in je brezplačna. Povejta, kdo ste, kje ste (naslov ali znamenitost) in kaj se je zgodilo; ostanita na liniji, dokler vama ne rečejo, da lahko prekineta.</p>
+</section>
+<section class="card-section" aria-labelledby="tezava">
+  <h2 id="tezava">🧭 Kaj storiti ob težavi</h2>
+  <details class="step-box"><summary><span class="sb-e">🧒</span>Maks se izgubi v zoo</summary><p>Dogovor: Maks ostane točno tam, kjer je, in pokliče mamo ali pristopi k osebju zoo (uniforma). Ana pa ostane na mestu, kjer sta se videla zadnjič — in pokliče Maksa. Maks naj ima listek s telefonsko številko v žepu.</p></details>
+  <details class="step-box"><summary><span class="sb-e">🏨</span>Težava s hotelom</summary><p>Pokličita recepcijo (številko poglejta v potrditvi rezervacije). Prtljago smeta pustiti v hotelu še po odjavi — vprašajta ob prihodu.</p></details>
+  <details class="step-box"><summary><span class="sb-e">🚂</span>Zamuda ali zamujen vlak</summary><p>Povprašajta pri blagajni ali informacijah Slovenskih železnic o naslednjem vlaku; vozni red na potniski.sz.si.</p></details>
+  <details class="step-box"><summary><span class="sb-e">🌧️</span>Dež ali prehlad</summary><p>Zoo ima notranje prostore (vivarij, terariji); v središču Ljubljane so muzeji in kavarne. Preoblecita se v suho — tople nogavice so zlato.</p></details>
+  <details class="step-box"><summary><span class="sb-e">🏥</span>Zdravstvene težave</summary><p>Pokličita 112. Pri manjših težavah poiščita najbližjo lekarno (v središču jih je več). Kartico zdravstvenega zavarovanja imata v denarnici.</p></details>
+  <details class="step-box"><summary><span class="sb-e">🧳</span>Izgubljena stvar</summary><p>Pokličita hotel, zoo (+386 1 24 42 190) ali Slovenske železnice. Pogosto se najde — še posebej v vlaku, če takoj poveste kondukterju.</p></details>
+</section>
+<section class="card-section" aria-labelledby="zapiski">
+  <h2 id="zapiski">📝 Najine številke (shranjeno samo v tem telefonu)</h2>
+  <p class="cat-intro">Zapišita si, kar bi rada imela pri roki: hotel (telefon in naslov), Katjina številka, zavarovanje.</p>
+  <textarea class="notes-box" data-save="nujno-zapiski" rows="7" placeholder="npr.
+Hotel Emonec, Wolfova 12: tel. …
+Katja: …
+Maksova številka mame: …"></textarea>
+</section>
+<div class="back-row"><a class="back-button" href="index.html">🏠 Nazaj na pregled</a></div>
+</main>
+<footer>
+  <p>🐉 Zmajeva pustolovščina · 15.–16. oktober 2026 · Maribor → Ljubljana</p>
+  <p>Z ljubeznijo pripravljeno za Ano in Maksa</p>
+  <p><a href="kako.html">🎓 Kako uporabljati to stran</a> · <a href="../index.html?izpis=1">🔑 Zamenjaj potovanje</a></p>
+</footer>
+<script src="app.js?v=19"></script>
+</body>
+</html>

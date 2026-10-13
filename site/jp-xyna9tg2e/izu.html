@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Izu polotok · Japonska 2026</title>
+  <meta name="description" content="Izu polotok: znamenitosti, hrana in nasveti — vodnik Japonska 2026.">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#7b2230">
+  <script>window.TRIP={"id": "japonska", "slug": "jp-xyna9tg2e", "people": ["Marjetica", "Helena", "Ljuba", "Magda"], "gate": "../index.html", "after": null, "t": null, "color": null, "stations": [{"k": "tokio", "e": "🗼", "n": "Tokio"}, {"k": "chichibu", "e": "🌳", "n": "Chichibu"}, {"k": "kawaguchiko", "e": "🗻", "n": "Fuji"}, {"k": "minobusan", "e": "🏯", "n": "Minobu"}, {"k": "izu", "e": "🌊", "n": "Izu"}, {"k": "kumano", "e": "⛩️", "n": "Kumano"}, {"k": "koyasan", "e": "🏔️", "n": "Koya-san"}, {"k": "iya", "e": "🏞️", "n": "Iya"}, {"k": "ine", "e": "🎣", "n": "Ine"}, {"k": "nara", "e": "🦌", "n": "Nara"}, {"k": "kyoto", "e": "🍁", "n": "Kyoto"}, {"k": "osaka", "e": "🏙️", "n": "Osaka"}, {"k": "hiroshima", "e": "🕊️", "n": "Hiroshima"}]};(function(){try{var s=JSON.parse(localStorage.getItem("trip_session")||"null");var ok=s&&s.trips&&s.trips.some(function(t){return t.slug===TRIP.slug});if(!ok){location.replace(TRIP.gate+"?next="+encodeURIComponent(TRIP.slug));}}catch(e){}})();</script>
+  <link rel="stylesheet" href="style.css?v=19">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="album.js?v=19"></script>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+</head>
+<body>
+<header class="site-header">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">🍁 Mesec za dušo</a>
+    <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="main-menu">
+      <span class="mt-ico" aria-hidden="true">☰</span> Meni
+    </button>
+  </div>
+  <nav class="main-menu" id="main-menu" aria-label="Glavni meni" hidden>
+    <div class="menu-inner">
+      <div class="menu-primary">
+        <a href="index.html"><span class="mi-emoji" aria-hidden="true">🏠</span>Domov</a>
+        <a href="kako.html"><span class="mi-emoji" aria-hidden="true">🎓</span>Kako uporabljati</a>
+        <a href="nacrt.html"><span class="mi-emoji" aria-hidden="true">🗺️</span>Načrt poti</a>
+        <a href="izziv.html"><span class="mi-emoji" aria-hidden="true">📸</span>Izzivi</a>
+        <a href="nalozi.html"><span class="mi-emoji" aria-hidden="true">📤</span>Naloži fotografije</a>
+        <a href="dozivetja.html"><span class="mi-emoji" aria-hidden="true">🎨</span>Doživetja</a>
+        <a href="priprave.html"><span class="mi-emoji" aria-hidden="true">🎒</span>Priprave</a>
+        <a href="prevajalec.html"><span class="mi-emoji" aria-hidden="true">🔍</span>Prevajalec s kamero</a>
+        <a href="nasveti.html"><span class="mi-emoji" aria-hidden="true">💡</span>Nasveti in kartice</a>
+        <a href="nujno.html"><span class="mi-emoji" aria-hidden="true">🆘</span>Nujno</a>
+        <a href="../index.html?izpis=1"><span class="mi-emoji" aria-hidden="true">🔑</span>Zamenjaj potovanje</a>
+      </div>
+      <p class="menu-label">Postaje potovanja</p>
+      <div class="menu-stations">
+        <a href="tokio.html"><span class="mi-emoji" aria-hidden="true">🗼</span>Tokio</a>
+        <a href="chichibu.html"><span class="mi-emoji" aria-hidden="true">🌳</span>Chichibu</a>
+        <a href="kawaguchiko.html"><span class="mi-emoji" aria-hidden="true">🗻</span>Fuji</a>
+        <a href="minobusan.html"><span class="mi-emoji" aria-hidden="true">🏯</span>Minobu</a>
+        <a href="izu.html" aria-current="page"><span class="mi-emoji" aria-hidden="true">🌊</span>Izu</a>
+        <a href="kumano.html"><span class="mi-emoji" aria-hidden="true">⛩️</span>Kumano</a>
+        <a href="koyasan.html"><span class="mi-emoji" aria-hidden="true">🏔️</span>Koya-san</a>
+        <a href="iya.html"><span class="mi-emoji" aria-hidden="true">🏞️</span>Iya</a>
+        <a href="ine.html"><span class="mi-emoji" aria-hidden="true">🎣</span>Ine</a>
+        <a href="nara.html"><span class="mi-emoji" aria-hidden="true">🦌</span>Nara</a>
+        <a href="kyoto.html"><span class="mi-emoji" aria-hidden="true">🍁</span>Kyoto</a>
+        <a href="osaka.html"><span class="mi-emoji" aria-hidden="true">🏙️</span>Osaka</a>
+        <a href="hiroshima.html"><span class="mi-emoji" aria-hidden="true">🕊️</span>Hiroshima</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="menu-backdrop" id="menu-backdrop" hidden></div>
+<main>
+<section class="loc-hero">
+  <div class="scene-banner"><img class="photo-banner" src="images/izu.jpg" alt="Izu polotok" loading="eager" decoding="async"></div>
+  <p class="kicker">🌊 Postaja 5 od 13 · 3 noči</p>
+  <h1>Izu polotok</h1>
+  <p class="loc-sub">Morje, vulkani in topli vrelci</p>
+  <p class="loc-intro">Polotok vulkanskega izvora, kjer se gore spuščajo naravnost v Tihi ocean. Izu je znan po svežih ribah, poljih pravega wasabija in predvsem po onsenih — toplih vrelcih, ki izvirajo iz globin polotoka. Tu se potovanje prvič zares upočasni.</p>
+  <p class="visit-wrap"><button type="button" class="visit-btn" data-visit="izu">☐ Označi kot obiskano</button></p>
+</section>
+<section class="card-section" aria-labelledby="znamenitosti">
+  <h2 id="znamenitosti">⛩️ Znamenitosti in doživetja</h2>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">♨️</span>Onsen mestece Shuzenji</h3>
+    <p>Najstarejše termalno mestece polotoka Izu, ki mu pravijo tudi mali Kyoto. Ob rečici Katsura si boste ogledale tempelj Shuzenji, rdeči most Katsura in kratko bambusovo pot Chikurin no Komichi s krožno klopjo, kjer se lepo posedi. Novembra se javorji ob reki obarvajo v rdeče in vse skupaj je kot slika.</p>
+    <p class="sight-tip">💡 Pridite dopoldne, ko je mirno; za sprehod z vmesnimi postanki računajte 2-3 ure, vstopa ni, bambusova pot je zvečer osvetljena.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Chikurin%20no%20Komichi%2C%20Shuzenji%2C%20Izu%2C%20Shizuoka" target="_blank" rel="noopener">📍 Zemljevid</a>
+      <a class="vid-btn" href="https://www.youtube.com/results?search_query=Shuzenji%20onsen%20town%20bamboo%20path%20autumn" target="_blank" rel="noopener">🎬 Video</a>
+    </div>
+  </article>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">🍁</span>Niji no Sato — osvetlitev javorjev</h3>
+    <p>Velik park tik ob Shuzenjiju s približno tisoč japonskimi javorji. Vsako jesen jih zvečer osvetlijo in gozd rdečih listov zažari kot v pravljici. To je glavni jesenski dogodek tega konca Izuja in ravno v času vašega potovanja.</p>
+    <p class="sight-tip">💡 Osvetlitev poteka tradicionalno od sredine novembra do sredine decembra od 17h do 21h (v sezoni 2025 od 15.11.), ob izbranih večerih je tudi ognjemet — preverite točne datume za 2026 in vzemite toplo jakno.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Shuzenji%20Niji%20no%20Sato%2C%20Izu%2C%20Shizuoka" target="_blank" rel="noopener">📍 Zemljevid</a>
+      <a class="vid-btn" href="https://www.youtube.com/results?search_query=Shuzenji%20Niji%20no%20Sato%20momiji%20light%20up" target="_blank" rel="noopener">🎬 Video</a>
+    </div>
+  </article>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">🌉</span>Obala Jogasaki</h3>
+    <p>Dramatična obala iz črne vulkanske skale južno od Ita. Čez morsko sotesko vodi 48 metrov visok viseči most Kadowaki, zraven pa stoji svetilnik z razgledno ploščadjo. Ob lepem vremenu boste videle vse do otoka Oshima.</p>
+    <p class="sight-tip">💡 Držite se kratke, lahke poti Picnical Course od parkirišča do mosta in svetilnika (30-60 minut z udobnimi čevlji), vstop je prost.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Kadowaki%20Suspension%20Bridge%2C%20Ito%2C%20Shizuoka" target="_blank" rel="noopener">📍 Zemljevid</a>
+      <a class="vid-btn" href="https://www.youtube.com/results?search_query=Jogasaki%20Coast%20Kadowaki%20suspension%20bridge%20Izu" target="_blank" rel="noopener">🎬 Video</a>
+    </div>
+  </article>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">📍</span>Sedem slapov Kawazu in wasabi kosilo</h3>
+    <p>Ob rečici Kawazu se vrsti sedem slapov, povezanih z urejenimi lesenimi potmi. Ni treba prehoditi vsega — že spodnji del s slapom Shokei-daru in kipom plesalke je čudovit. Čisto blizu je stoletna wasabi kmetija Kadoya, kjer si boste same naribale svež wasabi na sloviti skledi riža wasabi-don.</p>
+    <p class="sight-tip">💡 Z avtobusom s postaje Kawazu se peljite do postajališča Mizutare in se sprehodite navzdol po dolini; pri Kadoyi pridite pred poldnevom, ker vrsta hitro zraste, plačilo v gotovini.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Kawazu%20Nanadaru%20Waterfalls%2C%20Kawazu%2C%20Shizuoka" target="_blank" rel="noopener">📍 Zemljevid</a>
+      <a class="vid-btn" href="https://www.youtube.com/results?search_query=Kawazu%20Seven%20Waterfalls%20wasabi%20don%20Kadoya" target="_blank" rel="noopener">🎬 Video</a>
+    </div>
+  </article>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">♨️</span>Izu Panorama Park (terasa Ao)</h3>
+    <p>Nihalka vas v sedmih minutah brez truda dvigne na goro Katsuragi. Na vrhu je elegantna terasa Ao z zofami, kavo in enim najlepših pogledov na goro Fuji nad zalivom Suruga. Tam je tudi brezplačna kopel za noge z razgledom — kot ustvarjeno za vas.</p>
+    <p class="sight-tip">💡 Pridite zjutraj, ko je Fuji najpogosteje viden in zrak novembra še posebej čist; na vrhu so poti položne, rezervacija ni potrebna.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Izu%20Panorama%20Park%2C%20Izunokuni%2C%20Shizuoka" target="_blank" rel="noopener">📍 Zemljevid</a>
+      <a class="vid-btn" href="https://www.youtube.com/results?search_query=Izu%20Panorama%20Park%20ropeway%20Mount%20Fuji%20view" target="_blank" rel="noopener">🎬 Video</a>
+    </div>
+  </article>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">🌄</span>Gora Omuro</h3>
+    <p>Nenavaden vulkanski stožec v obliki obrnjene sklede riža nad Izu Kogenom. Na vrh vas pripelje dvosedežnica, zgoraj pa vas čaka položna krožna pot po robu kraterja s 360-stopinjskim razgledom na morje, otoke in Fuji.</p>
+    <p class="sight-tip">💡 Krog po robu traja 20-30 minut po asfaltirani poti; izberite miren, jasen dan, ker ob močnem vetru sedežnica ne obratuje.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Mount%20Omuro%2C%20Ito%2C%20Shizuoka" target="_blank" rel="noopener">📍 Zemljevid</a>
+      <a class="vid-btn" href="https://www.youtube.com/results?search_query=Mount%20Omuro%20chairlift%20crater%20walk%20Izu" target="_blank" rel="noopener">🎬 Video</a>
+    </div>
+  </article>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">♨️</span>Kapibare v onsenu — Izu Shaboten Zoo</h3>
+    <p>V tem živalskem parku pri Itu so leta 1982 prvi na svetu kapibaram pripravili toplo kopel in prizor blaženih živali v topli vodi je danes zimska klasika. Park je položen, poln kaktusov in sproščenih živali — za popoldne čistega veselja.</p>
+    <p class="sight-tip">💡 Kopeli kapibar se začnejo konec novembra (v sezoni 2025 22.11.), zato obisk načrtujte v zadnjem tednu potovanja in preverite urnik kopanja na uradni strani.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Izu%20Shaboten%20Zoo%2C%20Ito%2C%20Shizuoka" target="_blank" rel="noopener">📍 Zemljevid</a>
+      <a class="vid-btn" href="https://www.youtube.com/results?search_query=Izu%20Shaboten%20Zoo%20capybara%20onsen%20bath" target="_blank" rel="noopener">🎬 Video</a>
+    </div>
+  </article>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">⛵</span>Ladjica med jamami Dogashime</h3>
+    <p>Manj znan biser na zahodni obali: 20-minutna vožnja z ladjico med belimi skalnimi otočki do morske jame Tensodo, kjer skozi okroglo odprtino v stropu pada snop svetlobe na smaragdno vodo. Brez hoje, samo sedite in gledate.</p>
+    <p class="sight-tip">💡 Ladjice vozijo vsakih 10-15 minut do 16.30 (odrasli okoli 1.300 jenov), ob razburkanem morju ne obratujejo — pokličite ali preverite zjutraj in združite z zahodno obalo ob sončnem zahodu.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Dogashima%20Cave%20Excursion%20Boat%2C%20Nishiizu%2C%20Shizuoka" target="_blank" rel="noopener">📍 Zemljevid</a>
+      <a class="vid-btn" href="https://www.youtube.com/results?search_query=Dogashima%20Tensodo%20cave%20boat%20cruise%20Izu" target="_blank" rel="noopener">🎬 Video</a>
+    </div>
+  </article>
+</section>
+<section class="card-section map-section" aria-labelledby="zemljevid">
+  <h2 id="zemljevid">🗺️ Zemljevid kraja</h2>
+  <div class="area-map" data-lat="34.973" data-lon="138.925" data-zoom="13" role="img" aria-label="Zemljevid — Shuzenji, Izu, Shizuoka"></div>
+  <a class="pin-btn map-open" href="https://www.google.com/maps/search/?api=1&query=Shuzenji%2C%20Izu%2C%20Shizuoka" target="_blank" rel="noopener">📍 Odpri na Google Zemljevidu</a>
+</section>
+<section class="card-section" aria-labelledby="dan">
+  <h2 id="dan">🗓️ Predlog enega lepega dne</h2>
+  <ul class="plan-list">
+    <li><span class="plan-time"><span class="plan-ic" aria-hidden="true">🌅</span> Zjutraj</span><span>Počasen japonski zajtrk v ryokanu in jutranja kopel v onsenu, dokler je še mirno. Brez hitenja — dan se šele začenja.</span></li>
+    <li><span class="plan-time"><span class="plan-ic" aria-hidden="true">🌤️</span> Dopoldne</span><span>Nihalka na Izu Panorama Park: kava na terasi Ao s pogledom na Fuji in brezplačna kopel za noge z razgledom.</span></li>
+    <li><span class="plan-time"><span class="plan-ic" aria-hidden="true">🍂</span> Popoldne</span><span>Sprehod po Shuzenjiju — bambusova pot, tempelj, rdeči most Katsura in postanek za čaj ter sladico iz sladkega fižola.</span></li>
+    <li><span class="plan-time"><span class="plan-ic" aria-hidden="true">🌙</span> Zvečer</span><span>Osvetljeni javorji v parku Niji no Sato, nato nazaj v ryokan na večerjo kaiseki in še eno kopel pred spanjem.</span></li>
+  </ul>
+</section>
+<section class="card-section izzivi" aria-labelledby="izzivi">
+  <h2 id="izzivi">📸 Foto izzivi za album</h2>
+  <p class="cat-intro">Naložite fotografijo (ali video) za izziv — takoj se označi kot opravljen in se spodaj pokaže sličica. Iz tega nastane vaš skupni album. <a href="izziv.html">Vsi izzivi na enem mestu →</a></p>
+  <div class="album-gate"></div>
+  <div class="izziv-board" data-scope="izu"></div>
+  <script type="application/json" id="izziv-data">[{"id": "izu-0", "t": "foto", "x": "Noge v onsenu z razgledom na morje — para in modrina (brez obrazov).", "w": "Onsen je jedro japonske kulture. Slika nog v vodi z razgledom je »brez obrazov« — zasebnost ostane, spomin pa je topel. Ideja: stran o počitku v knjigi.", "p": {"k": "zanimivost", "h": "Hadaka no tsukiai", "x": "Japonci pravijo, da kopanje skupaj gradi prijateljstvo: »hadaka no tsukiai« pomeni »druženje brez oblek«. Izu je poln vrelcev, ki izvirajo iz vulkanske preteklosti polotoka — in vi ste to pravkar doživele."}, "s": "izu", "sn": "Izu", "e": "🌊"}, {"id": "izu-1", "t": "foto", "x": "Skupinska na rdečem mostu Katsura v Shuzenjiju.", "w": "Shuzenji je zdraviliško mestece, ki mu pravijo »mali Kyoto Izuja«. Rdeči most Katsura je njegov simbol. Ideja: razglednica za knjigo.", "p": {"k": "zanimivost", "h": "Kobo Daishi in topla voda", "x": "Po legendi je menih Kobo Daishi leta 807 v Shuzenjiju udaril s palico ob skalo in privrela je topla voda — zato je ta onsen najstarejši na Izuju. Poiščite kopališče Tokko-no-yu sredi reke."}, "s": "izu", "sn": "Izu", "e": "🌊"}, {"id": "izu-2", "t": "foto", "x": "Magda na bambusovi poti — pogled navzgor med visokimi stebli.", "w": "Chikurin no Komichi je kratka bambusova pot z okroglo klopjo. Pogled navzgor med stebli je kot z druge strani sveta. Ideja: Magdin motiv za mandalo.", "p": {"k": "zanimivost", "h": "Bambus cveti redko", "x": "Večina vrst bambusa cveti le vsakih 60 do 120 let — in nato odmre. Bambus je v Japonski simbol prožnosti: upogne se, a se ne zlomi. Dober vzor za dolgo potovanje."}, "s": "izu", "sn": "Izu", "e": "🌊"}, {"id": "izu-3", "t": "foto", "x": "Vaše silhuete ob sončnem zahodu nad oceanom (obala Jogasaki).", "w": "Obala Jogasaki je nastala iz lave. Silhuete so najlepše brez obrazov: samo vi štiri in ocean. Ideja: počasna slika konca dneva.", "p": {"k": "zanimivost", "h": "Lava iz davnine", "x": "Obalo Jogasaki je ustvarila lava vulkana Omuro, ki je izbruhnil pred približno 4.000 leti in se ulila v morje. Skale, po katerih hodite, so nekoč bile staljena kamnina."}, "s": "izu", "sn": "Izu", "e": "🌊"}]</script>
+</section>
+<section class="card-section" aria-labelledby="hrana">
+  <h2 id="hrana">🍜 Hrana — kaj in kje jesti</h2>
+  <h3 style="margin:0 0 0.3rem; font-size:1.1rem;">Kaj poskusiti</h3>
+  <ul class="nice-list">
+    <li><strong>Sveži morski sadeži</strong> — Izu živi od ribolova — riba pride na krožnik še isti dan</li>
+    <li><strong>Wasabi soba</strong> — pravi wasabi raste prav tu; sveže nariban je čisto drugačen od tistega iz tube</li>
+    <li><strong>Sladoled iz sladkega krompirja</strong> — nenavadno, a slastno — lokalna posebnost</li>
+  </ul>
+  <h3 style="margin:1.2rem 0 0.3rem; font-size:1.1rem;">Kje jesti — izberite kategorijo</h3>
+  <p class="cat-intro">Dotaknite se kategorije in odprl se bo seznam preverjenih predlogov s povezavo na zemljevid.</p>
+  <details class="food-cat">
+    <summary><span class="cat-emoji" aria-hidden="true">🐟</span><span class="cat-name">Kinmedai in sveže ribe ob obali</span><span class="cat-count">3 predlogi</span><span class="chev" aria-hidden="true">▶</span></summary>
+    <div class="cat-body">
+      <p class="cat-intro">Pristanišče v Itu je znano po kinmedaiju (zlatooki ostriž), najbolj cenjeni ribi polotoka Izu — tu jo boste jedle sveže z ladje, po cenah, o katerih Tokio lahko samo sanja.</p>
+      <div class="place">
+        <div class="place-head"><strong>Fujiichi (ふじいち)</strong><span class="price">€€</span></div>
+        <p>Ribarnica ob pristanišču v Itu, ki že 70 let v prvem nadstropju prodaja jutranji ulov, v drugem pa ga skuhajo za vas — s pogledom na pristanišče. Naročite kinmedai no nitsuke (ribo, počasi kuhano v sladki sojini omaki) ali si na mizici popecite sušene ribe. Odprto samo čez kosilo, do okoli 16h.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Fujiichi%20seafood%20restaurant%20Ito%20Shizuoka" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+      <div class="place">
+        <div class="place-head"><strong>Rakumiya Marugen (楽味家まるげん)</strong><span class="price">€€</span></div>
+        <p>Prijetna gostilna blizu postaje Ito, ki jo vodijo posredniki z ribje tržnice — kinmedai tu pripravijo na vse načine: surovega, kuhanega, na žaru. Odprta je tudi zvečer in sprejema rezervacije, zato je odlična izbira za skupno večerjo vseh petih.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Rakumiya%20Marugen%20Ito" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+      <div class="place">
+        <div class="place-head"><strong>Amimoto Ryori Tokuzomaru Honten (網元料理 徳造丸 本店)</strong><span class="price">€€</span></div>
+        <p>Glavna restavracija stare ribiške hiše v Inatoriju, čisto blizu Kawazuja — njihov kuhan kinmedai v sladko-slani omaki je lokalna legenda. Prostorna je, sprejema rezervacije in ima pogled na morje, zato je kot nalašč za skupino.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Tokuzomaru%20Honten%20Izu%20Inatori" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+    </div>
+  </details>
+  <details class="food-cat">
+    <summary><span class="cat-emoji" aria-hidden="true">🍜</span><span class="cat-name">Soba in tofu v Shuzenju</span><span class="cat-count">3 predlogi</span><span class="chev" aria-hidden="true">▶</span></summary>
+    <div class="cat-body">
+      <p class="cat-intro">Shuzenji je novembra v vrhuncu jesenskih barv — po kosilu se počasi sprehodite skozi bambusov gaj, od sredine novembra do sredine decembra pa si v bližnjem parku Niji no Sato privoščite še večerno osvetlitev okoli tisoč javorjev (od 17. do 21. ure).</p>
+      <div class="place">
+        <div class="place-head"><strong>Zenpuutei Nana Ban (禅風亭なゝ番)</strong><span class="price">€€</span></div>
+        <p>Domača gostilna ob templju Shuzenji, znana po zendera sobi — ajdovih rezancih, h katerim dobite celo svežo korenino wasabija in jo naribate same. Preprosto, pošteno in zelo shuzensko.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Zenpuutei%20Nanaban%20Shuzenji" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+      <div class="place">
+        <div class="place-head"><strong>Koko (胡々)</strong><span class="price">€€</span></div>
+        <p>Majhna, mirna sobarna tik ob bambusovi poti: ajdo meljejo v lastnem kamnitem mlinu, k rezancem pa ponudijo yubo (nežno kožico tofuja) iz vode z vznožja gore Daruma. Pridite malo pred poldnevom, ker miz ni veliko.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Soba%20Koko%20Shuzenji" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+      <div class="place">
+        <div class="place-head"><strong>Baird Brewery Gardens Shuzenji</strong><span class="price">€</span></div>
+        <p>Pivovarna z okusnim obrtniškim pivom in taproomom nad reko Kano, le nekaj minut vožnje iz Shuzenjija — privoščite si pokušino več vrst piva na leseni terasi. Hrane je malo (prigrizki), zato pridite po kosilu.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Baird%20Brewery%20Gardens%20Shuzenji" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+    </div>
+  </details>
+  <details class="food-cat">
+    <summary><span class="cat-emoji" aria-hidden="true">🌿</span><span class="cat-name">Wasabi z gore Amagi</span><span class="cat-count">2 predloga</span><span class="chev" aria-hidden="true">▶</span></summary>
+    <div class="cat-body">
+      <p class="cat-intro">Doline pod goro Amagi so med najpomembnejšimi pridelovalkami wasabija na Japonskem — kamnite terase, po katerih teče izvirska voda, so celo del svetovne kmetijske dediščine, in nikjer drugje wasabi ne diši tako sveže.</p>
+      <div class="place">
+        <div class="place-head"><strong>Wasabi Garden Kadoya (わさび園かどや)</strong><span class="price">€</span></div>
+        <p>Družinska wasabi kmetija pri slapovih Kawazu Nanadaru, slavna po wasabi donburiju: skledi riža z bonito kosmiči, na katero same naribate svežo korenino. Odprto samo čez kosilo in samo za gotovino — pridite dopoldne, preden zmanjka.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Wasabi%20Garden%20Kadoya%20Kawazu" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+      <div class="place">
+        <div class="place-head"><strong>Amagi Wasabi no Sato (天城わさびの里)</strong><span class="price">€</span></div>
+        <p>Trgovina pridelovalcev na počivališču Michi-no-Eki Amagi-goe, kjer si privoščite njihov znameniti sladoled s sveže naribanim wasabijem po vrhu — sliši se čudno, a je odlično. Če vas zamika, se lahko prijavite tudi na kratko delavnico vlaganja wasabija.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Michi%20no%20Eki%20Amagigoe%20Izu%20wasabi" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+    </div>
+  </details>
+  <details class="food-cat">
+    <summary><span class="cat-emoji" aria-hidden="true">🍵</span><span class="cat-name">Kavarne, čaj in sladice</span><span class="cat-count">3 predlogi</span><span class="chev" aria-hidden="true">▶</span></summary>
+    <div class="cat-body">
+      <p class="cat-intro">Za počasne popoldneve, kakršne si zaslužite: mleko z Izuja, tradicionalne sladice in skodelica čaja v stari leseni hiši.</p>
+      <div class="place">
+        <div class="place-head"><strong>Kenny&#x27;s House Cafe Izu Kogen (main store)</strong><span class="price">€</span></div>
+        <p>Sproščena kavarna deset minut hoje od postaje Izu-Kogen, idealna po sprehodu ob obali Jogasaki — njihov sladoled iz svežega izujskega mleka je tako gost, da mu pravijo &#x27;mleko, ki se jé&#x27;. Dobri so tudi vaflji in goveža obara za toplejše kosilo.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Kenny%27s%20House%20Cafe%20Izu%20Kogen" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+      <div class="place">
+        <div class="place-head"><strong>Isseki-An (一石庵)</strong><span class="price">€</span></div>
+        <p>Čajnica ob bambusovi poti v Shuzenju s tradicionalnimi sladicami: anmitsu, riževe kroglice shiratama s sladkim fižolom, za pogumne pa domača shuzenska limonada z wasabijem. Prijeten postanek med jesenskim sprehodom.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Isseki-an%20Shuzenji" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+      <div class="place">
+        <div class="place-head"><strong>Tokaikan (東海館)</strong><span class="price">€</span></div>
+        <p>Nekdanji lesen ryokan iz leta 1928 ob reki v Itu, danes odprt za oglede — v čajnici v pritličju si ob pogledu na reko privoščite matcho s sladico. Vstopnina je simbolična, rezbarije v sobah pa vas bodo očarale.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Tokaikan%20Ito%20Shizuoka" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+    </div>
+  </details>
+</section>
+<section class="card-section" aria-labelledby="prakticno">
+  <h2 id="prakticno">🧭 Dobro je vedeti</h2>
+  <ul class="nice-list">
+    <li>Iz Tokia se do vzhodne obale (Ito, Kawazu) peljite z direktnim vlakom Odoriko ali razkošnim Saphir Odoriko s postaje Tokyo (100-160 minut) — sedeže rezervirajte vnaprej; za Shuzenji je najhitreje shinkansen do Mishime in nato lokalni vlak Izuhakone (okoli 30 minut).</li>
+    <li>Po polotoku vozijo avtobusi Tokai z železniških postaj in sprejemajo kartice Suica/Pasmo — naložite si jih dovolj; povezave čez polotok (vzhod-zahod) so redke, zato za izlet v Dogashimo raje vzemite taksi ali si za en dan omislite prevoz z voznikom.</li>
+    <li>Imejte vedno nekaj gotovine (jenov): manjše gostilne, wasabi kmetije, templji in podeželski avtobusi kartic pogosto ne sprejemajo; dvig je najlažji na bankomatih v trgovinah 7-Eleven.</li>
+    <li>Obmorske ryokane rezervirajte čim prej — november je vrh jesenske sezone; večerja kaiseki je običajno vključena v ceno, zato morebitne prehranske omejitve sporočite že ob rezervaciji.</li>
+    <li>November na Izuju je večinoma sončen in suh, čez dan prijetnih 15-17 stopinj, zvečer pa se ohladi — oblecite se v plasteh in za večerne osvetlitve vzemite toplo jakno; Fuji je najzanesljiveje viden zgodaj dopoldne.</li>
+  </ul>
+</section>
+<section class="card-section stay-section" aria-labelledby="prespati">
+  <h2 id="prespati">🏡 Kje prespati</h2>
+  <p>Vrhunec Izuja je nočitev v onsen ryokanu z zasebno kopeljo in razgledom na morje (Shuzenji ali obala Izukogen). To ni le prenočišče, ampak doživetje — ob rezervaciji izberite večerjo kaiseki.</p>
+</section>
+<section class="card-section fact-section" aria-labelledby="zanimivost">
+  <h2 id="zanimivost">💡 Zanimivost</h2>
+  <p>Izu je poln naravnih vročih vrelcev, ki izvirajo neposredno iz vulkanske preteklosti polotoka — nekateri ryokani imajo tople bazene tik ob morju.</p>
+</section>
+<section class="card-section magda-section" aria-labelledby="magda">
+  <h2 id="magda">💛 Magdin trenutek</h2>
+  <p>Zvečer, ko se stemni, stopite še enkrat v onsen pod odprtim nebom. Topla voda, hladen zrak, šumenje morja — to je trenutek, zaradi katerega se gre na Japonsko.</p>
+</section>
+<section class="rubric-wrap" aria-label="Osebne rubrike">
+  <div class="card-section rubric rubric-moment">
+    <h2>🍁 Najlepši trenutek dneva</h2>
+    <p>Shuzenji je najlepši pozno popoldne konec novembra, ko poševno sonce pade v javorjev gaj Momijirin — listi zažarijo rdeče in zlato, reka Katsura jih spodaj odseva. Ostanite do mraka: gaj takrat nežno osvetlijo in barve postanejo še globlje. Zjutraj pa je čar drugje — iz rečne kopeli Tokko-no-yu se dviga para, rdeči mostiček Katsura pa je še tih in prazen.</p>
+  </div>
+  <div class="card-section rubric rubric-hour">
+    <h2>☕ Vzemi si uro zase</h2>
+    <p>Ustavite se na bambusovi poti Chikurin no Komichi ob reki — na sredini je okrogla lesena klop pod visokim bambusom. Sedite, poslušajte, kako veter šumi skozi stebla, in nikamor ne hitite. Ko vas premraži, se čez most umaknite v čajnico ob Katsuri na skodelico matche in kaj sladkega.</p>
+  </div>
+  <div class="card-section rubric rubric-mandala">
+    <h2>🎨 Navdih za mandalo</h2>
+    <p>Barve kraja: goreča rdeča in oranžna javorja, zlato odpadlih listov, globoka zelena bambusa in wasabijevih polj, srebrn curek slapov. Vzorci za mandalo: zvezdasti petprsti javorjevi listi, koncentrični loki rdečega mostu nad reko, spiralna para nad kopeljo in nežni valovi vode. Osrednji motiv, ki vse poveže: krog listov, ki počasi plujejo po temni reki Katsura.</p>
+  </div>
+  <div class="card-section rubric rubric-rain">
+    <h2>☔ Če dežuje</h2>
+    <p>Ob dežju je onsen najlepši prav takrat; dodajte čajnice v Shuzenjiju in kakšen muzej. Deževen dan v Izuju je kot naročen za počasen kopalni dan.</p>
+  </div>
+  <div class="card-section diary">
+    <h2>📖 Magdin dnevnik</h2>
+    <p class="diary-hint">Prostor za vaše vtise, skice in najlepši spomin s te postaje.</p>
+    <div class="diary-lines" aria-hidden="true"></div>
+  </div>
+</section>
+<section class="card-section" aria-labelledby="videi">
+  <h2 id="videi">🎬 Videi za navdih</h2>
+  <div class="video-grid">
+    <figure>
+      <!-- Video zamenjaš tako, da spremeniš kodo za "embed/" v spodnji vrstici -->
+      <iframe class="video-frame" src="https://www.youtube-nocookie.com/embed/s3OS-cyFQps" title="Enjoy the autumn leaves at Shuzenji, Izu, both day and night!" loading="lazy" allowfullscreen allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+      <figcaption>Enjoy the autumn leaves at Shuzenji, Izu, both day and night! · Japan Travel Walk</figcaption>
+    </figure>
+    <figure>
+      <!-- Video zamenjaš tako, da spremeniš kodo za "embed/" v spodnji vrstici -->
+      <iframe class="video-frame" src="https://www.youtube-nocookie.com/embed/SFZ12FsxV_U" title="Walking around Jogasaki Coast - 城ヶ崎海岸 - 4K Ultra HD" loading="lazy" allowfullscreen allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+      <figcaption>Walking around Jogasaki Coast - 城ヶ崎海岸 - 4K Ultra HD · TokyoStreetView - Japan The Beautiful</figcaption>
+    </figure>
+    <figure>
+      <!-- Video zamenjaš tako, da spremeniš kodo za "embed/" v spodnji vrstici -->
+      <iframe class="video-frame" src="https://www.youtube-nocookie.com/embed/Bn7vIDs_Cvc" title="【Shizuoka/Shuzenji】Walking at Shuzenji（Hot Springs, Temple, Bamboo Forest  etc）" loading="lazy" allowfullscreen allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+      <figcaption>【Shizuoka/Shuzenji】Walking at Shuzenji（Hot Springs, Temple, Bamboo Forest  etc） · Japan Panoramic Tours CHANNEL</figcaption>
+    </figure>
+    <figure>
+      <!-- Video zamenjaš tako, da spremeniš kodo za "embed/" v spodnji vrstici -->
+      <iframe class="video-frame" src="https://www.youtube-nocookie.com/embed/TkE4G6EfZ58" title="✨ [4K HDR] Discover Ito, A Gorgeous Onsen Town In Izu Peninsula, Japan" loading="lazy" allowfullscreen allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+      <figcaption><strong>Onsen mesto Ito</strong> · ✨ [4K HDR] Discover Ito, A Gorgeous Onsen Town In Izu Peninsula, Japan · Sugoii Japan</figcaption>
+    </figure>
+    <figure>
+      <!-- Video zamenjaš tako, da spremeniš kodo za "embed/" v spodnji vrstici -->
+      <iframe class="video-frame" src="https://www.youtube-nocookie.com/embed/y-QCj5PmP2E" title="SHIZUOKA | Flavours of Izu: Rooted in Water, Rich in Wasabi" loading="lazy" allowfullscreen allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+      <figcaption><strong>Kmetije vasabija pod goro Amagi</strong> · SHIZUOKA | Flavours of Izu: Rooted in Water, Rich in Wasabi · Another Side of Japan</figcaption>
+    </figure>
+    <figure>
+      <!-- Video zamenjaš tako, da spremeniš kodo za "embed/" v spodnji vrstici -->
+      <iframe class="video-frame" src="https://www.youtube-nocookie.com/embed/J2VU0G6brAo" title="Kawazu Seven Falls: Izu Peninsula&#x27;s Stunning Waterfall Escape!" loading="lazy" allowfullscreen allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+      <figcaption><strong>Sedem slapov Kawazu (Kawazu Nanadaru)</strong> · Kawazu Seven Falls: Izu Peninsula&#x27;s Stunning Waterfall Escape! · travelformortals</figcaption>
+    </figure>
+  </div>
+  <p class="video-more">Več videov na YouTube: <a href="https://www.youtube.com/results?search_query=Izu%20peninsula%20Jogasaki%20coast" target="_blank" rel="noopener">»Izu peninsula Jogasaki coast«</a> · <a href="https://www.youtube.com/results?search_query=Shuzenji%20bamboo%20forest" target="_blank" rel="noopener">»Shuzenji bamboo forest«</a></p>
+</section>
+<div class="back-row"><a class="back-button" href="index.html">🏠 Nazaj na pregled</a></div>
+<nav class="pager" aria-label="Prejšnja in naslednja postaja">
+  <a class="prev" href="minobusan.html"><span class="pager-label">← Prejšnja postaja</span>🏯 Minobusan</a>
+  <a class="next" href="kumano.html"><span class="pager-label">Naslednja postaja →</span>⛩️ Kumano Kodo</a>
+</nav>
+</main>
+<footer>
+  <p>🍁 Japonska — Mesec za dušo · 3. november – 2. december 2026 · Tokio → Osaka</p>
+  <p>Z ljubeznijo pripravljeno za Magdo in prijateljice</p>
+  <p><a href="kako.html">🎓 Kako uporabljati to stran</a> · <a href="../index.html?izpis=1">🔑 Zamenjaj potovanje</a></p>
+</footer>
+<script src="app.js?v=19"></script>
+</body>
+</html>

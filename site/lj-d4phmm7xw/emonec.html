@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hotel Emonec · Zmajeva pustolovščina</title>
+  <meta name="description" content="Hotel Emonec: kaj početi, izzivi in nasveti — Zmajeva pustolovščina, Ljubljana.">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#2f8f6b">
+  <script>window.TRIP={"id": "ljubljana", "slug": "lj-d4phmm7xw", "people": ["Ana", "Maks"], "gate": "../index.html", "after": ["Bravo, zmajska ekipa!", "Poglejta <a href=\"nalozi.html\">skupni album</a> in iz slik sestavita svojo Zmajevo knjigo."], "t": {"locked": "Presenečenje čaka — odklene se, ko naložita sliko ali video.", "empty": "Album je še prazen — naložita prvo fotografijo. 📸", "thanks": "naloženih ✓ — odlično!", "more": "Odpri vodnik za to postajo →", "pre": "Pustolovščina se začne {date}. Poglejta <a href=\"priprave.html\">priprave</a> in kontrolni seznam."}, "color": "#2f8f6b", "stations": [{"k": "vlak", "e": "🚂", "n": "Vlak"}, {"k": "emonec", "e": "🏨", "n": "Hotel"}, {"k": "center", "e": "🏰", "n": "Center"}, {"k": "zoo", "e": "🦁", "n": "Živalski vrt"}, {"k": "domov", "e": "🏠", "n": "Domov"}]};(function(){try{var s=JSON.parse(localStorage.getItem("trip_session")||"null");var ok=s&&s.trips&&s.trips.some(function(t){return t.slug===TRIP.slug});if(!ok){location.replace(TRIP.gate+"?next="+encodeURIComponent(TRIP.slug));}}catch(e){}})();</script>
+  <link rel="stylesheet" href="style.css?v=19">
+  <style>
+    :root { --accent:#1f7a5a; --accent-ink:#1f7a5a; --accent-soft:#e8f5ee; --pin:#2f8f6b; --orange:#c8553d; --gold:#b08a2e; }
+    @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --accent:#6fd0a6; --accent-ink:#6fd0a6; --accent-soft:#14261e; --pin:#2f8f6b; --orange:#e08a6c; --gold:#d2b256; } }
+    :root[data-theme="dark"] { --accent:#6fd0a6; --accent-ink:#6fd0a6; --accent-soft:#14261e; --pin:#2f8f6b; --orange:#e08a6c; --gold:#d2b256; }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="album.js?v=19"></script>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+</head>
+<body>
+<header class="site-header">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">🐉 Zmajeva pustolovščina</a>
+    <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="main-menu">
+      <span class="mt-ico" aria-hidden="true">☰</span> Meni
+    </button>
+  </div>
+  <nav class="main-menu" id="main-menu" aria-label="Glavni meni" hidden>
+    <div class="menu-inner">
+      <div class="menu-primary">
+        <a href="index.html"><span class="mi-emoji" aria-hidden="true">🏠</span>Domov</a>
+        <a href="kako.html"><span class="mi-emoji" aria-hidden="true">🎓</span>Kako uporabljati</a>
+        <a href="nacrt.html"><span class="mi-emoji" aria-hidden="true">🗺️</span>Načrt poti</a>
+        <a href="izziv.html"><span class="mi-emoji" aria-hidden="true">📸</span>Izzivi</a>
+        <a href="nalozi.html"><span class="mi-emoji" aria-hidden="true">📤</span>Naloži fotografije</a>
+        <a href="priprave.html"><span class="mi-emoji" aria-hidden="true">🎒</span>Priprave</a>
+        <a href="nujno.html"><span class="mi-emoji" aria-hidden="true">🆘</span>Nujno</a>
+        <a href="../index.html?izpis=1"><span class="mi-emoji" aria-hidden="true">🔑</span>Zamenjaj potovanje</a>
+      </div>
+      <p class="menu-label">Postaje pustolovščine</p>
+      <div class="menu-stations">
+        <a href="vlak.html"><span class="mi-emoji" aria-hidden="true">🚂</span>Vlak</a>
+        <a href="emonec.html" aria-current="page"><span class="mi-emoji" aria-hidden="true">🏨</span>Hotel</a>
+        <a href="center.html"><span class="mi-emoji" aria-hidden="true">🏰</span>Center</a>
+        <a href="zoo.html"><span class="mi-emoji" aria-hidden="true">🦁</span>Živalski vrt</a>
+        <a href="domov.html"><span class="mi-emoji" aria-hidden="true">🏠</span>Domov</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="menu-backdrop" id="menu-backdrop" hidden></div>
+<main>
+<section class="loc-hero">
+  <div class="scene-banner"><svg class="scene-svg" viewBox="0 0 1200 460" role="img" aria-label="Ilustracija hotela v starem delu Ljubljane z lučjo in kovčkom" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="sky-emonec" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#274a63"/><stop offset="1" stop-color="#f0b985"/></linearGradient></defs><rect width="1200" height="460" fill="url(#sky-emonec)"/><circle cx="240" cy="190" r="52" fill="#ffe4a0" opacity="0.9"/><circle cx="520" cy="60" r="2" fill="#fff" opacity="0.8"/><circle cx="700" cy="90" r="2.4" fill="#fff" opacity="0.8"/><circle cx="860" cy="50" r="2" fill="#fff" opacity="0.8"/><circle cx="980" cy="120" r="2.2" fill="#fff" opacity="0.8"/><circle cx="400" cy="110" r="1.8" fill="#fff" opacity="0.8"/><circle cx="1090" cy="70" r="2" fill="#fff" opacity="0.8"/><rect x="20" y="222" width="130" height="170" fill="#e8c9a2"/><polygon points="14,222 85.0,176 156,222" fill="#b9573b"/><rect x="36" y="246" width="22" height="30" rx="2" fill="#ffe08a"/><rect x="46.0" y="246" width="2" height="30" fill="#ecd9b8" opacity="0.8"/><rect x="36" y="296" width="22" height="30" rx="2" fill="#9cc3d6"/><rect x="46.0" y="296" width="2" height="30" fill="#ecd9b8" opacity="0.8"/><rect x="36" y="346" width="22" height="30" rx="2" fill="#9cc3d6"/><rect x="46.0" y="346" width="2" height="30" fill="#ecd9b8" opacity="0.8"/><rect x="76" y="246" width="22" height="30" rx="2" fill="#9cc3d6"/><rect x="86.0" y="246" width="2" height="30" fill="#ecd9b8" opacity="0.8"/><rect x="76" y="296" width="22" height="30" rx="2" fill="#ffe08a"/><rect x="86.0" y="296" width="2" height="30" fill="#ecd9b8" opacity="0.8"/><rect x="76" y="346" width="22" height="30" rx="2" fill="#9cc3d6"/><rect x="86.0" y="346" width="2" height="30" fill="#ecd9b8" opacity="0.8"/><rect x="116" y="246" width="22" height="30" rx="2" fill="#9cc3d6"/><rect x="126.0" y="246" width="2" height="30" fill="#ecd9b8" opacity="0.8"/><rect x="116" y="296" width="22" height="30" rx="2" fill="#9cc3d6"/><rect x="126.0" y="296" width="2" height="30" fill="#ecd9b8" opacity="0.8"/><rect x="116" y="346" width="22" height="30" rx="2" fill="#ffe08a"/><rect x="126.0" y="346" width="2" height="30" fill="#ecd9b8" opacity="0.8"/><rect x="160" y="182" width="120" height="210" fill="#d8b48a"/><polygon points="154,182 220.0,136 286,182" fill="#b9573b"/><rect x="176" y="206" width="22" height="30" rx="2" fill="#9cc3d6"/><rect x="186.0" y="206" width="2" height="30" fill="#ecd9b8" opacity="0.8"/><rect x="176" y="256" width="22" height="30" rx="2" fill="#ffe08a"/><rect x="186.0" y="256" width="2" height="30" fill="#ecd9b8" opacity="0.8"/><rect x="176" y="306" width="22" height="30" rx="2" fill="#9cc3d6"/><rect x="186.0" y="306" width="2" height="30" fill="#ecd9b8" opacity="0.8"/><rect x="176" y="356" width="22" height="30" rx="2" fill="#9cc3d6"/><rect x="186.0" y="356" width="2" height="30" fill="#ecd9b8" opacity="0.8"/><rect x="216" y="206" width="22" height="30" rx="2" fill="#9cc3d6"/><rect x="226.0" y="206" width="2" height="30" fill="#ecd9b8" opacity="0.8"/><rect x="216" y="256" width="22" height="30" rx="2" fill="#9cc3d6"/><rect x="226.0" y="256" width="2" height="30" fill="#ecd9b8" opacity="0.8"/><rect x="216" y="306" width="22" height="30" rx="2" fill="#ffe08a"/><rect x="226.0" y="306" width="2" height="30" fill="#ecd9b8" opacity="0.8"/><rect x="216" y="356" width="22" height="30" rx="2" fill="#9cc3d6"/><rect x="226.0" y="356" width="2" height="30" fill="#ecd9b8" opacity="0.8"/><rect x="900" y="192" width="120" height="200" fill="#e0c096"/><polygon points="894,192 960.0,146 1026,192" fill="#b9573b"/><rect x="916" y="216" width="22" height="30" rx="2" fill="#9cc3d6"/><rect x="926.0" y="216" width="2" height="30" fill="#ecd9b8" opacity="0.8"/><rect x="916" y="266" width="22" height="30" rx="2" fill="#ffe08a"/><rect x="926.0" y="266" width="2" height="30" fill="#ecd9b8" opacity="0.8"/><rect x="916" y="316" width="22" height="30" rx="2" fill="#9cc3d6"/><rect x="926.0" y="316" width="2" height="30" fill="#ecd9b8" opacity="0.8"/><rect x="956" y="216" width="22" height="30" rx="2" fill="#9cc3d6"/><rect x="966.0" y="216" width="2" height="30" fill="#ecd9b8" opacity="0.8"/><rect x="956" y="266" width="22" height="30" rx="2" fill="#9cc3d6"/><rect x="966.0" y="266" width="2" height="30" fill="#ecd9b8" opacity="0.8"/><rect x="956" y="316" width="22" height="30" rx="2" fill="#ffe08a"/><rect x="966.0" y="316" width="2" height="30" fill="#ecd9b8" opacity="0.8"/><rect x="1030" y="222" width="150" height="170" fill="#e8c9a2"/><polygon points="1024,222 1105.0,176 1186,222" fill="#b9573b"/><rect x="1046" y="246" width="22" height="30" rx="2" fill="#9cc3d6"/><rect x="1056.0" y="246" width="2" height="30" fill="#ecd9b8" opacity="0.8"/><rect x="1046" y="296" width="22" height="30" rx="2" fill="#9cc3d6"/><rect x="1056.0" y="296" width="2" height="30" fill="#ecd9b8" opacity="0.8"/><rect x="1046" y="346" width="22" height="30" rx="2" fill="#ffe08a"/><rect x="1056.0" y="346" width="2" height="30" fill="#ecd9b8" opacity="0.8"/><rect x="1086" y="246" width="22" height="30" rx="2" fill="#ffe08a"/><rect x="1096.0" y="246" width="2" height="30" fill="#ecd9b8" opacity="0.8"/><rect x="1086" y="296" width="22" height="30" rx="2" fill="#9cc3d6"/><rect x="1096.0" y="296" width="2" height="30" fill="#ecd9b8" opacity="0.8"/><rect x="1086" y="346" width="22" height="30" rx="2" fill="#9cc3d6"/><rect x="1096.0" y="346" width="2" height="30" fill="#ecd9b8" opacity="0.8"/><rect x="1126" y="246" width="22" height="30" rx="2" fill="#9cc3d6"/><rect x="1136.0" y="246" width="2" height="30" fill="#ecd9b8" opacity="0.8"/><rect x="1126" y="296" width="22" height="30" rx="2" fill="#ffe08a"/><rect x="1136.0" y="296" width="2" height="30" fill="#ecd9b8" opacity="0.8"/><rect x="1126" y="346" width="22" height="30" rx="2" fill="#9cc3d6"/><rect x="1136.0" y="346" width="2" height="30" fill="#ecd9b8" opacity="0.8"/><rect x="330" y="142" width="540" height="250" fill="#f1dfbf"/><rect x="330" y="142" width="540" height="14" fill="#c9b79c"/><polygon points="316,142 600.0,72 884,142" fill="#b9573b"/><rect x="356" y="176" width="36" height="44" rx="2" fill="#ffe08a"/><rect x="373.0" y="176" width="2" height="44" fill="#ecd9b8" opacity="0.8"/><rect x="428" y="176" width="36" height="44" rx="2" fill="#9cc3d6"/><rect x="445.0" y="176" width="2" height="44" fill="#ecd9b8" opacity="0.8"/><rect x="500" y="176" width="36" height="44" rx="2" fill="#ffe08a"/><rect x="517.0" y="176" width="2" height="44" fill="#ecd9b8" opacity="0.8"/><rect x="572" y="176" width="36" height="44" rx="2" fill="#9cc3d6"/><rect x="589.0" y="176" width="2" height="44" fill="#ecd9b8" opacity="0.8"/><rect x="644" y="176" width="36" height="44" rx="2" fill="#ffe08a"/><rect x="661.0" y="176" width="2" height="44" fill="#ecd9b8" opacity="0.8"/><rect x="716" y="176" width="36" height="44" rx="2" fill="#9cc3d6"/><rect x="733.0" y="176" width="2" height="44" fill="#ecd9b8" opacity="0.8"/><rect x="788" y="176" width="36" height="44" rx="2" fill="#ffe08a"/><rect x="805.0" y="176" width="2" height="44" fill="#ecd9b8" opacity="0.8"/><rect x="356" y="242" width="36" height="44" rx="2" fill="#9cc3d6"/><rect x="373.0" y="242" width="2" height="44" fill="#ecd9b8" opacity="0.8"/><rect x="428" y="242" width="36" height="44" rx="2" fill="#ffe08a"/><rect x="445.0" y="242" width="2" height="44" fill="#ecd9b8" opacity="0.8"/><rect x="500" y="242" width="36" height="44" rx="2" fill="#9cc3d6"/><rect x="517.0" y="242" width="2" height="44" fill="#ecd9b8" opacity="0.8"/><rect x="572" y="242" width="36" height="44" rx="2" fill="#ffe08a"/><rect x="589.0" y="242" width="2" height="44" fill="#ecd9b8" opacity="0.8"/><rect x="644" y="242" width="36" height="44" rx="2" fill="#9cc3d6"/><rect x="661.0" y="242" width="2" height="44" fill="#ecd9b8" opacity="0.8"/><rect x="716" y="242" width="36" height="44" rx="2" fill="#ffe08a"/><rect x="733.0" y="242" width="2" height="44" fill="#ecd9b8" opacity="0.8"/><rect x="788" y="242" width="36" height="44" rx="2" fill="#9cc3d6"/><rect x="805.0" y="242" width="2" height="44" fill="#ecd9b8" opacity="0.8"/><rect x="356" y="308" width="36" height="44" rx="2" fill="#ffe08a"/><rect x="373.0" y="308" width="2" height="44" fill="#ecd9b8" opacity="0.8"/><rect x="428" y="308" width="36" height="44" rx="2" fill="#9cc3d6"/><rect x="445.0" y="308" width="2" height="44" fill="#ecd9b8" opacity="0.8"/><rect x="500" y="308" width="36" height="44" rx="2" fill="#ffe08a"/><rect x="517.0" y="308" width="2" height="44" fill="#ecd9b8" opacity="0.8"/><rect x="572" y="308" width="36" height="44" rx="2" fill="#9cc3d6"/><rect x="589.0" y="308" width="2" height="44" fill="#ecd9b8" opacity="0.8"/><rect x="644" y="308" width="36" height="44" rx="2" fill="#ffe08a"/><rect x="661.0" y="308" width="2" height="44" fill="#ecd9b8" opacity="0.8"/><rect x="716" y="308" width="36" height="44" rx="2" fill="#9cc3d6"/><rect x="733.0" y="308" width="2" height="44" fill="#ecd9b8" opacity="0.8"/><rect x="788" y="308" width="36" height="44" rx="2" fill="#ffe08a"/><rect x="805.0" y="308" width="2" height="44" fill="#ecd9b8" opacity="0.8"/><rect x="556.0" y="326" width="88" height="66" rx="6" fill="#5b3a2c"/><rect x="540.0" y="316" width="120" height="14" rx="4" fill="#2f8f6b"/><text x="600.0" y="327" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" font-weight="700" fill="#fff">HOTEL EMONEC</text><rect x="0" y="392" width="1200" height="68" fill="#6d6a68"/><rect x="10" y="424" width="60" height="5" rx="2" fill="#e8e1d2" opacity="0.7"/><rect x="120" y="424" width="60" height="5" rx="2" fill="#e8e1d2" opacity="0.7"/><rect x="230" y="424" width="60" height="5" rx="2" fill="#e8e1d2" opacity="0.7"/><rect x="340" y="424" width="60" height="5" rx="2" fill="#e8e1d2" opacity="0.7"/><rect x="450" y="424" width="60" height="5" rx="2" fill="#e8e1d2" opacity="0.7"/><rect x="560" y="424" width="60" height="5" rx="2" fill="#e8e1d2" opacity="0.7"/><rect x="670" y="424" width="60" height="5" rx="2" fill="#e8e1d2" opacity="0.7"/><rect x="780" y="424" width="60" height="5" rx="2" fill="#e8e1d2" opacity="0.7"/><rect x="890" y="424" width="60" height="5" rx="2" fill="#e8e1d2" opacity="0.7"/><rect x="1000" y="424" width="60" height="5" rx="2" fill="#e8e1d2" opacity="0.7"/><rect x="1110" y="424" width="60" height="5" rx="2" fill="#e8e1d2" opacity="0.7"/><rect x="298" y="270" width="6" height="122" fill="#2a3a35"/><circle cx="301" cy="262" r="12" fill="#ffe08a"/><circle cx="301" cy="262" r="30" fill="#ffe08a" opacity="0.25"/><rect x="942" y="352" width="76" height="54" rx="8" fill="#c8553d"/><rect x="962" y="342" width="36" height="12" rx="5" fill="none" stroke="#2a3a35" stroke-width="4"/><rect x="942" y="372" width="76" height="5" fill="#fff" opacity="0.5"/><rect x="1034" y="366" width="56" height="40" rx="7" fill="#3f78a8"/><rect x="1049" y="358" width="26" height="10" rx="4" fill="none" stroke="#2a3a35" stroke-width="3"/></svg></div>
+  <p class="kicker">🏨 Postaja 2 od 5 · 1 noč</p>
+  <h1>Hotel Emonec</h1>
+  <p class="loc-sub">Kovčka odložita, nočitev v središču Ljubljane</p>
+  <p class="loc-intro">Hotel Emonec je v središču Ljubljane, približno 12 minut hoje od železniške postaje. Takoj ob prihodu odložita prtljago (tudi če sobe še niso pripravljene, jo hotelsko osebje običajno shrani), nato pa lahko lahkotno odkrivata mesto. Zvečer se vrneta, počijeta in se naslednje jutro odpravita v živalski vrt.</p>
+  <p class="visit-wrap"><button type="button" class="visit-btn" data-visit="emonec">☐ Označi kot obiskano</button></p>
+</section>
+<section class="card-section" aria-labelledby="znamenitosti">
+  <h2 id="znamenitosti">🦒 Kaj videti in početi</h2>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">🏨</span>Hotel Emonec</h3>
+    <p>Hotel v središču mesta, Wolfova ulica 12. Od železniške postaje do hotela je okoli 12 minut hoje; do Prešernovega trga in reke Ljubljanice je le nekaj minut.</p>
+    <p class="sight-tip">💡 Na recepciji vprašajta za shranjevanje prtljage, uro odjave in zajtrk.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Hotel%20Emonec%2C%20Wolfova%20ulica%2012%2C%20Ljubljana" target="_blank" rel="noopener">📍 Zemljevid</a>
+    </div>
+  </article>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">⛪</span>Stolnica sv. Nikolaja</h3>
+    <p>Največja cerkev v mestu in v bližini hotela. Poglejta bronasta vrata s prizori iz zgodovine — izdelana so bila ob obisku papeža leta 1996.</p>
+    <p class="sight-tip">💡 Kratek postanek je možen tudi, če se cerkev ravno ne odpre — vrata si lahko ogledata od zunaj.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Stolnica%20sv.%20Nikolaja%2C%20Ljubljana" target="_blank" rel="noopener">📍 Zemljevid</a>
+    </div>
+  </article>
+</section>
+<section class="card-section map-section" aria-labelledby="zemljevid">
+  <h2 id="zemljevid">🗺️ Zemljevid kraja</h2>
+  <div class="area-map" data-lat="46.0508" data-lon="14.505" data-zoom="16" role="img" aria-label="Zemljevid — Hotel Emonec, Wolfova ulica 12, Ljubljana"></div>
+  <a class="pin-btn map-open" href="https://www.google.com/maps/search/?api=1&query=Hotel%20Emonec%2C%20Wolfova%20ulica%2012%2C%20Ljubljana" target="_blank" rel="noopener">📍 Odpri na Google Zemljevidu</a>
+</section>
+<section class="card-section" aria-labelledby="dan">
+  <h2 id="dan">🗓️ Predlog enega lepega dne</h2>
+  <ul class="plan-list">
+    <li><span class="plan-time"><span class="plan-ic" aria-hidden="true">•</span> Ob prihodu</span><span>Odložita kovčka v hotelu (če soba še ni pripravljena, prtljago shranijo) in lahkotno krenita v mesto.</span></li>
+    <li><span class="plan-time"><span class="plan-ic" aria-hidden="true">🌙</span> Zvečer</span><span>Večerja, večerni sprehod, nato zgodaj spat. Jutri vaju čaka živalski vrt!</span></li>
+  </ul>
+</section>
+<section class="card-section izzivi" aria-labelledby="izzivi">
+  <h2 id="izzivi">📸 Foto izzivi za album</h2>
+  <p class="cat-intro">Naložita fotografijo (ali video) za izziv — takoj se označi kot opravljen in se spodaj pokaže sličica. Iz tega nastane vajin skupni album. <a href="izziv.html">Vsi izzivi na enem mestu →</a></p>
+  <div class="album-gate"></div>
+  <div class="izziv-board" data-scope="emonec"></div>
+  <script type="application/json" id="izziv-data">[{"id": "emonec-0", "t": "foto", "x": "Kovčka pred vhodom Hotela Emonec — Ana in Maks za njima.", "w": "Dokaz, da sta prispela! Hotel je v središču mesta, na Wolfovi ulici 12.", "p": {"k": "zanimivost", "h": "Emona — rimsko mesto", "x": "Ime »Emonec« spominja na Emono, rimsko mesto na območju današnje Ljubljane. Staro je skoraj 2000 let. Ostanke rimskega zidu še vedno vidite v mestu.", "m": "Rimski zid Ljubljana"}, "s": "emonec", "sn": "Hotel", "e": "🏨"}, {"id": "emonec-1", "t": "foto", "x": "Pogled skozi hotelsko okno (ali s hodnika): kaj vidita od tam?", "w": "Ljubljana je polna zvonikov. V bližini hotela je stolnica sv. Nikolaja (okoli 350 m) — poiščita njen zvonik.", "p": {"k": "zanimivost", "h": "Vrata s prizori", "x": "Glavna bronasta vrata stolnice sv. Nikolaja so bila izdelana ob obisku papeža leta 1996 in prikazujejo prizore iz zgodovine. Poglejta jih, ko greta mimo.", "m": "Stolnica sv. Nikolaja Ljubljana"}, "s": "emonec", "sn": "Hotel", "e": "🏨"}, {"id": "emonec-2", "t": "foto", "x": "Zamenjava vlog: Maks je fotograf Ane, Ana fotografinja Maksa — ena slika pred hotelom.", "w": "Najboljše slike nastanejo, ko ju posname druga oseba. Zamenjata vlogi in naredita smešno pozo.", "p": {"k": "nagrada", "h": "Nagrada: fotograf dneva", "x": "Kdor je posnel boljšo sliko, dobi naslov »fotograf dneva« — in izbere večerjo."}, "s": "emonec", "sn": "Hotel", "e": "🏨"}, {"id": "emonec-3", "t": "video", "x": "Hotelska soba v 10 sekundah: Maks je turistični vodnik in predstavi sobo.", "w": "Hotelske sobe so kot male hiške. Pokažita, kaj vama je najbolj všeč.", "p": {"k": "nagrada", "h": "Nagrada: izbira postelje", "x": "Maks izbere, katero stran sobe (ali kateri sedež ob oknu) ima. Poštena delitev: jutri izbira Ana."}, "s": "emonec", "sn": "Hotel", "e": "🏨"}, {"id": "emonec-4", "t": "foto", "x": "Zadnja slika dneva: utrujena in nasmejana, pripravljena na spanje.", "w": "Včasih je najboljša slika tista, ko sta utrujena in srečna.", "p": {"k": "skrivnost", "h": "Jutranja skrivnost", "x": "Jutri vaju čaka slon s hobotom, ki ima neverjetno veliko mišic. Zgodaj spat — in zjutraj izveta več!"}, "s": "emonec", "sn": "Hotel", "e": "🏨"}]</script>
+</section>
+<section class="card-section" aria-labelledby="hrana">
+  <h2 id="hrana">🍜 Hrana — kaj in kje jesti</h2>
+  <h3 style="margin:0 0 0.3rem; font-size:1.1rem;">Kaj poskusiti</h3>
+  <ul class="nice-list">
+    <li><strong>Zajtrk</strong> — preverita, ali je zajtrk vključen — če je, naj bo velik, saj vaju čaka dolg dan v živalskem vrtu</li>
+    <li><strong>Večerja v bližini</strong> — v središču je veliko izbire; Maks naj izbere, ali bo juha, testenine ali nekaj slovenskega</li>
+    <li><strong>Malica za jutri</strong> — v nahrbtnik si pripravita sadje in vodo za živalski vrt</li>
+  </ul>
+</section>
+<section class="card-section" aria-labelledby="prakticno">
+  <h2 id="prakticno">🧭 Dobro je vedeti</h2>
+  <ul class="nice-list">
+    <li>Pred odhodom sporočita hotelu, kdaj prideta (da pripravijo prtljago in sobo).</li>
+    <li>Zvečer: priprava nahrbtnika za zoo — malica, voda, dežnik, polnilec, zvezek za zapiske.</li>
+    <li>Zajtrk je lahko dolg — da pridemo v zoo ob odprtju (ob 9.00), vstanita zgodaj.</li>
+  </ul>
+</section>
+<section class="card-section stay-section" aria-labelledby="prespati">
+  <h2 id="prespati">🏡 Kje prespati</h2>
+  <p>Hotel Emonec, Wolfova ulica 12, Ljubljana (nočitev 15.–16. oktobra). Odjavo preverita v potrditvi rezervacije; prtljago smeta pustiti na recepciji, dokler ne odideta na vlak.</p>
+</section>
+<section class="card-section fact-section" aria-labelledby="zanimivost">
+  <h2 id="zanimivost">💡 Zanimivost</h2>
+  <p>Ime »Emonec« spominja na Emono — rimsko mesto, ki je pred skoraj 2000 leti stalo na območju današnje Ljubljane. Ostanke rimskega zidu še vedno vidite v mestu.</p>
+</section>
+<section class="card-section magda-section" aria-labelledby="magda">
+  <h2 id="magda">🐉 Zmajeva skrivnost</h2>
+  <p>Pred spanjem naj Maks poišče na zemljevidu živalski vrt — in mami pove, katero žival se najbolj veseli. Spanje bo takrat prišlo kar samo.</p>
+</section>
+<section class="rubric-wrap" aria-label="Osebne rubrike">
+  <div class="card-section rubric rubric-moment">
+    <h2>🌟 Najlepši trenutek</h2>
+    <p>Ko odpreta vrata sobe: kdo prvi ugotovi, kaj je v omari ali na polici? Skupaj izberita stran postelje.</p>
+  </div>
+  <div class="card-section rubric rubric-hour">
+    <h2>☕ Odmor za dva</h2>
+    <p>Pol ure počitka po prihodu: Maks nariše načrt jutrišnjega dne v zoo, Ana si v miru privošči čaj.</p>
+  </div>
+  <div class="card-section rubric rubric-mandala">
+    <h2>✏️ Za risanje in zapisek</h2>
+    <p>Narišita hotelsko sobo ali okno z razgledom — in poimenujta, kaj vidita skozi njega.</p>
+  </div>
+  <div class="card-section rubric rubric-rain">
+    <h2>☔ Če dežuje</h2>
+    <p>Če dežuje: ostanita pod streho — počitek v sobi, kratek sprehod pod arkadami in zgodnja večerja v bližini.</p>
+  </div>
+  <div class="card-section diary">
+    <h2>📖 Zmajev dnevnik</h2>
+    <p class="diary-hint">Prostor za vajine vtise, skice in najboljši trenutek s te postaje.</p>
+    <div class="diary-lines" aria-hidden="true"></div>
+  </div>
+</section>
+<section class="card-section" aria-labelledby="videi">
+  <h2 id="videi">🎬 Videi za navdih</h2>
+  <p class="video-more">Poglejta na YouTube, preden greta (ali po poti): <a href="https://www.youtube.com/results?search_query=Hotel%20Emonec%20Ljubljana" target="_blank" rel="noopener">»Hotel Emonec Ljubljana«</a> · <a href="https://www.youtube.com/results?search_query=Emona%20rimsko%20mesto%20Ljubljana" target="_blank" rel="noopener">»Emona rimsko mesto Ljubljana«</a></p>
+</section>
+<div class="back-row"><a class="back-button" href="index.html">🏠 Nazaj na pregled</a></div>
+<nav class="pager" aria-label="Prejšnja in naslednja postaja">
+  <a class="prev" href="vlak.html"><span class="pager-label">← Prejšnja postaja</span>🚂 Z vlakom v Ljubljano</a>
+  <a class="next" href="center.html"><span class="pager-label">Naslednja postaja →</span>🏰 Ljubljana s Katjo</a>
+</nav>
+</main>
+<footer>
+  <p>🐉 Zmajeva pustolovščina · 15.–16. oktober 2026 · Maribor → Ljubljana</p>
+  <p>Z ljubeznijo pripravljeno za Ano in Maksa</p>
+  <p><a href="kako.html">🎓 Kako uporabljati to stran</a> · <a href="../index.html?izpis=1">🔑 Zamenjaj potovanje</a></p>
+</footer>
+<script src="app.js?v=19"></script>
+</body>
+</html>

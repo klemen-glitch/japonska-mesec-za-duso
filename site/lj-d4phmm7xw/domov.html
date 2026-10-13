@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Domov z zmajem · Zmajeva pustolovščina</title>
+  <meta name="description" content="Domov z zmajem: kaj početi, izzivi in nasveti — Zmajeva pustolovščina, Ljubljana.">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#2f8f6b">
+  <script>window.TRIP={"id": "ljubljana", "slug": "lj-d4phmm7xw", "people": ["Ana", "Maks"], "gate": "../index.html", "after": ["Bravo, zmajska ekipa!", "Poglejta <a href=\"nalozi.html\">skupni album</a> in iz slik sestavita svojo Zmajevo knjigo."], "t": {"locked": "Presenečenje čaka — odklene se, ko naložita sliko ali video.", "empty": "Album je še prazen — naložita prvo fotografijo. 📸", "thanks": "naloženih ✓ — odlično!", "more": "Odpri vodnik za to postajo →", "pre": "Pustolovščina se začne {date}. Poglejta <a href=\"priprave.html\">priprave</a> in kontrolni seznam."}, "color": "#2f8f6b", "stations": [{"k": "vlak", "e": "🚂", "n": "Vlak"}, {"k": "emonec", "e": "🏨", "n": "Hotel"}, {"k": "center", "e": "🏰", "n": "Center"}, {"k": "zoo", "e": "🦁", "n": "Živalski vrt"}, {"k": "domov", "e": "🏠", "n": "Domov"}]};(function(){try{var s=JSON.parse(localStorage.getItem("trip_session")||"null");var ok=s&&s.trips&&s.trips.some(function(t){return t.slug===TRIP.slug});if(!ok){location.replace(TRIP.gate+"?next="+encodeURIComponent(TRIP.slug));}}catch(e){}})();</script>
+  <link rel="stylesheet" href="style.css?v=19">
+  <style>
+    :root { --accent:#1f7a5a; --accent-ink:#1f7a5a; --accent-soft:#e8f5ee; --pin:#2f8f6b; --orange:#c8553d; --gold:#b08a2e; }
+    @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --accent:#6fd0a6; --accent-ink:#6fd0a6; --accent-soft:#14261e; --pin:#2f8f6b; --orange:#e08a6c; --gold:#d2b256; } }
+    :root[data-theme="dark"] { --accent:#6fd0a6; --accent-ink:#6fd0a6; --accent-soft:#14261e; --pin:#2f8f6b; --orange:#e08a6c; --gold:#d2b256; }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="album.js?v=19"></script>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+</head>
+<body>
+<header class="site-header">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">🐉 Zmajeva pustolovščina</a>
+    <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="main-menu">
+      <span class="mt-ico" aria-hidden="true">☰</span> Meni
+    </button>
+  </div>
+  <nav class="main-menu" id="main-menu" aria-label="Glavni meni" hidden>
+    <div class="menu-inner">
+      <div class="menu-primary">
+        <a href="index.html"><span class="mi-emoji" aria-hidden="true">🏠</span>Domov</a>
+        <a href="kako.html"><span class="mi-emoji" aria-hidden="true">🎓</span>Kako uporabljati</a>
+        <a href="nacrt.html"><span class="mi-emoji" aria-hidden="true">🗺️</span>Načrt poti</a>
+        <a href="izziv.html"><span class="mi-emoji" aria-hidden="true">📸</span>Izzivi</a>
+        <a href="nalozi.html"><span class="mi-emoji" aria-hidden="true">📤</span>Naloži fotografije</a>
+        <a href="priprave.html"><span class="mi-emoji" aria-hidden="true">🎒</span>Priprave</a>
+        <a href="nujno.html"><span class="mi-emoji" aria-hidden="true">🆘</span>Nujno</a>
+        <a href="../index.html?izpis=1"><span class="mi-emoji" aria-hidden="true">🔑</span>Zamenjaj potovanje</a>
+      </div>
+      <p class="menu-label">Postaje pustolovščine</p>
+      <div class="menu-stations">
+        <a href="vlak.html"><span class="mi-emoji" aria-hidden="true">🚂</span>Vlak</a>
+        <a href="emonec.html"><span class="mi-emoji" aria-hidden="true">🏨</span>Hotel</a>
+        <a href="center.html"><span class="mi-emoji" aria-hidden="true">🏰</span>Center</a>
+        <a href="zoo.html"><span class="mi-emoji" aria-hidden="true">🦁</span>Živalski vrt</a>
+        <a href="domov.html" aria-current="page"><span class="mi-emoji" aria-hidden="true">🏠</span>Domov</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="menu-backdrop" id="menu-backdrop" hidden></div>
+<main>
+<section class="loc-hero">
+  <div class="scene-banner"><svg class="scene-svg" viewBox="0 0 1200 460" role="img" aria-label="Ilustracija vlaka ob sončnem zahodu na poti domov" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="sky-domov" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f8b97a"/><stop offset="1" stop-color="#fde6c4"/></linearGradient></defs><rect width="1200" height="460" fill="url(#sky-domov)"/><circle cx="880" cy="270" r="120" fill="#f3855a" opacity="0.55"/><circle cx="880" cy="270" r="70" fill="#f6c76a" opacity="0.95"/><g opacity="0.7" transform="translate(260,110) scale(1.0)" fill="#fff"><ellipse cx="0" cy="0" rx="58" ry="22"/><ellipse cx="-34" cy="8" rx="34" ry="16"/><ellipse cx="38" cy="8" rx="38" ry="17"/><ellipse cx="14" cy="-14" rx="30" ry="18"/></g><g opacity="0.6" transform="translate(980,90) scale(0.7)" fill="#fff"><ellipse cx="0" cy="0" rx="58" ry="22"/><ellipse cx="-34" cy="8" rx="34" ry="16"/><ellipse cx="38" cy="8" rx="38" ry="17"/><ellipse cx="14" cy="-14" rx="30" ry="18"/></g><polygon points="0,340 240,270 520,340 860,280 1200,340 1200,460 0,460" fill="#7f8fb0" opacity="1.0"/><path d="M0 392 C240 350 520 372 760 384 C960 394 1100 360 1200 372 L1200 460 L0 460 Z" fill="#4f7d6a"/><rect x="130" y="306" width="140" height="92" fill="#ecd9b8"/><polygon points="116,306 200,244 284,306" fill="#b9573b"/><rect x="232" y="252" width="22" height="40" fill="#8a5a46"/><rect x="186" y="340" width="34" height="58" rx="4" fill="#5b3a2c"/><rect x="142" y="322" width="28" height="30" rx="2" fill="#ffe08a"/><rect x="155.0" y="322" width="2" height="30" fill="#ecd9b8" opacity="0.8"/><rect x="232" y="322" width="28" height="30" rx="2" fill="#ffe08a"/><rect x="245.0" y="322" width="2" height="30" fill="#ecd9b8" opacity="0.8"/><rect x="0" y="404" width="1200" height="56" fill="#6c5a48"/><rect x="0" y="402" width="1200" height="5" fill="#463a2e"/><rect x="420" y="352" width="420" height="52" rx="12" fill="#f4f1ea"/><rect x="420" y="388" width="420" height="8" fill="#3f78a8"/><rect x="440" y="364" width="34" height="20" rx="4" fill="#9cc3d6"/><rect x="496" y="364" width="34" height="20" rx="4" fill="#9cc3d6"/><rect x="552" y="364" width="34" height="20" rx="4" fill="#9cc3d6"/><rect x="608" y="364" width="34" height="20" rx="4" fill="#9cc3d6"/><rect x="664" y="364" width="34" height="20" rx="4" fill="#9cc3d6"/><rect x="720" y="364" width="34" height="20" rx="4" fill="#9cc3d6"/><rect x="776" y="364" width="34" height="20" rx="4" fill="#9cc3d6"/><path d="M840 352 L900 372 L900 404 L840 404 Z" fill="#c8553d"/><circle cx="480" cy="406" r="9" fill="#2a3a35"/><circle cx="780" cy="406" r="9" fill="#2a3a35"/><circle cx="70" cy="90" r="2" fill="#fff" opacity="0.7"/><circle cx="520" cy="60" r="2" fill="#fff" opacity="0.7"/><circle cx="640" cy="130" r="2" fill="#fff" opacity="0.7"/><circle cx="1100" cy="60" r="2" fill="#fff" opacity="0.7"/></svg></div>
+  <p class="kicker">🏠 Postaja 5 od 5 · popoldne</p>
+  <h1>Domov z zmajem</h1>
+  <p class="loc-sub">Povratek v Maribor in zadnji zapisi</p>
+  <p class="loc-intro">Po živalskem vrtu se vrneta v središče po prtljago in na vlak. Za povratek izberita vlak glede na uro, ko zapustita zoo (vozne rede preverita na potniski.sz.si). Med vožnjo naj Maks v zvezek napiše tri najboljše stvari iz teh dveh dni, Ana pa tri, ki jih je Maks presenetil.</p>
+  <p class="visit-wrap"><button type="button" class="visit-btn" data-visit="domov">☐ Označi kot obiskano</button></p>
+</section>
+<section class="card-section" aria-labelledby="znamenitosti">
+  <h2 id="znamenitosti">🦒 Kaj videti in početi</h2>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">🚂</span>Vlak domov</h3>
+    <p>Vlak iz Ljubljane v Maribor traja približno dve uri. Izberita odhod glede na čas, ko zapustita zoo, in pojdita na postajo vsaj 15 minut prej.</p>
+    <p class="sight-tip">💡 Vozni red preverita na potniski.sz.si. Če si nista kupila povratne vozovnice, na blagajni ali v aplikaciji kupita novo.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=%C5%BDelezni%C5%A1ka%20postaja%20Ljubljana" target="_blank" rel="noopener">📍 Zemljevid</a>
+    </div>
+  </article>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">🎁</span>Spominek za Zmajevo knjigo</h3>
+    <p>Lahko je majhen zmaj, razglednica ali žival iz zoo. Izberita skupaj in ga prilepita v dnevnik.</p>
+    <p class="sight-tip">💡 Vozovnici (vlak) sta tudi spomin — prilepita ju v knjigo!</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Ljubljana%20trgovina%20z%20darili%20center" target="_blank" rel="noopener">📍 Zemljevid</a>
+    </div>
+  </article>
+</section>
+<section class="card-section izzivi" aria-labelledby="izzivi">
+  <h2 id="izzivi">📸 Foto izzivi za album</h2>
+  <p class="cat-intro">Naložita fotografijo (ali video) za izziv — takoj se označi kot opravljen in se spodaj pokaže sličica. Iz tega nastane vajin skupni album. <a href="izziv.html">Vsi izzivi na enem mestu →</a></p>
+  <div class="album-gate"></div>
+  <div class="izziv-board" data-scope="domov"></div>
+  <script type="application/json" id="izziv-data">[{"id": "domov-0", "t": "foto", "x": "Zadnja slika na postaji v Ljubljani: nahrbtnika, utrujena in nasmejana.", "w": "Vsaka pustolovščina ima konec — a Zmajeva knjiga ostane.", "p": {"k": "zanimivost", "h": "Slovenija v dveh urah", "x": "Z vlakom od Maribora do Ljubljane traja približno dve uri — Slovenija je majhna, a polna zanimivosti."}, "s": "domov", "sn": "Domov", "e": "🏠"}, {"id": "domov-1", "t": "foto", "x": "Spominek, ki sta ga izbrala — pokažita ga v kameri.", "w": "Vsak spominek ima zgodbo. Povejta jo drug drugemu.", "p": {"k": "nagrada", "h": "Nagrada: spominek je zadolžen", "x": "Spominek je »varuh« zmajeve knjige: odloži ga na polico, kjer ga vidita vsak dan."}, "s": "domov", "sn": "Domov", "e": "🏠"}, {"id": "domov-2", "t": "video", "x": "Maks pove v kamero tri najboljše stvari teh dveh dni (10–20 sekund).", "w": "Ko povemo na glas, si zapomnimo bolje. In Ana ima videopogovor za babice.", "p": {"k": "nagrada", "h": "Nagrada: Maksov govor", "x": "Ana posluša brez prekinjanja — potem vpraša eno vprašanje. Maks odgovori kot strokovnjak."}, "s": "domov", "sn": "Domov", "e": "🏠"}, {"id": "domov-3", "t": "foto", "x": "V vlaku proti domu: kdo bo prvi zaspal? (po dovoljenju seveda).", "w": "Dvodnevna pustolovščina utrudi. Spanje v vlaku je del pustolovščine!", "p": {"k": "skrivnost", "h": "Zadnja skrivnost", "x": "Doma odpreta Zmajevo knjigo in izberita pet najlepših slik. Tista, ki jo izbereta oba, je naslovnica!"}, "s": "domov", "sn": "Domov", "e": "🏠"}]</script>
+</section>
+<section class="card-section" aria-labelledby="hrana">
+  <h2 id="hrana">🍜 Hrana — kaj in kje jesti</h2>
+  <h3 style="margin:0 0 0.3rem; font-size:1.1rem;">Kaj poskusiti</h3>
+  <ul class="nice-list">
+    <li><strong>Malica za vlak</strong> — sendvič ali sadje, če se vožnja zavleče</li>
+    <li><strong>Topla juha pred potjo</strong> — če je še čas, v središču kaj toplega</li>
+  </ul>
+</section>
+<section class="card-section" aria-labelledby="prakticno">
+  <h2 id="prakticno">🧭 Dobro je vedeti</h2>
+  <ul class="nice-list">
+    <li>Pred vlakom preverita, ali imata vse stvari (telefon, polnilec, jakne, kovčka v hotelu). Ana naj preveri hotel.</li>
+    <li>Če se vlak zamudi ali ga zamudita, povprašajta pri blagajni/informacijah Slovenskih železnic o naslednjem vlaku.</li>
+  </ul>
+</section>
+<section class="card-section fact-section" aria-labelledby="zanimivost">
+  <h2 id="zanimivost">💡 Zanimivost</h2>
+  <p>Slovenija je majhna država, a ima veliko različnih krajev: od Maribora na vzhodu do Ljubljane v sredini — in to pot vlak prevozi v približno dveh urah.</p>
+</section>
+<section class="card-section magda-section" aria-labelledby="magda">
+  <h2 id="magda">🐉 Zmajeva skrivnost</h2>
+  <p>Ko prideta domov, najprej poiščita pet najboljših slik in jih izberita za Zmajevo knjigo. To je lepši nalogi kot pospravljanje kovčka.</p>
+</section>
+<section class="rubric-wrap" aria-label="Osebne rubrike">
+  <div class="card-section rubric rubric-moment">
+    <h2>🌟 Najlepši trenutek</h2>
+    <p>Ko vlak odpelje iz Ljubljane in sta oba utrujena, a srečna. Zapišita eno stvar, ki je bila boljša, kot sta pričakovala.</p>
+  </div>
+  <div class="card-section rubric rubric-hour">
+    <h2>☕ Odmor za dva</h2>
+    <p>V vlaku naj Ana zapiše tri stvari, ki jo je Maks presenetil; Maks pa tri, ki jih je naredila mama najbolje.</p>
+  </div>
+  <div class="card-section rubric rubric-mandala">
+    <h2>✏️ Za risanje in zapisek</h2>
+    <p>Maks nariše, kaj bo prvo povedal prijateljem, ko pride v šolo.</p>
+  </div>
+  <div class="card-section diary">
+    <h2>📖 Zmajev dnevnik</h2>
+    <p class="diary-hint">Prostor za vajine vtise, skice in najboljši trenutek s te postaje.</p>
+    <div class="diary-lines" aria-hidden="true"></div>
+  </div>
+</section>
+<section class="card-section" aria-labelledby="videi">
+  <h2 id="videi">🎬 Videi za navdih</h2>
+  <p class="video-more">Poglejta na YouTube, preden greta (ali po poti): <a href="https://www.youtube.com/results?search_query=Slovenske%20%C5%BEeleznice%20vlak" target="_blank" rel="noopener">»Slovenske železnice vlak«</a> · <a href="https://www.youtube.com/results?search_query=Maribor%20Ljubljana%20vlak" target="_blank" rel="noopener">»Maribor Ljubljana vlak«</a></p>
+</section>
+<div class="back-row"><a class="back-button" href="index.html">🏠 Nazaj na pregled</a></div>
+<nav class="pager" aria-label="Prejšnja in naslednja postaja">
+  <a class="prev" href="zoo.html"><span class="pager-label">← Prejšnja postaja</span>🦁 Živalski vrt Ljubljana</a>
+  <span class="spacer"></span>
+</nav>
+</main>
+<footer>
+  <p>🐉 Zmajeva pustolovščina · 15.–16. oktober 2026 · Maribor → Ljubljana</p>
+  <p>Z ljubeznijo pripravljeno za Ano in Maksa</p>
+  <p><a href="kako.html">🎓 Kako uporabljati to stran</a> · <a href="../index.html?izpis=1">🔑 Zamenjaj potovanje</a></p>
+</footer>
+<script src="app.js?v=19"></script>
+</body>
+</html>

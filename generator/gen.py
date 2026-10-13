@@ -6,17 +6,74 @@ Videe bere iz videos.json (če obstaja) v isti mapi kot ta skripta."""
 
 import json
 import os
+import re
 import html
 import urllib.parse
 
 import art
 
-OUT = "/Users/klemenlorber/Library/Mobile Documents/com~apple~CloudDocs/Japonska/japonska-2026-stran"
 HERE = os.path.dirname(os.path.abspath(__file__))
+REPO = os.path.abspath(os.path.join(HERE, ".."))
+SITE_DIR = os.path.join(REPO, "site")
+ASSETS_DIR = os.path.join(HERE, "assets")
+
+# Nastavitve potovanja (za drugo potovanje jih prepiše gen_<potovanje>.py)
+CFG = {
+    "id": "japonska",
+    "slug": "jp-xyna9tg2e",
+    "title": "Japonska — Mesec za dušo",
+    "short": "Mesec za dušo",
+    "brand": "🍁 Mesec za dušo",
+    "theme": "#7b2230",
+    "desc": "Potovalni vodnik: Japonska, 3. november – 2. december 2026, Tokio → Osaka.",
+    "people": ["Marjetica", "Helena", "Ljuba", "Magda"],
+}
+
+# Besedila, ki se razlikujejo po potovanju
+TXT = {
+    "loc_title": "{name} · Japonska 2026",
+    "loc_desc": "{name}: znamenitosti, hrana in nasveti — vodnik Japonska 2026.",
+    "magda": "💛 Magdin trenutek",
+    "diary": "📖 Magdin dnevnik",
+    "diary_hint": "Prostor za vaše vtise, skice in najlepši spomin s te postaje.",
+    "nalozi_title": "Naloži fotografije · Japonska — Mesec za dušo",
+    "izziv_title": "Foto izzivi · Japonska — Mesec za dušo",
+    "izziv_hero": ("Skupaj gradimo album", "Foto izzivi", "Za Marjetico, Heleno, Ljubo in Magdo"),
+    "izziv_idea": ("Mesec dni bo minil hitro. Zato za vsako postajo ujamete nekaj slik — ne le razglednic, ampak "
+                   "<strong>vas na teh krajih</strong>: skupaj, v tišini, ob hrani, med smehom. Iz teh slik in tega načrta "
+                   "bo po vrnitvi nastala <strong>vaša potopisna knjiga</strong>."),
+    "izziv_final": ("Zadnje presenečenje: izberite <strong>najljubšo sliko vsake postaje</strong> in jo uvrstite v potopisno "
+                    "knjigo — prva slika (Meiji Jingu) in zadnja (Miyajima) bosta ob straneh, vmes pa vaš mesec Japonske. "
+                    "Z gumbom »Prenesi vse slike« na strani Naloži dobite cel album z enim klikom."),
+    "izziv_final_title": "🏆 Vse izzive ste opravile!",
+    "nalozi_note": "Izberite postajo in naložite slike ali videe. Vse pristane v spodnjem skupnem albumu.",
+    "nalozi_hero": ("📤", "Vaše fotografije in videi", "Naloži fotografije",
+                    "Izberite postajo in naložite slike ali videe kar s telefona"),
+    "izziv_how": [
+        ("Izberi izziv", "pri vsaki postaji jih je nekaj. Odpri postajo in poglej, kaj te čaka."),
+        ("Naloži fotografijo ali video", "kar s telefona. Prvič te vprašamo le, kdo nalaga."),
+        ("Odkleni presenečenje", "zanimivost, skrivnost ali nagrada. Opravljeni izziv pade na dno in pokaže sličico."),
+    ],
+    "nacrt_title": "Načrt poti — Japonska, Mesec za dušo",
+    "nacrt_desc": "30-dnevni načrt poti po Japonski: dan za dnem in prehodi med kraji, 3. 11.–2. 12. 2026.",
+    "nacrt_hero": ("🗺️", "Hrbtenica potovanja", "Načrt poti — 30 dni", "Dan za dnem, od Tokia do Osake", "nacrt"),
+    "kako_title": "Kako uporabljati · Japonska — Mesec za dušo",
+    "izziv_why": "Zakaj to počnemo?",
+    "izzivi_intro": ("Naložite fotografijo (ali video) za izziv — takoj se označi kot opravljen in se spodaj pokaže sličica. "
+                     "Iz tega nastane vaš skupni album."),
+    "izziv_fine": ("Drobni tisk: vsak izziv ima pod seboj »drobni tisk« — zakaj se slikate prav tam in kaj je ta kraj. "
+                   "Presenečenja so zanimivosti, legende in majhne nagrade (nobenih izmišljenih kuponov — le pravi predlogi in kraji)."),
+    "izziv_intro_desc": "Vsi foto izzivi potovanja — naložite sliko in izziv je opravljen.",
+    "album_title": "📸 Naš album",
+    "izziv_jump": "📸 Poglej foto izzive",
+    "izziv_stations_note": "Odpri vodnik za to postajo →",
+}
+
+OUT = os.path.join(SITE_DIR, CFG["slug"])
 
 # Verzija gradnje — doda se v naslov CSS/JS (?v=BUILD), da brskalnik vedno
 # naloži svežo različico. Ob vsaki spremembi povečaj.
-BUILD = "18"
+BUILD = "19"
 
 # ----------------------------------------------------------------------------
 # VSEBINA
@@ -393,6 +450,17 @@ def esc(s):
     return html.escape(str(s), quote=True)
 
 
+def trip_boot():
+    """Nastavitve potovanja za JS + zaščita: brez PIN-a vrne na vstopno stran."""
+    t = {"id": CFG["id"], "slug": CFG["slug"], "people": CFG["people"], "gate": "../index.html",
+         "after": CFG.get("after"), "t": CFG.get("t"), "color": CFG.get("pin"),
+         "stations": [{"k": l["key"], "e": l["emoji"], "n": l["nav"]} for l in LOCATIONS]}
+    guard = ('(function(){try{var s=JSON.parse(localStorage.getItem("trip_session")||"null");'
+             'var ok=s&&s.trips&&s.trips.some(function(t){return t.slug===TRIP.slug});'
+             'if(!ok){location.replace(TRIP.gate+"?next="+encodeURIComponent(TRIP.slug));}}catch(e){}})();')
+    return "  <script>window.TRIP=" + json.dumps(t, ensure_ascii=False) + ";" + guard + "</script>\n"
+
+
 def head(title, desc, with_map=False, with_album=False):
     leaflet = ""
     if with_map:
@@ -413,8 +481,10 @@ def head(title, desc, with_map=False, with_album=False):
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{esc(title)}</title>
   <meta name="description" content="{esc(desc)}">
-  <meta name="theme-color" content="#7b2230">
-  <link rel="stylesheet" href="style.css?v={BUILD}">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="{CFG['theme']}">
+{trip_boot()}  <link rel="stylesheet" href="style.css?v={BUILD}">
+{CFG.get("css", "")}
 {leaflet}{album}  <link rel="manifest" href="manifest.json">
   <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
@@ -423,22 +493,26 @@ def head(title, desc, with_map=False, with_album=False):
 """
 
 
+NAV_PRIMARY = [
+    ("index.html", "index", "🏠", "Domov"),
+    ("kako.html", "kako", "🎓", "Kako uporabljati"),
+    ("nacrt.html", "nacrt", "🗺️", "Načrt poti"),
+    ("izziv.html", "izziv", "📸", "Izzivi"),
+    ("nalozi.html", "nalozi", "📤", "Naloži fotografije"),
+    ("dozivetja.html", "dozivetja", "🎨", "Doživetja"),
+    ("priprave.html", "priprave", "🎒", "Priprave"),
+    ("prevajalec.html", "prevajalec", "🔍", "Prevajalec s kamero"),
+    ("nasveti.html", "nasveti", "💡", "Nasveti in kartice"),
+    ("nujno.html", "nujno", "🆘", "Nujno"),
+]
+STATIONS_LABEL = "Postaje potovanja"
+
+
 def nav(current_key):
     def cur(key):
         return ' aria-current="page"' if current_key == key else ""
 
-    primary = [
-        ("index.html", "index", "🏠", "Domov"),
-        ("kako.html", "kako", "🎓", "Kako uporabljati"),
-        ("nacrt.html", "nacrt", "🗺️", "Načrt poti"),
-        ("izziv.html", "izziv", "📸", "Izzivi"),
-        ("nalozi.html", "nalozi", "📤", "Naloži fotografije"),
-        ("dozivetja.html", "dozivetja", "🎨", "Doživetja"),
-        ("priprave.html", "priprave", "🎒", "Priprave"),
-        ("prevajalec.html", "prevajalec", "🔍", "Prevajalec s kamero"),
-        ("nasveti.html", "nasveti", "💡", "Nasveti in kartice"),
-        ("nujno.html", "nujno", "🆘", "Nujno"),
-    ]
+    primary = list(NAV_PRIMARY) + [("../index.html?izpis=1", "gate", "🔑", "Zamenjaj potovanje")]
     prim = "\n".join(
         f'        <a href="{h}"{cur(k)}><span class="mi-emoji" aria-hidden="true">{e}</span>{esc(l)}</a>'
         for (h, k, e, l) in primary)
@@ -458,7 +532,7 @@ def nav(current_key):
 
     return f'''<header class="site-header">
   <div class="nav-inner">
-    <a class="brand" href="index.html">🍁 Mesec za dušo</a>
+    <a class="brand" href="index.html">{esc(CFG["brand"])}</a>
     <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="main-menu">
       <span class="mt-ico" aria-hidden="true">☰</span> Meni
     </button>
@@ -468,7 +542,7 @@ def nav(current_key):
       <div class="menu-primary">
 {prim}
       </div>
-      <p class="menu-label">Postaje potovanja</p>
+      <p class="menu-label">{STATIONS_LABEL}</p>
       <div class="menu-stations">
 {stations}
       </div>
@@ -479,15 +553,20 @@ def nav(current_key):
 '''
 
 
-FOOTER = f"""<footer>
-  <p>🍁 Japonska — Mesec za dušo · 3. november – 2. december 2026 · Tokio → Osaka</p>
-  <p>Z ljubeznijo pripravljeno za Magdo in prijateljice</p>
-  <p><a href="kako.html">🎓 Kako uporabljati to stran</a></p>
+def make_footer(l1, l2):
+    return f"""<footer>
+  <p>{l1}</p>
+  <p>{l2}</p>
+  <p><a href="kako.html">🎓 Kako uporabljati to stran</a> · <a href="../index.html?izpis=1">🔑 Zamenjaj potovanje</a></p>
 </footer>
 <script src="app.js?v={BUILD}"></script>
 </body>
 </html>
 """
+
+
+FOOTER = make_footer("🍁 Japonska — Mesec za dušo · 3. november – 2. december 2026 · Tokio → Osaka",
+                     "Z ljubeznijo pripravljeno za Magdo in prijateljice")
 
 
 def yt_search_url(phrase):
@@ -545,9 +624,9 @@ def sights_section(g):
     if not sights:
         return ""
     parts = ['<section class="card-section" aria-labelledby="znamenitosti">',
-             '  <h2 id="znamenitosti">⛩️ Znamenitosti in doživetja</h2>']
+             f'  <h2 id="znamenitosti">{TXT.get("sights_h", "⛩️ Znamenitosti in doživetja")}</h2>']
     for s in sights:
-        icon = sight_icon(s["name"], s.get("desc", ""))
+        icon = s.get("icon") or sight_icon(s["name"], s.get("desc", ""))
         parts.append('  <article class="sight">')
         parts.append(f'    <h3><span class="sight-icon" aria-hidden="true">{icon}</span>{esc(s["name"])}</h3>')
         parts.append(f"    <p>{esc(s['desc'])}</p>")
@@ -564,6 +643,15 @@ def sights_section(g):
     return "\n".join(parts) + "\n"
 
 
+def _clock_icon(t):
+    """Ikona za uro v obliki »9.00« ali »13.30« (jutro/poldne/popoldne/večer)."""
+    m = re.match(r"(\d{1,2})", t or "")
+    if not m:
+        return "•"
+    h = int(m.group(1))
+    return "🌅" if h < 11 else "🍽️" if h < 14 else "🍂" if h < 18 else "🌙"
+
+
 def day_plan_section(g):
     plan = g.get("day_plan", [])
     if not plan:
@@ -572,7 +660,7 @@ def day_plan_section(g):
              '  <h2 id="dan">🗓️ Predlog enega lepega dne</h2>',
              '  <ul class="plan-list">']
     for p in plan:
-        ic = PLAN_ICONS.get(p["time"], "•")
+        ic = PLAN_ICONS.get(p["time"]) or _clock_icon(p["time"])
         parts.append(f'    <li><span class="plan-time"><span class="plan-ic" aria-hidden="true">{ic}</span> {esc(p["time"])}</span>'
                      f'<span>{esc(p["what"])}</span></li>')
     parts.append("  </ul>\n</section>")
@@ -660,8 +748,7 @@ def izzivi_section(key):
     return (
         '<section class="card-section izzivi" aria-labelledby="izzivi">\n'
         '  <h2 id="izzivi">📸 Foto izzivi za album</h2>\n'
-        '  <p class="cat-intro">Naložite fotografijo (ali video) za izziv — takoj se označi kot opravljen in se spodaj pokaže sličica. '
-        'Iz tega nastane vaš skupni album. <a href="izziv.html">Vsi izzivi na enem mestu →</a></p>\n'
+        f'  <p class="cat-intro">{TXT["izzivi_intro"]} <a href="izziv.html">Vsi izzivi na enem mestu →</a></p>\n'
         '  <div class="album-gate"></div>\n'
         f'  <div class="izziv-board" data-scope="{key}"></div>\n'
         f'  <script type="application/json" id="izziv-data">{data}</script>\n'
@@ -702,8 +789,8 @@ def rubric_section(key):
         parts.append(f'    <p>{esc(e["dez"])}</p>')
         parts.append('  </div>')
     parts.append('  <div class="card-section diary">')
-    parts.append('    <h2>📖 Magdin dnevnik</h2>')
-    parts.append('    <p class="diary-hint">Prostor za vaše vtise, skice in najlepši spomin s te postaje.</p>')
+    parts.append(f'    <h2>{TXT["diary"]}</h2>')
+    parts.append(f'    <p class="diary-hint">{TXT["diary_hint"]}</p>')
     parts.append('    <div class="diary-lines" aria-hidden="true"></div>')
     parts.append('  </div>')
     parts.append('</section>')
@@ -755,8 +842,8 @@ def location_page(i, loc):
     if lbl:
         kicker += f" · {lbl}"
 
-    out = head(f"{loc['name']} · Japonska 2026",
-               f"{loc['name']}: znamenitosti, hrana in nasveti — vodnik Japonska 2026.",
+    out = head(TXT["loc_title"].format(name=loc["name"]),
+               TXT["loc_desc"].format(name=loc["name"]),
                with_map=True, with_album=True)
     out += nav(loc["key"])
     out += "<main>\n"
@@ -791,7 +878,7 @@ def location_page(i, loc):
   <p>{esc(loc['fact'])}</p>
 </section>
 <section class="card-section magda-section" aria-labelledby="magda">
-  <h2 id="magda">💛 Magdin trenutek</h2>
+  <h2 id="magda">{TXT["magda"]}</h2>
   <p>{esc(loc['magda'])}</p>
 </section>
 """
@@ -1062,12 +1149,10 @@ def practical_block(data):
 
 def nacrt_page():
     it = ITINERARY
-    out = head("Načrt poti — Japonska, Mesec za dušo",
-               "30-dnevni načrt poti po Japonski: dan za dnem in prehodi med kraji, 3. 11.–2. 12. 2026.")
+    out = head(TXT["nacrt_title"], TXT["nacrt_desc"])
     out += nav("nacrt")
     out += "<main>\n"
-    out += _page_hero("🗺️", "Hrbtenica potovanja", "Načrt poti — 30 dni",
-                      "Dan za dnem, od Tokia do Osake", "nacrt")
+    out += _page_hero(*TXT["nacrt_hero"])
     out += '<section class="today-card" id="today" hidden aria-live="polite"></section>\n'
     out += trip_script()
     if it.get("intro"):
@@ -1243,56 +1328,51 @@ def _all_challenge_data():
 
 
 def nalozi_page():
-    out = head("Naloži fotografije · Japonska — Mesec za dušo",
+    out = head(TXT["nalozi_title"],
                "Naložite fotografije in videe s telefona v skupni album potovanja.",
                with_album=True)
     out += nav("nalozi")
     out += "<main>\n"
-    out += _page_hero("📤", "Vaše fotografije in videi", "Naloži fotografije",
-                      "Izberite postajo in naložite slike ali videe kar s telefona")
-    out += '<p class="intro-note">Prvič vnesete skupno kodo, nato pa le izberete postajo in slike. Vse pristane v spodnjem skupnem albumu.</p>\n'
+    out += _page_hero(*TXT["nalozi_hero"])
+    out += f'<p class="intro-note">{TXT["nalozi_note"]}</p>\n'
     out += '<div class="album-gate"></div>\n'
     out += '<section class="card-section album-upload"></section>\n'
-    out += '<h2 class="section-title">📸 Naš album</h2>\n'
+    out += f'<h2 class="section-title">{TXT["album_title"]}</h2>\n'
     out += '<div class="album-download"></div>\n'
     out += '<div class="album-gallery"></div>\n'
-    out += '<div class="back-row"><a class="back-button" href="izziv.html">📸 Poglej foto izzive</a></div>\n'
+    out += f'<div class="back-row"><a class="back-button" href="izziv.html">{TXT["izziv_jump"]}</a></div>\n'
     out += "</main>\n" + FOOTER
     return out
 
 
 def izziv_page():
     data = json.dumps(_all_challenge_data(), ensure_ascii=False)
-    out = head("Foto izzivi · Japonska — Mesec za dušo",
-               "Vsi foto izzivi potovanja — naložite sliko in izziv je opravljen.",
+    out = head(TXT["izziv_title"],
+               TXT["izziv_intro_desc"],
                with_album=True)
     out += nav("izziv")
     out += "<main>\n"
-    out += _page_hero("📸", "Skupaj gradimo album", "Foto izzivi",
-                      "Za Marjetico, Heleno, Ljubo in Magdo")
+    out += _page_hero("📸", *TXT["izziv_hero"])
 
-    out += """<section class="card-section izziv-how" aria-labelledby="kako">
+    how = "".join(f'    <li><span class="how-n">{n}</span><span><strong>{esc(b)}</strong> — {esc(t)}</span></li>\n'
+                  for n, (b, t) in enumerate(TXT["izziv_how"], 1))
+    out += (f'''<section class="card-section izziv-how" aria-labelledby="kako">
   <h2 id="kako">Kako deluje</h2>
   <ol class="how-steps">
-    <li><span class="how-n">1</span><span><strong>Izberi izziv</strong> — pri vsaki postaji jih je nekaj. Odpri postajo in poglej, kaj te čaka.</span></li>
-    <li><span class="how-n">2</span><span><strong>Naloži fotografijo ali video</strong> kar s telefona. Prvič vneseš skupno kodo in ime.</span></li>
-    <li><span class="how-n">3</span><span><strong>Odkleni presenečenje</strong> — zanimivost, skrivnost ali nagrada. Opravljeni izziv pade na dno in pokaže sličico.</span></li>
-  </ol>
+{how}  </ol>
 </section>
 <section class="card-section izziv-idea" aria-labelledby="ideja">
-  <h2 id="ideja">Zakaj to počnemo?</h2>
-  <p>Mesec dni bo minil hitro. Zato za vsako postajo ujamete nekaj slik — ne le razglednic, ampak <strong>vas na teh krajih</strong>: skupaj, v tišini, ob hrani, med smehom. Iz teh slik in tega načrta bo po vrnitvi nastala <strong>vaša potopisna knjiga</strong>.</p>
-  <p class="fine">Drobni tisk: vsak izziv ima pod seboj »drobni tisk« — zakaj se slikate prav tam in kaj je ta kraj. Presenečenja so zanimivosti, legende in majhne nagrade (nobenih izmišljenih kuponov — le pravi predlogi in kraji).</p>
+  <h2 id="ideja">{TXT["izziv_why"]}</h2>
+  <p>{TXT["izziv_idea"]}</p>
+  <p class="fine">{TXT["izziv_fine"]}</p>
 </section>
-"""
+''')
     out += '<div class="album-gate"></div>\n'
     out += '<section class="izziv-overall" id="izziv-overall"></section>\n'
     out += '<div class="izziv-board izziv-stations" data-scope="all"></div>\n'
     out += ('<section class="card-section izziv-final" id="izziv-final" hidden>'
-            '<h2>🏆 Vse izzive ste opravile!</h2>'
-            '<p>Zadnje presenečenje: izberite <strong>najljubšo sliko vsake postaje</strong> in jo uvrstite v potopisno knjigo — '
-            'prva slika (Meiji Jingu) in zadnja (Miyajima) bosta ob straneh, vmes pa vaš mesec Japonske. '
-            'Z gumbom »Prenesi vse slike« na strani Naloži dobite cel album z enim klikom.</p>'
+            f'<h2>{TXT["izziv_final_title"]}</h2>'
+            f'<p>{TXT["izziv_final"]}</p>'
             '<p><a class="back-button" href="nalozi.html">⬇️ Pojdi na album</a></p></section>\n')
     out += f'<script type="application/json" id="izziv-data">{data}</script>\n'
     out += '<div class="back-row"><a class="back-button" href="nalozi.html">📤 Naloži fotografije</a></div>\n'
@@ -1524,7 +1604,7 @@ def _wiz_steps():
             "Doživetja: kuharske delavnice, čajne hiše, zen vrtovi in nakup za ustvarjalne duše."],
          "", ("priprave.html", "Odpri priprave →"), ""),
         ("📲", "Dodajte stran na domači zaslon", [
-            "Da bo stran kot prava aplikacija (ikona na zaslonu, odpira se čez cel zaslon):"],
+            "Da bo stran kot prava aplikacija (ikona na zaslonu, odpira se čez cel zaslon). Ob prvem odprtju z domačega zaslona boste kodo vnesle še enkrat."],
          demo_install, None, ""),
         ("🌸", "Pripravljene!", [
             "To je vse. Stran lahko to predstavitev kadar koli ponovite — v meniju poiščite »Kako uporabljati«. Lepo pot, Marjetica, Helena, Ljuba in Magda!"],
@@ -1534,7 +1614,7 @@ def _wiz_steps():
 
 def kako_page():
     steps = _wiz_steps()
-    out = head("Kako uporabljati · Japonska — Mesec za dušo",
+    out = head(TXT["kako_title"],
                "Kratka predstavitev vseh funkcij vodnika: korak za korakom z demo primeri.",
                with_album=False)
     out += nav("kako")
@@ -1634,33 +1714,116 @@ def prevajalec_page():
 
 
 # ----------------------------------------------------------------------------
+# GRADNJA
+# ----------------------------------------------------------------------------
 
-os.makedirs(OUT, exist_ok=True)
+import shutil
 
-with open(os.path.join(OUT, "index.html"), "w", encoding="utf-8") as f:
-    f.write(index_page())
-print("written index.html")
+SW_TEMPLATE = """/* Service worker potovanja: najprej splet (sveže), sicer predpomnilnik. */
+var CACHE_NAME = "__CACHE__";
+var PAGES = __PAGES__;
 
-with open(os.path.join(OUT, "nasveti.html"), "w", encoding="utf-8") as f:
-    f.write(nasveti_page())
-print("written nasveti.html")
+self.addEventListener("install", function (event) {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then(function (cache) {
+      return Promise.all(PAGES.map(function (u) { return cache.add(u).catch(function () {}); }));
+    }).then(function () { return self.skipWaiting(); })
+  );
+});
 
-for name, builder in [("nacrt.html", nacrt_page),
-                      ("priprave.html", priprave_page),
-                      ("dozivetja.html", dozivetja_page),
-                      ("nalozi.html", nalozi_page),
-                      ("izziv.html", izziv_page),
-                      ("nujno.html", nujno_page),
-                      ("kako.html", kako_page),
-                      ("prevajalec.html", prevajalec_page)]:
-    with open(os.path.join(OUT, name), "w", encoding="utf-8") as f:
-        f.write(builder())
-    print(f"written {name}")
+self.addEventListener("activate", function (event) {
+  event.waitUntil(
+    caches.keys().then(function (keys) {
+      return Promise.all(keys.filter(function (k) { return k !== CACHE_NAME; }).map(function (k) { return caches.delete(k); }));
+    }).then(function () { return self.clients.claim(); })
+  );
+});
 
-for i, loc in enumerate(LOCATIONS):
-    with open(os.path.join(OUT, f"{loc['key']}.html"), "w", encoding="utf-8") as f:
-        f.write(location_page(i, loc))
-    print(f"written {loc['key']}.html")
+self.addEventListener("fetch", function (event) {
+  if (event.request.method !== "GET") return;
+  var url = new URL(event.request.url);
+  if (url.origin !== self.location.origin) return;
+  var isHTML = event.request.mode === "navigate" ||
+               (event.request.headers.get("accept") || "").indexOf("text/html") !== -1;
+  var fresh = isHTML || /\\.(css|js|json)$/i.test(url.pathname);
+  var req = fresh ? new Request(event.request.url, { cache: "reload" }) : event.request;
+  event.respondWith(
+    fetch(req).then(function (response) {
+      var copy = response.clone();
+      caches.open(CACHE_NAME).then(function (cache) { cache.put(event.request, copy); });
+      return response;
+    }).catch(function () {
+      return caches.match(event.request).then(function (cached) { return cached || caches.match("./index.html"); });
+    })
+  );
+});
+"""
 
-n_vids = sum(len(v) for v in VIDEOS.values())
-print(f"done — embedded videos: {n_vids}")
+
+def write_pwa(pages):
+    """manifest.json in sw.js za to potovanje (v mapi potovanja)."""
+    manifest = {
+        "name": CFG["title"], "short_name": CFG["short"], "description": CFG["desc"], "lang": "sl",
+        "start_url": "./index.html", "scope": "../", "display": "standalone",
+        "background_color": "#ffffff", "theme_color": CFG["theme"],
+        "icons": [{"src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png"},
+                  {"src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png"}],
+    }
+    with open(os.path.join(OUT, "manifest.json"), "w", encoding="utf-8") as f:
+        json.dump(manifest, f, ensure_ascii=False, indent=2)
+    listing = ["./"] + [f"./{p}" for p in pages] + ["./style.css", "./app.js", "./album.js", "./manifest.json",
+                                                     "./icons/icon-192.png", "./icons/icon-512.png",
+                                                     "./icons/apple-touch-icon.png", "./icons/favicon.svg"]
+    if os.path.exists(os.path.join(OUT, "prevajalec.js")):
+        listing.append("./prevajalec.js")
+    sw = (SW_TEMPLATE.replace("__CACHE__", f"{CFG['id']}-{BUILD}")
+          .replace("__PAGES__", json.dumps(listing, ensure_ascii=False)))
+    with open(os.path.join(OUT, "sw.js"), "w", encoding="utf-8") as f:
+        f.write(sw)
+
+
+def copy_assets(extra_files=()):
+    """Skupne datoteke (CSS/JS/ikone) iz generator/assets v mapo potovanja."""
+    os.makedirs(OUT, exist_ok=True)
+    for name in ["style.css", "app.js", "album.js"] + list(extra_files):
+        shutil.copy2(os.path.join(ASSETS_DIR, name), os.path.join(OUT, name))
+    icons_out = os.path.join(OUT, "icons")
+    os.makedirs(icons_out, exist_ok=True)
+    for name in os.listdir(os.path.join(ASSETS_DIR, "icons")):
+        dst = os.path.join(icons_out, name)
+        if not os.path.exists(dst) or CFG.get("overwrite_icons", True):
+            shutil.copy2(os.path.join(ASSETS_DIR, "icons", name), dst)
+
+
+def write_pages(builders):
+    written = []
+    for name, builder in builders:
+        with open(os.path.join(OUT, name), "w", encoding="utf-8") as f:
+            f.write(builder())
+        written.append(name)
+        print(f"written {name}")
+    return written
+
+
+def build():
+    """Gradnja potovanja Japonska (privzeto)."""
+    os.makedirs(OUT, exist_ok=True)
+    copy_assets(["prevajalec.js"])
+    pages = write_pages([("index.html", index_page), ("nasveti.html", nasveti_page),
+                         ("nacrt.html", nacrt_page), ("priprave.html", priprave_page),
+                         ("dozivetja.html", dozivetja_page), ("nalozi.html", nalozi_page),
+                         ("izziv.html", izziv_page), ("nujno.html", nujno_page),
+                         ("kako.html", kako_page), ("prevajalec.html", prevajalec_page)])
+    for i, loc in enumerate(LOCATIONS):
+        name = f"{loc['key']}.html"
+        with open(os.path.join(OUT, name), "w", encoding="utf-8") as f:
+            f.write(location_page(i, loc))
+        pages.append(name)
+        print(f"written {name}")
+    write_pwa(pages)
+    n_vids = sum(len(v) for v in VIDEOS.values())
+    print(f"done — embedded videos: {n_vids}")
+
+
+if __name__ == "__main__":
+    build()

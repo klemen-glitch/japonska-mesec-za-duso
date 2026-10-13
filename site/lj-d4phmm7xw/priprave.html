@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Priprave · Zmajeva pustolovščina</title>
+  <meta name="description" content="Prevoz, živalski vrt, vreme in kontrolni seznam za odhod.">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#2f8f6b">
+  <script>window.TRIP={"id": "ljubljana", "slug": "lj-d4phmm7xw", "people": ["Ana", "Maks"], "gate": "../index.html", "after": ["Bravo, zmajska ekipa!", "Poglejta <a href=\"nalozi.html\">skupni album</a> in iz slik sestavita svojo Zmajevo knjigo."], "t": {"locked": "Presenečenje čaka — odklene se, ko naložita sliko ali video.", "empty": "Album je še prazen — naložita prvo fotografijo. 📸", "thanks": "naloženih ✓ — odlično!", "more": "Odpri vodnik za to postajo →", "pre": "Pustolovščina se začne {date}. Poglejta <a href=\"priprave.html\">priprave</a> in kontrolni seznam."}, "color": "#2f8f6b", "stations": [{"k": "vlak", "e": "🚂", "n": "Vlak"}, {"k": "emonec", "e": "🏨", "n": "Hotel"}, {"k": "center", "e": "🏰", "n": "Center"}, {"k": "zoo", "e": "🦁", "n": "Živalski vrt"}, {"k": "domov", "e": "🏠", "n": "Domov"}]};(function(){try{var s=JSON.parse(localStorage.getItem("trip_session")||"null");var ok=s&&s.trips&&s.trips.some(function(t){return t.slug===TRIP.slug});if(!ok){location.replace(TRIP.gate+"?next="+encodeURIComponent(TRIP.slug));}}catch(e){}})();</script>
+  <link rel="stylesheet" href="style.css?v=19">
+  <style>
+    :root { --accent:#1f7a5a; --accent-ink:#1f7a5a; --accent-soft:#e8f5ee; --pin:#2f8f6b; --orange:#c8553d; --gold:#b08a2e; }
+    @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --accent:#6fd0a6; --accent-ink:#6fd0a6; --accent-soft:#14261e; --pin:#2f8f6b; --orange:#e08a6c; --gold:#d2b256; } }
+    :root[data-theme="dark"] { --accent:#6fd0a6; --accent-ink:#6fd0a6; --accent-soft:#14261e; --pin:#2f8f6b; --orange:#e08a6c; --gold:#d2b256; }
+  </style>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+</head>
+<body>
+<header class="site-header">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">🐉 Zmajeva pustolovščina</a>
+    <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="main-menu">
+      <span class="mt-ico" aria-hidden="true">☰</span> Meni
+    </button>
+  </div>
+  <nav class="main-menu" id="main-menu" aria-label="Glavni meni" hidden>
+    <div class="menu-inner">
+      <div class="menu-primary">
+        <a href="index.html"><span class="mi-emoji" aria-hidden="true">🏠</span>Domov</a>
+        <a href="kako.html"><span class="mi-emoji" aria-hidden="true">🎓</span>Kako uporabljati</a>
+        <a href="nacrt.html"><span class="mi-emoji" aria-hidden="true">🗺️</span>Načrt poti</a>
+        <a href="izziv.html"><span class="mi-emoji" aria-hidden="true">📸</span>Izzivi</a>
+        <a href="nalozi.html"><span class="mi-emoji" aria-hidden="true">📤</span>Naloži fotografije</a>
+        <a href="priprave.html" aria-current="page"><span class="mi-emoji" aria-hidden="true">🎒</span>Priprave</a>
+        <a href="nujno.html"><span class="mi-emoji" aria-hidden="true">🆘</span>Nujno</a>
+        <a href="../index.html?izpis=1"><span class="mi-emoji" aria-hidden="true">🔑</span>Zamenjaj potovanje</a>
+      </div>
+      <p class="menu-label">Postaje pustolovščine</p>
+      <div class="menu-stations">
+        <a href="vlak.html"><span class="mi-emoji" aria-hidden="true">🚂</span>Vlak</a>
+        <a href="emonec.html"><span class="mi-emoji" aria-hidden="true">🏨</span>Hotel</a>
+        <a href="center.html"><span class="mi-emoji" aria-hidden="true">🏰</span>Center</a>
+        <a href="zoo.html"><span class="mi-emoji" aria-hidden="true">🦁</span>Živalski vrt</a>
+        <a href="domov.html"><span class="mi-emoji" aria-hidden="true">🏠</span>Domov</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="menu-backdrop" id="menu-backdrop" hidden></div>
+<main>
+<section class="loc-hero">
+  <div class="loc-emoji" aria-hidden="true">🎒</div>
+  <p class="kicker">Da bo vse gladko</p>
+  <h1>Priprave</h1>
+  <p class="loc-sub">Prevoz · živalski vrt · vreme · seznam</p>
+</section>
+<nav class="chip-row" aria-label="Vsebina">
+  <a class="chip" href="#p0">🚂 Pot in prevoz</a>
+  <a class="chip" href="#p1">🦁 Živalski vrt: koristno vedeti</a>
+  <a class="chip" href="#p2">🌤️ Vreme in oblačila</a>
+  <a class="chip" href="#seznam">✅ Kontrolni seznam</a>
+</nav>
+<section class="card-section" aria-labelledby="p0">
+  <h2 id="p0">🚂 Pot in prevoz</h2>
+  <ul class="nice-list">
+    <li><strong>Vlak</strong> — Maribor ↔ Ljubljana traja približno 2 uri. Vozni red in vozovnice: potniski.sz.si ali na blagajni. Pridita na peron pet minut prej.</li>
+    <li><strong>Hotel</strong> — Hotel Emonec, Wolfova ulica 12 — od železniške postaje okoli 12 minut peš. Prtljago lahko odložita že ob prihodu.</li>
+    <li><strong>Avtobus v zoo</strong> — Linija št. 18 (smer Stožice), postaja »Živalski vrt«. Čez dan vozi približno vsakih 14 minut; za plačilo preverita možnosti v aplikaciji Ljubljana Bus.</li>
+  </ul>
+</section>
+<section class="card-section" aria-labelledby="p1">
+  <h2 id="p1">🦁 Živalski vrt: koristno vedeti</h2>
+  <ul class="nice-list">
+    <li><strong>Odpiralni čas</strong> — Oktobra po objavljenih podatkih 9.00–18.00; točno uro zadnjega vstopa preverita na zoo.si.</li>
+    <li><strong>Vstopnice</strong> — Lahko jih kupita vnaprej na trgovina.zoo.si in se izogneta vrsti.</li>
+    <li><strong>Hoja</strong> — Poti je 5–6 km, ponekod po pobočju. Udobni čevlji so pomembnejši od vsega drugega.</li>
+    <li><strong>Pravila</strong> — Živali ne hranimo, ne kričimo in ne tolčemo po steklu. V Mini ZOO počepnemo in počakamo, da pride žival sama.</li>
+  </ul>
+</section>
+<section class="card-section" aria-labelledby="p2">
+  <h2 id="p2">🌤️ Vreme in oblačila</h2>
+  <ul class="nice-list">
+    <li><strong>Oktobra</strong> — Računajta na hladnejše dni (okoli 5–15 °C) in možnost dežja. Plasti: majica, pulover, jakna, kapa.</li>
+    <li><strong>Obutev</strong> — Nepremočljivi, udobni čevlji; rezervne nogavice v nahrbtniku.</li>
+    <li><strong>Dež</strong> — Zoo ima tudi notranje prostore (vivarij); v mestu so muzeji in kavarne.</li>
+  </ul>
+</section>
+<h2 class="chapter-title" id="seznam">✅ Kontrolni seznam za odhod</h2>
+<p class="chapter-sub">Obkljukajte — telefon si zapomni, kaj je urejeno</p>
+<section class="card-section checklist" aria-labelledby="seznam">
+  <p class="chk-progress" id="chk-progress" aria-live="polite"></p>
+  <h3 class="chk-cat">📄 Pred odhodom</h3>
+  <ul class="chk-list">
+    <li><label><input type="checkbox" data-persist id="chk-0"> <span>Vozovnici za vlak (Maribor ↔ Ljubljana) kupljeni ali shranjeni v telefonu</span></label></li>
+    <li><label><input type="checkbox" data-persist id="chk-1"> <span>Potrditev rezervacije v Hotelu Emonec (telefon, naslov, ura prihoda)</span></label></li>
+    <li><label><input type="checkbox" data-persist id="chk-2"> <span>Osebni izkaznici (ali potni listi) — obe</span></label></li>
+    <li><label><input type="checkbox" data-persist id="chk-3"> <span>Kartica zdravstvenega zavarovanja</span></label></li>
+    <li><label><input type="checkbox" data-persist id="chk-4"> <span>Dogovorjeno s Katjo: ura in kraj srečanja (npr. Prešernov trg)</span></label></li>
+    <li><label><input type="checkbox" data-persist id="chk-5"> <span>Vstopnici za zoo (po želji vnaprej na spletu) ali dovolj gotovine/kartica</span></label></li>
+  </ul>
+  <h3 class="chk-cat">🎒 Nahrbtnik</h3>
+  <ul class="chk-list">
+    <li><label><input type="checkbox" data-persist id="chk-6"> <span>Voda (obe steklenički) in malica za vlak</span></label></li>
+    <li><label><input type="checkbox" data-persist id="chk-7"> <span>Prigrizek za zoo: sadje, krekerji, malica za piknik</span></label></li>
+    <li><label><input type="checkbox" data-persist id="chk-8"> <span>Dežnik ali pelerina, kapa in rokavice za primer hladnega dne</span></label></li>
+    <li><label><input type="checkbox" data-persist id="chk-9"> <span>Telefon + polnilec + powerbank (veliko fotografiranja!)</span></label></li>
+    <li><label><input type="checkbox" data-persist id="chk-10"> <span>Zvezek ali Zmajev dnevnik in barvice/svinčnik</span></label></li>
+    <li><label><input type="checkbox" data-persist id="chk-11"> <span>Vrečke za smeti in robčki</span></label></li>
+  </ul>
+  <h3 class="chk-cat">🧥 Obleka in obutev</h3>
+  <ul class="chk-list">
+    <li><label><input type="checkbox" data-persist id="chk-12"> <span>Udobni, nepremočljivi čevlji (zoo ima ponekod strme poti)</span></label></li>
+    <li><label><input type="checkbox" data-persist id="chk-13"> <span>Plasti: majica, pulover, toplejša jakna</span></label></li>
+    <li><label><input type="checkbox" data-persist id="chk-14"> <span>Rezervne nogavice (za primer mokrote)</span></label></li>
+    <li><label><input type="checkbox" data-persist id="chk-15"> <span>Pižami in osnovna higiena za nočitev</span></label></li>
+  </ul>
+  <h3 class="chk-cat">💊 Zdravje</h3>
+  <ul class="chk-list">
+    <li><label><input type="checkbox" data-persist id="chk-16"> <span>Zdravila, ki jih Maks ali Ana redno jemljeta</span></label></li>
+    <li><label><input type="checkbox" data-persist id="chk-17"> <span>Obliži in robčki</span></label></li>
+    <li><label><input type="checkbox" data-persist id="chk-18"> <span>Sončna krema in kapa (če sije)</span></label></li>
+  </ul>
+  <h3 class="chk-cat">🐉 Za pustolovščino</h3>
+  <ul class="chk-list">
+    <li><label><input type="checkbox" data-persist id="chk-19"> <span>Dogovor: vsak dan vsaj 5 slik za Zmajevo knjigo</span></label></li>
+    <li><label><input type="checkbox" data-persist id="chk-20"> <span>Zapis imena in telefona mame/očeta na listku za Maksa (za vsak primer)</span></label></li>
+    <li><label><input type="checkbox" data-persist id="chk-21"> <span>Ideja: Maks izbere tri živali, ki jih mora videti</span></label></li>
+    <li><label><input type="checkbox" data-persist id="chk-22"> <span>Koledar: izberita en večer za skupno zgodbo</span></label></li>
+  </ul>
+  <button type="button" class="chk-reset" id="chk-reset">Počisti vse kljukice</button>
+</section>
+<div class="back-row"><a class="back-button" href="index.html">🏠 Nazaj na pregled</a></div>
+</main>
+<footer>
+  <p>🐉 Zmajeva pustolovščina · 15.–16. oktober 2026 · Maribor → Ljubljana</p>
+  <p>Z ljubeznijo pripravljeno za Ano in Maksa</p>
+  <p><a href="kako.html">🎓 Kako uporabljati to stran</a> · <a href="../index.html?izpis=1">🔑 Zamenjaj potovanje</a></p>
+</footer>
+<script src="app.js?v=19"></script>
+</body>
+</html>

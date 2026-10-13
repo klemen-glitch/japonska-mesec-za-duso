@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Načrt poti — Zmajeva pustolovščina</title>
+  <meta name="description" content="Dvodnevni načrt: Maribor → Ljubljana, Hotel Emonec, Katja, živalski vrt (15.–16. oktober 2026).">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#2f8f6b">
+  <script>window.TRIP={"id": "ljubljana", "slug": "lj-d4phmm7xw", "people": ["Ana", "Maks"], "gate": "../index.html", "after": ["Bravo, zmajska ekipa!", "Poglejta <a href=\"nalozi.html\">skupni album</a> in iz slik sestavita svojo Zmajevo knjigo."], "t": {"locked": "Presenečenje čaka — odklene se, ko naložita sliko ali video.", "empty": "Album je še prazen — naložita prvo fotografijo. 📸", "thanks": "naloženih ✓ — odlično!", "more": "Odpri vodnik za to postajo →", "pre": "Pustolovščina se začne {date}. Poglejta <a href=\"priprave.html\">priprave</a> in kontrolni seznam."}, "color": "#2f8f6b", "stations": [{"k": "vlak", "e": "🚂", "n": "Vlak"}, {"k": "emonec", "e": "🏨", "n": "Hotel"}, {"k": "center", "e": "🏰", "n": "Center"}, {"k": "zoo", "e": "🦁", "n": "Živalski vrt"}, {"k": "domov", "e": "🏠", "n": "Domov"}]};(function(){try{var s=JSON.parse(localStorage.getItem("trip_session")||"null");var ok=s&&s.trips&&s.trips.some(function(t){return t.slug===TRIP.slug});if(!ok){location.replace(TRIP.gate+"?next="+encodeURIComponent(TRIP.slug));}}catch(e){}})();</script>
+  <link rel="stylesheet" href="style.css?v=19">
+  <style>
+    :root { --accent:#1f7a5a; --accent-ink:#1f7a5a; --accent-soft:#e8f5ee; --pin:#2f8f6b; --orange:#c8553d; --gold:#b08a2e; }
+    @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --accent:#6fd0a6; --accent-ink:#6fd0a6; --accent-soft:#14261e; --pin:#2f8f6b; --orange:#e08a6c; --gold:#d2b256; } }
+    :root[data-theme="dark"] { --accent:#6fd0a6; --accent-ink:#6fd0a6; --accent-soft:#14261e; --pin:#2f8f6b; --orange:#e08a6c; --gold:#d2b256; }
+  </style>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+</head>
+<body>
+<header class="site-header">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">🐉 Zmajeva pustolovščina</a>
+    <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="main-menu">
+      <span class="mt-ico" aria-hidden="true">☰</span> Meni
+    </button>
+  </div>
+  <nav class="main-menu" id="main-menu" aria-label="Glavni meni" hidden>
+    <div class="menu-inner">
+      <div class="menu-primary">
+        <a href="index.html"><span class="mi-emoji" aria-hidden="true">🏠</span>Domov</a>
+        <a href="kako.html"><span class="mi-emoji" aria-hidden="true">🎓</span>Kako uporabljati</a>
+        <a href="nacrt.html" aria-current="page"><span class="mi-emoji" aria-hidden="true">🗺️</span>Načrt poti</a>
+        <a href="izziv.html"><span class="mi-emoji" aria-hidden="true">📸</span>Izzivi</a>
+        <a href="nalozi.html"><span class="mi-emoji" aria-hidden="true">📤</span>Naloži fotografije</a>
+        <a href="priprave.html"><span class="mi-emoji" aria-hidden="true">🎒</span>Priprave</a>
+        <a href="nujno.html"><span class="mi-emoji" aria-hidden="true">🆘</span>Nujno</a>
+        <a href="../index.html?izpis=1"><span class="mi-emoji" aria-hidden="true">🔑</span>Zamenjaj potovanje</a>
+      </div>
+      <p class="menu-label">Postaje pustolovščine</p>
+      <div class="menu-stations">
+        <a href="vlak.html"><span class="mi-emoji" aria-hidden="true">🚂</span>Vlak</a>
+        <a href="emonec.html"><span class="mi-emoji" aria-hidden="true">🏨</span>Hotel</a>
+        <a href="center.html"><span class="mi-emoji" aria-hidden="true">🏰</span>Center</a>
+        <a href="zoo.html"><span class="mi-emoji" aria-hidden="true">🦁</span>Živalski vrt</a>
+        <a href="domov.html"><span class="mi-emoji" aria-hidden="true">🏠</span>Domov</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="menu-backdrop" id="menu-backdrop" hidden></div>
+<main>
+<section class="loc-hero">
+  <div class="loc-emoji" aria-hidden="true">🗺️</div>
+  <p class="kicker">Hrbtenica pustolovščine</p>
+  <h1>Načrt poti — 2 dneva</h1>
+  <p class="loc-sub">Dan za dnem, od Maribora do živalskega vrta</p>
+</section>
+<section class="today-card" id="today" hidden aria-live="polite"></section>
+<script type="application/json" id="trip-data">[{"d": 1, "iso": "2026-10-15", "date": "čet, 15. okt", "r": "Ljubljana", "t": "Z vlakom v Ljubljano", "p": "Vlak iz Maribora (približno 2 uri). Ob prihodu odložita kovčka v Hotelu Emonec (Wolfova 12), nato srečanje s Katjo: Prešernov trg, Tromostovje, Zmajski most, sladoled ali topla čokolada ob reki. Večerja v središču in zgodaj spat.", "k": "center"}, {"d": 2, "iso": "2026-10-16", "date": "pet, 16. okt", "r": "Živalski vrt", "t": "Cel dan v živalskem vrtu", "p": "Zajtrk, odjava in odhod z avtobusom št. 18 do postaje »Živalski vrt« (zoo odpre ob 9.00). Slon Ganga, žirafe, tigri, morski levi, Mini ZOO, odmor in igrišče. Popoldne po prtljago v hotelu in vlak domov.", "k": "zoo"}]</script>
+<p class="intro-note">Dva dneva, ena noč. Prvi dan: vlak, hotel in Ljubljana s Katjo. Drugi dan: avtobus v živalski vrt in cel dan med živalmi. Povratni vlak izberita glede na uro, ko zapustita zoo. Ure so okvirne — vzemita si čas.</p>
+<section class="card-section" aria-labelledby="dnevi">
+  <h2 id="dnevi">📅 Dan za dnem</h2>
+  <ol class="itinerary">
+    <li class="it-day it-new" data-iso="2026-10-15">
+      <span class="it-num"><span class="it-daynum">Dan 1</span><span class="it-date">čet, 15. okt</span></span>
+      <span class="it-body"><span class="it-region">Ljubljana</span><strong>Z vlakom v Ljubljano</strong><span class="it-plan">Vlak iz Maribora (približno 2 uri). Ob prihodu odložita kovčka v Hotelu Emonec (Wolfova 12), nato srečanje s Katjo: Prešernov trg, Tromostovje, Zmajski most, sladoled ali topla čokolada ob reki. Večerja v središču in zgodaj spat.</span></span>
+    </li>
+    <li class="it-day it-new" data-iso="2026-10-16">
+      <span class="it-num"><span class="it-daynum">Dan 2</span><span class="it-date">pet, 16. okt</span></span>
+      <span class="it-body"><span class="it-region">Živalski vrt</span><strong>Cel dan v živalskem vrtu</strong><span class="it-plan">Zajtrk, odjava in odhod z avtobusom št. 18 do postaje »Živalski vrt« (zoo odpre ob 9.00). Slon Ganga, žirafe, tigri, morski levi, Mini ZOO, odmor in igrišče. Popoldne po prtljago v hotelu in vlak domov.</span></span>
+    </li>
+  </ol>
+</section>
+<section class="card-section" aria-labelledby="prehodi">
+  <h2 id="prehodi">🚉 Prehodi med kraji</h2>
+  <p class="cat-intro">Okvirni prevozi in časi — točne vozne rede preverite bliže odhodu.</p>
+  <div class="leg">
+    <div class="leg-head"><strong>Maribor</strong> <span class="leg-arrow">→</span> <strong>Ljubljana</strong><span class="leg-dur">🕒 približno 2 uri</span></div>
+    <p class="leg-how">Vlak (npr. InterCity Slovenija) z glavne postaje; vozni red in vozovnice na potniski.sz.si ali na blagajni</p>
+    <p class="leg-tip">💡 Vozovnici kupita vnaprej, sedeža ob oknu in majhen prigrizek v nahrbtniku.</p>
+  </div>
+  <div class="leg">
+    <div class="leg-head"><strong>Železniška postaja Ljubljana</strong> <span class="leg-arrow">→</span> <strong>Hotel Emonec</strong><span class="leg-dur">🕒 okoli 12 min</span></div>
+    <p class="leg-how">peš po središču mesta</p>
+    <p class="leg-tip">💡 Kovčka na kolesih — pot je večinoma ravna.</p>
+  </div>
+  <div class="leg">
+    <div class="leg-head"><strong>Hotel Emonec</strong> <span class="leg-arrow">→</span> <strong>Živalski vrt</strong><span class="leg-dur">🕒 okoli 20–30 min</span></div>
+    <p class="leg-how">avtobus št. 18 (smer Stožice) do postaje »Živalski vrt« — vstopita npr. na Bavarskem dvoru ali Konzorciju; ali peš okoli 25–35 min</p>
+    <p class="leg-tip">💡 Za plačilo vozovnice preverita aktualne možnosti (kartica Urbana ali brezstično plačilo) v aplikaciji Ljubljana Bus (LPP). Čez dan vozi približno vsakih 14 minut.</p>
+  </div>
+  <div class="leg">
+    <div class="leg-head"><strong>Ljubljana</strong> <span class="leg-arrow">→</span> <strong>Maribor</strong><span class="leg-dur">🕒 približno 2 uri</span></div>
+    <p class="leg-how">vlak z glavne postaje; vozni red preverita na potniski.sz.si</p>
+    <p class="leg-tip">💡 Odhod izberita glede na uro, ko zapustita zoo — pridita na postajo 15 min prej.</p>
+  </div>
+</section>
+<div class="back-row"><a class="back-button" href="index.html">🏠 Nazaj na pregled</a></div>
+</main>
+<footer>
+  <p>🐉 Zmajeva pustolovščina · 15.–16. oktober 2026 · Maribor → Ljubljana</p>
+  <p>Z ljubeznijo pripravljeno za Ano in Maksa</p>
+  <p><a href="kako.html">🎓 Kako uporabljati to stran</a> · <a href="../index.html?izpis=1">🔑 Zamenjaj potovanje</a></p>
+</footer>
+<script src="app.js?v=19"></script>
+</body>
+</html>

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chichibu · Japonska 2026</title>
+  <meta name="description" content="Chichibu: znamenitosti, hrana in nasveti — vodnik Japonska 2026.">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#7b2230">
+  <script>window.TRIP={"id": "japonska", "slug": "jp-xyna9tg2e", "people": ["Marjetica", "Helena", "Ljuba", "Magda"], "gate": "../index.html", "after": null, "t": null, "color": null, "stations": [{"k": "tokio", "e": "🗼", "n": "Tokio"}, {"k": "chichibu", "e": "🌳", "n": "Chichibu"}, {"k": "kawaguchiko", "e": "🗻", "n": "Fuji"}, {"k": "minobusan", "e": "🏯", "n": "Minobu"}, {"k": "izu", "e": "🌊", "n": "Izu"}, {"k": "kumano", "e": "⛩️", "n": "Kumano"}, {"k": "koyasan", "e": "🏔️", "n": "Koya-san"}, {"k": "iya", "e": "🏞️", "n": "Iya"}, {"k": "ine", "e": "🎣", "n": "Ine"}, {"k": "nara", "e": "🦌", "n": "Nara"}, {"k": "kyoto", "e": "🍁", "n": "Kyoto"}, {"k": "osaka", "e": "🏙️", "n": "Osaka"}, {"k": "hiroshima", "e": "🕊️", "n": "Hiroshima"}]};(function(){try{var s=JSON.parse(localStorage.getItem("trip_session")||"null");var ok=s&&s.trips&&s.trips.some(function(t){return t.slug===TRIP.slug});if(!ok){location.replace(TRIP.gate+"?next="+encodeURIComponent(TRIP.slug));}}catch(e){}})();</script>
+  <link rel="stylesheet" href="style.css?v=19">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="album.js?v=19"></script>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+</head>
+<body>
+<header class="site-header">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">🍁 Mesec za dušo</a>
+    <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="main-menu">
+      <span class="mt-ico" aria-hidden="true">☰</span> Meni
+    </button>
+  </div>
+  <nav class="main-menu" id="main-menu" aria-label="Glavni meni" hidden>
+    <div class="menu-inner">
+      <div class="menu-primary">
+        <a href="index.html"><span class="mi-emoji" aria-hidden="true">🏠</span>Domov</a>
+        <a href="kako.html"><span class="mi-emoji" aria-hidden="true">🎓</span>Kako uporabljati</a>
+        <a href="nacrt.html"><span class="mi-emoji" aria-hidden="true">🗺️</span>Načrt poti</a>
+        <a href="izziv.html"><span class="mi-emoji" aria-hidden="true">📸</span>Izzivi</a>
+        <a href="nalozi.html"><span class="mi-emoji" aria-hidden="true">📤</span>Naloži fotografije</a>
+        <a href="dozivetja.html"><span class="mi-emoji" aria-hidden="true">🎨</span>Doživetja</a>
+        <a href="priprave.html"><span class="mi-emoji" aria-hidden="true">🎒</span>Priprave</a>
+        <a href="prevajalec.html"><span class="mi-emoji" aria-hidden="true">🔍</span>Prevajalec s kamero</a>
+        <a href="nasveti.html"><span class="mi-emoji" aria-hidden="true">💡</span>Nasveti in kartice</a>
+        <a href="nujno.html"><span class="mi-emoji" aria-hidden="true">🆘</span>Nujno</a>
+        <a href="../index.html?izpis=1"><span class="mi-emoji" aria-hidden="true">🔑</span>Zamenjaj potovanje</a>
+      </div>
+      <p class="menu-label">Postaje potovanja</p>
+      <div class="menu-stations">
+        <a href="tokio.html"><span class="mi-emoji" aria-hidden="true">🗼</span>Tokio</a>
+        <a href="chichibu.html" aria-current="page"><span class="mi-emoji" aria-hidden="true">🌳</span>Chichibu</a>
+        <a href="kawaguchiko.html"><span class="mi-emoji" aria-hidden="true">🗻</span>Fuji</a>
+        <a href="minobusan.html"><span class="mi-emoji" aria-hidden="true">🏯</span>Minobu</a>
+        <a href="izu.html"><span class="mi-emoji" aria-hidden="true">🌊</span>Izu</a>
+        <a href="kumano.html"><span class="mi-emoji" aria-hidden="true">⛩️</span>Kumano</a>
+        <a href="koyasan.html"><span class="mi-emoji" aria-hidden="true">🏔️</span>Koya-san</a>
+        <a href="iya.html"><span class="mi-emoji" aria-hidden="true">🏞️</span>Iya</a>
+        <a href="ine.html"><span class="mi-emoji" aria-hidden="true">🎣</span>Ine</a>
+        <a href="nara.html"><span class="mi-emoji" aria-hidden="true">🦌</span>Nara</a>
+        <a href="kyoto.html"><span class="mi-emoji" aria-hidden="true">🍁</span>Kyoto</a>
+        <a href="osaka.html"><span class="mi-emoji" aria-hidden="true">🏙️</span>Osaka</a>
+        <a href="hiroshima.html"><span class="mi-emoji" aria-hidden="true">🕊️</span>Hiroshima</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="menu-backdrop" id="menu-backdrop" hidden></div>
+<main>
+<section class="loc-hero">
+  <div class="scene-banner"><img class="photo-banner" src="images/chichibu.jpg" alt="Chichibu" loading="eager" decoding="async"></div>
+  <p class="kicker">🌳 Postaja 2 od 13 · Enodnevni izlet iz Tokia</p>
+  <h1>Chichibu</h1>
+  <p class="loc-sub">Enodnevni pobeg v gore iz Tokia</p>
+  <p class="loc-intro">Za en dan pobegnemo iz Tokia v gore. Samo dobri uri in pol vožnje stran se svet popolnoma spremeni: strme zelene gore, stoletne cedre in potoki s kristalno čisto vodo. Narodni park Chichibu–Tama–Kai je kraj, kamor Japonci pridejo dihat. Zjutraj z vlakom tja, zvečer nazaj v Tokio — vmes pa en sam počasen dan.</p>
+  <p class="visit-wrap"><button type="button" class="visit-btn" data-visit="chichibu">☐ Označi kot obiskano</button></p>
+</section>
+<section class="card-section" aria-labelledby="znamenitosti">
+  <h2 id="znamenitosti">⛩️ Znamenitosti in doživetja</h2>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">⛩️</span>Gora Mitake in svetišče Musashi-Mitake</h3>
+    <p>Sveta gora, na katero vas namesto naporne hoje odpelje najbolj strma gondolska vzpenjača v regiji Kanto — vožnja traja le šest minut. Na vrhu vas čaka več kot 2000 let staro svetišče Musashi-Mitake, majhna gorska vasica s prenočišči romarjev in razgledi čez gozdove narodnega parka. Novembra je gora odeta v rdeče in zlate barve, na poti od postaje do svetišča pa boste našle tudi prijetne čajnice.</p>
+    <p class="sight-tip">💡 Vsako jesen (do konca novembra) tu poteka festival Tenku Momiji Matsuri z večerno osvetlitvijo do 21h; do svetišča je od vzpenjače 20-30 minut počasne hoje, zadnji del po stopnicah — vzemite si čas.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Musashi%20Mitake%20Shrine%2C%20Ome%2C%20Tokyo" target="_blank" rel="noopener">📍 Zemljevid</a>
+      <a class="vid-btn" href="https://www.youtube.com/results?search_query=Mount%20Mitake%20Musashi%20Mitake%20Shrine%20autumn%20cable%20car" target="_blank" rel="noopener">🎬 Video</a>
+    </div>
+  </article>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">🍁</span>Soteska Mitake z muzejem Gyokudo in vrtom pivovarne Sawanoi</h3>
+    <p>Raven, lahek sprehod ob smaragdni reki Tama pod pisanim jesenskim gozdom — brez vzponov, s klopcami ob poti. Ob reki stoji muzej slikarja Gyokuda Kawaija z zen vrtom iz kamna in peska ter slavnim 30-metrskim ginkom, ki v novembru zažari rumeno. Slab kilometer naprej vas v vrtu sake pivovarne Sawanoi (Ozawa, stara več kot 300 let) čakajo degustacija, tofu restavracija in terasa nad reko.</p>
+    <p class="sight-tip">💡 Ginko pred muzejem je najlepši v prvi polovici novembra, jeseni je ob soteski tudi festival z večerno osvetlitvijo; za sprehod z vsemi postanki računajte pol dneva.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Gyokudo%20Art%20Museum%2C%20Mitake%2C%20Ome%2C%20Tokyo" target="_blank" rel="noopener">📍 Zemljevid</a>
+      <a class="vid-btn" href="https://www.youtube.com/results?search_query=Mitake%20gorge%20autumn%20foliage%20Sawanoi%20sake%20brewery%20Ome" target="_blank" rel="noopener">🎬 Video</a>
+    </div>
+  </article>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">⛵</span>Vožnja s čolnom po reki v Nagatoru (Line Kudari)</h3>
+    <p>Že več kot sto let čolnarji z dolgimi drogovi vozijo lesene čolne skozi sotesko Nagatoro, mimo znamenitih ploščatih skal Iwadatami. Večina vožnje je mirna, le tu in tam kakšen živahen brzici podoben odsek, da malo zaploskate. Novembra se skalnate stene soteske obarvajo v rdeče in oranžno — najlepši čas v letu za to vožnjo.</p>
+    <p class="sight-tip">💡 Vožnja traja okoli 20 minut na progo, karte kupite pri postaji Nagatoro; ob dežju ali visoki vodi čoln ne vozi, zato imejte rezervni načrt.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Nagatoro%20Line%20Kudari%2C%20Nagatoro%2C%20Saitama" target="_blank" rel="noopener">📍 Zemljevid</a>
+      <a class="vid-btn" href="https://www.youtube.com/results?search_query=Nagatoro%20line%20kudari%20river%20boat%20autumn" target="_blank" rel="noopener">🎬 Video</a>
+    </div>
+  </article>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">🍁</span>Park Tsukinoishi Momiji z večerno osvetlitvijo</h3>
+    <p>Majhen park javorjev ob reki v Nagatoru, ponos mesteca. Sredi novembra, ko so javorji najbolj rdeči, jih zvečer osvetlijo — drevesa se zrcalijo v temi kot v pravljici. To je osrednji dogodek festivala jesenskega listja v Nagatoru, ki traja ves november.</p>
+    <p class="sight-tip">💡 Osvetlitev poteka tradicionalno od okoli 8. do 24. novembra zvečer (vstopnina okoli 300 jenov); oblecite se toplo, večeri so mrzli.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Tsukinoishi%20Momiji%20Park%2C%20Nagatoro%2C%20Saitama" target="_blank" rel="noopener">📍 Zemljevid</a>
+      <a class="vid-btn" href="https://www.youtube.com/results?search_query=Tsukinoishi%20Momiji%20Park%20Nagatoro%20autumn%20illumination" target="_blank" rel="noopener">🎬 Video</a>
+    </div>
+  </article>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">⛩️</span>Svetišče Hodosan in gondola na goro Hodo</h3>
+    <p>Eno najlepših svetišč v regiji: fasada je prekrita z živopisnimi rezbarijami zmajev in mitoloških živali, ki so jih ob obnovi vrnili v prvotne barve. Svetišče obdaja gozd, ki novembra žari v rdečih in zlatih odtenkih. Od tam vas stara nihalka v petih minutah dvigne skoraj na vrh gore Hodo, od koder se odpre razgled na dolino Nagatoro in gore Chichibu.</p>
+    <p class="sight-tip">💡 Svetišče je 15-20 minut zmerne hoje od postaje Nagatoro (ali kratka vožnja s taksijem); jeseni je okolica svetišča med najlepšimi momiji točkami v dolini.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Hodosan%20Shrine%2C%20Nagatoro%2C%20Saitama" target="_blank" rel="noopener">📍 Zemljevid</a>
+      <a class="vid-btn" href="https://www.youtube.com/results?search_query=Hodosan%20Shrine%20Nagatoro%20autumn%20ropeway" target="_blank" rel="noopener">🎬 Video</a>
+    </div>
+  </article>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">⛩️</span>Svetišče Chichibu in nočni festival Chichibu Yomatsuri</h3>
+    <p>Glavno svetišče mesta Chichibu slovi po sijajnih lesenih rezbarijah — tigrica z mladiči in modra sova sta delo slavnega mojstra Hidarija Jingoroja. In zdaj glavna sreča vašega termina: 2. decembra, na vaš zadnji dan, se začne Chichibu Yomatsuri, eden treh največjih japonskih festivalov okrašenih vozov in Unescova nesnovna dediščina. Ogromni vozovi, osvetljeni s stotinami lampijonov, se peljejo skozi mesto, zvečer pa nebo razsvetli ognjemet.</p>
+    <p class="sight-tip">💡 2. 12. 2026 vozovi krožijo po mestu čez dan, ognjemet je od 19h do 20h — pridite popoldne, oblecite se zelo toplo in rezervirajte prenočišče več mesecev vnaprej.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Chichibu%20Shrine%2C%20Chichibu%2C%20Saitama" target="_blank" rel="noopener">📍 Zemljevid</a>
+      <a class="vid-btn" href="https://www.youtube.com/results?search_query=Chichibu%20Night%20Festival%20Yomatsuri%20floats%20fireworks" target="_blank" rel="noopener">🎬 Video</a>
+    </div>
+  </article>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">🌲</span>Gozdna terapija shinrin-yoku v Okutami</h3>
+    <p>Okutama je bila prva lokacija v Tokiu z uradno potrjenimi potmi za gozdno terapijo. Pot Toke Trail je dolga le 1,3 km, skoraj povsem ravna in posuta z mehkimi lesnimi sekanci, ob njej pa so klopi in počivališča. Certificiran vodnik vas nauči počasnega, zavestnega vpijanja gozda — dihanje, tišina, vonj cedre. Prav to, kar si pet prijateljic zasluži.</p>
+    <p class="sight-tip">💡 Voden obisk rezervirajte vnaprej (npr. prek Okutama Forest Therapy ali Rakuten Travel Experiences); računajte 2-3 ure v počasnem tempu, novembra so gozdovi še pisano obarvani.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Okutama%20Visitor%20Center%2C%20Okutama%2C%20Tokyo" target="_blank" rel="noopener">📍 Zemljevid</a>
+      <a class="vid-btn" href="https://www.youtube.com/results?search_query=Okutama%20forest%20therapy%20shinrin-yoku%20Tokyo" target="_blank" rel="noopener">🎬 Video</a>
+    </div>
+  </article>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">♨️</span>Onsen Matsuri no Yu ob postaji Seibu-Chichibu</h3>
+    <p>Termalni kompleks tik ob izstopu s postaje Seibu-Chichibu, urejen v duhu slavnih festivalov Chichibuja. Štiri zunanje kopeli z razgledom na gore, šest notranjih in gazirana kopel, ki poživi krvni obtok. Zraven sta tržnica z lokalnimi dobrotami in food court s specialitetami Chichibuja — popoln zaključek dneva, preden sedete na vlak.</p>
+    <p class="sight-tip">💡 Privoščite si ga pozno popoldne po ogledih; brisače si lahko izposodite na mestu, tetovaže v japonskih onsenih praviloma niso dovoljene.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Seibu%20Chichibu%20Ekimae%20Onsen%20Matsuri%20no%20Yu%2C%20Chichibu%2C%20Saitama" target="_blank" rel="noopener">📍 Zemljevid</a>
+      <a class="vid-btn" href="https://www.youtube.com/results?search_query=Matsuri%20no%20Yu%20Seibu%20Chichibu%20onsen" target="_blank" rel="noopener">🎬 Video</a>
+    </div>
+  </article>
+</section>
+<section class="card-section map-section" aria-labelledby="zemljevid">
+  <h2 id="zemljevid">🗺️ Zemljevid kraja</h2>
+  <div class="area-map" data-lat="35.991" data-lon="139.085" data-zoom="13" role="img" aria-label="Zemljevid — Chichibu, Saitama"></div>
+  <a class="pin-btn map-open" href="https://www.google.com/maps/search/?api=1&query=Chichibu%2C%20Saitama" target="_blank" rel="noopener">📍 Odpri na Google Zemljevidu</a>
+</section>
+<section class="card-section" aria-labelledby="dan">
+  <h2 id="dan">🗓️ Predlog enega lepega dne</h2>
+  <ul class="plan-list">
+    <li><span class="plan-time"><span class="plan-ic" aria-hidden="true">🌅</span> Zjutraj</span><span>Z vlakom Laview iz Ikebukura do Seibu-Chichibuja, nato z lokalnim vlakom do Nagatora. Ob prihodu kava in prvi pogled na skale Iwadatami ob reki.</span></li>
+    <li><span class="plan-time"><span class="plan-ic" aria-hidden="true">🌤️</span> Dopoldne</span><span>Vožnja s čolnom Line Kudari skozi jesensko obarvano sotesko, nato počasen sprehod do svetišča Hodosan in ogled njegovih pisanih rezbarij. Po želji še vožnja z gondolo na goro Hodo po razgled.</span></li>
+    <li><span class="plan-time"><span class="plan-ic" aria-hidden="true">🍂</span> Popoldne</span><span>Kosilo v Nagatoru — privoščite si lokalno specialiteto, ledeno sladico kakigori ali soba rezance. Nato vlak do Chichibuja, ogled svetišča Chichibu in sproščanje v onsenu Matsuri no Yu ob postaji.</span></li>
+    <li><span class="plan-time"><span class="plan-ic" aria-hidden="true">🌙</span> Zvečer</span><span>Vrnitev v Nagatoro na večerno osvetlitev javorjev v parku Tsukinoishi Momiji — drevesa v žarečih barvah so čaroben zaključek dneva. Nato zadnji vlak nazaj v Tokio.</span></li>
+  </ul>
+</section>
+<section class="card-section izzivi" aria-labelledby="izzivi">
+  <h2 id="izzivi">📸 Foto izzivi za album</h2>
+  <p class="cat-intro">Naložite fotografijo (ali video) za izziv — takoj se označi kot opravljen in se spodaj pokaže sličica. Iz tega nastane vaš skupni album. <a href="izziv.html">Vsi izzivi na enem mestu →</a></p>
+  <div class="album-gate"></div>
+  <div class="izziv-board" data-scope="chichibu"></div>
+  <script type="application/json" id="izziv-data">[{"id": "chichibu-0", "t": "foto", "x": "Gozdna kopel: vsaka objame svojo cedro — štirje objemi dreves v enem kadru.", "w": "Shinrin-yoku, »gozdna kopel«, je japonska praksa počasnega bivanja v gozdu. Objem drevesa je njena šaljiva oblika. Ideja: smešna in ganljiva slika naenkrat.", "p": {"k": "zanimivost", "h": "Beseda, stara komaj 40 let", "x": "Izraz shinrin-yoku je leta 1982 skoval japonski gozdarski urad, ko je spodbujal obiske gozdov. Raziskave kažejo, da že 20 minut med drevesi zniža stresne hormone — vaš objem ni samo za fotografijo."}, "s": "chichibu", "sn": "Chichibu", "e": "🌳"}, {"id": "chichibu-1", "t": "foto", "x": "Marjetica ob potoku v soteski Mitake — mir gozda, ujet v eni sliki.", "w": "Soteska Mitake ob reki Tama je lahka sprehajalna pot, kjer se zrak ohladi in zvok vode prevzame misli. Ideja: portret miru — Marjetica ob vodi, brez poze.", "p": {"k": "zanimivost", "h": "Voda za velemesto", "x": "Reka Tama, ob kateri stojite, je eden pomembnih virov pitne vode za Tokio. Voda, ki jo gledate, bo čez čas tekla iz pip velemesta."}, "s": "chichibu", "sn": "Chichibu", "e": "🌳"}, {"id": "chichibu-2", "t": "foto", "x": "Najlepši rdeči javorjev list, ki ga najdete — od blizu, da se vidijo žile.", "w": "Javorji (momiji) so v Japonski cela kultura; obiskovanju jesenskega listja pravijo momijigari — lov na javorje. Ideja: prvi »eksponat« potopisa; list posušite med stranmi knjige.", "p": {"k": "skrivnost", "h": "Javor za prigrizek", "x": "V mestu Minoo blizu Osake javorjeve liste ocvrejo v tempuri (momiji tempura) — slane ali sladke. Če boste v Osaki, je to izlet za pokušino. Vašega lista tu še ne poskušajte."}, "s": "chichibu", "sn": "Chichibu", "e": "🌳"}, {"id": "chichibu-3", "t": "foto", "x": "Skupinska na kamnitih stopnicah svetišča med visokimi cedrami.", "w": "Svetišče Musashi Mitake stoji na gori, pot do njega vodi po kamnitih stopnicah med cedrami — klasična japonska »pot k svetišču«. Ideja: skupinska slika pove, da ste prišle skupaj.", "p": {"k": "zanimivost", "h": "Volčje svetišče", "x": "Svetišče Musashi Mitake časti božanstvo volka. Amuleti z volkom naj bi varovali pred ognjem in tatvino — poiščite volčje kipce in morda kupite amulet za srečo celotni skupini."}, "s": "chichibu", "sn": "Chichibu", "e": "🌳"}]</script>
+</section>
+<section class="card-section" aria-labelledby="hrana">
+  <h2 id="hrana">🍜 Hrana — kaj in kje jesti</h2>
+  <h3 style="margin:0 0 0.3rem; font-size:1.1rem;">Kaj poskusiti</h3>
+  <ul class="nice-list">
+    <li><strong>Soba rezanci</strong> — Chichibu je znan po ajdovih rezancih — tu jih še vedno delajo ročno</li>
+    <li><strong>Sezonske gozdne jedi</strong> — gobe in kostanj, ki jih jeseni ponudijo v lokalnih gostilnah</li>
+    <li><strong>Bento malica</strong> — lepo zložena škatlica dobrot za postanek ob potoku</li>
+  </ul>
+  <h3 style="margin:1.2rem 0 0.3rem; font-size:1.1rem;">Kje jesti — izberite kategorijo</h3>
+  <p class="cat-intro">Dotaknite se kategorije in odprl se bo seznam preverjenih predlogov s povezavo na zemljevid.</p>
+  <details class="food-cat">
+    <summary><span class="cat-emoji" aria-hidden="true">🍖</span><span class="cat-name">Waraji katsu in svinjina v misu</span><span class="cat-count">3 predlogi</span><span class="chev" aria-hidden="true">▶</span></summary>
+    <div class="cat-body">
+      <p class="cat-intro">Chichibu je dežela svinjine — waraji katsudon, ogromen ploščat zrezek v sladkasti omaki, se je rodil prav tu in ga preprosto morate poskusiti.</p>
+      <div class="place">
+        <div class="place-head"><strong>Yasudaya (安田屋 日野田店)</strong><span class="price">€</span></div>
+        <p>Tu se je waraji katsudon rodil: hrustljav zrezek, pomočen v skrivnostno sladko-slano omako, ki visi čez rob sklede. Če niste zelo lačne, naročite različico z enim zrezkom; plačilo samo z gotovino, 10 minut hoje od postaje Chichibu.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Yasudaya%20Hinoda%20Chichibu%20waraji%20katsudon" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+      <div class="place">
+        <div class="place-head"><strong>Butamisodon Honpo Nosaka (野さか)</strong><span class="price">€</span></div>
+        <p>Najbolje ocenjena gostilna v mestu: buta miso don — svinjina, marinirana v misu in popečena na oglju, na vročem rižu. Odprto samo za kosilo in pogosto razprodano že zgodaj popoldne, zato pridite pred poldnevom; 3 minute od postaje Seibu-Chichibu.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Butamisodon%20Nosaka%20Chichibu" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+      <div class="place">
+        <div class="place-head"><strong>Kikuya Shokudo (喜久家食堂)</strong><span class="price">€</span></div>
+        <p>Družinska gostilna iz leta 1933 na glavni ulici proti skalam Iwadatami v Nagatoru. Waraji katsudon in miso katsudon sta izdatna, postrežba domača, za eno mizo pa je prostora dovolj tudi za vas pet.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Kikuya%20Shokudo%20Nagatoro" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+    </div>
+  </details>
+  <details class="food-cat">
+    <summary><span class="cat-emoji" aria-hidden="true">🍜</span><span class="cat-name">Soba in udon z orehovo omako</span><span class="cat-count">3 predlogi</span><span class="chev" aria-hidden="true">▶</span></summary>
+    <div class="cat-body">
+      <p class="cat-intro">Posebnost te regije je kurumi soba — ajdovi rezanci, ki jih pomakate v kremasto, rahlo sladko orehovo omako.</p>
+      <div class="place">
+        <div class="place-head"><strong>Waheisoba (わへいそば)</strong><span class="price">€</span></div>
+        <p>Ročno delana soba in najbolj slavna orehova omaka v Chichibuju — gosta, dišeča, popolna za pomakanje. Domačini hitro napolnijo mize, zato pridite ob odprtju; 12 minut hoje od postaje Chichibu.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Waheisoba%20Chichibu" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+      <div class="place">
+        <div class="place-head"><strong>Momijiya (紅葉屋)</strong><span class="price">€</span></div>
+        <p>Od leta 1929 na romarski poti k svetišču Musashi-Mitake; naročite kurumi sobo ali udon in sedite k oknu z razgledom na dolino. Novembra boste videle okoliške javorje v polnem ognju — že ime lokala pomeni &#x27;hiša jesenskega listja&#x27;.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Momijiya%20Mitakesan%20Ome" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+      <div class="place">
+        <div class="place-head"><strong>Wakamatsu (そば処 若松)</strong><span class="price">€</span></div>
+        <p>Tik ob postaji Nagatoro, s prisrčnim vzdušjem iz obdobja Showa. Set miso katsudon + mori soba pokrije obe lokalni specialiteti naenkrat — praktično, ko se vam po vožnji z vlakom ne da izbirati.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Wakamatsu%20soba%20Nagatoro" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+    </div>
+  </details>
+  <details class="food-cat">
+    <summary><span class="cat-emoji" aria-hidden="true">🍶</span><span class="cat-name">Ob reki Tama: tofu, sake in razgledi</span><span class="cat-count">3 predlogi</span><span class="chev" aria-hidden="true">▶</span></summary>
+    <div class="cat-body">
+      <p class="cat-intro">Sprehod ob smaragdni reki v dolini Mitake je shinrin-yoku v najlepši obliki — in pripelje vas naravnost do 300 let stare sakarne Ozawa v vasici Sawai.</p>
+      <div class="place">
+        <div class="place-head"><strong>Mamagotoya (ままごと屋)</strong><span class="price">€€€</span></div>
+        <p>Elegantno večhodno kosilo iz tofuja in yube v skoraj sto let stari hiši tik nad reko, v lasti sakarne Ozawa. Rezervirajte vnaprej — za skupino petih je to najlepše in najmirnejše kosilo v vsej dolini.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Mamagotoya%20tofu%20restaurant%20Sawai%20Ome" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+      <div class="place">
+        <div class="place-head"><strong>Seiryu Garden Sawanoi-en</strong><span class="price">€</span></div>
+        <p>Vrtna terasa sakarne tik nad turkizno reko Tama: degustacijske skodelice sakeja Sawanoi, prigrizki in sladki riževi cmoki pod drevesi. Brez rezervacij, čisto sproščeno; ob ponedeljkih zaprto.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Seiryu%20Garden%20Sawanoi-en%20Sawai%20Ome" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+      <div class="place">
+        <div class="place-head"><strong>Komadori Baiten (駒鳥売店)</strong><span class="price">€</span></div>
+        <p>Preprosta koča s teraso visoko na Mitakeju, ob poti od žičnice do svetišča: kava, skuhana z gorsko izvirsko vodo, in presenetljivo dober katsudon, pod vami pa vsa dolina. Samo gotovina, odprto čez dan.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Komadori%20Baiten%20Mitakesan%20Ome" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+    </div>
+  </details>
+  <details class="food-cat">
+    <summary><span class="cat-emoji" aria-hidden="true">🍁</span><span class="cat-name">Kavarne in sladice med jesenskimi barvami</span><span class="cat-count">3 predlogi</span><span class="chev" aria-hidden="true">▶</span></summary>
+    <div class="cat-body">
+      <p class="cat-intro">Sredi novembra v Nagatoru zvečer osvetlijo javorje v parku Tsukinoishi Momiji — sprehod med svetlečimi krošnjami si privoščite skupaj s postankom za sladico.</p>
+      <div class="place">
+        <div class="place-head"><strong>Asami Reizo Kanasaki Honten (阿左美冷蔵)</strong><span class="price">€€</span></div>
+        <p>130 let stara hiša naravnega ledu; njihov kakigori je puhast kot svež sneg in z domačimi sirupi teknejo tudi v hladnem novembru, ob njem pa dobite topel čaj. Le nekaj korakov od osvetljenega parka Tsukinoishi Momiji; samo gotovina, ob koncih tedna računajte na vrsto.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Asami%20Reizo%20Kanasaki%20Honten%20Nagatoro" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+      <div class="place">
+        <div class="place-head"><strong>MAPLE BASE</strong><span class="price">€</span></div>
+        <p>Prva japonska &#x27;sugar house&#x27; v parku Chichibu Muse Park: palačinke z javorjevim sirupom iz chichibuških gozdov in celo sladoled z viskijem Ichiro&#x27;s Malt. Jeseni je park okoli kavarne ena sama zlata aleja — kosilo in sprehod v enem.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=MAPLE%20BASE%20Chichibu%20Muse%20Park" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+      <div class="place">
+        <div class="place-head"><strong>JURIN&#x27;s GEO</strong><span class="price">€</span></div>
+        <p>Domača pražarna kave sredi gozda ob jami Hashidate, z oceno 4,5. Odlična ročno prelita kava, sloviti puding in sladoledni sendviči — miren postanek, kjer boste slišale samo reko in ptice.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=JURIN%27s%20GEO%20Chichibu" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+    </div>
+  </details>
+  <details class="food-cat">
+    <summary><span class="cat-emoji" aria-hidden="true">🍻</span><span class="cat-name">Večerja za skupino</span><span class="cat-count">3 predlogi</span><span class="chev" aria-hidden="true">▶</span></summary>
+    <div class="cat-body">
+      <p class="cat-intro">Zvečer se Chichibu prijetno umiri — rezervirajte mizo in nazdravite z lokalnim sakejem ali slavnim viskijem Ichiro&#x27;s Malt, ki ga delajo prav tu.</p>
+      <div class="place">
+        <div class="place-head"><strong>Takasago Horumon (高砂ホルモン)</strong><span class="price">€€</span></div>
+        <p>Chichibuška institucija: na mizi imate žar in same pečete koščke marinirane svinjine, zraven pa mrzlo pivo. Živahno, poceni in zelo lokalno — za pet oseb obvezno rezervirajte, ker se po 18. uri napolni.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Takasago%20Horumon%20Chichibu" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+      <div class="place">
+        <div class="place-head"><strong>Garden House Yurin (有隣)</strong><span class="price">€€</span></div>
+        <p>Prostorna hiša s tatami sobami in mizami blizu svetišča Hodosan v Nagatoru: seti z waraji katsujem, sobo in svinjino v misu ter lokalni sake. Sprejemajo skupine in rezervacije — idealna za skupno pojedino po večernem ogledu osvetljenih javorjev.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Garden%20House%20Yurin%20Nagatoro" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+      <div class="place">
+        <div class="place-head"><strong>Chichibu Warajikatsutei (秩父わらじかつ亭)</strong><span class="price">€</span></div>
+        <p>Preprosta restavracija v kompleksu term Matsuri no Yu tik ob postaji Seibu-Chichibu: waraji katsudon, rezanci in Ichiro&#x27;s Malt highball brez rezervacije in brez čakanja. Po večerji si lahko v onsenu odpočijete noge — popolen zaključek dneva.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Chichibu%20Warajikatsutei%20Matsuri%20no%20Yu" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+    </div>
+  </details>
+</section>
+<section class="card-section" aria-labelledby="prakticno">
+  <h2 id="prakticno">🧭 Dobro je vedeti</h2>
+  <ul class="nice-list">
+    <li>Prevoz v Chichibu in Nagatoro: iz Tokia (postaja Ikebukuro) vozi udoben ekspresni vlak Laview družbe Seibu do postaje Seibu-Chichibu (okoli 80 minut). Sedeži so rezervirani — karte kupite vnaprej na postaji ali prek spleta. Do Nagatora naprej pelje lokalna železnica Chichibu Railway.</li>
+    <li>Prevoz na goro Mitake in v Okutamo: z JR linijo Chuo/Ome iz Shinjukuja do postaje Mitake (okoli 95 minut), nato avtobus do spodnje postaje vzpenjače. Kartici Suica ali Pasmo delujeta na vlakih in avtobusih, na vzpenjači karto kupite posebej.</li>
+    <li>Gotovina: v Nagatoru, na gori Mitake in na festivalskih stojnicah marsikje sprejemajo samo gotovino. Imejte vsaj 10.000-15.000 jenov na osebo v žepu; bankomati, ki sprejemajo tuje kartice, so v trgovinah 7-Eleven in na poštah.</li>
+    <li>Rezervacije: prenočišče za noč 1.-2. decembra (nočni festival Chichibu) rezervirajte takoj, ker je vse razprodano več mesecev prej. Vnaprej rezervirajte tudi vodeno gozdno terapijo v Okutami in po želji degustacijo v pivovarni Sawanoi.</li>
+    <li>Vreme in obleka: november je večinoma sončen in suh, a v gorah hladen — čez dan 8-15 °C, zvečer blizu ničle. Vzemite tople plasti, kapo in dobre nedrseče čevlje; večerne osvetlitve in ognjemet gledate na mrazu. Vožnja s čolnom v Nagatoru ob dežju odpade.</li>
+  </ul>
+</section>
+<section class="card-section stay-section" aria-labelledby="prespati">
+  <h2 id="prespati">🏡 Kje prespati</h2>
+  <p>Prenočišče v mestu Chichibu ali blizu postaje Seibu-Chichibu; nekaj hiš ima tudi onsen. V času jesenskih barv in nočnega festivala (začetek decembra) rezervirajte zgodaj.</p>
+</section>
+<section class="card-section fact-section" aria-labelledby="zanimivost">
+  <h2 id="zanimivost">💡 Zanimivost</h2>
+  <p>Shinrin-yoku (»gozdna kopel«) je na Japonskem uradno priznana zdravstvena praksa — raziskave kažejo, da že 20 minut med drevesi občutno zniža stresne hormone.</p>
+</section>
+<section class="card-section magda-section" aria-labelledby="magda">
+  <h2 id="magda">💛 Magdin trenutek</h2>
+  <p>Ob potoku se ustavite, zaprite oči in pet minut samo poslušajte: vodo, veter, ptice. Temu Japonci pravijo gozdna kopel — in po njej boste natanko razumele, zakaj.</p>
+</section>
+<section class="rubric-wrap" aria-label="Osebne rubrike">
+  <div class="card-section rubric rubric-moment">
+    <h2>🍁 Najlepši trenutek dneva</h2>
+    <p>Chichibu je najlepši zgodaj zjutraj, ko se iz soteske Mitake dviga megla in sonce počasi pozlati cedre. Za drugačen čar pa pridite zvečer v park Tsukinoishi Momiji ob Nagatoru: konec novembra javorje osvetlijo in barve se v temi še poglobijo, spodaj pa tiho teče reka. Dan v gorah in večer ob osvetljenem gaju — dve povsem različni lepoti istega kraja.</p>
+  </div>
+  <div class="card-section rubric rubric-hour">
+    <h2>☕ Vzemi si uro zase</h2>
+    <p>Ustavite se ob reki Tama v soteski Mitake — poiščite ravno skalo ali klop ob vodi, kjer skozi cedre sije svetloba. Nekaj časa samo poslušajte vodo in veter v drevesih; temu Japonci pravijo shinrin-yoku, gozdna kopel. Ko vas premraži, se pogrejte v onsenu Matsuri no Yu tik ob postaji, preden se z vlakom vrnete.</p>
+  </div>
+  <div class="card-section rubric rubric-mandala">
+    <h2>🎨 Navdih za mandalo</h2>
+    <p>Barve kraja: globoka zelena cedrovih gozdov, rjava lubja in kamnov, žareča rdeča in oranžna javorjev v Nagatoru ter srebrno modra gorske reke. Za vzorce vzemite koncentrične kroge letnic v deblu, valove reke in zvezdaste javorjeve liste. Osrednji motiv naj bo mirno oko soteske, iz katerega se navzven širijo listi in valovi.</p>
+  </div>
+  <div class="card-section rubric rubric-rain">
+    <h2>☔ Če dežuje</h2>
+    <p>Ob dežju: muzej Gyokudo ob soteski, topli onsen Matsuri no Yu ob postaji in pokrite trgovinice. Svetišče Chichibu je lepo tudi v dežju.</p>
+  </div>
+  <div class="card-section diary">
+    <h2>📖 Magdin dnevnik</h2>
+    <p class="diary-hint">Prostor za vaše vtise, skice in najlepši spomin s te postaje.</p>
+    <div class="diary-lines" aria-hidden="true"></div>
+  </div>
+</section>
+<section class="card-section" aria-labelledby="videi">
+  <h2 id="videi">🎬 Videi za navdih</h2>
+  <div class="video-grid">
+    <figure>
+      <!-- Video zamenjaš tako, da spremeniš kodo za "embed/" v spodnji vrstici -->
+      <iframe class="video-frame" src="https://www.youtube-nocookie.com/embed/CV2LoQrIvVs" title="【HOW TO ENJOY】Chichibu-Tama-Kai National Park" loading="lazy" allowfullscreen allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+      <figcaption>【HOW TO ENJOY】Chichibu-Tama-Kai National Park · 環境省　日本の国立公園</figcaption>
+    </figure>
+    <figure>
+      <!-- Video zamenjaš tako, da spremeniš kodo za "embed/" v spodnji vrstici -->
+      <iframe class="video-frame" src="https://www.youtube-nocookie.com/embed/vZWb5gIsAVY" title="[Vlog] Musashi Mitake Jinja Shrine with Autumn leaves in Mt. Mitake | Tokyo Sightseeing, Japan" loading="lazy" allowfullscreen allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+      <figcaption>[Vlog] Musashi Mitake Jinja Shrine with Autumn leaves in Mt. Mitake | Tokyo Sightseeing, Japan · Hiroyuki Chishiro [Tokyo Sightseeing]</figcaption>
+    </figure>
+    <figure>
+      <!-- Video zamenjaš tako, da spremeniš kodo za "embed/" v spodnji vrstici -->
+      <iframe class="video-frame" src="https://www.youtube-nocookie.com/embed/SY6pQcFtWmI" title="Chichibu-Tama-Kai National Park Musashi Mitake Shrine" loading="lazy" allowfullscreen allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+      <figcaption>Chichibu-Tama-Kai National Park Musashi Mitake Shrine · 環境省　日本の国立公園</figcaption>
+    </figure>
+    <figure>
+      <!-- Video zamenjaš tako, da spremeniš kodo za "embed/" v spodnji vrstici -->
+      <iframe class="video-frame" src="https://www.youtube-nocookie.com/embed/WICOqjlY9Qc" title="長瀞ラインくだり Japan Nagatoro River Boat Ride 4K" loading="lazy" allowfullscreen allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+      <figcaption><strong>Vožnja s tradicionalnim čolnom po reki Arakawa v Nagatoru (Nagatoro Line Kudari)</strong> · 長瀞ラインくだり Japan Nagatoro River Boat Ride 4K · Aethersong</figcaption>
+    </figure>
+    <figure>
+      <!-- Video zamenjaš tako, da spremeniš kodo za "embed/" v spodnji vrstici -->
+      <iframe class="video-frame" src="https://www.youtube-nocookie.com/embed/jcAje7sAZV4" title="Walking around Mount Mitake in Tokyo | Japan Walk 4K" loading="lazy" allowfullscreen allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+      <figcaption><strong>Gora Mitake in svetišče Musashi-Mitake</strong> · Walking around Mount Mitake in Tokyo | Japan Walk 4K · Tokyo Trip</figcaption>
+    </figure>
+    <figure>
+      <!-- Video zamenjaš tako, da spremeniš kodo za "embed/" v spodnji vrstici -->
+      <iframe class="video-frame" src="https://www.youtube-nocookie.com/embed/p-Qy4TNaknA" title="🏯 Chichibu, Japan Walking Tour | Exploring Old Town Charms &amp; Ancient Shrines [4K 60fps]" loading="lazy" allowfullscreen allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+      <figcaption><strong>Staro mestno jedro Chichibuja s svetišči</strong> · 🏯 Chichibu, Japan Walking Tour | Exploring Old Town Charms &amp; Ancient Shrines [4K 60fps] · 4K Walking Travel</figcaption>
+    </figure>
+  </div>
+  <p class="video-more">Več videov na YouTube: <a href="https://www.youtube.com/results?search_query=Chichibu%20Tama%20Kai%20national%20park%20autumn" target="_blank" rel="noopener">»Chichibu Tama Kai national park autumn«</a> · <a href="https://www.youtube.com/results?search_query=Mitake%20shrine%20Japan" target="_blank" rel="noopener">»Mitake shrine Japan«</a></p>
+</section>
+<div class="back-row"><a class="back-button" href="index.html">🏠 Nazaj na pregled</a></div>
+<nav class="pager" aria-label="Prejšnja in naslednja postaja">
+  <a class="prev" href="tokio.html"><span class="pager-label">← Prejšnja postaja</span>🗼 Tokio</a>
+  <a class="next" href="kawaguchiko.html"><span class="pager-label">Naslednja postaja →</span>🗻 Kawaguchiko &amp; gora Fuji</a>
+</nav>
+</main>
+<footer>
+  <p>🍁 Japonska — Mesec za dušo · 3. november – 2. december 2026 · Tokio → Osaka</p>
+  <p>Z ljubeznijo pripravljeno za Magdo in prijateljice</p>
+  <p><a href="kako.html">🎓 Kako uporabljati to stran</a> · <a href="../index.html?izpis=1">🔑 Zamenjaj potovanje</a></p>
+</footer>
+<script src="app.js?v=19"></script>
+</body>
+</html>

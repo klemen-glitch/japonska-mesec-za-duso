@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Živalski vrt Ljubljana · Zmajeva pustolovščina</title>
+  <meta name="description" content="Živalski vrt Ljubljana: kaj početi, izzivi in nasveti — Zmajeva pustolovščina, Ljubljana.">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#2f8f6b">
+  <script>window.TRIP={"id": "ljubljana", "slug": "lj-d4phmm7xw", "people": ["Ana", "Maks"], "gate": "../index.html", "after": ["Bravo, zmajska ekipa!", "Poglejta <a href=\"nalozi.html\">skupni album</a> in iz slik sestavita svojo Zmajevo knjigo."], "t": {"locked": "Presenečenje čaka — odklene se, ko naložita sliko ali video.", "empty": "Album je še prazen — naložita prvo fotografijo. 📸", "thanks": "naloženih ✓ — odlično!", "more": "Odpri vodnik za to postajo →", "pre": "Pustolovščina se začne {date}. Poglejta <a href=\"priprave.html\">priprave</a> in kontrolni seznam."}, "color": "#2f8f6b", "stations": [{"k": "vlak", "e": "🚂", "n": "Vlak"}, {"k": "emonec", "e": "🏨", "n": "Hotel"}, {"k": "center", "e": "🏰", "n": "Center"}, {"k": "zoo", "e": "🦁", "n": "Živalski vrt"}, {"k": "domov", "e": "🏠", "n": "Domov"}]};(function(){try{var s=JSON.parse(localStorage.getItem("trip_session")||"null");var ok=s&&s.trips&&s.trips.some(function(t){return t.slug===TRIP.slug});if(!ok){location.replace(TRIP.gate+"?next="+encodeURIComponent(TRIP.slug));}}catch(e){}})();</script>
+  <link rel="stylesheet" href="style.css?v=19">
+  <style>
+    :root { --accent:#1f7a5a; --accent-ink:#1f7a5a; --accent-soft:#e8f5ee; --pin:#2f8f6b; --orange:#c8553d; --gold:#b08a2e; }
+    @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --accent:#6fd0a6; --accent-ink:#6fd0a6; --accent-soft:#14261e; --pin:#2f8f6b; --orange:#e08a6c; --gold:#d2b256; } }
+    :root[data-theme="dark"] { --accent:#6fd0a6; --accent-ink:#6fd0a6; --accent-soft:#14261e; --pin:#2f8f6b; --orange:#e08a6c; --gold:#d2b256; }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="album.js?v=19"></script>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+</head>
+<body>
+<header class="site-header">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">🐉 Zmajeva pustolovščina</a>
+    <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="main-menu">
+      <span class="mt-ico" aria-hidden="true">☰</span> Meni
+    </button>
+  </div>
+  <nav class="main-menu" id="main-menu" aria-label="Glavni meni" hidden>
+    <div class="menu-inner">
+      <div class="menu-primary">
+        <a href="index.html"><span class="mi-emoji" aria-hidden="true">🏠</span>Domov</a>
+        <a href="kako.html"><span class="mi-emoji" aria-hidden="true">🎓</span>Kako uporabljati</a>
+        <a href="nacrt.html"><span class="mi-emoji" aria-hidden="true">🗺️</span>Načrt poti</a>
+        <a href="izziv.html"><span class="mi-emoji" aria-hidden="true">📸</span>Izzivi</a>
+        <a href="nalozi.html"><span class="mi-emoji" aria-hidden="true">📤</span>Naloži fotografije</a>
+        <a href="priprave.html"><span class="mi-emoji" aria-hidden="true">🎒</span>Priprave</a>
+        <a href="nujno.html"><span class="mi-emoji" aria-hidden="true">🆘</span>Nujno</a>
+        <a href="../index.html?izpis=1"><span class="mi-emoji" aria-hidden="true">🔑</span>Zamenjaj potovanje</a>
+      </div>
+      <p class="menu-label">Postaje pustolovščine</p>
+      <div class="menu-stations">
+        <a href="vlak.html"><span class="mi-emoji" aria-hidden="true">🚂</span>Vlak</a>
+        <a href="emonec.html"><span class="mi-emoji" aria-hidden="true">🏨</span>Hotel</a>
+        <a href="center.html"><span class="mi-emoji" aria-hidden="true">🏰</span>Center</a>
+        <a href="zoo.html" aria-current="page"><span class="mi-emoji" aria-hidden="true">🦁</span>Živalski vrt</a>
+        <a href="domov.html"><span class="mi-emoji" aria-hidden="true">🏠</span>Domov</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="menu-backdrop" id="menu-backdrop" hidden></div>
+<main>
+<section class="loc-hero">
+  <div class="scene-banner"><svg class="scene-svg" viewBox="0 0 1200 460" role="img" aria-label="Ilustracija živalskega vrta: žirafa, slon in drevesa na pobočju Rožnika" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="sky-zoo" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c3e6f0"/><stop offset="1" stop-color="#fdf3da"/></linearGradient></defs><rect width="1200" height="460" fill="url(#sky-zoo)"/><circle cx="1040" cy="100" r="50" fill="#f6c76a" opacity="0.9"/><g opacity="0.9" transform="translate(220,90) scale(0.9)" fill="#fff"><ellipse cx="0" cy="0" rx="58" ry="22"/><ellipse cx="-34" cy="8" rx="34" ry="16"/><ellipse cx="38" cy="8" rx="38" ry="17"/><ellipse cx="14" cy="-14" rx="30" ry="18"/></g><g opacity="0.8" transform="translate(640,60) scale(0.6)" fill="#fff"><ellipse cx="0" cy="0" rx="58" ry="22"/><ellipse cx="-34" cy="8" rx="34" ry="16"/><ellipse cx="38" cy="8" rx="38" ry="17"/><ellipse cx="14" cy="-14" rx="30" ry="18"/></g><polygon points="0,300 260,200 560,290 860,190 1200,290 1200,460 0,460" fill="#9fd0b0" opacity="1.0"/><polygon points="0,350 300,270 640,350 940,270 1200,340 1200,460 0,460" fill="#6fb086" opacity="1.0"/><rect x="57" y="349.5" width="6" height="22.5" fill="#6b4a34"/><polygon points="30.0,354.0 90.0,354.0 60,303.0" fill="#1f5f48" opacity="1.0"/><polygon points="36.599999999999994,313.5 83.4,313.5 60,262.5" fill="#1f5f48" opacity="1.0"/><polygon points="43.5,273.0 76.5,273.0 60,222.0" fill="#1f5f48" opacity="1.0"/><rect x="127" y="343.5" width="6" height="28.5" fill="#6b4a34"/><polygon points="92.0,349.2 168.0,349.2 130,284.59999999999997" fill="#1f5f48" opacity="1.0"/><polygon points="100.36,297.9 159.64,297.9 130,233.29999999999995" fill="#1f5f48" opacity="1.0"/><polygon points="109.1,246.59999999999997 150.9,246.59999999999997 130,181.99999999999994" fill="#1f5f48" opacity="1.0"/><rect x="1087" y="346.5" width="6" height="25.5" fill="#6b4a34"/><polygon points="1056.0,351.6 1124.0,351.6 1090,293.8" fill="#1f5f48" opacity="1.0"/><polygon points="1063.48,305.70000000000005 1116.52,305.70000000000005 1090,247.90000000000003" fill="#1f5f48" opacity="1.0"/><polygon points="1071.3,259.8 1108.7,259.8 1090,202.0" fill="#1f5f48" opacity="1.0"/><rect x="1157" y="342.0" width="6" height="30.0" fill="#6b4a34"/><polygon points="1120.0,348.0 1200.0,348.0 1160,280.0" fill="#1f5f48" opacity="1.0"/><polygon points="1128.8,294.0 1191.2,294.0 1160,226.0" fill="#1f5f48" opacity="1.0"/><polygon points="1138.0,240.0 1182.0,240.0 1160,172.0" fill="#1f5f48" opacity="1.0"/><rect x="417" y="354.0" width="6" height="18.0" fill="#6b4a34"/><polygon points="396.0,357.6 444.0,357.6 420,316.8" fill="#1f5f48" opacity="1.0"/><polygon points="401.28,325.20000000000005 438.72,325.20000000000005 420,284.40000000000003" fill="#1f5f48" opacity="1.0"/><polygon points="406.8,292.8 433.2,292.8 420,252.0" fill="#1f5f48" opacity="1.0"/><rect x="797" y="352.5" width="6" height="19.5" fill="#6b4a34"/><polygon points="774.0,356.4 826.0,356.4 800,312.2" fill="#1f5f48" opacity="1.0"/><polygon points="779.72,321.29999999999995 820.28,321.29999999999995 800,277.09999999999997" fill="#1f5f48" opacity="1.0"/><polygon points="785.7,286.2 814.3,286.2 800,242.0" fill="#1f5f48" opacity="1.0"/><rect x="0" y="372" width="1200" height="88" fill="#7ec28f"/><path d="M-20 440 C300 400 700 430 1220 392 L1220 420 C700 460 300 432 -20 470 Z" fill="#e7d8b4"/><rect x="196" y="262" width="10" height="112" fill="#7a5638"/><rect x="316" y="262" width="10" height="112" fill="#7a5638"/><rect x="170" y="238" width="182" height="46" rx="10" fill="#f3e3bd" stroke="#7a5638" stroke-width="5"/><text x="261" y="268" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="22" font-weight="800" fill="#1f5f48">ZOO</text><rect x="536.0" y="310.0" width="12.0" height="70.0" fill="#e6b45a"/><rect x="572.0" y="310.0" width="12.0" height="70.0" fill="#d9a447"/><ellipse cx="560" cy="298.0" rx="44.0" ry="28.0" fill="#e9b85c"/><polygon points="580.0,288.0 602.0,288.0 590.0,148.0 570.0,148.0" fill="#e9b85c"/><ellipse cx="588.0" cy="140.0" rx="22.0" ry="13.0" fill="#e9b85c"/><rect x="582.0" y="118.0" width="3.0" height="14.0" fill="#7a4a1c"/><rect x="594.0" y="118.0" width="3.0" height="14.0" fill="#7a4a1c"/><circle cx="596.0" cy="138.0" r="2.6" fill="#2a3a35"/><ellipse cx="552.0" cy="272.0" rx="7.0" ry="9.0" fill="#9a5b22" opacity="0.8"/><ellipse cx="570.0" cy="250.0" rx="7.0" ry="9.0" fill="#9a5b22" opacity="0.8"/><ellipse cx="554.0" cy="230.0" rx="7.0" ry="9.0" fill="#9a5b22" opacity="0.8"/><ellipse cx="572.0" cy="204.0" rx="7.0" ry="9.0" fill="#9a5b22" opacity="0.8"/><ellipse cx="560.0" cy="174.0" rx="7.0" ry="9.0" fill="#9a5b22" opacity="0.8"/><ellipse cx="558.0" cy="320.0" rx="7.0" ry="9.0" fill="#9a5b22" opacity="0.8"/><ellipse cx="580.0" cy="316.0" rx="7.0" ry="9.0" fill="#9a5b22" opacity="0.8"/><rect x="760.0" y="332.0" width="26.0" height="60.0" rx="8.0" fill="#9aa3a8"/><rect x="854.0" y="332.0" width="26.0" height="60.0" rx="8.0" fill="#9aa3a8"/><ellipse cx="820" cy="300.0" rx="84.0" ry="54.0" fill="#aab2b6"/><circle cx="898.0" cy="280.0" r="42.0" fill="#aab2b6"/><path d="M930.0 292.0 C960.0 316.0 952.0 362.0 936.0 370.0" stroke="#aab2b6" stroke-width="18.0" stroke-linecap="round" fill="none"/><ellipse cx="870.0" cy="284.0" rx="26.0" ry="34.0" fill="#9aa3a8"/><circle cx="912.0" cy="268.0" r="3.6" fill="#2a3a35"/><path d="M924.0 308.0 q16.0 10.0 20.0 -2.0" stroke="#f3efe6" stroke-width="6.0" stroke-linecap="round" fill="none"/><rect x="976" y="344.0" width="8" height="36.0" fill="#6b4a34"/><ellipse cx="980" cy="305.6" rx="38.4" ry="48.0" fill="#3f8a5c"/><path d="M430 110 q10 -10 20 0 q10 -10 20 0" stroke="#2a3a35" stroke-width="2.4" fill="none" opacity="0.5"/><path d="M480 80 q10 -10 20 0 q10 -10 20 0" stroke="#2a3a35" stroke-width="2.4" fill="none" opacity="0.5"/><path d="M760 120 q10 -10 20 0 q10 -10 20 0" stroke="#2a3a35" stroke-width="2.4" fill="none" opacity="0.5"/></svg></div>
+  <p class="kicker">🦁 Postaja 4 od 5 · glavni dan</p>
+  <h1>Živalski vrt Ljubljana</h1>
+  <p class="loc-sub">Cel dan med slonom, žirafami, tigri in morskimi levi</p>
+  <p class="loc-intro">Živalski vrt leži na južnem pobočju Rožnika, v gozdu in na travnikih, ki so del krajinskega parka. Površine je okoli 19,6 hektara, poti pa je po objavljenih podatkih 5–6 km — dovolj za cel dan raziskovanja. Spodaj je predlog poti od vhoda do izhoda, s krmljenji, igrišči, odmori in kar 20 izzivi za Zmajevo knjigo. Malo načrta, veliko radovednosti!</p>
+  <p class="visit-wrap"><button type="button" class="visit-btn" data-visit="zoo">☐ Označi kot obiskano</button></p>
+</section>
+<section class="card-section" aria-labelledby="znamenitosti">
+  <h2 id="znamenitosti">🦒 Kaj videti in početi</h2>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">🎟️</span>Vhod in zemljevid</h3>
+    <p>Zoo je odprt vsak dan; oktobra po objavljenih podatkih od 9.00 do 18.00 (točno uro zadnjega vstopa preverita na zoo.si). Na vhodu vzemita zemljevid — Maks je »kapitan poti« in izbere prvo žival.</p>
+    <p class="sight-tip">💡 Vstopnice lahko kupita tudi vnaprej na spletu (trgovina.zoo.si) in se izogneta vrsti.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=%C5%BDivalski%20vrt%20Ljubljana%2C%20Ve%C4%8Dna%20pot%2070" target="_blank" rel="noopener">📍 Zemljevid</a>
+    </div>
+  </article>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">🐘</span>Slonica Ganga</h3>
+    <p>Azijska slonica Ganga živi v ljubljanskem živalskem vrtu že od leta 1977 — najstarejša je med prebivalci. Odrasel azijski slon poje na dan več deset kilogramov hrane.</p>
+    <p class="sight-tip">💡 Opazujta, kako s hobotom pobira hrano — hobot ima neverjetno veliko mišic in je hkrati nos, roka in cev za pitje.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=%C5%BDivalski%20vrt%20Ljubljana%20sloni" target="_blank" rel="noopener">📍 Zemljevid</a>
+      <a class="vid-btn" href="https://www.youtube.com/results?search_query=ZOO%20Ljubljana%20slon%20Ganga" target="_blank" rel="noopener">🎬 Video</a>
+    </div>
+  </article>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">🦒</span>Žirafe</h3>
+    <p>Žirafe so najvišje kopenske živali. Jezik, s katerim objemajo vejice, je dolg tudi do 50 cm in temno modrikast, da se ne opeče na soncu.</p>
+    <p class="sight-tip">💡 Ugibajta: koliko Maksov je visoka žirafa? Najprej ugibata, nato primerjata s sliko.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=%C5%BDivalski%20vrt%20Ljubljana%20%C5%BEirafe" target="_blank" rel="noopener">📍 Zemljevid</a>
+      <a class="vid-btn" href="https://www.youtube.com/results?search_query=giraffe%20feeding%20zoo" target="_blank" rel="noopener">🎬 Video</a>
+    </div>
+  </article>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">🐅</span>Tigri in veliki mački</h3>
+    <p>V vrtu živijo sibirski tigri — največje mačke na svetu. Vsak tiger ima unikatne črte, kot človek prstni odtis.</p>
+    <p class="sight-tip">💡 Če tigra ne vidita takoj, poiščita sledi: tace, praske na deblu, utrujen pogled mačk, ki spi na skali.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=%C5%BDivalski%20vrt%20Ljubljana%20tigri" target="_blank" rel="noopener">📍 Zemljevid</a>
+      <a class="vid-btn" href="https://www.youtube.com/results?search_query=Siberian%20tiger%20zoo" target="_blank" rel="noopener">🎬 Video</a>
+    </div>
+  </article>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">🦭</span>Morski levi</h3>
+    <p>Kalifornijski morski levi so zabavni: plavajo, se podijo in se učijo trikov. Za razliko od tjulnjev imajo majhne zunanje ušesne školjke.</p>
+    <p class="sight-tip">💡 Po nekaterih virih je trening dvakrat dnevno (npr. okoli 11.00 in 17.00) — točno uro preverita na vhodu ali zoo.si.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=%C5%BDivalski%20vrt%20Ljubljana%20morski%20levi" target="_blank" rel="noopener">📍 Zemljevid</a>
+      <a class="vid-btn" href="https://www.youtube.com/results?search_query=California%20sea%20lion%20training%20zoo" target="_blank" rel="noopener">🎬 Video</a>
+    </div>
+  </article>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">🐐</span>Mini ZOO</h3>
+    <p>Prostor za otroke in manjše živali: koze, ovce in druge domače živali, ki jih smeš nežno pobožati. Pravilo: počepnita, počakata, da pride žival sama; ne hranita, ne lovita, ne dvigajta.</p>
+    <p class="sight-tip">💡 Mini ZOO je pri ogradi guanak, nasproti jelenov (za vivarijem).</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Mini%20ZOO%20%C5%BDivalski%20vrt%20Ljubljana" target="_blank" rel="noopener">📍 Zemljevid</a>
+    </div>
+  </article>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">🐺</span>Volkovi, medvedi in domača divjad</h3>
+    <p>V slovenskih gozdovih živi več sto rjavih medvedov in tudi volkovi; v vrtu si lahko ogledata, kako velika je medvedja šapa. Ris je bil pri nas ponovno naseljen leta 1973.</p>
+    <p class="sight-tip">💡 Živali so običajno najbolj aktivne zjutraj in pozno popoldne — opoldne pogosto počivajo.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=%C5%BDivalski%20vrt%20Ljubljana%20medvedi" target="_blank" rel="noopener">📍 Zemljevid</a>
+    </div>
+  </article>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">🐒</span>Rdeče pande, opice in drobne živali</h3>
+    <p>Rdeča panda ni v sorodu z velikim pando, je pa ena najbolj ljubkih živali. Kaj vse še živi v vrtu, ugotovita sama: na zemljevidu iščita opice, ptice in majhne sesalce.</p>
+    <p class="sight-tip">💡 Živali se menjajo — če katere ni, poiščita naslednjo. Pomembno je, da hodita počasi in opazujeta.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=%C5%BDivalski%20vrt%20Ljubljana" target="_blank" rel="noopener">📍 Zemljevid</a>
+    </div>
+  </article>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">🐍</span>Vivarij in terariji</h3>
+    <p>Kače, kuščarji, žabe in druge plazilke in dvoživke. Tukaj je toplo in vlažno — dobro mesto za krajšo pavzo, če zunaj piha.</p>
+    <p class="sight-tip">💡 Poiščita najmanjše in največje bitje in jima izberita imeni.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Vivarij%20%C5%BDivalski%20vrt%20Ljubljana" target="_blank" rel="noopener">📍 Zemljevid</a>
+    </div>
+  </article>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">🛝</span>Igrišči in odmor</h3>
+    <p>V vrtu sta dve igrišči, med njima novejše z afriško temo. Tudi sladoled in prigrizek sta tam; ob lepem vremenu je odmor na travniku pravi zaklad.</p>
+    <p class="sight-tip">💡 Odmor načrtujta za sredino poti, ko sta že malo utrujena — potem imata moč za drugi del.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=igri%C5%A1%C4%8De%20%C5%BDivalski%20vrt%20Ljubljana" target="_blank" rel="noopener">📍 Zemljevid</a>
+    </div>
+  </article>
+</section>
+<section class="card-section map-section" aria-labelledby="zemljevid">
+  <h2 id="zemljevid">🗺️ Zemljevid kraja</h2>
+  <div class="area-map" data-lat="46.0553" data-lon="14.4722" data-zoom="16" role="img" aria-label="Zemljevid — Živalski vrt Ljubljana, Večna pot 70"></div>
+  <a class="pin-btn map-open" href="https://www.google.com/maps/search/?api=1&query=%C5%BDivalski%20vrt%20Ljubljana%2C%20Ve%C4%8Dna%20pot%2070" target="_blank" rel="noopener">📍 Odpri na Google Zemljevidu</a>
+</section>
+<section class="card-section" aria-labelledby="dan">
+  <h2 id="dan">🗓️ Predlog enega lepega dne</h2>
+  <ul class="plan-list">
+    <li><span class="plan-time"><span class="plan-ic" aria-hidden="true">🌅</span> 9.00</span><span>Prihod z avtobusom št. 18 (postaja »Živalski vrt«). Vzemita zemljevid, kupita vstopnici (ali jih že imata) in se slikata pod vhodom.</span></li>
+    <li><span class="plan-time"><span class="plan-ic" aria-hidden="true">🌅</span> 9.30</span><span>Prvi del poti: slon Ganga, žirafe in tigri — najbolj »velike« živali, ko so še spočite in aktivne. Za vsako žival izpolnita izziv.</span></li>
+    <li><span class="plan-time"><span class="plan-ic" aria-hidden="true">🍽️</span> 11.00</span><span>Morski levi: trening ali napajanje — po objavljenem urniku. Poglejta, kako se levi učijo trikov.</span></li>
+    <li><span class="plan-time"><span class="plan-ic" aria-hidden="true">🍽️</span> 12.00</span><span>Odmor: malica ali sladoled. Poglejta zemljevid in izberita, kaj gresta gledat po kosilu.</span></li>
+    <li><span class="plan-time"><span class="plan-ic" aria-hidden="true">🍽️</span> 13.00</span><span>Mini ZOO: pobožajta koze in ovce po pravilih. Poiščita vivarij in igrišče — Maks izbere, kje se zadržita dlje.</span></li>
+    <li><span class="plan-time"><span class="plan-ic" aria-hidden="true">🍂</span> 14.30</span><span>Druga polovica poti: volk, medved, rdeče pande, opice in ptice. Hodita počasi in opazujta — katera žival jima je najbolj smešna?</span></li>
+    <li><span class="plan-time"><span class="plan-ic" aria-hidden="true">🍂</span> 16.00</span><span>Zadnji postanek: trgovinica z darili (izberita en spominek) in zadnja slika pri izhodu. Nato avtobus nazaj v središče.</span></li>
+  </ul>
+</section>
+<section class="card-section izzivi" aria-labelledby="izzivi">
+  <h2 id="izzivi">📸 Foto izzivi za album</h2>
+  <p class="cat-intro">Naložita fotografijo (ali video) za izziv — takoj se označi kot opravljen in se spodaj pokaže sličica. Iz tega nastane vajin skupni album. <a href="izziv.html">Vsi izzivi na enem mestu →</a></p>
+  <div class="album-gate"></div>
+  <div class="izziv-board" data-scope="zoo"></div>
+  <script type="application/json" id="izziv-data">[{"id": "zoo-0", "t": "foto", "x": "Ana in Maks pod vhodnim napisom ali pri vhodu v zoo.", "w": "Vhod je štart največjega dneva. Poglejta, kako so oblečeni — zvečer jim bosta morda drugačni (blatni, ampak srečni).", "p": {"k": "zanimivost", "h": "Zoo pod Rožnikom", "x": "Živalski vrt leži na južnem pobočju Rožnika, v naravnem gozdu in travnikih — del krajinskega parka Tivoli, Rožnik in Šišenski hrib.", "m": "Živalski vrt Ljubljana"}, "s": "zoo", "sn": "Živalski vrt", "e": "🦁"}, {"id": "zoo-1", "t": "foto", "x": "Maks je »kapitan poti«: drži zemljevid zoo in pokaže, kam gresta prvo.", "w": "Vsak dober raziskovalec začne z zemljevidom. Označita tri živali, ki jih morata videti prvo.", "p": {"k": "nagrada", "h": "Nagrada: kapitan poti", "x": "Maks določi vrstni red prvih treh živali — Ana ga ne sme spreminjati (razen, če je res nujno)."}, "s": "zoo", "sn": "Živalski vrt", "e": "🦁"}, {"id": "zoo-2", "t": "foto", "x": "Slonica Ganga: poiščita jo in naredita sliko z velikim slonom v ozadju.", "w": "Ganga živi v ljubljanskem zoo že od leta 1977 — skoraj petdeset let. To je dolgo!", "p": {"k": "zanimivost", "h": "Najstarejša prebivalka", "x": "Ganga je azijska slonica in najstarejša prebivalka ljubljanskega živalskega vrta. Slon z velikimi ušesi si ohlaja kri — ušesa so kot hladilnik!", "m": "Živalski vrt Ljubljana sloni"}, "s": "zoo", "sn": "Živalski vrt", "e": "🦁"}, {"id": "zoo-3", "t": "video", "x": "10-sekundni video: slonov hobot v akciji (jedo, pije, se igra).", "w": "Hobot je nos, roka in cev za pitje hkrati — in ima neverjetno veliko mišic. Poglejta, kaj vse zna.", "p": {"k": "zanimivost", "h": "Hobot in hrana", "x": "Odrasel azijski slon poje na dan več deset kilogramov hrane — kolikor tehta Maksova šolska torba večkrat. Hobot jo vedno pobere sam."}, "s": "zoo", "sn": "Živalski vrt", "e": "🦁"}, {"id": "zoo-4", "t": "foto", "x": "Žirafa: Maks stoji z dvignjeno roko poleg sebe — ugibajta, koliko Maksov je visoka žirafa.", "w": "Žirafa je najvišja kopenska žival. Poleg Maksa se zdi še višja!", "p": {"k": "skrivnost", "h": "Skrivnost modrega jezika", "x": "Jezik žirafe je dolg do 50 cm in temno modrikast — da se ne opeče na soncu, ko objema veje."}, "s": "zoo", "sn": "Živalski vrt", "e": "🦁"}, {"id": "zoo-5", "t": "foto", "x": "Sibirski tiger: poiščita črte in slikajta oči — kje je tiger?", "w": "Črte so pri vsakem tigru drugačne, kot prstni odtis. Poglejta, če so res.", "p": {"k": "zanimivost", "h": "Največja mačka", "x": "Sibirski tiger je največja mačka na svetu. Njegova koža pod krznom je prav tako progasta."}, "s": "zoo", "sn": "Živalski vrt", "e": "🦁"}, {"id": "zoo-6", "t": "video", "x": "Morski levi: kratek video plavanja ali treninga.", "w": "Morski levi se hitro učijo. Poglejta, kdaj je trening, in naredita video.", "p": {"k": "zanimivost", "h": "Ušesa ali ne", "x": "Morski levi imajo majhne zunanje ušesne školjke — tjulnji jih nimajo. Tako ju ločita med seboj."}, "s": "zoo", "sn": "Živalski vrt", "e": "🦁"}, {"id": "zoo-7", "t": "foto", "x": "Mini ZOO: Maks nežno pobožja kozo ali ovco (počepnita in počakata).", "w": "V Mini ZOO se mirno počepneš in počakaš, da žival pride sama; ne hranimo, ne lovimo, ne dvigamo.", "p": {"k": "nagrada", "h": "Nagrada: varuh Mini ZOO", "x": "Maks postane »varuh Mini ZOO« — in mami pove, katero pravilo je najpomembnejše. Ana pove, katero ji je všeč."}, "s": "zoo", "sn": "Živalski vrt", "e": "🦁"}, {"id": "zoo-8", "t": "foto", "x": "Selfi z alpako ali guanako — kdo se bolj smeji (ali kuka)?", "w": "Guanako je divji prednik lame; v Mini ZOO je pri njihovi ogradi.", "p": {"k": "zanimivost", "h": "Prednik lame", "x": "Guanako (iz Južne Amerike) je divji prednik domače lame. Ima krzno, ki je odlično za mraz — ravno prav za oktober."}, "s": "zoo", "sn": "Živalski vrt", "e": "🦁"}, {"id": "zoo-9", "t": "foto", "x": "Medved ali volk: slikajta njegovo šapo ali oči — in primerjajta z roko.", "w": "V slovenskih gozdovih živi več sto rjavih medvedov in tudi volkovi. Tu jih vidita od blizu, na varnem.", "p": {"k": "zanimivost", "h": "Ris se je vrnil", "x": "Ris je bil pri nas v preteklosti iztrebljen, nato pa leta 1973 ponovno naseljen v kočevskih gozdovih."}, "s": "zoo", "sn": "Živalski vrt", "e": "🦁"}, {"id": "zoo-10", "t": "foto", "x": "Rdeča panda: poiščita jo (če je) in slikajta njen rep.", "w": "Rdeča panda ni v sorodu z velikim pando — je njena lastna družina.", "p": {"k": "skrivnost", "h": "Skrivnost rdeče pande", "x": "Rdeča panda ima zelo dolg, progast rep — služi ji kot odeja v mrzlih nočeh in za ravnotežje na vejah."}, "s": "zoo", "sn": "Živalski vrt", "e": "🦁"}, {"id": "zoo-11", "t": "foto", "x": "Najbolj smešna opica ali ptica: slikajta, kako jo gledata (in naredita enak obraz).", "w": "Žival ni nikoli smešna po naključju — le mi jo vidimo tako. Opazujta jo mirno in ugotovita, zakaj je tako videti.", "p": {"k": "nagrada", "h": "Nagrada: smešni obrazi", "x": "Vsak naredi obraz, kot ga ima izbrana žival — nato ugibata, katero žival je kdo upodobil."}, "s": "zoo", "sn": "Živalski vrt", "e": "🦁"}, {"id": "zoo-12", "t": "foto", "x": "Vivarij ali terarij: najmanjša in največja žival, ki ju najdeta.", "w": "V vivariju je toplo in vlažno. Kače, kuščarji in žabe so mojstri skrivanja — poiščita jih!", "p": {"k": "skrivnost", "h": "Skrivnost kačjega jezika", "x": "Kača z jezikom »okuša« zrak, da ugotovi, kje je plen. Zato ima jezik razcepljen na dvoje."}, "s": "zoo", "sn": "Živalski vrt", "e": "🦁"}, {"id": "zoo-13", "t": "foto", "x": "Sova ali orel: poiščita par oči, ki vaju opazujejo.", "w": "Sove lahko glavo obrnejo skoraj za 270 stopinj — a oči se skoraj ne premikajo.", "p": {"k": "zanimivost", "h": "Sovine oči", "x": "Sova ima oči nepremične, zato mora obračati vso glavo. Zato je tako vitka in prožna — kot cirkuški akrobat."}, "s": "zoo", "sn": "Živalski vrt", "e": "🦁"}, {"id": "zoo-14", "t": "foto", "x": "Igrišče: Maks na igralu (poiščita tisto z afriško temo, če je odprto).", "w": "Igrišče je čas za gibanje in smeh. Maks naj izbere igro, ki jo igrata skupaj.", "p": {"k": "nagrada", "h": "Nagrada: igra po Maksovi izbiri", "x": "Maks izbere igro (npr. lovljenje, skrivalnice ali zmajska pustolovščina) — Ana jo igra z veseljem."}, "s": "zoo", "sn": "Živalski vrt", "e": "🦁"}, {"id": "zoo-15", "t": "foto", "x": "Odmor: malica ali sladoled sredi vrta — slikata, kaj jesta in koga gledata zraven.", "w": "Odmor je pomemben del pustolovščine. Najboljše slike so tiste, ko si lačen in srečen.", "p": {"k": "nagrada", "h": "Nagrada: sladoled po izbiri", "x": "Maks izbere okus sladoleda — in Ana mu pove, kateri okus bi izbrala sama."}, "s": "zoo", "sn": "Živalski vrt", "e": "🦁"}, {"id": "zoo-16", "t": "video", "x": "Zvoki zoo: 15 sekund posnetka (ptice, voda, opice) — in ugibata, katera žival je to.", "w": "Zoo ni samo za oči, ampak tudi za ušesa. Zaprita oči in poslušata.", "p": {"k": "skrivnost", "h": "Skrivnost zvokov", "x": "Vsaka žival ima svoj glas: sloni oddajajo nizke glasove, žirafe so večinoma tihe, morski levi lajajo. Kdo ima najlepši glas?"}, "s": "zoo", "sn": "Živalski vrt", "e": "🦁"}, {"id": "zoo-17", "t": "video", "x": "TV novinar Maks: »Danes v ZOO Ljubljana …« — 20-sekundno poročilo iz zoo.", "w": "Novinar mora povedati, kaj se dogaja. Ana je kamerman — držita telefon vodoravno in govorita razločno.", "p": {"k": "nagrada", "h": "Nagrada: zvezda poročil", "x": "Maks postane »zvezda poročil« — Ana ga predstavi kot najboljšega novinarja pod Rožnikom."}, "s": "zoo", "sn": "Živalski vrt", "e": "🦁"}, {"id": "zoo-18", "t": "foto", "x": "Skupna slika z živaljo, ki jima je najbolj ušla v srce (v ozadju, brez dotikanja!).", "w": "Vsak ima svojo najljubšo žival. Če sta različni, je še bolje — naredita dve sliki.", "p": {"k": "zanimivost", "h": "Najljubša žival", "x": "Strokovnjaki pravijo, da otroci žival, ki jo vidijo od blizu, pomnijo več let. Zato je dobro, da jo slikata skupaj."}, "s": "zoo", "sn": "Živalski vrt", "e": "🦁"}, {"id": "zoo-19", "t": "foto", "x": "Trgovinica z darili: izberita en spominek za Zmajevo knjigo (in ga fotografirajta).", "w": "Spominek je trofeja pustolovščine. Izberita nekaj majhnega in uporabnega.", "p": {"k": "nagrada", "h": "Nagrada: spominek po izbiri", "x": "Maks izbere spominek — Ana ga plača, oba ga pokažeta doma babicam in prijateljem."}, "s": "zoo", "sn": "Živalski vrt", "e": "🦁"}, {"id": "zoo-20", "t": "foto", "x": "Zadnja slika v zoo: Ana in Maks utrujena, a srečna ob izhodu.", "w": "Zadnja slika dneva je pogosto najlepša. Primerjata jo s tisto na vhodu zjutraj.", "p": {"k": "skrivnost", "h": "Zmajeva nagrada", "x": "Če sta opravila vsaj 15 izzivov v zoo, si zaslužita »zmajsko diplomo«. Izdelata jo doma in jo pokažeta vsem!"}, "s": "zoo", "sn": "Živalski vrt", "e": "🦁"}]</script>
+</section>
+<section class="card-section" aria-labelledby="hrana">
+  <h2 id="hrana">🍜 Hrana — kaj in kje jesti</h2>
+  <h3 style="margin:0 0 0.3rem; font-size:1.1rem;">Kaj poskusiti</h3>
+  <ul class="nice-list">
+    <li><strong>Sladoled in prigrizek v živalskem vrtu</strong> — po objavljenih podatkih je v vrtu restavracija s sladoledom — idealen odmor po Mini ZOO</li>
+    <li><strong>Piknik z lastno malico</strong> — klopi so pod drevesi; Maks naj izbere, katera žival ju bo gledala med malico</li>
+    <li><strong>Topla juha po obisku</strong> — ko se zunaj ohladi, vroč napitek pomaga — oktobra zna biti ob pobočju hladno</li>
+  </ul>
+  <h3 style="margin:1.2rem 0 0.3rem; font-size:1.1rem;">Kje jesti — izberite kategorijo</h3>
+  <p class="cat-intro">Dotaknite se kategorije in odprl se bo seznam preverjenih predlogov s povezavo na zemljevid.</p>
+  <details class="food-cat">
+    <summary><span class="cat-emoji" aria-hidden="true">🍦</span><span class="cat-name">Prigrizek v živalskem vrtu</span><span class="cat-count">1 predlog</span><span class="chev" aria-hidden="true">▶</span></summary>
+    <div class="cat-body">
+      <p class="cat-intro">Po objavljenih podatkih je v vrtu restavracija s sladoledom in prigrizki — dobra pavza sredi dneva.</p>
+      <div class="place">
+        <div class="place-head"><strong>Restavracija v živalskem vrtu</strong><span class="price">€</span></div>
+        <p>Sladoled, topli napitki in preprosti obroki; urnik preverita ob prihodu.</p>
+        <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Restavracija%20%C5%BDivalski%20vrt%20Ljubljana" target="_blank" rel="noopener">📍 Zemljevid</a>
+      </div>
+    </div>
+  </details>
+</section>
+<section class="card-section" aria-labelledby="prakticno">
+  <h2 id="prakticno">🧭 Dobro je vedeti</h2>
+  <ul class="nice-list">
+    <li>Zoo je na pobočju Rožnika — poti so ponekod strme. Obujta udobne, nepremočljive čevlje, ki jih ne bo škoda zmočiti.</li>
+    <li>Oktobra je lahko hladno in vlažno: vzemita jakno, kapo in nepremočljivo plast; dežnik je lahko v nahrbtniku.</li>
+    <li>Živali spoštujemo: ne hranimo, ne kričimo, ne tolčemo po steklu. Živalim je potreben mir.</li>
+    <li>Psi so dobrodošli s kupljeno vstopnico, vendar v Mini ZOO, ograjo Avstralije in na otroška igrišča ne smejo.</li>
+    <li>Informacije: info@zoo.si, telefon +386 1 24 42 190. Urnik krmljenja in treningov je običajno objavljen ob vhodu in na zoo.si.</li>
+  </ul>
+</section>
+<section class="card-section fact-section" aria-labelledby="zanimivost">
+  <h2 id="zanimivost">💡 Zanimivost</h2>
+  <p>Živalski vrt Ljubljana je bil ustanovljen leta 1949 in je od leta 1951 na današnji lokaciji pod Rožnikom. Slonica Ganga tam živi od leta 1977 in je najstarejša prebivalka vrta.</p>
+</section>
+<section class="card-section magda-section" aria-labelledby="magda">
+  <h2 id="magda">🐉 Zmajeva skrivnost</h2>
+  <p>Za trenutek se ustavita pri kakšni živali, ki je najbolj mirna, in 2 minuti samo opazujta — brez telefona. Kaj dela? Kaj bi počela, če bi bila ona? To je pogosto najlepši spomin dneva.</p>
+</section>
+<section class="rubric-wrap" aria-label="Osebne rubrike">
+  <div class="card-section rubric rubric-moment">
+    <h2>🌟 Najlepši trenutek</h2>
+    <p>Ko pri kateri živali oba obstojita in nista rekla ničesar. Zapišita, kaj je bilo to in zakaj si ga bosta zapomnila.</p>
+  </div>
+  <div class="card-section rubric rubric-hour">
+    <h2>☕ Odmor za dva</h2>
+    <p>Odmor za dva: malica na klopci, pol ure brez telefona; vsak pove najlepšo žival do zdaj.</p>
+  </div>
+  <div class="card-section rubric rubric-mandala">
+    <h2>✏️ Za risanje in zapisek</h2>
+    <p>Vsak nariše svojo žival — tisto, ki jo je videl danes, ali pa novo: zmes dveh živali (npr. slon s pasovi tigra).</p>
+  </div>
+  <div class="card-section rubric rubric-rain">
+    <h2>☔ Če dežuje</h2>
+    <p>Če dežuje: zoo je deloma pod streho — vivarij in terariji, notranji prostori z živalmi; vzemita dežnik ali pelerino. Živali v dežju so pogosto bolj skrivnostne.</p>
+  </div>
+  <div class="card-section diary">
+    <h2>📖 Zmajev dnevnik</h2>
+    <p class="diary-hint">Prostor za vajine vtise, skice in najboljši trenutek s te postaje.</p>
+    <div class="diary-lines" aria-hidden="true"></div>
+  </div>
+</section>
+<section class="card-section" aria-labelledby="videi">
+  <h2 id="videi">🎬 Videi za navdih</h2>
+  <p class="video-more">Poglejta na YouTube, preden greta (ali po poti): <a href="https://www.youtube.com/results?search_query=Ljubljana%20Zoo%20Slovenia%20visit" target="_blank" rel="noopener">»Ljubljana Zoo Slovenia visit«</a> · <a href="https://www.youtube.com/results?search_query=ZOO%20Ljubljana%20slon%20Ganga" target="_blank" rel="noopener">»ZOO Ljubljana slon Ganga«</a> · <a href="https://www.youtube.com/results?search_query=ZOO%20Ljubljana%20morski%20levi" target="_blank" rel="noopener">»ZOO Ljubljana morski levi«</a></p>
+</section>
+<div class="back-row"><a class="back-button" href="index.html">🏠 Nazaj na pregled</a></div>
+<nav class="pager" aria-label="Prejšnja in naslednja postaja">
+  <a class="prev" href="center.html"><span class="pager-label">← Prejšnja postaja</span>🏰 Ljubljana s Katjo</a>
+  <a class="next" href="domov.html"><span class="pager-label">Naslednja postaja →</span>🏠 Domov z zmajem</a>
+</nav>
+</main>
+<footer>
+  <p>🐉 Zmajeva pustolovščina · 15.–16. oktober 2026 · Maribor → Ljubljana</p>
+  <p>Z ljubeznijo pripravljeno za Ano in Maksa</p>
+  <p><a href="kako.html">🎓 Kako uporabljati to stran</a> · <a href="../index.html?izpis=1">🔑 Zamenjaj potovanje</a></p>
+</footer>
+<script src="app.js?v=19"></script>
+</body>
+</html>

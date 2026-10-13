@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Z vlakom v Ljubljano · Zmajeva pustolovščina</title>
+  <meta name="description" content="Z vlakom v Ljubljano: kaj početi, izzivi in nasveti — Zmajeva pustolovščina, Ljubljana.">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#2f8f6b">
+  <script>window.TRIP={"id": "ljubljana", "slug": "lj-d4phmm7xw", "people": ["Ana", "Maks"], "gate": "../index.html", "after": ["Bravo, zmajska ekipa!", "Poglejta <a href=\"nalozi.html\">skupni album</a> in iz slik sestavita svojo Zmajevo knjigo."], "t": {"locked": "Presenečenje čaka — odklene se, ko naložita sliko ali video.", "empty": "Album je še prazen — naložita prvo fotografijo. 📸", "thanks": "naloženih ✓ — odlično!", "more": "Odpri vodnik za to postajo →", "pre": "Pustolovščina se začne {date}. Poglejta <a href=\"priprave.html\">priprave</a> in kontrolni seznam."}, "color": "#2f8f6b", "stations": [{"k": "vlak", "e": "🚂", "n": "Vlak"}, {"k": "emonec", "e": "🏨", "n": "Hotel"}, {"k": "center", "e": "🏰", "n": "Center"}, {"k": "zoo", "e": "🦁", "n": "Živalski vrt"}, {"k": "domov", "e": "🏠", "n": "Domov"}]};(function(){try{var s=JSON.parse(localStorage.getItem("trip_session")||"null");var ok=s&&s.trips&&s.trips.some(function(t){return t.slug===TRIP.slug});if(!ok){location.replace(TRIP.gate+"?next="+encodeURIComponent(TRIP.slug));}}catch(e){}})();</script>
+  <link rel="stylesheet" href="style.css?v=19">
+  <style>
+    :root { --accent:#1f7a5a; --accent-ink:#1f7a5a; --accent-soft:#e8f5ee; --pin:#2f8f6b; --orange:#c8553d; --gold:#b08a2e; }
+    @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --accent:#6fd0a6; --accent-ink:#6fd0a6; --accent-soft:#14261e; --pin:#2f8f6b; --orange:#e08a6c; --gold:#d2b256; } }
+    :root[data-theme="dark"] { --accent:#6fd0a6; --accent-ink:#6fd0a6; --accent-soft:#14261e; --pin:#2f8f6b; --orange:#e08a6c; --gold:#d2b256; }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="album.js?v=19"></script>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+</head>
+<body>
+<header class="site-header">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">🐉 Zmajeva pustolovščina</a>
+    <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="main-menu">
+      <span class="mt-ico" aria-hidden="true">☰</span> Meni
+    </button>
+  </div>
+  <nav class="main-menu" id="main-menu" aria-label="Glavni meni" hidden>
+    <div class="menu-inner">
+      <div class="menu-primary">
+        <a href="index.html"><span class="mi-emoji" aria-hidden="true">🏠</span>Domov</a>
+        <a href="kako.html"><span class="mi-emoji" aria-hidden="true">🎓</span>Kako uporabljati</a>
+        <a href="nacrt.html"><span class="mi-emoji" aria-hidden="true">🗺️</span>Načrt poti</a>
+        <a href="izziv.html"><span class="mi-emoji" aria-hidden="true">📸</span>Izzivi</a>
+        <a href="nalozi.html"><span class="mi-emoji" aria-hidden="true">📤</span>Naloži fotografije</a>
+        <a href="priprave.html"><span class="mi-emoji" aria-hidden="true">🎒</span>Priprave</a>
+        <a href="nujno.html"><span class="mi-emoji" aria-hidden="true">🆘</span>Nujno</a>
+        <a href="../index.html?izpis=1"><span class="mi-emoji" aria-hidden="true">🔑</span>Zamenjaj potovanje</a>
+      </div>
+      <p class="menu-label">Postaje pustolovščine</p>
+      <div class="menu-stations">
+        <a href="vlak.html" aria-current="page"><span class="mi-emoji" aria-hidden="true">🚂</span>Vlak</a>
+        <a href="emonec.html"><span class="mi-emoji" aria-hidden="true">🏨</span>Hotel</a>
+        <a href="center.html"><span class="mi-emoji" aria-hidden="true">🏰</span>Center</a>
+        <a href="zoo.html"><span class="mi-emoji" aria-hidden="true">🦁</span>Živalski vrt</a>
+        <a href="domov.html"><span class="mi-emoji" aria-hidden="true">🏠</span>Domov</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="menu-backdrop" id="menu-backdrop" hidden></div>
+<main>
+<section class="loc-hero">
+  <div class="scene-banner"><svg class="scene-svg" viewBox="0 0 1200 460" role="img" aria-label="Ilustracija vlaka, ki pelje skozi zelene gričke proti Ljubljani" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="sky-vlak" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfe8f5"/><stop offset="1" stop-color="#fdf0d8"/></linearGradient></defs><rect width="1200" height="460" fill="url(#sky-vlak)"/><circle cx="960" cy="120" r="62" fill="#f6c76a" opacity="0.85"/><g opacity="0.9" transform="translate(220,100) scale(1.0)" fill="#fff"><ellipse cx="0" cy="0" rx="58" ry="22"/><ellipse cx="-34" cy="8" rx="34" ry="16"/><ellipse cx="38" cy="8" rx="38" ry="17"/><ellipse cx="14" cy="-14" rx="30" ry="18"/></g><g opacity="0.8" transform="translate(620,70) scale(0.7)" fill="#fff"><ellipse cx="0" cy="0" rx="58" ry="22"/><ellipse cx="-34" cy="8" rx="34" ry="16"/><ellipse cx="38" cy="8" rx="38" ry="17"/><ellipse cx="14" cy="-14" rx="30" ry="18"/></g><g opacity="0.7" transform="translate(1060,210) scale(0.6)" fill="#fff"><ellipse cx="0" cy="0" rx="58" ry="22"/><ellipse cx="-34" cy="8" rx="34" ry="16"/><ellipse cx="38" cy="8" rx="38" ry="17"/><ellipse cx="14" cy="-14" rx="30" ry="18"/></g><polygon points="0,300 200,210 420,300 700,220 980,300 1200,240 1200,460 0,460" fill="#a7d1b8" opacity="1.0"/><polygon points="0,350 260,280 520,350 820,290 1200,350 1200,460 0,460" fill="#7fb995" opacity="1.0"/><path d="M0 380 C200 320 420 340 640 360 C860 380 1020 330 1200 350 L1200 460 L0 460 Z" fill="#2f8f6b"/><path d="M40 372 C300 348 520 366 760 378" stroke="#1f5f48" stroke-width="2" fill="none" opacity="0.35"/><path d="M56 378 C300 354 520 372 760 384" stroke="#1f5f48" stroke-width="2" fill="none" opacity="0.35"/><path d="M72 384 C300 360 520 378 760 390" stroke="#1f5f48" stroke-width="2" fill="none" opacity="0.35"/><path d="M88 390 C300 366 520 384 760 396" stroke="#1f5f48" stroke-width="2" fill="none" opacity="0.35"/><path d="M104 396 C300 372 520 390 760 402" stroke="#1f5f48" stroke-width="2" fill="none" opacity="0.35"/><path d="M120 402 C300 378 520 396 760 408" stroke="#1f5f48" stroke-width="2" fill="none" opacity="0.35"/><path d="M136 408 C300 384 520 402 760 414" stroke="#1f5f48" stroke-width="2" fill="none" opacity="0.35"/><path d="M152 414 C300 390 520 408 760 420" stroke="#1f5f48" stroke-width="2" fill="none" opacity="0.35"/><path d="M168 420 C300 396 520 414 760 426" stroke="#1f5f48" stroke-width="2" fill="none" opacity="0.35"/><rect x="86" y="348.0" width="8" height="24.0" fill="#6b4a34"/><ellipse cx="90" cy="322.4" rx="25.6" ry="32.0" fill="#1f5f48"/><rect x="176" y="342.0" width="8" height="30.0" fill="#6b4a34"/><ellipse cx="180" cy="310.0" rx="32.0" ry="40.0" fill="#1f5f48"/><rect x="1036" y="345.0" width="8" height="27.0" fill="#6b4a34"/><ellipse cx="1040" cy="316.2" rx="28.8" ry="36.0" fill="#1f5f48"/><rect x="1126" y="339.0" width="8" height="33.0" fill="#6b4a34"/><ellipse cx="1130" cy="303.8" rx="35.2" ry="44.0" fill="#1f5f48"/><rect x="868" y="304" width="22" height="26" fill="#ecd9b8"/><polygon points="864,304 879,286 894,304" fill="#b9573b"/><rect x="0" y="392" width="1200" height="68" fill="#8d7a64"/><rect x="0" y="388" width="1200" height="6" fill="#5f5648"/><rect x="0" y="404" width="26" height="6" fill="#5b4a3a"/><rect x="46" y="404" width="26" height="6" fill="#5b4a3a"/><rect x="92" y="404" width="26" height="6" fill="#5b4a3a"/><rect x="138" y="404" width="26" height="6" fill="#5b4a3a"/><rect x="184" y="404" width="26" height="6" fill="#5b4a3a"/><rect x="230" y="404" width="26" height="6" fill="#5b4a3a"/><rect x="276" y="404" width="26" height="6" fill="#5b4a3a"/><rect x="322" y="404" width="26" height="6" fill="#5b4a3a"/><rect x="368" y="404" width="26" height="6" fill="#5b4a3a"/><rect x="414" y="404" width="26" height="6" fill="#5b4a3a"/><rect x="460" y="404" width="26" height="6" fill="#5b4a3a"/><rect x="506" y="404" width="26" height="6" fill="#5b4a3a"/><rect x="552" y="404" width="26" height="6" fill="#5b4a3a"/><rect x="598" y="404" width="26" height="6" fill="#5b4a3a"/><rect x="644" y="404" width="26" height="6" fill="#5b4a3a"/><rect x="690" y="404" width="26" height="6" fill="#5b4a3a"/><rect x="736" y="404" width="26" height="6" fill="#5b4a3a"/><rect x="782" y="404" width="26" height="6" fill="#5b4a3a"/><rect x="828" y="404" width="26" height="6" fill="#5b4a3a"/><rect x="874" y="404" width="26" height="6" fill="#5b4a3a"/><rect x="920" y="404" width="26" height="6" fill="#5b4a3a"/><rect x="966" y="404" width="26" height="6" fill="#5b4a3a"/><rect x="1012" y="404" width="26" height="6" fill="#5b4a3a"/><rect x="1058" y="404" width="26" height="6" fill="#5b4a3a"/><rect x="1104" y="404" width="26" height="6" fill="#5b4a3a"/><rect x="1150" y="404" width="26" height="6" fill="#5b4a3a"/><rect x="1196" y="404" width="26" height="6" fill="#5b4a3a"/><rect x="50" y="318" width="320" height="74" rx="14" fill="#f4f1ea"/><rect x="50" y="372" width="320" height="10" fill="#3f78a8"/><rect x="72" y="334" width="34" height="26" rx="5" fill="#9cc3d6"/><rect x="120" y="334" width="34" height="26" rx="5" fill="#9cc3d6"/><rect x="168" y="334" width="34" height="26" rx="5" fill="#9cc3d6"/><rect x="216" y="334" width="34" height="26" rx="5" fill="#9cc3d6"/><rect x="264" y="334" width="34" height="26" rx="5" fill="#9cc3d6"/><rect x="312" y="334" width="34" height="26" rx="5" fill="#9cc3d6"/><circle cx="110" cy="396" r="12" fill="#2a3a35"/><circle cx="310" cy="396" r="12" fill="#2a3a35"/><rect x="390" y="318" width="320" height="74" rx="14" fill="#f4f1ea"/><rect x="390" y="372" width="320" height="10" fill="#3f78a8"/><rect x="412" y="334" width="34" height="26" rx="5" fill="#9cc3d6"/><rect x="460" y="334" width="34" height="26" rx="5" fill="#9cc3d6"/><rect x="508" y="334" width="34" height="26" rx="5" fill="#9cc3d6"/><rect x="556" y="334" width="34" height="26" rx="5" fill="#9cc3d6"/><rect x="604" y="334" width="34" height="26" rx="5" fill="#9cc3d6"/><rect x="652" y="334" width="34" height="26" rx="5" fill="#9cc3d6"/><circle cx="450" cy="396" r="12" fill="#2a3a35"/><circle cx="650" cy="396" r="12" fill="#2a3a35"/><rect x="730" y="318" width="320" height="74" rx="14" fill="#c8553d"/><rect x="730" y="372" width="320" height="10" fill="#3f78a8"/><rect x="752" y="334" width="34" height="26" rx="5" fill="#9cc3d6"/><rect x="800" y="334" width="34" height="26" rx="5" fill="#9cc3d6"/><rect x="848" y="334" width="34" height="26" rx="5" fill="#9cc3d6"/><rect x="896" y="334" width="34" height="26" rx="5" fill="#9cc3d6"/><rect x="944" y="334" width="34" height="26" rx="5" fill="#9cc3d6"/><rect x="992" y="334" width="34" height="26" rx="5" fill="#9cc3d6"/><circle cx="790" cy="396" r="12" fill="#2a3a35"/><circle cx="990" cy="396" r="12" fill="#2a3a35"/><path d="M1110 318 L1110 392 L1050 392 L1050 318 Q1050 298 1080 298 Q1110 298 1110 318 Z" fill="#c8553d"/><rect x="1062" y="322" width="36" height="26" rx="5" fill="#cfe8f5"/></svg></div>
+  <p class="kicker">🚂 Postaja 1 od 5 · dopoldne</p>
+  <h1>Z vlakom v Ljubljano</h1>
+  <p class="loc-sub">Maribor → Ljubljana, prvi del pustolovščine</p>
+  <p class="loc-intro">Pustolovščina se začne že na peronu. Vlak iz Maribora vaju v približno dveh urah pripelje v Ljubljano — mimo vinogradov, rek in hribov. Sedita k oknu, vzemita malico in poglejta, kdo prvi opazi reko Savo.</p>
+  <p class="visit-wrap"><button type="button" class="visit-btn" data-visit="vlak">☐ Označi kot obiskano</button></p>
+</section>
+<section class="card-section" aria-labelledby="znamenitosti">
+  <h2 id="znamenitosti">🦒 Kaj videti in početi</h2>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">🚉</span>Peron in vlak</h3>
+    <p>Vlak vaju z mariborske postaje pripelje v Ljubljano v približno dveh urah. Preverita peron in uro na tabli ter sedeža pri oknu.</p>
+    <p class="sight-tip">💡 Vozovnici kupita vnaprej na potniski.sz.si ali na blagajni; za otroka velja otroška cena.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=%C5%BDelezni%C5%A1ka%20postaja%20Maribor" target="_blank" rel="noopener">📍 Zemljevid</a>
+    </div>
+  </article>
+  <article class="sight">
+    <h3><span class="sight-icon" aria-hidden="true">🚶</span>Železniška postaja Ljubljana</h3>
+    <p>Ob prihodu izstopita na glavni postaji; do Hotela Emonec je okoli 12 minut peš po središču.</p>
+    <p class="sight-tip">💡 Ostanita skupaj in pojdita počasi — v zoo ju bo čakalo veliko hoje.</p>
+    <div class="action-row">
+      <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=%C5%BDelezni%C5%A1ka%20postaja%20Ljubljana" target="_blank" rel="noopener">📍 Zemljevid</a>
+    </div>
+  </article>
+</section>
+<section class="card-section map-section" aria-labelledby="zemljevid">
+  <h2 id="zemljevid">🗺️ Zemljevid kraja</h2>
+  <div class="area-map" data-lat="46.0582" data-lon="14.5103" data-zoom="14" role="img" aria-label="Zemljevid — Železniška postaja Ljubljana, Trg osvobodilne fronte"></div>
+  <a class="pin-btn map-open" href="https://www.google.com/maps/search/?api=1&query=%C5%BDelezni%C5%A1ka%20postaja%20Ljubljana%2C%20Trg%20osvobodilne%20fronte" target="_blank" rel="noopener">📍 Odpri na Google Zemljevidu</a>
+</section>
+<section class="card-section izzivi" aria-labelledby="izzivi">
+  <h2 id="izzivi">📸 Foto izzivi za album</h2>
+  <p class="cat-intro">Naložita fotografijo (ali video) za izziv — takoj se označi kot opravljen in se spodaj pokaže sličica. Iz tega nastane vajin skupni album. <a href="izziv.html">Vsi izzivi na enem mestu →</a></p>
+  <div class="album-gate"></div>
+  <div class="izziv-board" data-scope="vlak"></div>
+  <script type="application/json" id="izziv-data">[{"id": "vlak-0", "t": "foto", "x": "Ana in Maks skupaj na peronu v Mariboru, preden pride vlak.", "w": "Vsaka pustolovščina ima začetek — to je vajin »štart«. Na koncu dneva primerjata, kako sta bila videti zjutraj in zvečer (po zoo!).", "p": {"k": "zanimivost", "h": "Prvi vlaki v Ljubljano", "x": "Ljubljana je dobila železnico sredi 19. stoletja, ko so zgradili Južno železnico Dunaj–Trst — pred tem je potovanje do Dunaja trajalo več dni."}, "s": "vlak", "sn": "Vlak", "e": "🚂"}, {"id": "vlak-1", "t": "foto", "x": "Skozi okno: najlepši razgled, ki ga opazita na poti (vinogradi, reka ali hribi).", "w": "Proga pri Zidanem Mostu sledi reki Savi — zato je med vožnjo pogosto viden zelen rečni breg.", "p": {"k": "skrivnost", "h": "Skrivnost reke Save", "x": "Pri Zidanem Mostu se Savinja izliva v Savo. Poiščita ga na zemljevidu — in ugotovita, koliko rek je še v bližini."}, "s": "vlak", "sn": "Vlak", "e": "🚂"}, {"id": "vlak-2", "t": "video", "x": "10-sekundni video zvokov vlaka: kolesa na tirih, obvestila, korak. Ugibata, kje se ravno vozita.", "w": "Vsak kraj ima svoj zvok — in zvok vlaka je eden najbolj značilnih spominov na potovanje.", "p": {"k": "nagrada", "h": "Nagrada: malica po Maksovi izbiri", "x": "Maks izbere, kaj bosta pojedla med vožnjo (sadje, sendvič ali sladkarija) — in Ana prizna, da je izbral odlično."}, "s": "vlak", "sn": "Vlak", "e": "🚂"}, {"id": "vlak-3", "t": "foto", "x": "Lov na črko Z: poiščita tri napise z začetno črko Z (Zidani Most, ZOO, zmaj …).", "w": "Črka Z je zmajeva črka: Zidani Most, Zoo, Zmaj — poglejta, koliko jih najdeta in napišita seznam.", "p": {"k": "skrivnost", "h": "Skrivnost zmaja", "x": "V Ljubljani je zmajev več, kot si mislita: na mostu, na gradu in celo na mestnem grbu. Preštejta jih in zapišita število v Zmajevo knjigo!"}, "s": "vlak", "sn": "Vlak", "e": "🚂"}, {"id": "vlak-4", "t": "foto", "x": "Vozovnici (ali vozovnica in malica) kot trofeja — skupaj na mizi.", "w": "Vozovnica je prvi »predmet« v vajinem potopisu. Prilepita jo v zvezek: čez leta bo spomin na to pot.", "p": {"k": "zanimivost", "h": "Prva vozovnica", "x": "Vozovnice so včasih bile kartonaste, z dnevnim žigom. Danes jih imate v telefonu — a vozovnica na papirju je lepa trofeja."}, "s": "vlak", "sn": "Vlak", "e": "🚂"}]</script>
+</section>
+<section class="card-section" aria-labelledby="hrana">
+  <h2 id="hrana">🍜 Hrana — kaj in kje jesti</h2>
+  <h3 style="margin:0 0 0.3rem; font-size:1.1rem;">Kaj poskusiti</h3>
+  <ul class="nice-list">
+    <li><strong>Malica za pot</strong> — sendvič, sadje in kaj sladkega — Maks naj izbere, kaj gre v nahrbtnik</li>
+    <li><strong>Voda</strong> — polna steklenička za vsakega, da vama na poti ni treba iskati prodajalne</li>
+    <li><strong>Prigrizek za igro</strong> — suho sadje ali krekerji, ki se ne drobijo — zraven lahko igrata »Vidim, vidim«</li>
+  </ul>
+</section>
+<section class="card-section" aria-labelledby="prakticno">
+  <h2 id="prakticno">🧭 Dobro je vedeti</h2>
+  <ul class="nice-list">
+    <li>Vozni red in vozovnice: potniski.sz.si ali na blagajni — točno uro odhoda preverita nekaj dni pred potjo.</li>
+    <li>Nahrbtnik za vsakega: voda, malica, polnilec, dežnik; kovčki naj imajo kolesca (do hotela je kratka pot peš).</li>
+    <li>Peron preverita na tabli ali v obvestilih; do vlaka pridita pet minut prej.</li>
+  </ul>
+</section>
+<section class="card-section fact-section" aria-labelledby="zanimivost">
+  <h2 id="zanimivost">💡 Zanimivost</h2>
+  <p>Proga proti Ljubljani je del stare Južne železnice, ki je v 19. stoletju povezala Dunaj s Trstom. Pri Zidanem Mostu se reki Savinja in Sava stečeta — in proga potem dolgo sledi reki Savi.</p>
+</section>
+<section class="card-section magda-section" aria-labelledby="magda">
+  <h2 id="magda">🐉 Zmajeva skrivnost</h2>
+  <p>Zmaj Ljubljane čaka na koncu poti. Ko se pripeljeta, ga poiščita: v mestu je zmajev več, kot si mislita. Preštejeta jih!</p>
+</section>
+<section class="rubric-wrap" aria-label="Osebne rubrike">
+  <div class="card-section rubric rubric-moment">
+    <h2>🌟 Najlepši trenutek</h2>
+    <p>Ko vlak odpelje in oba pogledata skozi okno: kaj vidita prvo? Zapišita in preštejta, koliko sprememb pokrajine opazita na poti.</p>
+  </div>
+  <div class="card-section rubric rubric-hour">
+    <h2>☕ Odmor za dva</h2>
+    <p>Dve uri v vlaku sta lep čas za pogovor: Ana vpraša Maksa, katero žival bi bil, če bi bil žival — in zakaj.</p>
+  </div>
+  <div class="card-section rubric rubric-mandala">
+    <h2>✏️ Za risanje in zapisek</h2>
+    <p>Narišita zmaja Ljubljane po svoje: kakšna barva, krila, rep? To je prvi zmaj Zmajeve knjige.</p>
+  </div>
+  <div class="card-section rubric rubric-rain">
+    <h2>☔ Če dežuje</h2>
+    <p>Če dežuje: pod streho vlaka je še bolje — igra in zapisek v zvezek.</p>
+  </div>
+  <div class="card-section diary">
+    <h2>📖 Zmajev dnevnik</h2>
+    <p class="diary-hint">Prostor za vajine vtise, skice in najboljši trenutek s te postaje.</p>
+    <div class="diary-lines" aria-hidden="true"></div>
+  </div>
+</section>
+<section class="card-section" aria-labelledby="videi">
+  <h2 id="videi">🎬 Videi za navdih</h2>
+  <p class="video-more">Poglejta na YouTube, preden greta (ali po poti): <a href="https://www.youtube.com/results?search_query=Slovenske%20%C5%BEeleznice%20Maribor%20Ljubljana%20vlak" target="_blank" rel="noopener">»Slovenske železnice Maribor Ljubljana vlak«</a> · <a href="https://www.youtube.com/results?search_query=Zidani%20Most%20Sava%20Savinja" target="_blank" rel="noopener">»Zidani Most Sava Savinja«</a></p>
+</section>
+<div class="back-row"><a class="back-button" href="index.html">🏠 Nazaj na pregled</a></div>
+<nav class="pager" aria-label="Prejšnja in naslednja postaja">
+  <span class="spacer"></span>
+  <a class="next" href="emonec.html"><span class="pager-label">Naslednja postaja →</span>🏨 Hotel Emonec</a>
+</nav>
+</main>
+<footer>
+  <p>🐉 Zmajeva pustolovščina · 15.–16. oktober 2026 · Maribor → Ljubljana</p>
+  <p>Z ljubeznijo pripravljeno za Ano in Maksa</p>
+  <p><a href="kako.html">🎓 Kako uporabljati to stran</a> · <a href="../index.html?izpis=1">🔑 Zamenjaj potovanje</a></p>
+</footer>
+<script src="app.js?v=19"></script>
+</body>
+</html>
