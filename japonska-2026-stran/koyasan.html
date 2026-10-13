@@ -6,11 +6,11 @@
   <title>Koya-san · Japonska 2026</title>
   <meta name="description" content="Koya-san: znamenitosti, hrana in nasveti — vodnik Japonska 2026.">
   <meta name="theme-color" content="#7b2230">
-  <link rel="stylesheet" href="style.css?v=15">
+  <link rel="stylesheet" href="style.css?v=16">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script defer src="album.js?v=15"></script>
+  <script defer src="album.js?v=16"></script>
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
@@ -32,7 +32,8 @@
         <a href="nalozi.html"><span class="mi-emoji" aria-hidden="true">📤</span>Naloži fotografije</a>
         <a href="dozivetja.html"><span class="mi-emoji" aria-hidden="true">🎨</span>Doživetja</a>
         <a href="priprave.html"><span class="mi-emoji" aria-hidden="true">🎒</span>Priprave</a>
-        <a href="nasveti.html"><span class="mi-emoji" aria-hidden="true">💡</span>Nasveti</a>
+        <a href="nasveti.html"><span class="mi-emoji" aria-hidden="true">💡</span>Nasveti in kartice</a>
+        <a href="nujno.html"><span class="mi-emoji" aria-hidden="true">🆘</span>Nujno</a>
       </div>
       <p class="menu-label">Postaje potovanja</p>
       <div class="menu-stations">
@@ -61,6 +62,7 @@
   <h1>Koya-san</h1>
   <p class="loc-sub">Sveta gora tisočih templjev</p>
   <p class="loc-intro">Visoko v gorah leži Koya-san, sveto mesto s stotimi templji, ki ga je pred 1.200 leti ustanovil menih Kobo Daishi. Nočitev pri menihih je žal zasedena, a gora ostane eno najmočnejših doživetij poti — zlasti večerni sprehod med lučkami Okunoina in jutranji mir med cedrami. Ostanemo lahko tudi le eno noč.</p>
+  <p class="visit-wrap"><button type="button" class="visit-btn" data-visit="koyasan">☐ Označi kot obiskano</button></p>
 </section>
 <section class="card-section" aria-labelledby="znamenitosti">
   <h2 id="znamenitosti">⛩️ Znamenitosti in doživetja</h2>
@@ -156,7 +158,7 @@
   <p class="cat-intro">Naložite fotografijo (ali video) za izziv — takoj se označi kot opravljen in se spodaj pokaže sličica. Iz tega nastane vaš skupni album. <a href="izziv.html">Vsi izzivi na enem mestu →</a></p>
   <div class="album-gate"></div>
   <div class="izziv-board" data-scope="koyasan"></div>
-  <script type="application/json" id="izziv-data">[{"id": "koyasan-0", "t": "foto", "x": "Okunoin ob mraku: kamnite luči med cedrami — ujemite njihovo svetlobo (brez bliskavice).", "s": "koyasan", "sn": "Koya-san", "e": "🏔️"}, {"id": "koyasan-1", "t": "foto", "x": "Vse štiri pred cinobrasto pagodo Konpon Daito.", "s": "koyasan", "sn": "Koya-san", "e": "🏔️"}, {"id": "koyasan-2", "t": "foto", "x": "Helena na verandi pred kamnitim vrtom Banryutei — mir zgrabljenega proda.", "s": "koyasan", "sn": "Koya-san", "e": "🏔️"}, {"id": "koyasan-3", "t": "video", "x": "Video (15 s): tih večerni sprehod skozi Okunoin — koraki, cedre, lučke.", "s": "koyasan", "sn": "Koya-san", "e": "🏔️"}]</script>
+  <script type="application/json" id="izziv-data">[{"id": "koyasan-0", "t": "foto", "x": "Okunoin ob mraku: kamnite luči med cedrami — ujemite njihovo svetlobo (brez bliskavice).", "w": "Okunoin je največje pokopališče na Japonskem, z več kot 200.000 nagrobniki. Slikajte spoštljivo: svetlobo luči in cedre, ne grobov od blizu. Ideja: najbolj mistična slika celotne poti.", "p": {"k": "skrivnost", "h": "Ogenj, ki ne ugasne", "x": "V dvorani luči (Torodo) v Okunoinu gorijo svetilke, med njimi plamen, ki naj ne bi ugasnil že več kot 900 let. Obiščite jo na poti proti mavzoleju Kobo Daishija."}, "s": "koyasan", "sn": "Koya-san", "e": "🏔️"}, {"id": "koyasan-1", "t": "foto", "x": "Vse štiri pred cinobrasto pagodo Konpon Daito.", "w": "Pagoda Konpon Daito v kompleksu Danjo Garan je simbolno središče Koya-sana. Ideja: skupinska slika pred ikono — za poglavje o gori.", "p": {"k": "skrivnost", "h": "Gora kot lotos", "x": "Koya-san leži v kotlini, obdani z osmimi vrhovi, ki spominjajo na osem listov lotosovega cveta — pagoda Konpon Daito velja za središče tega »mandalinega« sveta. Magda, to je navdih za mandalo."}, "s": "koyasan", "sn": "Koya-san", "e": "🏔️"}, {"id": "koyasan-2", "t": "foto", "x": "Helena na verandi pred kamnitim vrtom Banryutei — mir zgrabljenega proda.", "w": "Banryutei v templju Kongobu-ji je največji kamniti vrt Japonske. Prod je »morje oblakov«, kamni dva zmaja. Ideja: portret miru.", "p": {"k": "zanimivost", "h": "Dva zmaja v oblakih", "x": "Prod predstavlja oblake, okoli 140 kamnov pa dva zmaja, ki varujeta glavni tempelj. Pravijo, da so kamni s Shikokuja, rojstnega otoka Kobo Daishija — ravno otoka, ki ga boste obiskale v dolini Iya."}, "s": "koyasan", "sn": "Koya-san", "e": "🏔️"}, {"id": "koyasan-3", "t": "video", "x": "Video (15 s): tih večerni sprehod skozi Okunoin — koraki, cedre, lučke.", "w": "Okunoin je tih: koraki, cedre, lučke. Video 15 s ujame zvok, ki ga fotografija ne. Ideja: tihi gostje smo del tišine.", "p": {"k": "skrivnost", "h": "Obrok za Daishija", "x": "Kobo Daishi naj bi po izročilu še vedno meditiral v mavzoleju; menihi mu dvakrat na dan, zjutraj in dopoldne, prinesejo obrok. Če se v teh urah znajdete blizu, boste morda videle procesijo."}, "s": "koyasan", "sn": "Koya-san", "e": "🏔️"}]</script>
 </section>
 <section class="card-section" aria-labelledby="hrana">
   <h2 id="hrana">🍜 Hrana — kaj in kje jesti</h2>
@@ -349,6 +351,6 @@
   <p>🍁 Japonska — Mesec za dušo · 3. november – 2. december 2026 · Tokio → Osaka</p>
   <p>Z ljubeznijo pripravljeno za Magdo in prijateljice</p>
 </footer>
-<script src="app.js?v=15"></script>
+<script src="app.js?v=16"></script>
 </body>
 </html>

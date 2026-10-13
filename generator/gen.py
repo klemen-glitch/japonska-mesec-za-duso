@@ -16,7 +16,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 
 # Verzija gradnje — doda se v naslov CSS/JS (?v=BUILD), da brskalnik vedno
 # naloži svežo različico. Ob vsaki spremembi povečaj.
-BUILD = "15"
+BUILD = "16"
 
 # ----------------------------------------------------------------------------
 # VSEBINA
@@ -434,7 +434,8 @@ def nav(current_key):
         ("nalozi.html", "nalozi", "📤", "Naloži fotografije"),
         ("dozivetja.html", "dozivetja", "🎨", "Doživetja"),
         ("priprave.html", "priprave", "🎒", "Priprave"),
-        ("nasveti.html", "nasveti", "💡", "Nasveti"),
+        ("nasveti.html", "nasveti", "💡", "Nasveti in kartice"),
+        ("nujno.html", "nujno", "🆘", "Nujno"),
     ]
     prim = "\n".join(
         f'        <a href="{h}"{cur(k)}><span class="mi-emoji" aria-hidden="true">{e}</span>{esc(l)}</a>'
@@ -642,6 +643,7 @@ def _challenge_data(key):
     out = []
     for i, it in enumerate(IZZIVI.get(key, [])):
         out.append({"id": f"{key}-{i}", "t": it.get("t", "foto"), "x": it["x"],
+                    "w": it.get("w", ""), "p": it.get("p"),
                     "s": key, "sn": loc["nav"] if loc else key,
                     "e": loc["emoji"] if loc else "📍"})
     return out
@@ -762,6 +764,7 @@ def location_page(i, loc):
   <h1>{esc(loc['name'])}</h1>
   <p class="loc-sub">{esc(loc['sub'])}</p>
   <p class="loc-intro">{esc(loc['intro'])}</p>
+  <p class="visit-wrap"><button type="button" class="visit-btn" data-visit="{loc['key']}">☐ Označi kot obiskano</button></p>
 </section>
 """
 
@@ -835,53 +838,193 @@ NASVETI = [
 ]
 
 FRAZE = [
-    ("Dober dan", "Konnichiwa", "kon-ni-či-va"),
-    ("Dobro jutro", "Ohayō gozaimasu", "o-ha-jo go-zai-mas"),
-    ("Dober večer", "Konbanwa", "kon-ban-va"),
-    ("Hvala lepa", "Arigatō gozaimasu", "a-ri-ga-to go-zai-mas"),
-    ("Prosim", "Onegai shimasu", "o-ne-gai ši-mas"),
-    ("Oprostite", "Sumimasen", "su-mi-ma-sen"),
-    ("Da / Ne", "Hai / Iie", "haj / i-je"),
-    ("Koliko stane?", "Ikura desu ka?", "i-ku-ra des ka"),
-    ("Račun, prosim", "Okaikei onegai shimasu", "o-kai-kej o-ne-gai ši-mas"),
-    ("Kje je stranišče?", "Toire wa doko desu ka?", "to-i-re va do-ko des ka"),
-    ("Zelo okusno!", "Oishii!", "oj-ši"),
-    ("Dober tek (pred jedjo)", "Itadakimasu", "i-ta-da-ki-mas"),
-    ("Hvala za pogostitev (po jedi)", "Gochisōsama deshita", "go-či-so-sa-ma deš-ta"),
-    ("Na zdravje!", "Kanpai!", "kan-paj"),
-    ("Ne razumem", "Wakarimasen", "va-ka-ri-ma-sen"),
-    ("Nasvidenje", "Sayōnara", "sa-jo-na-ra"),
+    ("Dober dan", "Konnichiwa", "kon-ni-či-va", "こんにちは"),
+    ("Dobro jutro", "Ohayō gozaimasu", "o-ha-jo go-zai-mas", "おはようございます"),
+    ("Dober večer", "Konbanwa", "kon-ban-va", "こんばんは"),
+    ("Hvala lepa", "Arigatō gozaimasu", "a-ri-ga-to go-zai-mas", "ありがとうございます"),
+    ("Prosim", "Onegai shimasu", "o-ne-gai ši-mas", "お願いします"),
+    ("Oprostite", "Sumimasen", "su-mi-ma-sen", "すみません"),
+    ("Da / Ne", "Hai / Iie", "haj / i-je", "はい、いいえ"),
+    ("Koliko stane?", "Ikura desu ka?", "i-ku-ra des ka", "いくらですか"),
+    ("Račun, prosim", "Okaikei onegai shimasu", "o-kai-kej o-ne-gai ši-mas", "お会計お願いします"),
+    ("Kje je stranišče?", "Toire wa doko desu ka?", "to-i-re va do-ko des ka", "トイレはどこですか"),
+    ("Zelo okusno!", "Oishii!", "oj-ši", "おいしい"),
+    ("Dober tek (pred jedjo)", "Itadakimasu", "i-ta-da-ki-mas", "いただきます"),
+    ("Hvala za pogostitev (po jedi)", "Gochisōsama deshita", "go-či-so-sa-ma deš-ta", "ごちそうさまでした"),
+    ("Na zdravje!", "Kanpai!", "kan-paj", "乾杯"),
+    ("Ne razumem", "Wakarimasen", "va-ka-ri-ma-sen", "わかりません"),
+    ("Nasvidenje", "Sayōnara", "sa-jo-na-ra", "さようなら"),
+]
+
+# Kartice »pokaži domačinu«: (emoji, slovensko, japonsko, romaji)
+SHOW_CARDS = [
+    ("🥬", "Smo vegetarijanke", "私たちはベジタリアンです。肉、魚、かつおだしは食べられません。",
+     "Watashitachi wa bejitarian desu. Niku, sakana, katsuo-dashi wa taberaremasen."),
+    ("🍽️", "Ali je v tem meso ali riba?", "この料理に肉や魚は入っていますか？",
+     "Kono ryōri ni niku ya sakana wa haitte imasu ka?"),
+    ("🚄", "Ali ta vlak pelje v …? (pokažite ime kraja)", "この電車は＿＿＿に行きますか？",
+     "Kono densha wa ___ ni ikimasu ka?"),
+    ("🔢", "Kateri peron?", "何番線ですか？", "Nan-ban-sen desu ka?"),
+    ("💳", "Ali lahko plačam s kartico?", "カードは使えますか？", "Kādo wa tsukaemasu ka?"),
+    ("🧾", "Račun, prosim", "お会計をお願いします。", "Okaikei o onegai shimasu."),
+    ("💧", "Vodo, prosim", "お水をください。", "Omizu o kudasai."),
+    ("🚻", "Kje je stranišče?", "トイレはどこですか？", "Toire wa doko desu ka?"),
+    ("🗺️", "Pokažite mi na zemljevidu, prosim", "地図で教えてください。", "Chizu de oshiete kudasai."),
+    ("🗣️", "Ne govorim japonsko. Ali razumete angleško?", "日本語は話せません。英語は分かりますか？",
+     "Nihongo wa hanasemasen. Eigo wa wakarimasu ka?"),
+    ("📦", "Kovčke bi poslala v naslednji hotel", "荷物を次のホテルに送りたいです。",
+     "Nimotsu o tsugi no hoteru ni okuritai desu."),
+]
+
+# Alergije: (slovensko, japonska beseda)
+ALERGENI = [
+    ("Oreščke", "ナッツ"), ("Jajca", "卵"), ("Mleko in mlečne izdelke", "乳製品"),
+    ("Pšenico (gluten)", "小麦"), ("Sojo", "大豆"), ("Ribe", "魚"),
+    ("Rake in školjke", "甲殻類・貝類"), ("Sezam", "ごま"),
+]
+
+# Nujne kartice (stran Nujno)
+NUJNO_CARDS = [
+    ("🆘", "Pomagajte mi, prosim", "助けてください！", "Tasukete kudasai!"),
+    ("🚑", "Poklicite rešilca", "救急車を呼んでください。", "Kyūkyūsha o yonde kudasai."),
+    ("👩‍⚕️", "Potrebujem zdravnika", "医者が必要です。", "Isha ga hitsuyō desu."),
+    ("👮", "Poklicite policijo", "警察を呼んでください。", "Keisatsu o yonde kudasai."),
+    ("🛂", "Izgubila sem potni list", "パスポートをなくしました。", "Pasupōto o nakushimashita."),
+    ("📱", "Izgubila sem telefon ali denarnico", "携帯電話か財布をなくしました。",
+     "Keitai denwa ka saifu o nakushimashita."),
 ]
 
 
+def _show_card(e, sl, jp, ro, cls=""):
+    return (f'<button type="button" class="show-card {cls}" data-sl="{esc(sl)}" data-jp="{esc(jp)}" '
+            f'data-ro="{esc(ro)}"><span class="sc-emoji" aria-hidden="true">{e}</span>'
+            f'<span class="sc-sl">{esc(sl)}</span><span class="sc-jp" lang="ja">{esc(jp)}</span></button>')
+
+
 def nasveti_page():
-    out = head("Nasveti in fraze · Japonska 2026",
-               "Praktični nasveti za Japonsko: onsen bonton, denar, prevoz, november in uporabne japonske fraze.")
+    out = head("Nasveti, fraze in kartice · Japonska 2026",
+               "Kartice za pokazati domačinom, japonske fraze z izgovorjavo, onsen bonton in praktični nasveti.")
     out += nav("nasveti")
     out += "<main>\n"
-    out += """<section class="loc-hero">
-  <div class="loc-emoji" aria-hidden="true">💡</div>
-  <p class="kicker">Za vsak dan potovanja</p>
-  <h1>Nasveti in fraze</h1>
-  <p class="loc-sub">Majhne stvari, ki naredijo potovanje gladko</p>
-</section>
-"""
+    out += _page_hero("💡", "Za vsak dan potovanja", "Nasveti, fraze in kartice",
+                      "Pokažite zaslon domačinu — ni treba nič govoriti")
+    out += '<nav class="chip-row" aria-label="Vsebina">\n'
+    for href, lab in [("#kartice", "🪪 Kartice"), ("#alergije", "⚠️ Alergije"),
+                      ("#fraze", "🗣️ Fraze"), ("#bonton", "🙏 Bonton")]:
+        out += f'  <a class="chip" href="{href}">{lab}</a>\n'
+    out += "</nav>\n"
+
+    out += '<section class="card-section" id="kartice" aria-labelledby="kartice-h">\n'
+    out += '  <h2 id="kartice-h">🪪 Pokaži domačinu</h2>\n'
+    out += '  <p class="cat-intro">Tapnite kartico — odpre se čez cel zaslon z velikim japonskim besedilom. Pokažite telefon natakarju, osebju na postaji ali v hotelu.</p>\n'
+    out += '  <div class="show-grid">\n'
+    for e, sl, jp, ro in SHOW_CARDS:
+        out += "    " + _show_card(e, sl, jp, ro) + "\n"
+    out += "  </div>\n</section>\n"
+
+    out += '<section class="card-section" id="alergije" aria-labelledby="alergije-h">\n'
+    out += '  <h2 id="alergije-h">⚠️ Imam alergijo na …</h2>\n'
+    out += '  <p class="cat-intro">Izberite, na kaj ste alergične — prikaže se poln stavek v japonščini.</p>\n'
+    out += '  <div class="allergy-chips">\n'
+    for sl, jp in ALERGENI:
+        full = f"私は{jp}にアレルギーがあります。"
+        ro = "Watashi wa ___ ni arerugī ga arimasu."
+        out += "    " + _show_card("⚠️", f"Imam alergijo na: {sl.lower()}", full, ro, "chip-card") + "\n"
+    out += "  </div>\n</section>\n"
+
+    out += '<section class="card-section" id="fraze" aria-labelledby="fraze-h">\n  <h2 id="fraze-h">🗣️ Uporabne japonske fraze</h2>\n'
+    out += '  <p class="cat-intro">Tapnite 🔊 in telefon izgovori frazo po japonsko.</p>\n  <ul class="phrase-list">\n'
+    for sl, ro, izg, kana in FRAZE:
+        out += (f'    <li><span class="sl">{esc(sl)}</span>'
+                f'<span class="jp">{esc(ro)}</span>'
+                f'<span class="kana" lang="ja">{esc(kana)}</span>'
+                f'<span class="izg">({esc(izg)})</span>'
+                f'<button type="button" class="say" data-say="{esc(kana)}" aria-label="Poslušaj izgovorjavo">🔊</button></li>\n')
+    out += "  </ul>\n</section>\n"
+
+    out += '<h2 class="chapter-title" id="bonton">🙏 Bonton</h2>\n'
     for title, items in NASVETI:
         sec_id = title.split(" ", 1)[1].lower().replace(" ", "-")
         out += f'<section class="card-section" aria-labelledby="{esc(sec_id)}">\n  <h2 id="{esc(sec_id)}">{esc(title)}</h2>\n  <ul class="nice-list">\n'
         for name, desc in items:
             out += f"    <li><strong>{esc(name)}</strong> — {esc(desc)}</li>\n"
         out += "  </ul>\n</section>\n"
-
-    out += '<section class="card-section" aria-labelledby="fraze">\n  <h2 id="fraze">🗣️ Uporabne japonske fraze</h2>\n  <ul class="phrase-list">\n'
-    for sl, jp, izg in FRAZE:
-        out += (f'    <li><span class="sl">{esc(sl)}</span>'
-                f'<span class="jp">{esc(jp)}</span>'
-                f'<span class="izg">({esc(izg)})</span></li>\n')
-    out += "  </ul>\n</section>\n"
-    out += '<div class="back-row"><a class="back-button" href="index.html">🏠 Nazaj na pregled</a></div>\n'
+    out += '<div class="back-row"><a class="back-button" href="nujno.html">🆘 Nujne informacije</a></div>\n'
     out += "</main>\n"
     out += FOOTER
+    return out
+
+
+NUJNO_CALLS_HTML = """<section class="card-section nujno-calls" aria-labelledby="klic">
+  <h2 id="klic">📞 Takoj pokliči</h2>
+  <div class="call-grid">
+    <a class="call-btn call-red" href="tel:110"><span class="c-num">110</span><span class="c-lbl">Policija</span></a>
+    <a class="call-btn call-red" href="tel:119"><span class="c-num">119</span><span class="c-lbl">Rešilec in gasilci</span></a>
+    <a class="call-btn" href="tel:+81-50-3816-2787"><span class="c-num">050-3816-2787</span><span class="c-lbl">Japan Visitor Hotline<br><small>24 ur na dan, angleško</small></span></a>
+    <a class="call-btn" href="tel:+81355706275"><span class="c-num">+81 3 5570 6275</span><span class="c-lbl">Veleposlaništvo RS v Tokiu</span></a>
+  </div>
+  <p class="fine-note">Na 119 povejte »Kyūkyū desu« (rešilec) ali »Kaji desu« (požar), nato naslov ali bližnji znak. Evropska številka 112 na Japonskem ni uradna številka — kličite 110 ali 119. Za Japan Visitor Hotline iz tujine: +81-50-3816-2787.</p>
+</section>
+"""
+
+NUJNO_EMBASSY_HTML = """<section class="card-section" aria-labelledby="ambasada">
+  <h2 id="ambasada">🇸🇮 Veleposlaništvo Republike Slovenije v Tokiu</h2>
+  <p class="addr">7 Chome-14-12 Minamiaoyama, Minato-ku, Tokyo 107-0062<br>Telefon: <a href="tel:+81355706275">+81 3 5570 6275</a></p>
+  <a class="pin-btn" href="https://www.google.com/maps/search/?api=1&query=Embassy%20of%20Slovenia%2C%20Minamiaoyama%2C%20Minato%2C%20Tokyo" target="_blank" rel="noopener">📍 Pokaži na zemljevidu</a>
+  <p class="fine-note">Veleposlaništvo pomaga ob izgubi ali tatvini potnega lista in v hudih težavah. Pred odhodom preverite, ali so podatki še aktualni (gov.si → Japonska → predstavništva).</p>
+</section>
+"""
+
+NUJNO_NOTES_HTML = """<section class="card-section" aria-labelledby="zapiski">
+  <h2 id="zapiski">📝 Moje številke (shranjeno samo v tem telefonu)</h2>
+  <p class="cat-intro">Zapišite si, kar bi rade imele pri roki: zavarovalna asistenca in številka police, banka (blokada kartice), naslov hotela.</p>
+  <textarea class="notes-box" data-save="nujno-zapiski" rows="7" placeholder="npr.
+Zavarovanje: tel … / polica …
+Banka: blokada kartice …
+Hotel (naslov in tel.): …"></textarea>
+</section>
+"""
+
+NUJNO_STEPS = [
+    ("💳", "Izgubljena ali ukradena kartica",
+     "Takoj jo zamrznite v aplikaciji banke ali Revoluta (»Freeze«). Nato pokličite številko za blokado, ki jo imate shranjeno. Gotovino in drugo kartico imejte vedno ločeno."),
+    ("📱", "Izgubljen ali ukraden telefon",
+     "Z druge naprave poiščite telefon (Najdi / Najdi napravo) in ga zaklenite. Blokirajte SIM pri operaterju, spremenite gesla in prijavite izgubo na policijski postaji (koban) — dobite potrdilo za zavarovanje."),
+    ("🛂", "Izgubljen potni list",
+     "Prijavite izgubo policiji (koban) in zahtevajte potrdilo. Nato pokličite veleposlaništvo RS v Tokiu. Fotografijo potnega lista imejte vedno v telefonu."),
+    ("🏥", "Zdravstvene težave",
+     "Pokličite 119 (rešilec) ali prosite recepcijo hotela za pomoč pri iskanju zdravnika. Pokličite zavarovalno asistenco in shranite vse račune. Japan Visitor Hotline pomaga v angleščini."),
+    ("🌏", "Potres",
+     "Ostanite mirne, zaščitite glavo (pod mizo ali ob steno), izogibajte se steklu in sledite navodilom osebja. Ob obali ob opozorilu na cunami takoj na višje. Naložite aplikacijo »Safety tips« (JNTO) — opozorila v več jezikih."),
+    ("🧳", "Izgubljena stvar",
+     "Vprašajte osebje na postaji ali v taksi podjetju, nato koban. Japonska je znana po vračanju izgubljenih stvari — pogosto se najdejo."),
+]
+
+
+def nujno_page():
+    out = head("Nujno · Japonska — Mesec za dušo",
+               "Nujne številke, veleposlaništvo, kaj storiti ob izgubi kartice ali telefona, in kartice za pomoč v japonščini.")
+    out += nav("nujno")
+    out += "<main>\n"
+    out += _page_hero("🆘", "Mir v žepu", "Nujne informacije",
+                      "Upamo, da je ne boste potrebovale — a dobro je, da je tu")
+    out += NUJNO_CALLS_HTML
+    out += NUJNO_EMBASSY_HTML
+
+    out += '<section class="card-section" aria-labelledby="tezava">\n  <h2 id="tezava">🧭 Kaj storiti ob težavi</h2>\n'
+    for e, h, t in NUJNO_STEPS:
+        out += (f'  <details class="step-box"><summary><span class="sb-e">{e}</span>{esc(h)}</summary>'
+                f'<p>{esc(t)}</p></details>\n')
+    out += "</section>\n"
+
+    out += '<section class="card-section" aria-labelledby="povej">\n  <h2 id="povej">🗣️ Povej po japonsko (pokaži zaslon)</h2>\n  <div class="show-grid">\n'
+    for e, sl, jp, ro in NUJNO_CARDS:
+        out += "    " + _show_card(e, sl, jp, ro, "red") + "\n"
+    out += "  </div>\n</section>\n"
+
+    out += NUJNO_NOTES_HTML
+    out += '<div class="back-row"><a class="back-button" href="index.html">🏠 Nazaj na pregled</a></div>\n'
+    out += "</main>\n" + FOOTER
     return out
 
 
@@ -922,6 +1065,8 @@ def nacrt_page():
     out += "<main>\n"
     out += _page_hero("🗺️", "Hrbtenica potovanja", "Načrt poti — 30 dni",
                       "Dan za dnem, od Tokia do Osake", "nacrt")
+    out += '<section class="today-card" id="today" hidden aria-live="polite"></section>\n'
+    out += trip_script()
     if it.get("intro"):
         out += f'<p class="intro-note">{esc(it["intro"])}</p>\n'
 
@@ -933,7 +1078,7 @@ def nacrt_page():
         new = d["region"] != prev_region
         prev_region = d["region"]
         reg = f'<span class="it-region">{esc(d["region"])}</span>' if new else ""
-        out += (f'    <li class="it-day{" it-new" if new else ""}">\n'
+        out += (f'    <li class="it-day{" it-new" if new else ""}" data-iso="{day_iso(d["day"])}">\n'
                 f'      <span class="it-num"><span class="it-daynum">Dan {d["day"]}</span>'
                 f'<span class="it-date">{esc(d["date"])}</span></span>\n'
                 f'      <span class="it-body">{reg}<strong>{esc(d["title"])}</strong>'
@@ -1122,21 +1267,94 @@ def izziv_page():
     out += "<main>\n"
     out += _page_hero("📸", "Skupaj gradimo album", "Foto izzivi",
                       "Za Marjetico, Heleno, Ljubo in Magdo")
-    out += ('<p class="intro-note">Za vsako postajo nekaj izzivov. Ko naložite fotografijo (ali video) za izziv, '
-            'ta pade na dno kot <strong>opravljen</strong> in se pokaže sličica — tako nastane vaš potopis. '
-            'Nalaganje odklenete s skupno kodo (enkrat).</p>\n')
+
+    out += """<section class="card-section izziv-how" aria-labelledby="kako">
+  <h2 id="kako">Kako deluje</h2>
+  <ol class="how-steps">
+    <li><span class="how-n">1</span><span><strong>Izberi izziv</strong> — pri vsaki postaji jih je nekaj. Odpri postajo in poglej, kaj te čaka.</span></li>
+    <li><span class="how-n">2</span><span><strong>Naloži fotografijo ali video</strong> kar s telefona. Prvič vneseš skupno kodo in ime.</span></li>
+    <li><span class="how-n">3</span><span><strong>Odkleni presenečenje</strong> — zanimivost, skrivnost ali nagrada. Opravljeni izziv pade na dno in pokaže sličico.</span></li>
+  </ol>
+</section>
+<section class="card-section izziv-idea" aria-labelledby="ideja">
+  <h2 id="ideja">Zakaj to počnemo?</h2>
+  <p>Mesec dni bo minil hitro. Zato za vsako postajo ujamete nekaj slik — ne le razglednic, ampak <strong>vas na teh krajih</strong>: skupaj, v tišini, ob hrani, med smehom. Iz teh slik in tega načrta bo po vrnitvi nastala <strong>vaša potopisna knjiga</strong>.</p>
+  <p class="fine">Drobni tisk: vsak izziv ima pod seboj »drobni tisk« — zakaj se slikate prav tam in kaj je ta kraj. Presenečenja so zanimivosti, legende in majhne nagrade (nobenih izmišljenih kuponov — le pravi predlogi in kraji).</p>
+</section>
+"""
     out += '<div class="album-gate"></div>\n'
-    out += '<section class="card-section"><div class="izziv-board" data-scope="all"></div></section>\n'
+    out += '<section class="izziv-overall" id="izziv-overall"></section>\n'
+    out += '<div class="izziv-board izziv-stations" data-scope="all"></div>\n'
+    out += ('<section class="card-section izziv-final" id="izziv-final" hidden>'
+            '<h2>🏆 Vse izzive ste opravile!</h2>'
+            '<p>Zadnje presenečenje: izberite <strong>najljubšo sliko vsake postaje</strong> in jo uvrstite v potopisno knjigo — '
+            'prva slika (Meiji Jingu) in zadnja (Miyajima) bosta ob straneh, vmes pa vaš mesec Japonske. '
+            'Z gumbom »Prenesi vse slike« na strani Naloži dobite cel album z enim klikom.</p>'
+            '<p><a class="back-button" href="nalozi.html">⬇️ Pojdi na album</a></p></section>\n')
     out += f'<script type="application/json" id="izziv-data">{data}</script>\n'
     out += '<div class="back-row"><a class="back-button" href="nalozi.html">📤 Naloži fotografije</a></div>\n'
     out += "</main>\n" + FOOTER
     return out
 
 
+import datetime as _dt
+
+TRIP_START = _dt.date(2026, 11, 3)
+
+REGION_KEY = {
+    "Tokio": "tokio", "Chichibu (izlet)": "chichibu", "Fuji – Kawaguchiko": "kawaguchiko",
+    "Minobusan": "minobusan", "Izu": "izu", "Kumano Kodo": "kumano", "Koya-san": "koyasan",
+    "Iya": "iya", "Ine": "ine", "Kyoto": "kyoto", "Osaka": "osaka",
+    "Nara (izlet)": "nara", "Hiroshima (izlet)": "hiroshima", "Odhod": "osaka",
+}
+DAYTRIP_BASE = {"chichibu": "tokio", "nara": "kyoto", "hiroshima": "osaka"}
+
+
+def day_iso(day):
+    return (TRIP_START + _dt.timedelta(days=int(day) - 1)).isoformat()
+
+
+def trip_script():
+    """JSON z vsemi dnevi poti (za »Danes« in označitev v načrtu)."""
+    rows = []
+    for d in ITINERARY.get("days", []):
+        rows.append({"d": d["day"], "iso": day_iso(d["day"]), "date": d["date"], "r": d["region"],
+                     "t": d["title"], "p": d["plan"], "k": REGION_KEY.get(d["region"], "")})
+    return ('<script type="application/json" id="trip-data">'
+            + json.dumps(rows, ensure_ascii=False) + "</script>\n")
+
+
+def route_script():
+    """JSON s postajami in koordinatami (za pregledni zemljevid poti)."""
+    rows = []
+    for i, loc in enumerate(LOCATIONS):
+        m = MAPS.get(loc["key"])
+        if not m:
+            continue
+        rows.append({"k": loc["key"], "n": loc["nav"], "e": loc["emoji"], "i": i + 1,
+                     "lat": m[0], "lon": m[1], "day": bool(loc.get("daytrip")),
+                     "base": DAYTRIP_BASE.get(loc["key"], "")})
+    return ('<script type="application/json" id="route-data">'
+            + json.dumps(rows, ensure_ascii=False) + "</script>\n")
+
+
+QUICK_LINKS = [
+    ("nacrt.html", "🗺️", "Načrt poti", "30 dni, dan za dnem"),
+    ("izziv.html", "📸", "Foto izzivi", "52 izzivov in presenečenja"),
+    ("nalozi.html", "📤", "Naloži fotografije", "album iz vaših telefonov"),
+    ("dozivetja.html", "🎨", "Doživetja", "delavnice, čaj, vrtovi"),
+    ("priprave.html", "🎒", "Priprave", "denar, vlaki, pakiranje"),
+    ("nasveti.html#kartice", "🪪", "Kartice za domačine", "pokažite zaslon"),
+    ("nasveti.html#fraze", "🗣️", "Fraze", "z izgovorjavo 🔊"),
+    ("nujno.html", "🆘", "Nujno", "110, 119, veleposlaništvo"),
+]
+
+
 def index_page():
     out = head(
         "Japonska — Mesec za dušo",
         "Potovalni vodnik za Magdo in prijateljice: Japonska, 3. november – 2. december 2026, Tokio → Osaka.",
+        with_map=True,
     )
     out += nav("index")
     out += "<main>\n"
@@ -1145,30 +1363,38 @@ def index_page():
   <p class="leaves" aria-hidden="true">🍁 🍂 🍁</p>
   <h1>Japonska<br><span class="h1-sub">Mesec za dušo</span></h1>
   <p class="dates">3. november – 2. december 2026 · Tokio → Osaka</p>
-  <p class="tagline">Potovalni vodnik za Magdo in prijateljice — vaš žepni spremljevalec: za vsako postajo znamenitosti z zemljevidi, preverjene restavracije, osebne rubrike, nasveti in videi.</p>
+  <p class="tagline">Potovalni vodnik za Marjetico, Heleno, Ljubo in Magdo — vaš žepni spremljevalec: načrt dneva, znamenitosti, hrana, foto izzivi in nujne informacije.</p>
   <a class="photo-button" href="nalozi.html">📸 Naš album — naloži fotografije</a>
 </section>
-<nav class="quick-links" aria-label="Glavna poglavja">
-  <a href="nacrt.html"><span class="ql-emoji" aria-hidden="true">🗺️</span><span class="ql-t">Načrt poti</span><span class="ql-d">30 dni, dan za dnem</span></a>
-  <a href="dozivetja.html"><span class="ql-emoji" aria-hidden="true">🎨</span><span class="ql-t">Doživetja</span><span class="ql-d">delavnice, čaj, vrtovi</span></a>
-  <a href="priprave.html"><span class="ql-emoji" aria-hidden="true">🎒</span><span class="ql-t">Priprave</span><span class="ql-d">denar, vlaki, pakiranje</span></a>
-  <a href="nasveti.html"><span class="ql-emoji" aria-hidden="true">💡</span><span class="ql-t">Nasveti</span><span class="ql-d">bonton in fraze</span></a>
-</nav>
+<section class="today-card" id="today" hidden aria-live="polite"></section>
+"""
+    out += '<nav class="quick-links" aria-label="Glavna poglavja">\n'
+    for href, e, t, d in QUICK_LINKS:
+        out += (f'  <a href="{href}"><span class="ql-emoji" aria-hidden="true">{e}</span>'
+                f'<span class="ql-t">{esc(t)}</span><span class="ql-d">{esc(d)}</span></a>\n')
+    out += "</nav>\n"
+
+    out += """<section class="card-section map-route-sec" aria-labelledby="pot">
+  <h2 id="pot">🗺️ Naša pot</h2>
+  <div class="route-map" id="route-map" role="img" aria-label="Zemljevid poti po Japonski od Tokia do Osake"></div>
+  <p class="map-legend"><span class="lg-line"></span> nočitvene postaje po vrsti &nbsp; <span class="lg-dash"></span> enodnevni izleti. Tapnite številko za vodnik.</p>
+  <ol class="route-list">
+""" + "\n".join(
+        f'    <li><a href="{loc["key"]}.html"><span class="rl-n{" rl-day" if loc.get("daytrip") else ""}">{i + 1}</span>'
+        f'<span class="rl-t">{loc["emoji"]} {esc(loc["nav"])}</span></a></li>'
+        for i, loc in enumerate(LOCATIONS)) + """
+  </ol>
+  <p class="visit-sum" id="visit-sum"></p>
+</section>
 """
     out += """<section class="welcome card-section" aria-labelledby="welcome">
   <h2 id="welcome">👋 Dobrodošle</h2>
   <p>Pred vami je mesec, kakršnega si privoščimo enkrat v življenju — cel november na Japonskem, v času, ko se javorji obarvajo v najlepše rdeče in zlato. Ta vodnik ni seznam, ki bi ga bilo treba prehiteti; je vaš tihi spremljevalec.</p>
   <p>Potujte počasi. Ena znamenitost dopoldne, ena popoldne, vmes skodelica čaja. Ustavite se, kjer je lepo, in tam ostanite dlje, kot se zdi potrebno. Japonska najlepše nagradi tiste, ki se ji ne mudi.</p>
   <p>Na vsaki postaji boste našle znamenitosti z zemljevidi, kje in kaj jesti, kdaj je kraj najlepši, kje si vzeti uro zase — in prostor za svoje zapiske.</p>
-  <p>Čaka vas tudi nekaj <strong>foto izzivov</strong> za vsako postajo — obkljukate jih, ko vam uspe, iz njih pa bo nastal vaš skupni album in potopisna knjiga. Marjetica, Helena, Ljuba in Magda: fotoaparati pripravljeni! 🍁</p>
+  <p>Čaka vas tudi <strong>52 foto izzivov</strong> z majhnimi presenečenji: naložite sliko s telefona, izziv se opravi, odklene pa se zanimivost, skrivnost ali nagrada. Iz tega bo nastala vaša potopisna knjiga. Marjetica, Helena, Ljuba in Magda: fotoaparati pripravljeni! 🍁</p>
 </section>
 """
-    out += '<ul class="route" aria-label="Pot potovanja">\n'
-    route_items = []
-    for loc in LOCATIONS:
-        route_items.append(f"  <li>{loc['emoji']} {esc(loc['nav'])}</li>")
-    out += '\n  <li class="arrow" aria-hidden="true">→</li>\n'.join(route_items) + "\n</ul>\n"
-
     out += '<h2 class="section-title">Naše postaje</h2>\n<ul class="cards">\n'
     for i, loc in enumerate(LOCATIONS):
         stop = f"Postaja {i + 1}"
@@ -1179,7 +1405,7 @@ def index_page():
     <a href="{loc['key']}.html">
       <span class="card-scene">{card_media(loc['key'], art.location_scene(loc['key']))}</span>
       <span class="card-body">
-        <span class="stop-num">{stop}</span>
+        <span class="stop-num">{stop}</span> <span class="visit-tag" data-visit-tag="{loc['key']}" hidden>✅ Obiskano</span>
         <span class="card-title">{loc['emoji']} {esc(loc['name'])}</span>
         <span class="card-teaser">{esc(loc['teaser'])}</span>
         <span class="card-more">Odpri vodnik →</span>
@@ -1189,10 +1415,11 @@ def index_page():
 """
     out += "</ul>\n"
     out += """<div class="back-row">
-  <a class="back-button" href="nasveti.html">💡 Nasveti in japonske fraze</a>
+  <a class="back-button" href="nujno.html">🆘 Nujne informacije</a>
 </div>
-</main>
 """
+    out += trip_script() + route_script()
+    out += "</main>\n"
     out += FOOTER
     return out
 
@@ -1213,7 +1440,8 @@ for name, builder in [("nacrt.html", nacrt_page),
                       ("priprave.html", priprave_page),
                       ("dozivetja.html", dozivetja_page),
                       ("nalozi.html", nalozi_page),
-                      ("izziv.html", izziv_page)]:
+                      ("izziv.html", izziv_page),
+                      ("nujno.html", nujno_page)]:
     with open(os.path.join(OUT, name), "w", encoding="utf-8") as f:
         f.write(builder())
     print(f"written {name}")

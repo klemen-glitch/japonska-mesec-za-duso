@@ -6,11 +6,11 @@
   <title>Osaka · Japonska 2026</title>
   <meta name="description" content="Osaka: znamenitosti, hrana in nasveti — vodnik Japonska 2026.">
   <meta name="theme-color" content="#7b2230">
-  <link rel="stylesheet" href="style.css?v=15">
+  <link rel="stylesheet" href="style.css?v=16">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script defer src="album.js?v=15"></script>
+  <script defer src="album.js?v=16"></script>
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
@@ -32,7 +32,8 @@
         <a href="nalozi.html"><span class="mi-emoji" aria-hidden="true">📤</span>Naloži fotografije</a>
         <a href="dozivetja.html"><span class="mi-emoji" aria-hidden="true">🎨</span>Doživetja</a>
         <a href="priprave.html"><span class="mi-emoji" aria-hidden="true">🎒</span>Priprave</a>
-        <a href="nasveti.html"><span class="mi-emoji" aria-hidden="true">💡</span>Nasveti</a>
+        <a href="nasveti.html"><span class="mi-emoji" aria-hidden="true">💡</span>Nasveti in kartice</a>
+        <a href="nujno.html"><span class="mi-emoji" aria-hidden="true">🆘</span>Nujno</a>
       </div>
       <p class="menu-label">Postaje potovanja</p>
       <div class="menu-stations">
@@ -61,6 +62,7 @@
   <h1>Osaka</h1>
   <p class="loc-sub">Kuhinja Japonske</p>
   <p class="loc-intro">Za konec — mesto, ki se rado smeji in še raje jé. Osaka je neuradna »kuhinja Japonske«: tu se ne sprašuje, kje bi jedli, ampak kaj bomo pojedle najprej. Popoln kraj za zadnje večere, nazdravljanje in nakup spominkov.</p>
+  <p class="visit-wrap"><button type="button" class="visit-btn" data-visit="osaka">☐ Označi kot obiskano</button></p>
 </section>
 <section class="card-section" aria-labelledby="znamenitosti">
   <h2 id="znamenitosti">⛩️ Znamenitosti in doživetja</h2>
@@ -156,7 +158,7 @@
   <p class="cat-intro">Naložite fotografijo (ali video) za izziv — takoj se označi kot opravljen in se spodaj pokaže sličica. Iz tega nastane vaš skupni album. <a href="izziv.html">Vsi izzivi na enem mestu →</a></p>
   <div class="album-gate"></div>
   <div class="izziv-board" data-scope="osaka"></div>
-  <script type="application/json" id="izziv-data">[{"id": "osaka-0", "t": "foto", "x": "Dotonbori zvečer: vse štiri pod neoni, luči se zrcalijo v kanalu.", "s": "osaka", "sn": "Osaka", "e": "🏙️"}, {"id": "osaka-1", "t": "foto", "x": "Vsaka s svojim takoyakijem — štirje nasmehi, štiri kroglice.", "s": "osaka", "sn": "Osaka", "e": "🏙️"}, {"id": "osaka-2", "t": "foto", "x": "Ljuba pred gradom Osaka med zlatimi ginki.", "s": "osaka", "sn": "Osaka", "e": "🏙️"}, {"id": "osaka-3", "t": "video", "x": "Video (15 s): vrvež tržnice Kuromon in vaše pokušanje.", "s": "osaka", "sn": "Osaka", "e": "🏙️"}]</script>
+  <script type="application/json" id="izziv-data">[{"id": "osaka-0", "t": "foto", "x": "Dotonbori zvečer: vse štiri pod neoni, luči se zrcalijo v kanalu.", "w": "Dotonbori je glavna zabavna ulica Osake. Ideja: vesela slika po tišini podeželja — neoni in nasmehi.", "p": {"k": "zanimivost", "h": "Tekač Glico", "x": "Reklama »Glico Running Man« (tekač z dvignjenimi rokami) stoji tu že od leta 1935 (v novejših različicah). Poza z dvignjenimi rokami je turistična tradicija — poskusite."}, "s": "osaka", "sn": "Osaka", "e": "🏙️"}, {"id": "osaka-1", "t": "foto", "x": "Vsaka s svojim takoyakijem — štirje nasmehi, štiri kroglice.", "w": "Takoyaki je osaška specialiteta (tako = hobotnica, yaki = pečeno). Ideja: štirje nasmehi, štiri kroglice — vesela slika o hrani.", "p": {"k": "zanimivost", "h": "Vroč jezik", "x": "Takoyaki so znotraj vroči kot lava — Osačani jih jedo previdno, s pihanjem. Prvi takoyaki naj bi nastal leta 1935. Če se opečete, je to del izkušnje."}, "s": "osaka", "sn": "Osaka", "e": "🏙️"}, {"id": "osaka-2", "t": "foto", "x": "Ljuba pred gradom Osaka med zlatimi ginki.", "w": "Grad Osaka je zgradil Hideyoshi Toyotomi leta 1583; zdajšnji stolp je rekonstrukcija iz leta 1931. Ginki obarvajo okolico zlato. Ideja: Ljuba v zlati svetlobi.", "p": {"k": "zanimivost", "h": "Zlati okraski na strehi", "x": "Na strehi glavnega stolpa se bleščijo zlati okraski, med njimi tigri in mitske ribe shachihoko. Poglejte navzgor in jih poiščite."}, "s": "osaka", "sn": "Osaka", "e": "🏙️"}, {"id": "osaka-3", "t": "video", "x": "Video (15 s): vrvež tržnice Kuromon in vaše pokušanje.", "w": "Kuromon je »kuhinja Osake«, pokrita tržnica. Video ujame glasove in vrvež. Ideja: zvočna slika veselega zaključka poti.", "p": {"k": "nagrada", "h": "Nagrada: skupna pokušina", "x": "Ime Kuromon (»črna vrata«) izvira iz vrat nekdanjega templja Enmyō-ji. Nagrada za video: skupaj pokusite pečene pokrovače ali ananas na palčki — vsaka izbere svoje.", "m": "Kuromon Ichiba Market, Osaka"}, "s": "osaka", "sn": "Osaka", "e": "🏙️"}]</script>
 </section>
 <section class="card-section" aria-labelledby="hrana">
   <h2 id="hrana">🍜 Hrana — kaj in kje jesti</h2>
@@ -360,6 +362,6 @@
   <p>🍁 Japonska — Mesec za dušo · 3. november – 2. december 2026 · Tokio → Osaka</p>
   <p>Z ljubeznijo pripravljeno za Magdo in prijateljice</p>
 </footer>
-<script src="app.js?v=15"></script>
+<script src="app.js?v=16"></script>
 </body>
 </html>

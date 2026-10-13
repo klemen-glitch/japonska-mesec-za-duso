@@ -6,11 +6,11 @@
   <title>Tokio · Japonska 2026</title>
   <meta name="description" content="Tokio: znamenitosti, hrana in nasveti — vodnik Japonska 2026.">
   <meta name="theme-color" content="#7b2230">
-  <link rel="stylesheet" href="style.css?v=15">
+  <link rel="stylesheet" href="style.css?v=16">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script defer src="album.js?v=15"></script>
+  <script defer src="album.js?v=16"></script>
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
@@ -32,7 +32,8 @@
         <a href="nalozi.html"><span class="mi-emoji" aria-hidden="true">📤</span>Naloži fotografije</a>
         <a href="dozivetja.html"><span class="mi-emoji" aria-hidden="true">🎨</span>Doživetja</a>
         <a href="priprave.html"><span class="mi-emoji" aria-hidden="true">🎒</span>Priprave</a>
-        <a href="nasveti.html"><span class="mi-emoji" aria-hidden="true">💡</span>Nasveti</a>
+        <a href="nasveti.html"><span class="mi-emoji" aria-hidden="true">💡</span>Nasveti in kartice</a>
+        <a href="nujno.html"><span class="mi-emoji" aria-hidden="true">🆘</span>Nujno</a>
       </div>
       <p class="menu-label">Postaje potovanja</p>
       <div class="menu-stations">
@@ -61,6 +62,7 @@
   <h1>Tokio</h1>
   <p class="loc-sub">Mesto, ki zna biti tudi tiho</p>
   <p class="loc-intro">Največje mesto na svetu vas bo presenetilo s tem, kako mirno zna biti. Med nebotičniki se skrivajo stare soseske, tihi vrtovi in svetišča, kjer zjutraj slišite le ptice in škripanje gramoza pod nogami. Tokio je najlepši počasi — ena soseska na dan, vmes pa dobra kava in še boljši sushi.</p>
+  <p class="visit-wrap"><button type="button" class="visit-btn" data-visit="tokio">☐ Označi kot obiskano</button></p>
 </section>
 <section class="card-section" aria-labelledby="znamenitosti">
   <h2 id="znamenitosti">⛩️ Znamenitosti in doživetja</h2>
@@ -156,7 +158,7 @@
   <p class="cat-intro">Naložite fotografijo (ali video) za izziv — takoj se označi kot opravljen in se spodaj pokaže sličica. Iz tega nastane vaš skupni album. <a href="izziv.html">Vsi izzivi na enem mestu →</a></p>
   <div class="album-gate"></div>
   <div class="izziv-board" data-scope="tokio"></div>
-  <script type="application/json" id="izziv-data">[{"id": "tokio-0", "t": "foto", "x": "Vse štiri pod velikimi torii svetišča Meiji Jingu — prvi skupinski posnetek potovanja.", "s": "tokio", "sn": "Tokio", "e": "🗼"}, {"id": "tokio-1", "t": "foto", "x": "Magda na klopci ob ribniku v vrtu Rikugien s skodelico matche — ostale jo tiho ujamejo (Magdin trenutek v živo).", "s": "tokio", "sn": "Tokio", "e": "🗼"}, {"id": "tokio-2", "t": "foto", "x": "Prvi pravi sushi na tržnici Tsukiji — nasmeh ob prvem grižljaju, od blizu.", "s": "tokio", "sn": "Tokio", "e": "🗼"}, {"id": "tokio-3", "t": "video", "x": "Kratek video (15 s): vožnja z ladjico po reki Sumidi — mesto z vode in vaši glasovi.", "s": "tokio", "sn": "Tokio", "e": "🗼"}]</script>
+  <script type="application/json" id="izziv-data">[{"id": "tokio-0", "t": "foto", "x": "Vse štiri pod velikimi torii svetišča Meiji Jingu — prvi skupinski posnetek potovanja.", "w": "Meiji Jingu je svetišče, posvečeno cesarju Meiji, sredi gozda sredi velemesta. Torii je simbolični »prag«, zato je tu pravi kraj za začetek zgodbe. Ideja: prva skupinska slika odpre vašo potopisno knjigo, zadnja v Hiroshimi jo zaključi.", "p": {"k": "zanimivost", "h": "Gozd, ki ga je zasadil človek", "x": "Gozd Meiji Jingu ni naraven: ob ustanovitvi svetišča (okoli 1915–1920) so zasadili približno 100.000 dreves, podarjenih z vse Japonske. Danes je videti kot pragozd. Še bonton: pri torii se rahlo priklonite in hodite ob robu poti — sredina je po izročilu rezervirana za bogove."}, "s": "tokio", "sn": "Tokio", "e": "🗼"}, {"id": "tokio-1", "t": "foto", "x": "Magda na klopci ob ribniku v vrtu Rikugien s skodelico matche — ostale jo tiho ujamejo (Magdin trenutek v živo).", "w": "Rikugien je krajinski vrt iz leta 1702. Ideja izziva: slika ne sme biti poza, ujemite počasnost — trenutek, ko se Magda res ustavi.", "p": {"k": "zanimivost", "h": "Vrt kot pesem", "x": "Rikugien (»vrt šestih vrlin poezije«) je ustvaril Yanagisawa Yoshiyasu in v njem poustvaril 88 prizorov iz klasičnih japonskih pesmi (waka). Vsak most, otoček in klopca je kot verz."}, "s": "tokio", "sn": "Tokio", "e": "🗼"}, {"id": "tokio-2", "t": "foto", "x": "Prvi pravi sushi na tržnici Tsukiji — nasmeh ob prvem grižljaju, od blizu.", "w": "Tsukiji je nekdanja velika ribja tržnica (veleprodaja se je leta 2018 preselila v Toyosu); zunanji del z jedilnicami živi naprej. Ideja: hrana je velik del vsake potopisne knjige — prvi grižljaj je mejnik okusov.", "p": {"k": "nagrada", "h": "Nagrada: topla sladica na palčki", "x": "Privoščite si še tamagoyaki (sladko omleto) na palčki, okoli 200 jenov. Pa še podatek: ime Tsukiji pomeni »nasuto zemljišče« — ta del Tokia so v 17. stoletju zgradili iz nasutja.", "m": "Tsukiji Yamacho, Tsukiji Outer Market, Tokyo"}, "s": "tokio", "sn": "Tokio", "e": "🗼"}, {"id": "tokio-3", "t": "video", "x": "Kratek video (15 s): vožnja z ladjico po reki Sumidi — mesto z vode in vaši glasovi.", "w": "Reka Sumida teče skozi staro Tokio. Video ujame, česar fotografija ne more: zvok mesta z vode in vaše smeha. Ideja: prvi video v knjigi (QR koda v tiskani verziji).", "p": {"k": "zanimivost", "h": "Ladjice iz stripov", "x": "Nekatere ladjice Tokyo Cruise (Himiko, Hotaluna) je oblikoval Leiji Matsumoto, avtor stripa Galaxy Express 999 — zato so videti kot vesoljske ladje. Poglejte, ali ujamete eno od njih."}, "s": "tokio", "sn": "Tokio", "e": "🗼"}]</script>
 </section>
 <section class="card-section" aria-labelledby="hrana">
   <h2 id="hrana">🍜 Hrana — kaj in kje jesti</h2>
@@ -367,6 +369,6 @@
   <p>🍁 Japonska — Mesec za dušo · 3. november – 2. december 2026 · Tokio → Osaka</p>
   <p>Z ljubeznijo pripravljeno za Magdo in prijateljice</p>
 </footer>
-<script src="app.js?v=15"></script>
+<script src="app.js?v=16"></script>
 </body>
 </html>

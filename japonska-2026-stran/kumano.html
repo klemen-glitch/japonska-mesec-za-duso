@@ -6,11 +6,11 @@
   <title>Kumano Kodo · Japonska 2026</title>
   <meta name="description" content="Kumano Kodo: znamenitosti, hrana in nasveti — vodnik Japonska 2026.">
   <meta name="theme-color" content="#7b2230">
-  <link rel="stylesheet" href="style.css?v=15">
+  <link rel="stylesheet" href="style.css?v=16">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script defer src="album.js?v=15"></script>
+  <script defer src="album.js?v=16"></script>
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
@@ -32,7 +32,8 @@
         <a href="nalozi.html"><span class="mi-emoji" aria-hidden="true">📤</span>Naloži fotografije</a>
         <a href="dozivetja.html"><span class="mi-emoji" aria-hidden="true">🎨</span>Doživetja</a>
         <a href="priprave.html"><span class="mi-emoji" aria-hidden="true">🎒</span>Priprave</a>
-        <a href="nasveti.html"><span class="mi-emoji" aria-hidden="true">💡</span>Nasveti</a>
+        <a href="nasveti.html"><span class="mi-emoji" aria-hidden="true">💡</span>Nasveti in kartice</a>
+        <a href="nujno.html"><span class="mi-emoji" aria-hidden="true">🆘</span>Nujno</a>
       </div>
       <p class="menu-label">Postaje potovanja</p>
       <div class="menu-stations">
@@ -61,6 +62,7 @@
   <h1>Kumano Kodo</h1>
   <p class="loc-sub">Pot, po kateri romarji hodijo že tisoč let</p>
   <p class="loc-intro">Skozi gozdove polotoka Kii se že več kot tisoč let vijejo romarske poti Kumano Kodo. Po kamnitih stopnicah, med mahom in meglicami, so hodili cesarji in kmetje — vsi z istim namenom: umiriti misli. Ni treba prehoditi cele poti; dovolj je en lep, položen odsek.</p>
+  <p class="visit-wrap"><button type="button" class="visit-btn" data-visit="kumano">☐ Označi kot obiskano</button></p>
 </section>
 <section class="card-section" aria-labelledby="znamenitosti">
   <h2 id="znamenitosti">⛩️ Znamenitosti in doživetja</h2>
@@ -156,7 +158,7 @@
   <p class="cat-intro">Naložite fotografijo (ali video) za izziv — takoj se označi kot opravljen in se spodaj pokaže sličica. Iz tega nastane vaš skupni album. <a href="izziv.html">Vsi izzivi na enem mestu →</a></p>
   <div class="album-gate"></div>
   <div class="izziv-board" data-scope="kumano"></div>
-  <script type="application/json" id="izziv-data">[{"id": "kumano-0", "t": "foto", "x": "Vse štiri ob velikanski cedri na Daimonzaki — položite dlani na njeno deblo.", "s": "kumano", "sn": "Kumano", "e": "⛩️"}, {"id": "kumano-1", "t": "foto", "x": "Ikona Japonske: rdeča pagoda Seiganto-ji in slap Nachi v enem kadru.", "s": "kumano", "sn": "Kumano", "e": "⛩️"}, {"id": "kumano-2", "t": "foto", "x": "Marjetica na kamnitih stopnicah romarske poti, meglice med drevesi.", "s": "kumano", "sn": "Kumano", "e": "⛩️"}, {"id": "kumano-3", "t": "foto", "x": "Noge v rečni kopeli Kawayu — topel prod ob reki.", "s": "kumano", "sn": "Kumano", "e": "⛩️"}]</script>
+  <script type="application/json" id="izziv-data">[{"id": "kumano-0", "t": "foto", "x": "Vse štiri ob velikanski cedri na Daimonzaki — položite dlani na njeno deblo.", "w": "Daimonzaka je približno 600 m dolga kamnita pot med cedrami, starimi do 800 let. Dlani na deblu = dotik zgodovine. Ideja: slika, ki ji ni para.", "p": {"k": "skrivnost", "h": "Poročni cedri", "x": "Ob poti poiščite »Meoto-sugi« — drevesi, zrasli iz skupnega korena, »poročni par«. Po izročilu prinašata srečo zakoncem in prijateljem. Če ju najdete, ju objemite vse štiri."}, "s": "kumano", "sn": "Kumano", "e": "⛩️"}, {"id": "kumano-1", "t": "foto", "x": "Ikona Japonske: rdeča pagoda Seiganto-ji in slap Nachi v enem kadru.", "w": "Pagoda Seiganto-ji in slap Nachi sta najslavnejša podoba Kumana. Ideja: naslovna slika poglavja o romarski poti.", "p": {"k": "zanimivost", "h": "133 metrov padca", "x": "Slap Nachi je z 133 m najvišji slap na Japonskem z enim samim padcem — in je sam božanstvo, ki ga častijo od davnine. Zato je pred njim svetišče."}, "s": "kumano", "sn": "Kumano", "e": "⛩️"}, {"id": "kumano-2", "t": "foto", "x": "Marjetica na kamnitih stopnicah romarske poti, meglice med drevesi.", "w": "Romarska pot Kumano Kodo je na UNESCO seznamu, skupaj s Camino de Santiago (edina taka »dvojna« pot na svetu). Ideja: slika Marjetice kot sodobne romarice.", "p": {"k": "zanimivost", "h": "Mravljinčja procesija", "x": "V srednjem veku je v Kumano romalo toliko ljudi — cesarji in preprosti ljudje —, da so temu rekli »ari no Kumano-mōde«: mravljinčja procesija v Kumano."}, "s": "kumano", "sn": "Kumano", "e": "⛩️"}, {"id": "kumano-3", "t": "foto", "x": "Noge v rečni kopeli Kawayu — topel prod ob reki.", "w": "Kawayu je onsen ob reki, kjer topla voda pronica iz proda. Noge v vodi so prijazen način za onsen spomin, tudi če se ne kopate. Ideja: slika »brez obrazov«.", "p": {"k": "zanimivost", "h": "Kopel za tisoč ljudi", "x": "Ob Kawayuju pozimi izkopljejo veliko kopel v prodni strugi — »Sennin-buro«, kopel za tisoč ljudi. Običajno je odprta le v hladnih mesecih; preverite na kraju, ali je ob vašem obisku že odprta."}, "s": "kumano", "sn": "Kumano", "e": "⛩️"}]</script>
 </section>
 <section class="card-section" aria-labelledby="hrana">
   <h2 id="hrana">🍜 Hrana — kaj in kje jesti</h2>
@@ -349,6 +351,6 @@
   <p>🍁 Japonska — Mesec za dušo · 3. november – 2. december 2026 · Tokio → Osaka</p>
   <p>Z ljubeznijo pripravljeno za Magdo in prijateljice</p>
 </footer>
-<script src="app.js?v=15"></script>
+<script src="app.js?v=16"></script>
 </body>
 </html>

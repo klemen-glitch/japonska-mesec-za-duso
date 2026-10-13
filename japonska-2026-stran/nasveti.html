@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Nasveti in fraze · Japonska 2026</title>
-  <meta name="description" content="Praktični nasveti za Japonsko: onsen bonton, denar, prevoz, november in uporabne japonske fraze.">
+  <title>Nasveti, fraze in kartice · Japonska 2026</title>
+  <meta name="description" content="Kartice za pokazati domačinom, japonske fraze z izgovorjavo, onsen bonton in praktični nasveti.">
   <meta name="theme-color" content="#7b2230">
-  <link rel="stylesheet" href="style.css?v=15">
+  <link rel="stylesheet" href="style.css?v=16">
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
@@ -28,7 +28,8 @@
         <a href="nalozi.html"><span class="mi-emoji" aria-hidden="true">📤</span>Naloži fotografije</a>
         <a href="dozivetja.html"><span class="mi-emoji" aria-hidden="true">🎨</span>Doživetja</a>
         <a href="priprave.html"><span class="mi-emoji" aria-hidden="true">🎒</span>Priprave</a>
-        <a href="nasveti.html" aria-current="page"><span class="mi-emoji" aria-hidden="true">💡</span>Nasveti</a>
+        <a href="nasveti.html" aria-current="page"><span class="mi-emoji" aria-hidden="true">💡</span>Nasveti in kartice</a>
+        <a href="nujno.html"><span class="mi-emoji" aria-hidden="true">🆘</span>Nujno</a>
       </div>
       <p class="menu-label">Postaje potovanja</p>
       <div class="menu-stations">
@@ -54,9 +55,69 @@
 <section class="loc-hero">
   <div class="loc-emoji" aria-hidden="true">💡</div>
   <p class="kicker">Za vsak dan potovanja</p>
-  <h1>Nasveti in fraze</h1>
-  <p class="loc-sub">Majhne stvari, ki naredijo potovanje gladko</p>
+  <h1>Nasveti, fraze in kartice</h1>
+  <p class="loc-sub">Pokažite zaslon domačinu — ni treba nič govoriti</p>
 </section>
+<nav class="chip-row" aria-label="Vsebina">
+  <a class="chip" href="#kartice">🪪 Kartice</a>
+  <a class="chip" href="#alergije">⚠️ Alergije</a>
+  <a class="chip" href="#fraze">🗣️ Fraze</a>
+  <a class="chip" href="#bonton">🙏 Bonton</a>
+</nav>
+<section class="card-section" id="kartice" aria-labelledby="kartice-h">
+  <h2 id="kartice-h">🪪 Pokaži domačinu</h2>
+  <p class="cat-intro">Tapnite kartico — odpre se čez cel zaslon z velikim japonskim besedilom. Pokažite telefon natakarju, osebju na postaji ali v hotelu.</p>
+  <div class="show-grid">
+    <button type="button" class="show-card " data-sl="Smo vegetarijanke" data-jp="私たちはベジタリアンです。肉、魚、かつおだしは食べられません。" data-ro="Watashitachi wa bejitarian desu. Niku, sakana, katsuo-dashi wa taberaremasen."><span class="sc-emoji" aria-hidden="true">🥬</span><span class="sc-sl">Smo vegetarijanke</span><span class="sc-jp" lang="ja">私たちはベジタリアンです。肉、魚、かつおだしは食べられません。</span></button>
+    <button type="button" class="show-card " data-sl="Ali je v tem meso ali riba?" data-jp="この料理に肉や魚は入っていますか？" data-ro="Kono ryōri ni niku ya sakana wa haitte imasu ka?"><span class="sc-emoji" aria-hidden="true">🍽️</span><span class="sc-sl">Ali je v tem meso ali riba?</span><span class="sc-jp" lang="ja">この料理に肉や魚は入っていますか？</span></button>
+    <button type="button" class="show-card " data-sl="Ali ta vlak pelje v …? (pokažite ime kraja)" data-jp="この電車は＿＿＿に行きますか？" data-ro="Kono densha wa ___ ni ikimasu ka?"><span class="sc-emoji" aria-hidden="true">🚄</span><span class="sc-sl">Ali ta vlak pelje v …? (pokažite ime kraja)</span><span class="sc-jp" lang="ja">この電車は＿＿＿に行きますか？</span></button>
+    <button type="button" class="show-card " data-sl="Kateri peron?" data-jp="何番線ですか？" data-ro="Nan-ban-sen desu ka?"><span class="sc-emoji" aria-hidden="true">🔢</span><span class="sc-sl">Kateri peron?</span><span class="sc-jp" lang="ja">何番線ですか？</span></button>
+    <button type="button" class="show-card " data-sl="Ali lahko plačam s kartico?" data-jp="カードは使えますか？" data-ro="Kādo wa tsukaemasu ka?"><span class="sc-emoji" aria-hidden="true">💳</span><span class="sc-sl">Ali lahko plačam s kartico?</span><span class="sc-jp" lang="ja">カードは使えますか？</span></button>
+    <button type="button" class="show-card " data-sl="Račun, prosim" data-jp="お会計をお願いします。" data-ro="Okaikei o onegai shimasu."><span class="sc-emoji" aria-hidden="true">🧾</span><span class="sc-sl">Račun, prosim</span><span class="sc-jp" lang="ja">お会計をお願いします。</span></button>
+    <button type="button" class="show-card " data-sl="Vodo, prosim" data-jp="お水をください。" data-ro="Omizu o kudasai."><span class="sc-emoji" aria-hidden="true">💧</span><span class="sc-sl">Vodo, prosim</span><span class="sc-jp" lang="ja">お水をください。</span></button>
+    <button type="button" class="show-card " data-sl="Kje je stranišče?" data-jp="トイレはどこですか？" data-ro="Toire wa doko desu ka?"><span class="sc-emoji" aria-hidden="true">🚻</span><span class="sc-sl">Kje je stranišče?</span><span class="sc-jp" lang="ja">トイレはどこですか？</span></button>
+    <button type="button" class="show-card " data-sl="Pokažite mi na zemljevidu, prosim" data-jp="地図で教えてください。" data-ro="Chizu de oshiete kudasai."><span class="sc-emoji" aria-hidden="true">🗺️</span><span class="sc-sl">Pokažite mi na zemljevidu, prosim</span><span class="sc-jp" lang="ja">地図で教えてください。</span></button>
+    <button type="button" class="show-card " data-sl="Ne govorim japonsko. Ali razumete angleško?" data-jp="日本語は話せません。英語は分かりますか？" data-ro="Nihongo wa hanasemasen. Eigo wa wakarimasu ka?"><span class="sc-emoji" aria-hidden="true">🗣️</span><span class="sc-sl">Ne govorim japonsko. Ali razumete angleško?</span><span class="sc-jp" lang="ja">日本語は話せません。英語は分かりますか？</span></button>
+    <button type="button" class="show-card " data-sl="Kovčke bi poslala v naslednji hotel" data-jp="荷物を次のホテルに送りたいです。" data-ro="Nimotsu o tsugi no hoteru ni okuritai desu."><span class="sc-emoji" aria-hidden="true">📦</span><span class="sc-sl">Kovčke bi poslala v naslednji hotel</span><span class="sc-jp" lang="ja">荷物を次のホテルに送りたいです。</span></button>
+  </div>
+</section>
+<section class="card-section" id="alergije" aria-labelledby="alergije-h">
+  <h2 id="alergije-h">⚠️ Imam alergijo na …</h2>
+  <p class="cat-intro">Izberite, na kaj ste alergične — prikaže se poln stavek v japonščini.</p>
+  <div class="allergy-chips">
+    <button type="button" class="show-card chip-card" data-sl="Imam alergijo na: oreščke" data-jp="私はナッツにアレルギーがあります。" data-ro="Watashi wa ___ ni arerugī ga arimasu."><span class="sc-emoji" aria-hidden="true">⚠️</span><span class="sc-sl">Imam alergijo na: oreščke</span><span class="sc-jp" lang="ja">私はナッツにアレルギーがあります。</span></button>
+    <button type="button" class="show-card chip-card" data-sl="Imam alergijo na: jajca" data-jp="私は卵にアレルギーがあります。" data-ro="Watashi wa ___ ni arerugī ga arimasu."><span class="sc-emoji" aria-hidden="true">⚠️</span><span class="sc-sl">Imam alergijo na: jajca</span><span class="sc-jp" lang="ja">私は卵にアレルギーがあります。</span></button>
+    <button type="button" class="show-card chip-card" data-sl="Imam alergijo na: mleko in mlečne izdelke" data-jp="私は乳製品にアレルギーがあります。" data-ro="Watashi wa ___ ni arerugī ga arimasu."><span class="sc-emoji" aria-hidden="true">⚠️</span><span class="sc-sl">Imam alergijo na: mleko in mlečne izdelke</span><span class="sc-jp" lang="ja">私は乳製品にアレルギーがあります。</span></button>
+    <button type="button" class="show-card chip-card" data-sl="Imam alergijo na: pšenico (gluten)" data-jp="私は小麦にアレルギーがあります。" data-ro="Watashi wa ___ ni arerugī ga arimasu."><span class="sc-emoji" aria-hidden="true">⚠️</span><span class="sc-sl">Imam alergijo na: pšenico (gluten)</span><span class="sc-jp" lang="ja">私は小麦にアレルギーがあります。</span></button>
+    <button type="button" class="show-card chip-card" data-sl="Imam alergijo na: sojo" data-jp="私は大豆にアレルギーがあります。" data-ro="Watashi wa ___ ni arerugī ga arimasu."><span class="sc-emoji" aria-hidden="true">⚠️</span><span class="sc-sl">Imam alergijo na: sojo</span><span class="sc-jp" lang="ja">私は大豆にアレルギーがあります。</span></button>
+    <button type="button" class="show-card chip-card" data-sl="Imam alergijo na: ribe" data-jp="私は魚にアレルギーがあります。" data-ro="Watashi wa ___ ni arerugī ga arimasu."><span class="sc-emoji" aria-hidden="true">⚠️</span><span class="sc-sl">Imam alergijo na: ribe</span><span class="sc-jp" lang="ja">私は魚にアレルギーがあります。</span></button>
+    <button type="button" class="show-card chip-card" data-sl="Imam alergijo na: rake in školjke" data-jp="私は甲殻類・貝類にアレルギーがあります。" data-ro="Watashi wa ___ ni arerugī ga arimasu."><span class="sc-emoji" aria-hidden="true">⚠️</span><span class="sc-sl">Imam alergijo na: rake in školjke</span><span class="sc-jp" lang="ja">私は甲殻類・貝類にアレルギーがあります。</span></button>
+    <button type="button" class="show-card chip-card" data-sl="Imam alergijo na: sezam" data-jp="私はごまにアレルギーがあります。" data-ro="Watashi wa ___ ni arerugī ga arimasu."><span class="sc-emoji" aria-hidden="true">⚠️</span><span class="sc-sl">Imam alergijo na: sezam</span><span class="sc-jp" lang="ja">私はごまにアレルギーがあります。</span></button>
+  </div>
+</section>
+<section class="card-section" id="fraze" aria-labelledby="fraze-h">
+  <h2 id="fraze-h">🗣️ Uporabne japonske fraze</h2>
+  <p class="cat-intro">Tapnite 🔊 in telefon izgovori frazo po japonsko.</p>
+  <ul class="phrase-list">
+    <li><span class="sl">Dober dan</span><span class="jp">Konnichiwa</span><span class="kana" lang="ja">こんにちは</span><span class="izg">(kon-ni-či-va)</span><button type="button" class="say" data-say="こんにちは" aria-label="Poslušaj izgovorjavo">🔊</button></li>
+    <li><span class="sl">Dobro jutro</span><span class="jp">Ohayō gozaimasu</span><span class="kana" lang="ja">おはようございます</span><span class="izg">(o-ha-jo go-zai-mas)</span><button type="button" class="say" data-say="おはようございます" aria-label="Poslušaj izgovorjavo">🔊</button></li>
+    <li><span class="sl">Dober večer</span><span class="jp">Konbanwa</span><span class="kana" lang="ja">こんばんは</span><span class="izg">(kon-ban-va)</span><button type="button" class="say" data-say="こんばんは" aria-label="Poslušaj izgovorjavo">🔊</button></li>
+    <li><span class="sl">Hvala lepa</span><span class="jp">Arigatō gozaimasu</span><span class="kana" lang="ja">ありがとうございます</span><span class="izg">(a-ri-ga-to go-zai-mas)</span><button type="button" class="say" data-say="ありがとうございます" aria-label="Poslušaj izgovorjavo">🔊</button></li>
+    <li><span class="sl">Prosim</span><span class="jp">Onegai shimasu</span><span class="kana" lang="ja">お願いします</span><span class="izg">(o-ne-gai ši-mas)</span><button type="button" class="say" data-say="お願いします" aria-label="Poslušaj izgovorjavo">🔊</button></li>
+    <li><span class="sl">Oprostite</span><span class="jp">Sumimasen</span><span class="kana" lang="ja">すみません</span><span class="izg">(su-mi-ma-sen)</span><button type="button" class="say" data-say="すみません" aria-label="Poslušaj izgovorjavo">🔊</button></li>
+    <li><span class="sl">Da / Ne</span><span class="jp">Hai / Iie</span><span class="kana" lang="ja">はい、いいえ</span><span class="izg">(haj / i-je)</span><button type="button" class="say" data-say="はい、いいえ" aria-label="Poslušaj izgovorjavo">🔊</button></li>
+    <li><span class="sl">Koliko stane?</span><span class="jp">Ikura desu ka?</span><span class="kana" lang="ja">いくらですか</span><span class="izg">(i-ku-ra des ka)</span><button type="button" class="say" data-say="いくらですか" aria-label="Poslušaj izgovorjavo">🔊</button></li>
+    <li><span class="sl">Račun, prosim</span><span class="jp">Okaikei onegai shimasu</span><span class="kana" lang="ja">お会計お願いします</span><span class="izg">(o-kai-kej o-ne-gai ši-mas)</span><button type="button" class="say" data-say="お会計お願いします" aria-label="Poslušaj izgovorjavo">🔊</button></li>
+    <li><span class="sl">Kje je stranišče?</span><span class="jp">Toire wa doko desu ka?</span><span class="kana" lang="ja">トイレはどこですか</span><span class="izg">(to-i-re va do-ko des ka)</span><button type="button" class="say" data-say="トイレはどこですか" aria-label="Poslušaj izgovorjavo">🔊</button></li>
+    <li><span class="sl">Zelo okusno!</span><span class="jp">Oishii!</span><span class="kana" lang="ja">おいしい</span><span class="izg">(oj-ši)</span><button type="button" class="say" data-say="おいしい" aria-label="Poslušaj izgovorjavo">🔊</button></li>
+    <li><span class="sl">Dober tek (pred jedjo)</span><span class="jp">Itadakimasu</span><span class="kana" lang="ja">いただきます</span><span class="izg">(i-ta-da-ki-mas)</span><button type="button" class="say" data-say="いただきます" aria-label="Poslušaj izgovorjavo">🔊</button></li>
+    <li><span class="sl">Hvala za pogostitev (po jedi)</span><span class="jp">Gochisōsama deshita</span><span class="kana" lang="ja">ごちそうさまでした</span><span class="izg">(go-či-so-sa-ma deš-ta)</span><button type="button" class="say" data-say="ごちそうさまでした" aria-label="Poslušaj izgovorjavo">🔊</button></li>
+    <li><span class="sl">Na zdravje!</span><span class="jp">Kanpai!</span><span class="kana" lang="ja">乾杯</span><span class="izg">(kan-paj)</span><button type="button" class="say" data-say="乾杯" aria-label="Poslušaj izgovorjavo">🔊</button></li>
+    <li><span class="sl">Ne razumem</span><span class="jp">Wakarimasen</span><span class="kana" lang="ja">わかりません</span><span class="izg">(va-ka-ri-ma-sen)</span><button type="button" class="say" data-say="わかりません" aria-label="Poslušaj izgovorjavo">🔊</button></li>
+    <li><span class="sl">Nasvidenje</span><span class="jp">Sayōnara</span><span class="kana" lang="ja">さようなら</span><span class="izg">(sa-jo-na-ra)</span><button type="button" class="say" data-say="さようなら" aria-label="Poslušaj izgovorjavo">🔊</button></li>
+  </ul>
+</section>
+<h2 class="chapter-title" id="bonton">🙏 Bonton</h2>
 <section class="card-section" aria-labelledby="onsen-bonton">
   <h2 id="onsen-bonton">♨️ Onsen bonton</h2>
   <ul class="nice-list">
@@ -86,33 +147,12 @@
     <li><strong>Tišina</strong> — govorite tiho; to so kraji molitve in miru, ne le znamenitosti</li>
   </ul>
 </section>
-<section class="card-section" aria-labelledby="fraze">
-  <h2 id="fraze">🗣️ Uporabne japonske fraze</h2>
-  <ul class="phrase-list">
-    <li><span class="sl">Dober dan</span><span class="jp">Konnichiwa</span><span class="izg">(kon-ni-či-va)</span></li>
-    <li><span class="sl">Dobro jutro</span><span class="jp">Ohayō gozaimasu</span><span class="izg">(o-ha-jo go-zai-mas)</span></li>
-    <li><span class="sl">Dober večer</span><span class="jp">Konbanwa</span><span class="izg">(kon-ban-va)</span></li>
-    <li><span class="sl">Hvala lepa</span><span class="jp">Arigatō gozaimasu</span><span class="izg">(a-ri-ga-to go-zai-mas)</span></li>
-    <li><span class="sl">Prosim</span><span class="jp">Onegai shimasu</span><span class="izg">(o-ne-gai ši-mas)</span></li>
-    <li><span class="sl">Oprostite</span><span class="jp">Sumimasen</span><span class="izg">(su-mi-ma-sen)</span></li>
-    <li><span class="sl">Da / Ne</span><span class="jp">Hai / Iie</span><span class="izg">(haj / i-je)</span></li>
-    <li><span class="sl">Koliko stane?</span><span class="jp">Ikura desu ka?</span><span class="izg">(i-ku-ra des ka)</span></li>
-    <li><span class="sl">Račun, prosim</span><span class="jp">Okaikei onegai shimasu</span><span class="izg">(o-kai-kej o-ne-gai ši-mas)</span></li>
-    <li><span class="sl">Kje je stranišče?</span><span class="jp">Toire wa doko desu ka?</span><span class="izg">(to-i-re va do-ko des ka)</span></li>
-    <li><span class="sl">Zelo okusno!</span><span class="jp">Oishii!</span><span class="izg">(oj-ši)</span></li>
-    <li><span class="sl">Dober tek (pred jedjo)</span><span class="jp">Itadakimasu</span><span class="izg">(i-ta-da-ki-mas)</span></li>
-    <li><span class="sl">Hvala za pogostitev (po jedi)</span><span class="jp">Gochisōsama deshita</span><span class="izg">(go-či-so-sa-ma deš-ta)</span></li>
-    <li><span class="sl">Na zdravje!</span><span class="jp">Kanpai!</span><span class="izg">(kan-paj)</span></li>
-    <li><span class="sl">Ne razumem</span><span class="jp">Wakarimasen</span><span class="izg">(va-ka-ri-ma-sen)</span></li>
-    <li><span class="sl">Nasvidenje</span><span class="jp">Sayōnara</span><span class="izg">(sa-jo-na-ra)</span></li>
-  </ul>
-</section>
-<div class="back-row"><a class="back-button" href="index.html">🏠 Nazaj na pregled</a></div>
+<div class="back-row"><a class="back-button" href="nujno.html">🆘 Nujne informacije</a></div>
 </main>
 <footer>
   <p>🍁 Japonska — Mesec za dušo · 3. november – 2. december 2026 · Tokio → Osaka</p>
   <p>Z ljubeznijo pripravljeno za Magdo in prijateljice</p>
 </footer>
-<script src="app.js?v=15"></script>
+<script src="app.js?v=16"></script>
 </body>
 </html>

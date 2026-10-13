@@ -186,61 +186,149 @@
   }
 
   // ---- tabla izzivov -------------------------------------------------------
+  var KIND = {
+    zanimivost: { ic: "💡", lbl: "Zanimivost" },
+    skrivnost: { ic: "🔮", lbl: "Skrivnost" },
+    nagrada: { ic: "🎁", lbl: "Nagrada" }
+  };
+  var openStations = {}; // postaje, ki jih je uporabnik odprl (ostanejo odprte ob osvežitvi tabele)
+
+  function mapsUrl(q) {
+    return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(q);
+  }
+
+  function challengeCard(c, shots, scope) {
+    var isDone = !!(shots && shots.length);
+    var li = document.createElement("li");
+    li.className = "izziv-card" + (isDone ? " done" : "");
+
+    var head = document.createElement("div");
+    head.className = "izziv-head";
+    var mark = isDone ? "✅" : (c.t === "video" ? "🎥" : "📸");
+    head.innerHTML = '<span class="izziv-mark">' + mark + "</span>" +
+      '<span class="izziv-text">' + escapeHtml(c.x) + "</span>";
+    li.appendChild(head);
+
+    if (c.w) {
+      var fine = document.createElement("details");
+      fine.className = "izziv-fine";
+      fine.innerHTML = "<summary>ℹ️ Drobni tisk: zakaj tu?</summary><p>" + escapeHtml(c.w) + "</p>";
+      li.appendChild(fine);
+    }
+
+    if (c.p) {
+      var k = KIND[c.p.k] || KIND.zanimivost;
+      var sur = document.createElement("div");
+      sur.className = "izziv-surprise " + (isDone ? "open" : "locked");
+      if (isDone) {
+        var html = '<div class="sur-head"><span class="sur-ic">' + k.ic + '</span><span><span class="sur-kind">' +
+          k.lbl + " odklenjena</span><strong>" + escapeHtml(c.p.h) + "</strong></span></div>" +
+          "<p>" + escapeHtml(c.p.x) + "</p>";
+        if (c.p.m) {
+          html += '<a class="pin-btn sur-pin" href="' + mapsUrl(c.p.m) + '" target="_blank" rel="noopener">📍 Pokaži na zemljevidu</a>';
+        }
+        sur.innerHTML = html;
+      } else {
+        sur.innerHTML = '<span class="sur-ic">🎁</span><span>Presenečenje te čaka — odklene se, ko naložite sliko ali video.</span>';
+      }
+      li.appendChild(sur);
+    }
+
+    if (isDone) {
+      var gal = document.createElement("div");
+      gal.className = "izziv-shots";
+      shots.forEach(function (u) { gal.appendChild(mediaEl(u, "album-thumb sm")); });
+      li.appendChild(gal);
+    }
+
+    var act = document.createElement("div");
+    act.className = "izziv-act";
+    var st2 = document.createElement("span"); st2.className = "izziv-status";
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "pin-btn izziv-up";
+    btn.textContent = isDone ? "➕ Dodaj še" : (c.t === "video" ? "🎥 Naloži video in opravi" : "📸 Naloži in opravi");
+    btn.addEventListener("click", function () {
+      pickAndUpload(c.s, c.id, st2, function () { st2.textContent = "Naloženo ✓"; });
+    });
+    act.appendChild(btn); act.appendChild(st2);
+    li.appendChild(act);
+    return li;
+  }
+
   function renderBoards() {
     var dataEl = document.getElementById("izziv-data");
     var challenges = [];
     if (dataEl) { try { challenges = JSON.parse(dataEl.textContent); } catch (e) {} }
     var m = byChallenge();
+
     document.querySelectorAll(".izziv-board").forEach(function (board) {
       var scope = board.getAttribute("data-scope") || "all";
       var list = challenges.filter(function (c) { return scope === "all" || c.s === scope; });
-      var todo = list.filter(function (c) { return !m[c.id]; });
-      var done = list.filter(function (c) { return m[c.id]; });
-
+      var totalDone = list.filter(function (c) { return m[c.id]; }).length;
       board.innerHTML = "";
-      var prog = document.createElement("p");
-      prog.className = "izziv-progress";
-      prog.textContent = "Opravljeno: " + done.length + " / " + list.length + " izzivov";
-      board.appendChild(prog);
 
-      var ul = document.createElement("ul");
-      ul.className = "izziv-items";
-      todo.concat(done).forEach(function (c) {
-        var isDone = !!m[c.id];
-        var li = document.createElement("li");
-        li.className = "izziv-item" + (isDone ? " done" : "");
+      // skupni napredek
+      var overall = document.getElementById("izziv-overall");
+      if (scope === "all" && overall) {
+        var pct = list.length ? Math.round(totalDone * 100 / list.length) : 0;
+        overall.innerHTML = '<div class="ov-top"><strong>Opravljeno: ' + totalDone + " / " + list.length +
+          " izzivov</strong><span>" + pct + ' %</span></div><div class="ov-bar"><i style="width:' + pct + '%"></i></div>';
+        var fin = document.getElementById("izziv-final");
+        if (fin) fin.hidden = !(list.length && totalDone === list.length);
+      }
 
-        var head = document.createElement("div");
-        head.className = "izziv-head";
-        var mark = isDone ? "✅" : (c.t === "video" ? "🎥" : "📸");
-        var st = scope === "all" ? ('<span class="izziv-st">' + (STNAME[c.s] || "") + "</span>") : "";
-        head.innerHTML = '<span class="izziv-mark">' + mark + "</span>" +
-          '<span class="izziv-text">' + st + escapeHtml(c.x) + "</span>";
-        li.appendChild(head);
+      if (scope !== "all") {
+        var prog = document.createElement("p");
+        prog.className = "izziv-progress";
+        prog.textContent = "Opravljeno: " + totalDone + " / " + list.length + " izzivov";
+        board.appendChild(prog);
+        var ul = document.createElement("ul");
+        ul.className = "izziv-items";
+        var todo = list.filter(function (c) { return !m[c.id]; });
+        var done = list.filter(function (c) { return m[c.id]; });
+        todo.concat(done).forEach(function (c) { ul.appendChild(challengeCard(c, m[c.id], scope)); });
+        board.appendChild(ul);
+        return;
+      }
 
-        if (isDone) {
-          var gal = document.createElement("div");
-          gal.className = "izziv-shots";
-          m[c.id].forEach(function (u) { gal.appendChild(mediaEl(u, "album-thumb sm")); });
-          li.appendChild(gal);
-        }
-
-        var act = document.createElement("div");
-        act.className = "izziv-act";
-        var st2 = document.createElement("span"); st2.className = "izziv-status";
-        var btn = document.createElement("button");
-        btn.type = "button";
-        btn.className = "pin-btn izziv-up";
-        btn.textContent = isDone ? "➕ Dodaj še" : "📸 Naloži in opravi";
-        btn.addEventListener("click", function () {
-          pickAndUpload(c.s, c.id, st2, function () { st2.textContent = "Naloženo ✓"; });
-        });
-        act.appendChild(btn); act.appendChild(st2);
-        li.appendChild(act);
-
-        ul.appendChild(li);
+      // razdelki po postajah (v vrstnem redu poti)
+      var order = [], by = {};
+      list.forEach(function (c) {
+        if (!by[c.s]) { by[c.s] = { s: c.s, sn: c.sn, e: c.e, items: [] }; order.push(c.s); }
+        by[c.s].items.push(c);
       });
-      board.appendChild(ul);
+      var firstOpen = null;
+      order.forEach(function (k) {
+        var g = by[k];
+        var dn = g.items.filter(function (c) { return m[c.id]; }).length;
+        if (firstOpen === null && dn < g.items.length) firstOpen = k;
+      });
+      order.forEach(function (k) {
+        var g = by[k];
+        var dn = g.items.filter(function (c) { return m[c.id]; }).length;
+        var complete = dn === g.items.length;
+        var det = document.createElement("details");
+        det.className = "izziv-station" + (complete ? " complete" : "");
+        det.setAttribute("data-st", k);
+        if (openStations[k] !== undefined ? openStations[k] : (k === firstOpen)) det.open = true;
+        var pct = Math.round(dn * 100 / g.items.length);
+        det.innerHTML = '<summary><span class="st-emoji">' + g.e + '</span>' +
+          '<span class="st-name">' + escapeHtml(g.sn) + (complete ? ' <em class="st-badge">🏅 Opravljeno</em>' : "") + "</span>" +
+          '<span class="st-count">' + dn + "/" + g.items.length + '</span><span class="st-chev" aria-hidden="true">▶</span>' +
+          '<span class="st-bar"><i style="width:' + pct + '%"></i></span></summary>';
+        det.addEventListener("toggle", function () { openStations[k] = det.open; });
+        var ul2 = document.createElement("ul");
+        ul2.className = "izziv-items";
+        var t2 = g.items.filter(function (c) { return !m[c.id]; });
+        var d2 = g.items.filter(function (c) { return m[c.id]; });
+        t2.concat(d2).forEach(function (c) { ul2.appendChild(challengeCard(c, m[c.id], scope)); });
+        det.appendChild(ul2);
+        var more = document.createElement("a");
+        more.className = "st-more"; more.href = k + ".html"; more.textContent = "Odpri vodnik za to postajo →";
+        det.appendChild(more);
+        board.appendChild(det);
+      });
     });
   }
 

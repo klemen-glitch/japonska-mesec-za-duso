@@ -848,7 +848,69 @@ main {
 .gate-name { background: var(--bg); color: var(--ink); border: 1px solid var(--line-strong); }
 .gate-name.on { background: var(--accent); color: #fff; border-color: transparent; }
 
-/* ---------- Izzivi: tabla ---------- */
+/* ---------- Izzivi: pojasnilo, napredek, postaje ---------- */
+
+.how-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.7rem; }
+.how-steps li { display: flex; gap: 0.8rem; align-items: flex-start; }
+.how-n {
+  flex: 0 0 auto; width: 1.7rem; height: 1.7rem; border-radius: 50%;
+  background: var(--accent); color: #fff; font-weight: 700; font-size: 0.9rem;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.izziv-idea p { margin: 0 0 0.6rem; color: var(--ink); }
+.izziv-idea .fine { font-size: 0.86rem; color: var(--ink-soft); margin: 0; }
+
+.izziv-overall { margin: 0.4rem 0 1rem; }
+.ov-top { display: flex; justify-content: space-between; align-items: baseline; color: var(--ink); }
+.ov-top span { color: var(--accent); font-weight: 700; }
+.ov-bar, .st-bar { height: 8px; background: var(--bg-alt); border-radius: 99px; overflow: hidden; margin-top: 0.4rem; }
+.ov-bar i, .st-bar i { display: block; height: 100%; background: var(--accent); border-radius: 99px; transition: width 0.4s ease; }
+.izziv-final { text-align: center; background: var(--accent-soft); border-color: transparent; }
+
+.izziv-station {
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  margin: 0.8rem 0; box-shadow: var(--shadow-sm); overflow: hidden;
+}
+.izziv-station summary {
+  list-style: none; cursor: pointer; display: grid;
+  grid-template-columns: auto 1fr auto auto; align-items: center; gap: 0.3rem 0.7rem;
+  padding: 0.9rem 1rem; -webkit-tap-highlight-color: transparent;
+}
+.izziv-station summary::-webkit-details-marker { display: none; }
+.st-emoji { font-size: 1.5rem; }
+.st-name { font-size: 1.1rem; font-weight: 650; color: var(--ink); letter-spacing: -0.015em; }
+.st-badge { font-style: normal; font-size: 0.72rem; font-weight: 700; color: var(--accent); background: var(--accent-soft); border-radius: 99px; padding: 0.12rem 0.55rem; margin-left: 0.3rem; white-space: nowrap; }
+.st-count { font-size: 0.85rem; font-weight: 700; color: var(--ink-soft); background: var(--bg-alt); border-radius: 99px; padding: 0.15rem 0.65rem; }
+.st-chev { color: var(--ink-faint); font-size: 0.8rem; transition: transform 0.2s ease; }
+.izziv-station[open] .st-chev { transform: rotate(90deg); }
+.st-bar { grid-column: 1 / -1; margin-top: 0.1rem; }
+.izziv-station[open] summary { border-bottom: 1px solid var(--line); }
+.izziv-station .izziv-items { padding: 0.2rem 1rem 0; }
+.st-more { display: block; padding: 0.7rem 1rem 0.9rem; font-weight: 600; font-size: 0.92rem; }
+.izziv-station.complete { border-color: color-mix(in srgb, var(--accent) 40%, var(--line)); }
+
+/* ---------- Izzivi: kartica izziva ---------- */
+
+.izziv-card { padding: 1rem 0; border-top: 1px solid var(--line); }
+.izziv-card:first-child { border-top: 0; }
+.izziv-fine { margin: 0.5rem 0 0 1.75rem; font-size: 0.86rem; color: var(--ink-soft); }
+.izziv-fine summary { cursor: pointer; list-style: none; font-weight: 600; color: var(--ink-soft); }
+.izziv-fine summary::-webkit-details-marker { display: none; }
+.izziv-fine p { margin: 0.4rem 0 0; line-height: 1.45; }
+.izziv-surprise {
+  margin: 0.65rem 0 0 1.75rem; border-radius: var(--radius-sm); padding: 0.7rem 0.85rem;
+  display: flex; gap: 0.6rem; align-items: flex-start; font-size: 0.95rem;
+}
+.izziv-surprise.locked { background: var(--bg-alt); color: var(--ink-soft); align-items: center; }
+.izziv-surprise.open { background: var(--accent-soft); color: var(--ink); flex-direction: column; gap: 0.35rem; animation: popIn 0.35s ease; }
+@keyframes popIn { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: none; } }
+.sur-head { display: flex; gap: 0.6rem; align-items: center; }
+.sur-ic { font-size: 1.3rem; flex: 0 0 auto; }
+.sur-kind { display: block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--accent); }
+.izziv-surprise.open p { margin: 0; line-height: 1.5; }
+.sur-pin { align-self: flex-start; }
+
+/* ---------- Izzivi: tabla (stara) ---------- */
 
 .izziv-progress { font-weight: 600; color: var(--accent); margin: 0 0 0.8rem; }
 .izziv-items { list-style: none; margin: 0; padding: 0; }
@@ -899,6 +961,135 @@ main {
   position: absolute; right: 5px; bottom: 5px; background: rgba(0,0,0,0.6);
   color: #fff; border-radius: 50%; width: 22px; height: 22px;
   display: flex; align-items: center; justify-content: center; font-size: 0.7rem;
+}
+
+/* ---------- Danes ---------- */
+
+.today-card {
+  background: var(--accent-soft); border-radius: var(--radius); padding: 1.1rem 1.2rem 1.2rem;
+  margin: 1.2rem 0; border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
+}
+.today-card[hidden] { display: none; }
+.today-kicker { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); }
+.today-card h2 { font-size: 1.35rem; margin: 0.25rem 0 0.2rem; }
+.today-region { margin: 0 0 0.4rem; font-weight: 600; color: var(--ink-soft); }
+.today-card p { margin: 0 0 0.5rem; color: var(--ink); }
+.today-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.6rem; }
+.today-btn {
+  display: inline-block; background: var(--accent); color: #fff; font-weight: 600; font-size: 0.92rem;
+  padding: 0.55rem 1rem; border-radius: var(--radius-pill); text-decoration: none;
+}
+.today-btn.alt { background: var(--bg); color: var(--ink); border: 1px solid var(--line-strong); }
+.it-day.is-today { background: var(--accent-soft); border-radius: 12px; padding-left: 0.6rem; padding-right: 0.6rem; margin: 0 -0.6rem; }
+
+/* ---------- Pregledni zemljevid poti ---------- */
+
+.route-map { width: 100%; height: 360px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--bg-alt); z-index: 0; }
+@media (min-width: 720px) { .route-map { height: 430px; } }
+.map-legend { font-size: 0.86rem; color: var(--ink-soft); margin: 0.6rem 0 0; display: flex; align-items: center; flex-wrap: wrap; gap: 0.3rem; }
+.lg-line { display: inline-block; width: 22px; height: 0; border-top: 4px solid #9c2a3c; }
+.lg-dash { display: inline-block; width: 22px; height: 0; border-top: 3px dashed #bd5f2c; }
+.visit-sum { margin: 0.5rem 0 0; font-weight: 600; color: var(--accent); }
+.rm-wrap { background: transparent; border: 0; }
+.rm-pin {
+  width: 22px; height: 22px; border-radius: 50%; background: #9c2a3c; color: #fff; font-weight: 700; font-size: 0.68rem;
+  display: flex; align-items: center; justify-content: center; border: 2px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+}
+.rm-pin.rm-day { background: #bd5f2c; }
+
+.route-list { list-style: none; margin: 0.9rem 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem; }
+@media (min-width: 620px) { .route-list { grid-template-columns: repeat(3, 1fr); } }
+.route-list a {
+  display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: var(--ink);
+  background: var(--bg-alt); border-radius: 12px; padding: 0.45rem 0.65rem; font-size: 0.92rem; font-weight: 500;
+}
+.route-list a:hover { background: var(--line-strong); opacity: 1; }
+.rl-n { flex: 0 0 auto; width: 1.4rem; height: 1.4rem; border-radius: 50%; background: #9c2a3c; color: #fff; font-size: 0.72rem; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; }
+.rl-n.rl-day { background: #bd5f2c; }
+
+/* ---------- Obiskano ---------- */
+
+.visit-wrap { margin: 0.8rem 0 0; }
+.visit-btn {
+  font-family: var(--sans); font-size: 0.95rem; font-weight: 600; cursor: pointer;
+  border: 1px solid var(--line-strong); background: var(--bg); color: var(--ink);
+  border-radius: var(--radius-pill); padding: 0.5rem 1.1rem;
+}
+.visit-btn.on { background: var(--accent); color: #fff; border-color: transparent; }
+.visit-tag { display: inline-block; font-size: 0.74rem; font-weight: 700; color: #1f7a3d; background: #e6f4ea; border-radius: 99px; padding: 0.1rem 0.55rem; margin-left: 0.3rem; }
+.visit-tag[hidden] { display: none; }
+@media (prefers-color-scheme: dark) { .visit-tag { background: #16301f; color: #7ad39a; } }
+
+/* ---------- Kartice »pokaži domačinu« ---------- */
+
+.show-grid { display: grid; grid-template-columns: 1fr; gap: 0.6rem; }
+@media (min-width: 620px) { .show-grid { grid-template-columns: 1fr 1fr; } }
+.show-card {
+  font-family: var(--sans); text-align: left; cursor: pointer; background: var(--bg-alt); border: 1px solid transparent;
+  border-radius: var(--radius-sm); padding: 0.85rem 1rem; display: grid; grid-template-columns: auto 1fr; gap: 0.15rem 0.7rem;
+  align-items: center; color: var(--ink);
+}
+.show-card:hover { border-color: var(--line-strong); }
+.show-card .sc-emoji { font-size: 1.5rem; grid-row: 1 / 3; }
+.show-card .sc-sl { font-weight: 600; font-size: 1rem; }
+.show-card .sc-jp { font-size: 0.85rem; color: var(--ink-soft); display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+.show-card.red { background: #fdeceb; }
+@media (prefers-color-scheme: dark) { .show-card.red { background: #3a1c1b; } }
+.allergy-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.show-card.chip-card { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.55rem 0.95rem; border-radius: var(--radius-pill); width: auto; }
+.show-card.chip-card .sc-jp { display: none; }
+.show-card.chip-card .sc-emoji { grid-row: auto; font-size: 1rem; }
+
+.show-overlay {
+  position: fixed; inset: 0; z-index: 100; background: var(--bg); display: flex; align-items: center; justify-content: center;
+  padding: 1.2rem; overflow-y: auto;
+}
+.show-overlay[hidden] { display: none; }
+.show-overlay.red { background: #b3261e; color: #fff; }
+.so-inner { max-width: 44rem; width: 100%; text-align: center; }
+.so-sl { font-size: 1.05rem; font-weight: 600; color: var(--ink-soft); margin: 0 0 1rem; }
+.so-jp { font-size: clamp(2rem, 9vw, 4rem); font-weight: 700; line-height: 1.25; margin: 0 0 1rem; color: var(--ink); }
+.so-ro { font-size: 1rem; color: var(--ink-soft); margin: 0 0 1.5rem; }
+.show-overlay.red .so-sl, .show-overlay.red .so-jp, .show-overlay.red .so-ro { color: #fff; }
+.so-btns { display: flex; justify-content: center; gap: 0.7rem; flex-wrap: wrap; }
+.so-btns button { font-family: var(--sans); font-size: 1rem; font-weight: 600; padding: 0.7rem 1.4rem; border-radius: var(--radius-pill); border: none; cursor: pointer; background: var(--accent); color: #fff; }
+.so-btns .so-close { background: var(--bg-alt); color: var(--ink); }
+
+/* ---------- Fraze z izgovorjavo ---------- */
+
+.phrase-list .kana { color: var(--ink); font-size: 1.05rem; }
+.phrase-list .say {
+  margin-left: auto; font-size: 1.1rem; background: var(--bg-alt); border: none; border-radius: 50%;
+  width: 2.3rem; height: 2.3rem; cursor: pointer; flex: 0 0 auto;
+}
+.phrase-list .say:hover { background: var(--line-strong); }
+
+/* ---------- Nujno ---------- */
+
+.call-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; }
+@media (min-width: 720px) { .call-grid { grid-template-columns: repeat(4, 1fr); } }
+.call-btn {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 0.25rem;
+  text-decoration: none; background: var(--bg-alt); color: var(--ink); border-radius: var(--radius); padding: 1rem 0.6rem; min-height: 7rem;
+}
+.call-btn:hover { background: var(--line-strong); opacity: 1; }
+.call-btn .c-num { font-size: clamp(0.98rem, 4.2vw, 1.25rem); font-weight: 750; letter-spacing: -0.02em; white-space: nowrap; }
+.call-btn.call-red .c-num { font-size: 2.1rem; }
+.call-btn .c-lbl { font-size: 0.88rem; color: var(--ink-soft); font-weight: 500; }
+.call-btn small { font-size: 0.78rem; }
+.call-btn.call-red { background: #c0392b; color: #fff; }
+.call-btn.call-red .c-lbl { color: #fff; }
+.fine-note { font-size: 0.86rem; color: var(--ink-soft); margin: 0.8rem 0 0; line-height: 1.45; }
+.addr { margin: 0 0 0.7rem; line-height: 1.5; }
+.step-box { border: 1px solid var(--line); border-radius: var(--radius-sm); margin: 0.5rem 0; background: var(--bg); overflow: hidden; }
+.step-box summary { list-style: none; cursor: pointer; padding: 0.85rem 1rem; font-weight: 600; display: flex; align-items: center; gap: 0.6rem; }
+.step-box summary::-webkit-details-marker { display: none; }
+.sb-e { font-size: 1.3rem; }
+.step-box p { margin: 0; padding: 0 1rem 1rem; color: var(--ink-soft); line-height: 1.5; }
+.step-box[open] summary { border-bottom: 1px solid var(--line); margin-bottom: 0.7rem; }
+.notes-box {
+  width: 100%; font-family: var(--sans); font-size: 1rem; padding: 0.8rem; border-radius: var(--radius-sm);
+  border: 1px solid var(--line-strong); background: var(--bg); color: var(--ink); resize: vertical;
 }
 
 /* ---------- Noga ---------- */

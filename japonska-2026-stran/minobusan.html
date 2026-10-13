@@ -6,11 +6,11 @@
   <title>Minobusan · Japonska 2026</title>
   <meta name="description" content="Minobusan: znamenitosti, hrana in nasveti — vodnik Japonska 2026.">
   <meta name="theme-color" content="#7b2230">
-  <link rel="stylesheet" href="style.css?v=15">
+  <link rel="stylesheet" href="style.css?v=16">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script defer src="album.js?v=15"></script>
+  <script defer src="album.js?v=16"></script>
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
@@ -32,7 +32,8 @@
         <a href="nalozi.html"><span class="mi-emoji" aria-hidden="true">📤</span>Naloži fotografije</a>
         <a href="dozivetja.html"><span class="mi-emoji" aria-hidden="true">🎨</span>Doživetja</a>
         <a href="priprave.html"><span class="mi-emoji" aria-hidden="true">🎒</span>Priprave</a>
-        <a href="nasveti.html"><span class="mi-emoji" aria-hidden="true">💡</span>Nasveti</a>
+        <a href="nasveti.html"><span class="mi-emoji" aria-hidden="true">💡</span>Nasveti in kartice</a>
+        <a href="nujno.html"><span class="mi-emoji" aria-hidden="true">🆘</span>Nujno</a>
       </div>
       <p class="menu-label">Postaje potovanja</p>
       <div class="menu-stations">
@@ -61,6 +62,7 @@
   <h1>Minobusan</h1>
   <p class="loc-sub">Noč pri menihih na gori Minobu</p>
   <p class="loc-intro">Na gori Minobu stoji Kuon-ji, osrednji tempelj budistične šole Nichiren, obkrožen s starodavnimi cedrami in jeseni z žarečimi javorji. Tu prenočimo pri menihih v šukuboju Kakurinbo (že rezervirano) — z vegetarijansko večerjo in jutranjim mirom. Umirjen, oduhovljen postanek na poti proti jugu.</p>
+  <p class="visit-wrap"><button type="button" class="visit-btn" data-visit="minobusan">☐ Označi kot obiskano</button></p>
 </section>
 <section class="card-section" aria-labelledby="znamenitosti">
   <h2 id="znamenitosti">⛩️ Znamenitosti in doživetja</h2>
@@ -129,7 +131,7 @@
   <p class="cat-intro">Naložite fotografijo (ali video) za izziv — takoj se označi kot opravljen in se spodaj pokaže sličica. Iz tega nastane vaš skupni album. <a href="izziv.html">Vsi izzivi na enem mestu →</a></p>
   <div class="album-gate"></div>
   <div class="izziv-board" data-scope="minobusan"></div>
-  <script type="application/json" id="izziv-data">[{"id": "minobusan-0", "t": "foto", "x": "Vse štiri v tempeljskih copatih pred šukubojem Kakurinbo, kjer prespite.", "s": "minobusan", "sn": "Minobu", "e": "🏯"}, {"id": "minobusan-1", "t": "foto", "x": "Meniška večerja shojin ryori od zgoraj — lepo pogrnjena miza kot umetnina (brez obrazov).", "s": "minobusan", "sn": "Minobu", "e": "🏯"}, {"id": "minobusan-2", "t": "foto", "x": "Ljuba na vrhu stopnic pred glavno dvorano Kuon-ji — dosežek dneva.", "s": "minobusan", "sn": "Minobu", "e": "🏯"}, {"id": "minobusan-3", "t": "video", "x": "Video (15 s): jutranja megla in cedre pred templjem (če je molitev, le zvok, spoštljivo).", "s": "minobusan", "sn": "Minobu", "e": "🏯"}]</script>
+  <script type="application/json" id="izziv-data">[{"id": "minobusan-0", "t": "foto", "x": "Vse štiri v tempeljskih copatih pred šukubojem Kakurinbo, kjer prespite.", "w": "Kakurinbo je šukubo — tempeljska prenočitev pri menihih, ki že stoletja sprejemajo romarje. Ideja: slika dokazuje, da ste bile gostje v pravem tempeljskem domu.", "p": {"k": "zanimivost", "h": "Pravilo copat", "x": "Na tatami se ne hodi v copatih, le v nogavicah; za stranišče pa so posebni copati, ki jih po izhodu spet pustite. Pozabljeni stranišča-copati so največja »japonska napaka« — nasmeh zagotovljen."}, "s": "minobusan", "sn": "Minobu", "e": "🏯"}, {"id": "minobusan-1", "t": "foto", "x": "Meniška večerja shojin ryori od zgoraj — lepo pogrnjena miza kot umetnina (brez obrazov).", "w": "Meniška vegetarijanska kuhinja (shojin ryori) je lepota na krožniku. Slika od zgoraj bo kot umetnina; ideja: stran o okusih v knjigi.", "p": {"k": "zanimivost", "h": "Pet barv, pet okusov", "x": "Shojin ryori sledi načelu petih barv, petih okusov in petih načinov priprave; izogiba se mesu, ribam in močnim začimbam, kot sta česen in čebula. Poskusite na krožniku prepoznati vse barve."}, "s": "minobusan", "sn": "Minobu", "e": "🏯"}, {"id": "minobusan-2", "t": "foto", "x": "Ljuba na vrhu stopnic pred glavno dvorano Kuon-ji — dosežek dneva.", "w": "Kuon-ji je glavni tempelj Nichirenove šole; Nichiren je na tej gori preživel zadnja leta. Do glavne dvorane vodi 287 stopnic — ideja: slika zmagoslavja na vrhu (ali na vzpenjači — tudi to je pametno).", "p": {"k": "zanimivost", "h": "Stopnice razsvetljenja", "x": "Stopnicam Bodai-tei pravijo »stopnice razsvetljenja« (287 stopnic) — »bodai« pomeni razsvetljenje. Če ste se vzpele po njih, ste si prislužile skodelico čaja; če ste izbrale vzpenjačo, ste zelo pametne."}, "s": "minobusan", "sn": "Minobu", "e": "🏯"}, {"id": "minobusan-3", "t": "video", "x": "Video (15 s): jutranja megla in cedre pred templjem (če je molitev, le zvok, spoštljivo).", "w": "Jutro na gori ima poseben zvok in svetlobo. Video ujame, česar slika ne zmore: zvon, ptice, tišino. Ideja: zvok za knjigo. Snemajte le, če je primerno — vprašajte.", "p": {"k": "skrivnost", "h": "Napev, star več kot 700 let", "x": "Če boste slišale petje »Nam-myōhō-renge-kyō«, je to daimoku — napev, ki ga budisti Nichirenove šole ponavljajo že več kot 700 let, saj verjamejo, da že izgovor prinaša mir."}, "s": "minobusan", "sn": "Minobu", "e": "🏯"}]</script>
 </section>
 <section class="card-section" aria-labelledby="hrana">
   <h2 id="hrana">🍜 Hrana — kaj in kje jesti</h2>
@@ -233,6 +235,6 @@
   <p>🍁 Japonska — Mesec za dušo · 3. november – 2. december 2026 · Tokio → Osaka</p>
   <p>Z ljubeznijo pripravljeno za Magdo in prijateljice</p>
 </footer>
-<script src="app.js?v=15"></script>
+<script src="app.js?v=16"></script>
 </body>
 </html>

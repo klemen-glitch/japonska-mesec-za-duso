@@ -119,6 +119,194 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+/* ============================================================
+   »Danes«: kateri dan poti je danes (po datumu v telefonu).
+   Za preizkus: dodaj ?dan=2026-11-08 v naslov strani.
+   ============================================================ */
+document.addEventListener("DOMContentLoaded", function () {
+  var box = document.getElementById("today");
+  var dataEl = document.getElementById("trip-data");
+  if (!dataEl) return;
+  var days = [];
+  try { days = JSON.parse(dataEl.textContent); } catch (e) { return; }
+  if (!days.length) return;
+
+  function pad(n) { return (n < 10 ? "0" : "") + n; }
+  var q = (location.search.match(/dan=(\d{4}-\d{2}-\d{2})/) || [])[1];
+  var now = new Date();
+  var todayIso = q || (now.getFullYear() + "-" + pad(now.getMonth() + 1) + "-" + pad(now.getDate()));
+  function toDate(iso) { var p = iso.split("-"); return new Date(+p[0], +p[1] - 1, +p[2]); }
+  var diff = Math.round((toDate(days[0].iso) - toDate(todayIso)) / 86400000);
+
+  // označi današnji dan v načrtu poti
+  document.querySelectorAll(".it-day[data-iso]").forEach(function (li) {
+    if (li.getAttribute("data-iso") === todayIso) li.classList.add("is-today");
+  });
+  if (!box) return;
+
+  var cur = null;
+  days.forEach(function (d) { if (d.iso === todayIso) cur = d; });
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+
+  var html = "";
+  if (cur) {
+    var link = cur.k ? '<a class="today-btn" href="' + cur.k + '.html">Odpri vodnik za ta kraj →</a>' : "";
+    html = '<div class="today-kicker">📅 Danes · ' + esc(cur.date) + "</div>" +
+      '<h2>Dan ' + cur.d + " od " + days.length + " — " + esc(cur.t) + "</h2>" +
+      '<p class="today-region">' + esc(cur.r) + "</p><p>" + esc(cur.p) + "</p>" +
+      '<div class="today-actions">' + link +
+      '<a class="today-btn alt" href="izziv.html">📸 Foto izzivi</a>' +
+      '<a class="today-btn alt" href="nujno.html">🆘 Nujno</a></div>';
+  } else if (diff > 0) {
+    html = '<div class="today-kicker">✈️ Odštevanje</div><h2>Še ' + diff + (diff === 1 ? " dan" : (diff === 2 ? " dni" : " dni")) +
+      " do odhoda</h2><p>Potovanje se začne " + esc(days[0].date) + ". Poglejte <a href=\"priprave.html\">priprave</a> in kontrolni seznam.</p>";
+  } else {
+    html = '<div class="today-kicker">🌸 Potovanje je za vami</div><h2>Mata ne — se še vidimo!</h2>' +
+      '<p>Poglejte <a href="nalozi.html">skupni album</a> in iz slik sestavite svojo potopisno knjigo.</p>';
+  }
+  box.innerHTML = html;
+  box.hidden = false;
+});
+
+/* ============================================================
+   Pregledni zemljevid poti (Leaflet): vseh 13 postaj po vrsti.
+   ============================================================ */
+document.addEventListener("DOMContentLoaded", function () {
+  var el = document.getElementById("route-map");
+  var dataEl = document.getElementById("route-data");
+  if (!el || !dataEl || typeof L === "undefined") return;
+  var st = [];
+  try { st = JSON.parse(dataEl.textContent); } catch (e) { return; }
+  var map;
+  try {
+    map = L.map(el, {
+      zoomControl: false, attributionControl: true, dragging: false, scrollWheelZoom: false,
+      doubleClickZoom: false, boxZoom: false, keyboard: false, touchZoom: false
+    });
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 19, attribution: "© OpenStreetMap" }).addTo(map);
+    var byKey = {};
+    st.forEach(function (s) { byKey[s.k] = s; });
+
+    var base = st.filter(function (s) { return !s.day; }).map(function (s) { return [s.lat, s.lon]; });
+    L.polyline(base, { color: "#9c2a3c", weight: 4, opacity: 0.85 }).addTo(map);
+    st.forEach(function (s) {
+      if (s.day && s.base && byKey[s.base]) {
+        L.polyline([[byKey[s.base].lat, byKey[s.base].lon], [s.lat, s.lon]],
+          { color: "#bd5f2c", weight: 3, opacity: 0.9, dashArray: "6 8" }).addTo(map);
+      }
+    });
+    var pts = [];
+    st.forEach(function (s) {
+      pts.push([s.lat, s.lon]);
+      var icon = L.divIcon({
+        className: "rm-wrap",
+        html: '<span class="rm-pin' + (s.day ? " rm-day" : "") + '">' + s.i + "</span>",
+        iconSize: [22, 22], iconAnchor: [11, 11]
+      });
+      var m = L.marker([s.lat, s.lon], { icon: icon, keyboard: false }).addTo(map);
+      m.bindPopup('<a href="' + s.k + '.html"><strong>' + s.i + ". " + s.e + " " + s.n + "</strong><br>Odpri vodnik →</a>");
+    });
+    map.fitBounds(pts, { padding: [22, 22] });
+    setTimeout(function () { map.invalidateSize(); map.fitBounds(pts, { padding: [22, 22] }); }, 250);
+  } catch (e) { /* brez interneta zemljevid ostane prazen */ }
+});
+
+/* ============================================================
+   Obiskano: gumb na straneh postaj, oznake na domači strani.
+   ============================================================ */
+document.addEventListener("DOMContentLoaded", function () {
+  function get(k) { try { return localStorage.getItem("visited:" + k) === "1"; } catch (e) { return false; } }
+  function set(k, v) { try { if (v) localStorage.setItem("visited:" + k, "1"); else localStorage.removeItem("visited:" + k); } catch (e) {} }
+
+  document.querySelectorAll(".visit-btn[data-visit]").forEach(function (b) {
+    var k = b.getAttribute("data-visit");
+    function paint() {
+      var on = get(k);
+      b.classList.toggle("on", on);
+      b.textContent = on ? "✅ Obiskano" : "☐ Označi kot obiskano";
+    }
+    paint();
+    b.addEventListener("click", function () { set(k, !get(k)); paint(); });
+  });
+
+  var tags = document.querySelectorAll("[data-visit-tag]");
+  var n = 0;
+  tags.forEach(function (t) {
+    var on = get(t.getAttribute("data-visit-tag"));
+    t.hidden = !on;
+    if (on) n++;
+  });
+  var sum = document.getElementById("visit-sum");
+  if (sum) sum.textContent = tags.length ? "✅ Obiskanih postaj: " + n + " / " + tags.length : "";
+});
+
+/* ============================================================
+   Izgovorjava (🔊) in kartice »pokaži domačinu« čez cel zaslon.
+   ============================================================ */
+document.addEventListener("DOMContentLoaded", function () {
+  var canSpeak = "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
+
+  function say(text) {
+    if (!canSpeak) return;
+    try {
+      window.speechSynthesis.cancel();
+      var u = new SpeechSynthesisUtterance(text);
+      u.lang = "ja-JP";
+      u.rate = 0.85;
+      var voices = window.speechSynthesis.getVoices() || [];
+      for (var i = 0; i < voices.length; i++) {
+        if ((voices[i].lang || "").toLowerCase().indexOf("ja") === 0) { u.voice = voices[i]; break; }
+      }
+      window.speechSynthesis.speak(u);
+    } catch (e) {}
+  }
+  if (canSpeak) { try { window.speechSynthesis.getVoices(); } catch (e) {} }
+
+  document.querySelectorAll(".say[data-say]").forEach(function (b) {
+    if (!canSpeak) { b.hidden = true; return; }
+    b.addEventListener("click", function () { say(b.getAttribute("data-say")); });
+  });
+
+  var cards = document.querySelectorAll(".show-card");
+  if (!cards.length) return;
+  var overlay = document.createElement("div");
+  overlay.className = "show-overlay";
+  overlay.hidden = true;
+  overlay.innerHTML = '<div class="so-inner"><p class="so-sl"></p><p class="so-jp" lang="ja"></p><p class="so-ro"></p>' +
+    '<div class="so-btns"><button type="button" class="so-say">🔊 Poslušaj</button>' +
+    '<button type="button" class="so-close">✕ Zapri</button></div></div>';
+  document.body.appendChild(overlay);
+  var cur = "";
+  function close() { overlay.hidden = true; document.body.style.overflow = ""; }
+  overlay.querySelector(".so-close").addEventListener("click", function (e) { e.stopPropagation(); close(); });
+  var sb = overlay.querySelector(".so-say");
+  if (!canSpeak) sb.hidden = true;
+  sb.addEventListener("click", function (e) { e.stopPropagation(); say(cur); });
+  overlay.addEventListener("click", close);
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !overlay.hidden) close(); });
+
+  cards.forEach(function (c) {
+    c.addEventListener("click", function () {
+      cur = c.getAttribute("data-jp") || "";
+      overlay.querySelector(".so-sl").textContent = c.getAttribute("data-sl") || "";
+      overlay.querySelector(".so-jp").textContent = cur;
+      overlay.querySelector(".so-ro").textContent = c.getAttribute("data-ro") || "";
+      overlay.classList.toggle("red", c.classList.contains("red"));
+      overlay.hidden = false;
+      document.body.style.overflow = "hidden";
+    });
+  });
+});
+
+/* Zapiski, ki se shranijo v telefon (textarea[data-save]). */
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll("textarea[data-save]").forEach(function (t) {
+    var key = "note:" + t.getAttribute("data-save");
+    try { var v = localStorage.getItem(key); if (v) t.value = v; } catch (e) {}
+    t.addEventListener("input", function () { try { localStorage.setItem(key, t.value); } catch (e) {} });
+  });
+});
+
 /* Offline podpora (PWA): stran si telefon zapomni,
    da osnovne informacije delujejo tudi brez interneta. */
 if ("serviceWorker" in navigator) {
