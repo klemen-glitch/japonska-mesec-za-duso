@@ -307,6 +307,98 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+/* ============================================================
+   Predstavitev (wizard): Naprej / Nazaj skozi vse funkcije.
+   ============================================================ */
+document.addEventListener("DOMContentLoaded", function () {
+  var wiz = document.getElementById("wiz");
+  if (!wiz) return;
+  var steps = [].slice.call(wiz.querySelectorAll(".wiz-step"));
+  var prev = document.getElementById("wiz-prev");
+  var next = document.getElementById("wiz-next");
+  var count = document.getElementById("wiz-count");
+  var fill = document.getElementById("wiz-fill");
+  var dots = document.getElementById("wiz-dots");
+  var cur = 0, spotEl = null;
+
+  steps.forEach(function (_, i) {
+    var d = document.createElement("i");
+    d.addEventListener("click", function () { go(i); });
+    dots.appendChild(d);
+  });
+  dots.style.pointerEvents = "auto";
+
+  function markSeen() { try { localStorage.setItem("tour_seen", "1"); } catch (e) {} }
+
+  function go(i) {
+    if (i < 0 || i >= steps.length) return;
+    cur = i;
+    steps.forEach(function (s, k) { s.hidden = k !== i; });
+    count.textContent = (i + 1) + " / " + steps.length;
+    fill.style.width = Math.round((i + 1) * 100 / steps.length) + "%";
+    [].forEach.call(dots.children, function (d, k) { d.className = k === i ? "on" : (k < i ? "done" : ""); });
+    prev.disabled = i === 0;
+    var last = i === steps.length - 1;
+    next.textContent = last ? "Končaj ✓" : "Naprej →";
+    if (last) markSeen();
+    if (spotEl) { spotEl.classList.remove("spot"); spotEl = null; }
+    var sel = steps[i].getAttribute("data-spot");
+    if (sel) { spotEl = document.querySelector(sel); if (spotEl) spotEl.classList.add("spot"); }
+    try { history.replaceState(null, "", "#" + (i + 1)); } catch (e) {}
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  prev.addEventListener("click", function () { go(cur - 1); });
+  next.addEventListener("click", function () {
+    if (cur === steps.length - 1) { markSeen(); location.href = "index.html"; } else { go(cur + 1); }
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowRight") go(cur + 1);
+    else if (e.key === "ArrowLeft") go(cur - 1);
+  });
+  var x0 = null;
+  wiz.addEventListener("touchstart", function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+  wiz.addEventListener("touchend", function (e) {
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0; x0 = null;
+    if (Math.abs(dx) > 70) go(dx < 0 ? cur + 1 : cur - 1);
+  }, { passive: true });
+
+  // demo: odklep presenečenja
+  document.querySelectorAll('[data-demo="unlock"]').forEach(function (box) {
+    var btn = box.querySelector(".demo-btn"), lock = box.querySelector(".demo-locked"),
+        open = box.querySelector(".demo-open"), mark = box.querySelector(".demo-mark");
+    var on = false;
+    btn.addEventListener("click", function () {
+      on = !on;
+      lock.hidden = on; open.hidden = !on;
+      mark.textContent = on ? "✅" : "📸";
+      btn.textContent = on ? "↺ Ponastavi demo" : "▶ Preizkusi: naloži sliko";
+    });
+  });
+
+  var h = parseInt((location.hash || "").replace("#", ""), 10);
+  go(isNaN(h) ? 0 : Math.min(Math.max(h - 1, 0), steps.length - 1));
+});
+
+/* Pasica »Prvič tukaj?« na domači strani. */
+document.addEventListener("DOMContentLoaded", function () {
+  var b = document.getElementById("tour-banner");
+  if (!b) return;
+  var seen = false;
+  try { seen = localStorage.getItem("tour_seen") === "1"; } catch (e) {}
+  if (seen) return;
+  b.hidden = false;
+  var x = document.createElement("button");
+  x.type = "button"; x.className = "tb-x"; x.setAttribute("aria-label", "Skrij"); x.textContent = "✕";
+  x.addEventListener("click", function (e) {
+    e.preventDefault(); e.stopPropagation();
+    try { localStorage.setItem("tour_seen", "1"); } catch (er) {}
+    b.hidden = true;
+  });
+  b.appendChild(x);
+});
+
 /* Offline podpora (PWA): stran si telefon zapomni,
    da osnovne informacije delujejo tudi brez interneta. */
 if ("serviceWorker" in navigator) {

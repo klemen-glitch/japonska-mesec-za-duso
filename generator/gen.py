@@ -16,7 +16,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 
 # Verzija gradnje — doda se v naslov CSS/JS (?v=BUILD), da brskalnik vedno
 # naloži svežo različico. Ob vsaki spremembi povečaj.
-BUILD = "16"
+BUILD = "17"
 
 # ----------------------------------------------------------------------------
 # VSEBINA
@@ -429,6 +429,7 @@ def nav(current_key):
 
     primary = [
         ("index.html", "index", "🏠", "Domov"),
+        ("kako.html", "kako", "🎓", "Kako uporabljati"),
         ("nacrt.html", "nacrt", "🗺️", "Načrt poti"),
         ("izziv.html", "izziv", "📸", "Izzivi"),
         ("nalozi.html", "nalozi", "📤", "Naloži fotografije"),
@@ -480,6 +481,7 @@ def nav(current_key):
 FOOTER = f"""<footer>
   <p>🍁 Japonska — Mesec za dušo · 3. november – 2. december 2026 · Tokio → Osaka</p>
   <p>Z ljubeznijo pripravljeno za Magdo in prijateljice</p>
+  <p><a href="kako.html">🎓 Kako uporabljati to stran</a></p>
 </footer>
 <script src="app.js?v={BUILD}"></script>
 </body>
@@ -1366,6 +1368,7 @@ def index_page():
   <p class="tagline">Potovalni vodnik za Marjetico, Heleno, Ljubo in Magdo — vaš žepni spremljevalec: načrt dneva, znamenitosti, hrana, foto izzivi in nujne informacije.</p>
   <a class="photo-button" href="nalozi.html">📸 Naš album — naloži fotografije</a>
 </section>
+<a class="tour-banner" id="tour-banner" href="kako.html" hidden><span class="tb-e">🎓</span><span class="tb-t"><strong>Prvič tukaj?</strong> Poglej kratko predstavitev (2 minuti) →</span></a>
 <section class="today-card" id="today" hidden aria-live="polite"></section>
 """
     out += '<nav class="quick-links" aria-label="Glavna poglavja">\n'
@@ -1424,6 +1427,131 @@ def index_page():
     return out
 
 
+def _wiz_steps():
+    """Koraki wizarda: (emoji, naslov, [odstavki], demo_html, (href, oznaka) ali None, spot_selector)."""
+    demo_menu = ('<div class="demo-bar"><span>🍁 Mesec za dušo</span><span class="demo-pill">☰ Meni</span></div>'
+                 '<ul class="demo-list"><li>🏠 Domov</li><li>🗺️ Načrt poti</li><li>📸 Izzivi</li>'
+                 '<li>📤 Naloži fotografije</li><li>🆘 Nujno</li><li class="demo-more">… in vseh 13 postaj</li></ul>')
+    demo_today = ('<div class="today-card demo-today"><div class="today-kicker">📅 Danes · 9. nov</div>'
+                  '<h2>Dan 7 od 30 — Na polotok Izu</h2><p class="today-region">Izu</p>'
+                  '<p>Jutranja molitev, nato proti morju. Zvečer prvi onsen z razgledom.</p></div>')
+    demo_station = ('<div class="demo-chips"><span>⛩️ Znamenitosti</span><span>📍 Zemljevid</span><span>🎬 Videi</span>'
+                    '<span>🍜 Hrana</span><span>🗓️ Predlog dneva</span><span>🏡 Kje prespati</span>'
+                    '<span>☔ Če dežuje</span><span>🍁 Najlepši trenutek</span><span>☕ Ura zase</span>'
+                    '<span>🎨 Mandala</span><span>📖 Dnevnik</span><span>📸 Izzivi</span></div>')
+    demo_food = ('<details class="food-cat" open><summary><span class="cat-emoji" aria-hidden="true">🍣</span>'
+                 '<span class="cat-name">Sushi in sveže ribe</span><span class="cat-count">3 predlogi</span>'
+                 '<span class="chev" aria-hidden="true">▶</span></summary><div class="cat-body">'
+                 '<div class="place"><div class="place-head"><strong>Primer restavracije</strong><span class="price">€€</span></div>'
+                 '<p>Kaj naročiti in zakaj je lokal poseben.</p><span class="pin-btn">📍 Zemljevid</span></div></div></details>'
+                 '<p class="demo-hint">Tapnite naslov kategorije, da jo odprete ali zaprete.</p>')
+    demo_izziv = ('<div class="demo-izziv" data-demo="unlock">'
+                  '<div class="izziv-head"><span class="izziv-mark demo-mark">📸</span>'
+                  '<span class="izziv-text">Vse štiri pod velikimi torii svetišča Meiji Jingu.</span></div>'
+                  '<div class="izziv-surprise locked demo-locked"><span class="sur-ic">🎁</span>'
+                  '<span>Presenečenje te čaka — odklene se, ko naložite sliko ali video.</span></div>'
+                  '<div class="izziv-surprise open demo-open" hidden><div class="sur-head"><span class="sur-ic">💡</span>'
+                  '<span><span class="sur-kind">Zanimivost odklenjena</span><strong>Gozd, ki ga je zasadil človek</strong></span></div>'
+                  '<p>Gozd Meiji Jingu ni naraven: zasadili so ga okoli 1915–1920, danes je videti kot pragozd.</p></div>'
+                  '<button type="button" class="pin-btn demo-btn">▶ Preizkusi: naloži sliko</button></div>')
+    demo_upload = ('<div class="gate-row"><span class="gate-lbl">Nalagaš kot:</span>'
+                   '<span class="gate-name">Marjetica</span><span class="gate-name on">Helena</span>'
+                   '<span class="gate-name">Ljuba</span><span class="gate-name">Magda</span></div>'
+                   '<div class="demo-upload"><span class="demo-select">🗼 Tokio ▾</span>'
+                   '<span class="demo-bigbtn">📷 Izberi fotografije ali video</span></div>')
+    demo_cards = ('<button type="button" class="show-card" data-sl="Smo vegetarijanke" '
+                  'data-jp="私たちはベジタリアンです。肉、魚、かつおだしは食べられません。" '
+                  'data-ro="Watashitachi wa bejitarian desu. Niku, sakana, katsuo-dashi wa taberaremasen.">'
+                  '<span class="sc-emoji" aria-hidden="true">🥬</span><span class="sc-sl">Smo vegetarijanke</span>'
+                  '<span class="sc-jp" lang="ja">私たちはベジタリアンです。</span></button>'
+                  '<p class="demo-hint">Poskusite: tapnite kartico zgoraj.</p>')
+    demo_nujno = ('<div class="call-grid demo-calls"><div class="call-btn call-red"><span class="c-num">110</span><span class="c-lbl">Policija</span></div>'
+                  '<div class="call-btn call-red"><span class="c-num">119</span><span class="c-lbl">Rešilec</span></div></div>')
+    demo_install = ('<div class="demo-install"><div><strong>🍎 iPhone (Safari)</strong><br>Deli ⬆️ → »Dodaj na začetni zaslon«</div>'
+                    '<div><strong>🤖 Android (Chrome)</strong><br>Meni ⋮ → »Dodaj na začetni zaslon«</div></div>')
+
+    return [
+        ("🍁", "Dobrodošle!", [
+            "To je vaš žepni vodnik za potovanje po Japonski (3. november – 2. december 2026): načrt dneva, znamenitosti, hrana, foto izzivi in nujne informacije.",
+            "Predstavitev traja približno dve minuti. Tapnite »Naprej« in videle boste vse, kar zna ta stran."], "", None, ""),
+        ("☰", "Meni — vse na enem mestu", [
+            "Gumb »Meni« zgoraj desno odpre pregleden meni: glavne strani in vseh 13 postaj. Je na vsaki strani."],
+         demo_menu, None, ".menu-toggle"),
+        ("📅", "Danes — kaj je na vrsti", [
+            "Med potovanjem domača stran sama pokaže, kateri dan poti je danes: kje ste, kaj je v načrtu, in bližnjice do vodnika, izzivov in nujnih informacij.",
+            "Pred odhodom kaže odštevanje, po potovanju pa pozdrav."], demo_today, None, ""),
+        ("🗺️", "Načrt poti in pregledni zemljevid", [
+            "Načrt poti ima vseh 30 dni z datumi in prehode med kraji (vlak, avtobus, kovčki). Današnji dan je označen.",
+            "Na domači strani je zemljevid cele poti s 13 postajami po vrsti — nočitve in enodnevni izleti."],
+         "", ("nacrt.html", "Odpri načrt poti →"), ""),
+        ("⛩️", "Postaje — celoten vodnik za vsak kraj", [
+            "Vsaka postaja ima znamenitosti z zemljevidom in videi, hrano, predlog dneva, nasvet kje prespati in kaj početi ob dežju, pa tudi osebne rubrike: najlepši trenutek dneva, ura zase in navdih za mandalo."],
+         demo_station, ("tokio.html", "Poglej primer: Tokio →"), ""),
+        ("🍜", "Hrana po kategorijah", [
+            "Hrana je razdeljena po kategorijah (sushi, rezanci, sladice …). Kategorijo odprete s tapom in dobite restavracije s ceno in pinom na zemljevidu."],
+         demo_food, None, ""),
+        ("✅", "Obiskano", [
+            "Na vsaki postaji je gumb »Označi kot obiskano«. Kar označite, ostane shranjeno v vašem telefonu, na domači strani pa se pokaže, koliko postaj ste že obiskale."],
+         "", None, ""),
+        ("📸", "Foto izzivi in presenečenja", [
+            "Za vsako postajo je nekaj foto izzivov — večinoma slike, kjer vas ujame ena od vas. Pod vsakim je »drobni tisk«: zakaj se slikate tam.",
+            "Ko za izziv naložite sliko, se opravi, pade na dno razdelka in odklene presenečenje: zanimivost, skrivnost ali majhna nagrada. Preizkusite spodaj!"],
+         demo_izziv, ("izziv.html", "Odpri vse izzive →"), ""),
+        ("📤", "Naloži fotografije", [
+            "Fotografije in videe naložite kar s telefona. Prvič vnesete skupno kodo (jo imate v sporočilu) in izberete, kdo ste. Nato izberete postajo in slike.",
+            "Vse pristane v skupnem albumu, ki ga vidite vse štiri. Na koncu potovanja ga z enim klikom prenesete kot .zip."],
+         demo_upload, ("nalozi.html", "Odpri album →"), ""),
+        ("🪪", "Kartice za domačine", [
+            "Kartice »Smo vegetarijanke«, »Imam alergijo na …«, »Kateri peron?« in druge odprejo velik japonski zapis čez cel zaslon. Pokažete telefon, ni treba nič govoriti."],
+         demo_cards, ("nasveti.html#kartice", "Vse kartice →"), ""),
+        ("🔊", "Japonske fraze z izgovorjavo", [
+            "Pri frazah je gumb 🔊: telefon jo izgovori po japonsko. Zraven so japonski zapis, izgovorjava po slovensko in pomen."],
+         "", ("nasveti.html#fraze", "Odpri fraze →"), ""),
+        ("🆘", "Nujno — mir v žepu", [
+            "Posebna stran s 110, 119, številko Japan Visitor Hotline, veleposlaništvom RS v Tokiu in koraki ob izgubi kartice, telefona ali potnega lista. Upamo, da je ne boste potrebovale."],
+         demo_nujno, ("nujno.html", "Odpri nujne informacije →"), ""),
+        ("🎒", "Priprave in doživetja", [
+            "Priprave: pakiranje, eSIM, denar, vlaki, okvirni stroški in kontrolni seznam za odhod (obkljukate, telefon si zapomni).",
+            "Doživetja: kuharske delavnice, čajne hiše, zen vrtovi in nakup za ustvarjalne duše."],
+         "", ("priprave.html", "Odpri priprave →"), ""),
+        ("📲", "Dodajte stran na domači zaslon", [
+            "Da bo stran kot prava aplikacija (ikona na zaslonu, odpira se čez cel zaslon):"],
+         demo_install, None, ""),
+        ("🌸", "Pripravljene!", [
+            "To je vse. Stran lahko to predstavitev kadar koli ponovite — v meniju poiščite »Kako uporabljati«. Lepo pot, Marjetica, Helena, Ljuba in Magda!"],
+         "", ("index.html", "Na domačo stran →"), ""),
+    ]
+
+
+def kako_page():
+    steps = _wiz_steps()
+    out = head("Kako uporabljati · Japonska — Mesec za dušo",
+               "Kratka predstavitev vseh funkcij vodnika: korak za korakom z demo primeri.",
+               with_album=False)
+    out += nav("kako")
+    out += "<main>\n"
+    out += '<section class="wiz" id="wiz" aria-label="Predstavitev">\n'
+    out += ('  <div class="wiz-top"><span class="wiz-count" id="wiz-count"></span>'
+            '<a class="wiz-skip" href="index.html">Preskoči →</a></div>\n'
+            '  <div class="wiz-bar"><i id="wiz-fill"></i></div>\n  <div class="wiz-stage">\n')
+    for i, (e, t, paras, demo, link, spot) in enumerate(steps):
+        out += f'    <article class="wiz-step" data-spot="{esc(spot)}"{" hidden" if i else ""}>\n'
+        out += f'      <div class="wiz-emoji" aria-hidden="true">{e}</div>\n      <h2>{esc(t)}</h2>\n'
+        for ptxt in paras:
+            out += f'      <p>{esc(ptxt)}</p>\n'
+        if demo:
+            out += f'      <div class="wiz-demo">{demo}</div>\n'
+        if link:
+            out += f'      <a class="wiz-link" href="{link[0]}">{esc(link[1])}</a>\n'
+        out += "    </article>\n"
+    out += '  </div>\n'
+    out += ('  <div class="wiz-nav"><button type="button" class="wiz-btn wiz-prev" id="wiz-prev">← Nazaj</button>'
+            '<div class="wiz-dots" id="wiz-dots" aria-hidden="true"></div>'
+            '<button type="button" class="wiz-btn wiz-next" id="wiz-next">Naprej →</button></div>\n')
+    out += "</section>\n</main>\n" + FOOTER
+    return out
+
+
 # ----------------------------------------------------------------------------
 
 os.makedirs(OUT, exist_ok=True)
@@ -1441,7 +1569,8 @@ for name, builder in [("nacrt.html", nacrt_page),
                       ("dozivetja.html", dozivetja_page),
                       ("nalozi.html", nalozi_page),
                       ("izziv.html", izziv_page),
-                      ("nujno.html", nujno_page)]:
+                      ("nujno.html", nujno_page),
+                      ("kako.html", kako_page)]:
     with open(os.path.join(OUT, name), "w", encoding="utf-8") as f:
         f.write(builder())
     print(f"written {name}")
