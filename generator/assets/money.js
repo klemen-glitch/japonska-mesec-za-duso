@@ -136,10 +136,28 @@
     sb.rpc("trip_exp_add", { p_pin: pin(), p_trip: TRIP.id, p_who: who, p_what: what, p_amount: amt, p_currency: cur, p_split: split, p_day: day })
       .then(function (r) { if (r.error) throw r.error; return load(); })
       .then(render)
-      .catch(function () { msg.textContent = "Napaka pri shranjevanju. Preverite internet in poskusite znova."; });
+      .catch(function (e) {
+        if (tripAuthFail(e)) { tripReLogin(host, "Koda ni veljavna ali je seja potekla."); return; }
+        msg.textContent = "Napaka pri shranjevanju. Preverite internet in poskusite znova.";
+      });
   }
 
-  if (!pin()) { host.innerHTML = '<p class="buy-note">Seja je potekla. <a href="' + (TRIP.gate || "../index.html") + '?next=' + encodeURIComponent(TRIP.slug || "") + '">Vnesite kodo</a>.</p>'; return; }
-  load().then(render).catch(function () { host.innerHTML = '<p class="buy-note">Stroškov ni mogoče naložiti (brez povezave?). Poskusite znova.</p>'; });
-  setInterval(function () { if (!document.hidden && !document.activeElement.closest(".money-form")) load().then(render).catch(function () {}); }, 45000);
+  function boot() {
+    if (!pin()) { tripReLogin(host, "Seja je potekla."); return; }
+    host.innerHTML = '<p class="buy-note">Nalagam stroške …</p>';
+    load().then(render).catch(function (e) {
+      if (tripAuthFail(e)) { tripReLogin(host, "Koda ni veljavna ali je seja potekla."); return; }
+      var busy = e && /prevec_poskusov/.test(e.message || "");
+      host.innerHTML = '<section class="card-section"><h2>⚠️ Stroškov ni mogoče naložiti</h2><p>' +
+        (busy ? "Preveč poskusov — počakajte nekaj minut." : "Preverite internetno povezavo.") +
+        '</p><p><button type="button" class="buy-btn" id="m-retry">🔄 Poskusi znova</button></p></section>';
+      document.getElementById("m-retry").addEventListener("click", boot);
+    });
+  }
+  boot();
+  setInterval(function () {
+    if (!document.hidden && !document.activeElement.closest(".money-form")) {
+      load().then(render).catch(function (e) { if (tripAuthFail(e)) tripReLogin(host, "Koda ni veljavna ali je seja potekla."); });
+    }
+  }, 45000);
 })();

@@ -87,7 +87,10 @@
   // ---- podatki -------------------------------------------------------------
   function fetchUploads() {
     return sb.rpc("trip_album_list", { p_pin: getPin(), p_trip: TRIP.id })
-      .then(function (r) { uploadsCache = (r && r.data) || []; return uploadsCache; })
+      .then(function (r) {
+        if (r && r.error && typeof tripAuthFail === "function" && tripAuthFail(r.error)) { tripReLogin(null); }
+        uploadsCache = (r && r.data) || []; return uploadsCache;
+      })
       .catch(function () { uploadsCache = []; return uploadsCache; });
   }
   function uuid() {

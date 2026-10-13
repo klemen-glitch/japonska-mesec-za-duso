@@ -847,3 +847,20 @@ function tripCtx() {
     if (!document.hidden && tripToday() !== loadedDay) location.reload();
   });
 })();
+
+
+/* Neveljavna seja (koda ni več veljavna / napačna shranjena koda): počisti jo in vrni na vstopno stran. */
+function tripAuthFail(err) {
+  var m = (err && (err.message || err.msg)) || "";
+  return /ni_dostopa/.test(m);
+}
+function tripReLogin(host, msg) {
+  try { localStorage.removeItem("trip_session"); } catch (e) {}
+  var T = window.TRIP || {};
+  var url = (T.gate || "../index.html") + "?next=" + encodeURIComponent(T.slug || "");
+  if (host) {
+    host.innerHTML = '<section class="card-section"><h2>🔑 Vnesite kodo</h2><p>' + (msg || "Seja ni več veljavna.") +
+      ' Preusmerjam na vstopno stran …</p><p><a class="buy-btn" href="' + url + '">🔑 Vnesi kodo</a></p></section>';
+  }
+  setTimeout(function () { location.href = url; }, 1800);
+}

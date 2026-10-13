@@ -1,5 +1,5 @@
 /* Service worker potovanja: najprej splet (sveže), sicer predpomnilnik. */
-var CACHE_NAME = "ljubljana-20";
+var CACHE_NAME = "ljubljana-21";
 var PAGES = ["./", "./index.html", "./nacrt.html", "./priprave.html", "./nalozi.html", "./izziv.html", "./nujno.html", "./kako.html", "./kviz.html", "./lov.html", "./knjiga.html", "./vlak.html", "./emonec.html", "./center.html", "./zoo.html", "./domov.html", "./style.css", "./app.js", "./album.js", "./fun.js", "./money.js", "./knjiga.js", "./manifest.json", "./icons/icon-192.png", "./icons/icon-512.png", "./icons/apple-touch-icon.png", "./icons/favicon.svg"];
 
 self.addEventListener("install", function (event) {

@@ -87,7 +87,7 @@ OUT = os.path.join(SITE_DIR, CFG["slug"])
 
 # Verzija gradnje — doda se v naslov CSS/JS (?v=BUILD), da brskalnik vedno
 # naloži svežo različico. Ob vsaki spremembi povečaj.
-BUILD = "20"
+BUILD = "21"
 
 # ----------------------------------------------------------------------------
 # VSEBINA

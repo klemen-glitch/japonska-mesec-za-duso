@@ -67,10 +67,13 @@
     });
   }
 
-  if (!pin()) { host.innerHTML = '<p class="buy-note">Seja je potekla. <a href="' + (TRIP.gate || "../index.html") + '?next=' + encodeURIComponent(TRIP.slug || "") + '">Vnesite kodo</a>.</p>'; return; }
+  if (!pin()) { tripReLogin(host, "Seja je potekla."); return; }
   host.innerHTML = '<p class="buy-note">Nalagam album …</p>';
   sb.rpc("trip_album_list", { p_pin: pin(), p_trip: TRIP.id }).then(function (r) {
     if (r.error) throw r.error;
     render(r.data || []);
-  }).catch(function () { host.innerHTML = '<p class="buy-note">Albuma ni mogoče naložiti. Preverite internet.</p>'; });
+  }).catch(function (e) {
+    if (tripAuthFail(e)) { tripReLogin(host, "Koda ni veljavna ali je seja potekla."); return; }
+    host.innerHTML = '<p class="buy-note">Albuma ni mogoče naložiti. Preverite internet.</p>';
+  });
 })();
