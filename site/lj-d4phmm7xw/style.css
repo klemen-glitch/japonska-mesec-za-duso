@@ -1413,7 +1413,7 @@ footer p { margin: 0.25rem 0; }
 #rain-layer .drop { position: absolute; top: -30px; width: 2px; height: 22px; border-radius: 2px; background: linear-gradient(to bottom, rgba(120,170,230,0), rgba(70,130,210,0.85)); animation: rain-fall linear infinite; }
 @keyframes rain-fall { to { transform: translateY(calc(100vh + 60px)); } }
 @media (prefers-reduced-motion: reduce) { #rain-layer .drop { animation: none; top: 20%; } }
-html[data-rain] body > header, html[data-rain] main, html[data-rain] footer { position: relative; z-index: 1; }
+html[data-rain] main, html[data-rain] footer { position: relative; z-index: 1; }   /* glava (z-index 50) ostane nad vsebino */
 html[data-rain] {
   --accent: #1f6fb2; --accent-ink: #1f6fb2; --accent-soft: #e4f0fb; --pin: #1f6fb2; --orange: #3b8dd6; --gold: #4a86b8;
   --bg: #eef5fb; --bg-alt: #e1edf8; --line: #d1e0ee; --line-strong: #bdd2e6; --header-bg: rgba(238,245,251,0.8);
