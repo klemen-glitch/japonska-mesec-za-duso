@@ -92,7 +92,7 @@ OUT = os.path.join(SITE_DIR, CFG["slug"])
 
 # Verzija gradnje — doda se v naslov CSS/JS (?v=BUILD), da brskalnik vedno
 # naloži svežo različico. Ob vsaki spremembi povečaj.
-BUILD = "23"
+BUILD = "24"
 
 # ----------------------------------------------------------------------------
 # VSEBINA
@@ -416,6 +416,9 @@ IZZIVI = {k: ([v[i] for i in JP.IZZIVI_KEEP[k] if i < len(v)] if k in JP.IZZIVI_
 # Praktični podatki: nastanitve, vstopnice, povezave za prevoz (data_jp.py; za drugo potovanje jih prepiše gen_<ime>.py)
 LODGING = JP.LODGING
 BOOK = JP.BOOK
+import transport_jp as TJP
+TRANSPORT = TJP.TRANSPORT
+TRANSPORT_APPS = TJP.TRANSPORT_APPS
 LEG_LINKS = JP.LEG_LINKS
 QUICKBUY = JP.QUICKBUY
 DOZ_SEARCH = JP.DOZ_SEARCH
@@ -999,6 +1002,79 @@ def stay_section(key):
     return "\n".join(parts) + "\n"
 
 
+def transport_section(key):
+    """Prevoz in kako okoli: možnosti na kraju, pot od nastanitve do znamenitosti, taksi, aplikacije."""
+    t = TRANSPORT.get(key)
+    if not t:
+        return ""
+    sights = (GUIDE.get(key) or {}).get("sights", [])
+    texts = t.get("sights", [])
+    origin = t.get("from", "")
+    parts = ['<section class="card-section transport-section" id="prevoz" aria-labelledby="prevoz-h">',
+             '  <h2 id="prevoz-h">🚆 Prevoz in kako okoli</h2>']
+    if t.get("intro"):
+        parts.append(f'  <p>{esc(t["intro"])}</p>')
+    parts.append('  <div class="stay-box">')
+    if t.get("arrive"):
+        frm, to, txt = t["arrive"]
+        parts.append('    <h3 class="stay-sub">🧭 Kako priti sem</h3>')
+        parts.append(f"    <p>{esc(txt)}</p>")
+        parts.append('    <div class="buy-row">' + _btn("🧭 Pot v Google Zemljevidih", L.gdir(frm, to), "buy-btn alt") + "</div>")
+    if t.get("options"):
+        parts.append('    <h3 class="stay-sub">🚏 Možnosti na kraju in približne cene</h3>')
+        parts.append('    <ul class="nice-list">')
+        for emoji, title, txt in t["options"]:
+            parts.append(f"      <li><strong>{emoji} {esc(title)}</strong> — {esc(txt)}</li>")
+        parts.append("    </ul>")
+    if any(texts) and len(texts) == len(sights):
+        parts.append('    <h3 class="stay-sub">📍 Do znamenitosti iz nastanitve</h3>')
+        if t.get("from_label"):
+            parts.append(f'    <p class="buy-note">Izhodišče: {esc(t["from_label"])}. Čase si vzemite kot okvirne; gumb pokaže pot v Google Zemljevidih za današnji dan.</p>')
+        parts.append('    <ul class="tr-sights">')
+        for s, txt in zip(sights, texts):
+            if not txt:
+                continue
+            btn = ""
+            if s.get("maps") and origin:
+                btn = f' <a class="pin-btn" href="{esc(L.gdir(origin, s["maps"]))}" target="_blank" rel="noopener">🧭 Pot</a>'
+            parts.append(f"      <li><strong>{esc(s['name'])}</strong><span>{esc(txt)}</span>{btn}</li>")
+        parts.append("    </ul>")
+    elif any(texts):
+        raise SystemExit(f"TRANSPORT[{key}]: sights ({len(texts)}) se ne ujema z GUIDE ({len(sights)})")
+    if t.get("within"):
+        parts.append(f'    <p>{esc(t["within"])}</p>')
+    if t.get("taxi"):
+        parts.append('    <h3 class="stay-sub">🚕 Taksi</h3>')
+        parts.append(f'    <p>{esc(t["taxi"])}</p>')
+        if FEATURES.get("taksi"):
+            parts.append(f'    <p class="buy-note">{esc(TXT.get("taxi_note", "Japonski naslov za taksista najdete v razdelku »Kartice za taksista«."))} <a href="taksi.html">🚕 Odpri kartice</a></p>')
+    apps = list(t.get("apps", []))
+    names = {a[0] for a in apps}
+    apps += [a for a in TRANSPORT_APPS if a[0] not in names]
+    if apps:
+        parts.append('    <details class="tr-more"><summary>📱 Aplikacije, ki jih potrebujete</summary>')
+        parts.append('    <ul class="book-list">')
+        for name, txt, url in apps:
+            parts.append(f'      <li>{_btn(esc(name) + " →", url, "buy-btn alt")}<span class="book-note">{esc(txt)}</span></li>')
+        parts.append("    </ul>\n    </details>")
+    if t.get("links"):
+        parts.append('    <h3 class="stay-sub">🔗 Vozovnice, vozni redi in prevozniki</h3>')
+        parts.append('    <div class="buy-row">')
+        for lbl, url in t["links"]:
+            parts.append("      " + _btn(esc(lbl), url, "buy-btn alt"))
+        parts.append("    </div>")
+    if t.get("tips"):
+        parts.append('    <h3 class="stay-sub">💡 Nasveti</h3>')
+        parts.append('    <ul class="nice-list">')
+        for tip in t["tips"]:
+            parts.append(f"      <li>{esc(tip)}</li>")
+        parts.append("    </ul>")
+    parts.append('    <p class="buy-note">Cene so »okoli« in po objavljenih podatkih; vozni redi in cene se spreminjajo — pred nakupom preverite pri prevozniku.</p>')
+    parts.append("  </div>")
+    parts.append("</section>")
+    return "\n".join(parts) + "\n"
+
+
 def rain_section(key):
     """Plan B za dež: notranje možnosti; v »dežnem načinu« ga JS postavi na vrh strani."""
     items = RAIN.get(key, [])
@@ -1212,6 +1288,7 @@ def location_page(i, loc):
     out += food_section(loc, g)
     out += practical_section(g)
     out += stay_section(loc["key"])
+    out += transport_section(loc["key"])
     out += book_section(loc["key"])
 
     out += f"""<section class="card-section fact-section" aria-labelledby="zanimivost">
