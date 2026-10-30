@@ -3,9 +3,9 @@
    - slike, ikone: shranjene (stale-while-revalidate)
    - knjižnice (Leaflet, supabase-js …), zemljevidne ploščice in album slike: shranjene ob prvi uporabi
    - »Pripravi za brez interneta«: sporočilo {type:"precache-all"} naloži vse naenkrat */
-var CACHE_NAME = "ljubljana-24";
+var CACHE_NAME = "ljubljana-25";
 var RT = "rt-1";
-var PAGES = ["./", "./index.html", "./nacrt.html", "./priprave.html", "./nalozi.html", "./izziv.html", "./nujno.html", "./kako.html", "./kviz.html", "./lov.html", "./knjiga.html", "./rezervacije.html", "./dnevnik.html", "./vlak.html", "./emonec.html", "./center.html", "./zoo.html", "./domov.html", "./album.js", "./app.js", "./data.js", "./dnevnik.js", "./fun.js", "./knjiga.js", "./money.js", "./rezervacije.js", "./zdravje.js", "./style.css", "./manifest.json", "./potovanje.ics", "./icons/icon-192.png", "./icons/icon-512.png", "./icons/apple-touch-icon.png", "./icons/favicon.svg"];
+var PAGES = ["./", "./index.html", "./nacrt.html", "./priprave.html", "./nalozi.html", "./izziv.html", "./nujno.html", "./kako.html", "./kviz.html", "./lov.html", "./knjiga.html", "./rezervacije.html", "./dnevnik.html", "./vlak.html", "./emonec.html", "./center.html", "./zoo.html", "./domov.html", "./album.js", "./app.js", "./data.js", "./dnevnik.js", "./dokumenti.js", "./fun.js", "./knjiga.js", "./money.js", "./rezervacije.js", "./zdravje.js", "./style.css", "./manifest.json", "./potovanje.ics", "./icons/icon-192.png", "./icons/icon-512.png", "./icons/apple-touch-icon.png", "./icons/favicon.svg"];
 var ASSETS = [];
 var CDN = ["https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css", "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js", "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2", "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"];
 

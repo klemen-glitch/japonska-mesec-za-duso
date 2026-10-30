@@ -92,7 +92,7 @@ OUT = os.path.join(SITE_DIR, CFG["slug"])
 
 # Verzija gradnje — doda se v naslov CSS/JS (?v=BUILD), da brskalnik vedno
 # naloži svežo različico. Ob vsaki spremembi povečaj.
-BUILD = "24"
+BUILD = "25"
 
 # ----------------------------------------------------------------------------
 # VSEBINA
@@ -1525,6 +1525,7 @@ def nujno_page():
                 f'<p>{esc(t)}</p></details>\n')
     out += "</section>\n"
     out += zdravje_html()
+    out += dokumenti_html()
 
     out += '<section class="card-section" aria-labelledby="povej">\n  <h2 id="povej">🗣️ Povej po japonsko (pokaži zaslon)</h2>\n  <div class="show-grid">\n'
     for e, sl, jp, ro in NUJNO_CARDS:
@@ -1534,7 +1535,7 @@ def nujno_page():
     out += NUJNO_NOTES_HTML
     out += '<div class="back-row"><a class="back-button" href="index.html">🏠 Nazaj na pregled</a></div>\n'
     out += "</main>\n" + FOOTER
-    return _extra_script(out, "zdravje.js")
+    return _extra_script(out, "zdravje.js", "dokumenti.js")
 
 
 def _page_hero(emoji, kicker, title, subtitle, photo_key=None):
@@ -1855,6 +1856,13 @@ def _extra_script(out, *files):
 def zdravje_html():
     return (f'<section class="card-section" id="zdravje" aria-labelledby="zdravje-h">\n  <h2 id="zdravje-h">🩺 Zdravstvena kartica</h2>\n'
             f'  <p class="cat-intro">{esc(TXT["zdravje_intro"])}</p>\n  <div id="zdravje-host"></div>\n</section>\n')
+
+
+def dokumenti_html():
+    return ('<section class="card-section" id="potni-listi" aria-labelledby="pot-h">\n  <h2 id="pot-h">🛂 Potni listi</h2>\n'
+            '  <p class="cat-intro">Vsaka naj naloži fotografijo strani s podatki svojega potnega lista: če ga izgubite ali ukradejo, je na veleposlaništvu in pri zavarovalnici to ogromna pomoč. Slike so na voljo tudi brez interneta.</p>\n  <div id="pot-host"></div>\n</section>\n'
+            '<section class="card-section" id="letalske-karte" aria-labelledby="let-h">\n  <h2 id="let-h">✈️ Letalske karte</h2>\n'
+            '  <p class="cat-intro">Naložite potrditve letov in vkrcne karte (slika ali PDF), da jih imate vse štiri na enem mestu — tudi brez interneta.</p>\n  <div id="let-host"></div>\n</section>\n')
 
 
 def stays_script():
@@ -2519,7 +2527,7 @@ def write_pwa(pages):
 def copy_assets(extra_files=()):
     """Skupne datoteke (CSS/JS/ikone) iz generator/assets v mapo potovanja."""
     os.makedirs(OUT, exist_ok=True)
-    for name in ["style.css", "app.js", "data.js", "album.js", "fun.js", "money.js", "knjiga.js", "rezervacije.js", "zdravje.js", "dnevnik.js"] + list(extra_files):
+    for name in ["style.css", "app.js", "data.js", "album.js", "fun.js", "money.js", "knjiga.js", "rezervacije.js", "zdravje.js", "dnevnik.js", "dokumenti.js"] + list(extra_files):
         shutil.copy2(os.path.join(ASSETS_DIR, name), os.path.join(OUT, name))
     icons_out = os.path.join(OUT, "icons")
     os.makedirs(icons_out, exist_ok=True)
