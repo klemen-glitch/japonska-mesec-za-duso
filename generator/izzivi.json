@@ -89,7 +89,7 @@
       "p": { "k": "skrivnost", "h": "Ogenj, ki ne ugasne", "x": "V dvorani luči (Torodo) v Okunoinu gorijo svetilke, med njimi plamen, ki naj ne bi ugasnil že več kot 900 let. Obiščite jo na poti proti mavzoleju Kobo Daishija." } },
     { "t": "foto", "x": "Vse štiri pred cinobrasto pagodo Konpon Daito.",
       "w": "Pagoda Konpon Daito v kompleksu Danjo Garan je simbolno središče Koya-sana. Ideja: skupinska slika pred ikono — za poglavje o gori.",
-      "p": { "k": "skrivnost", "h": "Gora kot lotos", "x": "Koya-san leži v kotlini, obdani z osmimi vrhovi, ki spominjajo na osem listov lotosovega cveta — pagoda Konpon Daito velja za središče tega »mandalinega« sveta. Magda, to je navdih za mandalo." } },
+      "p": { "k": "skrivnost", "h": "Gora kot lotos", "x": "Koya-san leži v kotlini, obdani z osmimi vrhovi, ki spominjajo na osem listov lotosovega cveta — pagoda Konpon Daito velja za središče tega »mandalinega« sveta." } },
     { "t": "foto", "x": "Helena na verandi pred kamnitim vrtom Banryutei — mir zgrabljenega proda.",
       "w": "Banryutei v templju Kongobu-ji je največji kamniti vrt Japonske. Prod je »morje oblakov«, kamni dva zmaja. Ideja: portret miru.",
       "p": { "k": "zanimivost", "h": "Dva zmaja v oblakih", "x": "Prod predstavlja oblake, okoli 140 kamnov pa dva zmaja, ki varujeta glavni tempelj. Pravijo, da so kamni s Shikokuja, rojstnega otoka Kobo Daishija — ravno otoka, ki ga boste obiskale v dolini Iya." } },
@@ -123,7 +123,7 @@
       "p": { "k": "nagrada", "h": "Nagrada: rdeči sake", "x": "Poiščite rdeči sake iz starodavnega rdečega riža (znan pod imenom Ine Mankai) — redek, rožnat, lepo se poda k sladici. Vprašajte v pivovarni ali bližnji trgovini.", "m": "Mukai Shuzo, Ine, Kyoto" } },
     { "t": "foto", "x": "Magda na obali med galebi — mir ribiške vasice.",
       "w": "V Ine se ne pride početi, pride se biti. Slika Magde na obali ujame počasnost. Ideja: umirjen konec severnega dela poti.",
-      "p": { "k": "skrivnost", "h": "Skrivno navodilo", "x": "Izberite klopco, pustite telefon 10 minut v žepu. Ko mine, napišite en stavek, ki opiše mir — vpišite ga v »Magdin dnevnik« na strani Ine. Ta stavek bo v knjigi." } }
+      "p": { "k": "skrivnost", "h": "Skrivno navodilo", "x": "Izberite klopco, pustite telefon 10 minut v žepu. Ko mine, napišite en stavek, ki opiše mir — vpišite ga v »Dnevnik potovanja« na strani Ine. Ta stavek bo v knjigi." } }
   ],
   "nara": [
     { "t": "foto", "x": "Ujemite trenutek, ko se jelen prikloni — najlepše Marjetici (ali komurkoli).",

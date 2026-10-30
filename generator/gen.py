@@ -40,8 +40,8 @@ CFG = {
 TXT = {
     "loc_title": "{name} · Japonska 2026",
     "loc_desc": "{name}: znamenitosti, hrana in nasveti — vodnik Japonska 2026.",
-    "magda": "💛 Magdin trenutek",
-    "diary": "📖 Magdin dnevnik",
+    "magda": "",
+    "diary": "📖 Dnevnik potovanja",
     "diary_hint": "Prostor za vaše vtise, skice in najlepši spomin s te postaje.",
     "nalozi_title": "Naloži fotografije · Japonska — Mesec za dušo",
     "izziv_title": "Foto izzivi · Japonska — Mesec za dušo",
@@ -92,7 +92,7 @@ OUT = os.path.join(SITE_DIR, CFG["slug"])
 
 # Verzija gradnje — doda se v naslov CSS/JS (?v=BUILD), da brskalnik vedno
 # naloži svežo različico. Ob vsaki spremembi povečaj.
-BUILD = "26"
+BUILD = "27"
 
 # ----------------------------------------------------------------------------
 # VSEBINA
@@ -713,7 +713,7 @@ def make_footer(l1, l2):
 
 
 FOOTER = make_footer("🍁 Japonska — Mesec za dušo · 3. november – 2. december 2026 · Tokio → Osaka",
-                     "Z ljubeznijo pripravljeno za Magdo in prijateljice")
+                     "Z ljubeznijo pripravljeno za Marjetico, Heleno, Ljubo in Magdo")
 
 
 def yt_search_url(phrase):
@@ -1181,7 +1181,6 @@ def quickbuy_section():
 RUBRIC_META = [
     ("najlepsi_trenutek", "🍁 Najlepši trenutek dneva", "rubric-moment"),
     ("ura_zase", "☕ Vzemi si uro zase", "rubric-hour"),
-    ("mandala", "🎨 Navdih za mandalo", "rubric-mandala"),
 ]
 
 
@@ -1246,6 +1245,13 @@ def videos_section(loc):
     return "\n".join(parts) + "\n"
 
 
+def magda_html(loc):
+    if not TXT.get("magda") or not loc.get("magda"):
+        return ""
+    return (f'<section class="card-section magda-section" aria-labelledby="magda">\n  <h2 id="magda">{TXT["magda"]}</h2>\n'
+            f'  <p>{esc(loc["magda"])}</p>\n</section>\n')
+
+
 def location_page(i, loc):
     prev_loc = LOCATIONS[i - 1] if i > 0 else None
     next_loc = LOCATIONS[i + 1] if i < len(LOCATIONS) - 1 else None
@@ -1295,11 +1301,7 @@ def location_page(i, loc):
   <h2 id="zanimivost">💡 Zanimivost</h2>
   <p>{esc(loc['fact'])}</p>
 </section>
-{facts_section(loc["key"])}<section class="card-section magda-section" aria-labelledby="magda">
-  <h2 id="magda">{TXT["magda"]}</h2>
-  <p>{esc(loc['magda'])}</p>
-</section>
-"""
+{facts_section(loc["key"])}{magda_html(loc)}"""
 
     out += rubric_section(loc["key"])
 
@@ -1656,7 +1658,7 @@ CHECKLIST = [
         "Osebna higiena in kar potrebujete čez dan",
     ]),
     ("🎨 Za dušo", [
-        "Skicirni blok in svinčniki/barve (za mandale in skice)",
+        "Skicirni blok in svinčniki/barve (za skice)",
         "Prostor v kovčku za spominke (papir, čaj, keramika)",
         "Knjiga ali dnevnik za večere",
     ]),
@@ -1944,7 +1946,7 @@ QUICK_LINKS = [
 def index_page():
     out = head(
         "Japonska — Mesec za dušo",
-        "Potovalni vodnik za Magdo in prijateljice: Japonska, 3. november – 2. december 2026, Tokio → Osaka.",
+        "Potovalni vodnik za Marjetico, Heleno, Ljubo in Magdo: Japonska, 3. november – 2. december 2026, Tokio → Osaka.",
         with_map=True,
     )
     out += nav("index")
@@ -2106,7 +2108,7 @@ def _wiz_steps():
     demo_station = ('<div class="demo-chips"><span>⛩️ Znamenitosti</span><span>📍 Zemljevid</span><span>🎬 Videi</span>'
                     '<span>🍜 Hrana</span><span>🗓️ Predlog dneva</span><span>🏡 Kje prespati</span>'
                     '<span>☔ Če dežuje</span><span>🍁 Najlepši trenutek</span><span>☕ Ura zase</span>'
-                    '<span>🎨 Mandala</span><span>📖 Dnevnik</span><span>📸 Izzivi</span></div>')
+                    '<span>📖 Dnevnik</span><span>📸 Izzivi</span></div>')
     demo_food = ('<details class="food-cat" open><summary><span class="cat-emoji" aria-hidden="true">🍣</span>'
                  '<span class="cat-name">Sushi in sveže ribe</span><span class="cat-count">3 predlogi</span>'
                  '<span class="chev" aria-hidden="true">▶</span></summary><div class="cat-body">'
@@ -2155,7 +2157,7 @@ def _wiz_steps():
             "Na domači strani je zemljevid cele poti s 13 postajami po vrsti — nočitve in enodnevni izleti."],
          "", ("nacrt.html", "Odpri načrt poti →"), ""),
         ("⛩️", "Postaje — celoten vodnik za vsak kraj", [
-            "Vsaka postaja ima znamenitosti z zemljevidom in videi, hrano, predlog dneva, nasvet kje prespati in kaj početi ob dežju, pa tudi osebne rubrike: najlepši trenutek dneva, ura zase in navdih za mandalo."],
+            "Vsaka postaja ima znamenitosti z zemljevidom in videi, hrano, predlog dneva, nasvet kje prespati in kaj početi ob dežju, pa tudi osebne rubrike: najlepši trenutek dneva in ura zase."],
          demo_station, ("tokio.html", "Poglej primer: Tokio →"), ""),
         ("🍜", "Hrana po kategorijah", [
             "Hrana je razdeljena po kategorijah (sushi, rezanci, sladice …). Kategorijo odprete s tapom in dobite restavracije s ceno in pinom na zemljevidu."],
