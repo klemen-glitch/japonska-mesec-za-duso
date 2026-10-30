@@ -3,7 +3,7 @@
    - slike, ikone: shranjene (stale-while-revalidate)
    - knjižnice (Leaflet, supabase-js …), zemljevidne ploščice in album slike: shranjene ob prvi uporabi
    - »Pripravi za brez interneta«: sporočilo {type:"precache-all"} naloži vse naenkrat */
-var CACHE_NAME = "ljubljana-25";
+var CACHE_NAME = "ljubljana-26";
 var RT = "rt-1";
 var PAGES = ["./", "./index.html", "./nacrt.html", "./priprave.html", "./nalozi.html", "./izziv.html", "./nujno.html", "./kako.html", "./kviz.html", "./lov.html", "./knjiga.html", "./rezervacije.html", "./dnevnik.html", "./vlak.html", "./emonec.html", "./center.html", "./zoo.html", "./domov.html", "./album.js", "./app.js", "./data.js", "./dnevnik.js", "./dokumenti.js", "./fun.js", "./knjiga.js", "./money.js", "./rezervacije.js", "./zdravje.js", "./style.css", "./manifest.json", "./potovanje.ics", "./icons/icon-192.png", "./icons/icon-512.png", "./icons/apple-touch-icon.png", "./icons/favicon.svg"];
 var ASSETS = [];

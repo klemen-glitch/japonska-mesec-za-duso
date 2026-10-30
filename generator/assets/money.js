@@ -72,6 +72,50 @@
     return out;
   }
 
+
+  var COL = ["#9c2a3c", "#bd5f2c", "#a9802f", "#2f8f6b", "#4a6fa5", "#7a5aa6"];
+  function analytics(list, cur) {
+    var items = list.filter(function (e) { return e.currency === cur; });
+    if (!items.length) return "";
+    var paid = {}, own = {}, byDay = {}, total = 0, biggest = null;
+    PEOPLE.forEach(function (p) { paid[p] = 0; own[p] = 0; });
+    items.forEach(function (e) {
+      var t = minor(parseFloat(e.amount), cur); total += t;
+      paid[e.who] = (paid[e.who] || 0) + t;
+      var sh = shares(t, e.split); Object.keys(sh).forEach(function (n) { own[n] = (own[n] || 0) + sh[n]; });
+      var d = e.day || "brez datuma"; byDay[d] = (byDay[d] || 0) + t;
+      if (!biggest || t > biggest.t) biggest = { t: t, w: e.what };
+    });
+    var names = Object.keys(own).sort(), max = 1;
+    names.forEach(function (n) { max = Math.max(max, paid[n] || 0, own[n] || 0); });
+    var days = Object.keys(byDay).sort(), dmax = 1; days.forEach(function (d) { dmax = Math.max(dmax, byDay[d]); });
+    var h = '<h3 class="stay-sub">' + (cur === "JPY" ? "¥ Jeni" : "€ Evri") + " · analitika</h3>";
+    h += '<p class="buy-note">' + items.length + " stroškov · povprečje na dan: " + fmt(Math.round(total / Math.max(1, days.length)), cur) +
+      " · največji: " + esc(biggest.w) + " (" + fmt(biggest.t, cur) + ")</p>";
+    h += '<div class="an-wrap"><table class="an-table"><thead><tr><th>Oseba</th><th>Plačala</th><th>Porabila (njen delež)</th><th>Saldo</th></tr></thead><tbody>';
+    names.forEach(function (n) {
+      var bal = (paid[n] || 0) - (own[n] || 0);
+      h += "<tr><td>" + esc(n) + "</td><td>" + fmt(paid[n] || 0, cur) + "</td><td>" + fmt(own[n] || 0, cur) + '</td><td class="' + (bal >= 0 ? "an-pos" : "an-neg") + '">' + (bal >= 0 ? "+" : "−") + fmt(Math.abs(bal), cur) + "</td></tr>";
+    });
+    h += "</tbody></table></div>";
+    h += '<div class="an-bars"><p class="an-leg"><span class="an-k an-paid"></span> plačala <span class="an-k an-own"></span> porabila</p>';
+    names.forEach(function (n) {
+      h += '<div class="an-row"><span class="an-n">' + esc(n) + '</span><span class="an-b"><i class="an-paid" style="width:' + Math.round((paid[n] || 0) / max * 100) + '%"></i><i class="an-own" style="width:' + Math.round((own[n] || 0) / max * 100) + '%"></i></span></div>';
+    });
+    h += "</div>";
+    var acc = 0, stops = names.map(function (n, i) {
+      var a = acc / Math.max(1, total) * 100; acc += own[n] || 0; return COL[i % COL.length] + " " + a + "% " + acc / Math.max(1, total) * 100 + "%";
+    }).join(",");
+    h += '<div class="an-pie-row"><div class="an-pie" style="background:conic-gradient(' + stops + ')" role="img" aria-label="Delež porabe po osebah"></div><ul class="an-key">' +
+      names.map(function (n, i) { return '<li><i style="background:' + COL[i % COL.length] + '"></i>' + esc(n) + " " + Math.round((own[n] || 0) / Math.max(1, total) * 100) + " %</li>"; }).join("") + "</ul></div>";
+    if (days.length > 1 || (days[0] && days[0] !== "brez datuma")) {
+      h += '<p class="an-leg">Poraba po dnevih</p><div class="an-days">' + days.map(function (d) {
+        return '<div class="an-day" title="' + esc(d) + ": " + fmt(byDay[d], cur) + '"><i style="height:' + Math.max(4, Math.round(byDay[d] / dmax * 100)) + '%"></i><span>' + esc(d.slice(8) ? d.slice(8) + "." + d.slice(5, 7) : d) + "</span></div>";
+      }).join("") + "</div>";
+    }
+    return h;
+  }
+
   function render() {
     var list = merged(), me = myName();
     var html = "";
@@ -107,6 +151,9 @@
     });
     if (!any) html += "<p>Še ni stroškov. Dodajte prvega zgoraj.</p>";
     html += "</section>";
+
+    var an = ["JPY", "EUR"].map(function (c) { return analytics(list, c); }).join("");
+    if (an) html += '<section class="card-section money-an"><h2>📊 Analitika porabe</h2>' + an + "</section>";
 
     html += '<section class="card-section money-list"><h2>🧾 Vsi stroški</h2><ul class="exp-list">';
     list.slice().reverse().forEach(function (e) {
