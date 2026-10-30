@@ -92,7 +92,7 @@ OUT = os.path.join(SITE_DIR, CFG["slug"])
 
 # Verzija gradnje — doda se v naslov CSS/JS (?v=BUILD), da brskalnik vedno
 # naloži svežo različico. Ob vsaki spremembi povečaj.
-BUILD = "28"
+BUILD = "29"
 
 # ----------------------------------------------------------------------------
 # VSEBINA
@@ -1201,10 +1201,10 @@ def rubric_section(key):
         parts.append('    <h2>☔ Če dežuje</h2>')
         parts.append(f'    <p>{esc(e["dez"])}</p>')
         parts.append('  </div>')
-    parts.append('  <div class="card-section diary">')
+    parts.append(f'  <div class="card-section diary" data-station="{key}">')
     parts.append(f'    <h2>{TXT["diary"]}</h2>')
     parts.append(f'    <p class="diary-hint">{TXT["diary_hint"]}</p>')
-    parts.append('    <div class="diary-lines" aria-hidden="true"></div>')
+    parts.append('    <div class="diary-live"></div>\n    <div class="diary-lines" aria-hidden="true"></div>')
     parts.append('  </div>')
     parts.append('</section>')
     return "\n".join(parts) + "\n"
@@ -1321,7 +1321,7 @@ def location_page(i, loc):
         out += '  <span class="spacer"></span>\n'
     out += "</nav>\n</main>\n"
     out += FOOTER
-    return out
+    return _extra_script(out, "dnevnik-loc.js")
 
 
 NASVETI = [
@@ -2529,7 +2529,7 @@ def write_pwa(pages):
 def copy_assets(extra_files=()):
     """Skupne datoteke (CSS/JS/ikone) iz generator/assets v mapo potovanja."""
     os.makedirs(OUT, exist_ok=True)
-    for name in ["style.css", "app.js", "data.js", "album.js", "fun.js", "money.js", "knjiga.js", "rezervacije.js", "zdravje.js", "dnevnik.js", "dokumenti.js"] + list(extra_files):
+    for name in ["style.css", "app.js", "data.js", "album.js", "fun.js", "money.js", "knjiga.js", "rezervacije.js", "zdravje.js", "dnevnik.js", "dokumenti.js", "dnevnik-loc.js"] + list(extra_files):
         shutil.copy2(os.path.join(ASSETS_DIR, name), os.path.join(OUT, name))
     icons_out = os.path.join(OUT, "icons")
     os.makedirs(icons_out, exist_ok=True)
