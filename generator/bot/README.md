@@ -13,3 +13,8 @@
   4. preveri `getWebhookInfo`; v skupini pošlji `/povezi <koda>`.
 - Dedup obvestil: `trip_bot_sent (trip_id, kind, day_iso)`; za ponovno pošiljanje izbriši vrstico.
 - Obstoječe funkcije `meta-webhook`, `telegram-*`, `intake`, `admin` in cron `dispatch-daily-recap`, `sanus-sync-meta-leads` so del CRM — ne spreminjati.
+
+## Potopis dneva (od 3. 11. 2026)
+- Večerno vprašanje ob 20.00 lokalnega časa; klik na ime = rezervacija zapisa (`trip_day_writer`), opomniki vsakih 40 min, dokler nihče ne klikne; `/zamenjaj`, `/potopis`, `/končano`.
+- `composeDay()` sestavi zgodbo dneva v `trip_story` (po 8 min tišine ob novem zapisu ali novih slikah, ali takoj ob `/končano`). AI: Anthropic API, ključ v `trip_bot_config` (`anthropic_key`, neobvezno `anthropic_model`). Brez ključa se zapisi le zložijo (model `brez-ai`), samo slike brez zapisov pa ne ustvarijo ničesar.
+- Aplikacija bere `trip_story_list` (Dnevnik, Potopisna knjiga).

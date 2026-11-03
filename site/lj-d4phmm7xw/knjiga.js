@@ -44,6 +44,12 @@
     return h;
   }
 
+  var stories = [];
+  function storiesBook() {
+    if (!stories.length) return "";
+    return '<section class="bk-station bk-potopis"><h2>📖 Potopis po dnevih</h2>' + stories.map(function (st) { return '<h3>' + esc(dlong(st.day)) + '</h3>' + esc(st.body).split(/\n{2,}/).map(function (p) { return '<p>' + p.replace(/\n/g, '<br>') + '</p>'; }).join(''); }).join('') + '</section>';
+  }
+
   function render(items, diary) {
     diary = diary || [];
     var by = {};
@@ -56,6 +62,7 @@
       '<button type="button" class="buy-btn alt" id="bk-reset">↩️ Vrni vse slike</button></div>';
     html += '<article class="bk-cover"><div class="bk-cover-e">📖</div><h1>' + esc(TRIP.title || "Potopisna knjiga") + "</h1>" +
       (TRIP.dates ? "<p>" + esc(TRIP.dates) + "</p>" : "") + "<p>" + esc((TRIP.people || []).join(", ")) + "</p></article>";
+    html += storiesBook();
     html += diaryHtml(diary);
     var any = false;
     stations.forEach(function (s) {
@@ -90,8 +97,9 @@
 
   if (!pin()) { tripReLogin(host, "Seja je potekla."); return; }
   host.innerHTML = '<p class="buy-note">Nalagam album …</p>';
-  Promise.all([sb.rpc("trip_album_list", { p_pin: pin(), p_trip: TRIP.id }), sb.rpc("trip_diary_list", { p_pin: pin(), p_trip: TRIP.id })]).then(function (rs) {
+  Promise.all([sb.rpc("trip_album_list", { p_pin: pin(), p_trip: TRIP.id }), sb.rpc("trip_diary_list", { p_pin: pin(), p_trip: TRIP.id }), sb.rpc("trip_story_list", { p_pin: pin(), p_trip: TRIP.id })]).then(function (rs) {
     if (rs[0].error) throw rs[0].error;
+    stories = rs[2].error ? [] : (rs[2].data || []);
     render(rs[0].data || [], rs[1].error ? [] : (rs[1].data || []));
   }).catch(function (e) {
     if (tripAuthFail(e)) { tripReLogin(host, "Koda ni veljavna ali je seja potekla."); return; }

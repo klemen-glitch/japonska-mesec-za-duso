@@ -1569,3 +1569,9 @@ html[data-rain] .rain-card { background: var(--accent-soft); }
 .an-day { flex: 1 0 1.6rem; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; position: relative; }
 .an-day i { display: block; width: 100%; background: var(--accent); border-radius: 3px 3px 0 0; }
 .an-day span { position: absolute; bottom: -1.2rem; font-size: 0.68rem; color: var(--ink-soft); }
+
+.story { padding: 0.8rem 0; border-top: 1px solid var(--line); }
+.story:first-of-type { border-top: 0; }
+.story h3 { margin: 0 0 0.4rem; }
+.story-photos { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 6px; margin: 0.6rem 0; }
+.story-photos img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 8px; }

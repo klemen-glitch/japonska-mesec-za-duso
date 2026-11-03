@@ -9,7 +9,7 @@
   if (!window.TripData) { host.innerHTML = '<p class="buy-note">Naloži se, ko je internet na voljo.</p>'; return; }
   var TRIP = window.TRIP || { id: "", people: [], days: [], stations: [] };
   var PEOPLE = TRIP.people || [], DAYS = TRIP.days || [];
-  var rows = [], cachedView = false;
+  var rows = [], stories = [], cachedView = false;
   var MON = ["jan", "feb", "mar", "apr", "maj", "jun", "jul", "avg", "sep", "okt", "nov", "dec"];
 
   function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
@@ -26,13 +26,29 @@
     });
     return out;
   }
-  function load() { return TripData.list("trip_diary_list", "diary").then(function (r) { rows = r.data || []; cachedView = !!r.cached; }); }
+  function load() {
+    return TripData.list("trip_diary_list", "diary").then(function (r) { rows = r.data || []; cachedView = !!r.cached; })
+      .then(function () { return TripData.list("trip_story_list", "story").then(function (r) { stories = r.data || []; }).catch(function () { stories = []; }); });
+  }
+  function pubUrl(p) { try { return TripData.client().storage.from("trip_album").getPublicUrl(p).data.publicUrl; } catch (e) { return ""; } }
+  function storiesHtml() {
+    if (!stories.length) return '<section class="card-section"><h2>📖 Potopis po dnevih</h2><p class="buy-note">Potopis se sestavi sam: ko naložite slike in zvečer vpišete, kaj se je dogajalo (v Telegramu ali spodaj), nastane zgodba tega dne.</p></section>';
+    return '<section class="card-section stories"><h2>📖 Potopis po dnevih</h2><p class="buy-note">Besedilo samodejno nastane iz vaših zapisov (in slik); uredi ga AI, da je berljivo.</p>' +
+      stories.slice().reverse().map(function (st) {
+        var dd = DAYS.filter(function (d) { return d.iso === st.day; })[0];
+        return '<article class="story"><h3>' + (dd ? "Dan " + dd.d + " · " : "") + dlabel(st.day) + (dd ? " · " + esc(station(dd.k)) : "") + "</h3>" +
+          esc(st.body).split(/\n{2,}/).map(function (p) { return "<p>" + p.replace(/\n/g, "<br>") + "</p>"; }).join("") +
+          ((st.photo_paths || []).length ? '<div class="story-photos">' + st.photo_paths.map(function (p) { return '<img loading="lazy" src="' + esc(pubUrl(p)) + '" alt="" onerror="this.remove()">'; }).join("") + "</div>" : "") +
+          '<p class="buy-note">' + st.entries + " zapisov · " + st.photos + " fotografij" + (st.model === "brez-ai" ? " · brez AI urejanja" : "") + "</p></article>";
+      }).join("") + "</section>";
+  }
 
   function render() {
     var list = merged(), t = todayIso(), me = myName();
     var html = "";
     if (cachedView || TripData.pending()) html += '<p class="buy-note sync-note">' + (cachedView ? "📴 Prikazan je shranjen dnevnik. " : "") + (TripData.pending() ? "⏳ " + TripData.pending() + " zapisov čaka na povezavo." : "") + "</p>";
 
+    html += storiesHtml();
     // potopis (sestavljen besedilni povzetek), če obstaja
     var pot = list.filter(function (r) { return r.source === "potopis"; });
     if (pot.length) {

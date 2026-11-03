@@ -183,30 +183,98 @@ async function tick() {
       out.push(s.trip_id + ":tomorrow");
     }
 
-    // večer: kdo piše povzetek
+    // večer: kdo piše povzetek (klik na ime = rezervacija zapisa za ta dan)
     if (within(s.evening, 2) && await claim(s.trip_id, "evening", now.iso)) {
-      await askWho(s, trip, today, "📝 <b>Konec dneva!</b> Kdo bo danes napisal/-a kratek povzetek dneva? Iz teh zapisov nastane potopis.");
+      await askWho(s, trip, today, eveningText(W, s.people || []));
       out.push(s.trip_id + ":evening");
     }
-    // opomnik, če ni zapisa
-    if (now.minutes >= toMin(s.evening) + 90 && now.minutes < toMin(s.evening) + 240) {
-      const { count } = await db.from("trip_diary").select("id", { count: "exact", head: true }).eq("trip_id", s.trip_id).eq("day_iso", now.iso).eq("deleted", false);
-      if (!count && await claim(s.trip_id, "diary_remind", now.iso)) {
-        await askWho(s, trip, today, "⏰ Povzetka dneva še ni. Kdo ga napiše? (nekaj stavkov zadostuje)");
-        out.push(s.trip_id + ":remind");
+    // ponavljajoči opomniki, dokler nihče ne klikne na svoje ime in ni zapisa
+    {
+      const { count } = await db.from("trip_diary").select("id", { count: "exact", head: true }).eq("trip_id", s.trip_id).eq("day_iso", now.iso).eq("deleted", false).neq("source", "potopis");
+      const { data: wr } = await db.from("trip_day_writer").select("*").eq("trip_id", s.trip_id).eq("day_iso", now.iso).maybeSingle();
+      const since = now.minutes - toMin(s.evening);
+      if (!count && since >= 0 && since < 300) {
+        if (!wr) {
+          const step = Math.floor(since / 40);   // opomnik vsakih 40 min (po 40, 80, 120 …)
+          if (step >= 1 && await claim(s.trip_id, "diary_remind_" + step, now.iso)) {
+            await askWho(s, trip, today, "⏰ <b>Dnevnika za danes še ni.</b> Klikni na svoje ime — kdor klikne, danes napiše vtise. (Nekaj stavkov zadostuje.)");
+            out.push(s.trip_id + ":remind" + step);
+          }
+        } else if (since >= 60 && Date.now() - new Date(wr.claimed_at).getTime() > 40 * 60000) {
+          const step = Math.floor((Date.now() - new Date(wr.claimed_at).getTime()) / (40 * 60000));
+          if (await claim(s.trip_id, "writer_nudge_" + step, now.iso)) {
+            await sendToAll(s, `✍️ ${esc(wr.person)}, čakamo na tvoj zapis za ${dlab(now.iso)}. Odgovori na zgornje sporočilo z vtisi (lahko v več sporočilih), na koncu pa /končano. Če ne moreš, napiši /zamenjaj.`);
+            out.push(s.trip_id + ":nudge");
+          }
+        }
       }
+    }
+    // potopis: sestavi dneve s spremembami (zapisi ali slike)
+    for (const d of days) {
+      if (d.iso > now.iso || d.iso < addDays(now.iso, -3)) continue;
+      try { if (await composeDay(s, d, false)) out.push(s.trip_id + ":story:" + d.iso); } catch (e) { console.log("compose napaka", String(e)); }
     }
   }
   return out;
 }
 function addMinutes(hhmm: string, n: number) { const m = toMin(hhmm) + n; const h = Math.floor(m / 60), mm = m % 60; return `${String(h).padStart(2, "0")}:${String(mm).padStart(2, "0")}`; }
 
+function eveningText(W: any, people: string[]) {
+  return W.dual
+    ? "🌙 <b>Konec dneva!</b> Napišita, kako sta se danes imela: dogajanje in vtise. Klikni na svoje ime — kdor klikne, danes vpiše dnevnik. Iz zapisa (in slik) nastane potopis."
+    : "🌙 <b>Konec dneva!</b> Napišite, kako ste se danes imele: dogajanje in vtise. Klikni na svoje ime (spodaj) — kdor klikne, danes vpiše dnevnik. Iz zapisa (in slik) nastane potopis.";
+}
 async function askWho(s: any, trip: any, day: any, text: string) {
   const people: string[] = s.people || [];
   const rows = [];
   for (let i = 0; i < people.length; i += 2) rows.push(people.slice(i, i + 2).map((p) => cbBtn("✍️ " + p, `who:${p}:${day.iso}`)));
-  rows.push([urlBtn("📸 Naložite še slike", appUrl(trip, "nalozi.html")), urlBtn("✍️ Pišem v aplikaciji", appUrl(trip, "dnevnik.html"))]);
+  rows.push([urlBtn("📸 Naložite slike dneva", appUrl(trip, "nalozi.html")), urlBtn("✍️ Pišem v aplikaciji", appUrl(trip, "dnevnik.html"))]);
   await sendToAll(s, text, { reply_markup: { inline_keyboard: rows } });
+}
+
+// ------------------------------------------------------------------ potopis dneva (AI)
+function dayOfTs(ts: string, tz: string) {
+  return new Intl.DateTimeFormat("en-CA", { timeZone: tz, year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date(ts));
+}
+async function composeDay(s: any, day: any, announce: boolean): Promise<boolean> {
+  const { data: ent } = await db.from("trip_diary").select("author,body,created_at,source").eq("trip_id", s.trip_id).eq("day_iso", day.iso).eq("deleted", false).neq("source", "potopis").order("created_at");
+  const { data: ups } = await db.from("trip_uploads").select("path,uploader,created_at,mime").eq("trip_id", s.trip_id).gte("created_at", addDays(day.iso, -1) + "T00:00:00Z").lte("created_at", addDays(day.iso, 2) + "T00:00:00Z");
+  const photos = (ups || []).filter((u: any) => dayOfTs(u.created_at, s.tz) === day.iso);
+  const entries = ent || [];
+  if (!entries.length && !photos.length) return false;
+  const hasAI = !!CFG.anthropic_key;
+  if (!entries.length && !hasAI) return false;   // brez zapisov in brez AI ni kaj sestaviti
+  const lastChange = Math.max(0, ...entries.map((e: any) => +new Date(e.created_at)), ...photos.map((p: any) => +new Date(p.created_at)));
+  if (!announce && Date.now() - lastChange < 8 * 60000) return false;   // počakaj, da nehajo pisati/nalagati
+  const hash = await sha256(JSON.stringify([entries.map((e: any) => [e.author, e.body]), photos.length, hasAI]));
+  const { data: cur } = await db.from("trip_story").select("src_hash").eq("trip_id", s.trip_id).eq("day_iso", day.iso).maybeSingle();
+  if (cur && cur.src_hash === hash) return false;
+  const trip = await tripInfo(s.trip_id);
+  let body = "", model = "";
+  const people: string[] = s.people || [];
+  const dual = people.length === 2;
+  if (hasAI) {
+    const who = dual ? "dvojini (mi sva, midva, sva videla)" : "ženski množini (smo, smo videle, bile smo)";
+    const sys = `Si urednik potopisa v slovenščini. Iz kratkih, nepopravljenih zapisov potnikov sestaviš zgodbo enega dne. Pravila: piši v prvi osebi ${who}; ohrani vsa dejstva, kraje, imena in občutke iz zapisov — NIČ si ne izmišljaj in ne dodajaj dogodkov, ki jih ni v zapisih; popravi slovnico in črkovanje, razporedi dogajanje smiselno in berljivo; topel, preprost ton, brez klišejev in pretiravanja; 80–250 besed, brez naslova, brez nabrajanja z alinejami, brez emojijev. Če so zapisov malo, bodi kratek. Če zapisov ni, napiši le 1–2 skromna stavka o dnevu na podlagi načrta in števila slik, brez izmišljenih doživetij.`;
+    const user = `Potovanje: ${trip?.title}\nDan ${day.day}: ${day.title} (${day.station_name || day.region}), ${dlab(day.iso)}\nNačrt dneva: ${day.plan}\nŠtevilo fotografij, ki so jih naložile ta dan: ${photos.length}\n\nZapisi potnikov:\n` +
+      (entries.length ? entries.map((e: any) => `[${e.author}] ${e.body}`).join("\n\n") : "(ni zapisov)");
+    const r = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST", headers: { "content-type": "application/json", "x-api-key": CFG.anthropic_key, "anthropic-version": "2023-06-01" },
+      body: JSON.stringify({ model: CFG.anthropic_model || "claude-sonnet-5-5", max_tokens: 900, system: sys, messages: [{ role: "user", content: user }] }),
+    });
+    const j = await r.json().catch(() => ({}));
+    body = (j.content && j.content[0] && j.content[0].text || "").trim();
+    model = CFG.anthropic_model || "claude-sonnet-5-5";
+    if (!body) { console.log("AI napaka", JSON.stringify(j).slice(0, 300)); }
+  }
+  if (!body) {   // brez AI (ni ključa ali napaka): preprosta zložitev zapisov
+    body = entries.length ? entries.map((e: any) => `${e.body.trim()} (${e.author})`).join("\n\n") : `Dan ${day.day}: ${day.title}. Naloženih je ${photos.length} fotografij.`;
+    model = "brez-ai";
+  }
+  await db.from("trip_story").upsert({ trip_id: s.trip_id, day_iso: day.iso, body, src_hash: hash, entries: entries.length, photos: photos.length,
+    photo_paths: photos.slice(0, 12).map((p: any) => p.path), model, updated_at: new Date().toISOString() });
+  if (announce) await sendToAll(s, `📖 <b>Potopis — ${dlab(day.iso)}</b>\n\n${esc(body)}\n\n<i>${model === "brez-ai" ? "Zapisi brez urejanja." : "Besedilo je uredil AI iz vaših zapisov."} Vidite ga tudi v aplikaciji (Dnevnik).</i>`);
+  return true;
 }
 
 // ------------------------------------------------------------------ pogovor (webhook)
@@ -228,7 +296,7 @@ async function setState(chat_id: number, user_id: number, name: string, patch: R
   return state;
 }
 
-const HELP = `<b>Ukazi</b>\n/danes — kaj je danes na vrsti\n/jutri — načrt za jutri\n/nastanitev — kje prespite\n/vreme — vreme v kraju\n/povzetek — napišite povzetek dneva\n/povezi KODA — poveži ta klepet s potovanjem\n/pomoc — ta seznam`;
+const HELP = `<b>Ukazi</b>\n/danes — kaj je danes na vrsti\n/jutri — načrt za jutri\n/nastanitev — kje prespite\n/vreme — vreme v kraju\n/povzetek — vpiši dnevnik dneva\n/zamenjaj — če ne moreš pisati, naj piše druga\n/potopis — potopis današnjega dne\n/povezi KODA — poveži ta klepet s potovanjem\n/pomoc — ta seznam`;
 
 async function handleLink(msg: any, code: string) {
   const chat = msg.chat.id, uid = msg.from.id;
@@ -322,9 +390,27 @@ async function handleCommand(msg: any, cmd: string, arg: string) {
     await whoMenu(chat, s, day);
     return;
   }
+  if (cmd === "/zamenjaj") {
+    const day = today || days[days.length - 1];
+    await db.from("trip_day_writer").delete().eq("trip_id", ct.trip_id).eq("day_iso", day.iso);
+    await whoMenu(chat, s, day);
+    return;
+  }
+  if (cmd === "/potopis") {
+    const day = today || days[days.length - 1];
+    const { data: st } = await db.from("trip_story").select("body").eq("trip_id", ct.trip_id).eq("day_iso", day.iso).maybeSingle();
+    await send(chat, st ? `📖 <b>Potopis — ${dlab(day.iso)}</b>\n\n${esc(st.body)}` : "Za ta dan potopisa še ni. Vpišite dnevnik (/povzetek) ali naložite slike.");
+    return;
+  }
   if (cmd === "/koncano" || cmd === "/končano") {
+    const st = await getState(chat, uid);
+    const dayIso = st?.state?.day as string | undefined;
     await setState(chat, uid, msg.from.first_name || "", { awaiting: null });
-    await send(chat, "✅ Hvala! Povzetek je shranjen v dnevniku.");
+    await send(chat, "✅ Hvala! Zapis je shranjen v dnevniku. Sestavljam potopis dneva …");
+    const dd = days.find((d: any) => d.iso === (dayIso || now.iso));
+    if (dd) {
+      try { await composeDay(s, dd, true); } catch (e) { console.log("compose napaka", String(e)); await send(chat, "Potopisa trenutno ni mogoče sestaviti; poskusim znova samodejno."); }
+    }
     return;
   }
   await send(chat, HELP);
@@ -383,10 +469,18 @@ async function onCallback(cq: any) {
 
   if (kind === "who") {
     const person = a, day = b;
+    const { data: wr } = await db.from("trip_day_writer").select("*").eq("trip_id", ct.trip_id).eq("day_iso", day).maybeSingle();
+    if (wr && wr.person !== person) {
+      const { count } = await db.from("trip_diary").select("id", { count: "exact", head: true }).eq("trip_id", ct.trip_id).eq("day_iso", day).eq("deleted", false).neq("source", "potopis");
+      const stale = Date.now() - new Date(wr.claimed_at).getTime() > 3 * 3600000 && !count;
+      if (!stale) { await tg("answerCallbackQuery", { callback_query_id: cq.id, text: `Danes že piše ${wr.person}.`, show_alert: true }); return; }
+    }
+    await db.from("trip_day_writer").upsert({ trip_id: ct.trip_id, day_iso: day, person, tg_user_id: uid, claimed_at: new Date().toISOString() });
     await tg("answerCallbackQuery", { callback_query_id: cq.id, text: `${person}, hvala!` });
     await tg("editMessageReplyMarkup", { chat_id: chat, message_id: msg.message_id, reply_markup: { inline_keyboard: [] } });
+    await sendToAll(s, `✍️ <b>${esc(person)}</b> danes piše dnevnik za ${dlab(day)}. Hvala!`).catch(() => {});
     await setState(chat, uid, name, { awaiting: "diary", person, day }, ct.trip_id, person);
-    await send(chat, `✍️ <a href="tg://user?id=${uid}">${esc(person)}</a>, ${W.write} kratek povzetek dneva ${dlab(day)} — ${W.where}, kaj je bilo najlepše in kaj smešno. <b>Odgovorite na to sporočilo</b> (lahko v več sporočilih; na koncu /končano).`, {
+    await send(chat, `✍️ <a href="tg://user?id=${uid}">${esc(person)}</a>, napiši, kako ste se danes imele: dogajanje, vtise, kaj je bilo najlepše in kaj smešno. <b>Odgovori na to sporočilo</b> (lahko v več sporočilih; na koncu /končano). Iz tega bom sestavil potopis dneva.`, {
       reply_markup: { force_reply: true, selective: true, input_field_placeholder: "Danes smo …" } });
     return;
   }
