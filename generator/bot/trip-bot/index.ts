@@ -232,6 +232,35 @@ async function askWho(s: any, trip: any, day: any, text: string) {
   await sendToAll(s, text, { reply_markup: { inline_keyboard: rows } });
 }
 
+// ------------------------------------------------------------------ AI (DeepSeek ali Anthropic)
+function deepseekKey(): string {
+  return CFG.deepseek_key || Deno.env.get("DEEPSEEK_API_KEY") || Deno.env.get("DEEPSEEK_KEY") || Deno.env.get("DEEPSEEK_API_TOKEN") || Deno.env.get("DEEPSEEK") || "";
+}
+function aiKey(): string { return deepseekKey() || CFG.anthropic_key || ""; }
+async function aiCall(system: string, user: string): Promise<{ text: string; model: string }> {
+  const ds = deepseekKey();
+  if (ds) {
+    const model = CFG.deepseek_model || "deepseek-chat";
+    const r = await fetch("https://api.deepseek.com/chat/completions", {
+      method: "POST", headers: { "content-type": "application/json", authorization: `Bearer ${ds}` },
+      body: JSON.stringify({ model, max_tokens: 900, temperature: 0.5, messages: [{ role: "system", content: system }, { role: "user", content: user }] }),
+    });
+    const j = await r.json().catch(() => ({}));
+    const text = (j.choices?.[0]?.message?.content || "").trim();
+    if (!text) throw new Error("DeepSeek: " + JSON.stringify(j).slice(0, 200));
+    return { text, model };
+  }
+  const model = CFG.anthropic_model || "claude-sonnet-5-5";
+  const r = await fetch("https://api.anthropic.com/v1/messages", {
+    method: "POST", headers: { "content-type": "application/json", "x-api-key": CFG.anthropic_key, "anthropic-version": "2023-06-01" },
+    body: JSON.stringify({ model, max_tokens: 900, system, messages: [{ role: "user", content: user }] }),
+  });
+  const j = await r.json().catch(() => ({}));
+  const text = (j.content?.[0]?.text || "").trim();
+  if (!text) throw new Error("Anthropic: " + JSON.stringify(j).slice(0, 200));
+  return { text, model };
+}
+
 // ------------------------------------------------------------------ potopis dneva (AI)
 function dayOfTs(ts: string, tz: string) {
   return new Intl.DateTimeFormat("en-CA", { timeZone: tz, year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date(ts));
@@ -242,7 +271,7 @@ async function composeDay(s: any, day: any, announce: boolean): Promise<boolean>
   const photos = (ups || []).filter((u: any) => dayOfTs(u.created_at, s.tz) === day.iso);
   const entries = ent || [];
   if (!entries.length && !photos.length) return false;
-  const hasAI = !!CFG.anthropic_key;
+  const hasAI = !!aiKey();
   if (!entries.length && !hasAI) return false;   // brez zapisov in brez AI ni kaj sestaviti
   const lastChange = Math.max(0, ...entries.map((e: any) => +new Date(e.created_at)), ...photos.map((p: any) => +new Date(p.created_at)));
   if (!announce && Date.now() - lastChange < 8 * 60000) return false;   // počakaj, da nehajo pisati/nalagati
@@ -258,14 +287,7 @@ async function composeDay(s: any, day: any, announce: boolean): Promise<boolean>
     const sys = `Si urednik potopisa v slovenščini. Iz kratkih, nepopravljenih zapisov potnikov sestaviš zgodbo enega dne. Pravila: piši v prvi osebi ${who}; ohrani vsa dejstva, kraje, imena in občutke iz zapisov — NIČ si ne izmišljaj in ne dodajaj dogodkov, ki jih ni v zapisih; popravi slovnico in črkovanje, razporedi dogajanje smiselno in berljivo; topel, preprost ton, brez klišejev in pretiravanja; 80–250 besed, brez naslova, brez nabrajanja z alinejami, brez emojijev. Če so zapisov malo, bodi kratek. Če zapisov ni, napiši le 1–2 skromna stavka o dnevu na podlagi načrta in števila slik, brez izmišljenih doživetij.`;
     const user = `Potovanje: ${trip?.title}\nDan ${day.day}: ${day.title} (${day.station_name || day.region}), ${dlab(day.iso)}\nNačrt dneva: ${day.plan}\nŠtevilo fotografij, ki so jih naložile ta dan: ${photos.length}\n\nZapisi potnikov:\n` +
       (entries.length ? entries.map((e: any) => `[${e.author}] ${e.body}`).join("\n\n") : "(ni zapisov)");
-    const r = await fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST", headers: { "content-type": "application/json", "x-api-key": CFG.anthropic_key, "anthropic-version": "2023-06-01" },
-      body: JSON.stringify({ model: CFG.anthropic_model || "claude-sonnet-5-5", max_tokens: 900, system: sys, messages: [{ role: "user", content: user }] }),
-    });
-    const j = await r.json().catch(() => ({}));
-    body = (j.content && j.content[0] && j.content[0].text || "").trim();
-    model = CFG.anthropic_model || "claude-sonnet-5-5";
-    if (!body) { console.log("AI napaka", JSON.stringify(j).slice(0, 300)); }
+    try { const r = await aiCall(sys, user); body = r.text; model = r.model; } catch (e) { console.log("AI napaka", String(e).slice(0, 300)); }
   }
   if (!body) {   // brez AI (ni ključa ali napaka): preprosta zložitev zapisov
     body = entries.length ? entries.map((e: any) => `${e.body.trim()} (${e.author})`).join("\n\n") : `Dan ${day.day}: ${day.title}. Naloženih je ${photos.length} fotografij.`;
@@ -515,7 +537,7 @@ async function onCallback(cq: any) {
 Deno.serve(async (req) => {
   const url = new URL(req.url);
   const cfg = await loadCfg();
-  if (req.method === "GET") return Response.json({ ok: true, configured: !!cfg.bot_token });
+  if (req.method === "GET") return Response.json({ ok: true, configured: !!cfg.bot_token, ai: deepseekKey() ? "deepseek" : cfg.anthropic_key ? "anthropic" : "ni" });
   if (!cfg.bot_token) return Response.json({ ok: false, reason: "bot_token ni nastavljen" }, { status: 200 });
 
   if (url.searchParams.get("tick")) {
