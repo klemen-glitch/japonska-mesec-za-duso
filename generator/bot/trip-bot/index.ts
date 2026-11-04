@@ -95,6 +95,20 @@ function words(people: string[]) {
   };
 }
 
+// ------------------------------------------------------------------ prijaznost in izzivi
+const pick = <T,>(a: T[]): T => a[Math.floor(Math.random() * a.length)];
+async function chStatus(trip_id: string, station: string) {
+  const { data: ch } = await db.from("trip_challenges").select("id,kind,text").eq("trip_id", trip_id).eq("station", station);
+  const { data: up } = await db.from("trip_uploads").select("challenge_id,uploader").eq("trip_id", trip_id).like("challenge_id", station + "-%");
+  const num = (id: string) => parseInt(id.split("-").pop() || "0", 10);
+  const list = (ch || []).sort((a: any, b: any) => num(a.id) - num(b.id));
+  const done = new Set((up || []).map((u: any) => u.challenge_id));
+  return { total: list.length, done: list.filter((c: any) => done.has(c.id)).length, left: list.filter((c: any) => !done.has(c.id)) };
+}
+const bar = (d: number, t: number) => t ? "🟩".repeat(d) + "⬜".repeat(Math.max(0, t - d)) : "";
+const GREET = ["☀️ <b>Dobro jutro, junakinje!</b>", "🌸 <b>Dobro jutro, sončki!</b>", "☕ <b>Dobro jutro!</b> Upam, da ste se lepo naspale.", "🌞 <b>Hej, dobro jutro!</b> Nov dan, nova doživetja!"];
+const GREET_DUAL = ["☀️ <b>Dobro jutro, pustolovca!</b>", "🐉 <b>Dobro jutro, zmajčka!</b>", "☕ <b>Dobro jutro!</b> Upam, da sta se lepo naspala."];
+
 // ------------------------------------------------------------------ obvestila po urniku
 async function claim(trip_id: string, kind: string, iso: string): Promise<boolean> {
   const { data, error } = await db.from("trip_bot_sent").insert({ trip_id, kind, day_iso: iso }).select();
@@ -141,7 +155,8 @@ async function tick() {
     // jutranje sporočilo
     if (within(s.morning) && await claim(s.trip_id, "morning", now.iso)) {
       const w = await weather(today.lat, today.lon, now.iso);
-      let msg = `☀️ <b>Dobro jutro!</b> Dan ${today.day} od ${days.length} — ${esc(today.station_name || today.region)}\n<b>${esc(today.title)}</b>\n${esc(today.plan)}\n${w ? "\n" + wxLine(w) : ""}`;
+      let msg = `${pick(W.dual ? GREET_DUAL : GREET)}\nDan ${today.day} od ${days.length} — ${esc(today.station_name || today.region)}\n<b>${esc(today.title)}</b>\n${esc(today.plan)}\n${w ? "\n" + wxLine(w) : ""}`;
+      { const cs = await chStatus(s.trip_id, today.station); if (cs.total) msg += `\n\n📸 <b>Izzivi tukaj: ${cs.total}</b> (opravljenih ${cs.done}). Za začetek: ${esc(cs.left[0]?.text || "vse so že narejeni, bravo!")}`; }
       if (w && w.rain >= 60) msg += `\n\n☔ <b>Napoved kaže dež.</b> V aplikaciji vklopite <i>dežni način</i> za Plan B.`;
       if (prev) {
         const { count } = await db.from("trip_diary").select("id", { count: "exact", head: true }).eq("trip_id", s.trip_id).eq("day_iso", prev.iso).eq("deleted", false);
@@ -153,7 +168,7 @@ async function tick() {
 
     // prihod: ali ste prispele? (če se kraj spremeni glede na prejšnji dan)
     if ((!prev || prev.station !== today.station) && within(s.arrival, 6) && await claim(s.trip_id, "arrival", now.iso)) {
-      await sendToAll(s, `📍 <b>${W.arrived} v ${esc(today.station_name || today.region)}?</b>`, {
+      await sendToAll(s, `📍 <b>${W.arrived} v ${esc(today.station_name || today.region)}?</b> 🎒 Upam, da je bila pot gladka!`, {
         reply_markup: { inline_keyboard: [[cbBtn("✅ Da, smo tu", "arr:yes:" + now.iso), cbBtn("⏳ Še ne", "arr:no:" + now.iso)], [cbBtn("❗ Težava", "arr:prob:" + now.iso)]] } });
       out.push(s.trip_id + ":arrival");
     }
@@ -183,9 +198,59 @@ async function tick() {
       out.push(s.trip_id + ":tomorrow");
     }
 
+    // dopoldne: kako gre?
+    if (within("10:30", 1.5) && await claim(s.trip_id, "checkin_am", now.iso)) {
+      const q = W.dual
+        ? pick(["👋 Hej, pustolovca! Kako vama gre? Gre vse po načrtu? 😊", "🐉 Kako je kaj? Sta že videla kaj lepega? Povejta mi!"])
+        : pick(["👋 Hej, junakinje! Kako vam gre? Gre vse po načrtu? 😊", "🌸 Kako je kaj? Ste že videle kaj lepega danes? Povejte mi!", "😄 Dopoldanski pozdrav! Kako teče dan — po planu?"]);
+      await sendToAll(s, q, { reply_markup: { inline_keyboard: [[cbBtn("🎉 Odlično!", "ci:ok:" + now.iso), cbBtn("😅 Malo zamika", "ci:slow:" + now.iso)], [cbBtn("🆘 Rabimo pomoč", "ci:help:" + now.iso)]] } });
+      out.push(s.trip_id + ":checkin_am");
+    }
+    // popoldne: pokosilo + izzivi
+    if (within("14:30", 1.5) && await claim(s.trip_id, "checkin_pm", now.iso)) {
+      const cs = await chStatus(s.trip_id, today.station);
+      let m = W.dual ? "🍜 Sta že kaj dobrega pojedla? Pošljita sliko!" : pick(["🍜 Ste že pojedle kaj dobrega? Vse me zanima!", "🥢 Popoldne je! Ste si privoščile kaj okusnega? 😋"]);
+      if (cs.total) m += `\n\n📸 <b>Izzivi: ${cs.done}/${cs.total}</b> ${bar(cs.done, cs.total)}` + (cs.left.length ? `\nŠe čaka: ${esc(cs.left[0].text)}` : `\n🎉 Vsi izzivi na tej postaji so narejeni — bravo!`);
+      await sendToAll(s, m, { reply_markup: { inline_keyboard: [[urlBtn("📸 Naloži slike", appUrl(trip, "nalozi.html")), urlBtn("🎯 Vsi izzivi", appUrl(trip, "izziv.html"))]] } });
+      out.push(s.trip_id + ":checkin_pm");
+    }
+    // pozno popoldne: opomnik na izzive
+    if (within("17:30", 1.5)) {
+      const cs = await chStatus(s.trip_id, today.station);
+      if (cs.left.length && await claim(s.trip_id, "challenge_push", now.iso)) {
+        const list = cs.left.slice(0, 3).map((c: any) => `• ${esc(c.text)}`).join("\n");
+        const m = (W.dual ? "🎯 <b>Izzivi dneva!</b> Sta jih že opravila? Še čakajo:" : pick(["🎯 <b>Izzivi dneva!</b> Ste jih že opravile? Še čakajo:", "📸 <b>Hej, izzivi!</b> Niste pozabile? Še čakajo:"])) + `\n${list}\n\nOpravljenih ${cs.done} od ${cs.total}. Ni treba vseh — a mi so popestritev spominov! 💛`;
+        await sendToAll(s, m, { reply_markup: { inline_keyboard: [[cbBtn(W.dual ? "✅ Opravila sva" : "✅ Opravile smo", "ch:done:" + now.iso), cbBtn("⏭️ Danes ne", "ch:skip:" + now.iso)], [urlBtn("🎯 Izzivi", appUrl(trip, "izziv.html")), urlBtn("📸 Naloži", appUrl(trip, "nalozi.html"))]] } });
+        out.push(s.trip_id + ":challenge_push");
+      }
+    }
+    // navijanje za novo opravljene izzive
+    {
+      const { data: rec } = await db.from("trip_uploads").select("id,challenge_id,uploader,created_at").eq("trip_id", s.trip_id).not("challenge_id", "is", null).gte("created_at", new Date(Date.now() - 20 * 60000).toISOString());
+      const fresh: any[] = [];
+      for (const u of rec || []) { if (await claim(s.trip_id, "cheer", String(u.id))) fresh.push(u); }
+      if (fresh.length) {
+        const { data: chs } = await db.from("trip_challenges").select("id,text,station").eq("trip_id", s.trip_id);
+        const seen = new Set<string>();
+        const lines: string[] = [];
+        for (const u of fresh) {
+          if (seen.has(u.challenge_id)) continue; seen.add(u.challenge_id);
+          const c = (chs || []).find((x: any) => x.id === u.challenge_id);
+          if (c) lines.push(`${esc(u.uploader || "Nekdo")} — ${esc(c.text.slice(0, 80))}${c.text.length > 80 ? "…" : ""}`);
+        }
+        if (lines.length) {
+          const cs = await chStatus(s.trip_id, today.station);
+          await sendToAll(s, `🎉 <b>${pick(["Bravo", "Juhu", "Super", "Odlično"])}!</b> Nov izziv je opravljen:\n${lines.join("\n")}\n\n📸 ${cs.done}/${cs.total} ${bar(cs.done, cs.total)}` + (cs.total && !cs.left.length ? "\n🏆 Vsi izzivi te postaje so narejeni!" : ""));
+          out.push(s.trip_id + ":cheer");
+        }
+      }
+    }
+
     // večer: kdo piše povzetek (klik na ime = rezervacija zapisa za ta dan)
     if (within(s.evening, 2) && await claim(s.trip_id, "evening", now.iso)) {
-      await askWho(s, trip, today, eveningText(W, s.people || []));
+      const cs = await chStatus(s.trip_id, today.station);
+      const extra = cs.total ? `\n\n📸 Izzivi te postaje: <b>${cs.done}/${cs.total}</b> ${bar(cs.done, cs.total)}` + (cs.done === cs.total ? " 🏆 Bravo!" : cs.done ? " — lepo gre!" : " — jutri nadoknadite, če ste jih zamudile.") : "";
+      await askWho(s, trip, today, eveningText(W, s.people || []) + extra);
       out.push(s.trip_id + ":evening");
     }
     // ponavljajoči opomniki, dokler nihče ne klikne na svoje ime in ni zapisa
@@ -318,7 +383,7 @@ async function setState(chat_id: number, user_id: number, name: string, patch: R
   return state;
 }
 
-const HELP = `<b>Ukazi</b>\n/danes — kaj je danes na vrsti\n/jutri — načrt za jutri\n/nastanitev — kje prespite\n/vreme — vreme v kraju\n/povzetek — vpiši dnevnik dneva\n/zamenjaj — če ne moreš pisati, naj piše druga\n/potopis — potopis današnjega dne\n/povezi KODA — poveži ta klepet s potovanjem\n/pomoc — ta seznam`;
+const HELP = `<b>Ukazi</b>\n/danes — kaj je danes na vrsti\n/jutri — načrt za jutri\n/nastanitev — kje prespite\n/vreme — vreme v kraju\n/izzivi — kateri izzivi še čakajo\n/povzetek — vpiši dnevnik dneva\n/zamenjaj — če ne moreš pisati, naj piše druga\n/potopis — potopis današnjega dne\n/povezi KODA — poveži ta klepet s potovanjem\n/pomoc — ta seznam`;
 
 async function handleLink(msg: any, code: string) {
   const chat = msg.chat.id, uid = msg.from.id;
@@ -416,6 +481,13 @@ async function handleCommand(msg: any, cmd: string, arg: string) {
     const day = today || days[days.length - 1];
     await db.from("trip_day_writer").delete().eq("trip_id", ct.trip_id).eq("day_iso", day.iso);
     await whoMenu(chat, s, day);
+    return;
+  }
+  if (cmd === "/izzivi") {
+    if (!today) { await send(chat, "Danes izzivov še ni na vrsti. 🙂"); return; }
+    const cs = await chStatus(ct.trip_id, today.station);
+    if (!cs.total) { await send(chat, "Za današnjo postajo izzivov ni — uživajte! 💛"); return; }
+    await send(chat, `📸 <b>Izzivi (${esc(today.station_name || today.region)}): ${cs.done}/${cs.total}</b> ${bar(cs.done, cs.total)}\n` + (cs.left.length ? "Še čakajo:\n" + cs.left.map((c: any) => "• " + esc(c.text)).join("\n") : "🏆 Vsi so narejeni — bravo!"), { reply_markup: { inline_keyboard: [[urlBtn("📸 Naloži", appUrl(trip, "nalozi.html")), urlBtn("🎯 Izzivi", appUrl(trip, "izziv.html"))]] } });
     return;
   }
   if (cmd === "/potopis") {
@@ -523,6 +595,22 @@ async function onCallback(cq: any) {
       await setState(chat, uid, name, { awaiting: "problem" });
       await send(chat, `❗ ${W.please} na to sporočilo in opišite težavo (kaj se je zgodilo, kje ste). Sporočilo bom poslal/-a vsem v skupini.`, { reply_markup: { force_reply: true, selective: true } });
     }
+    return;
+  }
+  if (kind === "ci") {
+    await tg("answerCallbackQuery", { callback_query_id: cq.id, text: "💛" });
+    await tg("editMessageReplyMarkup", { chat_id: chat, message_id: msg.message_id, reply_markup: { inline_keyboard: [] } });
+    if (a === "ok") await send(chat, pick(["🎉 Juhu, to je lepo slišati! Uživajte v vsakem koraku. 💛", "😍 Super! Naj bo cel dan tak. Ne pozabite na kakšno sliko!", "🥳 Odlično! Vesela sem z vami. Pošljite mi kaj lepega, ko utegnete!"]));
+    else if (a === "slow") await send(chat, pick(["😅 Nič hudega, počasi je včasih najlepše! Če vam česa ne uspe, preskočite — nihče ne gleda ure. 💛", "🐢 Saj ni nujno vse! Izberite, kar vam je najbolj pri srcu, in uživajte."]));
+    else if (a === "help") { await setState(chat, uid, name, { awaiting: "problem" }); await send(chat, `🤗 Seveda! ${W.please} na to sporočilo in povejte, kaj se dogaja — sporočilo bom poslal/-a vsem v skupini.`, { reply_markup: { force_reply: true, selective: true } }); }
+    return;
+  }
+  if (kind === "ch") {
+    await tg("answerCallbackQuery", { callback_query_id: cq.id, text: "💛" });
+    await tg("editMessageReplyMarkup", { chat_id: chat, message_id: msg.message_id, reply_markup: { inline_keyboard: [] } });
+    const trip = await tripInfo(ct.trip_id);
+    if (a === "done") await send(chat, "🎉 Bravo! Če slik še niste naložile v album, jih dodajte — prav iz njih nastane vaša potopisna knjiga. 📖", { reply_markup: { inline_keyboard: [[urlBtn("📸 Naloži slike", appUrl(trip, "nalozi.html"))]] } });
+    else await send(chat, pick(["💛 V redu, jutri je nov dan! Če se kaj ponudi, ne pozabite na sliko.", "😊 Nič hudega! Spomini so najpomembnejši — izzivi so samo bonus."]));
     return;
   }
   if (kind === "pack") {

@@ -18,3 +18,8 @@
 - Večerno vprašanje ob 20.00 lokalnega časa; klik na ime = rezervacija zapisa (`trip_day_writer`), opomniki vsakih 40 min, dokler nihče ne klikne; `/zamenjaj`, `/potopis`, `/končano`.
 - `composeDay()` sestavi zgodbo dneva v `trip_story` (po 8 min tišine ob novem zapisu ali novih slikah, ali takoj ob `/končano`). AI: Anthropic API, ključ v `trip_bot_config` (`anthropic_key`, neobvezno `anthropic_model`). Brez ključa se zapisi le zložijo (model `brez-ai`), samo slike brez zapisov pa ne ustvarijo ničesar.
 - Aplikacija bere `trip_story_list` (Dnevnik, Potopisna knjiga).
+
+## Prijazni pomočnik (od 4. 11. 2026)
+- Urnik (lokalni čas postaje): 8.00 jutro (z izzivi), 10.30 »kako gre?« (gumbi), 14.30 kosilo + napredek izzivov, 17.30 opomnik na izzive (če jih kaj manjka), 20.00 večer + izbira pisca. Ob vsakem novem izzivu v albumu sporočilo z navijanjem.
+- Izzivi so v tabeli `trip_challenges` (seed: `gen_bot_seed.py`; id = `<postaja>-<n>`, kot `trip_uploads.challenge_id`). Ukaz `/izzivi`.
+- `trip_bot_sent.day_iso` je text (ne date), ker hrani tudi id fotografij (`kind = cheer`).

@@ -31,6 +31,15 @@ def seed_trip(trip_id, tz, people, base_url):
     sql.append("delete from public.trip_legs where trip_id = " + q(trip_id) + ";")
     if legs:
         sql.append("insert into public.trip_legs (trip_id, idx, from_r, to_r, dur, how, tip) values\n" + ",\n".join(legs) + ";")
+    ch = []
+    for loc in G.LOCATIONS:
+        for i, it in enumerate(G.IZZIVI.get(loc["key"], [])):
+            ch.append(f"({q(trip_id)}, {q(loc['key'] + '-' + str(i))}, {q(loc['key'])}, {q(it.get('t', 'foto'))}, {q(it['x'])})")
+    sql.append("create table if not exists public.trip_challenges (trip_id text not null, id text not null, station text not null, kind text, text text not null, primary key (trip_id, id));")
+    sql.append("alter table public.trip_challenges enable row level security;")
+    sql.append("delete from public.trip_challenges where trip_id = " + q(trip_id) + ";")
+    if ch:
+        sql.append("insert into public.trip_challenges (trip_id, id, station, kind, text) values\n" + ",\n".join(ch) + ";")
     arr = "array[" + ", ".join(q(p) for p in people) + "]"
     sql.append(f"insert into public.trip_bot_settings (trip_id, tz, people) values ({q(trip_id)}, {q(tz)}, {arr}) "
                f"on conflict (trip_id) do update set tz = excluded.tz, people = excluded.people;")
