@@ -106,8 +106,44 @@ async function chStatus(trip_id: string, station: string) {
   return { total: list.length, done: list.filter((c: any) => done.has(c.id)).length, left: list.filter((c: any) => !done.has(c.id)) };
 }
 const bar = (d: number, t: number) => t ? "🟩".repeat(d) + "⬜".repeat(Math.max(0, t - d)) : "";
-const GREET = ["☀️ <b>Dobro jutro, junakinje!</b>", "🌸 <b>Dobro jutro, sončki!</b>", "☕ <b>Dobro jutro!</b> Upam, da ste se lepo naspale.", "🌞 <b>Hej, dobro jutro!</b> Nov dan, nova doživetja!"];
-const GREET_DUAL = ["☀️ <b>Dobro jutro, pustolovca!</b>", "🐉 <b>Dobro jutro, zmajčka!</b>", "☕ <b>Dobro jutro!</b> Upam, da sta se lepo naspala."];
+const GREET = [
+  "☀️ <b>Dobro jutro, junakinje!</b>", "🌸 <b>Dobro jutro, sončki!</b>", "☕ <b>Dobro jutro!</b> Upam, da ste se lepo naspale.",
+  "🌞 <b>Hej, dobro jutro!</b> Nov dan, nova doživetja!", "🐦 <b>Ptički že pojejo — čas je za vstajanje, drage moje!</b>",
+  "🍵 <b>Dobro jutro! Najprej čaj, potem pustolovščina.</b>", "🌈 <b>Juhu, nov dan! Kdo je že pokonci?</b>",
+  "💛 <b>Jutro, najboljše potnice na svetu!</b>", "🎒 <b>Pozor, pozor — jutro je! Nahrbtniki na ramena!</b>", "✨ <b>Dobro jutro! Danes bo kaj lepega, to čutim.</b>",
+];
+const GREET_DUAL = ["☀️ <b>Dobro jutro, pustolovca!</b>", "🐉 <b>Dobro jutro, zmajčka!</b>", "☕ <b>Dobro jutro!</b> Upam, da sta se lepo naspala.", "🌈 <b>Juhu, nov dan! Sta že pokonci?</b>"];
+const CI_AM = [
+  "👋 Hej, junakinje! Kako vam gre? Gre vse po načrtu? 😊", "🌸 Kako je kaj? Ste že videle kaj lepega danes? Povejte mi!", "😄 Dopoldanski pozdrav! Kako teče dan — po planu?",
+  "🤗 Pssst … samo preverjam, ali ste še vse štiri skupaj in dobre volje!", "🍡 Ste že kaj pokusile? In kako je z nogami — še zdržijo?", "🧭 Kje ste trenutno? Ali gre vse gladko ali je kje zagata?",
+  "📣 Kontrola potnic! Javite se, kako je z razpoloženjem! 🎉", "💫 Dopoldne je že malo naokoli — povejte, kaj vas je danes najbolj prijetno presenetilo!",
+];
+const CI_PM = [
+  "🍜 Ste že pojedle kaj dobrega? Vse me zanima!", "🥢 Popoldne je! Ste si privoščile kaj okusnega? 😋", "🍙 Lačne ali site? Pošljite mi kakšno sliko krožnika!",
+  "☕ Čas za odmor? Kavica, matcha ali sladoled — kaj je danes na vrsti?", "🍡 Je katera kupila kakšen zanimiv prigrizek? Pokažite!",
+];
+const PUSH = [
+  "🎯 <b>Izzivi dneva!</b> Ste jih že opravile? Še čakajo:", "📸 <b>Hej, izzivi!</b> Niste pozabile? Še čakajo:", "🌟 <b>Majhen opomnik:</b> kakšna lepa slika bi še prišla prav. Še čakajo:",
+  "🕵️ <b>Lovke na spomine, na delo!</b> Še čakajo:", "💛 <b>Ne bom preveč siljiva, samo nežno vprašam:</b> kako je z izzivi? Še čakajo:",
+];
+const CHEER = ["Bravo", "Juhu", "Super", "Odlično", "Tako se dela", "Zvezdnice", "Čudovito", "Bomba"];
+const CI_OK = ["🎉 Juhu, to je lepo slišati! Uživajte v vsakem koraku. 💛", "😍 Super! Naj bo cel dan tak. Ne pozabite na kakšno sliko!", "🥳 Odlično! Vesela sem z vami. Pošljite mi kaj lepega, ko utegnete!",
+  "💃 Ravno to sem hotela slišati! Zdaj pa naprej, svet čaka.", "🌟 Odlično! Vaša energija seže tja do mene. 🤗"];
+const CI_SLOW = ["😅 Nič hudega, počasi je včasih najlepše! Če vam česa ne uspe, preskočite — nihče ne gleda ure. 💛", "🐢 Saj ni nujno vse! Izberite, kar vam je najbolj pri srcu, in uživajte.",
+  "🫖 Počasi, počasi — Japonska ni tekmovanje. Sedite, popijte čaj in nadaljujte, ko bo prav.", "🌿 Zamik je del poti. Marsikdaj so najlepši trenutki prav tisti, ki jih nismo načrtovale."];
+const CH_SKIP = ["💛 V redu, jutri je nov dan! Če se kaj ponudi, ne pozabite na sliko.", "😊 Nič hudega! Spomini so najpomembnejši — izzivi so samo bonus.", "🍃 Brez skrbi, izzivi ne bežijo. Uživajte v večeru!"];
+const V = <T,>(pl: T[], du: T[], dual: boolean) => pick(dual ? du : pl);
+
+/** Neobvezna »iskrica«: kratek, svež stavek od AI (če je ključ); drugače prazno. */
+async function flair(kind: string, ctx: string, dual: boolean): Promise<string> {
+  if (!aiKey()) return "";
+  try {
+    const sys = `Si vesela, topla in igriva spremljevalka ${dual ? "dveh potnikov (mame in sina)" : "štirih prijateljic"} na potovanju. Napiši EN kratek stavek (največ 22 besed) v slovenščini, v ${dual ? "dvojini" : "ženski množini"}, ki ga dodaš sporočilu. Raznolik, preprost, brez ponavljanja običajnih fraz, 1–2 emojija, brez navodil in brez narekovajev.`;
+    const r = await Promise.race([aiCall(sys, `Vrsta sporočila: ${kind}\nKontekst: ${ctx}`), new Promise<never>((_, rej) => setTimeout(() => rej(new Error("timeout")), 7000))]);
+    const t = (r as any).text.replace(/^["»]|["«]$/g, "").trim();
+    return t.length > 0 && t.length < 220 ? "\n\n<i>" + esc(t) + "</i>" : "";
+  } catch { return ""; }
+}
 
 // ------------------------------------------------------------------ obvestila po urniku
 async function claim(trip_id: string, kind: string, iso: string): Promise<boolean> {
@@ -162,6 +198,7 @@ async function tick() {
         const { count } = await db.from("trip_diary").select("id", { count: "exact", head: true }).eq("trip_id", s.trip_id).eq("day_iso", prev.iso).eq("deleted", false);
         if (!count) msg += `\n\n✍️ Včeraj ni povzetka dneva. Pošljite /povzetek, če ga želite dopisati.`;
       }
+      msg += await flair("jutranji pozdrav", `Dan ${today.day} od ${days.length}, ${today.station_name || today.region}, ${today.title}${w ? ", " + w.min + "–" + w.max + " °C, dež " + w.rain + " %" : ""}`, W.dual);
       await sendToAll(s, msg, { reply_markup: { inline_keyboard: [[urlBtn("📖 Vodnik za danes", appUrl(trip, (today.station || "index") + ".html"))], [urlBtn("🧾 Rezervacije", appUrl(trip, "rezervacije.html"))]] } });
       out.push(s.trip_id + ":morning");
     }
@@ -200,16 +237,15 @@ async function tick() {
 
     // dopoldne: kako gre?
     if (within("10:30", 1.5) && await claim(s.trip_id, "checkin_am", now.iso)) {
-      const q = W.dual
-        ? pick(["👋 Hej, pustolovca! Kako vama gre? Gre vse po načrtu? 😊", "🐉 Kako je kaj? Sta že videla kaj lepega? Povejta mi!"])
-        : pick(["👋 Hej, junakinje! Kako vam gre? Gre vse po načrtu? 😊", "🌸 Kako je kaj? Ste že videle kaj lepega danes? Povejte mi!", "😄 Dopoldanski pozdrav! Kako teče dan — po planu?"]);
+      let q = W.dual ? pick(["👋 Hej, pustolovca! Kako vama gre? Gre vse po načrtu? 😊", "🐉 Kako je kaj? Sta že videla kaj lepega? Povejta mi!"]) : pick(CI_AM);
+      q += await flair("dopoldanski pogovor: vprašaj, kako gre", `Dan ${today.day}, ${today.station_name || today.region}`, W.dual);
       await sendToAll(s, q, { reply_markup: { inline_keyboard: [[cbBtn("🎉 Odlično!", "ci:ok:" + now.iso), cbBtn("😅 Malo zamika", "ci:slow:" + now.iso)], [cbBtn("🆘 Rabimo pomoč", "ci:help:" + now.iso)]] } });
       out.push(s.trip_id + ":checkin_am");
     }
     // popoldne: pokosilo + izzivi
     if (within("14:30", 1.5) && await claim(s.trip_id, "checkin_pm", now.iso)) {
       const cs = await chStatus(s.trip_id, today.station);
-      let m = W.dual ? "🍜 Sta že kaj dobrega pojedla? Pošljita sliko!" : pick(["🍜 Ste že pojedle kaj dobrega? Vse me zanima!", "🥢 Popoldne je! Ste si privoščile kaj okusnega? 😋"]);
+      let m = W.dual ? "🍜 Sta že kaj dobrega pojedla? Pošljita sliko!" : pick(CI_PM);
       if (cs.total) m += `\n\n📸 <b>Izzivi: ${cs.done}/${cs.total}</b> ${bar(cs.done, cs.total)}` + (cs.left.length ? `\nŠe čaka: ${esc(cs.left[0].text)}` : `\n🎉 Vsi izzivi na tej postaji so narejeni — bravo!`);
       await sendToAll(s, m, { reply_markup: { inline_keyboard: [[urlBtn("📸 Naloži slike", appUrl(trip, "nalozi.html")), urlBtn("🎯 Vsi izzivi", appUrl(trip, "izziv.html"))]] } });
       out.push(s.trip_id + ":checkin_pm");
@@ -219,7 +255,7 @@ async function tick() {
       const cs = await chStatus(s.trip_id, today.station);
       if (cs.left.length && await claim(s.trip_id, "challenge_push", now.iso)) {
         const list = cs.left.slice(0, 3).map((c: any) => `• ${esc(c.text)}`).join("\n");
-        const m = (W.dual ? "🎯 <b>Izzivi dneva!</b> Sta jih že opravila? Še čakajo:" : pick(["🎯 <b>Izzivi dneva!</b> Ste jih že opravile? Še čakajo:", "📸 <b>Hej, izzivi!</b> Niste pozabile? Še čakajo:"])) + `\n${list}\n\nOpravljenih ${cs.done} od ${cs.total}. Ni treba vseh — a mi so popestritev spominov! 💛`;
+        const m = (W.dual ? "🎯 <b>Izzivi dneva!</b> Sta jih že opravila? Še čakajo:" : pick(PUSH)) + `\n${list}\n\nOpravljenih ${cs.done} od ${cs.total}. Ni treba vseh — a mi so popestritev spominov! 💛`;
         await sendToAll(s, m, { reply_markup: { inline_keyboard: [[cbBtn(W.dual ? "✅ Opravila sva" : "✅ Opravile smo", "ch:done:" + now.iso), cbBtn("⏭️ Danes ne", "ch:skip:" + now.iso)], [urlBtn("🎯 Izzivi", appUrl(trip, "izziv.html")), urlBtn("📸 Naloži", appUrl(trip, "nalozi.html"))]] } });
         out.push(s.trip_id + ":challenge_push");
       }
@@ -240,7 +276,7 @@ async function tick() {
         }
         if (lines.length) {
           const cs = await chStatus(s.trip_id, today.station);
-          await sendToAll(s, `🎉 <b>${pick(["Bravo", "Juhu", "Super", "Odlično"])}!</b> Nov izziv je opravljen:\n${lines.join("\n")}\n\n📸 ${cs.done}/${cs.total} ${bar(cs.done, cs.total)}` + (cs.total && !cs.left.length ? "\n🏆 Vsi izzivi te postaje so narejeni!" : ""));
+          await sendToAll(s, `🎉 <b>${pick(CHEER)}!</b> Nov izziv je opravljen:\n${lines.join("\n")}\n\n📸 ${cs.done}/${cs.total} ${bar(cs.done, cs.total)}` + (cs.total && !cs.left.length ? "\n🏆 Vsi izzivi te postaje so narejeni!" : "") + await flair("navijanje za opravljen foto izziv", lines.join("; "), W.dual));
           out.push(s.trip_id + ":cheer");
         }
       }
@@ -600,8 +636,8 @@ async function onCallback(cq: any) {
   if (kind === "ci") {
     await tg("answerCallbackQuery", { callback_query_id: cq.id, text: "💛" });
     await tg("editMessageReplyMarkup", { chat_id: chat, message_id: msg.message_id, reply_markup: { inline_keyboard: [] } });
-    if (a === "ok") await send(chat, pick(["🎉 Juhu, to je lepo slišati! Uživajte v vsakem koraku. 💛", "😍 Super! Naj bo cel dan tak. Ne pozabite na kakšno sliko!", "🥳 Odlično! Vesela sem z vami. Pošljite mi kaj lepega, ko utegnete!"]));
-    else if (a === "slow") await send(chat, pick(["😅 Nič hudega, počasi je včasih najlepše! Če vam česa ne uspe, preskočite — nihče ne gleda ure. 💛", "🐢 Saj ni nujno vse! Izberite, kar vam je najbolj pri srcu, in uživajte."]));
+    if (a === "ok") await send(chat, pick(CI_OK));
+    else if (a === "slow") await send(chat, pick(CI_SLOW));
     else if (a === "help") { await setState(chat, uid, name, { awaiting: "problem" }); await send(chat, `🤗 Seveda! ${W.please} na to sporočilo in povejte, kaj se dogaja — sporočilo bom poslal/-a vsem v skupini.`, { reply_markup: { force_reply: true, selective: true } }); }
     return;
   }
@@ -610,7 +646,7 @@ async function onCallback(cq: any) {
     await tg("editMessageReplyMarkup", { chat_id: chat, message_id: msg.message_id, reply_markup: { inline_keyboard: [] } });
     const trip = await tripInfo(ct.trip_id);
     if (a === "done") await send(chat, "🎉 Bravo! Če slik še niste naložile v album, jih dodajte — prav iz njih nastane vaša potopisna knjiga. 📖", { reply_markup: { inline_keyboard: [[urlBtn("📸 Naloži slike", appUrl(trip, "nalozi.html"))]] } });
-    else await send(chat, pick(["💛 V redu, jutri je nov dan! Če se kaj ponudi, ne pozabite na sliko.", "😊 Nič hudega! Spomini so najpomembnejši — izzivi so samo bonus."]));
+    else await send(chat, pick(CH_SKIP));
     return;
   }
   if (kind === "pack") {
