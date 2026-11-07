@@ -93,7 +93,7 @@ OUT = os.path.join(SITE_DIR, CFG["slug"])
 
 # Verzija gradnje — doda se v naslov CSS/JS (?v=BUILD), da brskalnik vedno
 # naloži svežo različico. Ob vsaki spremembi povečaj.
-BUILD = "31"
+BUILD = "32"
 
 # ----------------------------------------------------------------------------
 # VSEBINA
@@ -408,6 +408,8 @@ ITINERARY = _load_json("itinerary.json", {})
 PRACTICAL = _load_json("practical.json", {})
 # Doživetja (dozivetja.json = {intro, categories:[...]})
 DOZIVETJA = _load_json("dozivetja.json", {})
+DOZ_POSTAJE = _load_json("dozivetja_postaje.json", {})
+DOZ_CITY = {"tokio": "Tokio", "kyoto": "Kyoto", "osaka": "Osaka", "koyasan": "Koya-san"}
 # Dodatki po lokacijah (extras.json = {key: {prespati, dez}})
 EXTRAS = _load_json("extras.json", {})
 # Foto/video izzivi za album (izzivi.json = {key: [{t, x}, ...]})
@@ -647,7 +649,6 @@ NAV_PRIMARY = [
     ("rezervacije.html", "rezervacije", "🧾", "Moje rezervacije"),
     ("taksi.html", "taksi", "🚕", "Kartice za taksista"),
     ("dnevnik.html", "dnevnik", "✍️", "Dnevnik"),
-    ("dozivetja.html", "dozivetja", "🎨", "Doživetja"),
     ("priprave.html", "priprave", "🎒", "Priprave"),
     ("prevajalec.html", "prevajalec", "🔍", "Prevajalec (govor + kamera)"),
     ("nasveti.html", "nasveti", "💡", "Nasveti in kartice"),
@@ -1202,6 +1203,29 @@ RUBRIC_META = [
 ]
 
 
+def dozivetje_section(key):
+    """Doživetje za dušo na strani postaje (namesto ločene strani v meniju)."""
+    items = [dict(x) for x in DOZ_POSTAJE.get(key, [])]
+    city = DOZ_CITY.get(key)
+    if city:
+        for c in DOZIVETJA.get("categories", []):
+            for p in c.get("items", []):
+                if p.get("city", "").startswith(city) and len(items) < 3:
+                    items.append({"name": p["name"], "text": p["desc"], "booking": p.get("booking"), "maps": p.get("maps")})
+    if not items:
+        return ""
+    out = '<section class="card-section doz-section" aria-labelledby="dozivetje">\n  <h2 id="dozivetje">🎨 Doživetje za dušo</h2>\n'
+    for p in items:
+        out += '  <div class="place">\n'
+        out += f'    <div class="place-head"><strong>{esc(p["name"])}</strong></div>\n    <p>{esc(p["text"])}</p>\n'
+        if p.get("booking"):
+            out += f'    <p class="booking">📝 {esc(p["booking"])}</p>\n'
+        if p.get("maps"):
+            out += f'    <a class="pin-btn" href="{maps_url(p["maps"])}" target="_blank" rel="noopener">📍 Zemljevid</a>\n'
+        out += "  </div>\n"
+    return out + "</section>\n"
+
+
 def rubric_section(key):
     r = RUBRICS.get(key) or {}
     e = EXTRAS.get(key, {})
@@ -1314,6 +1338,7 @@ def location_page(i, loc):
     out += stay_section(loc["key"])
     out += transport_section(loc["key"])
     out += book_section(loc["key"])
+    out += dozivetje_section(loc["key"])
 
     out += f"""<section class="card-section fact-section" aria-labelledby="zanimivost">
   <h2 id="zanimivost">💡 Zanimivost</h2>
@@ -1939,7 +1964,6 @@ QUICK_LINKS = [
     ("nacrt.html", "🗺️", "Načrt poti", "30 dni, dan za dnem"),
     ("izziv.html", "📸", "Foto izzivi", f"{sum(len(v) for v in IZZIVI.values())} izzivov in presenečenja"),
     ("nalozi.html", "📤", "Naloži fotografije", "album iz vaših telefonov"),
-    ("dozivetja.html", "🎨", "Doživetja", "delavnice, čaj, vrtovi"),
     ("priprave.html", "🎒", "Priprave", "denar, vlaki, pakiranje"),
     ("priprave.html#povezave", "🔗", "Kupi in rezerviraj", "vlaki, nastanitve, vstopnice"),
     ("kviz.html", "🧠", "Kviz", "preizkusite znanje o Japonski"),

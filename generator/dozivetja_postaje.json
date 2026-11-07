@@ -1,0 +1,97 @@
+{
+  "chichibu": [
+    {
+      "name": "Gozdna kopel (shinrin-yoku)",
+      "text": "Počasen sprehod po gozdu brez cilja in brez telefona: ustavite se, poslušajte potok in dihajte. V Japonski je to priznan način sproščanja.",
+      "maps": "Chichibu forest trail"
+    }
+  ],
+  "kawaguchiko": [
+    {
+      "name": "Bento piknik z goro Fuji",
+      "text": "Na postaji kupite bento škatlo (eki-ben), poiščite klopco s pogledom na goro Fuji in si privoščite počasno kosilo. Preprosto, a nepozabno.",
+      "maps": "Fuji Station Shizuoka"
+    }
+  ],
+  "minobusan": [
+    {
+      "name": "Jutranja molitev in vegetarijanska hrana",
+      "text": "Pri menihih se običajno lahko pridružite jutranji molitvi (zgodaj zjutraj) in poskusite shojin ryori, tradicionalno budistično vegetarijansko hrano. Če vas zanima, vprašajte tudi po prepisovanju sutre (shakyo); ponujajo ga mnogi templji.",
+      "maps": "Minobusan Kuonji Temple"
+    }
+  ],
+  "izu": [
+    {
+      "name": "Kopel za noge ob reki v Shuzenjiju",
+      "text": "Ob reki Katsura so javne kopeli za noge (ashiyu), ki so običajno brezplačne. Namočite noge, sedite na most in opazujte bambusov gaj.",
+      "maps": "Shuzenji Onsen Katsura River foot bath"
+    },
+    {
+      "name": "Sveži wasabi",
+      "text": "Izu je znan po wasabiju. V lokalih ga postrežejo svežega, naribanega, poskusite pa tudi wasabi sladoled.",
+      "maps": "Izu wasabi restaurant Shuzenji"
+    }
+  ],
+  "kumano": [
+    {
+      "name": "Kopel Tsuboyu v Yunomine",
+      "text": "Majhna koča z vrelcem ob potoku, ki naj bi bila edina kopalnica na seznamu svetovne dediščine. V vasi lahko v vročem izviru skuhate tudi jajca (onsen tamago).",
+      "maps": "Tsuboyu Yunomine Onsen"
+    },
+    {
+      "name": "Pot Daimonzaka",
+      "text": "Kamnita pot med visokimi cedrami do slapa Nachi. Ponekod lahko za nekaj ur izposodite staro nošo in se sprehodite kot romar; vprašajte na kraju samem.",
+      "maps": "Daimonzaka Kumano Kodo"
+    }
+  ],
+  "koyasan": [
+    {
+      "name": "Jutranja molitev in nočni sprehod po Okunoinu",
+      "text": "Nočitev v templju običajno vključuje jutranjo molitev z menihi. Okunoin, stari gozd s sto tisoči nagrobnikov, je zvečer še bolj poseben; nekateri templji in vodniki ponujajo organizirane nočne sprehode.",
+      "maps": "Okunoin Koyasan"
+    }
+  ],
+  "iya": [
+    {
+      "name": "Rečna kopel Iya Onsen",
+      "text": "Hotel Iya Onsen ima odprt vrelec ob reki, do katerega se pelje s posebno tirno žičnico. Odpiralni čas in dostop (tudi za nenočitvene goste) preverite vnaprej.",
+      "maps": "Iya Onsen Miyoshi"
+    },
+    {
+      "name": "Iya soba",
+      "text": "Dolina je znana po soba rezancih iz ajde. Pokusite jih v kakšnem lokalnem lokalu po sprehodu čez viseči most.",
+      "maps": "Iya valley soba restaurant"
+    }
+  ],
+  "ine": [
+    {
+      "name": "Kozarček sakeja iz vasi",
+      "text": "V Ine deluje manjša pivovarna sakeja (Mukai Shuzo), znana po rdečem rižu. Preverite, ali ob vašem obisku sprejemajo obiskovalce, in poskusite lokalni sake.",
+      "maps": "Mukai Shuzo Ine"
+    },
+    {
+      "name": "Ladjica med čolnarnami",
+      "text": "Vožnja po zalivu je najlepši način, da si ogledate funaya, hiše s čolnarno pri tleh, tik ob vodi; ob jati galebov je tudi pravi počitek.",
+      "maps": "Ine Bay sightseeing boat"
+    }
+  ],
+  "nara": [
+    {
+      "name": "Piškoti za jelene",
+      "text": "V parku Nara na stojnicah kupite posebne piškote (shika senbei) in nahranite jelene. Prijazni so, vendar lahko nestrpni, zato piškote hitro porabite.",
+      "maps": "Nara Park deer"
+    },
+    {
+      "name": "Mochi v hipu",
+      "text": "Nakatanido je znana po zelo hitrem tolčenju riževih kolačkov (yomogi mochi). Prizor je pol predstave, pol sladica.",
+      "maps": "Nakatanidou Nara mochi"
+    }
+  ],
+  "hiroshima": [
+    {
+      "name": "Papirnati žerjavi miru",
+      "text": "Zložite papirnatega žerjava, simbol miru, ki ga v Hiroshimi povezujejo s spominom na otroke. V stolpu Orizuru Tower lahko žerjava zložite in ga dodate v steno žerjavov.",
+      "maps": "Orizuru Tower Hiroshima"
+    }
+  ]
+}
