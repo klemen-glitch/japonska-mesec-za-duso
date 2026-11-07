@@ -95,6 +95,12 @@ def build(site_dir):
             break
     title = "Mesec za dušo — potopis iz Japonske"
     desc = "Štiri prijateljice, trideset dni in ena Japonska. Beri, kako nam gre — dan za dnem, z utrinki in zanimivostmi o krajih."
+    try:
+        vj = json.load(open(os.path.join(HERE, "videos.json"), encoding="utf-8"))
+        vids = {x["key"]: [{"id": v["id"], "title": v["title"]} for v in x.get("videos", [])[:3]] for x in vj}
+    except Exception:  # noqa
+        vids = {}
+    tpl = tpl.replace("/*__VIDS__*/{}", json.dumps(vids, ensure_ascii=False))
     page = (tpl.replace("__TITLE__", e(title)).replace("__DESC__", e(desc)).replace("__OG_TYPE__", "website")
             .replace("__OG_META__", og(title, desc, PUBLIC_URL, latest_img)))
     out = os.path.join(site_dir, "javno")

@@ -86,6 +86,9 @@ button,.btn{font:inherit}
 
 .info{background:color-mix(in srgb,var(--gold) 12%,transparent);border-left:3px solid var(--gold);padding:14px 16px;border-radius:12px;font-size:15.5px;line-height:1.55;margin:18px 0 0}
 .info::before{content:"Zanimivost o kraju";display:block;font:700 12px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.fig{margin:18px 0 0;border-radius:14px;overflow:hidden;background:var(--bg2);box-shadow:var(--shadow)}
+.fig img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+.fig figcaption{font-size:13px;color:var(--mute);padding:8px 12px}
 .sh{display:flex;gap:8px;padding:0 20px 20px;flex-wrap:wrap}
 .sh .btn{min-height:44px;padding:9px 16px;font-size:15px;flex:1 1 140px}
 .btn.fb{background:#1877f2;color:#fff}
@@ -273,6 +276,8 @@ function dl(iso){var p=iso.split("-");return parseInt(p[2],10)+". "+MON[parseInt
 function url(p){return SB+"/storage/v1/object/public/trip_album/"+p.split("/").map(encodeURIComponent).join("/")}
 function rpc(fn,body){return fetch(SB+"/rest/v1/rpc/"+fn,{method:"POST",headers:{apikey:KEY,"Content-Type":"application/json"},body:JSON.stringify(body)}).then(function(r){if(!r.ok)throw new Error(r.status);return r.json()})}
 
+var VIDS=/*__VIDS__*/{};
+var seen={};
 var PLACES={
 "Minobusan":{d:"Gora Minobu je središče budistične šole Nichiren, tempelj Kuon-ji tu stoji že od 13. stoletja. Prenočile bodo v templju, z jutranjo molitvijo in preprosto vegetarijansko hrano.",v:"hFz_-YSwfPY",vt:"A Monk's Climb to Japan's Sacred Mountain Temple"},
 "Izu polotok":{d:"Gorat polotok južno od Tokia, poln vročih vrelcev, obale in pohodniških poti. Mestece Shuzenji velja za eno najstarejših onsen mest in po izročilu sega v 9. stoletje.",v:"G-plKYhQPU8",vt:"Discovering the Izu Peninsula (Japan Guide)"},
@@ -298,11 +303,18 @@ $("lb").addEventListener("touchend",function(e){var d=e.changedTouches[0].client
 
 function render(d){
   var st=(d.stories||[]).slice().reverse();
+  var occ={},cnt={};(d.stories||[]).forEach(function(x){occ[x.iso]=cnt[x.key]||0;cnt[x.key]=occ[x.iso]+1});
   var h="";
   if(!st.length)h='<div class="empty">Prva zgodba pride kmalu. 🌸</div>';
   st.forEach(function(s){
     var ph=(s.photos||[]).map(url),base=pics.length;pics=pics.concat(ph);
-    var paras=String(s.body||"").trim().split(/\n\s*\n/).map(function(p){var inf=p.indexOf("ℹ️ ")===0;if(inf)p=p.slice(3);return'<p'+(inf?' class="info"':'')+'>'+esc(p).replace(/\n/g,"<br>")+"</p>"}).join("");
+    var main="",info="";
+    String(s.body||"").trim().split(/\n\s*\n/).forEach(function(p){var inf=p.indexOf("ℹ️ ")===0;if(inf)p=p.slice(3);var h2='<p'+(inf?' class="info"':'')+'>'+esc(p).replace(/\n/g,"<br>")+"</p>";if(inf)info+=h2;else main+=h2});
+    var vl=VIDS[s.key]||[],n=occ[s.iso]||0;
+    var imgSrc=(n>0&&vl.length>1)?"https://i.ytimg.com/vi/"+vl[(n+1)%vl.length].id+"/hqdefault.jpg":"../jp-xyna9tg2e/images/"+s.key+".jpg";
+    var fig=s.key?'<figure class="fig"><img loading="lazy" decoding="async" alt="'+esc(s.station||"")+'" src="'+imgSrc+'" onerror="this.parentNode.remove()"><figcaption>'+esc(s.station||"")+'</figcaption></figure>':"";
+    var vid=vl.length?(function(v){return'<button type="button" class="vt sv" data-v="'+v.id+'" aria-label="Predvajaj video: '+esc(v.title)+'"><img loading="lazy" decoding="async" alt="" src="https://i.ytimg.com/vi/'+v.id+'/hqdefault.jpg"><span class="vt-c">'+esc(v.title)+' · YouTube</span></button>'})(vl[n%vl.length]):"";
+    var paras=main+fig+info+(vid?'<div style="margin-top:16px">'+vid+'</div>':"");
     var long=String(s.body||"").length>650;
     h+='<article class="story" id="d-'+s.iso+'"><div class="story-h"><span class="pill">Dan '+s.day+'</span><h3>'+esc(s.title||"")+'</h3><p class="meta">'+dl(s.iso)+(s.station?" · "+esc(s.station):"")+'</p></div>';
     if(ph.length)h+='<div class="strip'+(ph.length===1?" one":"")+'">'+ph.map(function(u,i){return'<button type="button" data-i="'+(base+i)+'" aria-label="Odpri fotografijo"><img loading="lazy" decoding="async" alt="Utrinek z dneva '+s.day+'" src="'+u+'"></button>'}).join("")+'</div>';
@@ -311,6 +323,7 @@ function render(d){
   $("stories").innerHTML=h;
   $("stories").querySelectorAll("a.fb").forEach(function(a){a.href="https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(shareUrl(a.getAttribute("data-iso")))});
   $("stories").querySelectorAll("[data-share]").forEach(function(b){b.onclick=function(){doShare(shareUrl(b.getAttribute("data-share")),b.getAttribute("data-t")+" — Mesec za dušo")}});
+  $("stories").querySelectorAll(".sv").forEach(function(b){b.onclick=function(){var f=document.createElement("iframe");f.className="vf";f.src="https://www.youtube-nocookie.com/embed/"+b.getAttribute("data-v")+"?autoplay=1&rel=0&playsinline=1";f.allow="autoplay; encrypted-media; picture-in-picture; fullscreen";f.setAttribute("allowfullscreen","");f.title="Video";b.replaceWith(f)}});
   $("stories").querySelectorAll(".strip button").forEach(function(b){b.onclick=function(){open(+b.getAttribute("data-i"))}});
   $("stories").querySelectorAll(".more").forEach(function(b){b.onclick=function(){var t=b.previousElementSibling,c=t.classList.toggle("clamp");b.textContent=c?"Preberi več ↓":"Skrij ↑"}});
 
