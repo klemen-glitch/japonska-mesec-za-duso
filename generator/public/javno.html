@@ -145,6 +145,12 @@ button,.btn{font:inherit}
 .form textarea{min-height:92px;resize:vertical}
 .form input:focus,.form textarea:focus{outline:none;border-color:#c9372c;box-shadow:0 0 0 4px rgba(201,55,44,.15)}
 .form .btn{width:100%;margin-top:16px}
+.ch{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.ch label{margin:0;flex:1 1 90px}
+.ch input{position:absolute;opacity:0;width:1px;height:1px}
+.ch span{display:block;text-align:center;padding:11px 8px;border-radius:12px;border:1.5px solid #e3d9c3;background:#fff;font-size:14.5px;font-weight:650;color:#1d2236;cursor:pointer}
+.ch input:checked+span{border-color:#c9372c;background:#fdecea;color:#c9372c}
+.ch input:focus-visible+span{outline:3px solid rgba(201,55,44,.35)}
 .hp{position:absolute;left:-9999px;opacity:0}
 .note{font-size:14.5px;margin-top:12px;min-height:1.4em}
 .ok{color:#2f7a45}.err{color:#b3261e}
@@ -246,7 +252,13 @@ footer .btn{margin-bottom:18px}
       <h3>Želiš preizkusiti?</h3>
       <p>Povej, kam in kdaj potuješ — pomagamo ti z načrtom, da boš na poti bolj varen in svoboden.</p>
       <label for="fn">Ime</label><input id="fn" name="name" autocomplete="given-name" maxlength="80">
-      <label for="fc">E-pošta ali Telegram *</label><input id="fc" name="contact" autocomplete="email" required maxlength="120" placeholder="npr. ime@mail.com ali @uporabnik">
+      <label id="chl">Kako naj se ti javimo?</label>
+      <div class="ch" role="radiogroup" aria-labelledby="chl">
+        <label><input type="radio" name="ch" value="E-pošta" checked><span>✉️ E-pošta</span></label>
+        <label><input type="radio" name="ch" value="WhatsApp"><span>💬 WhatsApp</span></label>
+        <label><input type="radio" name="ch" value="Telegram"><span>✈️ Telegram</span></label>
+      </div>
+      <label for="fc" id="fcl">Tvoj e-naslov *</label><input id="fc" name="contact" type="email" inputmode="email" autocomplete="email" required maxlength="120" placeholder="ime@primer.si">
       <label for="fp">Kam in kdaj potuješ?</label><textarea id="fp" name="note" maxlength="600" placeholder="npr. Portugalska, maj, 2 osebi, rada imava naravo in dobro hrano"></textarea>
       <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
       <button class="btn" type="submit" id="fb">Javi se mi</button>
@@ -363,13 +375,20 @@ function share(){doShare(base(),"Mesec za dušo — potopis iz Japonske")}
 $("share").onclick=share;$("share2").onclick=share;
 
 /* lead form */
+var CH={"E-pošta":{l:"Tvoj e-naslov *",t:"email",m:"email",p:"ime@primer.si",a:"email"},"WhatsApp":{l:"Tvoja številka za WhatsApp *",t:"tel",m:"tel",p:"+386 40 123 456",a:"tel"},"Telegram":{l:"Tvoje uporabniško ime na Telegramu *",t:"text",m:"text",p:"@uporabnik",a:"off"}};
+function chv(){var r=document.querySelector('#lead input[name=ch]:checked');return r?r.value:"E-pošta"}
+function applyCh(focus){var c=CH[chv()],f=$("fc");$("fcl").textContent=c.l;f.type=c.t;f.setAttribute("inputmode",c.m);f.placeholder=c.p;f.setAttribute("autocomplete",c.a);f.value="";if(focus)f.focus()}
+document.querySelectorAll('#lead input[name=ch]').forEach(function(r){r.addEventListener("change",function(){applyCh(true)})});
 $("lead").addEventListener("submit",function(e){
-  e.preventDefault();var f=e.target,m=$("fm"),c=f.contact.value.trim();
+  e.preventDefault();var f=e.target,m=$("fm"),c=f.contact.value.trim(),ch=chv(),bad="";
   if(f.website.value)return;
-  if(c.length<3){m.className="note err";m.textContent="Vpiši e-pošto ali Telegram, da ti lahko odgovorimo.";f.contact.focus();return}
+  if(ch==="E-pošta"&&!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(c))bad="Vpiši veljaven e-naslov.";
+  if(ch==="WhatsApp"&&c.replace(/\D/g,"").length<8)bad="Vpiši telefonsko številko (z državno kodo, npr. +386 …).";
+  if(ch==="Telegram"&&!/^@?[A-Za-z0-9_]{5,32}$/.test(c))bad="Vpiši uporabniško ime na Telegramu (npr. @uporabnik).";
+  if(bad){m.className="note err";m.textContent=bad;f.contact.focus();return}
   $("fb").disabled=true;m.className="note";m.textContent="Pošiljam …";
-  rpc("trip_public_lead",{p_name:f.name.value.trim(),p_contact:c,p_note:f.note.value.trim()}).then(function(){
-    m.className="note ok";m.textContent="Hvala! Javimo se ti čim prej. 💛";f.reset();
+  rpc("trip_public_lead",{p_name:f.name.value.trim(),p_contact:ch+": "+c,p_note:f.note.value.trim()}).then(function(){
+    m.className="note ok";m.textContent="Hvala! Sporočilo je poslano, javimo se ti čim prej. 💛";f.reset();applyCh(false);
   }).catch(function(){m.className="note err";m.textContent="Pošiljanje ni uspelo. Poskusi znova čez trenutek."}).then(function(){$("fb").disabled=false});
 });
 })();
