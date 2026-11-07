@@ -22,6 +22,7 @@ ASSETS_DIR = os.path.join(HERE, "assets")
 # Nastavitve potovanja (za drugo potovanje jih prepiše gen_<potovanje>.py)
 CFG = {
     "id": "japonska",
+    "public_url": "https://klemen-glitch.github.io/japonska-mesec-za-duso/javno/",
     "slug": "jp-xyna9tg2e",
     "title": "Japonska — Mesec za dušo",
     "short": "Mesec za dušo",
@@ -92,7 +93,7 @@ OUT = os.path.join(SITE_DIR, CFG["slug"])
 
 # Verzija gradnje — doda se v naslov CSS/JS (?v=BUILD), da brskalnik vedno
 # naloži svežo različico. Ob vsaki spremembi povečaj.
-BUILD = "30"
+BUILD = "31"
 
 # ----------------------------------------------------------------------------
 # VSEBINA
@@ -659,10 +660,21 @@ def nav(current_key):
     def cur(key):
         return ' aria-current="page"' if current_key == key else ""
 
-    primary = list(NAV_PRIMARY) + [("../index.html?izpis=1", "gate", "🔑", "Zamenjaj potovanje")]
-    prim = "\n".join(
-        f'        <a href="{h}"{cur(k)}><span class="mi-emoji" aria-hidden="true">{e}</span>{esc(l)}</a>'
-        for (h, k, e, l) in primary)
+    # redko uporabljani gumbi gredo na dno menija (pod »Postaje«), da jih je v glavnem delu manj
+    BOTTOM = ("kako", "kviz", "priprave")
+    top = [x for x in NAV_PRIMARY if x[1] not in BOTTOM]
+    bottom = [x for x in NAV_PRIMARY if x[1] in BOTTOM] + [("../index.html?izpis=1", "gate", "🔑", "Zamenjaj potovanje")]
+    primary = top + bottom
+
+    def links(items):
+        return "\n".join(
+            f'        <a href="{h}"{cur(k)}><span class="mi-emoji" aria-hidden="true">{e}</span>{esc(l)}</a>'
+            for (h, k, e, l) in items)
+    prim = links(top)
+    more = links(bottom)
+    pub = CFG.get("public_url")
+    pub_btn = (f'<a class="pub-btn" href="{pub}" target="_blank" rel="noopener" '
+               f'aria-label="Vaše potovanje za javnost: povezava, ki jo lahko deli vsak, brez kode">🌍 Za javnost</a>') if pub else ""
     stations = "\n".join(
         f'        <a href="{loc["key"]}.html"{cur(loc["key"])}>'
         f'<span class="mi-emoji" aria-hidden="true">{loc["emoji"]}</span>{esc(loc["nav"])}</a>'
@@ -680,9 +692,12 @@ def nav(current_key):
     return f'''<header class="site-header">
   <div class="nav-inner">
     <a class="brand" href="index.html">{esc(CFG["brand"])}</a>
-    <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="main-menu">
-      <span class="mt-ico" aria-hidden="true">☰</span> Meni
-    </button>
+    <div class="nav-right">
+      {pub_btn}
+      <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="main-menu">
+        <span class="mt-ico" aria-hidden="true">☰</span> Meni
+      </button>
+    </div>
   </div>
   <nav class="main-menu" id="main-menu" aria-label="Glavni meni" hidden>
     <div class="menu-inner">
@@ -692,6 +707,9 @@ def nav(current_key):
       <p class="menu-label">{STATIONS_LABEL}</p>
       <div class="menu-stations">
 {stations}
+      </div>
+      <div class="menu-primary menu-more">
+{more}
       </div>
     </div>
   </nav>
