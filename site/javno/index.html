@@ -8,10 +8,16 @@
 <meta name="theme-color" content="#f7f1e6" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#14182a" media="(prefers-color-scheme: dark)">
 <title>Mesec za dušo — potopis iz Japonske</title>
-<meta name="description" content="Dnevnik štirih prijateljic, ki mesec dni potujejo po Japonski: zgodbe dan za dnem, utrinki in kaj jih še čaka.">
-<meta property="og:title" content="Mesec za dušo — potopis iz Japonske">
-<meta property="og:description" content="Štiri prijateljice, 30 dni, Japonska. Beri, kako nam gre — dan za dnem.">
+<meta name="description" content="Štiri prijateljice, trideset dni in ena Japonska. Beri, kako nam gre — dan za dnem, z utrinki in zanimivostmi o krajih.">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="sl_SI">
+<meta property="og:site_name" content="Mesec za dušo">
+<meta property="og:title" content="Mesec za dušo — potopis iz Japonske">
+<meta property="og:description" content="Štiri prijateljice, trideset dni in ena Japonska. Beri, kako nam gre — dan za dnem, z utrinki in zanimivostmi o krajih.">
+<meta property="og:url" content="https://klemen-glitch.github.io/japonska-mesec-za-duso/javno/">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://ayejgzzaykbopojiacgn.supabase.co/storage/v1/object/public/trip_album/japonska/tokio/splosno/30c33518-93ca-434f-9bab-db482676b0cc.jpeg">
+<meta name="twitter:image" content="https://ayejgzzaykbopojiacgn.supabase.co/storage/v1/object/public/trip_album/japonska/tokio/splosno/30c33518-93ca-434f-9bab-db482676b0cc.jpeg">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%23c9372c'/%3E%3C/svg%3E">
 <style>
 :root{
@@ -88,6 +94,18 @@ button,.btn{font:inherit}
 @keyframes sh{to{background-position:-200% 0}}
 .empty{padding:26px;text-align:center;color:var(--mute);border:1.5px dashed var(--line);border-radius:var(--r)}
 
+.info{background:color-mix(in srgb,var(--gold) 12%,transparent);border-left:3px solid var(--gold);padding:14px 16px;border-radius:12px;font-size:15.5px;line-height:1.55;margin:18px 0 0}
+.info::before{content:"Zanimivost o kraju";display:block;font:700 12px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.sh{display:flex;gap:8px;padding:0 20px 20px;flex-wrap:wrap}
+.sh .btn{min-height:44px;padding:9px 16px;font-size:15px;flex:1 1 140px}
+.btn.fb{background:#1877f2;color:#fff}
+.btn.alt{background:var(--bg2);color:var(--fg);border:1px solid var(--line)}
+.blurb{font-size:15.5px;line-height:1.55;margin:6px 0 10px;color:var(--fg)}
+.vt{position:relative;display:block;width:100%;max-width:420px;aspect-ratio:16/9;border:0;padding:0;border-radius:14px;overflow:hidden;background:#000;cursor:pointer;box-shadow:var(--shadow)}
+.vt img{width:100%;height:100%;object-fit:cover;display:block;opacity:.88}
+.vt::after{content:"▶";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:34px;text-shadow:0 2px 14px rgba(0,0,0,.6)}
+.vt-c{position:absolute;left:0;right:0;bottom:0;padding:22px 12px 9px;background:linear-gradient(transparent,rgba(0,0,0,.72));color:#fff;font-size:12.5px;text-align:left;z-index:1}
+.vf{width:100%;max-width:420px;aspect-ratio:16/9;border:0;border-radius:14px;display:block}
 /* videos */
 .vids{display:grid;gap:14px}
 .vid{border-radius:var(--r);overflow:hidden;background:#000;box-shadow:var(--shadow)}
@@ -96,7 +114,7 @@ button,.btn{font:inherit}
 /* route */
 .route{position:relative;margin:6px 0 0 8px;padding:0 0 0 28px;list-style:none}
 .route::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:repeating-linear-gradient(var(--line) 0 6px,transparent 6px 12px)}
-.route li{position:relative;padding:0 0 22px}
+.route li{position:relative;padding:0 0 28px}
 .route li::before{content:"";position:absolute;left:-28px;top:5px;width:16px;height:16px;border-radius:50%;background:var(--card);border:3px solid var(--indigo)}
 .route li.now::before{border-color:var(--acc);background:var(--acc);box-shadow:0 0 0 6px color-mix(in srgb,var(--acc) 22%,transparent)}
 .route b{display:block;font:700 19px/1.25 var(--serif)}
@@ -266,6 +284,18 @@ function dl(iso){var p=iso.split("-");return parseInt(p[2],10)+". "+MON[parseInt
 function url(p){return SB+"/storage/v1/object/public/trip_album/"+p.split("/").map(encodeURIComponent).join("/")}
 function rpc(fn,body){return fetch(SB+"/rest/v1/rpc/"+fn,{method:"POST",headers:{apikey:KEY,"Content-Type":"application/json"},body:JSON.stringify(body)}).then(function(r){if(!r.ok)throw new Error(r.status);return r.json()})}
 
+var PLACES={
+"Minobusan":{d:"Gora Minobu je središče budistične šole Nichiren, tempelj Kuon-ji tu stoji že od 13. stoletja. Prenočile bodo v templju, z jutranjo molitvijo in preprosto vegetarijansko hrano.",v:"hFz_-YSwfPY",vt:"A Monk's Climb to Japan's Sacred Mountain Temple"},
+"Izu polotok":{d:"Gorat polotok južno od Tokia, poln vročih vrelcev, obale in pohodniških poti. Mestece Shuzenji velja za eno najstarejših onsen mest in po izročilu sega v 9. stoletje.",v:"G-plKYhQPU8",vt:"Discovering the Izu Peninsula (Japan Guide)"},
+"Kumano Kodo":{d:"Mreža starih romarskih poti skozi gozdove polotoka Kii, vpisana na Unescov seznam svetovne dediščine. Na poti je tudi slap Nachi, ki velja za najvišji enojni slap na Japonskem.",v:"ViX8JMTQCkU",vt:"Kumano Kodo: Pilgrimage to Japan's Spiritual Origins"},
+"Koya-san":{d:"Sveta gora budistične šole Shingon, ki jo je leta 816 ustanovil menih Kobo Daishi. Sredi gozda stojijo številni templji, najbolj mogočno pa deluje stari pokopališki gozd Okunoin.",v:"7ommgrYmxzg",vt:"Koyasan: Overnight Trip From Osaka (Japan Guide)"},
+"Shikoku — dolina Iya":{d:"Odmaknjena soteska na otoku Shikoku, znana po visečih mostovih iz divje trte, ki so nekoč služili kot prečkanje reke. Okoliške vasi so ostale skoraj nedotaknjene.",v:"c117Q7L0g8Y",vt:"Iya no Kazurabashi, Iya Valley"},
+"Ine":{d:"Ribiška vasica ob zalivu na severu Kyotske prefekture. Znana je po funaya, hišah s čolnarno pri tleh, ki so zgrajene tik ob vodi.",v:"UqysDoTIlu4",vt:"Ine no Funaya Travel Guide"},
+"Kyoto":{d:"Prestolnica Japonske več kot tisoč let, polna templjev, zen vrtov in starih ulic. Jeseni so znamenita rdeča javorjeva drevesa, zlasti v Arašijami in pri templjih.",v:"rtLgzRflzEc",vt:"Top 10 Autumn Color Locations in Kyoto (Japan Guide)"},
+"Osaka":{d:"Japonska prestolnica dobre hrane: takoyaki, okonomiyaki in ulična hrana v četrti Dotonbori. Zadnji dnevi potovanja bodo namenjeni okusom, nakupom in poslovilu.",v:"WkAQvod3nhA",vt:"Osaka Street Food Walk: Kuromon Market to Dotonbori"},
+"Nara":{d:"Prva stalna prestolnica Japonske (8. stoletje) z velikim Budo v templju Todai-ji. V parku se prosto sprehaja okoli tisoč jelenov, ki jih lahko krmiš s posebnimi piškoti.",v:"bxvjisa0RSg",vt:"Nara Park deer and Todaiji Temple"},
+"Hiroshima":{d:"Mesto miru z Atomsko kupolo, ki je na Unescovem seznamu svetovne dediščine, in muzejem miru. Izlet je namenjen tistim, ki to želijo.",v:"",vt:""}
+};
 var pics=[],idx=0;
 function open(i){idx=i;show();$("lb").classList.add("on");document.body.style.overflow="hidden"}
 function show(){var o=pics[idx];$("lbi").src=o;$("lbc").textContent=(idx+1)+" / "+pics.length}
@@ -283,13 +313,15 @@ function render(d){
   if(!st.length)h='<div class="empty">Prva zgodba pride kmalu. 🌸</div>';
   st.forEach(function(s){
     var ph=(s.photos||[]).map(url),base=pics.length;pics=pics.concat(ph);
-    var paras=String(s.body||"").trim().split(/\n\s*\n/).map(function(p){return"<p>"+esc(p).replace(/\n/g,"<br>")+"</p>"}).join("");
+    var paras=String(s.body||"").trim().split(/\n\s*\n/).map(function(p){var inf=p.indexOf("ℹ️ ")===0;if(inf)p=p.slice(3);return'<p'+(inf?' class="info"':'')+'>'+esc(p).replace(/\n/g,"<br>")+"</p>"}).join("");
     var long=String(s.body||"").length>650;
-    h+='<article class="story"><div class="story-h"><span class="pill">Dan '+s.day+'</span><h3>'+esc(s.title||"")+'</h3><p class="meta">'+dl(s.iso)+(s.station?" · "+esc(s.station):"")+'</p></div>';
+    h+='<article class="story" id="d-'+s.iso+'"><div class="story-h"><span class="pill">Dan '+s.day+'</span><h3>'+esc(s.title||"")+'</h3><p class="meta">'+dl(s.iso)+(s.station?" · "+esc(s.station):"")+'</p></div>';
     if(ph.length)h+='<div class="strip'+(ph.length===1?" one":"")+'">'+ph.map(function(u,i){return'<button type="button" data-i="'+(base+i)+'" aria-label="Odpri fotografijo"><img loading="lazy" decoding="async" alt="Utrinek z dneva '+s.day+'" src="'+u+'"></button>'}).join("")+'</div>';
-    h+='<div class="txt'+(long?" clamp":"")+'">'+paras+'</div>'+(long?'<button class="more" type="button">Preberi več ↓</button>':"")+'</article>';
+    h+='<div class="txt'+(long?" clamp":"")+'">'+paras+'</div>'+(long?'<button class="more" type="button">Preberi več ↓</button>':"")+'<div class="sh"><a class="btn fb" target="_blank" rel="noopener" data-iso="'+s.iso+'" href="#">Deli na Facebooku</a><button class="btn alt" type="button" data-share="'+s.iso+'" data-t="Dan '+s.day+': '+esc(s.title||"")+'">Pošlji naprej</button></div></article>';
   });
   $("stories").innerHTML=h;
+  $("stories").querySelectorAll("a.fb").forEach(function(a){a.href="https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(shareUrl(a.getAttribute("data-iso")))});
+  $("stories").querySelectorAll("[data-share]").forEach(function(b){b.onclick=function(){doShare(shareUrl(b.getAttribute("data-share")),b.getAttribute("data-t")+" — Mesec za dušo")}});
   $("stories").querySelectorAll(".strip button").forEach(function(b){b.onclick=function(){open(+b.getAttribute("data-i"))}});
   $("stories").querySelectorAll(".more").forEach(function(b){b.onclick=function(){var t=b.previousElementSibling,c=t.classList.toggle("clamp");b.textContent=c?"Preberi več ↓":"Skrij ↑"}});
 
@@ -303,7 +335,8 @@ function render(d){
 
   var groups=[],list=(cur?[{iso:d.today,day:cur.day,station:cur.station,title:""}]:[]).concat(d.upcoming||[]);
   list.forEach(function(x){var g=groups[groups.length-1];if(g&&g.station===x.station){g.to=x.iso;g.n++}else groups.push({station:x.station,from:x.iso,to:x.iso,n:1,day:x.day})});
-  $("route").innerHTML=groups.map(function(g,i){return'<li'+(i===0&&cur?' class="now"':"")+'><b>'+esc(g.station)+'</b><span>'+(g.from===g.to?dl(g.from):dl(g.from)+" – "+dl(g.to))+' · '+g.n+(g.n===1?" dan":(g.n===2?" dneva":" dni"))+(i===0&&cur?" · tu smo zdaj":"")+'</span></li>'}).join("");
+  $("route").innerHTML=groups.map(function(g,i){var inf=PLACES[g.station]||{};return'<li'+(i===0&&cur?' class="now"':"")+'><b>'+esc(g.station)+'</b><span>'+(g.from===g.to?dl(g.from):dl(g.from)+" – "+dl(g.to))+' · '+g.n+(g.n===1?" dan":(g.n===2?" dneva":" dni"))+(i===0&&cur?" · tu smo zdaj":"")+'</span>'+(inf.d?'<p class="blurb">'+esc(inf.d)+'</p>':"")+(inf.v?'<button type="button" class="vt" data-v="'+inf.v+'" aria-label="Predvajaj video: '+esc(inf.vt)+'"><img loading="lazy" decoding="async" alt="" src="https://i.ytimg.com/vi/'+inf.v+'/hqdefault.jpg"><span class="vt-c">'+esc(inf.vt)+' · YouTube</span></button>':"")+'</li>'}).join("");
+  document.querySelectorAll("#route .vt").forEach(function(b){b.onclick=function(){var f=document.createElement("iframe");f.className="vf";f.src="https://www.youtube-nocookie.com/embed/"+b.getAttribute("data-v")+"?autoplay=1&rel=0&playsinline=1";f.allow="autoplay; encrypted-media; picture-in-picture; fullscreen";f.setAttribute("allowfullscreen","");f.title="Video";b.replaceWith(f)}});
 }
 function load(){
   var cached=null;try{cached=JSON.parse(localStorage.getItem("javno_cache")||"null")}catch(e){}
@@ -319,9 +352,12 @@ var secs=["potopis","video","naprej","highlights","vodnik"].map(function(i){retu
 if("IntersectionObserver" in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){document.querySelectorAll(".chip").forEach(function(c){c.classList.toggle("on",c.getAttribute("href")==="#"+e.target.id)})}})},{rootMargin:"-45% 0px -50% 0px"});secs.forEach(function(s){io.observe(s)})}
 
 /* share */
-function share(){var u=location.href.split("#")[0],t="Mesec za dušo — potopis iz Japonske";
+function base(){return location.href.split("#")[0].split("?")[0].replace(/index\.html$/,"")}
+function shareUrl(iso){return base()+"dan/"+iso+"/"}
+function doShare(u,t){
   if(navigator.share){navigator.share({title:t,url:u}).catch(function(){})}
   else if(navigator.clipboard){navigator.clipboard.writeText(u).then(function(){alert("Povezava kopirana.")})}else{prompt("Kopiraj povezavo:",u)}}
+function share(){doShare(base(),"Mesec za dušo — potopis iz Japonske")}
 $("share").onclick=share;$("share2").onclick=share;
 
 /* lead form */

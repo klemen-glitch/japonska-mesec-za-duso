@@ -4,6 +4,8 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  schedule:
+    - cron: "23 */3 * * *"   # osvežitev javnega potopisa (nove zgodbe)
 
 permissions:
   contents: read
@@ -23,6 +25,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
+      - name: Osveži javni potopis (OG oznake, share strani)
+        run: python3 generator/gen_share.py site
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site

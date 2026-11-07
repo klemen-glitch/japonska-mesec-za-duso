@@ -218,10 +218,9 @@ def main():
         f.write(NOT_FOUND.replace("__BASE__", BASE))
     with open(os.path.join(SITE_DIR, "sw.js"), "w", encoding="utf-8") as f:
         f.write(KILL_SW)
-    # javna stran s potopisom (brez PIN-a; podatke dobi prek RPC trip_public_get)
-    os.makedirs(os.path.join(SITE_DIR, "javno"), exist_ok=True)
-    with open(os.path.join(HERE, "public", "javno.html"), encoding="utf-8") as src, open(os.path.join(SITE_DIR, "javno", "index.html"), "w", encoding="utf-8") as dst:
-        dst.write(src.read())
+    # javna stran s potopisom + share strani za Facebook (podatki prek javnega RPC)
+    import gen_share
+    gen_share.build(SITE_DIR)
     open(os.path.join(SITE_DIR, ".nojekyll"), "a").close()
     print("site root written: index.html, 404.html, sw.js")
 
