@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f7f1e6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14182a" media="(prefers-color-scheme: dark)">
+<title>Mesec za dušo — potopis iz Japonske</title>
+<meta name="description" content="Dnevnik štirih prijateljic, ki mesec dni potujejo po Japonski: zgodbe dan za dnem, utrinki in kaj jih še čaka.">
+<meta property="og:title" content="Mesec za dušo — potopis iz Japonske">
+<meta property="og:description" content="Štiri prijateljice, 30 dni, Japonska. Beri, kako nam gre — dan za dnem.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%23c9372c'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#f7f1e6; --bg2:#efe6d3; --card:#fffdf8; --fg:#1d2236; --mute:#6a6f80; --line:#e3d9c3;
+  --acc:#c9372c; --acc-ink:#fff; --indigo:#26305a; --matcha:#5b7a4a; --gold:#b98a2c;
+  --shadow:0 1px 2px rgba(38,48,90,.06),0 8px 24px rgba(38,48,90,.08);
+  --r:20px;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root{
+  --bg:#14182a; --bg2:#1b2036; --card:#1f2540; --fg:#f2eee4; --mute:#a3a8bd; --line:#2d3556;
+  --acc:#ef5b4c; --indigo:#aeb8e8; --matcha:#9cc084; --gold:#e1b45a;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;scroll-padding-top:64px;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.6 var(--sans);overflow-x:hidden;padding-bottom:env(safe-area-inset-bottom)}
+h1,h2,h3{font-family:var(--serif);line-height:1.15;margin:0;letter-spacing:-.01em;font-weight:700}
+p{margin:0 0 1em}
+a{color:inherit}
+.wrap{width:100%;max-width:720px;margin:0 auto;padding:0 16px}
+section{padding:44px 0 8px}
+.eyebrow{font:600 12px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin:0 0 10px}
+.sec-h{font-size:30px;margin-bottom:6px}
+.sec-sub{color:var(--mute);margin:0 0 22px;font-size:16px}
+button,.btn{font:inherit}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 22px;border-radius:999px;border:0;background:var(--acc);color:var(--acc-ink);font-weight:650;font-size:16px;text-decoration:none;cursor:pointer;transition:transform .15s,box-shadow .15s}
+.btn:active{transform:scale(.97)}
+.btn.ghost{background:transparent;color:var(--fg);border:1.5px solid var(--line)}
+:focus-visible{outline:3px solid color-mix(in srgb,var(--acc) 55%,transparent);outline-offset:2px;border-radius:8px}
+
+/* hero */
+.hero{position:relative;padding:calc(34px + env(safe-area-inset-top)) 0 36px;background:linear-gradient(180deg,var(--bg2),var(--bg));overflow:hidden;text-align:center}
+.sun{position:absolute;left:50%;top:-90px;width:300px;height:300px;margin-left:-150px;border-radius:50%;background:radial-gradient(circle at 50% 50%,var(--acc) 0 62%,transparent 63%);opacity:.12}
+.hero .wrap{position:relative}
+.kanji{font-family:var(--serif);font-size:15px;color:var(--acc);letter-spacing:.5em;margin:0 0 14px;padding-left:.5em}
+.hero h1{font-size:clamp(40px,12vw,64px);margin-bottom:10px}
+.hero p.lead{font-size:18px;color:var(--mute);max-width:30ch;margin:0 auto 20px}
+.live{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:14px;font-weight:600;box-shadow:var(--shadow)}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--matcha);box-shadow:0 0 0 0 var(--matcha);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 9px transparent}100%{box-shadow:0 0 0 0 transparent}}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:22px 0 0}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 6px}
+.stat b{display:block;font:700 26px/1 var(--serif)}
+.stat span{font-size:12.5px;color:var(--mute)}
+.prog{height:8px;border-radius:99px;background:var(--line);overflow:hidden;margin:18px 4px 0}
+.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--acc),var(--gold));border-radius:99px;transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.hero .cta{margin-top:24px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top)}
+.nav .wrap{display:flex;gap:8px;overflow-x:auto;padding-top:10px;padding-bottom:10px;scrollbar-width:none}
+.nav .wrap::-webkit-scrollbar{display:none}
+.chip{flex:none;padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:var(--card);font-size:14px;font-weight:600;text-decoration:none;white-space:nowrap}
+.chip.on{background:var(--indigo);color:var(--bg);border-color:var(--indigo)}
+
+/* stories */
+.story{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);margin:0 0 22px;overflow:hidden}
+.story-h{padding:20px 20px 4px}
+.pill{display:inline-block;font:700 12px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--acc);background:color-mix(in srgb,var(--acc) 12%,transparent);padding:7px 11px;border-radius:99px;margin-bottom:12px}
+.story h3{font-size:26px;margin-bottom:6px}
+.meta{font-size:14px;color:var(--mute);margin:0 0 12px}
+.strip{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 20px 14px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.strip::-webkit-scrollbar{display:none}
+.strip button{flex:none;width:68%;max-width:300px;aspect-ratio:4/5;border:0;padding:0;border-radius:14px;overflow:hidden;scroll-snap-align:center;background:var(--bg2);cursor:zoom-in}
+.strip.one button{width:100%;max-width:none;aspect-ratio:4/3}
+.strip img{width:100%;height:100%;object-fit:cover;display:block}
+.txt{padding:4px 20px 22px;font-size:17.5px}
+.txt.clamp{max-height:12.5em;overflow:hidden;position:relative}
+.txt.clamp::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5em;background:linear-gradient(transparent,var(--card))}
+.more{margin:-8px 20px 20px;background:none;border:0;color:var(--acc);font-weight:700;font-size:16px;padding:8px 0;cursor:pointer}
+.skel{height:260px;border-radius:var(--r);background:linear-gradient(100deg,var(--bg2) 30%,var(--card) 50%,var(--bg2) 70%);background-size:200% 100%;animation:sh 1.4s infinite;margin-bottom:22px}
+@keyframes sh{to{background-position:-200% 0}}
+.empty{padding:26px;text-align:center;color:var(--mute);border:1.5px dashed var(--line);border-radius:var(--r)}
+
+/* videos */
+.vids{display:grid;gap:14px}
+.vid{border-radius:var(--r);overflow:hidden;background:#000;box-shadow:var(--shadow)}
+.vid video{width:100%;display:block;max-height:75vh}
+
+/* route */
+.route{position:relative;margin:6px 0 0 8px;padding:0 0 0 28px;list-style:none}
+.route::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:repeating-linear-gradient(var(--line) 0 6px,transparent 6px 12px)}
+.route li{position:relative;padding:0 0 22px}
+.route li::before{content:"";position:absolute;left:-28px;top:5px;width:16px;height:16px;border-radius:50%;background:var(--card);border:3px solid var(--indigo)}
+.route li.now::before{border-color:var(--acc);background:var(--acc);box-shadow:0 0 0 6px color-mix(in srgb,var(--acc) 22%,transparent)}
+.route b{display:block;font:700 19px/1.25 var(--serif)}
+.route span{font-size:14px;color:var(--mute)}
+.hl{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -16px;padding:4px 16px 18px;scrollbar-width:none}
+.hl::-webkit-scrollbar{display:none}
+.card{flex:none;width:76%;max-width:290px;scroll-snap-align:start;border-radius:var(--r);padding:22px 20px;color:#fff;position:relative;overflow:hidden;min-height:210px;display:flex;flex-direction:column;justify-content:flex-end;box-shadow:var(--shadow)}
+.card .k{position:absolute;right:12px;top:4px;font:700 74px/1 var(--serif);opacity:.18}
+.card .e{font-size:34px;margin-bottom:8px}
+.card h4{font:700 21px/1.2 var(--serif);margin:0 0 6px}
+.card p{font-size:14.5px;line-height:1.45;margin:0;opacity:.94}
+.g1{background:linear-gradient(150deg,#9b2d3a,#d9644f)}.g2{background:linear-gradient(150deg,#2f5a4a,#6fa07b)}
+.g3{background:linear-gradient(150deg,#26305a,#5a6fc2)}.g4{background:linear-gradient(150deg,#7a4a1f,#d19a4a)}
+.g5{background:linear-gradient(150deg,#174b61,#3d9aa6)}.g6{background:linear-gradient(150deg,#6b2f6e,#c06aa8)}
+.g7{background:linear-gradient(150deg,#a2331f,#e58a3c)}.g8{background:linear-gradient(150deg,#3b4a2a,#98b25a)}.g9{background:linear-gradient(150deg,#4a3a2a,#b99a6a)}
+
+/* promo */
+.promo{margin-top:56px;padding:44px 0 56px;background:var(--indigo);color:#f2eee4;position:relative;overflow:hidden}
+@media (prefers-color-scheme: dark){.promo{background:#0e1226;color:#f2eee4}}
+.promo::before{content:"";position:absolute;right:-90px;top:-90px;width:280px;height:280px;border-radius:50%;background:var(--acc);opacity:.22}
+.promo .wrap{position:relative}
+.promo .eyebrow{color:#ffb4a8}
+.promo h2{font-size:clamp(32px,9vw,46px);margin-bottom:14px}
+.promo p.lead{font-size:18px;opacity:.9}
+.feat{display:grid;gap:12px;margin:26px 0;grid-template-columns:1fr}
+.feat div{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:16px 16px 14px;display:flex;gap:14px;align-items:flex-start}
+.feat .ic{font-size:26px;line-height:1}
+.feat b{display:block;font-size:16.5px}
+.feat span{font-size:14.5px;opacity:.82;line-height:1.45}
+.quote{font:italic 20px/1.45 var(--serif);border-left:3px solid var(--acc);padding:4px 0 4px 16px;margin:26px 0;opacity:.95}
+.form{background:#fffdf8;color:#1d2236;border-radius:var(--r);padding:22px 18px;box-shadow:0 20px 50px rgba(0,0,0,.3)}
+.form h3{font-size:23px;margin-bottom:4px}
+.form p{color:#5c6275;font-size:15px;margin-bottom:14px}
+.form label{display:block;font-size:13px;font-weight:650;color:#5c6275;margin:12px 0 5px}
+.form input,.form textarea{width:100%;font:inherit;font-size:16px;padding:13px 14px;border-radius:12px;border:1.5px solid #e3d9c3;background:#fff;color:#1d2236}
+.form textarea{min-height:92px;resize:vertical}
+.form input:focus,.form textarea:focus{outline:none;border-color:#c9372c;box-shadow:0 0 0 4px rgba(201,55,44,.15)}
+.form .btn{width:100%;margin-top:16px}
+.hp{position:absolute;left:-9999px;opacity:0}
+.note{font-size:14.5px;margin-top:12px;min-height:1.4em}
+.ok{color:#2f7a45}.err{color:#b3261e}
+footer{padding:26px 0 40px;text-align:center;color:var(--mute);font-size:14px}
+footer .btn{margin-bottom:18px}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:50;background:rgba(8,10,20,.94);display:none;align-items:center;justify-content:center;touch-action:pan-y}
+.lb.on{display:flex}
+.lb img{max-width:100%;max-height:86vh;object-fit:contain;user-select:none}
+.lb button{position:absolute;border:0;background:rgba(255,255,255,.14);color:#fff;width:48px;height:48px;border-radius:50%;font-size:22px;cursor:pointer}
+.lb .x{top:calc(12px + env(safe-area-inset-top));right:12px}.lb .p{left:10px;top:50%}.lb .n{right:10px;top:50%}
+.lb .c{position:absolute;bottom:calc(14px + env(safe-area-inset-bottom));left:0;right:0;text-align:center;color:#fff;opacity:.8;font-size:14px}
+@media (min-width:640px){.feat{grid-template-columns:1fr 1fr}.strip button{width:46%}.card{width:44%}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="sun" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="kanji" aria-hidden="true">魂 の 月</p>
+    <h1>Mesec za dušo</h1>
+    <p class="lead">Štiri prijateljice, trideset dni in ena Japonska. Beri, kako nam gre — dan za dnem.</p>
+    <div class="live" id="live"><span class="dot"></span><span id="liveT">Nalagam …</span></div>
+    <div class="stats">
+      <div class="stat"><b id="sDay">–</b><span>dan poti</span></div>
+      <div class="stat"><b id="sPh">–</b><span>fotografij</span></div>
+      <div class="stat"><b id="sSt">–</b><span>zgodb</span></div>
+    </div>
+    <div class="prog" aria-hidden="true"><i id="prog"></i></div>
+    <div class="cta"><a class="btn" href="#potopis">Začni brati</a><button class="btn ghost" id="share" type="button">Deli povezavo</button></div>
+  </div>
+</header>
+
+<nav class="nav" aria-label="Razdelki"><div class="wrap">
+  <a class="chip on" href="#potopis">📖 Potopis</a>
+  <a class="chip" href="#video" id="navVid" hidden>🎬 Video</a>
+  <a class="chip" href="#naprej">🗺️ Kaj sledi</a>
+  <a class="chip" href="#highlights">✨ Highlights</a>
+  <a class="chip" href="#vodnik">🧭 Vodnik v žepu</a>
+</div></nav>
+
+<main class="wrap">
+  <section id="potopis">
+    <p class="eyebrow">Dnevnik</p>
+    <h2 class="sec-h">Doslej na poti</h2>
+    <p class="sec-sub">Zgodbe pišemo same, vsak večer. Najnovejši dan je na vrhu.</p>
+    <div id="stories"><div class="skel"></div><div class="skel"></div></div>
+  </section>
+
+  <section id="video" hidden>
+    <p class="eyebrow">Utrinki</p>
+    <h2 class="sec-h">Na videu</h2>
+    <p class="sec-sub">Kratki posnetki s poti.</p>
+    <div class="vids" id="vids"></div>
+  </section>
+
+  <section id="naprej">
+    <p class="eyebrow">Naprej</p>
+    <h2 class="sec-h">Kaj nas še čaka</h2>
+    <p class="sec-sub">Načrt je okvir, pot pa piše življenje — kaj od tega bomo res zmogle, boš prebral v naslednjih zgodbah.</p>
+    <ol class="route" id="route"></ol>
+  </section>
+
+  <section id="highlights">
+    <p class="eyebrow">Highlights</p>
+    <h2 class="sec-h">Na kaj se najbolj veselimo</h2>
+    <p class="sec-sub">Povlecite levo za več.</p>
+    <div class="hl">
+      <article class="card g1"><span class="k" aria-hidden="true">身延</span><div class="e">🏯</div><h4>Noč pri menihih</h4><p>Minobusan: nočitev v templju na gori, jutranja molitev in preprosta hrana.</p></article>
+      <article class="card g3"><span class="k" aria-hidden="true">温泉</span><div class="e">♨️</div><h4>Onsen na Izu</h4><p>Vroči vrelci, obala in sproščeni dnevi sredi narave.</p></article>
+      <article class="card g2"><span class="k" aria-hidden="true">熊野</span><div class="e">🥾</div><h4>Kumano Kodo</h4><p>Stara romarska pot skozi gozd in slap Nachi, kjer se čas upočasni.</p></article>
+      <article class="card g4"><span class="k" aria-hidden="true">高野</span><div class="e">⛩️</div><h4>Koya-san</h4><p>Sveta gora s templji, vrtovi in tihim gozdnim pokopališčem.</p></article>
+      <article class="card g5"><span class="k" aria-hidden="true">祖谷</span><div class="e">🌉</div><h4>Dolina Iya</h4><p>Viseči mostovi iz lian, globoke soteske in odmaknjene vasi.</p></article>
+      <article class="card g6"><span class="k" aria-hidden="true">伊根</span><div class="e">🏘️</div><h4>Hiše na vodi</h4><p>Ribiška vasica Ine, kjer so čolnarne zgrajene tik ob morju.</p></article>
+      <article class="card g7"><span class="k" aria-hidden="true">京都</span><div class="e">🍁</div><h4>Kyoto v jeseni</h4><p>Rdeči javorji, zen vrtovi, Arašijama in večerna osvetlitev templjev.</p></article>
+      <article class="card g8"><span class="k" aria-hidden="true">奈良</span><div class="e">🦌</div><h4>Nara</h4><p>Prijazni jeleni in stari templji, če nam dan to dovoli.</p></article>
+      <article class="card g9"><span class="k" aria-hidden="true">大阪</span><div class="e">🍜</div><h4>Okusi Osake</h4><p>Ulična hrana, neonske ulice in zadnji večeri pred potjo domov.</p></article>
+    </div>
+  </section>
+</main>
+
+<section class="promo" id="vodnik">
+  <div class="wrap">
+    <p class="eyebrow">Kako smo to zmogle</p>
+    <h2>Vodnik v žepu: kot da bi imel vodiča vedno s seboj.</h2>
+    <p class="lead">Naše potovanje vodi spletna aplikacija, ki nam sestavi načrt, ga sproti prilagaja in nam je ob strani, ko se kaj spremeni. Brez strahu, da bomo zašle — in brez togega urnika.</p>
+    <div class="feat">
+      <div><span class="ic">🗓️</span><span><b>Načrt po meri</b>Dan za dnem, s prevozi in alternativo za dež.</span></div>
+      <div><span class="ic">🔄</span><span><b>Prilagaja se vam</b>Spremenjena rezervacija ali počasnejši dan? Načrt sledi vam.</span></div>
+      <div><span class="ic">🚉</span><span><b>Prevozi korak za korakom</b>Kako od postaje do namestitve, brez ugibanja.</span></div>
+      <div><span class="ic">💬</span><span><b>Pomočnik v Telegramu</b>Jutranji načrt, vreme, opomniki in odgovori na vprašanja.</span></div>
+      <div><span class="ic">📖</span><span><b>Potopis nastane sam</b>Napišeš nekaj vrstic in dodaš slike — zgodba se zloži sama.</span></div>
+      <div><span class="ic">📴</span><span><b>Deluje brez interneta</b>Vse najpomembnejše je v telefonu tudi na poti.</span></div>
+    </div>
+    <p class="quote">„Načrti so eno, življenje na poti pa vedno poskrbi za kakšno presenečenje.“ — ena od nas</p>
+    <form class="form" id="lead" novalidate>
+      <h3>Želiš preizkusiti?</h3>
+      <p>Povej, kam in kdaj potuješ — pomagamo ti z načrtom, da boš na poti bolj varen in svoboden.</p>
+      <label for="fn">Ime</label><input id="fn" name="name" autocomplete="given-name" maxlength="80">
+      <label for="fc">E-pošta ali Telegram *</label><input id="fc" name="contact" autocomplete="email" required maxlength="120" placeholder="npr. ime@mail.com ali @uporabnik">
+      <label for="fp">Kam in kdaj potuješ?</label><textarea id="fp" name="note" maxlength="600" placeholder="npr. Portugalska, maj, 2 osebi, rada imava naravo in dobro hrano"></textarea>
+      <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button class="btn" type="submit" id="fb">Javi se mi</button>
+      <p class="note" id="fm" role="status"></p>
+    </form>
+  </div>
+</section>
+
+<footer><div class="wrap">
+  <button class="btn ghost" id="share2" type="button">Deli to povezavo</button>
+  <p>Mesec za dušo · potopis iz Japonske<br>Pišemo sproti, zato se stran dopolnjuje vsak dan. 🌸</p>
+</div></footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Fotografija">
+  <button class="x" id="lbx" aria-label="Zapri">✕</button><button class="p" id="lbp" aria-label="Prejšnja">‹</button><button class="n" id="lbn" aria-label="Naslednja">›</button>
+  <img id="lbi" alt=""><div class="c" id="lbc"></div>
+</div>
+
+<script>
+(function(){
+"use strict";
+var SB="https://ayejgzzaykbopojiacgn.supabase.co",KEY="sb_publishable_vgNDW0KMTwSPstN0PhwySQ_SDuOUzn3",TRIP="mesec-za-dusu";
+var MON=["januar","februar","marec","april","maj","junij","julij","avgust","september","oktober","november","december"];
+var $=function(id){return document.getElementById(id)};
+function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function dl(iso){var p=iso.split("-");return parseInt(p[2],10)+". "+MON[parseInt(p[1],10)-1]}
+function url(p){return SB+"/storage/v1/object/public/trip_album/"+p.split("/").map(encodeURIComponent).join("/")}
+function rpc(fn,body){return fetch(SB+"/rest/v1/rpc/"+fn,{method:"POST",headers:{apikey:KEY,"Content-Type":"application/json"},body:JSON.stringify(body)}).then(function(r){if(!r.ok)throw new Error(r.status);return r.json()})}
+
+var pics=[],idx=0;
+function open(i){idx=i;show();$("lb").classList.add("on");document.body.style.overflow="hidden"}
+function show(){var o=pics[idx];$("lbi").src=o;$("lbc").textContent=(idx+1)+" / "+pics.length}
+function close(){$("lb").classList.remove("on");document.body.style.overflow=""}
+function step(d){idx=(idx+d+pics.length)%pics.length;show()}
+$("lbx").onclick=close;$("lbp").onclick=function(){step(-1)};$("lbn").onclick=function(){step(1)};
+$("lb").addEventListener("click",function(e){if(e.target===$("lb"))close()});
+document.addEventListener("keydown",function(e){if(!$("lb").classList.contains("on"))return;if(e.key==="Escape")close();if(e.key==="ArrowLeft")step(-1);if(e.key==="ArrowRight")step(1)});
+var tx=0;$("lb").addEventListener("touchstart",function(e){tx=e.touches[0].clientX},{passive:true});
+$("lb").addEventListener("touchend",function(e){var d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>50)step(d<0?1:-1)});
+
+function render(d){
+  var st=(d.stories||[]).slice().reverse();
+  var h="";
+  if(!st.length)h='<div class="empty">Prva zgodba pride kmalu. 🌸</div>';
+  st.forEach(function(s){
+    var ph=(s.photos||[]).map(url),base=pics.length;pics=pics.concat(ph);
+    var paras=String(s.body||"").trim().split(/\n\s*\n/).map(function(p){return"<p>"+esc(p).replace(/\n/g,"<br>")+"</p>"}).join("");
+    var long=String(s.body||"").length>650;
+    h+='<article class="story"><div class="story-h"><span class="pill">Dan '+s.day+'</span><h3>'+esc(s.title||"")+'</h3><p class="meta">'+dl(s.iso)+(s.station?" · "+esc(s.station):"")+'</p></div>';
+    if(ph.length)h+='<div class="strip'+(ph.length===1?" one":"")+'">'+ph.map(function(u,i){return'<button type="button" data-i="'+(base+i)+'" aria-label="Odpri fotografijo"><img loading="lazy" decoding="async" alt="Utrinek z dneva '+s.day+'" src="'+u+'"></button>'}).join("")+'</div>';
+    h+='<div class="txt'+(long?" clamp":"")+'">'+paras+'</div>'+(long?'<button class="more" type="button">Preberi več ↓</button>':"")+'</article>';
+  });
+  $("stories").innerHTML=h;
+  $("stories").querySelectorAll(".strip button").forEach(function(b){b.onclick=function(){open(+b.getAttribute("data-i"))}});
+  $("stories").querySelectorAll(".more").forEach(function(b){b.onclick=function(){var t=b.previousElementSibling,c=t.classList.toggle("clamp");b.textContent=c?"Preberi več ↓":"Skrij ↑"}});
+
+  var cur=d.current,day=cur?cur.day:(d.upcoming&&d.upcoming.length?d.upcoming[0].day-1:(d.total_days||0));
+  $("sDay").textContent=day+"/"+d.total_days;$("sPh").textContent=d.photo_count;$("sSt").textContent=(d.stories||[]).length;
+  $("liveT").textContent=cur?"Zdaj: dan "+cur.day+" · "+cur.station:"Potovanje poteka";
+  setTimeout(function(){$("prog").style.width=Math.min(100,Math.round(day/d.total_days*100))+"%"},150);
+
+  if(d.videos&&d.videos.length){$("video").hidden=false;$("navVid").hidden=false;
+    $("vids").innerHTML=d.videos.map(function(v){return'<div class="vid"><video controls playsinline preload="metadata" src="'+url(v)+'#t=0.1"></video></div>'}).join("")}
+
+  var groups=[],list=(cur?[{iso:d.today,day:cur.day,station:cur.station,title:""}]:[]).concat(d.upcoming||[]);
+  list.forEach(function(x){var g=groups[groups.length-1];if(g&&g.station===x.station){g.to=x.iso;g.n++}else groups.push({station:x.station,from:x.iso,to:x.iso,n:1,day:x.day})});
+  $("route").innerHTML=groups.map(function(g,i){return'<li'+(i===0&&cur?' class="now"':"")+'><b>'+esc(g.station)+'</b><span>'+(g.from===g.to?dl(g.from):dl(g.from)+" – "+dl(g.to))+' · '+g.n+(g.n===1?" dan":(g.n===2?" dneva":" dni"))+(i===0&&cur?" · tu smo zdaj":"")+'</span></li>'}).join("");
+}
+function load(){
+  var cached=null;try{cached=JSON.parse(localStorage.getItem("javno_cache")||"null")}catch(e){}
+  if(cached)render(cached);
+  rpc("trip_public_get",{p_key:TRIP}).then(function(d){
+    if(!d)throw 0;try{localStorage.setItem("javno_cache",JSON.stringify(d))}catch(e){}pics=[];render(d)
+  }).catch(function(){if(!cached)$("stories").innerHTML='<div class="empty">Zgodb trenutno ni mogoče naložiti. Poskusi znova čez nekaj trenutkov.</div>'});
+}
+load();
+
+/* nav highlight */
+var secs=["potopis","video","naprej","highlights","vodnik"].map(function(i){return $(i)}).filter(Boolean);
+if("IntersectionObserver" in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){document.querySelectorAll(".chip").forEach(function(c){c.classList.toggle("on",c.getAttribute("href")==="#"+e.target.id)})}})},{rootMargin:"-45% 0px -50% 0px"});secs.forEach(function(s){io.observe(s)})}
+
+/* share */
+function share(){var u=location.href.split("#")[0],t="Mesec za dušo — potopis iz Japonske";
+  if(navigator.share){navigator.share({title:t,url:u}).catch(function(){})}
+  else if(navigator.clipboard){navigator.clipboard.writeText(u).then(function(){alert("Povezava kopirana.")})}else{prompt("Kopiraj povezavo:",u)}}
+$("share").onclick=share;$("share2").onclick=share;
+
+/* lead form */
+$("lead").addEventListener("submit",function(e){
+  e.preventDefault();var f=e.target,m=$("fm"),c=f.contact.value.trim();
+  if(f.website.value)return;
+  if(c.length<3){m.className="note err";m.textContent="Vpiši e-pošto ali Telegram, da ti lahko odgovorimo.";f.contact.focus();return}
+  $("fb").disabled=true;m.className="note";m.textContent="Pošiljam …";
+  rpc("trip_public_lead",{p_name:f.name.value.trim(),p_contact:c,p_note:f.note.value.trim()}).then(function(){
+    m.className="note ok";m.textContent="Hvala! Javimo se ti čim prej. 💛";f.reset();
+  }).catch(function(){m.className="note err";m.textContent="Pošiljanje ni uspelo. Poskusi znova čez trenutek."}).then(function(){$("fb").disabled=false});
+});
+})();
+</script>
+</body>
+</html>
