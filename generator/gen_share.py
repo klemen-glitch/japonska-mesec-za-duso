@@ -94,7 +94,7 @@ def build(site_dir):
             latest_img = img_url(s["photos"][0])
             break
     title = "Mesec za dušo — potopis iz Japonske"
-    desc = "Štiri prijateljice, trideset dni in ena Japonska. Beri, kako nam gre — dan za dnem, z utrinki in zanimivostmi o krajih."
+    desc = "Moja zgodba o mesecu dni na Japonskem s tremi prijateljicami. Beri, kako nam gre, dan za dnem, z utrinki in zanimivostmi o krajih."
     try:
         vj = json.load(open(os.path.join(HERE, "videos.json"), encoding="utf-8"))
         vids = {x["key"]: [{"id": v["id"], "title": v["title"]} for v in x.get("videos", [])[:3]] for x in vj}
