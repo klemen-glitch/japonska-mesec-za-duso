@@ -71,13 +71,13 @@ SHARE_PAGE = """<!DOCTYPE html>
 <meta property="og:locale" content="sl_SI">
 %(og)s
 <link rel="canonical" href="%(url)s">
-<script>location.replace("../../#d-%(iso)s");</script>
-<noscript><meta http-equiv="refresh" content="0; url=../../#d-%(iso)s"></noscript>
+<script>location.replace("../../?dan=%(iso)s");</script>
+<noscript><meta http-equiv="refresh" content="0; url=../../?dan=%(iso)s"></noscript>
 <style>body{font:17px/1.5 -apple-system,system-ui,sans-serif;margin:0;padding:32px 20px;text-align:center;background:#f7f1e6;color:#1d2236}a{color:#c9372c;font-weight:600}</style>
 </head><body>
 <h1 style="font-family:Georgia,serif">%(title)s</h1>
 <p>%(desc)s</p>
-<p><a href="../../#d-%(iso)s">Preberi celoten zapis →</a></p>
+<p><a href="../../?dan=%(iso)s">Preberi celoten zapis →</a></p>
 </body></html>
 """
 
