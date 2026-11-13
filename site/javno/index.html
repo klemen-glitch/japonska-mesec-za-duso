@@ -258,6 +258,21 @@ button{font:inherit;color:inherit}
 footer{padding:28px 0 40px;text-align:center;color:var(--mute);font-size:14px}
 footer .btn{margin-bottom:18px}
 
+.toc{display:none}
+@media (min-width:1100px){
+ .toc{display:block;position:fixed;top:96px;left:max(16px,calc(50% - 360px - 268px));width:248px;max-height:calc(100vh - 130px);overflow:auto;z-index:15;padding:16px 10px 16px 14px;background:color-mix(in srgb,var(--card) 82%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);opacity:0;transform:translateX(-12px);transition:opacity .4s var(--ease),transform .4s var(--ease);scrollbar-width:thin}
+ .toc.on{opacity:1;transform:none}
+ .toc h4{font:700 12px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin:2px 4px 12px}
+ .toc a{display:flex;gap:10px;align-items:center;padding:7px 8px;border-radius:12px;text-decoration:none;font-size:14px;line-height:1.3;color:var(--fg);transition:background .2s}
+ .toc a:hover{background:var(--bg2)}
+ .toc a.on{background:color-mix(in srgb,var(--acc) 12%,transparent)}
+ .toc a.on b{color:var(--acc)}
+ .toc .tt{flex:none;width:36px;height:36px;border-radius:10px;background:var(--bg2) center/cover no-repeat;display:flex;align-items:center;justify-content:center;font-size:16px}
+ .toc b{display:block;font-size:12px;color:var(--mute);font-weight:700}
+ .toc .sep{height:1px;background:var(--line);margin:10px 4px}
+ .toc .sec a{font-weight:650}
+ .dock #dDays{display:none}
+}
 /* lightbox */
 .lb{position:fixed;inset:0;z-index:70;background:rgba(8,10,20,.95);display:none;align-items:center;justify-content:center;touch-action:pan-y}
 .lb.on{display:flex;animation:fade .2s ease}
@@ -381,6 +396,7 @@ footer .btn{margin-bottom:18px}
   <p>Mesec za dušo · potopis iz Japonske<br>Zgodbe pišem sproti, zato se stran dopolnjuje vsak dan. 🌸</p>
 </div></footer>
 
+<aside class="toc" id="toc" aria-label="Kazalo"></aside>
 <div class="dock" id="dock" role="toolbar" aria-label="Hitri ukazi">
   <button type="button" id="dDays">📅 Dnevi</button>
   <button type="button" id="dTop">↑</button>
@@ -493,6 +509,9 @@ function render(d){
   /* trak dni */
   $("days").innerHTML=st.map(function(s){var th=(s.photos||[])[0];return'<button type="button" class="dp'+(s.hide?" hid":"")+'" data-go="'+s.iso+'"><span class="th'+(th?"":" no")+'"'+(th?' style="background-image:url(\''+url(th)+'\')"':"")+'>'+(th?"":"📖")+'</span><span><b>Dan '+s.day+'</b>'+ds(s.iso)+'</span></button>'}).join("");
   $("days").querySelectorAll("[data-go]").forEach(function(b){b.onclick=function(){go(b.getAttribute("data-go"))}});
+  /* kazalo (namizje) */
+  $("toc").innerHTML='<h4>Kazalo</h4>'+st.map(function(s){var th=(s.photos||[])[0];return'<a href="#d-'+s.iso+'" data-toc="'+s.iso+'"><span class="tt"'+(th?' style="background-image:url(\''+url(th)+'\')"':"")+'>'+(th?"":"📖")+'</span><span><b>Dan '+s.day+' · '+ds(s.iso)+'</b>'+esc(s.title||"")+'</span></a>'}).join("")+'<div class="sep"></div><div class="sec"><a href="#naprej">🗺️ Kaj nas še čaka</a><a href="#highlights">✨ Doživetja</a><a href="#vodnik">🧭 Vodnik v žepu</a></div>';
+  $("toc").querySelectorAll("[data-toc]").forEach(function(a){a.onclick=function(e){e.preventDefault();go(a.getAttribute("data-toc"))}});
   /* zgodbe */
   var h=st.length?st.map(function(s){return storyHtml(s,false)}).join(""):'<div class="empty">Prva zgodba pride kmalu. 🌸</div>';
   $("stories").innerHTML=h;wire($("stories"));
@@ -513,6 +532,7 @@ function render(d){
   /* doživeto */
   var byKey={};(d.stories||[]).forEach(function(s){if(s.key&&!byKey[s.key])byKey[s.key]=s.iso});
   $("hl").querySelectorAll(".card").forEach(function(c){var k=c.getAttribute("data-k"),iso=byKey[k],o=c.querySelector(".done");if(iso){if(!o){o=document.createElement("span");o.className="done";c.appendChild(o)}o.textContent="✓ Doživeto · preberi";c.href="#d-"+iso;c.onclick=function(e){e.preventDefault();go(iso)}}});
+  if(window.IntersectionObserver){if(render.tio)render.tio.disconnect();render.tio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var iso=e.target.id.slice(2);$("toc").querySelectorAll("[data-toc]").forEach(function(a){var on=a.getAttribute("data-toc")===iso;a.classList.toggle("on",on);if(on&&a.scrollIntoView&&$("toc").classList.contains("on"))a.scrollIntoView({block:"nearest"})})}})},{rootMargin:"-40% 0px -55% 0px"});$("stories").querySelectorAll(".story").forEach(function(x){render.tio.observe(x)})}
   if(FEAT&&!EDIT&&!render.done){render.done=true;window.scrollTo(0,0)}
 }
 function go(iso){var el=$("d-"+iso);if(!el)return;el.scrollIntoView({behavior:"smooth",block:"start"});el.classList.remove("flash");void el.offsetWidth;el.classList.add("flash");closeSheet()}
@@ -540,7 +560,7 @@ function shareSheet(iso){
 function daysSheet(){var st=visible().slice().reverse();sheet('<h3>Vsi dnevi</h3><p class="sub">Tapni dan, da skočiš nanj.</p><div class="dlist">'+st.map(function(s){var th=(s.photos||[])[0];return'<button type="button" data-go="'+s.iso+'"><span class="th"'+(th?' style="background-image:url(\''+url(th)+'\')"':"")+'>'+(th?"":"📖")+'</span><span><b>Dan '+s.day+' · '+esc(s.title||"")+'</b><span>'+dl(s.iso)+(s.station?" · "+esc(s.station):"")+'</span></span></button>'}).join("")+'</div>',function(sh){sh.querySelectorAll("[data-go]").forEach(function(b){b.onclick=function(){go(b.getAttribute("data-go"))}})})}
 $("share").onclick=function(){shareSheet(null)};$("share2").onclick=function(){shareSheet(null)};
 $("dShare").onclick=function(){shareSheet(null)};$("dDays").onclick=daysSheet;$("dTop").onclick=function(){window.scrollTo({top:0,behavior:"smooth"})};
-var dk=$("dock");window.addEventListener("scroll",function(){dk.classList.toggle("on",window.scrollY>window.innerHeight*.7)},{passive:true});
+var dk=$("dock");window.addEventListener("scroll",function(){var on=window.scrollY>window.innerHeight*.7;dk.classList.toggle("on",on);$("toc").classList.toggle("on",on)},{passive:true});
 
 /* urejanje (samo Magda, s skrito povezavo) */
 function edS(iso){var e=(EDSTORIES||[]).filter(function(x){return x.iso===iso})[0];if(!e){var v=visible().filter(function(x){return x.iso===iso})[0]||{};e={iso:iso,title:v.title||"",body:"",photos:[],hide:false};EDSTORIES.push(e)}return e}
