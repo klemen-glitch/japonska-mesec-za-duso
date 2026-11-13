@@ -12,8 +12,8 @@ import sys
 import urllib.request
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-SB = "https://ayejgzzaykbopojiacgn.supabase.co"
-KEY = "sb_publishable_vgNDW0KMTwSPstN0PhwySQ_SDuOUzn3"
+SB = "https://clpwjvcuvpnjtkxokkqh.supabase.co"
+KEY = "sb_publishable_izP9L69-Yrlc3U_uNhc29A_aoG_d8uz"
 PUBLIC_URL = "https://klemen-glitch.github.io/japonska-mesec-za-duso/javno/"
 TRIP_KEY = "mesec-za-dusu"
 MON = ["januar", "februar", "marec", "april", "maj", "junij", "julij", "avgust", "september", "oktober", "november", "december"]

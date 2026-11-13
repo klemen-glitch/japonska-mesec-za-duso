@@ -8,8 +8,8 @@ import os
 HERE = os.path.dirname(os.path.abspath(__file__))
 SITE_DIR = os.path.join(os.path.abspath(os.path.join(HERE, "..")), "site")
 BASE = "/japonska-mesec-za-duso/"          # GitHub Pages pot (pri lastni domeni "/")
-SB_URL = "https://ayejgzzaykbopojiacgn.supabase.co"
-SB_KEY = "sb_publishable_vgNDW0KMTwSPstN0PhwySQ_SDuOUzn3"
+SB_URL = "https://clpwjvcuvpnjtkxokkqh.supabase.co"
+SB_KEY = "sb_publishable_izP9L69-Yrlc3U_uNhc29A_aoG_d8uz"
 
 GATE = r"""<!DOCTYPE html>
 <html lang="sl">

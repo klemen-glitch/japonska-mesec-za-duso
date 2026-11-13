@@ -6,8 +6,8 @@
 (function () {
   "use strict";
 
-  var SB_URL = "https://ayejgzzaykbopojiacgn.supabase.co";
-  var SB_KEY = "sb_publishable_vgNDW0KMTwSPstN0PhwySQ_SDuOUzn3";
+  var SB_URL = "https://clpwjvcuvpnjtkxokkqh.supabase.co";
+  var SB_KEY = "sb_publishable_izP9L69-Yrlc3U_uNhc29A_aoG_d8uz";
   var BUCKET = "trip_album";
   var TRIP = window.TRIP || { id: "", people: [], stations: [] };
   var STATIONS = (TRIP.stations || []).concat([{ k: "drugo", e: "✨", n: "Drugo" }]);
