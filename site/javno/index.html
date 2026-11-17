@@ -15,8 +15,8 @@
 <meta property="og:description" content="Moja zgodba o mesecu dni na Japonskem s tremi prijateljicami. Beri, kako nam gre, dan za dnem, z utrinki in zanimivostmi o krajih.">
 <meta property="og:url" content="https://klemen-glitch.github.io/japonska-mesec-za-duso/javno/">
 <meta name="twitter:card" content="summary_large_image">
-<meta property="og:image" content="https://clpwjvcuvpnjtkxokkqh.supabase.co/storage/v1/object/public/trip_album/japonska/tokio/splosno/48850260-e4a4-46dc-8b99-cddf6ed291cc.jpg">
-<meta name="twitter:image" content="https://clpwjvcuvpnjtkxokkqh.supabase.co/storage/v1/object/public/trip_album/japonska/tokio/splosno/48850260-e4a4-46dc-8b99-cddf6ed291cc.jpg">
+<meta property="og:image" content="https://clpwjvcuvpnjtkxokkqh.supabase.co/storage/v1/object/public/trip_album/japonska/koyasan/splosno/76cdb360-bd96-4f62-a7e8-7ad351889696.jpg">
+<meta name="twitter:image" content="https://clpwjvcuvpnjtkxokkqh.supabase.co/storage/v1/object/public/trip_album/japonska/koyasan/splosno/76cdb360-bd96-4f62-a7e8-7ad351889696.jpg">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%23c9372c'/%3E%3C/svg%3E">
 <style>
 :root{
@@ -143,7 +143,9 @@ button{font:inherit;color:inherit}
 .empty-s{color:var(--mute);font-style:italic}
 
 /* urejanje (Magda) */
-.edbar{position:sticky;top:0;z-index:30;background:var(--indigo);color:#fff;padding:10px 16px;padding-top:calc(10px + env(safe-area-inset-top));font-size:14.5px;display:flex;gap:10px;align-items:center;justify-content:space-between}
+.edbar{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(12px + env(safe-area-inset-bottom));width:calc(100% - 24px);max-width:520px;z-index:45;background:var(--indigo);color:#fff;padding:10px 10px 10px 16px;border-radius:999px;font-size:14px;display:flex;gap:10px;align-items:center;justify-content:space-between;box-shadow:0 12px 30px rgba(0,0,0,.28)}
+.edbar span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.edbar button{flex:none}
 .edbar button{background:rgba(255,255,255,.18);color:#fff;border:0;border-radius:99px;padding:8px 14px;font-weight:700;cursor:pointer}
 .ed{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:6px 20px 16px;border-top:1px dashed var(--line);margin-top:4px}
 .ed .btn{min-height:44px;font-size:14.5px;padding:8px 10px}
@@ -315,7 +317,7 @@ footer .btn{margin-bottom:18px}
   <a class="chip" href="#vodnik">🧭 Vodnik v žepu</a>
 </div></nav>
 
-<div class="edbar" id="edbar" hidden><span>✏️ Urejaš svoj dnevnik</span><button type="button" id="edoff">Končaj</button></div>
+<div class="edbar" id="edbar" hidden><span>✏️ Urejaš dnevnik</span><button type="button" id="edoff">Končaj</button></div>
 
 <main class="wrap">
   <section id="potopis">
