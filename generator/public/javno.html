@@ -602,7 +602,9 @@ function editor(iso){
 }
 function initEdit(){
   var t=null;
-  try{var q=new URLSearchParams(location.search).get("uredi");if(q){localStorage.setItem("javno_edit",q);history.replaceState(null,"",location.pathname+location.hash)}t=localStorage.getItem("javno_edit")}catch(e){}
+  /* urejanje se vklopi samo, kadar je v naslovu ?uredi=…; shranjeno ni, da navadna povezava ostane javna */
+  try{var q=new URLSearchParams(location.search).get("uredi");if(q){t=q;history.replaceState(null,"",location.pathname+location.hash)}}catch(e){}
+  try{localStorage.removeItem("javno_edit")}catch(e){}
   if(!t)return Promise.resolve();
   return rpc("trip_public_edit_check",{p_key:TRIP,p_token:t}).then(function(ok){if(ok){EDIT=true;TOKEN=t;$("edbar").hidden=false;document.body.classList.add("editing")}else{try{localStorage.removeItem("javno_edit")}catch(e){}}}).catch(function(){});
 }
